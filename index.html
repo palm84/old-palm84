@@ -1,0 +1,636 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="GENERATOR" content="EdTex Version 3.11">
+<meta name="google-site-verification" content="czk7joRdEWwM-9fhzPCjG2mdXpuWdkAgqFt0eYktgNc" />
+<meta name="description" content="旧URL http://www10.plala.or.jp/palm84/ からGoogle ドライブ+DriveToWebに移転しました">
+<link rel="start" href="./index.html">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<link rel="shortcut icon" href="./favicon.ico">
+<script type="text/javascript" charset="Shift_JIS" src="./cssmemo_font.js"></script>
+<title>(旧) Palm84 (Google ドライブ+DriveToWeb に移転しました！)</title>
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<style type="text/css">
+<!--
+.pc table {
+font-size:100% !important;
+line-height:1.2 !important;
+}
+
+.pc td,
+.pc th {
+margin: 0;
+padding: 0.5em;
+border: 3px solid #ccc;
+}
+
+@media print {
+.sidebar {
+display: none;
+}
+}	
+-->
+</style>
+</head>
+
+<body>
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+<!--余談-->
+<!--柄にも無く（知識も無いのに）「アクセシビリティ」なんて事に
+チョット気を使ってミヨウカナ・・・なんて考えタンですけども
+スタイルシートもまだまだいい加減です。
+先は長いかも・・・う～ん、Lynxではテーブルが崩れちゃう。音声ブラウザでもOKな筈ですが確認したことないんです。
+IE7ではアクセスキーでとTabキーでフォーカス移動
+Operaでは Shift-Esc で「アクセスキー」一覧が出ます。Shift-カーソルでリンクのフォーカス移動。
+Firefox 2.0 では Alt-Shift-アクセスキーでリンクならジャンプ。Tabでフォーカス移動。-->
+<!--
+    　　　||　　　　　　　　　　　　　 ４　×　３
+    　　　||　　　　　　(~) 　 　 　 　４　×　４
+    　　　||　　　　γ´⌒｀ヽ　　　　４　×　５
+    　　　|| 　　　　{i:i:i:i:i:i:i:i:}　 　。 ４　×　６
+    　　　||　　　　（　´・ω・） ／
+    　　　||　　　　 （:::::::::：::つ
+    　　　||＿＿|￣￣￣￣￣|＿＿Ｅ[]ヨ＿＿__＿＿＿＿＿＿＿＿＿＿＿
+    　　.└──| 　　 　 　 　 |──────────────────
+    　　|￣￣￣￣￣￣￣￣￣￣￣￣|
+    　　　　　　　　　　　　　　　　　　　　　　　　　 ＿　　しさん、ジュウニ
+    　　　　　　　　　　　　　　　　　　　　　　　　 /;;;;;;ヽ　　しし、ジュウロク
+    　　　　　　　　　　　　　　　　　　　　　　　　/;;;;;;;;;;;;ヽ　　しご、ニジュウ
+    　　　　　　　　　　　　　　　　　　　　　　　 /;;;;;;;;;;;;;;;;;;ゞ　　 よろくはこんなとこきとうはなかった
+    　　　　　　　　　　　　　　　　　　　　　　　//////ミミミ
+    　　　　　　　　　　　　　　　　　　　　　　　　　し─Ｊ 
+-->
+
+<div class="navi">
+<a class="koko" name="top">HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://www.palm84.com/" accesskey="2" title="はてなブログ">kusoBlog</a> <kbd class="ak">2</kbd> | 
+<a href="http://b.hatena.ne.jp/palm84/bookmark" title="はてなブックマーク">ぶくま</a> | 
+<a href="about.html" title="このページについて" accesskey="3">あばうと</a> <kbd class="ak">3</kbd> [<a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,h1,h2,h3,h4,h5,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span,pre,#blog-title,.index,.white,.palmst,.kuma,.kuma2,.kumakuma,.test_kuma,.kuma_test,#test_kuma,#kuma_test{color:#eee!important;background-color:#333!important;text-shadow:none!important;}code{color:#333!important;background-color:#ccc!important;text-shadow:none!important;}.font_change{background-color:#333!important;}a:link{color:#6495ed!important;text-shadow:none!important;text-decoration:underline!important;}a:visited{color:#008080!important;text-shadow:none!important;text-decoration:underline!important;}a:hover{color:brown!important;background-color:#ccc!important;text-decoration:none!important;}';head[0].appendChild(style);})();">反転</a> <a href="javascript:(function(){var head=document.getElementsByTagName('head');var style=head[0].lastChild;if (style.nodeName.toLowerCase() == 'style'){head[0].removeChild(style);}else{alert('追加したstyle要素はないですYO');}})();">戻す</a>]
+</div>
+
+<h1 style="font-size:3em;"><span class="tokai0"><a href="./index.html" accesskey="0">(旧) @Palm84</a></span> <span style="font-size:50%;font-weight:normal;">(Google ドライブ+DriveToWeb に移転しました！)</span></h1>
+
+<div class="palm-body">
+
+<div class="sidebar">
+
+<div class="sidebar_body">
+<pre class="kuma pink" style="width:15em;" title="クマー♪">
+　　　∩＿＿＿∩
+　　　| ノ　ノノ　⌒ヽ
+　　 /ノノ●)　　●) |　
+　　|｜　　　( _●_)　ミ　　クマー♪
+　 彡､　　　　ヽノ　,,/ 　
+　 / 　　　　┌─┐´
+　|´　 丶　ヽ{ .茶 }ヽ　　　.....
+　 ｒ　 　 ヽ、__)ニ(_丿
+　ヽ、___　　　ヽ　ヽ
+　　と＿＿_＿ノ＿ノ
+</pre>
+</div>
+
+
+<h2><a href="#index" name="index"><span class="tokai0">index</span></a></h2>
+
+<div class="sidebar_body">
+
+<p><a href="https://www.twitter.com/palm84"><img src="https://twitter-badges.s3.amazonaws.com/twitter-a.png" alt="ついったー"></a></p>
+
+<ul class="small">
+<li>カテゴリー
+	<ul>
+	<li><a href="#excel">Excel</a> <kbd class="ak">4</kbd></li>
+	<li><a href="#windows">PCメンテナンス</a> <kbd class="ak">5</kbd></li>
+	<li><a href="#cssmemo">CSSめも</a> <kbd class="ak">6</kbd></li>
+	<li><a href="#etc">いろいろ</a> <kbd class="ak">7</kbd></li>
+	<li><a href="#linux">Linux</a> <kbd class="ak">8</kbd></li>
+	<li><a href="#old">古いページ</a> <kbd class="ak">9</kbd></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>はてな
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/">某所日記</a></li>
+	<li><a href="http://www.palm84.com/">はてなkusoBlog</a></li>
+	<li><a href="http://b.hatena.ne.jp/palm84/">某所ぶクマー</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="./index69.html">息抜きネタ</a>（何）</li>
+</ul>
+</div>
+
+
+<h2 class="sp_non"><a href="#changelog" name="changelog"><span class="tokai0">更新履歴</span></a></h2>
+
+<div class="sidebar_body sp_non">
+<ul class="small">
+
+<!--
+<li>201x.xx.xx
+	<ul>
+	<li><a href="./windows_8.html">【私的】Windows 8 めも</a> 作成</li>
+	</ul>
+</li>
+-->
+
+<li>2017.2.2 更新
+	<ul>
+	<li>Windows 系フォントの表示テスト</li>
+</ul>
+</li>
+
+<li>2017.1.27 更新
+	<ul>
+	<li>OpenType フォントの表示テスト</li>
+	<li>Windows 系フォントの表示テスト</li>
+	<li>【私的】Windows フォントのテストだYO！【DirectWrite】</li>
+</ul>
+</li>
+
+<li>2015.12.22 更新
+	<ul>
+	<li>OpenType フォントの表示テスト</li>
+	</ul>
+</li>
+
+<li>2015.12.18 作成
+	<ul>
+	<li>手書き風フォントの表示テスト</li>
+	</ul>
+</li>
+
+<li>2015.7.13 更新
+	<ul>
+	<li>Windows 系フォントの表示テスト</li>
+	<li>Linux 系フォントの表示テスト</li>
+	<li>OpenType フォントの表示テスト</li>
+	<li>font-family 切替用ブックマークレット</li>
+	<li>フォントスタイル表示切替テスト</li>
+	<li>M+ OUTLINE FONTS の派生フォントいろいろ</li>
+	</ul>
+</li>
+
+<li>2015.4.21 作成
+	<ul>
+	<li>Clonezilla Live - イメージ・バックアップ編</li>
+	<li>Clonezilla Live - イメージ・レストア編</li>
+	</ul>
+</li>
+
+<li>2014.7.5
+	<ul>
+	<li>isoイメージをマルチブートするの巻 更新
+	<ul>
+	<li>【その1】準備編</li>
+		<li>【その3】マルチブートUSBメモリ作成編</li>
+		<li>【その5】PXEネットワークブートでござる</li>
+		</ul>
+	</li>
+	</ul>
+</li>
+
+<li>2013.8.31
+	<ul>
+	<li>【無料】オンラインストレージのめも</a> 更新</li>
+	</ul>
+</li>
+
+<li>2013.7.16
+	<ul>
+	<li>【私的】Linux LiveCD めも</a> 更新</li>
+	</ul>
+</li>
+
+<li>2013.5.1
+	<ul>
+	<li>【無料】オンラインストレージのめも</a> 更新</li>
+	</ul>
+</li>
+
+<li>2013.3.6
+	<ul>
+	<li>isoイメージをマルチブートするの巻 更新
+	<ul>
+	<li>【その1】準備編</li>
+		<li>【その2】マルチブートDVD(CD) 作成編</li>
+		<li>【その3】マルチブートUSBメモリ作成編</li>
+		<li>【その4】HDブート設定編</li>
+		<li>【その5】PXEネットワークブートでござる</li>
+		</ul>
+	</li>
+	</ul>
+</li>
+
+</ul>
+
+</div>
+
+<div class="ct">
+<pre class="kuma pink" title="「クマー」のAAです。「更新マダァー」">
+∩_＿＿_∩
+　| ノ 　　　 　ヽ
+ /　　＿　　 ＿ |
+ミ　　　　( _●_) ミ
+ -(＿＿_.)─(＿＿)─
+…zzz更新マダァー…
+</pre>
+
+<div class="hateb">
+<script language="javascript" type="text/javascript" src="https://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://www10.plala.or.jp/palm84/";
+Hatena.BookmarkWidget.title = "はてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+
+</div>
+
+
+<p class="small">リンクするとかしないとか、ゆうのんは・・・
+<br>・・・
+<br>「自由だぁ！！」
+<br>・・・
+<br><span class="ms">♪</span>リンク is freedom...</p>
+
+</div>
+</div>
+
+
+<div class="main">
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.1.18 移行作業中です...</ins></dt>
+<dd>
+<p>Google ドライブ + <a href="https://www.drv.tw/">DriveToWeb</a> で公開しています。</p>
+<ul>
+<li><a href="https://diary.palm84.com/entry/20210323/1616510622">昔ながらの古いホームページを丸ごと Google ドライブ ＆ DriveToWeb へ移行しますよ【無料です】</a> <a href="https://b.hatena.ne.jp/entry/https://diary.palm84.com/entry/20210323/1616510622" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://diary.palm84.com/entry/20210323/1616510622" alt="" class="http-bookmark" /></a></li>
+</ul>
+
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li> <code><strong>http://www10.plala.or.jp/palm84/</strong></code> </li>
+	</ul>
+</li>
+</ul>
+
+<p>はてなブログ (<a href="https://www.palm84.com/">palm84.com</a> | <a href="https://diary.palm84.com/">Palm84 某所の日記</a>) へ移行作業をしております。お手数をおかけします。ご容赦ください。</p>
+<p></p>
+<ul>
+	<li><a href="https://www.palm84.com/archive/category/%E3%81%B7%E3%82%89%E3%82%89%20%28%E6%97%A7%40Palm84%20%29%E3%81%8B%E3%82%89%E5%BC%95%E3%81%A3%E8%B6%8A%E3%81%97">ぷらら (旧@Palm84 )から引っ越し - palm84.com</a></li>
+	<li><a href="https://diary.palm84.com/archive/category/%E3%81%B7%E3%82%89%E3%82%89%20%28%E6%97%A7%40Palm84%20%29%E3%81%8B%E3%82%89%E5%BC%95%E3%81%A3%E8%B6%8A%E3%81%97">ぷらら (旧@Palm84 )から引っ越し - Palm84 某所の日記</a></li>
+</ul>
+<p>BBSは削除します。</p>
+</dd>
+
+<dt><ins>【2021.3.23 追記】ページのアーカイブ</ins></dt>
+<dd>
+<ul>
+<li><a href="https://eu7w9wsmf6a74xyjdfzl3q.on.drv.tw/old-palm84/">Palm84</a> (drv.tw - Google ドライブ) <strong class="red">← 今ココ</strong></li>
+</ul>
+</dd>
+
+<dt><ins>【2021.3.22 追記】ファイルのアーカイブ</ins></dt>
+<dd>
+<p>アップロードしていたバッチファイルや設定ファイル等は下記の Google ドライブにミラーリングしてあります。</p>
+<ul>
+<li><a href="https://drive.google.com/drive/u/1/folders/12x7KbJXmpNDyYBm0Xo8Mx5GyhBg4Hyxt">archives - Google ドライブ</a> (元 www10 サーバー)</li>
+<li><a href="https://drive.google.com/drive/u/1/folders/1T3jiMjD5EnVkJFmDJaZnmbiEmt-tW-95">cgi-archives - Google ドライブ</a> (元 cgi1 サーバー)</li>
+</ul>
+</dd>
+</dl>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+<a href="http://twitter.com/share?url=https://eu7w9wsmf6a74xyjdfzl3q-on.drv.tw/old-palm84/&amp;via=palm84" class="twitter-share-button">Tweet</a> <a href="https://b.hatena.ne.jp/entrylist?url=http://www10.plala.or.jp/palm84/"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/" alt="Palm84のはてなブックマーク数" title="Palm84のはてなブックマーク数" width="75" height="14"></a>  <a href="https://b.hatena.ne.jp/entrylist?url=https://diary.palm84.com/"><img src="https://b.hatena.ne.jp/bc/de/https://diary.palm84.com/" alt="Palm84 某所の日記のはてなブックマーク数" title="Palm84 某所の日記のはてなブックマーク数" width="75" height="14"></a> <a href="http://b.hatena.ne.jp/entrylist?url=http://www.palm84.com/"><img src="https://b.hatena.ne.jp/bc/http://www.palm84.com/" alt="palm84.hatenablog.com のはてなブックマーク数" title="palm84.hatenablog.com のはてなブックマーク数(笑)" width="75" height="14"></a> <a href="//accaii.com/palm84p/"><img src="//accaii.com/palm84p/counter.png" style="width:80px;height:15px;vertical-align:middle;" alt="今日のアクセス数ですよ(笑)" title="今日のアクセス数ですよ(笑)"></a></p>
+
+<ul>
+<li><a href="about.html">このページについて</a> <kbd class="ak">3</kbd></li>
+</ul>
+
+<p>※ページ内容が古くなっている部分が若干（結構？..汗）あるかもしれません。また、勉強不足で不正確な記述も少しあるかと思います。鋭意更新作業中（もちろん言い訳、ってあれ？）なので何卒ご容赦下さい。</p>
+
+<button>ヘタ</button> <button>ペタ</button> <button>ベタ</button>
+
+<h2><a href="#excel" accesskey="4" name="excel"><span class="tokai0">Excel なんでやねん！</span></a>　<span class="small">（ベタすぎですか？）</span> <kbd class="ak">4</kbd></h2>
+
+<p>※ Excel 2003 までの話なので内容はチョト古いです。</p>
+
+<ul>
+<li><a href="https://www.palm84.com/entry/excel_basic">初級編の巻</a> - <span class="small">効率UPの為の基本的なことです。</span> <span class="small">(* <ins>はてなブログ移行済</ins>)</span>
+	<ul>
+	<li><a href="https://www.palm84.com/entry/excel_cell">セルの書式設定とは？の巻</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span></li>
+	</ul>
+</li>
+<li><a href="https://www.palm84.com/entry/excel_vlookup">VLOOKUP関数の巻</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span> - <span class="small">EXCEL関数の中では代表的かと。</span></li>
+</ul>
+
+
+<ul>
+<li><a href="https://www.palm84.com/entry/excel_memo">私的 Excelめも</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span> <span class="small">2007.5.9 作成</span></li>
+<li><a href="https://www.palm84.com/entry/excel_vba">私的 Excel VBAめも</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span> <span class="small">2007.5.30 作成</span></li>
+</ul>
+
+
+
+
+<h2 style="font-size:1.5em;"><a href="#windows" accesskey="5" name="windows"><span class="tokai0">バックアップとかメンテナンスとか</span></a> <kbd class="ak">5</kbd></h2>
+
+<p class="small">メンテナンス、ってそんな大層な内容でもないのだけれど...（汗）</p>
+
+<ul>
+<li><a href="https://www.palm84.com/entry/file_backup_software">ファイル・バックアップソフトのめも</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span> <span class="small">2011.10.21 作成</span></li>
+</ul>
+
+<ul>
+<li><a href="https://www.palm84.com/entry/dosdisk">私的「DOS起動ディスク」めも（未整理）</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span> <span class="small">2007.4.16 作成（10.9.11 更新）</span></li>
+</ul>
+
+<ul>
+<li><a href="https://www.palm84.com/entry/commandline">【私的】Windowsのコマンドラインツール</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span> <span class="small">（12.3.20 更新）</span></li>
+<li><a href="https://www.palm84.com/entry/wsh">【私的】WSH / VBScript めも</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span> <span class="small">（12.1.14 更新）</span></li>
+</ul>
+
+<ul>
+<li>セキュリティ（エロｗ）
+	<ul>
+	<li><a href="https://diary.palm84.com/entry/oneclickware">ワンクリック・ウェア警戒注意報でござるよ</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span> <span class="small">2012.1.5 作成 （12.7.26 更新）</span></li>
+	</ul>
+</li>
+</ul>
+
+
+
+<h2 style="font-size:1.5em;"><a href="#cssmemo" accesskey="6" name="cssmemo"><span class="tokai0">CSSめも</span></a> <kbd class="ak">6</kbd></h2>
+
+<ul>
+<li><a href="./css_memo_font_windows.html">Windows 系フォントの表示テスト</a><span class="small">（更新 2017.2.2）</span>
+	<ul>
+	<li><a href="https://www.palm84.com/entry/css_memo_font_windows_utf8">Windows 系フォントの表示テスト (UTF-8版)</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span></li>
+	</ul>
+</li>
+<li><a href="https://www.palm84.com/entry/css_memo_font_linux">Linux 系フォントの表示テスト</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span><span class="small">（更新 2015.7.13）</span></li>
+<li><a href="https://www.palm84.com/entry/css_memo_font_opentype">OpenType フォントの表示テスト</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span><span class="small">（更新 2017.1.27）</span></li>
+<li><a href="./css_memo_fontfamily_bookmarklet.html">font-family 切替用ブックマークレット</a><span class="small">（更新 2015.7.13）</span>
+	<ul>
+	<li><a href="./css_memo_fontfamily_bookmarklet_utf8.html">font-family 切替用ブックマークレット (UTF-8版)</a></li>
+	</ul>
+</li>
+<li><a href="./css_memo_font_style_test.html">フォントスタイル表示切替テスト</a><span class="small">（更新 2015.7.13）</span>
+	<ul>
+	<li><a href="./css_memo_font_style_test_utf8.html">フォントスタイル表示切替テスト (UTF-8版)</a></li>
+	</ul>
+</li>
+<li><a href="https://www.palm84.com/entry/css_memo_font_select_test">【私的】Windows フォントのテストだYO！【DirectWrite】</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span><span class="small">（更新 2017.1.27）</span></li>
+</ul>
+
+<ul>
+<li><a href="https://www.palm84.com/entry/mplus_fonts">M+ OUTLINE FONTS の派生フォントいろいろ</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span> <span class="small">（更新 2015.7.13）</span></li>
+</ul>
+
+<ul>
+<li><a href="https://www.palm84.com/entry/css_memo_font_tegaki">手書き風フォントの表示テスト</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span> <span class="small">（更新 2015.12.29）</span></li>
+</ul>
+
+
+
+<h2 style="font-size:2em;"><a href="#etc" accesskey="7" name="etc"><span class="tokai0">いろいろ</span></a> <kbd class="ak">7</kbd></h2>
+
+<ul>
+<li><a href="./sengoku.html">織田信長 - 戦国時代めも</a> <span class="small">2007.9.1 作成</span></li>
+<li><a href="./thinking_about_us.html">ネット論（仮題）</a> <span class="small">2009.4.25 作成（10.7.2 更新）</span>
+	<ul>
+	<li><a href="./thinking_about_history.html">ネット論（仮題）- 近現代史めも</a> <span class="small">2009.4.25 作成（12.4.24 更新）</span></li>
+	<li><a href="./thinking_about_senzen.html">ネット論（仮題）- 戦前・戦中めも</a> <span class="small">2012.4.24 作成（13.1.28 更新）</span></li>
+	<li><a href="./thinking_about_sengo.html">ネット論（仮題）- 戦後めも</a> <span class="small">2012.5.18 作成（12.7.20 更新）</span></li>
+	</ul>
+</li>
+</ul>
+
+
+
+
+<h2 style="font-size:2em;"><a name="linux" href="#linux" accesskey="8"><span class="tokai0">Linux</span></a> <kbd class="ak">8</kbd></h2>
+
+<p>まだまだ、ド初心者なので私的メモです...</p>
+
+<ul>
+<li><a href="https://www.palm84.com/entry/syslinux_basic">SYSLINUXでマルチブート【基本編】</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span> <span class="small">2009.8.8 作成（11.6.2 更新）</span></li>
+</ul>
+
+<ul>
+<li><a href="https://www.palm84.com/entry/grub4dos">GRUB for DOS めも</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span> <span class="small">2007.8.1 作成（12.3.4 更新）</span></li>
+</ul>
+
+<ul>
+<li><a href="https://www.palm84.com/entry/multiiso">isoイメージをマルチブートするの巻【その1】準備編</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span> <span class="small">2010.8.25 作成（14.7.5 更新）</span>
+	<ul>
+	<li>【その2】マルチブートDVD(CD) 作成編 <span class="small">2010.8.25 作成（13.3.6 更新）</span></li>
+	<li><a href="https://www.palm84.com/entry/multiiso_3_usb">【その3】マルチブートUSBメモリ作成編</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span> <span class="small">2010.8.25 作成（14.7.5 更新）</span></li>
+	<li>【その4】HDブート設定編 <span class="small">2010.8.28 作成（13.3.6 更新）</span></li>
+	<li><a href="https://www.palm84.com/entry/multiiso_5_pxe_networkboot">【その5】PXEネットワークブートでござる</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span> <span class="small">2010.8.28 作成（14.7.5 更新）</span></li>
+	</ul>
+</li>
+</ul>
+
+
+
+<h3 style="font-size:1.5em;"><a href="#livecd" name="livecd"><span class="tokai0">Linux LiveCD</span></a></h3>
+
+<p>使い方覚えるとメンテナンスにめちゃ便利です...</p>
+
+<ul>
+<li><a href="https://www.palm84.com/entry/liveusb_creator">Windows 版 LiveUSB 作成ツールいろいろ</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span> <span class="small">2012.3.8 作成</span></li>
+</ul>
+
+<ul>
+<li><a href="https://www.palm84.com/entry/clonezilla_live_backup">Clonezilla Live - イメージ・バックアップ編</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span> <span class="small">2015.4.21 作成</span></li>
+<li><a href="https://www.palm84.com/entry/clonezilla_live_restore">Clonezilla Live - イメージ・レストア編</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span> <span class="small">2015.4.21 作成</span></li>
+</ul>
+
+
+
+
+<h2><a href="#old" accesskey="9" name="old"><span class="tokai0">古いページ</span></a> <span class="small">・・一応残してます</span> <kbd class="ak">9</kbd></h2>
+
+<ul>
+<li><a href="./recovery_software.html">バックアップ・リカバリーソフトについてのめも</a> <span class="small">2009.1.7 作成（12.6.8 更新）</span></li>
+<li><a href="./online_storage.html">【無料】オンラインストレージのめも</a> <span class="small">2011.10.7 作成（13.8.31 更新）</span></li>
+<li><a href="./harddisk.html">私的ハードディスク関連めも</a> <span class="small">2007.2.14 作成（11.7.25 更新）</span></li>
+<li><a href="./partition_editor.html">パーティション管理ツールのめも</a> <span class="small">2011.7.25 作成</span></li>
+</ul>
+
+<ul>
+<li><a href="./windows_vista.html">私的 Windows Vista めも</a> <span class="small">2009.10.18 作成（10.7.27 更新）</span></li>
+<li><a href="./windows_7.html">【私的】Windows 7 めも</a> <span class="small">2009.10.18 作成（12.5.5 更新）</span>
+	<ul>
+	<li><a href="./windows_7_reinstall.html">Windows 7【再】インストールめも</a> <span class="small">2010.8.10 作成（12.4.12 更新）</span></li>
+	</ul>
+</li>
+<li><a href="./winpe.html">Windows PE 2.0 めも</a> <span class="small">2008.2.23 作成 （12.5.5 更新）</span></li>
+<li><a href="./windows.html">私的 Windows (XP) めも（未整理）</a> <span class="small">2006.9.1 作成 （21.4.11 更新）</span></li>
+</ul>
+
+<!--
+<ul>
+<li><a href="./windows_8.html">【私的】Windows 8 めも</a> <span class="small">2012.xx.xx 作成</span></li>
+</ul>
+-->
+
+<hr>
+
+<ul>
+<li><a href="./css_memo_font.html">font-familyの設定</a><span class="small">（更新 2011.6.25）</span>
+	<ul>
+	<li><a href="./css_memo_font_utf8.html">font-familyの設定（UTF-8版）</a><span class="small">（更新 2011.6.25）</span></li>
+<li><a href="./css_memo_font_backslash.html">バックスラッシュの表示テスト</a><span class="small">（更新 2014.5.29）</span></li>
+<li><a href="./css_memo_font_backslash_utf8.html">バックスラッシュの表示テスト (UTF-8)</a><span class="small">（更新 2011.6.25）</span></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="./css_memo_document.html">HTML/CSSリンク集</a><span class="small">（更新 2008.6.8）</span></li>
+<li><a href="./css_memo_mame.html">HTML/CSS豆知識</a><span class="small">（更新 2010.5.5）</span></li>
+</ul>
+
+<ul>
+<li><a href="./css_memo_list.html">ul,ol要素の設定の設定</a><span class="small">（更新 2010.5.5）</span></li>
+<li><a href="./css_memo_position.html">position属性で2カラム構成</a><span class="small">（更新 2008.6.20）</span></li>
+<li><a href="./css_memo_border_width.html">borderとwidthとmarginとpaddingの悩ましい四角関係</a><span class="small">（更新 2010.5.5）</span></li>
+<li><a href="./css_memo_pre_overflow.html">pre要素とoverflow属性に纏わる苦悩</a><span class="small">（更新 2010.3.30）</span></li>
+<li><a href="./css_memo_linkbutton.html">リンクボタンを作っちゃっるき</a><span class="small">（更新 2008.6.20）</span></li>
+</ul>
+
+<ul>
+<li><a href="./css_memo_standard_quirks.html">IEの標準モードと後方互換モード</a><span class="small">（更新 2010.7.25）</span></li>
+<li><a href="./css_memo_test_ie8.html">IE 7/8 テスト (IE8)</a><span class="small">（更新 2012.4.6）</span></li>
+</ul>
+
+<hr>
+
+<ul>
+<li><a href="./bg_rescue_linux.html">BG-Rescue Linuxめも</a> <span class="small">2008.4.19 作成</span></li>
+</ul>
+
+<ul>
+<li><a href="./grub4dos_bootdisk.html">GRUB起動ディスクを作っておくの巻</a> <span class="small">2009.9.16 作成 （10.9.7 更新）</span></li>
+</ul>
+
+<ul>
+<li><a href="./grub2.html">GRUB2 めも</a> <span class="small">2011.6.13 作成中（11.8.14 更新）</span></li>
+</ul>
+
+<ul>
+<li><a href="./livecd.html">【私的】Linux LiveCD めも</a> <span class="small">2007.5.9 作成（13.7.16 更新）</span></li>
+<li><a href="https://www.palm84.com/entry/knoppix_boot">Knoppixを起動する方法を試しためも</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span> <span class="small">2007.9.29 作成（10.8.22 更新）</span></li>
+<li><a href="https://www.palm84.com/entry/livecd_usb">Linux LiveCDをUSBメモリでブートするめも</a> <span class="small">(* <ins>はてなブログ移行済</ins>)</span> <span class="small">2007.11.5 作成（12.3.10 更新）</span></li>
+</ul>
+
+<hr>
+
+<ul>
+<li><a href="./fx_extension.html">私的 Firefox拡張＆カスタマイズめも</a><span class="small">（12.2.1 更新）</span></li>
+</ul>
+
+<ul>
+<li>【私的】USBブート非対応PC用起動フロッピーを作るの巻
+	<ul>
+	<li><a href="./fdboot_liveusb.html">【その1】DOS+USBドライバ</a> <span class="small">2008.4.6 作成（09.7.4 更新）</span>
+	<li><a href="./fdboot_liveusb2.html">【その2】DOS+RAMドライブ</a> <span class="small">2008.4.13 作成（09.7.4 更新）</span></li>
+	<li><a href="./fdboot_liveusb3.html">【合体版】</a> <span class="small">2008.9.7 作成（09.7.4 更新）</span></li>
+	<li><a href="./fdboot_liveusb4.html">【GRUB編】</a> <span class="small">2009.4.25 作成（09.7.4 更新）</span></li>
+	</ul>
+</li>
+<li><a href="./kexec_loader.html">【私的】 USBブート非対応PC用起動フロッピー/CDを作るの巻【kexec-loader編】</a> <span class="small">2010.5.30 作成</span></li>
+</ul>
+
+<ul>
+<li><a href="./boot_tool.html">ブート関連ツールリンク集</a> <span class="small">2008.3.1 作成（12.3.20 更新）</span></li>
+<li><a href="./syslinux.html">【私的】SYSLINUXでマルチブート</a> <span class="small">2008.8.12 作成（10.7.25 更新）</span></li>
+</ul>
+
+<ul>
+<li><a href="./knoppix511cd.html">KNOPPIX 5.3.1(5.1.1) CD で Windows XP のファイル救出</a> <span class="small">2008.5.5 作成（10.8.30 更新）</span></li>
+<li><a href="./debian_lenny.html">Debian GNU/Linux 5.x (lenny) インストールめも</a> <span class="small">2009.8.8 作成 （10.7.24 更新）</span></li>
+</ul>
+
+
+
+<pre class="kuma pink" title="クマーAA - 【ビールのつまみは柿ピーがいいクマー】">
+　　　　　　　　∩＿＿＿_∩
+　　　　　　　 / 　　　　 　ヽ|
+　　　　　　　/　●　 　 ●　|　　ビールのつまみは殻つき落花生がさいこうクマー
+　　　　　　　|///( _●_ )///ミ
+　　　　　　彡､,,　　|∪|　　　/
+　　　　 　／＿＿ ヽノ　||￣￣||
+　　　　　(＿＿＿u）　　||'ﾟ｡ o ||ヽ
+　　　　　　　　|　　　　　||_｡_0_;||__）
+　　　　　　　　　　　　 　|＿＿_.|
+</pre>
+
+<pre class="kuma pink2" title="クマーAA - 【I want you to stay by me】">
+　　 ∩＿＿＿∩
+　　 | ノ　ﾉノ　⌒ヽ
+　　/ﾉノ●)　　●) |　　　♪ クマがただそこにいればいい～
+　 |｜　　　( _●_)　ミ
+　彡､　　　|∪|　　､｀＼　♪ I want kumar to stay by me
+ / ＿(♯) ヽノ　/´&gt;　 )
+(＿＿＿）　　　/　(_／
+</pre>
+
+</div>
+</div>
+
+<div class="navi">
+<a class="koko">HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://www.palm84.com/" title="はてなブログ">kusoBlog</a> <kbd class="ak">2</kbd> | 
+<a href="http://b.hatena.ne.jp/palm84/bookmark" title="はてなブックマーク">ぶくま</a> | 
+<a href="about.html" title="このページについて">あばうと</a> <kbd class="ak">3</kbd> [<a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,h1,h2,h3,h4,h5,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span,pre,#blog-title,.index,.white,.palmst,.kuma,.kuma2,.kumakuma,.test_kuma,.kuma_test,#test_kuma,#kuma_test{color:#eee!important;background-color:#333!important;text-shadow:none!important;}code{color:#333!important;background-color:#ccc!important;text-shadow:none!important;}.font_change{background-color:#333!important;}a:link{color:#6495ed!important;text-shadow:none!important;text-decoration:underline!important;}a:visited{color:#008080!important;text-shadow:none!important;text-decoration:underline!important;}a:hover{color:brown!important;background-color:#ccc!important;text-decoration:none!important;}';head[0].appendChild(style);})();">反転</a> <a href="javascript:(function(){var head=document.getElementsByTagName('head');var style=head[0].lastChild;if (style.nodeName.toLowerCase() == 'style'){head[0].removeChild(style);}else{alert('追加したstyle要素はないですYO');}})();">戻す</a>]
+</div>
+
+<address>Written by yassy</address>
+
+<ul class="toTop-nav">
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script type="text/javascript">
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+</body>
+</html>
