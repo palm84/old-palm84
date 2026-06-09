@@ -1,0 +1,1043 @@
+@charset "Shift_JIS";
+
+body {
+margin: 1%;
+padding: 0;
+/*	color: #0f0f0f;	*/
+/*	color: #191919;	*/
+color: #232323;
+/*	color: #333;	*/
+letter-spacing: 1px;
+background-color: #fff;
+font-family: sans-serif;
+}
+
+.masa {
+margin: 1em 15em 1em 1em;
+color: #000;
+background-color: #fff;
+}
+
+/*===== columns =====*/
+
+.palm-body {
+	margin:0;
+	padding: 14px;
+/*	background-color: #fffaf4;	*/
+	background-color: #f9f9f9;
+	border: 1px solid #fff;
+	position: relative;
+	height: 100%;
+}
+
+.main {
+	margin: 0 26% 0 0;
+	padding: 0;
+	width: 74%;
+	background-color: #fff;
+	position: relative;
+	border: 1px solid #fff;
+}
+
+.sidebar {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	bottom: 14px;
+	width: 24%;
+	border: 1px dotted #fff;
+}
+
+
+/*===== anchor =====*/
+
+a:link {
+color: #2d6bc4;
+text-decoration: none;
+}
+
+a:visited {
+color: #666699;
+text-decoration: none;
+}
+
+a:hover,a:active {
+color: sienna;
+text-decoration: underline;
+}
+
+/*===== headings =====*/
+
+h2, h3, h4 {
+font-family: 'メイリオ', Meiryo, sans-serif;
+}
+
+h1 {
+	margin: 0 0 0 0;
+	padding: 0.2em 1em; 
+	font-size: 200%;
+	font-weight: bold;
+	line-height: 1.4;
+	border-bottom: 1px solid sienna;
+}
+
+h2 {
+	font-weight: bold;
+	margin: 1em 0;
+	padding: 0.2em 1em;
+	font-size: 130%;
+/*	border-top: 12px solid #fffaf4;	*/
+	border-top: 12px solid #f9f9f9;
+	border-bottom: 1px solid sienna;
+}
+
+h1 a:link,h1 a:visited,
+h2 a:link,h2 a:visited {
+	color: #003;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+h1 a:hover,h2 a:hover {
+	color: #E75852;
+}
+
+h3,h4 {
+	font-weight: normal;
+	border-bottom: 1px dotted sienna;
+}
+
+h3 {
+	margin: 1em 0.2em 1em 0.5em;
+	padding: 2px 0.5em; 
+	font-size: 120%;
+}
+
+h4 {
+	margin: 1em 0.3em 1em 1em;
+	padding: 2px 1em; 
+	font-size: 1em;
+}
+
+h3 a:link,h3 a:visited,
+h4 a:link,h4 a:visited {
+	color: #003;
+	text-decoration: none;
+}
+
+.newyear {
+	font-style: italic;
+	font-family:'Times New Roman',Times,serif;
+	font-weight: bold;
+}
+
+
+/*===== basic elements =====*/
+
+p {
+	margin: 1em; 
+	padding: 0 0.5em;
+	line-height: 1.7;
+	letter-spacing: 1px;
+}
+
+address {
+	margin: 0;
+	padding: 0 2em 0 0;
+	font-size: 90%;
+	text-align: right;
+	font-family: 'Comic Sans MS',sans-serif;
+}
+
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: normal;
+	font-weight: bold;
+}
+
+del {
+	color: #669;
+}
+
+kbd {
+	margin: 0;
+	padding: 0;
+	font-size: 1em;
+	font-weight: bold;
+	font-family: monospace, monospace;
+	border: 1px outset gray;
+}
+
+p kbd.ak {
+	font-size: 1em;
+}
+
+.ak {
+	margin: 0;
+	padding: 2px;
+	font-size: 90%;
+	text-decoration: underline;
+	font-weight: normal;
+	border: 1px inset gray;
+	vertical-align: middle;
+}
+
+img.normal {
+	border-width: 0;
+	margin: auto auto 10px 0;
+}
+
+img.ex {
+	border-style: none;
+	border-width: 0;
+	margin-left: 0;
+}
+
+hr.short {
+	margin: 10% 3%;
+	width: 94%;
+	height: 0.5em;
+}
+
+
+/*===== pre , blockquote =====*/
+
+.quote {
+	margin: 0.5em 4%;
+	padding: 1em;
+	background-color: #fff;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #ccc;
+}
+
+blockquote {
+	margin: 0.5em auto;
+	padding: 0.5em;
+	background-color: #fffaf4;
+	width: 80%;
+	border-style: dotted;
+	border-width: 1px;
+	border-color: #ccc;
+}
+
+.quote blockquote {
+	margin: 0;
+	padding :0.5em;
+	width: auto;
+}
+
+cite {
+	font-style: italic;
+}
+
+blockquote p {
+	margin: 0 0 0.5em 0;
+	padding: 0;
+}
+
+code {
+	font-size: 100%;
+}
+
+code a {
+	text-decoration: underline;
+}
+
+a code {
+	text-decoration: underline;
+}
+
+pre,code {
+	font-family: monospace, monospace;
+	background-color: #f9f9f9;
+}
+
+pre,pre.palm-bg{
+	margin: 0.5em auto;
+	padding: 0.9em 0.5em;
+	font-size: 90%;
+	width:89%;
+	overflow: auto;
+}
+
+pre {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #ccc #fff #fff #ccc;
+}
+
+.small pre {
+	margin: 0.5em auto;
+	padding: 1.2em 0.5em;
+}
+
+pre.scl {
+	overflow: auto;
+	white-space: pre;
+}
+
+pre.scl10 {
+	overflow: scroll;
+	white-space: pre;
+	height: 10em;
+}
+
+pre.scl15 {
+	overflow: scroll;
+	white-space: pre;
+	height: 15em;
+}
+
+pre.scl2 {
+	overflow: scroll;
+	white-space: pre;
+	width:89%;
+	height: 20em;
+}
+
+pre.scl3 {
+	overflow: scroll;
+	white-space: pre;
+	width:89%;
+	height: 30em;
+}
+
+/*===== list =====*/
+
+dl {
+	margin: 1em;
+	padding: 1em;
+}
+
+dl dl {
+	border-style: solid;
+	border-width: 0;
+}
+
+dt {
+	margin: 0em;
+	padding: 0.2em 1em;
+	font-weight: bold; 
+	font-size: 1em;
+	border-bottom: 1px dotted sienna;
+}
+
+dd {
+	margin: 0;
+	padding: 0;
+	text-indent: 0;
+}
+
+
+ol,ul {
+	margin: 1em 0;
+	padding: 0 0 0 2em; 
+	font-weight: normal;
+	line-height: 1.5;
+}
+
+li {
+	margin: 0.5em 0;
+	padding: 0;
+}
+
+ul ul,ul ol,ol ul, ol ol {
+	margin: 0;
+	padding: 0 0 0 1em;
+	font-size: 1em;
+}
+
+
+/*===== table =====*/
+
+table.book {
+	margin-left: 10%; 
+	font-size: 90%; 
+	line-height: 120%;  
+	letter-spacing: 1px; 
+	border-style: none;
+}
+
+td.lef {
+	text-align: left;
+}
+
+td.rit {
+	text-align: right;
+}
+
+td.clear {
+	border-style:none;
+}
+
+td.eicar {
+	padding: 1px 5px;
+	font-size: 85%;
+	border-style: none;
+}
+
+th.eicar {
+	padding: 3px;
+	font-size: 80%;
+}
+
+caption {
+	margin: 0px;
+	padding: 1px;
+}
+
+
+div.ylt table {
+	margin: 10px 4%;
+	color: #000;
+	background-color: #ffe;
+	font-size: 80%;
+	text-align: center;
+	line-height: 120%;
+	letter-spacing: 1px;
+	border: 2px solid #ccc;
+	border-collapse:collapse; 
+}
+
+div.ylt td {
+	border: 2px solid #ccc;
+}
+
+div.ylt th {
+	border: 2px solid #ccc;
+	background-color: #ffd;
+}
+
+
+div.link table {
+	margin: 5%;
+	padding: 5px;
+	font-size: 90%;
+	line-height: 120%;
+	letter-spacing: 1px;
+	text-align: center; 
+	border-style: none;
+}
+
+div.link td {
+	padding: 5px;
+	border-style: none;
+}
+
+div.link th {
+	padding: 5px;
+	border-style: none;
+}
+
+
+div.pc table {
+	margin: 1% 4%;
+	font-size: 90%; 
+	border-collapse: collapse; 
+	letter-spacing: 1px; 
+	font-weight: normal; 
+	line-height: 120%;  
+	border: 2px solid #ccc;
+}
+
+div.pc table.regular {
+	margin: 1em;
+	padding: 0;
+	font-size: 100%; 
+	line-height: 150%;
+}
+
+div.pc table.regular td {
+	padding: 0.1em 0.2em;
+}
+
+div.pc td {
+	border: 2px solid #ccc;
+}
+
+div.pc th {
+	border: 2px solid #ccc;
+}
+
+
+/*===== class =====*/
+
+/* font / text */
+
+.tokai0 {
+	font-style: normal;
+	font-family: 'Comic Sans MS',sans-serif;
+}
+
+h1 .tokai0 a:link,
+h1 .tokai0 a:visited {
+	color: sienna;
+}
+
+.tokai1,.tokai3,.tokai0 {
+}
+
+h2 span.tokai1 {
+}
+
+.tokai2 {
+}
+
+.tokai3 {
+}
+
+.ms {
+	font-family: monospace, monospace;
+}
+
+.arial {
+	font-family: arial,sans-serif;
+}
+
+.verdana {
+	font-family: verdana,sans-serif;
+} 
+
+.red {
+	color: red; 
+}
+
+.backslash {
+	font-family: 'VL ゴシック','Courier New',Courier,monospace;
+}
+
+.diary {
+	margin: 1em 10%;
+	font-size: 90%;
+	color: #006;
+	background-color: #ffd; 
+	border-right: 1px solid #36c;
+	border-left: 1px solid #36c;
+}
+
+.small {
+	font-size: 80%; 
+}
+
+.gian {
+	font-size: 120%;
+	font-weight: bold;
+	padding: 0em 0.5em;
+}
+
+.new {
+	margin: 1px;
+	padding: 0;
+	color: #fff;
+	background-color: #808;
+	font-size: 80%;
+	font-weight: bold;
+	line-height: 100%;
+}
+
+.adv {
+	font-size: 0.8em;
+	background-color: #fff0f0;
+	text-decoration: underline;
+}
+
+.blog {
+	font-family: palatino, georgia, verdana, arial, sans-serif;
+}
+
+.counter {
+	font-family: 'Comic Sans MS','みかちゃん-PB',mikachan-PB,sans-serif;
+	color: #000;
+	width: 50%;
+}
+
+.aa, .syobon {
+	font-family: 'ＭＳ Ｐゴシック','MS PGothic',Monapo,'IPA モナー Pゴシック',IPAMonaPGothic,Mona,'梅Pゴシック',Textar,sans-serif;
+}
+
+
+/* background-color */
+
+.pink {
+	background-color: #fffaf4;
+}
+
+.pink2 {
+	background-color: #fff0f0;
+}
+
+
+.white,
+.white dt {
+	background-color: #fff;
+}
+
+
+.menu {
+	margin:1em 2em;
+	padding: 1px 0;
+	color: #003;
+	background-color: #fffaf4;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #fff #ccc #ccc #fff;
+}
+
+.palm-bg {
+	background-color: #f1f1f1 !important;
+	list-style-position: inside;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #ccc #fff #fff #ccc;
+}
+
+
+/* class float */
+
+.cl {
+	clear: both;
+}
+
+.lt {
+	float:left;
+}
+
+
+/* overflow */
+
+.overflow2 {
+	margin:auto;
+	padding: 0;
+	overflow: auto;
+	width: 90%;
+}
+
+.overflow3 {
+	padding: 0;
+	overflow: hidden;
+	width: 90%;
+	text-align: center;
+}
+
+
+/* text-align */
+
+.reg {
+	 text-align: left;
+}
+
+.rt {
+	text-align: right;
+}
+
+.ct {
+	text-align: center;
+}
+
+
+
+/* kuma */
+
+.kuma {
+	color: #003;
+	font-family: 'ＭＳ Ｐゴシック','MS PGothic',Monapo,'IPA モナー Pゴシック',IPAMonaPGothic,Mona,'梅Pゴシック',Textar,sans-serif;
+	line-height: 1.1;
+	letter-spacing: 0;
+	font-size: 0.8em;
+	margin: 0.5em auto;
+	width:80%;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #f1f1f1;
+	white-space: pre;
+	overflow: auto;
+}
+
+
+/* changelog */
+
+dl.changelog,
+dl.changelog2 {
+margin: 0 2em;
+padding: 0;
+border: 0;
+}
+
+dl.changelog2 dl {
+margin: 0;
+padding: 0;
+}
+
+dl.changelog dt,
+dl.changelog2 dt {
+margin: 0;
+padding: 0;
+color: #000;
+border-style: none;
+font-size: 95%;
+}
+
+dl.changelog dd,
+dl.changelog2 dd {
+margin:0;
+padding: 0;
+width:100%;
+height:8em;
+overflow:auto;
+border: 1px #ccc inset;
+font-size: 80%;
+}
+
+dl.changelog2 dd {
+height:13em;
+line-height: 1;
+}
+
+
+dl.changelog dl dt,
+dl.changelog2 dl dt {
+font-size: 100%;
+}
+
+dl.changelog dl dd,
+dl.changelog2 dl dd {
+margin:0;
+padding: 0;
+width:100%;
+height:auto;
+overflow:visible;
+border-style: none;
+font-size: 100%;
+}
+
+dl.changelog p,
+dl.changelog2 p {
+margin: 0;
+padding: 0;
+}
+
+dl.changelog ul,
+dl.changelog2 ul {
+margin: 0;
+padding: 0 0 0 1.5em;
+line-height: 1;
+}
+
+/* navigation */
+
+.navi {
+	background-color: #fff;
+	margin:0;
+	padding: 10px 0; 
+	font-family: 'Comic Sans MS','みかちゃん-PB',mikachan-PB,Sans-Serif;
+	font-size: 0.9em;
+	line-height: 1.5;
+	border-style: solid;
+	border-width: 0 0 1px 0;
+	border-color: sienna;
+}
+
+.navi a {
+	margin: 0;
+	padding: 3px 5px;
+	text-decoration: none;
+	font-weight: bold;
+	vertical-align: middle;
+}
+
+.navi a:link,
+.navi a[name],
+.navi a:visited {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #fff #ccc #ccc #fff;
+}
+
+.navi a:hover,
+.navi a:active,
+.navi a[name]:hover {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #ccc #fff #fff #ccc;
+}
+
+.navi a:link,
+.navi a:visited {
+	color: #595959;
+}
+
+.navi .font_change {
+	color: sienna;
+	font-size: 12px;
+	text-align: right;
+}
+
+.navi a.koko[name],
+.navi a.koko:hover {
+	border: none;
+	color: #003;
+}
+
+.navi kbd {
+	text-decoration: none;
+}
+
+.navi .font_change a:link,
+.navi .font_change a:visited {
+	font-size: 12px;
+	font-weight: bold;
+	font-family: monospace, monospace;
+	color: #333;
+}
+
+/* etc */
+
+.palmst {
+	margin: 0.5em 4%;
+	padding: 0.5em;
+	border-style: dotted;
+	border-width: 1px;
+	border-color: sienna;
+}
+
+dt a[name] {
+	margin: 0;
+	padding: 0;
+	color: #003;
+	background-color: transparent;
+	font-weight: bold;
+}
+
+dt a[name]:hover {
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+}
+
+h2 a[name]:hover {
+	border: 0;
+	font-weight:bold;
+}
+
+ol a[name]:hover {
+	margin: 3px;
+	padding: 0;
+	text-decoration: underline;
+}
+
+ol a[name] {
+	margin: 3px;
+	padding: 0;
+}
+
+.index { 
+	margin:0 1em 1em 1em;
+	padding: 0;
+	float: left;
+	position:relative;
+	font-weight: bold;
+	list-style-type: none;
+}
+
+.fontselect {
+	margin: 0 0 0 48px;
+	padding: 0em;
+	font-size: 80%;
+	list-style-type: none;
+	background-color: white;
+}
+
+.fontselect ul {
+	list-style-type: none;
+	margin: auto;
+}
+
+/*===== To Top =====*/
+.toTop-nav {
+position: fixed;
+bottom: 10px;
+right: 10px;
+display: -webkit-flex;
+display: flex;
+padding: 0;
+margin: 0;
+z-index: 999;
+}
+
+.toTop-nav li {
+list-style-type: none;
+background: rgba(0, 0, 0, 0.3);
+border-radius: 50px;
+text-align: center;
+line-height: 2;
+}
+
+/*
+.toTop-nav li:first-child {
+margin-right: 10px;
+}
+*/
+
+.toTop-nav li a {
+display: block;
+width: 50px;
+height: 50px;
+font-size: 50px;
+line-height: 50px;
+}
+
+.toTop-nav li a {
+margin:  0.4em 0; ; 
+color: #fff;
+text-decoration: none;
+}
+
+.toTop-nav li a:visited {
+color: #fff;
+}
+
+.toTop-nav li a:hover {
+color: #fff;
+text-decoration: underline;
+}
+
+.toTop-nav li a:active, .toTop-nav li a:focus {
+color: #fff;
+}
+
+.toTop-nav li a:hover {
+text-decoration: none;
+}
+
+li, code {
+white-space: normal !important;
+word-wrap: break-word !important;
+}
+
+
+/*===== sidebar =====*/
+
+.sidebar {
+font-family: 'メイリオ', Meiryo, sans-serif;
+}
+
+.sidebar h2 {
+	border-top: 0;
+	margin: 0;
+	font-weight: normal;
+	border-bottom: 1px solid sienna;
+	background-color: #fff;
+}
+
+.sidebar_body {
+	margin: 0 0 14px 0;
+	padding: 1em 0;
+	background-color: #fff;
+}
+
+.sidebar_body a {
+}
+
+.sidebar ul li {
+	list-style-type: none;
+}
+
+.sidebar .navi {
+	text-align: center;
+}
+
+/*===== はてぶウイジェット =====*/
+#hatena-bookmark-widget0,
+#hatena-bookmark-widget1 {
+font-size: 80%;
+margin: 5em auto;
+padding: 0;
+}
+
+.hatena-bookmark-widget-title,
+.hatena-bookmark-widget-footer {
+margin: 0;
+padding: 1em;
+background-color: white;
+}
+
+.hatena-bookmark-widget-footer {
+text-align: center;
+}
+
+.hatena-bookmark-widget-title a:link,
+.hatena-bookmark-widget-title a:visited {
+color:#003 !important;
+}
+
+.hatena-bookmark-widget-title a:link,
+.hatena-bookmark-widget-title a:visited,
+.hatena-bookmark-widget-footer a:link,
+.hatena-bookmark-widget-footer a:visited,
+.hatena-bookmark-widget-title a:hover,
+.hatena-bookmark-widget-footer a:hover {
+text-decoration: none;
+}
+
+.hatena-bookmark-widget-title a img {
+margin-right: 0.5em;
+}
+
+.hatena-bookmark-widget-body ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+}
+
+.hatena-bookmark-widget-body li {
+margin: 0;
+padding: 0;
+}
+
+.hatena-bookmark-widget-body li a {
+display: block;
+margin: 0;
+padding: 0.2em 1em;
+border-style: solid;
+border-width: 1px;
+border-color: #fff #ccc #ccc #fff;
+text-align: left;
+}
+
+.hatena-bookmark-widget-body a.hatena-bookmark-entrytitle {
+line-height: 1.5;
+padding: 0.5em 1em !important;
+}
+
+div.hatena-bookmark-widget-body a:link,
+div.hatena-bookmark-widget-body a:visited {
+background-color: white;
+text-decoration: none;
+}
+
+.hatena-bookmark-widget-body span.hatena-bookmark-count a:link,
+.hatena-bookmark-widget-body span.hatena-bookmark-count a:visited {
+color: red;
+font-weight: normal;
+text-align: right;
+font-size: 12px;
+}
+
+.hatena-bookmark-widget-body a:hover {
+border-style: solid;
+border-width: 1px;
+border-color: #ccc #fff #fff #ccc;
+text-decoration: none;
+}
+
+/*===== amazon_ad =====*/
+
+.amazon_ad {
+margin: 1em auto;
+}

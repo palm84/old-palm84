@@ -1,0 +1,127 @@
+@charset "Shift_JIS";
+
+body {
+margin: 0;
+font-size: 100%;
+}
+
+div.navi,
+div.sidebar img,
+p.rt {
+display:none;
+}
+
+kbd.ak {
+display:none;
+}
+
+#hatena-bookmark-widget0,
+#hatena-bookmark-widget1,
+.amazon_ad,
+.twitter-share-button {
+display:none;
+}
+
+img {
+max-width: 100%;
+height: auto;
+}
+
+/*===== columns =====*/
+
+.palm-body {
+	margin:0;
+	padding: 0;
+	position: relative;
+	width: 100%;
+	max-width: 100%;
+	position: relative;
+}
+
+.main {
+	margin: 1em 0 0 0;
+	padding: 0;
+	width: 100%;
+	position: relative;
+	border-style: none;
+}
+
+.sidebar {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	position: relative;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-style: none;
+}
+
+
+/*===== headings =====*/
+
+h1 {
+	font-size: 2em;
+}
+
+div.sidebar h2 {
+	page-break-before: auto;
+}
+
+div.main h2 {
+	font-size: 1.5em;
+	page-break-before: always;
+}
+
+div.main h3 {
+	font-size: 1.3em;
+}
+
+
+/*===== pre , blockquote =====*/
+
+pre,pre.palm-bg{
+	overflow: visible;
+}
+
+pre {
+	border: 1px solid #ccc;
+}
+
+.small pre {
+	margin: 0.5em auto;
+	padding: 1.2em 0.5em;
+}
+
+pre.scl {
+	overflow: visible;
+	white-space: pre;
+}
+
+pre.scl2 {
+	overflow: visible;
+	white-space: pre;
+	width:89%;
+	height: auto;
+}
+
+pre.scl3 {
+	overflow: visible;
+	white-space: pre;
+	width:89%;
+	height: auto;
+}
+
+pre.scl10,
+pre.scl15 {
+	overflow: visible;
+	height: auto;
+}
+
+/*===== div.noprint =====*/
+
+div.noprint {
+display:none;
+}
+
