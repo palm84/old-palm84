@@ -1,0 +1,24 @@
+// CopyURL+ a href（タイトル）
+user_pref("copyurlplus.menus.1.label", "a href(title)");
+user_pref("copyurlplus.menus.1.copy", '<a href="%URL%">%TITLE%</a>');
+// CopyURL+ a href（選択＋タイトル）
+user_pref("copyurlplus.menus.2.label", "a href(Sel+TITLE)");
+user_pref("copyurlplus.menus.2.copy", '<a href="%URL%">%SEL% - %TITLE%</a>');
+// CopyURL+ li a href
+user_pref("copyurlplus.menus.3.label", "List (a href)");
+user_pref("copyurlplus.menus.3.copy", '<li><a href="%URL%">%TITLE%</a></li>%EOL%');
+// CopyURL+ blockquote(hatena)
+user_pref("copyurlplus.menus.4.label", "blockquote(hatena)");
+user_pref("copyurlplus.menus.4.copy", '<blockquote cite="%URL%" title="%TITLE%">%EOL%<p>%SEL%</p>%EOL%</blockquote>%EOL%');
+// CopyURL+ div.quote + blockquote
+user_pref("copyurlplus.menus.5.label", "blockquote");
+user_pref("copyurlplus.menus.5.copy", '<div class="quote">%EOL%<blockquote cite="%URL%" title="%TITLE%">%EOL%<p>%SEL%</p>%EOL%</blockquote>%EOL%<cite><a href="%URL%">%TITLE%</a></cite>%EOL%</div>%EOL%');
+// CopyURL+ view-source（選択）
+user_pref("copyurlplus.menus.6.label", "view-source(SEL)");
+user_pref("copyurlplus.menus.6.copy", 'view-source:%SEL%');
+// CopyURL+ view-source（RLINK）
+user_pref("copyurlplus.menus.7.label", "view-source(RLINK)");
+user_pref("copyurlplus.menus.7.copy", 'view-source:%RLINK%');
+// CopyURL+ Search
+user_pref("copyurlplus.menus.8.label", "Search");
+user_pref("copyurlplus.menus.8.copy", '"%SEL%"');

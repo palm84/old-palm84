@@ -1,0 +1,1263 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" type="text/css" href="./cssmemo.css" media="all">
+<link rel="stylesheet" type="text/css" href="./cssmemo_print.css" media="print">
+<link rel="start" href="./index.html">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./cssmemo-sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>font-familyの設定 - CSSめも＠Palm84</title>
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="cssmemo_ie5.css">
+<![endif]-->
+</head>
+
+<body>
+
+<h1><a href="./css_memo_font.html" name="top">font-familyの設定 - CSSめも</a></h1>
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/css_memo_font.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/css_memo_font.html"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/css_memo_font.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<ul class="pink">
+<li>Shit_JIS 版　<strong class="msg red">← 今ここ</strong></li>
+<li><a href="css_memo_font_utf8.html">UTF-8 版</a></li>
+</ul>
+<h2><a name="index" href="#index">目次</a></h2>
+
+<ol>
+<li><a href="#about">無指定が安全（？）</a></li>
+<li><a href="#non_css">無指定</a></li>
+<li><a href="#sansserif">プロポーショナル（ゴシック系）</a></li>
+<li><a href="#monospace">等幅フォント</a></li>
+<li><a href="#ie">IE比較</a></li>
+<li><a href="#ascii_art">AA表示</a></li>
+<li><a href="#bikou">備考</a></li>
+</ol>
+
+<h2 style="page-break-before:auto"><a href="#about" name="about">無指定が安全（？）</a></h2>
+
+<p>ぶっちゃけー、数々の意見を鑑みて結論的なことを申し上げ奉りますることをワタクシ目にお許しいただけるのでありますならば、Webにて公開するページに関しまして、全体に対しては無指定にするのが良心的で最善な方法だと思います。なんとなれば、CSSでフォントの設定を致します際には <strong class="sansserif">Sans-Serif</strong>（ゴシック系プロポーショナル）などの一般名（種類名）を最後に指定するのが基本でございますが、デフォルトの設定を <strong class="sansserif">Sans-Serif</strong> ではなく <strong class="serif">Serif</strong>（明朝）などにされてる方も少なくないからでございます。</p>
+
+<div class="quote">
+<blockquote cite="http://www.mozilla.gr.jp/standards/webtips0007.html" title="フォント名の指定は一般名と併用するべきです - Web標準普及プロジェクト">
+<p>また余談ですが、Mozillaはデフォルトのフォント設定のままだと日本語のWebサイトもserif(つまり明朝体)で表示します。 全てのブラウザでゴシック体のフォントが標準というわけではないのです。 </p>
+</blockquote>
+<cite><a href="http://www.mozilla.gr.jp/standards/webtips0007.html">フォント名の指定は一般名と併用するべきです - Web標準普及プロジェクト</a></cite>
+</div>
+
+<p>見映えについての事柄は、本来閲覧者側で選択可能にしておくべきものと考える次第であります。</p>
+
+<p>などとエラソーなことを申し上げつつも、ワタクシ自身もそうなのでございますが、<strong class="mspg">ＭＳ Ｐゴシック</strong> の英字フォントが年のせいかやや見辛く感じられるのであります。<strong class="verdana">Verdana</strong> や <strong class="arial">Arial</strong> などの英字フォントを指定してる場合も珍しいことではないと思ったりしているわけでございます。（ってか、自分で見るために書いているというか、俺様評価と言うのかなんなのか...よくわかりません）</p>
+
+<p>指定する場合は先述の通り、基本的には一般名を最後に指定すればいいかと思いますが、IE6/IE7及びOpera ではちょっと注意しておく必要がございますです。。</p>
+
+<dl>
+<dt>ここがミソなり</dt>
+<dd>
+
+<p>IE6,IE7 では <span class="sansserif">Sans-Serif</span> が<strong class="mspg">ＭＳ Ｐゴシック</strong>ではないことがあるのでおじゃります。英字が <strong class="lucida">Lucida Sans Unicode</strong> になったり、かなが <strong class="msui">MS UI Gothic</strong> になることがありまする。</p>
+
+<p>Opera では、<del>1番目の指定フォントがあれへん時は最後に指定しとる一般名に設定されよるフォントが使われますねん</del>。それ以外は無視される<ins>ことがある？</ins>ちゅうわけ（多分でっせ...）。</p>
+
+<p>Windowsの英字フォントはWindows 2000など ClearType が効かない環境では滲みが出たり、著しく見難いことがございますのです。XPと2000では見映えがかなり違ったりするのであります。</p>
+
+</dd>
+</dl>
+<h2><a href="#non_css" name="non_css">無指定</a></h2>
+
+<p>指定フォントがない場合は <del><strong class="sansserif">Sans-Serif</strong></del> <ins>ブラウザのデフォルト</ins> 設定のフォントで表示されます。</p>
+
+<div class="sp_overflow">
+<table summary="フォント無指定比較" cellspacing="0">
+<caption>無指定比較</caption>
+<tr>
+<td><strong class="red">無指定</strong></td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr style="font-family:Sans-serif;">
+<td><em class="red" style="font-family:Sans-serif;">Sans-serif</em></td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr style="font-family:serif;">
+<td><em class="red" style="font-family:serif;">Serif</em></td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr style="font-family:monospace;">
+<td><em class="red" style="font-family:monospace;">Monospace</em></td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr style="font-family:'メイリオ';">
+<td>メイリオ</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr style="font-family:'ＭＳ Ｐゴシック';">
+<td>ＭＳ Ｐゴシック</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr style="font-family:'ＭＳ Ｐ明朝';">
+<td>ＭＳ Ｐ明朝（※ Serif）</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr style="font-family:'ＭＳ ゴシック';">
+<td>ＭＳ ゴシック（※ 等幅）</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr style="font-family:'ＭＳ 明朝';">
+<td>ＭＳ 明朝（※ Serif, 等幅）</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr style="font-family:'Times New Roman';">
+<td>Times New Roman（※ Serif）</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr style="font-family:'Courier New';">
+<td>Courier New （※ 等幅）</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr style="font-family:Arial;">
+<td>Arial</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+</table>
+</div>
+
+
+<p>下記はWindows XP上 IE8 での<strong>画像</strong>です。</p>
+<div class="testbox">
+<p><img src="./images/cssmemo/font_default.png" width="537" height="200" alt="無指定比較"></p>
+<ul>
+<li>UTF-8 ページ</li>
+</ul>
+<p><img src="./images/cssmemo/font_default_utf8.png" width="537" height="200" alt="無指定比較 - UTF-8"></p>
+</div>
+<h2><a href="#sansserif" name="sansserif">プロポーショナル（ゴシック系）</a></h2>
+<h3>一般名（種類名）で指定</h3>
+
+<p>デフォルト設定を <strong class="sansserif">Sans-Serif</strong> にしてる場合は無指定と同じになるはずが、私の環境ではIE6,IE7 で英字がなぜか <strong class="lucida">Lucida Sans Unicode</strong> になります。<ins>charset が UTF-8 だと <strong class="arial">Arial</strong></ins>（<em>ゲイシヘンニダ</em>）。Operaだと無指定の際の優先フォント（つまりデフォルト）と <span class="sansserif">Sans-Serif</span> や <span class="serif">Serif</span> は別に設定できるので便利ですけどなぁ。</p>
+
+<pre>
+font-family: sans-serif;
+</pre>
+
+<p>指定フォントがない場合は <strong class="sansserif">Sans-Serif</strong> 設定のフォントで表示されます。</p>
+
+<div class="sp_overflow">
+<table summary="Sans-Serif 比較" cellspacing="0">
+<caption>Sans-Serif 比較</caption>
+<tr>
+<td><strong class="red">無指定</strong></td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="sansserif">
+<td><strong class="sansserif red">sans-serif</strong></td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="meiryo">
+<td>メイリオ</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="mspg">
+<td>ＭＳ Ｐゴシック</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="msui">
+<td>MS UI Gothic</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="arial">
+<td>Arial</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="lucida">
+<td>Lucida Sans Unicode</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="verdana">
+<td>Verdana</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+</table>
+</div>
+
+<p>下記はWindows XP上 IE8 での<strong>画像</strong>です。</p>
+<div class="testbox">
+<p><img src="./images/cssmemo/sansserif.png" width="559" height="369" alt="Sans-Serif 比較"></p>
+<ul>
+<li>UTF-8 ページ</li>
+</ul>
+<p><img src="./images/cssmemo/sansserif_utf8.png" width="559" height="95" alt="Sans-Serif 比較 - UTF-8"></p>
+</div>
+
+<h3>フォント名 + 一般名で指定</h3>
+
+<pre>
+font-family: 'フォント名', sans-serif;
+</pre>
+
+<p>指定フォントがない場合は <strong class="sansserif">Sans-Serif</strong> 設定のフォントで表示されます。</p>
+
+<div class="sp_overflow">
+<table summary="プロポーショナルフォント" cellspacing="0">
+<caption>プロポーショナル（ゴシック系）</caption>
+<tr>
+<td><strong class="red">無指定</strong></td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="sansserif">
+<td><em class="sansserif red">Sans-serif</em></td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="meiryo">
+<td>メイリオ</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="mspg">
+<td>MS Pゴシック</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="msui">
+<td>MS UI Gothic</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="hgsgm">
+<td>HGSゴシックM</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr style="font-family:'HGPｺﾞｼｯｸM', 'HGPGothicM', sans-serif;">
+<td>HGPゴシックM</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr style="font-family:'IPA Pゴシック', sans-serif;">
+<td>IPA Pゴシック</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="monapg">
+<td>IPA モナー Pゴシック</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="vlpg">
+<td>VL Pゴシック</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="takaopg">
+<td>Takao Pゴシック</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="mp2pipagr">
+<td>M+2P+IPAG</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="migu1p">
+<td>Migu 1P</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+</table>
+</div>
+
+<p>下記はこれらののフォントをインストールした Windows XP上での<strong>画像</strong>です。</p>
+
+<div class="testbox">
+<ul>
+<li>IE 7  - 効果「ClearType」</li>
+</ul>
+<p><img src="./images/cssmemo/pgothic.png" alt="プロポーショナルゴシック" width="573" height="311"></p>
+<ul>
+<li>Firefox - 効果は「標準」</li>
+</ul>
+<p><img src="./images/cssmemo/pgothic_firefox.png" alt="プロポーショナルゴシック - Firefox" width="540" height="180"></p>
+</div>
+
+<div class="sp_overflow">
+<table summary="プロポーショナルゴシック英字" cellspacing="0">
+<caption>プロポーショナル（ゴシック系英字）</caption>
+<tr>
+<td><strong class="red">無指定</strong></td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="sansserif">
+<td><em class="sansserif red">Sans-serif</em></td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="arial">
+<td>Arial</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="verdana">
+<td>Verdana</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="tahoma">
+<td>Tahoma</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="lucida">
+<td>Lucida Sans Unicode</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="timesnr">
+<td>Times New Roman ※</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+</table>
+</div>
+
+<p class="small">あう、<span class="timesnr">Times New Roman</span> は <span class="serif">Serif</span> でした。（汗）</p>
+
+<p>下記はこれらののフォントが元々入っているWindows XP上での<strong>画像</strong>です。</p>
+<div class="testbox">
+<ul>
+<li>IE7  - 効果「ClearType」</li>
+</ul>
+<p><img src="./images/cssmemo/pgothic_en.png" alt="プロポーショナルゴシック英字" width="598" height="224"></p>
+<ul>
+<li>Firefox - 効果は「標準」</li>
+</ul>
+<p><img src="./images/cssmemo/pgothic_en_firefox.png" width="553" height="221" alt="hogehoge"></p>
+</div>
+
+
+<dl>
+<dt>表示テスト</dt>
+<dd>
+<ul>
+<li>無指定</li>
+</ul>
+<div class="testbox">
+<span>あいうえお aiueo AIUEO iI lL qQ Windows</span>
+</div>
+
+<ul>
+<li><code>font-family:sans-serif</code></li>
+</ul>
+<div class="testbox">
+<span class="sansserif">あいうえお aiueo AIUEO iI lL qQ Windows</span>
+</div>
+
+<ul>
+<li><code>font-family:Arial,sans-serif</code></li>
+</ul>
+<div class="testbox">
+<span class="arial">あいうえお aiueo AIUEO iI lL qQ Windows</span>
+</div>
+
+<ul>
+<li><code>font-family:Arial,'MS PGothic','ＭＳ Ｐゴシック',sans-serif</code></li>
+</ul>
+<div class="testbox">
+<span style="font-family:Arial,'MS PGothic','ＭＳ Ｐゴシック',sans-serif">あいうえお aiueo AIUEO iI lL qQ Windows</span>
+</div>
+
+<ul>
+<li><code>font-family:'VL Pゴシック','VL PGothic',sans-serif</code></li>
+</ul>
+<div class="testbox">
+<span class="vlpg">あいうえお aiueo AIUEO iI lL qQ Windows</span>
+</div>
+
+<ul>
+<li><code>font-family:'メイリオ',meiryo,sans-serif</code></li>
+</ul>
+<div class="testbox">
+<span class="meiryo">あいうえお aiueo AIUEO iI lL qQ Windows</span>
+</div>
+
+<ul>
+<li><code>font-family:'IPAMonaPGothic','IPA モナー Pゴシック',Mona,sans-serif</code></li>
+</ul>
+<div class="testbox">
+<span style="font-family:'IPAMonaPGothic','IPA モナー Pゴシック',Mona,sans-serif;">あいうえお aiueo AIUEO iI lL qQ Windows</span>
+</div>
+
+<ul>
+<li><code>font-family:'M+2P+IPAG',sans-serif</code></li>
+</ul>
+<div class="testbox">
+<span class="mp2pipagr">あいうえお aiueo AIUEO iI lL qQ Windows</span>
+</div>
+
+<ul>
+<li><code>font-family:'VL PGothic','VL Pゴシック',Arial,sans-serif</code></li>
+</ul>
+<div class="testbox">
+<span style="font-family:'VL PGothic','VL Pゴシック',Arial,sans-serif">あいうえお aiueo AIUEO iI lL qQ Windows</span>
+</div>
+
+<ul>
+<li><code>font-family:'VL Pゴシック','VL PGothic',Arial,'ＭＳ Ｐゴシック',sans-serif</code></li>
+</ul>
+<div class="testbox">
+<span style="font-family:VL Pゴシック,'VL PGothic',Arial,'ＭＳ Ｐゴシック',sans-serif">あいうえお aiueo AIUEO iI lL qQ Windows</span>
+</div>
+
+</dd>
+</dl>
+
+<p><span class="meiryo">メイリオ</span>は平べったくて読みやすい（かな？）んですけど、なんかエライ上にヨッテますね。background-color 付ける場合は注意しといた方がいいかも。（私は合わす気なかったりして...汗）</p>
+<h2><a href="#monospace" name="monospace"><span class="mono">等幅フォント</span></a></h2>
+<h3>一般名（種類名）で指定</h3>
+
+<pre>
+font-family: monospace;
+</pre>
+
+<p>指定フォントがない場合は <strong>monospace</strong> 設定のフォントで表示されます。</p>
+
+<div class="sp_overflow">
+<table summary="monospace" cellspacing="0">
+<caption>monospace 比較</caption>
+<tr style="font-family:monospace;">
+<td><em class="red" style="font-family:monospace;">monospace</em></td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="msg">
+<td>MS ゴシック</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="courier">
+<td>Courier New</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+</table>
+</div>
+
+<p>下記はWindows XP上 IE8 での<strong>画像</strong>です。</p>
+<div class="testbox">
+<p><img src="./images/cssmemo/monospace_default.png" width="500" height="158" alt="monospace 比較"></p>
+<ul>
+<li>UTF-8 ページ</li>
+</ul>
+<p><img src="./images/cssmemo/monospace_default_utf8.png" width="500" height="140" alt="monospace 比較 - UTF-8"></p>
+</div>
+
+<h3>フォント名 + 一般名で指定</h3>
+
+<pre>
+font-family: 'フォント名',monospace;
+</pre>
+
+<p>指定フォントがない場合は <strong>monospace</strong> 設定のフォントで表示されます。</p>
+
+<div class="sp_overflow">
+<table summary="等幅フォント" cellspacing="0">
+<caption>等幅</caption>
+<tr class="mono">
+<td><em class="mono red">monospace</em></td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="msg">
+<td>MS ゴシック</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr style="font-family:'IPAゴシック', monospace;">
+<td>IPAゴシック</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="monag">
+<td>IPA モナー ゴシック</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="vlg">
+<td>VL ゴシック</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="takaog">
+<td>Takaoゴシック</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="mp2vmipag">
+<td>M+2VM+IPAG circle</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="migu1m">
+<td>Migu 1M</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+</table>
+</div>
+
+<div class="sp_overflow">
+<table summary="等幅フォント英字" cellspacing="0">
+<caption>等幅 英字のみ</caption>
+<tr class="bitstream">
+<td>Bitstream Vera Sans Mono</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr class="courier">
+<td>Courier New</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr style="font-family:Courier,monospace;">
+<td>Courier</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+<tr style="font-family:Consolas,monospace;">
+<td>Consolas</td><td>あいうえお</td><td>ABCIQ WINDOWS</td><td>abclw windows</td>
+</tr>
+
+</table>
+</div>
+
+<p>下記はこれらののフォントをインストールした Windows XP上での画像です。</p>
+<div class="testbox">
+<ul>
+<li>IE 8 - 効果「ClearType」</li>
+</ul>
+<p><img src="./images/cssmemo/monospace.png" alt="等幅フォント" width="490" height="180"></p>
+
+<ul>
+<li>IE 8 - 効果「ClearType」</li>
+</ul>
+<p><img src="./images/cssmemo/monospace_en.png" alt="等幅フォント" width="630" height="95"></p>
+
+<ul>
+<li>Firefox - 効果「標準」</li>
+</ul>
+<p><img src="./images/cssmemo/monospace_firefox.png" alt="等幅フォント" width="528" height="180"></p>
+</div>
+<h2><a href="#ie" name="ie">IE比較</a></h2>
+
+<p>IEはややこしいです。</p>
+
+<dl>
+<dt>IE の ClearType</dt>
+<dd>
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/ClearType">ClearType - Wikipedia</a></li>
+<li><a href="http://ja.wikipedia.org/wiki/%E3%83%A1%E3%82%A4%E3%83%AA%E3%82%AA">メイリオ - Wikipedia</a></li>
+</ul>
+
+<p>IE 7,8 では、<strong class="ms">ClearType</strong> が有効になっている場合が多いかと思います。<span class="meiryo">メイリオ</span>をきれいに表示するには有効になっている必要があります。</p>
+<p><strong class="ms">ClearType</strong> が無効だと<span class="meiryo">メイリオ</span>はギザギザ表示、多くの欧文フォントは <span class="msg">MS ゴシック</span> 系と同様の糸状（？）表示となります。</p>
+<p class="small">但し、有効な場合はWindows上の <span class="vlpg">VL Pゴシック</span> などLinux系フォントは和文がつぶれ気味表示となります。<span class="meiryo">メイリオ</span>、<span class="vlpg">VL Pゴシック</span> など両方をきれいに表示するには、ClearType + gdi++ などの併用が必要になるかと。</p>
+
+<ul>
+<li>IEでのみ有効にするには、
+	<ul>
+	<li>設定は【インターネット オプション】<span class="ms">→</span>[詳細設定]→「HTML で常に ClearType を使用する」</li>
+	</ul>
+</li>
+<li>OS全体に設定
+	<ul>
+	<li>XP：コントロール パネル<span class="ms">→</span>【画面】<span class="ms">→</span>[デザイン]<span class="ms">→</span>[効果]<span class="ms">→</span>「次の方法でスクリーン フォントの縁を滑らかにする」</li>
+	<li>7：コントロール パネル<span class="ms">→</span>【個人設定】<span class="ms">→</span>【ディスプレイ】<span class="ms">→</span>「ClearType テキストの設定」</li>
+	</ul>
+</li>
+</ul>
+
+<p>下記はWindows XP上 IE8 での<strong>画像</strong>です。</p>
+<div class="testbox">
+<ul>
+<li>ClearType 有効</li>
+</ul>
+<p><img src="./images/cssmemo/font_cleartype.png" width="535" height="305" alt="hogehoge"></p>
+<ul>
+<li>ClearType 無効（※ 効果「標準」）</li>
+</ul>
+<p><img src="./images/cssmemo/font_non_cleartype.png" width="535" height="305" alt="hogehoge"></p>
+<ul>
+<li>ClearType 有効 + gdi++.dll</li>
+</ul>
+<p><img src="./images/cssmemo/font_cleartype_gdi.png" width="540" height="305" alt="hogehoge"></p>
+</div>
+
+<ul>
+<li>参考拙作
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20080531/1212225050">メイリオとブラウザのフォントのあれやこれや</a></li>
+	<li><a href="http://d.hatena.ne.jp/palm84/20090925/1253891269">gdi++.dll でフォントをきれいに表示</a></li>
+	</ul>
+</li>
+</ul>
+
+</dd>
+</dl>
+
+<p>とりあえず、XPと2000だけ...</p>
+
+<div class="sp_overflow">
+<table summary="IE 6(Windows 2000)" cellspacing="0">
+<caption>IE 6(Windows 2000)</caption>
+<tr>
+	<td></td><th abbr="無指定">無指定</th><th abbr="Sans-Serif">Sans-Serif</th><th abbr="monospace">monospace</th>
+</tr>
+<tr>
+	<th abbr="欧文">欧文</th><td><span class="mspg">ＭＳ Ｐゴシック</span></td><td><span class="lucida">Lucida Sans Unicode</span></td><td><span class="msg">ＭＳ ゴシック</span></td>
+</tr>
+<tr>
+	<th abbr="和文">和文</th><td><span class="mspg">ＭＳ Ｐゴシック</span></td><td><span class="msui">MS UI Gothic</span></td><td><span class="msg">ＭＳ ゴシック</span></td>
+</tr>
+</table>
+</div>
+
+
+<div class="sp_overflow">
+<table summary="IE 7(Windows XP)" cellspacing="0">
+<caption>IE 7(Windows XP)</caption>
+<tr>
+	<td></td><th abbr="無指定">無指定</th><th abbr="Sans-Serif">Sans-Serif</th><th abbr="monospace">monospace</th>
+</tr>
+<tr>
+	<th abbr="欧文">欧文</th><td><span class="mspg">ＭＳ Ｐゴシック</span></td><td><span class="lucida">Lucida Sans Unicode</span></td><td><span class="msg">ＭＳ ゴシック</span></td>
+</tr>
+<tr>
+	<th abbr="和文">和文</th><td><span class="mspg">ＭＳ Ｐゴシック</span></td><td><span class="mspg">ＭＳ Ｐゴシック</span></td><td><span class="msg">ＭＳ ゴシック</span></td>
+</tr>
+</table>
+</div>
+
+<div class="sp_overflow">
+<table summary="IE 8(Windows XP)" cellspacing="0">
+<caption>IE 8(Windows XP)</caption>
+<tr>
+	<td></td><th abbr="無指定">無指定</th><th abbr="Sans-Serif">Sans-Serif</th><th abbr="monospace">monospace</th>
+</tr>
+<tr>
+	<th abbr="欧文">欧文</th><td><span class="mspg">ＭＳ Ｐゴシック</span></td><td><span class="mspg">ＭＳ Ｐゴシック</span></td><td><span class="msg">ＭＳ ゴシック</span></td>
+</tr>
+<tr>
+	<th abbr="和文">和文</th><td><span class="mspg">ＭＳ Ｐゴシック</span></td><td><span class="mspg">ＭＳ Ｐゴシック</span></td><td><span class="msg">ＭＳ ゴシック</span></td>
+</tr>
+</table>
+</div>
+
+<p>（htmlファイルの）charset が UTF-8 だとまたまただいぶ違いますね（Shift_JIS と EUC-JPは同じ模様）。</p>
+
+<pre>
+&#060;meta http-equiv=&#034;Content-Type&#034; content=&#034;text/html; charset=<var>UTF-8</var>&#034;&#062;
+</pre>
+
+<div class="sp_overflow">
+<table summary="IE 6 - UTF-8(Windows 2000)" cellspacing="0">
+<caption>IE 6 - <span class="red">UTF-8</span>(Windows 2000)</caption>
+<tr>
+	<td></td><th abbr="無指定">無指定</th><th abbr="Sans-Serif">Sans-Serif</th><th abbr="monospace">monospace</th>
+</tr>
+<tr>
+	<th abbr="欧文">欧文</th><td><span class="timesnr">Times New Roman</span></td><td><span class="arial">Arial</span></td><td><span class="courier">Courier New</span></td>
+</tr>
+<tr>
+	<th abbr="和文">和文</th><td><span class="mspg">ＭＳ Ｐゴシック</span></td><td><span class="mspg">ＭＳ Ｐゴシック</span></td><td><span class="msg">ＭＳ ゴシック</span></td>
+</tr>
+</table>
+</div>
+
+
+<div class="sp_overflow">
+<table summary="IE 7 - UTF-8(Windows XP)" cellspacing="0">
+<caption>IE 7 - <span class="red">UTF-8</span>(Windows XP)</caption>
+<tr>
+	<td></td><th abbr="無指定">無指定</th><th abbr="Sans-Serif">Sans-Serif</th><th abbr="monospace">monospace</th>
+</tr>
+<tr>
+	<th abbr="欧文">欧文</th><td><span class="timesnr">Times New Roman</span></td><td><span class="arial">Arial</span></td><td><span class="courier">Courier New</span></td>
+</tr>
+<tr>
+	<th abbr="和文">和文</th><td><span class="mspg">ＭＳ Ｐゴシック</span></td><td><span class="mspg">ＭＳ Ｐゴシック</span></td><td><span class="msg">ＭＳ ゴシック</span></td>
+</tr>
+</table>
+</div>
+
+<div class="sp_overflow">
+<table summary="IE 8 - UTF-8(Windows XP)" cellspacing="0">
+<caption>IE 8 - <span class="red">UTF-8</span>(Windows XP)</caption>
+<tr>
+	<td></td><th abbr="無指定">無指定</th><th abbr="Sans-Serif">Sans-Serif</th><th abbr="monospace">monospace</th>
+</tr>
+<tr>
+	<th abbr="欧文">欧文</th><td><span class="timesnr">Times New Roman</span></td><td><span class="arial">Arial</span></td><td><span class="courier">Courier New</span></td>
+</tr>
+<tr>
+	<th abbr="和文">和文</th><td><span class="mspg">ＭＳ Ｐゴシック</span></td><td><span class="mspg">ＭＳ Ｐゴシック</span></td><td><span class="msg">ＭＳ ゴシック</span></td>
+</tr>
+</table>
+</div>
+
+<p><span class="meiryo">メイリオ</span>をデフォルトにしている環境では、<span class="mspg">ＭＳ Ｐゴシック</span>が置換えされてました。</p>
+
+<p>あと、Windows版Safariの標準フォントはLinux風で読みやすくて好きなのですが、等幅フォントは13pxで小っちゃいなぁと。（自分のPCなら変えたらいいんですけどねー）</p>
+
+<div class="sp_overflow">
+<table summary="Safari(Windows XP)" cellspacing="0">
+<caption>Safari(Windows XP)</caption>
+<tr>
+	<td></td><th abbr="無指定">無指定</th><th abbr="Sans-Serif">Sans-Serif</th><th abbr="monospace">monospace</th>
+</tr>
+<tr>
+	<th abbr="欧文">欧文</th><td><span class="timesnr">Times New Roman</span></td><td><span class="arial">Arial</span></td><td><span class="courier">Courier New</span></td>
+</tr>
+<tr>
+	<th abbr="和文">和文</th><td><span class="mspg">ＭＳ Ｐゴシック</span></td><td><span class="mspg">ＭＳ Ｐゴシック</span></td><td><span class="msg">ＭＳ ゴシック</span>?</td>
+</tr>
+</table>
+</div>
+
+
+<p>Macも確認しないと...orz。Linux or Firefox あたりはあんまり問題ない・・・ということにしておこう。（あくまでフォントに関して）</p>
+
+<p>尚、UTF-8なページでのIEのデフォルト設定についてはユーザ側で変更可能だと思います。インターネットオプション&rarr;フォント&rarr;【ラテン語基本】</p>
+<h2><a href="#ascii_art" name="ascii_art">AA表示</a></h2>
+
+<p>【追記】<code>font-family</code> に <strong class="mona">Mona</strong> を追加。</p>
+
+<p>元々Windowsの<strong class="mspg">ＭＳ Ｐゴシック</strong> を前提に作られてるものなのでWindowsでは指定しなくてもいい（※<ins>メイリオをデフォルトにしていない場合</ins>）のですが、<code>pre</code>要素を使う場合やLinux向けにはフォントの指定が必要となりますね。...Vista向けもでした。</p>
+
+<pre>
+font-family: 'ＭＳ Ｐゴシック',Monapo,'IPA モナー Pゴシック',IPAMonaPGothic,Mona,sans-serif;
+</pre>
+<div class="kuma" title="クマーAA「マイヤフー♪」">
+／￣￣￣￣￣＼
+|　 マイヤヒー♪ |　　　　　　 　 　 ／￣￣￣￣￣＼
+＼＿＿_ 　 ＿_／　　　　　　　　　 |　 マイヤフー♪ |　／￣￣￣￣￣＼
+　　　　　∨　　　　　　　　　　 　 　 ＼＿＿_ 　 ＿_／　|　 マイヤホー♪ |
+　　　　　　　　　　　　　　　　　　　　 　 　 　 ∨ 　 　 　 ＼＿_ 　 ＿＿__／
+　　 ∩＿＿＿∩ 　　　　　　　　　　　　 ∩＿＿＿_∩　 　 　 ∨
+　　 | ノ　　　　　ヽ 　　　　　　　　　　　/　　　　　　ヽ|　　∩＿＿＿_∩
+　　/　 ●　　　● |　 　　　　　　　　　 | ●　　　●　 ヽ / 　　　　　ヽ|
+　 |　　　　( _●_)　 ミ　　　　　　　　 彡 　 (_●_ ) 　 　 | ●　　　●　 ヽ
+　彡､　　　|∪|　　､｀＼　　　　　 　 ／ 　 　 |∪| 　　 彡　 (_●_)　　　 |
+/　＿＿　 ヽノ　/´&#062;　 )　　　　　　（　 &#060;　　 ヽ ﾉ 　 ／ 　　 |∪|　　　　ミ
+(＿＿＿）　　　/　(_／　　　　 　 　 ＼_ )　　　　 　（ 　&#060; 　 ヽ ﾉ　　　　 ヽ
+</div>
+
+<p>Linuxでは <strong class="monapg">IPA モナー Pゴシック</strong> (<strong class="monapg">IPAMonaPGothic</strong>, <strong class="mona">Mona</strong>) で表示可能ですね。</p>
+<p><strong class="monapg">IPA モナー Pゴシック</strong> を先に指定した方がいいのかもしれません。但し、Windowsでもインストールされている場合に優先されてしまいますけど。</p>
+<h3>AA用CSS</h3>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%B9%E3%82%AD%E3%83%BC%E3%82%A2%E3%83%BC%E3%83%88">アスキーアート - Wikipedia</a></li>
+</ul>
+
+<dl>
+<dt>スタイルシート</dt>
+<dd>
+<p>Linux 向けに <strong class="monapg">IPA モナー Pゴシック</strong> (<strong class="monapg">IPAMonaPGothic</strong>, <strong class="mona">Mona</strong>, <strong class="monapo">Monapo</strong>) を指定してみましたが、Opera では2番目は<del>無視される</del><ins>無視されることがある？</ins>（Vine Linux 4.2,Opera 9.27では問題なしでした）ので、Sans-Serif に <strong class="monapg">IPA モナー Pゴシック</strong> を設定して<del>おかないといけません</del><ins>おいた方がいいのかもしれません</ins>。</p>
+
+<pre>
+div.kuma {
+white-space: pre !important;
+margin: 3% auto 3% auto;
+padding: 0.5em;
+font-family: 'ＭＳ Ｐゴシック',Monapo,'IPA モナー Pゴシック',IPAMonaPGothic,Mona,sans-serif;
+line-height: 110%;
+letter-spacing: 0px;
+font-size: 0.8em;
+background-color: #f1f1f1;
+border-style: solid;
+border-width: 3px;
+border-color: #fff #ccc #ccc #fff;
+overflow: auto;
+width: 90%;
+}
+</pre>
+
+<p>HTMLは下記の記述でおｋクマー。改行<code>&#060;br&#062;</code>タグは不要です。</p>
+<pre>
+&#060;div class=&#034;kuma&#034; title=&#034;クマーのAA&#034;&#062;
+ここに貼り付け
+
+&#060;/div&#062;
+</pre>
+
+<dl>
+<dt>IEの互換モードではpre要素で</dt>
+<dd>
+<p>※あっと、 <code>margin</code> の<strong>auto</strong>はIEの所謂互換モードでは効かない、<code>white-space: pre</code>もだめな場合があるみたいなので、 <code>pre</code>要素を使う  左右marginを<code>%</code> で指定するべし。</p>
+
+<pre>
+pre.kuma2 {
+margin: 3% 5% 3% 5%;
+padding: 0.5em;
+font-family: 'ＭＳ Ｐゴシック',Monapo,'IPA モナー Pゴシック',IPAMonaPGothic,Mona,sans-serif;
+line-height: 110%;
+letter-spacing: 0px;
+font-size: 0.8em;
+background-color: #f1f1f1;
+border-style: solid;
+border-width: 3px;
+border-color: #fff #ccc #ccc #fff;
+overflow: auto;
+width: 90%;
+<strong>_width:100%;</strong>
+}
+</pre>
+
+<p>HTMLは下記でクマクマー。改行<code>&#060;br&#062;</code>タグは不要くまー。</p>
+<pre>
+&#060;pre class=&#034;kuma2&#034; title=&#034;クマーのAA&#034;&#062;
+ここに貼り付け
+
+&#060;/pre&#062;
+</pre>
+
+
+<pre class="kuma2" title="クマーAA「マイヤフー♪」">
+／￣￣￣￣￣＼
+|　 マイヤヒー♪ |　　　　　　 　 　 ／￣￣￣￣￣＼
+＼＿＿_ 　 ＿_／　　　　　　　　　 |　 マイヤフー♪ |　／￣￣￣￣￣＼
+　　　　　∨　　　　　　　　　　 　 　 ＼＿＿_ 　 ＿_／　|　 マイヤホー♪ |
+　　　　　　　　　　　　　　　　　　　　 　 　 　 ∨ 　 　 　 ＼＿_ 　 ＿＿__／
+　　 ∩＿＿＿∩ 　　　　　　　　　　　　 ∩＿＿＿_∩　 　 　 ∨
+　　 | ノ　　　　　ヽ 　　　　　　　　　　　/　　　　　　ヽ|　　∩＿＿＿_∩
+　　/　 ●　　　● |　 　　　　　　　　　 | ●　　　●　 ヽ / 　　　　　ヽ|
+　 |　　　　( _●_)　 ミ　　　　　　　　 彡 　 (_●_ ) 　 　 | ●　　　●　 ヽ
+　彡､　　　|∪|　　､｀＼　　　　　 　 ／ 　 　 |∪| 　　 彡　 (_●_)　　　 |
+/　＿＿　 ヽノ　/´&#062;　 )　　　　　　（　 &#060;　　 ヽ ﾉ 　 ／ 　　 |∪|　　　　ミ
+(＿＿＿）　　　/　(_／　　　　 　 　 ＼_ )　　　　 　（ 　&#060; 　 ヽ ﾉ　　　　 ヽ
+</pre>
+<p>おかしかったらオシエテください。（汗）</p>
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+<dl>
+<dt>表示テスト</dt>
+<dd>
+
+<p>「メイリオ」環境増えて来たので、Windowsでも指定が必要ですね。</p>
+
+<ul>
+<li>無指定</li>
+</ul>
+<div class="testbox3" title="クマーAA「マイヤフー♪」">
+／￣￣￣￣￣＼
+|　 マイヤヒー♪ |　　　　　　 　 　 ／￣￣￣￣￣＼
+＼＿＿_ 　 ＿_／　　　　　　　　　 |　 マイヤフー♪ |　／￣￣￣￣￣＼
+　　　　　∨　　　　　　　　　　 　 　 ＼＿＿_ 　 ＿_／　|　 マイヤホー♪ |
+　　　　　　　　　　　　　　　　　　　　 　 　 　 ∨ 　 　 　 ＼＿_ 　 ＿＿__／
+　　 ∩＿＿＿∩ 　　　　　　　　　　　　 ∩＿＿＿_∩　 　 　 ∨
+　　 | ノ　　　　　ヽ 　　　　　　　　　　　/　　　　　　ヽ|　　∩＿＿＿_∩
+　　/　 ●　　　● |　 　　　　　　　　　 | ●　　　●　 ヽ / 　　　　　ヽ|
+　 |　　　　( _●_)　 ミ　　　　　　　　 彡 　 (_●_ ) 　 　 | ●　　　●　 ヽ
+　彡､　　　|∪|　　､｀＼　　　　　 　 ／ 　 　 |∪| 　　 彡　 (_●_)　　　 |
+/　＿＿　 ヽノ　/´&#062;　 )　　　　　　（　 &#060;　　 ヽ ﾉ 　 ／ 　　 |∪|　　　　ミ
+(＿＿＿）　　　/　(_／　　　　 　 　 ＼_ )　　　　 　（ 　&#060; 　 ヽ ﾉ　　　　 ヽ
+</div>
+
+<ul>
+<li><code>font-family:Sans-Serif</code></li>
+</ul>
+<div class="testbox3" style="font-family:Sans-Serif" title="クマーAA「マイヤフー♪」">
+／￣￣￣￣￣＼
+|　 マイヤヒー♪ |　　　　　　 　 　 ／￣￣￣￣￣＼
+＼＿＿_ 　 ＿_／　　　　　　　　　 |　 マイヤフー♪ |　／￣￣￣￣￣＼
+　　　　　∨　　　　　　　　　　 　 　 ＼＿＿_ 　 ＿_／　|　 マイヤホー♪ |
+　　　　　　　　　　　　　　　　　　　　 　 　 　 ∨ 　 　 　 ＼＿_ 　 ＿＿__／
+　　 ∩＿＿＿∩ 　　　　　　　　　　　　 ∩＿＿＿_∩　 　 　 ∨
+　　 | ノ　　　　　ヽ 　　　　　　　　　　　/　　　　　　ヽ|　　∩＿＿＿_∩
+　　/　 ●　　　● |　 　　　　　　　　　 | ●　　　●　 ヽ / 　　　　　ヽ|
+　 |　　　　( _●_)　 ミ　　　　　　　　 彡 　 (_●_ ) 　 　 | ●　　　●　 ヽ
+　彡､　　　|∪|　　､｀＼　　　　　 　 ／ 　 　 |∪| 　　 彡　 (_●_)　　　 |
+/　＿＿　 ヽノ　/´&#062;　 )　　　　　　（　 &#060;　　 ヽ ﾉ 　 ／ 　　 |∪|　　　　ミ
+(＿＿＿）　　　/　(_／　　　　 　 　 ＼_ )　　　　 　（ 　&#060; 　 ヽ ﾉ　　　　 ヽ
+</div>
+
+<ul>
+<li><code>font-family:'ＭＳ Ｐゴシック',Sans-Serif</code></li>
+</ul>
+<div class="testbox3" style="font-family:'ＭＳ Ｐゴシック',Sans-Serif" title="クマーAA「マイヤフー♪」">
+／￣￣￣￣￣＼
+|　 マイヤヒー♪ |　　　　　　 　 　 ／￣￣￣￣￣＼
+＼＿＿_ 　 ＿_／　　　　　　　　　 |　 マイヤフー♪ |　／￣￣￣￣￣＼
+　　　　　∨　　　　　　　　　　 　 　 ＼＿＿_ 　 ＿_／　|　 マイヤホー♪ |
+　　　　　　　　　　　　　　　　　　　　 　 　 　 ∨ 　 　 　 ＼＿_ 　 ＿＿__／
+　　 ∩＿＿＿∩ 　　　　　　　　　　　　 ∩＿＿＿_∩　 　 　 ∨
+　　 | ノ　　　　　ヽ 　　　　　　　　　　　/　　　　　　ヽ|　　∩＿＿＿_∩
+　　/　 ●　　　● |　 　　　　　　　　　 | ●　　　●　 ヽ / 　　　　　ヽ|
+　 |　　　　( _●_)　 ミ　　　　　　　　 彡 　 (_●_ ) 　 　 | ●　　　●　 ヽ
+　彡､　　　|∪|　　､｀＼　　　　　 　 ／ 　 　 |∪| 　　 彡　 (_●_)　　　 |
+/　＿＿　 ヽノ　/´&#062;　 )　　　　　　（　 &#060;　　 ヽ ﾉ 　 ／ 　　 |∪|　　　　ミ
+(＿＿＿）　　　/　(_／　　　　 　 　 ＼_ )　　　　 　（ 　&#060; 　 ヽ ﾉ　　　　 ヽ
+</div>
+
+<ul>
+<li><code>font-family:'メイリオ',Sans-Serif;</code></li>
+</ul>
+<div class="testbox3" style="font-family:'メイリオ',Sans-Serif;" title="クマーAA「マイヤフー♪」">
+／￣￣￣￣￣＼
+|　 マイヤヒー♪ |　　　　　　 　 　 ／￣￣￣￣￣＼
+＼＿＿_ 　 ＿_／　　　　　　　　　 |　 マイヤフー♪ |　／￣￣￣￣￣＼
+　　　　　∨　　　　　　　　　　 　 　 ＼＿＿_ 　 ＿_／　|　 マイヤホー♪ |
+　　　　　　　　　　　　　　　　　　　　 　 　 　 ∨ 　 　 　 ＼＿_ 　 ＿＿__／
+　　 ∩＿＿＿∩ 　　　　　　　　　　　　 ∩＿＿＿_∩　 　 　 ∨
+　　 | ノ　　　　　ヽ 　　　　　　　　　　　/　　　　　　ヽ|　　∩＿＿＿_∩
+　　/　 ●　　　● |　 　　　　　　　　　 | ●　　　●　 ヽ / 　　　　　ヽ|
+　 |　　　　( _●_)　 ミ　　　　　　　　 彡 　 (_●_ ) 　 　 | ●　　　●　 ヽ
+　彡､　　　|∪|　　､｀＼　　　　　 　 ／ 　 　 |∪| 　　 彡　 (_●_)　　　 |
+/　＿＿　 ヽノ　/´&#062;　 )　　　　　　（　 &#060;　　 ヽ ﾉ 　 ／ 　　 |∪|　　　　ミ
+(＿＿＿）　　　/　(_／　　　　 　 　 ＼_ )　　　　 　（ 　&#060; 　 ヽ ﾉ　　　　 ヽ
+</div>
+
+<hr>
+
+<p>Linux環境でチェックしませう。2番目の指定が無視されないかとか。</p>
+
+<ul>
+<li><code>font-family:'ＭＳ Ｐゴシック','IPA モナー Pゴシック',Sans-Serif</code></li>
+</ul>
+<div class="testbox3" style="font-family:'ＭＳ Ｐゴシック','IPA モナー Pゴシック',Sans-Serif" title="クマーAA「マイヤフー♪」">
+／￣￣￣￣￣＼
+|　 マイヤヒー♪ |　　　　　　 　 　 ／￣￣￣￣￣＼
+＼＿＿_ 　 ＿_／　　　　　　　　　 |　 マイヤフー♪ |　／￣￣￣￣￣＼
+　　　　　∨　　　　　　　　　　 　 　 ＼＿＿_ 　 ＿_／　|　 マイヤホー♪ |
+　　　　　　　　　　　　　　　　　　　　 　 　 　 ∨ 　 　 　 ＼＿_ 　 ＿＿__／
+　　 ∩＿＿＿∩ 　　　　　　　　　　　　 ∩＿＿＿_∩　 　 　 ∨
+　　 | ノ　　　　　ヽ 　　　　　　　　　　　/　　　　　　ヽ|　　∩＿＿＿_∩
+　　/　 ●　　　● |　 　　　　　　　　　 | ●　　　●　 ヽ / 　　　　　ヽ|
+　 |　　　　( _●_)　 ミ　　　　　　　　 彡 　 (_●_ ) 　 　 | ●　　　●　 ヽ
+　彡､　　　|∪|　　､｀＼　　　　　 　 ／ 　 　 |∪| 　　 彡　 (_●_)　　　 |
+/　＿＿　 ヽノ　/´&#062;　 )　　　　　　（　 &#060;　　 ヽ ﾉ 　 ／ 　　 |∪|　　　　ミ
+(＿＿＿）　　　/　(_／　　　　 　 　 ＼_ )　　　　 　（ 　&#060; 　 ヽ ﾉ　　　　 ヽ
+</div>
+
+<ul>
+<li><code>font-family:'ＭＳ Ｐゴシック','IPAMonaPGothic',Sans-Serif</code></li>
+</ul>
+<div class="testbox3" style="font-family:'ＭＳ Ｐゴシック','IPAMonaPGothic',Sans-Serif" title="クマーAA「マイヤフー♪」">
+／￣￣￣￣￣＼
+|　 マイヤヒー♪ |　　　　　　 　 　 ／￣￣￣￣￣＼
+＼＿＿_ 　 ＿_／　　　　　　　　　 |　 マイヤフー♪ |　／￣￣￣￣￣＼
+　　　　　∨　　　　　　　　　　 　 　 ＼＿＿_ 　 ＿_／　|　 マイヤホー♪ |
+　　　　　　　　　　　　　　　　　　　　 　 　 　 ∨ 　 　 　 ＼＿_ 　 ＿＿__／
+　　 ∩＿＿＿∩ 　　　　　　　　　　　　 ∩＿＿＿_∩　 　 　 ∨
+　　 | ノ　　　　　ヽ 　　　　　　　　　　　/　　　　　　ヽ|　　∩＿＿＿_∩
+　　/　 ●　　　● |　 　　　　　　　　　 | ●　　　●　 ヽ / 　　　　　ヽ|
+　 |　　　　( _●_)　 ミ　　　　　　　　 彡 　 (_●_ ) 　 　 | ●　　　●　 ヽ
+　彡､　　　|∪|　　､｀＼　　　　　 　 ／ 　 　 |∪| 　　 彡　 (_●_)　　　 |
+/　＿＿　 ヽノ　/´&#062;　 )　　　　　　（　 &#060;　　 ヽ ﾉ 　 ／ 　　 |∪|　　　　ミ
+(＿＿＿）　　　/　(_／　　　　 　 　 ＼_ )　　　　 　（ 　&#060; 　 ヽ ﾉ　　　　 ヽ
+</div>
+
+<ul>
+<li><code>font-family:'ＭＳ Ｐゴシック',Mona,Sans-Serif</code></li>
+</ul>
+<div class="testbox3" style="font-family:'ＭＳ Ｐゴシック',Mona,Sans-Serif" title="クマーAA「マイヤフー♪」">
+／￣￣￣￣￣＼
+|　 マイヤヒー♪ |　　　　　　 　 　 ／￣￣￣￣￣＼
+＼＿＿_ 　 ＿_／　　　　　　　　　 |　 マイヤフー♪ |　／￣￣￣￣￣＼
+　　　　　∨　　　　　　　　　　 　 　 ＼＿＿_ 　 ＿_／　|　 マイヤホー♪ |
+　　　　　　　　　　　　　　　　　　　　 　 　 　 ∨ 　 　 　 ＼＿_ 　 ＿＿__／
+　　 ∩＿＿＿∩ 　　　　　　　　　　　　 ∩＿＿＿_∩　 　 　 ∨
+　　 | ノ　　　　　ヽ 　　　　　　　　　　　/　　　　　　ヽ|　　∩＿＿＿_∩
+　　/　 ●　　　● |　 　　　　　　　　　 | ●　　　●　 ヽ / 　　　　　ヽ|
+　 |　　　　( _●_)　 ミ　　　　　　　　 彡 　 (_●_ ) 　 　 | ●　　　●　 ヽ
+　彡､　　　|∪|　　､｀＼　　　　　 　 ／ 　 　 |∪| 　　 彡　 (_●_)　　　 |
+/　＿＿　 ヽノ　/´&#062;　 )　　　　　　（　 &#060;　　 ヽ ﾉ 　 ／ 　　 |∪|　　　　ミ
+(＿＿＿）　　　/　(_／　　　　 　 　 ＼_ )　　　　 　（ 　&#060; 　 ヽ ﾉ　　　　 ヽ
+</div>
+
+<hr>
+
+<ul>
+<li><code>font-family:'IPA モナー Pゴシック','ＭＳ Ｐゴシック',Sans-Serif</code></li>
+</ul>
+<div class="testbox3" style="font-family:'IPA モナー Pゴシック','ＭＳ Ｐゴシック',Sans-Serif" title="クマーAA「マイヤフー♪」">
+／￣￣￣￣￣＼
+|　 マイヤヒー♪ |　　　　　　 　 　 ／￣￣￣￣￣＼
+＼＿＿_ 　 ＿_／　　　　　　　　　 |　 マイヤフー♪ |　／￣￣￣￣￣＼
+　　　　　∨　　　　　　　　　　 　 　 ＼＿＿_ 　 ＿_／　|　 マイヤホー♪ |
+　　　　　　　　　　　　　　　　　　　　 　 　 　 ∨ 　 　 　 ＼＿_ 　 ＿＿__／
+　　 ∩＿＿＿∩ 　　　　　　　　　　　　 ∩＿＿＿_∩　 　 　 ∨
+　　 | ノ　　　　　ヽ 　　　　　　　　　　　/　　　　　　ヽ|　　∩＿＿＿_∩
+　　/　 ●　　　● |　 　　　　　　　　　 | ●　　　●　 ヽ / 　　　　　ヽ|
+　 |　　　　( _●_)　 ミ　　　　　　　　 彡 　 (_●_ ) 　 　 | ●　　　●　 ヽ
+　彡､　　　|∪|　　､｀＼　　　　　 　 ／ 　 　 |∪| 　　 彡　 (_●_)　　　 |
+/　＿＿　 ヽノ　/´&#062;　 )　　　　　　（　 &#060;　　 ヽ ﾉ 　 ／ 　　 |∪|　　　　ミ
+(＿＿＿）　　　/　(_／　　　　 　 　 ＼_ )　　　　 　（ 　&#060; 　 ヽ ﾉ　　　　 ヽ
+</div>
+
+<ul>
+<li><code>font-family:'IPAMonaPGothic','ＭＳ Ｐゴシック',Sans-Serif</code></li>
+</ul>
+<div class="testbox3" style="font-family:'IPAMonaPGothic','ＭＳ Ｐゴシック',Sans-Serif" title="クマーAA「マイヤフー♪」">
+／￣￣￣￣￣＼
+|　 マイヤヒー♪ |　　　　　　 　 　 ／￣￣￣￣￣＼
+＼＿＿_ 　 ＿_／　　　　　　　　　 |　 マイヤフー♪ |　／￣￣￣￣￣＼
+　　　　　∨　　　　　　　　　　 　 　 ＼＿＿_ 　 ＿_／　|　 マイヤホー♪ |
+　　　　　　　　　　　　　　　　　　　　 　 　 　 ∨ 　 　 　 ＼＿_ 　 ＿＿__／
+　　 ∩＿＿＿∩ 　　　　　　　　　　　　 ∩＿＿＿_∩　 　 　 ∨
+　　 | ノ　　　　　ヽ 　　　　　　　　　　　/　　　　　　ヽ|　　∩＿＿＿_∩
+　　/　 ●　　　● |　 　　　　　　　　　 | ●　　　●　 ヽ / 　　　　　ヽ|
+　 |　　　　( _●_)　 ミ　　　　　　　　 彡 　 (_●_ ) 　 　 | ●　　　●　 ヽ
+　彡､　　　|∪|　　､｀＼　　　　　 　 ／ 　 　 |∪| 　　 彡　 (_●_)　　　 |
+/　＿＿　 ヽノ　/´&#062;　 )　　　　　　（　 &#060;　　 ヽ ﾉ 　 ／ 　　 |∪|　　　　ミ
+(＿＿＿）　　　/　(_／　　　　 　 　 ＼_ )　　　　 　（ 　&#060; 　 ヽ ﾉ　　　　 ヽ
+</div>
+
+<ul>
+<li><code>font-family: Mona,'ＭＳ Ｐゴシック',Sans-Serif</code></li>
+</ul>
+<div class="testbox3" style="font-family: Mona,'ＭＳ Ｐゴシック',Sans-Serif" title="クマーAA「マイヤフー♪」">
+／￣￣￣￣￣＼
+|　 マイヤヒー♪ |　　　　　　 　 　 ／￣￣￣￣￣＼
+＼＿＿_ 　 ＿_／　　　　　　　　　 |　 マイヤフー♪ |　／￣￣￣￣￣＼
+　　　　　∨　　　　　　　　　　 　 　 ＼＿＿_ 　 ＿_／　|　 マイヤホー♪ |
+　　　　　　　　　　　　　　　　　　　　 　 　 　 ∨ 　 　 　 ＼＿_ 　 ＿＿__／
+　　 ∩＿＿＿∩ 　　　　　　　　　　　　 ∩＿＿＿_∩　 　 　 ∨
+　　 | ノ　　　　　ヽ 　　　　　　　　　　　/　　　　　　ヽ|　　∩＿＿＿_∩
+　　/　 ●　　　● |　 　　　　　　　　　 | ●　　　●　 ヽ / 　　　　　ヽ|
+　 |　　　　( _●_)　 ミ　　　　　　　　 彡 　 (_●_ ) 　 　 | ●　　　●　 ヽ
+　彡､　　　|∪|　　､｀＼　　　　　 　 ／ 　 　 |∪| 　　 彡　 (_●_)　　　 |
+/　＿＿　 ヽノ　/´&#062;　 )　　　　　　（　 &#060;　　 ヽ ﾉ 　 ／ 　　 |∪|　　　　ミ
+(＿＿＿）　　　/　(_／　　　　 　 　 ＼_ )　　　　 　（ 　&#060; 　 ヽ ﾉ　　　　 ヽ
+</div>
+
+<hr>
+
+<ul>
+<li><code>font-family:'ＭＳ Ｐゴシック','IPA モナー Pゴシック'</code></li>
+</ul>
+<div class="testbox3" style="font-family:'ＭＳ Ｐゴシック','IPA モナー Pゴシック'" title="クマーAA「マイヤフー♪」">
+／￣￣￣￣￣＼
+|　 マイヤヒー♪ |　　　　　　 　 　 ／￣￣￣￣￣＼
+＼＿＿_ 　 ＿_／　　　　　　　　　 |　 マイヤフー♪ |　／￣￣￣￣￣＼
+　　　　　∨　　　　　　　　　　 　 　 ＼＿＿_ 　 ＿_／　|　 マイヤホー♪ |
+　　　　　　　　　　　　　　　　　　　　 　 　 　 ∨ 　 　 　 ＼＿_ 　 ＿＿__／
+　　 ∩＿＿＿∩ 　　　　　　　　　　　　 ∩＿＿＿_∩　 　 　 ∨
+　　 | ノ　　　　　ヽ 　　　　　　　　　　　/　　　　　　ヽ|　　∩＿＿＿_∩
+　　/　 ●　　　● |　 　　　　　　　　　 | ●　　　●　 ヽ / 　　　　　ヽ|
+　 |　　　　( _●_)　 ミ　　　　　　　　 彡 　 (_●_ ) 　 　 | ●　　　●　 ヽ
+　彡､　　　|∪|　　､｀＼　　　　　 　 ／ 　 　 |∪| 　　 彡　 (_●_)　　　 |
+/　＿＿　 ヽノ　/´&#062;　 )　　　　　　（　 &#060;　　 ヽ ﾉ 　 ／ 　　 |∪|　　　　ミ
+(＿＿＿）　　　/　(_／　　　　 　 　 ＼_ )　　　　 　（ 　&#060; 　 ヽ ﾉ　　　　 ヽ
+</div>
+
+<ul>
+<li><code>font-family:'ＭＳ Ｐゴシック','IPAMonaPGothic'</code></li>
+</ul>
+<div class="testbox3" style="font-family:'ＭＳ Ｐゴシック','IPAMonaPGothic'" title="クマーAA「マイヤフー♪」">
+／￣￣￣￣￣＼
+|　 マイヤヒー♪ |　　　　　　 　 　 ／￣￣￣￣￣＼
+＼＿＿_ 　 ＿_／　　　　　　　　　 |　 マイヤフー♪ |　／￣￣￣￣￣＼
+　　　　　∨　　　　　　　　　　 　 　 ＼＿＿_ 　 ＿_／　|　 マイヤホー♪ |
+　　　　　　　　　　　　　　　　　　　　 　 　 　 ∨ 　 　 　 ＼＿_ 　 ＿＿__／
+　　 ∩＿＿＿∩ 　　　　　　　　　　　　 ∩＿＿＿_∩　 　 　 ∨
+　　 | ノ　　　　　ヽ 　　　　　　　　　　　/　　　　　　ヽ|　　∩＿＿＿_∩
+　　/　 ●　　　● |　 　　　　　　　　　 | ●　　　●　 ヽ / 　　　　　ヽ|
+　 |　　　　( _●_)　 ミ　　　　　　　　 彡 　 (_●_ ) 　 　 | ●　　　●　 ヽ
+　彡､　　　|∪|　　､｀＼　　　　　 　 ／ 　 　 |∪| 　　 彡　 (_●_)　　　 |
+/　＿＿　 ヽノ　/´&#062;　 )　　　　　　（　 &#060;　　 ヽ ﾉ 　 ／ 　　 |∪|　　　　ミ
+(＿＿＿）　　　/　(_／　　　　 　 　 ＼_ )　　　　 　（ 　&#060; 　 ヽ ﾉ　　　　 ヽ
+</div>
+
+<hr>
+
+<ul>
+<li><code>font-family:'IPA モナー Pゴシック',sans-serif</code></li>
+</ul>
+<div class="testbox3" style="font-family:'IPA モナー Pゴシック',sans-serif" title="クマーAA「マイヤフー♪」">
+／￣￣￣￣￣＼
+|　 マイヤヒー♪ |　　　　　　 　 　 ／￣￣￣￣￣＼
+＼＿＿_ 　 ＿_／　　　　　　　　　 |　 マイヤフー♪ |　／￣￣￣￣￣＼
+　　　　　∨　　　　　　　　　　 　 　 ＼＿＿_ 　 ＿_／　|　 マイヤホー♪ |
+　　　　　　　　　　　　　　　　　　　　 　 　 　 ∨ 　 　 　 ＼＿_ 　 ＿＿__／
+　　 ∩＿＿＿∩ 　　　　　　　　　　　　 ∩＿＿＿_∩　 　 　 ∨
+　　 | ノ　　　　　ヽ 　　　　　　　　　　　/　　　　　　ヽ|　　∩＿＿＿_∩
+　　/　 ●　　　● |　 　　　　　　　　　 | ●　　　●　 ヽ / 　　　　　ヽ|
+　 |　　　　( _●_)　 ミ　　　　　　　　 彡 　 (_●_ ) 　 　 | ●　　　●　 ヽ
+　彡､　　　|∪|　　､｀＼　　　　　 　 ／ 　 　 |∪| 　　 彡　 (_●_)　　　 |
+/　＿＿　 ヽノ　/´&#062;　 )　　　　　　（　 &#060;　　 ヽ ﾉ 　 ／ 　　 |∪|　　　　ミ
+(＿＿＿）　　　/　(_／　　　　 　 　 ＼_ )　　　　 　（ 　&#060; 　 ヽ ﾉ　　　　 ヽ
+</div>
+
+<ul>
+<li><code>font-family:'IPAMonaPGothic',sans-serif</code></li>
+</ul>
+<div class="testbox3" style="font-family:'IPAMonaPGothic',sans-serif" title="クマーAA「マイヤフー♪」">
+／￣￣￣￣￣＼
+|　 マイヤヒー♪ |　　　　　　 　 　 ／￣￣￣￣￣＼
+＼＿＿_ 　 ＿_／　　　　　　　　　 |　 マイヤフー♪ |　／￣￣￣￣￣＼
+　　　　　∨　　　　　　　　　　 　 　 ＼＿＿_ 　 ＿_／　|　 マイヤホー♪ |
+　　　　　　　　　　　　　　　　　　　　 　 　 　 ∨ 　 　 　 ＼＿_ 　 ＿＿__／
+　　 ∩＿＿＿∩ 　　　　　　　　　　　　 ∩＿＿＿_∩　 　 　 ∨
+　　 | ノ　　　　　ヽ 　　　　　　　　　　　/　　　　　　ヽ|　　∩＿＿＿_∩
+　　/　 ●　　　● |　 　　　　　　　　　 | ●　　　●　 ヽ / 　　　　　ヽ|
+　 |　　　　( _●_)　 ミ　　　　　　　　 彡 　 (_●_ ) 　 　 | ●　　　●　 ヽ
+　彡､　　　|∪|　　､｀＼　　　　　 　 ／ 　 　 |∪| 　　 彡　 (_●_)　　　 |
+/　＿＿　 ヽノ　/´&#062;　 )　　　　　　（　 &#060;　　 ヽ ﾉ 　 ／ 　　 |∪|　　　　ミ
+(＿＿＿）　　　/　(_／　　　　 　 　 ＼_ )　　　　 　（ 　&#060; 　 ヽ ﾉ　　　　 ヽ
+</div>
+
+<ul>
+<li><code>font-family: Mona,sans-serif</code></li>
+</ul>
+<div class="testbox3" style="font-family: Mona,sans-serif" title="クマーAA「マイヤフー♪」">
+／￣￣￣￣￣＼
+|　 マイヤヒー♪ |　　　　　　 　 　 ／￣￣￣￣￣＼
+＼＿＿_ 　 ＿_／　　　　　　　　　 |　 マイヤフー♪ |　／￣￣￣￣￣＼
+　　　　　∨　　　　　　　　　　 　 　 ＼＿＿_ 　 ＿_／　|　 マイヤホー♪ |
+　　　　　　　　　　　　　　　　　　　　 　 　 　 ∨ 　 　 　 ＼＿_ 　 ＿＿__／
+　　 ∩＿＿＿∩ 　　　　　　　　　　　　 ∩＿＿＿_∩　 　 　 ∨
+　　 | ノ　　　　　ヽ 　　　　　　　　　　　/　　　　　　ヽ|　　∩＿＿＿_∩
+　　/　 ●　　　● |　 　　　　　　　　　 | ●　　　●　 ヽ / 　　　　　ヽ|
+　 |　　　　( _●_)　 ミ　　　　　　　　 彡 　 (_●_ ) 　 　 | ●　　　●　 ヽ
+　彡､　　　|∪|　　､｀＼　　　　　 　 ／ 　 　 |∪| 　　 彡　 (_●_)　　　 |
+/　＿＿　 ヽノ　/´&#062;　 )　　　　　　（　 &#060;　　 ヽ ﾉ 　 ／ 　　 |∪|　　　　ミ
+(＿＿＿）　　　/　(_／　　　　 　 　 ＼_ )　　　　 　（ 　&#060; 　 ヽ ﾉ　　　　 ヽ
+</div>
+
+<hr>
+
+<ul>
+<li><code>font-family:'IPA モナー Pゴシック'</code></li>
+</ul>
+<div class="testbox3" style="font-family:'IPA モナー Pゴシック'" title="クマーAA「マイヤフー♪」">
+／￣￣￣￣￣＼
+|　 マイヤヒー♪ |　　　　　　 　 　 ／￣￣￣￣￣＼
+＼＿＿_ 　 ＿_／　　　　　　　　　 |　 マイヤフー♪ |　／￣￣￣￣￣＼
+　　　　　∨　　　　　　　　　　 　 　 ＼＿＿_ 　 ＿_／　|　 マイヤホー♪ |
+　　　　　　　　　　　　　　　　　　　　 　 　 　 ∨ 　 　 　 ＼＿_ 　 ＿＿__／
+　　 ∩＿＿＿∩ 　　　　　　　　　　　　 ∩＿＿＿_∩　 　 　 ∨
+　　 | ノ　　　　　ヽ 　　　　　　　　　　　/　　　　　　ヽ|　　∩＿＿＿_∩
+　　/　 ●　　　● |　 　　　　　　　　　 | ●　　　●　 ヽ / 　　　　　ヽ|
+　 |　　　　( _●_)　 ミ　　　　　　　　 彡 　 (_●_ ) 　 　 | ●　　　●　 ヽ
+　彡､　　　|∪|　　､｀＼　　　　　 　 ／ 　 　 |∪| 　　 彡　 (_●_)　　　 |
+/　＿＿　 ヽノ　/´&#062;　 )　　　　　　（　 &#060;　　 ヽ ﾉ 　 ／ 　　 |∪|　　　　ミ
+(＿＿＿）　　　/　(_／　　　　 　 　 ＼_ )　　　　 　（ 　&#060; 　 ヽ ﾉ　　　　 ヽ
+</div>
+
+<ul>
+<li><code>font-family:'IPAMonaPGothic'</code></li>
+</ul>
+<div class="testbox3" style="font-family:'IPAMonaPGothic'" title="クマーAA「マイヤフー♪」">
+／￣￣￣￣￣＼
+|　 マイヤヒー♪ |　　　　　　 　 　 ／￣￣￣￣￣＼
+＼＿＿_ 　 ＿_／　　　　　　　　　 |　 マイヤフー♪ |　／￣￣￣￣￣＼
+　　　　　∨　　　　　　　　　　 　 　 ＼＿＿_ 　 ＿_／　|　 マイヤホー♪ |
+　　　　　　　　　　　　　　　　　　　　 　 　 　 ∨ 　 　 　 ＼＿_ 　 ＿＿__／
+　　 ∩＿＿＿∩ 　　　　　　　　　　　　 ∩＿＿＿_∩　 　 　 ∨
+　　 | ノ　　　　　ヽ 　　　　　　　　　　　/　　　　　　ヽ|　　∩＿＿＿_∩
+　　/　 ●　　　● |　 　　　　　　　　　 | ●　　　●　 ヽ / 　　　　　ヽ|
+　 |　　　　( _●_)　 ミ　　　　　　　　 彡 　 (_●_ ) 　 　 | ●　　　●　 ヽ
+　彡､　　　|∪|　　､｀＼　　　　　 　 ／ 　 　 |∪| 　　 彡　 (_●_)　　　 |
+/　＿＿　 ヽノ　/´&#062;　 )　　　　　　（　 &#060;　　 ヽ ﾉ 　 ／ 　　 |∪|　　　　ミ
+(＿＿＿）　　　/　(_／　　　　 　 　 ＼_ )　　　　 　（ 　&#060; 　 ヽ ﾉ　　　　 ヽ
+</div>
+
+<ul>
+<li><code>font-family: Mona</code></li>
+</ul>
+<div class="testbox3" style="font-family: Mona" title="クマーAA「マイヤフー♪」">
+／￣￣￣￣￣＼
+|　 マイヤヒー♪ |　　　　　　 　 　 ／￣￣￣￣￣＼
+＼＿＿_ 　 ＿_／　　　　　　　　　 |　 マイヤフー♪ |　／￣￣￣￣￣＼
+　　　　　∨　　　　　　　　　　 　 　 ＼＿＿_ 　 ＿_／　|　 マイヤホー♪ |
+　　　　　　　　　　　　　　　　　　　　 　 　 　 ∨ 　 　 　 ＼＿_ 　 ＿＿__／
+　　 ∩＿＿＿∩ 　　　　　　　　　　　　 ∩＿＿＿_∩　 　 　 ∨
+　　 | ノ　　　　　ヽ 　　　　　　　　　　　/　　　　　　ヽ|　　∩＿＿＿_∩
+　　/　 ●　　　● |　 　　　　　　　　　 | ●　　　●　 ヽ / 　　　　　ヽ|
+　 |　　　　( _●_)　 ミ　　　　　　　　 彡 　 (_●_ ) 　 　 | ●　　　●　 ヽ
+　彡､　　　|∪|　　､｀＼　　　　　 　 ／ 　 　 |∪| 　　 彡　 (_●_)　　　 |
+/　＿＿　 ヽノ　/´&#062;　 )　　　　　　（　 &#060;　　 ヽ ﾉ 　 ／ 　　 |∪|　　　　ミ
+(＿＿＿）　　　/　(_／　　　　 　 　 ＼_ )　　　　 　（ 　&#060; 　 ヽ ﾉ　　　　 ヽ
+</div>
+
+<ul>
+<li><code>font-family: Monapo</code></li>
+</ul>
+<div class="testbox3" style="font-family: Monapo" title="クマーAA「マイヤフー♪」">
+／￣￣￣￣￣＼
+|　 マイヤヒー♪ |　　　　　　 　 　 ／￣￣￣￣￣＼
+＼＿＿_ 　 ＿_／　　　　　　　　　 |　 マイヤフー♪ |　／￣￣￣￣￣＼
+　　　　　∨　　　　　　　　　　 　 　 ＼＿＿_ 　 ＿_／　|　 マイヤホー♪ |
+　　　　　　　　　　　　　　　　　　　　 　 　 　 ∨ 　 　 　 ＼＿_ 　 ＿＿__／
+　　 ∩＿＿＿∩ 　　　　　　　　　　　　 ∩＿＿＿_∩　 　 　 ∨
+　　 | ノ　　　　　ヽ 　　　　　　　　　　　/　　　　　　ヽ|　　∩＿＿＿_∩
+　　/　 ●　　　● |　 　　　　　　　　　 | ●　　　●　 ヽ / 　　　　　ヽ|
+　 |　　　　( _●_)　 ミ　　　　　　　　 彡 　 (_●_ ) 　 　 | ●　　　●　 ヽ
+　彡､　　　|∪|　　､｀＼　　　　　 　 ／ 　 　 |∪| 　　 彡　 (_●_)　　　 |
+/　＿＿　 ヽノ　/´&#062;　 )　　　　　　（　 &#060;　　 ヽ ﾉ 　 ／ 　　 |∪|　　　　ミ
+(＿＿＿）　　　/　(_／　　　　 　 　 ＼_ )　　　　 　（ 　&#060; 　 ヽ ﾉ　　　　 ヽ
+</div>
+
+</dd>
+</dl>
+<h2><a href="#bikou" name="bikou">備考</a></h2>
+
+<p>最終更新日：2011.6.25</p>
+
+<p>AA表示用CSS - <code>font-family</code> に <strong class="mona">Mona</strong> を追加</p>
+<p>AA表示用CSS - IE互換モード用pre要素での設定を追記</p>
+
+<p>あう、<span class="timesnr">Times New Roman</span> は <span class="serif">Serif</span> でした。（汗）</p>
+
+<p> <code>div.kuma</code>  - <code>margin: 3% auto 3% auto;</code> に修正。（左右センタリング）</p>
+<p>IE比較、<a href="./css_memo_font_utf8.html">UTF-8版</a>追加。</p>
+<p>IE の ClearType、IE8 について追記。フォント画像更新。</p>
+<p>IE の ClearType、有効・無効の画像追加。</p>
+<p><span class="takaopg">Takaoフォント</span>を追記。</p>
+<p><a href="http://mix-mplus-ipa.sourceforge.jp/migu/"><span class="migu1p">Miguフォント</span></a>を追加</p>
+
+<p>Operaについては、2番目が無視されるのではなく、英語版などで日本語フォント名が認識できない時など、<span class="sansserif">Sans-Serif</span> に指定しないと使えないのかもしれなません。</p>
+<p>メイリオは綺麗だけど、なんか結構クセ者の悪寒（何）</p>
+
+<p><em>文才なくて悪かったなぁー！（&larr; 不貞腐れ小学生モード）</em></p>
+
+<dl>
+<dt>ダウンロード・リンク</dt>
+<dd>
+<ul>
+<li><a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=f7d758d2-46ff-4c55-92f2-69ae834ac928&#038;DisplayLang=ja">Windows XP 向け ClearType 対応日本語フォント</a>
+	<ul>
+	<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/1020meiryo02/meiryo02.html">メイリオ・フォントをWindows XP／Server 2003で利用する（改訂版） － ＠IT</a></li>
+	</ul>
+</li>
+<li><a href="http://dicey.org/vlgothic/">VLゴシックフォントファミリ</a></li>
+<li><a href="http://www.geocities.jp/ipa_mona/">IPAモナーフォント</a></li>
+<li><a href="http://sourceforge.net/projects/monafont/">Mona Font, a Japanese font for text arts | Get Mona Font, a Japanese font for text arts at SourceForge.net</a></li>
+<li><a href="http://mix-mplus-ipa.sourceforge.jp/preview.html">M+ と IPAフォントの合成フォント : フォント一覧</a></li>
+<li><a href="http://www.gnome.org/fonts/">Bitstream Vera Fonts README</a></li>
+<li><a href="https://launchpad.net/takao-fonts">Takao Fonts in Launchpad</a></li>
+<li><a href="http://sourceforge.jp/projects/efont/">efont プロジェクト日本語トップページ - SourceForge.JP</a>（さざなみフォント）</li>
+<li><a href="http://mix-mplus-ipa.sourceforge.jp/migu/">Miguフォント : M+とIPAの合成フォント</a></li>
+</ul>
+</dd>
+</dl>
+
+<p>まだまだ調べないといけないことがいっぱいありそうだなぁ...orz</p>
+
+<hr>
+
+
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+
+
+</body>
+</html>

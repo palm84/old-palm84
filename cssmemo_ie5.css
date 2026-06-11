@@ -1,0 +1,60 @@
+@charset "Shift_JIS";
+
+body {
+width: 100%;
+}
+
+/*===== dl =====*/
+
+dl,
+dl dl {
+margin: 3% 5%;
+width: 100%
+}
+
+/*===== blockquote =====*/
+
+div.quote {
+margin: 3% 5%;
+width: 100%;
+}
+
+blockquote {
+margin: 0 auto;
+width: 100%;
+}
+
+/*===== pre =====*/
+
+pre {
+margin: 3% 5%;
+width: 100%;
+}
+
+/*===== testbox =====*/
+
+.testbox {
+margin: 3% 5%;
+width: 100%;
+}
+
+/*===== class kuma =====*/
+
+.kuma,
+pre.kuma2,
+.testbox3 {
+margin: 3% 5%;
+width: 100%;
+}
+
+
+/*===== Test 2columns =====*/
+
+div.mainbox,
+div.contents,
+div.mainbox2,
+div.contents2,
+div.mainbox3,
+div.contents3 {
+width: 100%;
+}

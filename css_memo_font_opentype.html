@@ -1,0 +1,3068 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="start" href="http://www10.plala.or.jp/palm84/index.html">
+<link rel="stylesheet" type="text/css" href="./cssmemo.css" media="all">
+<link rel="stylesheet" type="text/css" href="./cssmemo_print.css" media="print">
+<link rel="shortcut icon" href="./favicon.ico">
+<script type="text/javascript" charset="Shift_JIS" src="./cssmemo_font.js"></script>
+<title>OpenType フォントの表示テスト - CSSめも＠Palm84</title>
+<style type="text/css">
+<!--
+#test_opentype,
+#test_opentype_shs {
+background-color: white;
+}
+
+#test_opentype,
+#test_opentype_fonts,
+#test_opentype_fonts_p,
+#test_opentype_shs,
+#test_opentype_shs_fonts,
+#test_opentype_shs_fonts_p {
+line-height: 1;
+letter-spacing: 0;
+}
+
+.font_test {
+line-height: 1;
+background-color: white;
+}
+
+-->
+</style>
+</head>
+
+<body>
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+<script type="text/javascript">
+<!--
+setTimeout("link()", 0);
+function link(){
+location.href='https://www.palm84.com/entry/css_memo_font_opentype';
+}
+-->
+</script>
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>移行作業中です...</ins></dt>
+<dd>
+<p>はてなブログの該当ページへ<strong>リダイレクトします</strong>。お手数をおかけします。ご容赦ください。</p>
+</dd>
+</dl>
+
+<h1><a href="./css_memo_font_opentype.html" name="top">OpenType フォントの表示テスト</a></h1>
+
+<p><script src="http://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/css_memo_font_opentype.html"><img src="http://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/css_memo_font_opentype.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+<h2><a name="index" href="#index">目次</a></h2>
+
+<ol>
+<li><a href="#opentype">OpenType フォントとは？（PostScript フォント形式）</a></li>
+<li><a href="#gothic">ゴシック系</a>
+	<ul>
+	<li><a href="#source_han_sans">Adobe Source Han Sans （源ノ角ゴシック）/ Google Noto Fonts</a></li>
+	<li><a href="#source_han_code">Adobe Source Han Code JP（源ノ角ゴシック Code JP）</a></li>
+	<li><a href="#source_han_sans_hw">Adobe Source Han Sans HW（源ノ角ゴシック HW）</a></li>
+	<li><a href="#robotoj">RobotoJフォント</a></li>
+	</ul>
+</li>
+<li><a href="#serif">明朝体</a>
+	<ul>
+	<li><a href="#source_han_serif">Adobe Source Han Serif（源ノ明朝）/ Google Noto Serif CJK</a></li>
+	</ul>
+</li>
+<li><a href="#test">表示テスト</a></li>
+<li><a href="#bookmarklet">ブックマークレット</a></li>
+<li><a href="#bikou">備考</a></li>
+</ol>
+<h2><a name="opentype" href="#opentype">OpenType フォントとは？（PostScript フォント形式）</a></h2>
+
+<div class="quote">
+<blockquote cite="http://ja.wikipedia.org/wiki/OpenType" title="OpenType - Wikipedia">
+<p>OpenType （オープンタイプ）はコンピュータで扱うスケーラブルフォントの標準規格。TrueTypeの次期フォントとしてアドビシステムズ、マイクロソフトが共同で設計し、アップルコンピュータがそれに賛同する形で開発された。OpenType はマイクロソフトの登録商標であり、OpenType のロゴはアドビシステムズの登録商標である。</p>
+<p>OpenTypeとはTrueTypeとPostScriptフォントの両方の総称であるが、PostScriptフォント形式のみをOpenTypeと呼ぶことも多い。</p>
+</blockquote>
+<cite><a href="http://ja.wikipedia.org/wiki/OpenType">OpenType - Wikipedia</a></cite>
+</div>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/OpenType">OpenType - Wikipedia</a></li>
+<li><a href="http://windows.microsoft.com/ja-jp/windows/difference-truetype-postscript-opentype-fonts#1TC=windows-7">TrueType、PostScript、および OpenType フォントの違い - Microsoft Windows ヘルプ</a></li>
+</ul>
+
+<p>OpenType フォント（<code>.otf</code> ファイル）だと Windows でもそのままでブラウザ上でまぁまぁきれいに表示できますな。</p>
+
+<p>表示テストの項目については下記の通りです。</p>
+
+<div class="sp_overflow">
+<table class="cl font_test_item" summary="表示テストの項目">
+<caption>表示テストの項目</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">オー</th><th abbr="小文字のiと大文字のI">アイ</th><th abbr="小文字のl">小文字エル</th><th abbr="大文字のQ">Q</th><th abbr="濁点">濁点</th><th abbr="カナ漢字長音漢数字">カナ漢字長音漢数字</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+</table>
+</div>
+<h2><a name="gothic" href="#gothic">ゴシック系</a></h2>
+
+
+<div class="testbox_fonts">
+<ul>
+<li>スクリーンショット - ゴシック系 on Windows 10 Microsoft Edge</li>
+</ul>
+<p><img src="./images/css_memo_fonts_opentype/gothic_10_microsoft_edge.png" width="990" height="390" alt="ゴシック系 - on Windows 10 Microsoft Edge のスクリーンショット"></p>
+
+<ul>
+<li>スクリーンショット - ゴシック系 on Windows 10 Chrome47</li>
+</ul>
+<p><img src="./images/css_memo_fonts_opentype/gothic_10_chrome47.png" width="990" height="390" alt="ゴシック系 - on Windows 10 Chrome47 のスクリーンショット"></p>
+
+<ul>
+<li>スクリーンショット - ゴシック系 on Windows 10 MacType + Firefox43</li>
+</ul>
+<p><img src="./images/css_memo_fonts_opentype/gothic_10_mactype_firefox43.png" width="990" height="390" alt="ゴシック系 - on Windows 10 MacType + Firefox43 のスクリーンショット"></p>
+</div>
+
+<p class="pink">※ 完全じゃないです。<code>font-family:フォント名,serif</code> と指定してます。指定フォントがない環境及び足りない漢字は（※ 多分）Serif 設定のフォントで表示されます。</p>
+
+<ul style="margin-bottom:0;">
+<li>line-height : <a href="javascript:setLineHeight('table_sans', '1')">1</a> <a href="javascript:setLineHeight('table_sans', '1.5')">1.5</a></li>
+</ul>
+
+<div class="sp_overflow">
+<table id="table_sans" class="font_test" style="margin-left:0.3em;" summary="OpenType フォント - ゴシック系の表示テスト">
+<caption>OpenType フォント - ゴシック系</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ"><span class="small">ゼロ</span></th><th  abbr="大文字のO">O</th><th abbr="小文字のi">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="プブ">プブ</th><th abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:sans-serif;">
+<td><em class="mono red">Sans-serif</em></td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'小塚ゴシック Pr6N','小塚ゴシック Pr6N M',serif;">
+<td>小塚ゴシック Pr6N M</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'小塚ゴシック Pr6N M','小塚ゴシック Pr6N',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Textar',serif;">
+<td>Textar</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Textar',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'nukamisoOTF',serif;">
+<td>ぬかみそ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'nukamisoOTF',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'01フロップデザイン',serif;">
+<td>01フロップデザイン</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'01フロップデザイン',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'ぼくたちのゴシック',serif;">
+<td>ぼくたちのゴシック</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'ぼくたちのゴシック',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'ぼくたちのゴシック２レギュラー',serif;">
+<td class="small">ぼくたちのゴシック２レギュラー</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'ぼくたちのゴシック２レギュラー',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'ぼくたちのゴシック２ボールド',serif;">
+<td class="small">ぼくたちのゴシック２ボールド</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'ぼくたちのゴシック２ボールド',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'07やさしさゴシック',serif;">
+<td>07やさしさゴシック</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'07やさしさゴシック',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'07やさしさゴシック手書き',serif;">
+<td><span class="small">07やさしさゴシック手書き</span></td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'07やさしさゴシック手書き',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'07やさしさアンチック',serif;">
+<td>07やさしさアンチック</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'07やさしさアンチック',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'07ロゴたいぷゴシック7',serif;">
+<td>07ロゴたいぷゴシック7</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'07ロゴたいぷゴシック7',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+<h3><a name="source_han_sans" href="#source_han_sans">Adobe Source Han Sans （源ノ角ゴシック）/ Google Noto Fonts</a></h3>
+
+<ul>
+<li><a href="http://sourceforge.net/adobe/source-han-sans/wiki/Home/">Source Han Sans / Home / Home</a></li>
+<li><a href="http://sourceforge.jp/magazine/14/07/18/091600">米Adobe、Googleと共同開発した日中韓3か国語に対応するオープンソースフォント「Source Han Sans」を発表 | SourceForge.JP Magazine</a></li>
+<li><a href="http://www.forest.impress.co.jp/docs/news/20140716_658231.html">Adobe、日中韓の漢字を網羅したオープンソースのフォント「Source Han Sans」を公開 - 窓の杜</a></li>
+</ul>
+
+<div class="testbox_fonts">
+<ul>
+<li>スクリーンショット - 源ノ角ゴシック on Windows 10 Microsoft Edge</li>
+</ul>
+<p><img src="./images/css_memo_fonts_opentype/source_han_sans_10_microsoft_edge.png" width="982" height="251" alt="源ノ角ゴシック - on Windows 10 Microsoft Edge のスクリーンショット"></p>
+<ul>
+<li>スクリーンショット -源ノ角ゴシック on Windows 10 MacType + Firefox43</li>
+</ul>
+<p><img src="./images/css_memo_fonts_opentype/source_han_sans_10_mactype_firefox43.png" width="977" height="250" alt="源ノ角ゴシック - on Windows 10 MacType + Firefox43 のスクリーンショット"></p>
+</div>
+
+<p class="pink">※ 完全じゃないです。<code>font-family:フォント名,serif</code> と指定してます。指定フォントがない環境、指定フォントが認識されない場合、及び足りない漢字は（※ 多分）Serif 設定のフォントで表示されます。</p>
+
+<div class="sp_overflow">
+<table id="table_source_hans" class="font_test" style="margin-left:0.5em;line-height:1;" summary="OpenType フォント - 源ノ角ゴシックの表示テスト">
+<caption>OpenType フォント- 源ノ角ゴシック</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のi">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="プブ">プブ</th><th abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:sans-serif;">
+<td><em class="mono red">Sans-serif</em></td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック',serif;">
+<td>源ノ角ゴシック</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック JP',serif;">
+<td>源ノ角ゴシック JP</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック ExtraLight',serif;">
+<td>源ノ角ゴシック <span class="small">ExtraLight</span></td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック ExtraLight',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Light',serif;">
+<td>源ノ角ゴシック Light</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック Light',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Normal',serif;">
+<td>源ノ角ゴシック Normal</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック Normal',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Regular',serif;">
+<td>源ノ角ゴシック Regular</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック Regular',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Medium',serif;">
+<td>源ノ角ゴシック Medium</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック Medium',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Bold',serif;">
+<td>源ノ角ゴシック Bold</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック Bold',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Heavy',serif;">
+<td>源ノ角ゴシック Heavy</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック Heavy',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+<p>Firefox で DirectWrite 使用時は 'Regular' など指定ができないようです。<code>font-weight</code> の指定は可能でした。</p>
+
+<div class="sp_overflow">
+<table id="table_source_hans_test2" class="font_test" style="margin-left:0.5em;line-height:1;" summary="OpenType フォント - 源ノ角ゴシック font-weight 指定">
+<caption>OpenType フォント- 源ノ角ゴシック font-weight 指定</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のi">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="プブ">プブ</th><th abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック JP','源ノ角ゴシック',serif;font-weight:100;">
+<td>源ノ角ゴシック (100)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック JP','源ノ角ゴシック',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック JP','源ノ角ゴシック',serif;font-weight:300;">
+<td>源ノ角ゴシック (300)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック JP','源ノ角ゴシック',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック JP','源ノ角ゴシック',serif;font-weight:350;">
+<td>源ノ角ゴシック (350)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック JP','源ノ角ゴシック',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック JP','源ノ角ゴシック',serif;font-weight:400;">
+<td>源ノ角ゴシック (400)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック JP','源ノ角ゴシック',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック JP','源ノ角ゴシック',serif;font-weight:500;">
+<td>源ノ角ゴシック (500)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック JP','源ノ角ゴシック',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック JP','源ノ角ゴシック',serif;font-weight:700;">
+<td>源ノ角ゴシック (700)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック JP','源ノ角ゴシック',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック JP','源ノ角ゴシック',serif;font-weight:900;">
+<td>源ノ角ゴシック (900)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック JP','源ノ角ゴシック',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+
+<p>※ CSSで font-family を指定する際は、ブラウザ・DirectWrite の設定状態及び指定フォント名により表示に差異がかなりあるので注意が必要です。</p>
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20140720/1405856858">源ノ角ゴシック (Source Han Sans) の font-family 指定テスト</a></li>
+</ul>
+
+<div class="sp_overflow">
+<table id="table_source_hans_test3" class="font_test" style="margin-left:0.5em;line-height:1;" summary="OpenType フォント - 源ノ角ゴシック CSS指定テスト">
+<caption>OpenType フォント- 源ノ角ゴシック CSS指定テスト</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のi">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="プブ">プブ</th><th abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック',serif;">
+<td>源ノ角ゴシック</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Source Han Sans',serif">
+<td>Source Han Sans</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Source Han Sans',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Regular',serif;">
+<td>源ノ角ゴシック Regular</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック Regular',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Source Han Sans Regular',serif;">
+<td>Source Han Sans Regular</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Source Han Sans Regular',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'SourceHanSans-Regular',serif;">
+<td>SourceHanSans-Regular</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'SourceHanSans-Regular',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Regular','源ノ角ゴシック',serif;">
+<td class="small">1. 源ノ角ゴシック Regular<br>2. 源ノ角ゴシック</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック Regular','源ノ角ゴシック',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Source Han Sans Medium','源ノ角ゴシック',serif;">
+<td class="small">1. Source Han Sans Medium<br>2. 源ノ角ゴシック</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Source Han Sans Medium','源ノ角ゴシック',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+
+<div class="sp_overflow">
+<table id="table_source_hans_test4" class="font_test" style="margin-left:0.5em;line-height:1;" summary="OpenType フォント - 源ノ角ゴシック JP CSS指定テスト">
+<caption>OpenType フォント- 源ノ角ゴシック JP CSS指定テスト</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のi">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="プブ">プブ</th><th abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック JP',serif;">
+<td>源ノ角ゴシック JP</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Source Han Sans JP',serif">
+<td>Source Han Sans JP</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Source Han Sans JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック JP Regular',serif;">
+<td>源ノ角ゴシック JP Regular</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック JP Regular',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Source Han Sans JP Regular',serif;">
+<td>Source Han Sans JP Regular</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Source Han Sans JP Regular',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'SourceHanSansJP-Regular',serif;">
+<td>SourceHanSansJP-Regular</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'SourceHanSansJP-Regular',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック JP Regular','源ノ角ゴシック JP',serif;">
+<td class="small">1. 源ノ角ゴシック JP Regular<br>2. 源ノ角ゴシック JP</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック JP Regular','源ノ角ゴシック JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Source Han Sans JP Medium','源ノ角ゴシック JP',serif;">
+<td class="small">1. Source Han Sans JP Medium<br>2. 源ノ角ゴシック JP</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Source Han Sans JP Medium','源ノ角ゴシック JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+
+<div class="sp_overflow">
+<table id="table_noto3" class="font_test" style="margin-left:0.5em;line-height:1;" summary="OpenType フォント - Noto Sans CJK JPの表示テスト">
+<caption>OpenType フォント- Noto Sans CJK JP</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のi">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="プブ">プブ</th><th abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:sans-serif;">
+<td><em class="mono red">Sans-serif</em></td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Sans CJK JP',serif;">
+<td class="small">Noto Sans CJK JP</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Sans CJK JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Sans CJK JP Thin',serif;">
+<td class="small">Noto Sans CJK JP Thin</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Sans CJK JP Thin',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Sans CJK JP Light',serif;">
+<td class="small">Noto Sans CJK JP Light</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Sans CJK JP Light',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Sans CJK JP DemiLight',serif;">
+<td class="small">Noto Sans CJK JP DemiLight</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Sans CJK JP DemiLight',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Sans CJK JP Regular',serif;">
+<td class="small">Noto Sans CJK JP Regular</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Sans CJK JP Regular',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Sans CJK JP Medium',serif;">
+<td class="small">Noto Sans CJK JP Medium</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Sans CJK JP Medium',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Sans CJK JP Bold',serif;">
+<td class="small">Noto Sans CJK JP Bold</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Sans CJK JP Bold',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Sans CJK JP Black',serif;">
+<td class="small">Noto Sans CJK JP Black</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Sans CJK JP Black',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+
+<div class="sp_overflow">
+<table id="table_noto4" class="font_test" style="margin-left:0.5em;line-height:1;" summary="OpenType フォント - Noto Sans CJK JP font-weight 指定">
+<caption>OpenType フォント- Noto Sans CJK JP font-weight 指定</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のi">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="プブ">プブ</th><th abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:sans-serif;">
+<td><em class="mono red">Sans-serif</em></td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Sans CJK JP',serif;font-weight:100;">
+<td class="small">Noto Sans CJK JP (100)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Sans CJK JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Sans CJK JP',serif;font-weight:300;">
+<td class="small">Noto Sans CJK JP (300)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Sans CJK JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Sans CJK JP',serif;font-weight:350;">
+<td class="small">Noto Sans CJK JP (350)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Sans CJK JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Sans CJK JP',serif;font-weight:400;">
+<td class="small">Noto Sans CJK JP (400)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Sans CJK JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Sans CJK JP',serif;font-weight:500;">
+<td class="small">Noto Sans CJK JP (500)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Sans CJK JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Sans CJK JP',serif;font-weight:700;">
+<td class="small">Noto Sans CJK JP (700)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Sans CJK JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Sans CJK JP',serif;font-weight:900;">
+<td class="small">Noto Sans CJK JP (900)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Sans CJK JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+<h3><a name="source_han_code" href="#source_han_code">Source Han Code JP（源ノ角ゴシック Code JP）</a></h3>
+
+<div class="testbox_fonts">
+<ul>
+<li>スクリーンショット - 源ノ角ゴシック Code JP on Windows 10 Microsoft Edge</li>
+</ul>
+<p><img src="./images/css_memo_fonts_opentype/source_han_code_10_microsoft_edge.png" width="967" height="285" alt="源ノ角ゴシック Code JP - on Windows 10 Microsoft Edge のスクリーンショット"></p>
+<ul>
+<li>スクリーンショット -源ノ角ゴシック Code JP on Windows 10 MacType + Firefox43</li>
+</ul>
+<p><img src="./images/css_memo_fonts_opentype/source_han_code_10_mactype_firefox43.png" width="978" height="285" alt="源ノ角ゴシック Code JP - on Windows 10 MacType + Firefox43 のスクリーンショットのスクリーンショット"></p>
+</div>
+
+<p class="pink">※ 完全じゃないです。<code>font-family:フォント名,serif</code> と指定してます。指定フォントがない環境、指定フォントが認識されない場合、及び足りない漢字は（※ 多分）Serif 設定のフォントで表示されます。</p>
+
+<div class="sp_overflow">
+<table id="table_source_han_code" class="font_test" style="margin-left:0.5em;line-height:1;" summary="OpenType フォント - 源ノ角ゴシック Code JP の表示テスト">
+<caption>OpenType フォント- 源ノ角ゴシック Code JP</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のi">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="プブ">プブ</th><th abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:sans-serif;">
+<td><em class="sans red">Sans-serif</em></td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:monospace;">
+<td><em class="mono red">monospace</em></td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:monospace;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Code JP',serif;">
+<td class="small">源ノ角ゴシック Code JP</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック Code JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Code JP ExtraLight',serif;">
+<td class="small">ExtraLight</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック Code JP ExtraLight',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Code JP Light',serif;">
+<td class="small">Light</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック Code JP Light',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Code JP Normal',serif;">
+<td class="small">Normal</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック Code JP Normal',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Code JP Regular',serif;">
+<td class="small">Regular</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック Code JP Regular',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Code JP Medium',serif;">
+<td class="small">Medium</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック Code JP Medium',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Code JP Bold',serif;">
+<td class="small">Bold</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック Code JP Bold',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Code JP Heavy',serif;">
+<td class="small">Heavy</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック Code JP Heavy',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+<p>Firefox で DirectWrite 使用時は 'Regular' など指定ができないようです。<code>font-weight</code> の指定は可能でした。</p>
+
+<div class="sp_overflow">
+<table id="table_source_han_code_test2" class="font_test" style="margin-left:0.5em;line-height:1;" summary="OpenType フォント - 源ノ角ゴシック Code JP font-weight 指定">
+<caption>OpenType フォント- 源ノ角ゴシック Code JP font-weight 指定</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のi">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="プブ">プブ</th><th abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Code JP','源ノ角ゴシック Code JP',serif;font-weight:100;">
+<td class="small">font-weight:100</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック Code JP','源ノ角ゴシック Code JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Code JP','源ノ角ゴシック Code JP',serif;font-weight:300;">
+<td class="small">font-weight:300</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック Code JP','源ノ角ゴシック Code JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Code JP','源ノ角ゴシック Code JP',serif;font-weight:350;">
+<td class="small">font-weight:350</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック Code JP','源ノ角ゴシック Code JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Code JP','源ノ角ゴシック Code JP',serif;font-weight:400;">
+<td class="small">font-weight:400</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック Code JP','源ノ角ゴシック Code JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Code JP','源ノ角ゴシック Code JP',serif;font-weight:500;">
+<td class="small">font-weight:500</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック Code JP','源ノ角ゴシック Code JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Code JP','源ノ角ゴシック Code JP',serif;font-weight:700;">
+<td class="small">font-weight:700</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック Code JP','源ノ角ゴシック Code JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Code JP','源ノ角ゴシック Code JP',serif;font-weight:900;">
+<td class="small">font-weight:900</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック Code JP','源ノ角ゴシック Code JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+<h3><a name="source_han_sans_hw" href="#source_han_sans_hw">Adobe Source Han Sans HW（源ノ角ゴシック HW）</a></h3>
+<p>monospace（等幅）版も出てました。</p>
+
+<div class="testbox_fonts">
+<ul>
+<li>スクリーンショット - 源ノ角ゴシック HW on Windows 10 Microsoft Edge</li>
+</ul>
+<p><img src="./images/css_memo_fonts_opentype/source_han_hw_10_microsoft_edge.png" width="951" height="71" alt="源ノ角ゴシック HW - on Windows 10 Microsoft Edge のスクリーンショット"></p>
+<ul>
+<li>スクリーンショット - 源ノ角ゴシック HW on Windows 10 MacType + Firefox43</li>
+</ul>
+<p><img src="./images/css_memo_fonts_opentype/source_han_hw_10_mactype_firefox43.png" width="964" height="76" alt="源ノ角ゴシック HW - on Windows 10 MacType + Firefox43 のスクリーンショット"></p>
+</div>
+
+<p class="pink">※ 完全じゃないです。<code>font-family:フォント名,serif</code> と指定してます。指定フォントがない環境、指定フォントが認識されない場合、及び足りない漢字は（※ 多分）Serif 設定のフォントで表示されます。</p>
+
+<div class="sp_overflow">
+<table id="table_source_han_code_test3" class="font_test" style="margin-left:0.5em;line-height:1;" summary="OpenType フォント - 源ノ角ゴシック HW">
+<caption>OpenType フォント - 源ノ角ゴシック HW</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のi">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="プブ">プブ</th><th abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:monospace;">
+<td><em class="mono red">monospace</em></td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック HW Regular','源ノ角ゴシック HW',serif;">
+<td>源ノ角ゴシック HW</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック HW Regular','源ノ角ゴシック HW',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Sans Mono CJK JP Regular','Noto Sans Mono CJK JP',serif;">
+<td>Noto Sans Mono CJK JP</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Sans Mono CJK JP Regular','Noto Sans Mono CJK JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+<h3><a name="robotoj" href="#robotoj">RobotoJフォント</a></h3>
+
+<ul>
+<li><a href="https://ja.osdn.net/projects/robotoj-font/">RobotoJ-Font プロジェクト日本語トップページ - OSDN</a> <a href="http://b.hatena.ne.jp/entry/https://ja.osdn.net/projects/robotoj-font/" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://ja.osdn.net/projects/robotoj-font/" alt="" class="http-bookmark" /></a></li>
+</ul>
+<div class="quote">
+<blockquote cite="https://ja.osdn.net/projects/robotoj-font/" title="RobotoJ-Font プロジェクト日本語トップページ - OSDN">
+<p>Androidの標準のフォント「Roboto」に、日本語フォントを合成・改変して作成しました。Roboto＋日本語(J)という事で、RobotoJと命名しました。</p>
+
+<p>組み合わせた日本語フォントは、モトヤLシーダ3等幅、源真ゴシック、Miguフォント、およびM+ OUTLINE FONTSになります。</p>
+</blockquote>
+<cite><a href="https://ja.osdn.net/projects/robotoj-font/">RobotoJ-Font プロジェクト日本語トップページ - OSDN</a></cite>
+</div>
+
+<div class="quote">
+<blockquote cite="https://ja.osdn.net/projects/robotoj-font/" title="RobotoJ-Font プロジェクト日本語トップページ - OSDN">
+<p>RobotoJフォントは以下の４種類となります。</p>
+<ul>
+<li>RobotoJ → 通常フォント<br></li>
+<li>RobotoJS → 通常フォントのゼロ「０」にスラッシュを付けた物です</li>
+<li>RobotoJAA → AA（アスキーアート）を表示するためのフォントです。</li>
+<li>RobotoJ Mono → 等幅のフォントです。</li>
+</ul>
+</blockquote>
+<cite><a href="https://ja.osdn.net/projects/robotoj-font/">RobotoJ-Font プロジェクト日本語トップページ - OSDN</a></cite>
+</div>
+
+<div class="testbox_fonts">
+<ul>
+<li>スクリーンショット - RobotoJフォント(.otf) on Windows 10 Microsoft Edge</li>
+</ul>
+<p><img src="./images/css_memo_fonts_opentype/robotoJ_10_edge_otf.png" width="885" height="108" alt="RobotoJ-Font(.otf) on Windows 10 Microsoft Edge のスクリーンショット"></p>
+<ul>
+<li>スクリーンショット - RobotoJフォント(.otf) on Windows 10 MacType + Firefox51</li>
+</ul>
+<p><img src="./images/css_memo_fonts_opentype/robotoJ_10_mactype_firefox51_otf.png" width="891" height="109" alt="RobotoJ-Font(.otf) on Windows 10 MacType + Firefox51 のスクリーンショット"></p>
+</div>
+
+<p class="pink">※ 完全じゃないです。<code>font-family:フォント名,serif</code> と指定してます。指定フォントがない環境、指定フォントが認識されない場合、及び足りない漢字は（※ 多分）Serif 設定のフォントで表示されます。</p>
+
+<div class="sp_overflow">
+<table id="table_robotoj" class="font_test" style="margin-left:0.5em;line-height:1;" summary="OpenType フォント - RobotoJフォント">
+<caption>OpenType フォント - RobotoJフォント</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のi">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="プブ">プブ</th><th abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:serif;">
+<td><em class="mono red">Serif</em></td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:monospace;">
+<td><em class="mono red">monospace</em></td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:RobotoJ,serif;">
+<td>RobotoJ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:RobotoJ,serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:RobotoJS,serif;">
+<td>RobotoJS</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:RobotoJS,serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:RobotoJAA,serif;">
+<td>RobotoJAA</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:RobotoJAA,serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+<h2><a name="serif" href="#serif">明朝体</a></h2>
+
+<div class="testbox_fonts">
+<ul>
+<li>スクリーンショット - 明朝体 on Windows 10 Microsoft Edge</li>
+</ul>
+<p><img src="./images/css_memo_fonts_opentype/serif_10_microsoft_edge.png" width="918" height="147" alt="明朝体 - on Windows 10 Microsoft Edge のスクリーンショット"></p>
+<ul>
+<li>スクリーンショット -明朝体 on Windows 10 MacType + Firefox43</li>
+</ul>
+<p><img src="./images/css_memo_fonts_opentype/serif_10_mactype_firefox43.png" width="916" height="146" alt="明朝体 - on Windows 10 MacType + Firefox43 のスクリーンショットのスクリーンショット"></p>
+</div>
+
+<p class="pink">※ 完全じゃないです。<code>font-family:フォント名,sans-serif</code> と指定してます。指定フォントがない環境及び足りない漢字は（※ 多分）sans-serif 設定のフォントで表示されます。</p>
+
+<ul style="margin-bottom:0;">
+<li>line-height : <a href="javascript:setLineHeight('table_serif', '1')">1</a> <a href="javascript:setLineHeight('table_serif', '1.5')">1.5</a></li>
+</ul>
+
+<div class="sp_overflow">
+<table id="table_serif" class="font_test" summary="OpenType フォント - 明朝体の表示テスト">
+<caption>OpenType フォント- 明朝体</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のi">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="プブ">プブ</th><th abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:serif;">
+<td><em class="mono red">Serif</em></td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'小塚明朝 Pr6N R','小塚明朝 Pr6N',sans-serif;">
+<td>小塚明朝 Pr6N R</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'小塚明朝 Pr6N R','小塚明朝 Pr6N',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'02うつくし明朝体',sans-serif;">
+<td>うつくし明朝体</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'02うつくし明朝体',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'はんなり明朝',sans-serif;">
+<td>はんなり明朝</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'はんなり明朝',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'こころ明朝体',sans-serif;">
+<td>こころ明朝体</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'こころ明朝体',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+<h3><a name="source_han_serif" href="#source_han_serif">Adobe Source Han Serif（源ノ明朝）/ Google Noto Serif CJK</a></h3>
+
+<ul>
+<li><a href="http://forest.watch.impress.co.jp/docs/news/1052973.html">Adobe、「源ノ明朝」フォントをリリース ～「源ノ角ゴシック」と対になるセリフ書体 - 窓の杜</a> <a href="http://b.hatena.ne.jp/entry/http://forest.watch.impress.co.jp/docs/news/1052973.html" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/http://forest.watch.impress.co.jp/docs/news/1052973.html" alt="" class="http-bookmark" /></a></li>
+<li><a href="http://forest.watch.impress.co.jp/docs/news/1052998.html">Google、日中韓対応の明朝体フォント「Noto Serif CJK」を無償公開 - 窓の杜</a> <a href="http://b.hatena.ne.jp/entry/http://forest.watch.impress.co.jp/docs/news/1052998.html" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/http://forest.watch.impress.co.jp/docs/news/1052998.html" alt="" class="http-bookmark" /></a></li>
+</ul>
+
+<div class="testbox_fonts">
+<ul>
+<li>スクリーンショット - 源ノ明朝 on Windows 10 Microsoft Edge</li>
+</ul>
+<p><img src="./images/css_memo_fonts_opentype/source_han_serif_10_microsoft_edge.png" width="944" height="248" alt="源ノ明朝 - on Windows 10 Microsoft Edge のスクリーンショット"></p>
+<ul>
+<li>スクリーンショット -源ノ明朝 on Windows 10 MacType + Firefox52</li>
+</ul>
+<p><img src="./images/css_memo_fonts_opentype/source_han_serif_10_mactype_firefox52.png" width="944" height="249" alt="源ノ明朝 - on Windows 10 MacType + Firefox52 のスクリーンショット"></p>
+</div>
+
+<p class="pink">※ 完全じゃないです。<code>font-family:フォント名,sans-serif</code> と指定してます。指定フォントがない環境、指定フォントが認識されない場合、及び足りない漢字は（※ 多分）sans-serif 設定のフォントで表示されます。</p>
+
+<div class="sp_overflow">
+<table id="table_source_serif" class="font_test" style="margin-left:0.5em;line-height:1;" summary="OpenType フォント - 源ノ明朝の表示テスト">
+<caption>OpenType フォント- 源ノ明朝</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のi">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="プブ">プブ</th><th abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:sans-serif;">
+<td><em class="mono red">Sans-serif</em></td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ明朝 ExtraLight',sans-serif;">
+<td>源ノ明朝 <span class="small">ExtraLight</span></td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ明朝 ExtraLight',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ明朝 Light',sans-serif;">
+<td>源ノ明朝 Light</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ明朝 Light',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ明朝',sans-serif;">
+<td>源ノ明朝</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ明朝',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ明朝 Medium',sans-serif;">
+<td>源ノ明朝 Medium</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ明朝 Medium',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ明朝 SemiBold',sans-serif;">
+<td>源ノ明朝 SemiBold</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ明朝 SemiBold',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ明朝 Bold','Source Han Serif',sans-serif;">
+<td>源ノ明朝 Bold</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ明朝 Bold',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ明朝 Heavy',sans-serif;">
+<td>源ノ明朝 Heavy</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ明朝 Heavy',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+<p>Firefox で DirectWrite 使用時は <del>'Regular'</del> <ins>'Light'</ins> など指定ができないようです。<code>font-weight</code> の指定は可能でした。</p>
+
+<div class="sp_overflow">
+<table id="table_source_hans_serif2" class="font_test" style="margin-left:0.5em;line-height:1;" summary="OpenType フォント - 源ノ明朝 font-weight 指定">
+<caption>OpenType フォント- 源ノ明朝 font-weight 指定</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のi">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="プブ">プブ</th><th abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ明朝 JP','源ノ明朝',sans-serif;font-weight:100;">
+<td>源ノ明朝 (100)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ明朝 JP','源ノ明朝',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ明朝 JP','源ノ明朝',sans-serif;font-weight:300;">
+<td>源ノ明朝 (300)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ明朝 JP','源ノ明朝',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ明朝 JP','源ノ明朝',sans-serif;font-weight:400;">
+<td>源ノ明朝 (400)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ明朝 JP','源ノ明朝',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ明朝 JP','源ノ明朝',sans-serif;font-weight:500;">
+<td>源ノ明朝 (500)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ明朝 JP','源ノ明朝',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ明朝 JP','源ノ明朝',sans-serif;font-weight:600;">
+<td>源ノ明朝 (600)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ明朝 JP','源ノ明朝',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ明朝 JP','源ノ明朝',sans-serif;font-weight:700;">
+<td>源ノ明朝 (700)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ明朝 JP','源ノ明朝',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ明朝 JP','源ノ明朝',sans-serif;font-weight:800;">
+<td>源ノ明朝 (800)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'源ノ明朝 JP','源ノ明朝',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+
+<div class="sp_overflow">
+<table id="table_source_noto_serif" class="font_test" style="margin-left:0.5em;line-height:1;" summary="OpenType フォント - Noto Serif CJK JP の表示テスト">
+<caption>OpenType フォント- Noto Serif CJK JP</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のi">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="プブ">プブ</th><th abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:sans-serif;">
+<td><em class="mono red">Sans-serif</em></td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Serif CJK JP ExtraLight',sans-serif;">
+<td class="small">Noto Serif CJK JP ExtraLight</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Serif CJK JP ExtraLight',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Serif CJK JP Light',sans-serif;">
+<td class="small">Noto Serif CJK JP Light</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Serif CJK JP Light',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Serif CJK JP',sans-serif;">
+<td class="small">Noto Serif CJK JP (Regular)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Serif CJK JP',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Serif CJK JP Medium',sans-serif;">
+<td class="small">Noto Serif CJK JP Medium</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Serif CJK JP Medium',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Serif CJK JP SemiBold',sans-serif;">
+<td class="small">Noto Serif CJK JP SemiBold</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Serif CJK JP SemiBold',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Serif CJK JP Black',sans-serif;">
+<td class="small">Noto Serif CJK JP Black</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Serif CJK JP Black',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+<div class="sp_overflow">
+<table id="table_source_noto_serif2" class="font_test" style="margin-left:0.5em;line-height:1;" summary="OpenType フォント - Noto Serif CJK JP font-weight 指定">
+<caption>OpenType フォント- Noto Serif CJK JP font-weight 指定</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のi">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="プブ">プブ</th><th abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Serif CJK JP JP','Noto Serif CJK JP',sans-serif;font-weight:100;">
+<td class="small">Noto Serif CJK JP (100)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Serif CJK JP JP','Noto Serif CJK JP',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Serif CJK JP JP','Noto Serif CJK JP',sans-serif;font-weight:300;">
+<td class="small">Noto Serif CJK JP (300)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Serif CJK JP JP','Noto Serif CJK JP',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Serif CJK JP JP','Noto Serif CJK JP',sans-serif;font-weight:400;">
+<td class="small">Noto Serif CJK JP (400)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Serif CJK JP JP','Noto Serif CJK JP',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Serif CJK JP JP','Noto Serif CJK JP',sans-serif;font-weight:500;">
+<td class="small">Noto Serif CJK JP (500)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Serif CJK JP JP','Noto Serif CJK JP',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Serif CJK JP JP','Noto Serif CJK JP',sans-serif;font-weight:600;">
+<td class="small">Noto Serif CJK JP (600)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Serif CJK JP JP','Noto Serif CJK JP',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Serif CJK JP JP','Noto Serif CJK JP',sans-serif;font-weight:700;">
+<td class="small">Noto Serif CJK JP (700)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Serif CJK JP JP','Noto Serif CJK JP',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Serif CJK JP JP','Noto Serif CJK JP',sans-serif;font-weight:800;">
+<td class="small">Noto Serif CJK JP (800)</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'Noto Serif CJK JP JP','Noto Serif CJK JP',sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+<h2><a name="test" href="#test">表示テスト</a></h2>
+
+<p>JavaScript 初心者なので内容未保証ですけど...</p>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/%E3%83%96%E3%83%83%E3%82%AF%E3%83%9E%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88">ブックマークレット - Wikipedia</a></li>
+<li><a href="http://bookmarklet.daa.jp/">JAVASCRIPT::BOOKMARKLET</a></li>
+<li><a href="http://www.qunea.com/memo/archives/355">Firefoxでフォントファミリーを変えるブックマークレット - クネアシ</a></li>
+</ul>
+
+<hr class="cl" style="width:96%;">
+
+<ul class="small">
+<li>font-size <a href="javascript:rmProperty('test_opentype', 'font-size');">削除</a> | <a href="javascript:setZoom('test_opentype', '80%');">80%</a> | <a href="javascript:setZoom('test_opentype', '100%');">100%</a> | <a href="javascript:setZoom('test_opentype', '110%');">110%</a> | <a href="javascript:setZoom('test_opentype', '120%');">120%</a> | <a href="javascript:setZoom('test_opentype', '150%');">150%</a> | font-style <a href="javascript:rmProperty('test_opentype','font-style' );">削除</a> | <a href="javascript:setFontStyle('test_opentype', 'normal');">normal</a> | <a href="javascript:setFontStyle('test_opentype', 'italic');">italic</a> | <a href="javascript:setFontStyle('test_opentype', 'oblique');">oblique</a></li>
+<li>line-height <a href="javascript:rmProperty('test_opentype', 'line-height');">削除</a> | <a href="javascript:setLineHeight('test_opentype', '1');">1</a> | <a href="javascript:setLineHeight('test_opentype', '1.1');">1.1</a> | <a href="javascript:setLineHeight('test_opentype', '1.2');">1.2</a> | <a href="javascript:setLineHeight('test_opentype', '1.3');">1.3</a> | <a href="javascript:setLineHeight('test_opentype', '1.4');">1.4</a> | <a href="javascript:setLineHeight('test_opentype', '1.5');">1.5</a> | <a href="javascript:setLineHeight('test_opentype', '2');">2</a> | letter-spacing <a href="javascript:rmProperty('test_opentype','letter-spacing' );">削除</a> | <a href="javascript:setLetterSpacing('test_opentype', '0');">0</a> | <a href="javascript:setLetterSpacing('test_opentype', '0.5px');">0.5px</a> | <a href="javascript:setLetterSpacing('test_opentype', '1px');">1px</a> | <a href="javascript:setLetterSpacing('test_opentype', '1.5px');">1.5px</a> | <a href="javascript:setLetterSpacing('test_opentype', '2px');">2px</a></li>
+<li>font-weight <a href="javascript:rmProperty('test_opentype','font-weight' );">削除</a> | <a href="javascript:setFontWeight('test_opentype', 'lighter');">lighter</a> | <a href="javascript:setFontWeight('test_opentype', 'normal');">normal</a> | <a href="javascript:setFontWeight('test_opentype', 'bold');">bold</a> | <a href="javascript:setFontWeight('test_opentype', 'bolder');">bolder</a> | <a href="javascript:setFontWeight('test_opentype', '100');">100</a> | <a href="javascript:setFontWeight('test_opentype', '200');">200</a> | <a href="javascript:setFontWeight('test_opentype', '300');">300</a> | <a href="javascript:setFontWeight('test_opentype', '400');">400</a> | <a href="javascript:setFontWeight('test_opentype', '500');">500</a> | <a href="javascript:setFontWeight('test_opentype', '600');">600</a> | <a href="javascript:setFontWeight('test_opentype', '700');">700</a> | <a href="javascript:setFontWeight('test_opentype', '800');">800</a> | <a href="javascript:setFontWeight('test_opentype', '900');">900</a></li>
+<li>color <a href="javascript:rmProperty('test_opentype','color' );">削除</a> | <a href="javascript:setColor('test_opentype', 'black');">black</a> | <a href="javascript:setColor('test_opentype', '#595959');">#595959</a> | <a href="javascript:setColor('test_opentype', 'white');">white</a> | background-color <a href="javascript:rmProperty('test_opentype','background-color' );">削除</a> | <a href="javascript:setBGColor('test_opentype', 'white');">white</a> | <a href="javascript:setBGColor('test_opentype', '#ffe');">#ffe</a> | <a href="javascript:setBGColor('test_opentype', 'black');">black</a></li>
+<li><a href="javascript:rmStyle('test_opentype')">style削除</a></li>
+</ul>
+
+<div id="test_opentype">
+
+<div class="sp_overflow">
+<table class="cl font_test_script" style="font-size:1em;margin-left:1em;margin-bottom:0.5em;" summary="フォントの表示テスト">
+<caption>表示テスト</caption>
+<tr style="font-family:sans-serif">
+<td>Sans-serif</td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>MWayg9~*@</td>
+<td class="center"><span style="font-family:sans-serif">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:serif">
+<td>Serif</td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>MWayg9~*@</td>
+<td class="center"><span style="font-family:serif">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:monospace">
+<td>monospace</td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>MWayg9~*@</td>
+<td class="center"><span style="font-family:monospace">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr>
+<td><span class="red">無指定</span></td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>MWayg9~*@</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr id="test_opentype_fonts">
+<td><span class="red" style="font-weight:bold;">テスト</span></td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>MWayg9~*@</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+<div class="testbox5">
+<p id="test_opentype_fonts_p">
+<span class="small">0123456789 \'&#034;~*#$%&#038;@ abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+<br>0123456789 \'&#034;~*#$%&#038;@ abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ
+<br><span style="font-size:120%;">0123456789 \'&#034;~*#$%&#038;@ abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+<br><span class="small">新しい朝が来た！不埒な草彅剛、髙濱、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br>新しい朝が来た！不埒な草彅剛、髙濱、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑
+<br><span style="font-size:120%;">新しい朝が来た！不埒な草彅剛、髙濱、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br><br><span style="font-size:80%;">日本の食文化において、主食とされる米飯や雑穀飯の副食として、主要な位置を占める。料亭や食堂で出される事も、家庭料理として家庭で作られる事もある、汁物料理の代表である。昆布・削り節や煮干しなどで出汁をとり、食材と味噌で味を作るという、調理法としては単純な料理であるが、出汁・味噌に加え具材も各家庭・調理者によって千差万別であるため、おふくろの味と称される事もあり、作り方は様々である。また、各地で古くから作られており、名物料理だったり町おこしの料理ともされる。</span>
+<br><br>日本の食文化において、主食とされる米飯や雑穀飯の副食として、主要な位置を占める。料亭や食堂で出される事も、家庭料理として家庭で作られる事もある、汁物料理の代表である。昆布・削り節や煮干しなどで出汁をとり、食材と味噌で味を作るという、調理法としては単純な料理であるが、出汁・味噌に加え具材も各家庭・調理者によって千差万別であるため、おふくろの味と称される事もあり、作り方は様々である。また、各地で古くから作られており、名物料理だったり町おこしの料理ともされる。
+<br><cite><a href="http://ja.wikipedia.org/wiki/%E5%91%B3%E5%99%8C%E6%B1%81">味噌汁 - Wikipedia</a></cite>
+</p>
+</div>
+
+</div>
+
+
+<ul class="small">
+<li><a href="javascript:rmProperty('test_opentype_fonts', 'font-family');">削除</a>
+ | <a href="javascript:setFont('test_opentype_fonts', 'inherit');">inherit</a> ( 
+<a href="javascript:setFont('test_opentype_fonts', 'sans-serif');">sans-serif</a>
+ | <a href="javascript:setFont('test_opentype_fonts', 'serif');">serif</a>
+ | <a href="javascript:setFont('test_opentype_fonts', 'monospace');">monospace</a>
+ | <a href="javascript:setFont('test_opentype_fonts', 'cursive');">cursive</a>
+ | <a href="javascript:setFont('test_opentype_fonts', 'fantasy');">fantasy</a> )
+ ( <a href="javascript:setFont('test_opentype_fonts', 'monospace, \'ＭＳ ゴシック\'');">monospace, 'ＭＳ ゴシック'</a> | <a href="javascript:setFont('test_opentype_fonts', 'monospace, serif');">monospace, serif</a> )
+</li>
+<li><a href="javascript:setFont('test_opentype_fonts', '\'メイリオ\',Meiryo');">メイリオ</a>
+ | <a href="javascript:setFont('test_opentype_fonts', '\'Meiryo UI\'');">Meiryo UI</a>
+ | <a href="javascript:setFont('test_opentype_fonts', '\'ＭＳ Ｐゴシック\'');">ＭＳ Ｐゴシック</a>
+ | <a href="javascript:setFont('test_opentype_fonts', '\'MS UI Gothic\'');">MS UI Gothic</a>
+ | <a href="javascript:setFont('test_opentype_fonts', '\'ＭＳ Ｐ明朝\'');">ＭＳ Ｐ明朝</a>
+ | <a href="javascript:setFont('test_opentype_fonts', '\'ＭＳ ゴシック\'');">ＭＳ ゴシック</a>
+ | <a href="javascript:setFont('test_opentype_fonts', '\'ＭＳ 明朝\'');">ＭＳ 明朝</a>
+</li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_opentype_fonts', '\'小塚ゴシック Pr6N M\',\'小塚ゴシック Pr6N\'');">小塚ゴシック Pr6N M</a></li>
+<li><a href="javascript:setFont('test_opentype_fonts', 'Textar');">Textar</a></li>
+<li><a href="javascript:setFont('test_opentype_fonts', 'nukamisoOTF');">nukamisoOTF</a></li>
+<li><a href="javascript:setFont('test_opentype_fonts', '\'01フロップデザイン\'');">01フロップデザイン</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_opentype_fonts', '\'ぼくたちのゴシック\'');">ぼくたちのゴシック</a></li>
+<li><a href="javascript:setFont('test_opentype_fonts', '\'ぼくたちのゴシック２レギュラー\'');">ぼくたちのゴシック２レギュラー</a></li>
+<li><a href="javascript:setFont('test_opentype_fonts', '\'ぼくたちのゴシック２ボールド\'');">ぼくたちのゴシック２ボールド</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_opentype_fonts', '\'07やさしさゴシック\'');">07やさしさゴシック</a></li>
+<li><a href="javascript:setFont('test_opentype_fonts', '\'07やさしさゴシック手書き\'');">07やさしさゴシック手書き</a></li>
+<li><a href="javascript:setFont('test_opentype_fonts', '\'07やさしさアンチック\'');">07やさしさアンチック</a></li>
+<li><a href="javascript:setFont('test_opentype_fonts', '\'07ロゴたいぷゴシック7\'');">07ロゴたいぷゴシック7</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_opentype_fonts', '\'小塚明朝 Pr6N R\',\'小塚明朝 Pr6N\'');">小塚明朝 Pr6N R</a></li>
+<li><a href="javascript:setFont('test_opentype_fonts', '\'02うつくし明朝体\'');">02うつくし明朝体</a></li>
+<li><a href="javascript:setFont('test_opentype_fonts', '\'はんなり明朝\'');">はんなり明朝</a></li>
+<li><a href="javascript:setFont('test_opentype_fonts', '\'こころ明朝体\'');">こころ明朝体</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_opentype_fonts', 'RobotoJ');">RobotoJ</a></li>
+<li><a href="javascript:setFont('test_opentype_fonts', 'RobotoJS');">RobotoJS</a></li>
+<li><a href="javascript:setFont('test_opentype_fonts', 'RobotoJAA');">RobotoJAA</a></li>
+</ul>
+
+
+<hr class="cl" style="width:96%;">
+
+
+<ul class="small">
+<li>font-size <a href="javascript:rmProperty('test_opentype_shs', 'font-size');">削除</a> | <a href="javascript:setZoom('test_opentype_shs', '80%');">80%</a> | <a href="javascript:setZoom('test_opentype_shs', '100%');">100%</a> | <a href="javascript:setZoom('test_opentype_shs', '110%');">110%</a> | <a href="javascript:setZoom('test_opentype_shs', '120%');">120%</a> | <a href="javascript:setZoom('test_opentype_shs', '150%');">150%</a> | font-style <a href="javascript:rmProperty('test_opentype_shs','font-style' );">削除</a> | <a href="javascript:setFontStyle('test_opentype_shs', 'normal');">normal</a> | <a href="javascript:setFontStyle('test_opentype_shs', 'italic');">italic</a> | <a href="javascript:setFontStyle('test_opentype_shs', 'oblique');">oblique</a></li>
+<li>line-height <a href="javascript:rmProperty('test_opentype_shs', 'line-height');">削除</a> | <a href="javascript:setLineHeight('test_opentype_shs', '1');">1</a> | <a href="javascript:setLineHeight('test_opentype_shs', '1.1');">1.1</a> | <a href="javascript:setLineHeight('test_opentype_shs', '1.2');">1.2</a> | <a href="javascript:setLineHeight('test_opentype_shs', '1.3');">1.3</a> | <a href="javascript:setLineHeight('test_opentype_shs', '1.4');">1.4</a> | <a href="javascript:setLineHeight('test_opentype_shs', '1.5');">1.5</a> | <a href="javascript:setLineHeight('test_opentype_shs', '2');">2</a> | letter-spacing <a href="javascript:rmProperty('test_opentype_shs','letter-spacing' );">削除</a> | <a href="javascript:setLetterSpacing('test_opentype_shs', '0');">0</a> | <a href="javascript:setLetterSpacing('test_opentype_shs', '0.5px');">0.5px</a> | <a href="javascript:setLetterSpacing('test_opentype_shs', '1px');">1px</a> | <a href="javascript:setLetterSpacing('test_opentype_shs', '1.5px');">1.5px</a> | <a href="javascript:setLetterSpacing('test_opentype_shs', '2px');">2px</a></li>
+<li>font-weight <a href="javascript:rmProperty('test_opentype_shs','font-weight' );">削除</a> | <a href="javascript:setFontWeight('test_opentype_shs', 'lighter');">lighter</a> | <a href="javascript:setFontWeight('test_opentype_shs', 'normal');">normal</a> | <a href="javascript:setFontWeight('test_opentype_shs', 'bold');">bold</a> | <a href="javascript:setFontWeight('test_opentype_shs', 'bolder');">bolder</a> | <a href="javascript:setFontWeight('test_opentype_shs', '100');">100</a> | <a href="javascript:setFontWeight('test_opentype_shs', '200');">200</a> | <a href="javascript:setFontWeight('test_opentype_shs', '300');">300</a> | <a href="javascript:setFontWeight('test_opentype_shs', '400');">400</a> | <a href="javascript:setFontWeight('test_opentype_shs', '500');">500</a> | <a href="javascript:setFontWeight('test_opentype_shs', '600');">600</a> | <a href="javascript:setFontWeight('test_opentype_shs', '700');">700</a> | <a href="javascript:setFontWeight('test_opentype_shs', '800');">800</a> | <a href="javascript:setFontWeight('test_opentype_shs', '900');">900</a></li>
+<li>color <a href="javascript:rmProperty('test_opentype_shs','color' );">削除</a> | <a href="javascript:setColor('test_opentype_shs', 'black');">black</a> | <a href="javascript:setColor('test_opentype_shs', '#595959');">#595959</a> | <a href="javascript:setColor('test_opentype_shs', 'white');">white</a> | background-color <a href="javascript:rmProperty('test_opentype_shs','background-color' );">削除</a> | <a href="javascript:setBGColor('test_opentype_shs', 'white');">white</a> | <a href="javascript:setBGColor('test_opentype_shs', '#ffe');">#ffe</a> | <a href="javascript:setBGColor('test_opentype_shs', 'black');">black</a></li>
+<li><a href="javascript:rmStyle('test_opentype_shs')">style削除</a></li>
+</ul>
+
+<div id="test_opentype_shs">
+
+<div class="sp_overflow">
+<table class="cl font_test_script" style="font-size:1em;margin-left:1em;margin-bottom:0.5em;" summary="フォントの表示テスト">
+<caption>表示テスト</caption>
+<tr style="font-family:sans-serif">
+<td>Sans-serif</td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>MWayg9~*@</td>
+<td class="center"><span style="font-family:sans-serif">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:serif">
+<td>Serif</td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>MWayg9~*@</td>
+<td class="center"><span style="font-family:serif">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:monospace">
+<td>monospace</td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>MWayg9~*@</td>
+<td class="center"><span style="font-family:monospace">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr>
+<td><span class="red">無指定</span></td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>MWayg9~*@</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr id="test_opentype_shs_fonts">
+<td><span class="red" style="font-weight:bold;">テスト</span></td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>MWayg9~*@</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+<div class="testbox5" style="padding:0.5em;margin-left:1em;">
+<p id="test_opentype_shs_fonts_p">
+<span class="small">0123456789 \'&#034;~*#$%&#038;@ abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+<br>0123456789 \'&#034;~*#$%&#038;@ abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ
+<br><span style="font-size:120%;">0123456789 \'&#034;~*#$%&#038;@ abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+<br><span class="small">新しい朝が来た！不埒な草彅剛、髙濱、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br>新しい朝が来た！不埒な草彅剛、髙濱、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑
+<br><span style="font-size:120%;">新しい朝が来た！不埒な草彅剛、髙濱、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br><br><span style="font-size:80%;">日本の食文化において、主食とされる米飯や雑穀飯の副食として、主要な位置を占める。料亭や食堂で出される事も、家庭料理として家庭で作られる事もある、汁物料理の代表である。昆布・削り節や煮干しなどで出汁をとり、食材と味噌で味を作るという、調理法としては単純な料理であるが、出汁・味噌に加え具材も各家庭・調理者によって千差万別であるため、おふくろの味と称される事もあり、作り方は様々である。また、各地で古くから作られており、名物料理だったり町おこしの料理ともされる。</span>
+<br><br>日本の食文化において、主食とされる米飯や雑穀飯の副食として、主要な位置を占める。料亭や食堂で出される事も、家庭料理として家庭で作られる事もある、汁物料理の代表である。昆布・削り節や煮干しなどで出汁をとり、食材と味噌で味を作るという、調理法としては単純な料理であるが、出汁・味噌に加え具材も各家庭・調理者によって千差万別であるため、おふくろの味と称される事もあり、作り方は様々である。また、各地で古くから作られており、名物料理だったり町おこしの料理ともされる。
+<br><cite><a href="http://ja.wikipedia.org/wiki/%E5%91%B3%E5%99%8C%E6%B1%81">味噌汁 - Wikipedia</a></cite>
+</p>
+</div>
+
+</div>
+
+
+<ul class="small">
+<li><a href="javascript:rmProperty('test_opentype_shs_fonts', 'font-family');">削除</a>
+ | <a href="javascript:setFont('test_opentype_shs_fonts', 'inherit');">inherit</a> ( 
+<a href="javascript:setFont('test_opentype_shs_fonts', 'sans-serif');">sans-serif</a>
+ | <a href="javascript:setFont('test_opentype_shs_fonts', 'serif');">serif</a>
+ | <a href="javascript:setFont('test_opentype_shs_fonts', 'monospace');">monospace</a>
+ | <a href="javascript:setFont('test_opentype_shs_fonts', 'cursive');">cursive</a>
+ | <a href="javascript:setFont('test_opentype_shs_fonts', 'fantasy');">fantasy</a> )
+ ( <a href="javascript:setFont('test_opentype_shs_fonts', 'monospace, \'ＭＳ ゴシック\'');">monospace, 'ＭＳ ゴシック'</a> | <a href="javascript:setFont('test_opentype_shs_fonts', 'monospace, serif');">monospace, serif</a> )
+</li>
+<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'メイリオ\',Meiryo');">メイリオ</a>
+ | <a href="javascript:setFont('test_opentype_shs_fonts', '\'Meiryo UI\'');">Meiryo UI</a>
+ | <a href="javascript:setFont('test_opentype_shs_fonts', '\'ＭＳ Ｐゴシック\'');">ＭＳ Ｐゴシック</a>
+ | <a href="javascript:setFont('test_opentype_shs_fonts', '\'MS UI Gothic\'');">MS UI Gothic</a>
+ | <a href="javascript:setFont('test_opentype_shs_fonts', '\'ＭＳ Ｐ明朝\'');">ＭＳ Ｐ明朝</a>
+ | <a href="javascript:setFont('test_opentype_shs_fonts', '\'ＭＳ ゴシック\'');">ＭＳ ゴシック</a>
+ | <a href="javascript:setFont('test_opentype_shs_fonts', '\'ＭＳ 明朝\'');">ＭＳ 明朝</a>
+ | <a href="javascript:setFont('test_opentype_shs_fonts', '\'游明朝\'');">游明朝</a>
+</li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'源ノ角ゴシック JP\',\'源ノ角ゴシック\'');">源ノ角ゴシック</a>
+	<ul>
+	<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'源ノ角ゴシック Regular\',\'源ノ角ゴシック JP Regular\'');">Regular</a>
+	<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'源ノ角ゴシック Light\',\'源ノ角ゴシック JP Light\'');">Light</a></li>
+	<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'源ノ角ゴシック ExtraLight\',\'源ノ角ゴシック JP ExtraLight\'');">ExtraLight</a></li>
+	<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'源ノ角ゴシック Normal\',\'源ノ角ゴシック JP Normal\'');">Normal</a></li>
+	<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'源ノ角ゴシック Medium\',\'源ノ角ゴシック JP Medium\'');">Medium</a></li>
+	<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'源ノ角ゴシック Bold\'');">Bold</a></li>
+	<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'源ノ角ゴシック Heavy\',\'源ノ角ゴシック JP Heavy\'');">Heavy</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'Noto Sans CJK JP\'');">Noto Sans CJK JP</a>
+	<ul>
+	<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'Noto Sans CJK JP Regular\'');">Regular</a></li>
+	<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'Noto Sans CJK JP Light\'');">Light</a></li>
+	<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'Noto Sans CJK JP Thin\'');">Thin</a></li>
+	<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'Noto Sans CJK JP DemiLight\'');">DemiLight</a></li>
+	<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'Noto Sans CJK JP Medium\'');">Medium</a></li>
+	<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'Noto Sans CJK JP Bold\'');">Bold</a></li>
+	<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'Noto Sans CJK JP Black\'');">Black</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'源ノ角ゴシック Code JP\'');">源ノ角ゴシック Code JP</a>
+	<ul>
+	<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'源ノ角ゴシック Code JP Regular\'');">Regular</a>
+	<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'源ノ角ゴシック Code JP Light\'');">Light</a></li>
+	<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'源ノ角ゴシック Code JP ExtraLight\'');">ExtraLight</a></li>
+	<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'源ノ角ゴシック Code JP Normal\'');">Normal</a></li>
+	<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'源ノ角ゴシック Code JP Medium\'');">Medium</a></li>
+	<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'源ノ角ゴシック Code JP Bold\'');">Bold</a></li>
+	<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'源ノ角ゴシック Code JP Heavy\'');">Heavy</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'源ノ角ゴシック HW Regular\',\'源ノ角ゴシック HW\'');">源ノ角ゴシック HW</a></li>
+<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'Noto Sans Mono CJK JP Regular\',\'Noto Sans Mono CJK JP\'');">Noto Sans Mono CJK JP</a></li>
+<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'源ノ明朝\'');">源ノ明朝</a></li>
+<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'Source Han Serif\'');">Source Han Serif</a></li>
+<li><a href="javascript:setFont('test_opentype_shs_fonts', '\'Noto Serif CJK JP\'');">Noto Serif CJK JP</a></li>
+</ul>
+
+<ul class="lt small">
+<li>font-weight : <a href="javascript:rmProperty('test_opentype_shs','font-weight' );">削除</a>
+	<ul>
+	<li><a href="javascript:setFontWeight('test_opentype_shs', '100');">100</a> | <a href="javascript:setFontWeight('test_opentype_shs', '150');">150</a></li>
+	<li><a href="javascript:setFontWeight('test_opentype_shs', '200');">200</a> | <a href="javascript:setFontWeight('test_opentype_shs', '250');">250</a></li>
+	<li><a href="javascript:setFontWeight('test_opentype_shs', '300');">300</a> | <a href="javascript:setFontWeight('test_opentype_shs', '350');">350</a></li>
+	<li><a href="javascript:setFontWeight('test_opentype_shs', '400');">400</a> | <a href="javascript:setFontWeight('test_opentype_shs', '450');">450</a></li>
+	<li><a href="javascript:setFontWeight('test_opentype_shs', '500');">500</a> | <a href="javascript:setFontWeight('test_opentype_shs', '600');">600</a></li>
+	<li><a href="javascript:setFontWeight('test_opentype_shs', '700');">700</a> | <a href="javascript:setFontWeight('test_opentype_shs', '800');">800</a> | <a href="javascript:setFontWeight('test_opentype_shs', '900');">900</a></li>
+	</ul>
+</li>
+</ul>
+
+<h2 class="cl"><a name="bookmarklet" href="#bookmarklet">ブックマークレット</a></h2>
+
+<p>JavaScript 初心者なので内容未保証ですけど... XPのIE8でも使える筈です。</p>
+<p>body要素に適用なのでCSSで指定されてる要素には効きません。</p>
+
+<p><code>body</code> 要素に <code>style</code> 属性を追記します。</p>
+<pre>
+&#060;body <strong class="red" style="font-weight:normal;">style=&#034;font-family: '07やさしさゴシック';&#034;</strong>&#062;
+</pre>
+
+
+<ul class="small">
+<li><a href="javascript:(function(){var myTag=document.getElementsByTagName('Body');myTag[0].removeAttribute('style')})();">(body) style 削除</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='inherit')">inherit</a> ( <a href="javascript:void(document.body.style.fontFamily='sans-serif')">sans-serif</a> | <a href="javascript:void(document.body.style.fontFamily='serif')">serif</a> | <a href="javascript:void(document.body.style.fontFamily='monospace')">monospace</a> | <a href="javascript:void(document.body.style.fontFamily='cursive')">cursive</a> | <a href="javascript:void(document.body.style.fontFamily='fantasy')">fantasy</a> ) ( <a href="javascript:void(document.body.style.fontFamily='monospace,\'ＭＳ ゴシック\'')">monospace, 'ＭＳ ゴシック'</a> |  <a href="javascript:void(document.body.style.fontFamily='monospace, serif')">monospace, serif</a> )</li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='\'小塚ゴシック Pr6N M\',\'小塚ゴシック Pr6N\'')">小塚ゴシック Pr6N M</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='Textar')">Textar</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='nukamisoOTF')">nukamisoOTF</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'01フロップデザイン\'')">01フロップデザイン</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='\'ぼくたちのゴシック\'')">ぼくたちのゴシック</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'ぼくたちのゴシック２レギュラー\'')">ぼくたちのゴシック２レギュラー</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'ぼくたちのゴシック２ボールド\'')">ぼくたちのゴシック２ボールド</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='\'07やさしさゴシック\'')">07やさしさゴシック</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'07やさしさゴシック手書き\'')">07やさしさゴシック手書き</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'07やさしさアンチック\'')">07やさしさアンチック</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'07ロゴたいぷゴシック7\'')">07ロゴたいぷゴシック7</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='\'小塚明朝 Pr6N R\',\'小塚明朝 Pr6N\'')">小塚明朝 Pr6N R</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'02うつくし明朝体\'')">02うつくし明朝体</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'はんなり明朝\'')">はんなり明朝</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'こころ明朝体\'')">こころ明朝体</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='RobotoJ')">RobotoJ</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='RobotoJS')">RobotoJS</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='RobotoJAA')">RobotoJAA</a></li>
+</ul>
+
+<ul class="cl lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック\'')">源ノ角ゴシック</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Regular\'')">源ノ角ゴシック Regular</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Light\'')">源ノ角ゴシック Light</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック ExtraLight\'')">源ノ角ゴシック ExtraLight</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Normal\'')">源ノ角ゴシック Normal</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Medium\'')">源ノ角ゴシック Medium</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Bold\'')">源ノ角ゴシック Bold</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Heavy\'')">源ノ角ゴシック Heavy</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='\'Noto Sans CJK JP\'')">Noto Sans CJK JP</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'Noto Sans CJK JP Regular\'')">Noto Sans CJK JP Regular</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'Noto Sans CJK JP Light\'')">Noto Sans CJK JP Light</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'Noto Sans CJK JP Thin\'')">Noto Sans CJK JP Thin</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'Noto Sans CJK JP DemiLight\'')">Noto Sans CJK JP DemiLight</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'Noto Sans CJK JP Medium\'')">Noto Sans CJK JP Medium</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'Noto Sans CJK JP Bold\'')">Noto Sans CJK JP Bold</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'Noto Sans CJK JP Black\'')">Noto Sans CJK JP Black</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Code JP\'')">源ノ角ゴシック Code JP</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Code JP Regular\'')">源ノ角ゴシック Code JP Regular</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Code JP Light\'')">源ノ角ゴシック Code JP Light</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Code JP ExtraLight\'')">源ノ角ゴシック Code JP ExtraLight</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Code JP Normal\'')">源ノ角ゴシック Code JP Normal</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Code JP Medium\'')">源ノ角ゴシック Code JP Medium</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Code JP Bold\'')">源ノ角ゴシック Code JP Bold</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Code JP Heavy\'')">源ノ角ゴシック Code JP Heavy</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック HW\'')">源ノ角ゴシック HW</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'Noto Sans Mono CJK JP\'')">Noto Sans Mono CJK JP</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'源ノ明朝\'')">源ノ明朝</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'Source Han Serif\'')">Source Han Serif</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'Noto Serif CJK JP\'')">Noto Serif CJK JP</a></li>
+</ul>
+
+<ul class="cl lt small">
+<li><a href="javascript:void(document.body.style.fontSize='80%')">font 80%</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='100%')">font 100%</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='120%')">font 120%</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='150%')">font 150%</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontSize='12px')">font 12px</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='14px')">font 14px</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='15px')">font 15px</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='16px')">font 16px</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='18px')">font 18px</a></li>
+</ul>
+
+<h2 class="cl"><a name="bikou" href="#bikou">備考</a></h2>
+
+<p>最終更新日：2017.4.4</p>
+
+<p>2014.01.16 <ins>怨霊と吐き溜は TrueType でした</ins>。間違えました。すみません。。。
+<br>2014.01.16 表示テストをちょっと変更。
+<br>2014.01.19 スクリーンショットを追加。
+<br>2014.01.24 JavaScript をIE8で動く仕様に変更。CSSプロパティを追加。
+<br>2014.04.10 <span style="font-family:'07ロゴたいぷゴシック7';">07ロゴたいぷゴシック7</span>, <span style="font-family:nukamisoOTF;">ぬかみそフォント (nukamisoOTF)</span>, <span style="font-family:Textar;">Textar</span>, <span style="font-family:'不忘フェルトペン書体04';">不忘フェルトペン書体04</span> を追加。
+<br>2014.05.25 <span style="font-family:'小塚ゴシック Pr6N M','小塚ゴシック Pr6N';">小塚ゴシック Pr6N M</span>, <span style="font-family:'小塚明朝 Pr6N R','小塚明朝 Pr6N';">小塚明朝 Pr6N R</span>を追加。
+<br>2014.07.17 Adobe <span style="font-family:'源ノ角ゴシック Regular','源ノ角ゴシック';">Source Han Sans</span> （<span style="font-family:'源ノ角ゴシック Regular','源ノ角ゴシック';">源ノ角ゴシック</span>）を追加。
+<br>2014.07.24 Adobe <span style="font-family:'源ノ角ゴシック Regular','源ノ角ゴシック';">Source Han Sans</span> （<span style="font-family:'源ノ角ゴシック Regular','源ノ角ゴシック';">源ノ角ゴシック</span>）について表示テストを追記。
+<br>2014.09.23 <span style="font-family:'Noto Sans CJK JP';">Noto Sans CJK JP</span> を追加。
+<br>2014.10.19 <span style="font-family:'07やさしさゴシック手書き';">07やさしさゴシック手書き</span> を追加。
+<br>2015.06.13 <span style="font-family:'源ノ角ゴシック Code JP Regular','源ノ角ゴシック Code JP';">Source Han Code JP（源ノ角ゴシック Code JP）</span> を追加。
+<br>2015.07.12 <span style="font-family:'源ノ角ゴシック HW';">Source Han Code HW（源ノ角ゴシック HW）</span>を追加。<br>2015.12.21 手書き風, 面白系を <a href="./css_memo_font_tegaki.html">手書き風フォントの表示テスト</a> へ移動。
+<br>2015.12.22 <span style="font-family:'ぼくたちのゴシック２レギュラー';">ぼくたちのゴシック２レギュラー</span>, <span style="font-family:'ぼくたちのゴシック２ボールド';">ぼくたちのゴシック２ボールド</span>, <span style="font-family:'こころ明朝体';">こころ明朝体</span> 追加。
+<br>2017.01.27 <span style="font-family:RobotoJ;">RobotoJフォント</span>を追加。
+<br>2017.04.04 <span style="font-family:'源ノ明朝';">源ノ明朝</span>, <span style="font-family:'Noto Serif CJK JP';">Noto Serif CJK JP</span>を追加。
+</p>
+
+<p>※ <span style="font-family:'小塚ゴシック Pr6N M','小塚ゴシック Pr6N';">小塚ゴシック Pr6N M (KozGoPr6N-Medium.otf)</span>, <span style="font-family:'小塚明朝 Pr6N R','小塚明朝 Pr6N';">小塚明朝 Pr6N R (KozMinPr6N-Regular.otf)</span> は Adobe Reader のインストールフォルダ (<code>C:\Program Files (x86)\Adobe\Reader 11.0\Resource\CIDFont</code>) にありました。</p>
+
+<dl>
+<dt>ダウンロード・リンク</dt>
+<dd>
+<ul>
+<li>源ノ角ゴシック <a href="http://sourceforge.net/adobe/source-han-sans/wiki/Home/">Source Han Sans / Home / Home</a>
+	<ul>
+	<li><a href="https://github.com/adobe-fonts/source-han-sans">adobe-fonts/source-han-sans ・ GitHub</a>
+		<ul>
+			<li><a href="https://github.com/adobe-fonts/source-han-sans/tree/release/OTF/Japanese">source-han-sans/OTF/Japanese at release</a></li>
+		<li><a href="https://github.com/adobe-fonts/source-han-sans/tree/release/OTF/JapaneseHW">source-han-sans/OTF/JapaneseHW at release</a></li>
+		</ul>
+	</li>
+	</ul>
+</li>
+<li><a href="http://blogs.adobe.com/CCJKType/2015/06/source-han-code-jp.html">Introducing Source Han Code JP</a>
+	<ul>
+	<li><a href="https://github.com/adobe-fonts/source-han-code-jp">adobe-fonts/source-han-code-jp ・ GitHub</a>
+		<ul>
+		<li><a href="https://github.com/adobe-fonts/source-han-code-jp/tree/release/OTF/SourceHanCodeJP">source-han-code-jp/OTF/SourceHanCodeJP at release</a></li>
+		</ul>
+	</li>
+	</ul>
+</li>
+<li><a href="https://source.typekit.com/source-han-serif/jp/">源ノ明朝</a>
+	<ul>
+	<li><a href="https://github.com/adobe-fonts/source-han-serif/tree/release">GitHub - adobe-fonts/source-han-serif at release</a>
+		<ul>
+			<li><a href="https://github.com/adobe-fonts/source-han-serif/tree/release/OTF/Japanese">source-han-serif/OTF/Japanese at release</a></li>
+		</ul>
+	</li>
+	</ul>
+</li>
+<li><a href="https://www.google.com/get/noto/">Google Noto Fonts</a>
+	<ul>
+	<li><a href="https://www.google.com/get/noto/help/cjk/">Noto CJK - Google Noto Fonts</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.fontna.com/blog/379/">フリーフォントやさしさゴシックのダウンロード | フォントな情報。オープンソースの安心フリーフォント</a>（※ <code>.otf</code> ファイル同梱）
+	<ul>
+	<li><a href="http://www.fontna.com/blog/736/">フリーフォントやさしさゴシックボールドのダウンロード | フォントな情報。オープンソースの安心フリーフォント</a></li>
+	</ul>
+</li>
+<li><a href="http://fontna.com/freefont/?p=40">やさしさゴシック手書きのフリーダウンロード | フォントな自由｜日本語フリーフォント無料ダウンロード</a></li>
+<li><a href="http://www.fontna.com/blog/1226/">フリーフォント　ロゴたいぷゴシックのダウンロード　 | フォントな。無料日本語フリーフォント</a></li>
+<li><a href="http://www.fontna.com/blog/1122/">フリーフォントやさしさアンチック（漫画用書体）のダウンロード | フォントな情報。オープンソースの安心フリーフォント</a></li>
+<li><a href="http://www.flopdesign.com/freefont/flopdesignfont.html">フロップデザインフォント無料ダウンロードFONT - フリーフォント</a></li>
+<li><a href="http://fontopo.com/?p=164">ぼくたちのゴシック | fontopo</a></li>
+<li><a href="http://fontopo.com/?p=94">ぼくたちのゴシック２レギュラー | fontopo</a></li>
+<li><a href="http://fontopo.com/?p=98">ぼくたちのゴシック２ボールド | fontopo</a></li>
+<li>ぬかみそフォント - <a href="http://www.h7.dion.ne.jp/~beta-rev/virtualboy/download/download.html">ダウンロード</a>（<a href="http://www.h7.dion.ne.jp/~beta-rev/index.html">&#946;-reverse - 64DDポリゴンサイト</a>）（※ <code>.otf</code> ファイル同梱）</li>
+<li><del>Textar Font</del> - アスキーアート対応ウェブフォント（※ <code>.otf</code> ファイル同梱）
+	<ul>
+	<li>Textar - <a href="https://code.google.com/archive/p/textar-font/downloads">Google Code Archive - Long-term storage for Google Code Project Hosting.</a> <a href="http://b.hatena.ne.jp/entry/https://code.google.com/archive/p/textar-font/downloads" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://code.google.com/archive/p/textar-font/downloads" alt="" class="http-bookmark" /></a></li>
+	</ul>
+</li>
+<li><a href="http://flopdesign.com/freefont/utsukushi-mincho-font.html">フリーフォントうつくし明朝体 - 漢字日本語フォント</a></li>
+<li><a href="http://typingart.net/?p=44">日本語フォント「はんなり明朝」 - フォント無料ダウンロード｜Typing Art</a></li>
+<li><a href="http://typingart.net/?p=46">日本語フォント「こころ明朝体」 - フォント無料ダウンロード｜Typing Art</a></li>
+<li>小塚ゴシック Pr6N M, 小塚明朝 Pr6N R - <a href="http://www.adobe.com/support/downloads/thankyou.jsp?ftpID=4881&#038;fileID=4554">Adobe Reader X Font Packs - Japanese</a></li>
+</ul>
+
+<ul>
+<li><a href="https://ja.osdn.net/projects/robotoj-font/">RobotoJ-Font プロジェクト日本語トップページ - OSDN</a></li>
+</ul>
+
+</dd>
+</dl>
+
+<hr>
+
+
+
+<div class="navi">
+<ul>
+<li><a href="#top">TOP</a> | </li>
+<li><a href="./css_memo.html">Index</a> | </li>
+<li><a href="./index.html">HOME</a></li>
+</ul>
+</div>
+
+
+</body>
+</html>

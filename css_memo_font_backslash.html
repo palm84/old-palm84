@@ -1,0 +1,1205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="start" href="./index.html">
+<link rel="stylesheet" type="text/css" href="./cssmemo.css" media="all">
+<link rel="stylesheet" type="text/css" href="./cssmemo_print.css" media="print">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./cssmemo-sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>バックスラッシュの表示テスト - CSSめも＠Palm84</title>
+</head>
+<body>
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+
+<h1><a href="./css_memo_font_backslash.html" name="top">バックスラッシュの表示テスト</a></h1>
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/css_memo_font_backslash.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/css_memo_font_backslash.html"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/css_memo_font_backslash.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<ul class="pink">
+<li>Shit_JIS 版　<strong class="msg red">← 今ここ</strong></li>
+<li><a href="css_memo_font_backslash_utf8.html">UTF-8 版</a></li>
+</ul>
+<h2><a name="index" href="#index">目次</a></h2>
+
+<ol>
+<li><a href="#about">う～む</a></li>
+<li><a href="#sansserif">Sans-serif, プロポーショナル・ゴシック系</a></li>
+<li><a href="#serif">Serif, プロポーショナル・明朝、etc</a></li>
+<li><a href="#monospace">Monospace, 等幅</a></li>
+<li><a href="#bikou">備考</a></li>
+</ol>
+<h2><a name="about" href="#about">う～む</a></h2>
+
+<ul>
+<li>バックスラッシュ 0x5c = <code>&#x26;#x5c;</code> = <kbd><strong class="ms">&#x5c;</strong></kbd>
+	<ul>
+	<li><code>font-family:'ＭＳ Ｐゴシック'</code> = <kbd><strong style="font-family:'ＭＳ Ｐゴシック';">&#x5c;</strong></kbd></li>
+	<li><code>font-family:sans-serif</code> = <kbd><strong style="font-family:sans-serif;">&#x5c;</strong></kbd></li>
+	<li><code>font-family:'Courier New',Courier</code> = <kbd><strong style="font-family:'Courier New',Courier;">&#x5c;</strong></kbd></li>
+	</ul>
+</li>
+</ul>
+
+<p>う～む、絶対確実な方法はないですねぇ。</p>
+
+<ol>
+<li>確実に入ってそうな欧文フォントを指定する
+	<ul>
+	<li>Windowsなら <span class="arial">Arial</span> とかでいいけど、<del><strong style="font-family:Times;">Times</strong></del> <strong style="font-family:'Courier New';">Courier New</strong> (<strong style="font-family:Courier;">Courier</strong>) あたりが無難？</li>
+	</ul>
+</li>
+<li><strong class="ms">span</strong> 要素に <code>lang=&#034;en&#034;</code> を指定する
+	<ul>
+	<li>IE や Opera では効かないかも？</li>
+	<li>設定次第で逆にYenマークになっちゃうこともある？</li>
+	</ul>
+</li>
+</ol>
+
+<p>でも、どのOSにも確実にある欧文フォントってあるかなぁ。Linuxでも標準設定がモナーフォントだとYenマーク（Yenサイン？）になりますし。</p>
+
+<p class="pink">※ これとは逆に、バックスラッシュ (<code>&#x26;#x5c;</code> = <kbd><strong class="ms">&#x5c;</strong></kbd>, <code>&#038;#92;</code> or = <kbd><strong class="ms">&#92;</strong></kbd>) としてでなく、
+<br>円マークとして確実に表示させるなら、実体参照 (<code>&#038;yen;</code> = <kbd><strong class="ms">&yen;</strong></kbd>)、
+数値文字参照 (<code>&#x26;#xa5;</code> = <kbd><strong class="ms">&#xa5;</strong></kbd>, or <code>&#038;#165;</code> = <kbd><strong class="ms">&#165;</strong></kbd>) を使いませぃ。</p>
+
+<ul>
+<li>参考：
+	<ul>
+	<li><a href="http://www.relief.jp/itnote/archives/001280.php">バックスラッシュを入力したい：Windows ウィンドウズの使い方</a></li>
+	<li><a href="http://ja.wikipedia.org/wiki/%E3%83%90%E3%83%83%E3%82%AF%E3%82%B9%E3%83%A9%E3%83%83%E3%82%B7%E3%83%A5">バックスラッシュ - Wikipedia</a></li>
+	</ul>
+</li>
+</ul>
+
+<div class="sp_overflow">
+<table summary="バックスラッシュの表示テスト">
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C">5C</th><th abbr="ascii 0xA5">A5</th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">(O)</th><th abbr="小文字のi">(i)</th><th abbr="小文字のl">(l)</th><th abbr="大文字のQ">(Q)</th><th abbr="大文字のI">(I)</th><th abbr="かな">あいうえお</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">&#x5c;</td>
+<td class="center">&#xa5;</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr>
+<td><span lang="en">無指定 (lang=&#034;en&#034;)</span></td>
+<td class="center"><span lang="en">&#x5c;</span></td>
+<td class="center"><span lang="en">&#xa5;</span></td>
+<td class="center"><span lang="en">0</span></td>
+<td class="center"><span lang="en">O</span></td>
+<td class="center"><span lang="en">i</span></td>
+<td class="center"><span lang="en">l</span></td>
+<td class="center"><span lang="en">Q</span></td>
+<td class="center"><span lang="en">I</span></td>
+<td><span lang="en">あいうえお</span></td>
+</tr>
+
+<tr style="font-family:sans-serif;">
+<td>Sans-serif</td>
+<td class="center"><span style="font-family:sans-serif;">&#x5c;</span></td>
+<td class="center"><span style="font-family:sans-serif;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:sans-serif;">
+<td><span lang="en">Sans-serif (lang=&#034;en&#034;)</span></td>
+<td class="center"><span lang="en" style="font-family:sans-serif;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:sans-serif;">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:sans-serif;">0</span></td>
+<td class="center"><span lang="en" style="font-family:sans-serif;">O</span></td>
+<td class="center"><span lang="en" style="font-family:sans-serif;">i</span></td>
+<td class="center"><span lang="en" style="font-family:sans-serif;">l</span></td>
+<td class="center"><span lang="en" style="font-family:sans-serif;">Q</span></td>
+<td class="center"><span lang="en" style="font-family:sans-serif;">I</span></td>
+<td><span lang="en" style="font-family:sans-serif;">あいうえお</span></td>
+</tr>
+
+<tr style="font-family:serif;">
+<td>Serif</td>
+<td class="center"><span style="font-family:serif;">&#x5c;</span></td>
+<td class="center"><span style="font-family:serif;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:serif;">
+<td><span lang="en">Serif (lang=&#034;en&#034;)</span></td>
+<td class="center"><span lang="en" style="font-family:serif;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:serif;">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:serif;">0</span></td>
+<td class="center"><span lang="en" style="font-family:serif;">O</span></td>
+<td class="center"><span lang="en" style="font-family:serif;">i</span></td>
+<td class="center"><span lang="en" style="font-family:serif;">l</span></td>
+<td class="center"><span lang="en" style="font-family:serif;">Q</span></td>
+<td class="center"><span lang="en" style="font-family:serif;">I</span></td>
+<td><span lang="en" style="font-family:serif;">あいうえお</span></td>
+</tr>
+
+<tr style="font-family:monospace;">
+<td>Monospace</td>
+<td class="center"><span style="font-family:monospace;">&#x5c;</span></td>
+<td class="center"><span style="font-family:monospace;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:monospace;">
+<td><span lang="en">Monospace (lang=&#034;en&#034;)</span></td>
+<td class="center"><span lang="en" style="font-family:monospace;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:monospace;">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:monospace;">0</span></td>
+<td class="center"><span lang="en" style="font-family:monospace;">O</span></td>
+<td class="center"><span lang="en" style="font-family:monospace;">i</span></td>
+<td class="center"><span lang="en" style="font-family:monospace;">l</span></td>
+<td class="center"><span lang="en" style="font-family:monospace;">Q</span></td>
+<td class="center"><span lang="en" style="font-family:monospace;">I</span></td>
+<td><span lang="en" style="font-family:monospace;">あいうえお</span></td>
+</tr>
+</table>
+</div>
+
+
+<p class="pink">※ 完全じゃないです。<code>font-family</code> は一つのみ指定してます。指定フォントがない環境では標準設定のフォントで表示されます。</p>
+<h2><a name="sansserif" href="#sansserif">Sans-serif, プロポーショナル・ゴシック系</a></h2>
+
+<div class="sp_overflow">
+<table summary="バックスラッシュの表示テスト">
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C">5C</th><th class="small" abbr="span要素で lang=&#034;en&#034; を指定">&#034;en&#034;</th><th abbr="ascii 0xA5">A5</th><th class="small" abbr="span要素で lang=&#034;en&#034; を指定">&#034;en&#034;</th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">(O)</th><th abbr="小文字のi">(i)</th><th abbr="小文字のl">(l)</th><th abbr="大文字のQ">(Q)</th><th abbr="大文字のI">(I)</th><th abbr="かな">あいうえお</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">&#x5c;</td>
+<td class="center"><span lang="en">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:sans-serif;">
+<td><em class="sansserif red">Sans-serif</em></td>
+<td class="center"><span style="font-family:sans-serif;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:sans-serif;">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en" style="font-family:sans-serif;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:sans-serif;">
+<td><em class="sansserif red"><span lang="en">Sans-serif (lang=&#034;en&#034;)</span></em></td>
+<td class="center"><span lang="en" style="font-family:sans-serif;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:sans-serif;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:sans-serif;">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:sans-serif;">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:sans-serif;">0</span></td>
+<td class="center"><span lang="en" style="font-family:sans-serif;">O</span></td>
+<td class="center"><span lang="en" style="font-family:sans-serif;">i</span></td>
+<td class="center"><span lang="en" style="font-family:sans-serif;">l</span></td>
+<td class="center"><span lang="en" style="font-family:sans-serif;">Q</span></td>
+<td class="center"><span lang="en" style="font-family:sans-serif;">I</span></td>
+<td><span lang="en" style="font-family:sans-serif;">あいうえお</span></td>
+</tr>
+
+<tr style="font-family: 'メイリオ',meiryo;">
+<td>メイリオ</td>
+<td class="center"><span style="font-family:'メイリオ',meiryo;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'メイリオ',meiryo;">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en" style="font-family:'メイリオ',meiryo;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family: 'Meiryo UI';">
+<td>Meiryo UI</td>
+<td class="center"><span style="font-family:'Meiryo UI';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'Meiryo UI';">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en" style="font-family:'Meiryo UI';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:'ＭＳ Ｐゴシック','MS PGothic';">
+<td>ＭＳ Ｐゴシック</td>
+<td class="center"><span style="font-family:'ＭＳ Ｐゴシック','MS PGothic';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'ＭＳ Ｐゴシック','MS PGothic';">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en" style="font-family:'ＭＳ Ｐゴシック';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:'MS UI Gothic';">
+<td>MS UI Gothic</td>
+<td class="center"><span style="font-family:'MS UI Gothic';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'MS UI Gothic';">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en" style="font-family:'MS UI Gothic';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family: '游ゴシック';">
+<td>游ゴシック</td>
+<td class="center"><span style="font-family:'游ゴシック';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'游ゴシック';">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en" style="font-family:'游ゴシック';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:'MS Sans Serif';">
+<td>MS Sans Serif</td>
+<td class="center"><span style="font-family:'MS Sans Serif';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'MS Sans Serif';">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en" style="font-family:'MS Sans Serif';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:arial;">
+<td>Arial</td>
+<td class="center"><span style="font-family:arial">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:arial;">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en" style="font-family:arial;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:verdana;">
+<td>Verdana</td>
+<td class="center"><span style="font-family:verdana;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:verdana;">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en" style="font-family:verdana;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:tahoma;">
+<td>Tahoma</td>
+<td class="center"><span style="font-family:tahoma;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:tahoma;">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en" style="font-family:tahoma;;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:'Lucida Sans Unicode';">
+<td>Lucida Sans Unicode</td>
+<td class="center"><span style="font-family:'Lucida Sans Unicode';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'Lucida Sans Unicode';">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en" style="font-family:'Lucida Sans Unicode';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:Calibri;">
+<td>Calibri</td>
+<td class="center"><span style="font-family:Calibri;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:Calibri;">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en" style="font-family:Calibri;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:Corbel;">
+<td>Corbel</td>
+<td class="center"><span style="font-family:Corbel;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:Corbel;">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en" style="font-family:Corbel;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:Candara;">
+<td>Candara</td>
+<td class="center"><span style="font-family:Candara;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:Candara;">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en" style="font-family:Candara;;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:Impact;">
+<td>Impact</td>
+<td class="center"><span style="font-family:Impact;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:Impact;">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en" style="font-family:Impact;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:'Trebuchet MS';">
+<td>Trebuchet MS</td>
+<td class="center"><span style="font-family:'Trebuchet MS';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'Trebuchet MS';">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en" style="font-family:'Trebuchet MS';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:'VL Pゴシック','VL PGothic';">
+<td>VL Pゴシック</td>
+<td class="center"><span style="font-family:'VL Pゴシック','VL PGothic';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'VL Pゴシック','VL PGothic';">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en" style="font-family:'VL Pゴシック','VL PGothic';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:'IPA モナー Pゴシック',IPAMonaPGothic;">
+<td>IPA モナー Pゴシック</td>
+<td class="center"><span style="font-family:'IPA モナー Pゴシック',IPAMonaPGothic;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'IPA モナー Pゴシック',IPAMonaPGothic;">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en" style="font-family:'IPA モナー Pゴシック',IPAMonaPGothic;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:Mona;">
+<td>Mona</td>
+<td class="center"><span style="font-family:Mona;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:Mona;">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en" style="font-family:Mona;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:'Takao Pゴシック';">
+<td>Takao Pゴシック</td>
+<td class="center"><span style="font-family:'Takao Pゴシック';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'Takao Pゴシック';">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en" style="font-family:'Takao Pゴシック';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:'Migu 1P';">
+<td>Migu 1P</td>
+<td class="center"><span style="font-family:'Migu 1P';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'Migu 1P';">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en" style="font-family:'Migu 1P';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:'さざなみゴシック','Sazanami Gothic';">
+<td>さざなみゴシック<span class="small">（※等幅）</span></td>
+<td class="center"><span style="font-family:'さざなみゴシック','Sazanami Gothic';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'さざなみゴシック','Sazanami Gothic';">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en" style="font-family:'さざなみゴシック','Sazanami Gothic';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:Osaka;">
+<td>Osaka</td>
+<td class="center"><span style="font-family:Osaka;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:Osaka;">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en" style="font-family:Osaka;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+</table>
+</div>
+<h2><a name="serif" href="#serif">Serif, プロポーショナル・明朝、etc</a></h2>
+
+<p>私の環境では、同じIE8でも XP と 7 でかなり違いありますなぁ。</p>
+<ul>
+<li>XP - <span style="font-family:'ＭＳ 明朝','MS Mincho';">ＭＳ 明朝（※等幅）</span></li>
+<li>7 - <span style="font-family:Batang;">Batang</span></li>
+</ul>
+
+<p>UTF-8 ページでは...</p>
+<ul>
+<li>XP - <span style="font-family:'Times New Roman';">Times New Roman</span> + <span style="font-family:'ＭＳ Ｐゴシック','MS PGothic';">ＭＳ Ｐゴシック</span></li>
+<li>7 - <span style="font-family:Batang;">Batang</span></li>
+</ul>
+
+<p>Firefox ではすべて<span style="font-family:'ＭＳ Ｐ明朝','MS PMincho';">ＭＳ Ｐ明朝</span>でした。</p>
+
+<div class="sp_overflow">
+<table summary="バックスラッシュの表示テスト">
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C">5C</th><th class="small" abbr="span要素で lang=&#034;en&#034; を指定">&#034;en&#034;</th><th abbr="ascii 0xA5">A5</th><th class="small" abbr="span要素で lang=&#034;en&#034; を指定">&#034;en&#034;</th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">(O)</th><th abbr="小文字のi">(i)</th><th abbr="小文字のl">(l)</th><th abbr="大文字のQ">(Q)</th><th abbr="大文字のI">(I)</th><th abbr="かな">あいうえお</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">&#x5c;</td>
+<td class="center"><span lang="en">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:serif;">
+<td><em class="serif red">Serif</em></td>
+<td class="center"><span style="font-family:serif;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:serif;">&#x5c;</span></td>
+<td class="center"><span style="font-family:serif;">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:serif;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:serif;">
+<td><em class="serif red"><span lang="en">Serif (lang=&#034;en&#034;)</span></em></td>
+<td class="center"><span lang="en" style="font-family:serif;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:serif;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:serif;">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:serif;">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:serif;">0</span></td>
+<td class="center"><span lang="en" style="font-family:serif;">O</span></td>
+<td class="center"><span lang="en" style="font-family:serif;">i</span></td>
+<td class="center"><span lang="en" style="font-family:serif;">l</span></td>
+<td class="center"><span lang="en" style="font-family:serif;">Q</span></td>
+<td class="center"><span lang="en" style="font-family:serif;">I</span></td>
+<td><span lang="en" style="font-family:serif;">あいうえお</span></td>
+</tr>
+
+<tr style="font-family:'ＭＳ Ｐ明朝','MS PMincho';">
+<td>ＭＳ Ｐ明朝</td>
+<td class="center"><span style="font-family:'ＭＳ Ｐ明朝','MS PMincho';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'ＭＳ Ｐ明朝','MS PMincho';">&#x5c;</span></td>
+<td class="center"><span style="font-family:'ＭＳ Ｐ明朝','MS PMincho';">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:'ＭＳ Ｐ明朝','MS PMincho';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:'ＭＳ 明朝','MS Mincho';">
+<td>ＭＳ 明朝<span class="small">（※等幅）</span></td>
+<td class="center"><span style="font-family:'ＭＳ 明朝','MS Mincho';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'ＭＳ Ｐ明朝','MS PMincho';">&#x5c;</span></td>
+<td class="center"><span style="font-family:'ＭＳ 明朝','MS Mincho';">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:'ＭＳ 明朝','MS Mincho';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family: '游明朝';">
+<td>游明朝</td>
+<td class="center"><span style="font-family:'游明朝';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'游明朝';">&#x5c;</span></td>
+<td class="center"><span style="font-family:'游明朝';">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:'游明朝';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:'Times New Roman';">
+<td>Times New Roman</td>
+<td class="center"><span style="font-family:'Times New Roman';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'Times New Roman';">&#x5c;</span></td>
+<td class="center"><span style="font-family:'Times New Roman';">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:'Times New Roman';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:'Times New Roman';">
+<td>Times</td>
+<td class="center"><span style="font-family:Times;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:Times;">&#x5c;</span></td>
+<td class="center"><span style="font-family:Times;">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:Times;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:'MS Serif';">
+<td>MS Serif</td>
+<td class="center"><span style="font-family:'MS Serif';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'MS Serif';">&#x5c;</span></td>
+<td class="center"><span style="font-family:'MS Serif';">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:'MS Serif';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:georgia;">
+<td>Georgia</td>
+<td class="center"><span style="font-family:georgia;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:georgia;">&#x5c;</span></td>
+<td class="center"><span style="font-family:georgia;">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:georgia;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:Cambria;">
+<td>Cambria</td>
+<td class="center"><span style="font-family:Cambria;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:Cambria;">&#x5c;</span></td>
+<td class="center"><span style="font-family:Cambria;">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:Cambria;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:Constantia;">
+<td>Constantia</td>
+<td class="center"><span style="font-family:Constantia;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:Constantia;">&#x5c;</span></td>
+<td class="center"><span style="font-family:Constantia;">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:Constantia;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:'Comic Sans MS';">
+<td>Comic Sans MS</td>
+<td class="center"><span style="font-family:'Comic Sans MS';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'Comic Sans MS';">&#x5c;</span></td>
+<td class="center"><span style="font-family:'Comic Sans MS';">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:'Comic Sans MS';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:Symbol;">
+<td>Symbol <span class="small mono">(Symbol)</span></td>
+<td class="center"><span style="font-family:Symbol;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:Symbol;">&#x5c;</span></td>
+<td class="center"><span style="font-family:Symbol;">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:Symbol;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:Wingdings;">
+<td>Webdings <span class="small mono">(Webdings)</span></td>
+<td class="center"><span style="font-family:Webdings;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:Webdings;">&#x5c;</span></td>
+<td class="center"><span style="font-family:Wingdings;">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:Wingdings;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:Batang;">
+<td>Batang</td>
+<td class="center"><span style="font-family:Batang;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:Batang;">&#x5c;</span></td>
+<td class="center"><span style="font-family:Batang;">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:Batang;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:'IPA モナー P明朝',IPAMonaPMincho;">
+<td>IPA モナー P明朝</td>
+<td class="center"><span style="font-family:'IPA モナー P明朝',IPAMonaPMincho;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'IPA モナー P明朝',IPAMonaPMincho;">&#x5c;</span></td>
+<td class="center"><span style="font-family:'IPA モナー P明朝',IPAMonaPMincho;">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:'IPA モナー P明朝',IPAMonaPMincho;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:'Takao P明朝';">
+<td>Takao P明朝</td>
+<td class="center"><span style="font-family:'Takao P明朝';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'Takao P明朝';">&#x5c;</span></td>
+<td class="center"><span style="font-family:'Takao P明朝';">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:'Takao P明朝';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:'さざなみ明朝','Sazanami Mincho';">
+<td>さざなみ明朝<span class="small">（※等幅）</span></td>
+<td class="center"><span style="font-family:'さざなみ明朝','Sazanami Mincho';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'さざなみ明朝','Sazanami Mincho';">&#x5c;</span></td>
+<td class="center"><span style="font-family:'さざなみ明朝','Sazanami Mincho';">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:'さざなみ明朝','Sazanami Mincho';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+</table>
+</div>
+<h2><a name="monospace" href="#monospace">Monospace, 等幅</a></h2>
+
+<div class="sp_overflow">
+<table summary="バックスラッシュの表示テスト">
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C">5C</th><th class="small" abbr="span要素で lang=&#034;en&#034; を指定">&#034;en&#034;</th><th abbr="ascii 0xA5">A5</th><th class="small" abbr="span要素で lang=&#034;en&#034; を指定">&#034;en&#034;</th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">(O)</th><th abbr="小文字のi">(i)</th><th abbr="小文字のl">(l)</th><th abbr="大文字のQ">(Q)</th><th abbr="大文字のI">(I)</th><th abbr="かな">あいうえお</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">&#x5c;</td>
+<td class="center"><span lang="en">&#x5c;</span></td>
+<td class="center">&#xa5;</td>
+<td class="center"><span lang="en">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family :monospace;">
+<td><em class="mono red">Monospace</em></td>
+<td class="center"><span style="font-family :monospace;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family :monospace;">&#x5c;</span></td>
+<td class="center"><span style="font-family :monospace;">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family :monospace;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:monospace;">
+<td><em class="mono red"><span lang="en">Monospace (lang=&#034;en&#034;)</span></em></td>
+<td class="center"><span lang="en" style="font-family :monospace;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family :monospace;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family :monospace;">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family :monospace;">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family :monospace;">0</span></td>
+<td class="center"><span lang="en" style="font-family :monospace;">O</span></td>
+<td class="center"><span lang="en" style="font-family :monospace;">i</span></td>
+<td class="center"><span lang="en" style="font-family :monospace;">l</span></td>
+<td class="center"><span lang="en" style="font-family :monospace;">Q</span></td>
+<td class="center"><span lang="en" style="font-family :monospace;">I</span></td>
+<td><span lang="en" style="font-family :monospace;">あいうえお</span></td>
+</tr>
+
+<tr style="font-family: 'ＭＳ ゴシック','MS Gothic';">
+<td>ＭＳ ゴシック</td>
+<td class="center"><span style="font-family:'ＭＳ ゴシック','MS Gothic';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'ＭＳ ゴシック','MS Gothic';">&#x5c;</span></td>
+<td class="center"><span style="font-family:'ＭＳ ゴシック','MS Gothic';">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:'ＭＳ ゴシック','MS Gothic';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:'ＭＳ 明朝','MS PMincho';">
+<td>ＭＳ 明朝</td>
+<td class="center"><span style="font-family:'ＭＳ 明朝','MS Mincho';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'ＭＳ 明朝','MS Mincho';">&#x5c;</span></td>
+<td class="center"><span style="font-family:'ＭＳ 明朝','MS Mincho';">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:'ＭＳ 明朝','MS Mincho';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:'Courier New';">
+<td>Courier New</td>
+<td class="center"><span style="font-family:'Courier New';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'Courier New';">&#x5c;</span></td>
+<td class="center"><span style="font-family:'Courier New';">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:'Courier New';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:'Courier';">
+<td>Courier</td>
+<td class="center"><span style="font-family:'Courier';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'Courier';">&#x5c;</span></td>
+<td class="center"><span style="font-family:'Courier';">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:'Courier';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:Consolas;">
+<td>Consolas</td>
+<td class="center"><span style="font-family:Consolas;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:Consolas;">&#x5c;</span></td>
+<td class="center"><span style="font-family:Consolas;">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:Consolas;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:'VL ゴシック','VL Gothic';">
+<td>VL ゴシック</td>
+<td class="center"><span style="font-family:'VL ゴシック','VL Gothic';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'VL ゴシック','VL Gothic';">&#x5c;</span></td>
+<td class="center"><span style="font-family:'VL ゴシック','VL Gothic';">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:'VL ゴシック','VL Gothic';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family: 'IPA モナー ゴシック',IPAMonaGothic;">
+<td>IPA モナー ゴシック</td>
+<td class="center"><span style="font-family:'IPA モナー ゴシック';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'IPA モナー ゴシック',IPAMonaGothic;">&#x5c;</span></td>
+<td class="center"><span style="font-family:'IPA モナー ゴシック';">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:'IPA モナー ゴシック',IPAMonaGothic;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:'IPA モナー 明朝',IPAMonaMincho;">
+<td>IPA モナー 明朝</td>
+<td class="center"><span style="font-family:'IPA モナー 明朝',IPAMonaMincho;">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'IPA モナー 明朝',IPAMonaMincho;">&#x5c;</span></td>
+<td class="center"><span style="font-family:'IPA モナー 明朝',IPAMonaMincho;">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:'IPA モナー 明朝',IPAMonaMincho;">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family: 'Takaoゴシック';">
+<td>Takaoゴシック</td>
+<td class="center"><span style="font-family:'Takaoゴシック';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'Takaoゴシック';">&#x5c;</span></td>
+<td class="center"><span style="font-family:'Takaoゴシック';">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:'Takaoゴシック';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family: 'Takao明朝';">
+<td>Takao明朝</td>
+<td class="center"><span style="font-family:'Takao明朝';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'Takao明朝';">&#x5c;</span></td>
+<td class="center"><span style="font-family:'Takao明朝';">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:'Takao明朝';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family: 'Migu 1M';">
+<td>Migu 1M</td>
+<td class="center"><span style="font-family:'Migu 1M';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'Migu 1M';">&#x5c;</span></td>
+<td class="center"><span style="font-family:'Migu 1M';">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:'Migu 1M';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+<tr style="font-family:'Osaka－等幅','Osaka-Mono';">
+<td>Osaka－等幅</td>
+<td class="center"><span style="font-family:'Osaka－等幅','Osaka-Mono';">&#x5c;</span></td>
+<td class="center"><span lang="en" style="font-family:'Osaka－等幅','Osaka-Mono';">&#x5c;</span></td>
+<td class="center"><span style="font-family:'Osaka－等幅','Osaka-Mono';">&#xa5;</span></td>
+<td class="center"><span lang="en" style="font-family:'Osaka－等幅','Osaka-Mono';">&#xa5;</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">i</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">I</td>
+<td>あいうえお</td>
+</tr>
+
+</table>
+</div>
+<h2 class="cl"><a name="bikou" href="#bikou">備考</a></h2>
+
+<p>最終更新日：2014.5.29</p>
+
+<p>「<span class="serif">Serif, プロポーショナル・明朝、etc</span>」の項に追記。</p>
+<p><span class="takaopg">Takaoフォント</span>を追記。</p>
+<p><a href="http://mix-mplus-ipa.sourceforge.jp/migu/"><span class="migu1p">Miguフォント</span></a>を追加。</p>
+<p><code>&#x26;#xa5;</code> = <kbd><strong class="ms">&#xa5;</strong></kbd> 追記。</p>
+
+<p>ちなみに私はこうしてみました。</p>
+<pre class="pink">
+.backslash {
+font-family: 'VL ゴシック','Courier New',Courier,monospace; }
+</pre>
+
+<p>どうでせうか？ <span class="ms">→</span> <kbd class="backslash">&#x5c;</kbd></p>
+
+
+<dl>
+<dt>ダウンロード・リンク</dt>
+<dd>
+<ul>
+<li><a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=f7d758d2-46ff-4c55-92f2-69ae834ac928&#038;DisplayLang=ja">Windows XP 向け ClearType 対応日本語フォント</a>
+	<ul>
+	<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/1020meiryo02/meiryo02.html">メイリオ・フォントをWindows XP／Server 2003で利用する（改訂版） － ＠IT</a></li>
+	</ul>
+</li>
+<li><a href="http://dicey.org/vlgothic/">VLゴシックフォントファミリ</a></li>
+<li><a href="http://www.geocities.jp/ipa_mona/">IPAモナーフォント</a></li>
+<li><a href="http://sourceforge.net/projects/monafont/">Mona Font, a Japanese font for text arts | Get Mona Font, a Japanese font for text arts at SourceForge.net</a></li>
+<li><a href="http://mix-mplus-ipa.sourceforge.jp/preview.html">M+ と IPAフォントの合成フォント : フォント一覧</a></li>
+<li><a href="http://www.gnome.org/fonts/">Bitstream Vera Fonts README</a></li>
+<li><a href="https://launchpad.net/takao-fonts">Takao Fonts in Launchpad</a></li>
+<li><a href="http://sourceforge.jp/projects/efont/">efont プロジェクト日本語トップページ - SourceForge.JP</a>（さざなみフォント）</li>
+<li><a href="http://mix-mplus-ipa.sourceforge.jp/migu/">Miguフォント : M+とIPAの合成フォント</a></li>
+</ul>
+</dd>
+</dl>
+
+<hr>
+
+
+
+
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+@charset "Shift_JIS";
+
+/*===== * Test*  Safari/Chrome monospace =====*/
+
+pre, code, var, kbd, em,
+.ms {
+font-family: monospace, '‚l‚r ƒSƒVƒbƒN';
+}
+

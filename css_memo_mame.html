@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<link rel="stylesheet" type="text/css" href="cssmemo.css">
+<link rel="start" href="./index.html">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./cssmemo-sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>HTML/CSS豆知識 - CSSめも＠Palm84</title>
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="cssmemo_ie5.css">
+<![endif]-->
+</head>
+<body>
+
+<h1><a href="./css_memo_mame.html" name="top">HTML/CSS豆知識 - CSSめも</a></h1>
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/css_memo_mame.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/css_memo_mame.html"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/css_memo_mame.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<p>めっちゃゃ基本で、どえりゃー初歩的な注意点とか。。</p>
+
+<p>う～ん、とりあえずアレですよねー（何が）。ハックとかinvalidな技使う前にvalidな知識つけないと、ってかんじです？（怒涛の滝汗）</p>
+
+<p>気まぐれに追記していく予定。ってかすぐ忘れるもんで。</p>
+<h2>基本らしい</h2>
+
+<ul>
+<li><a href="http://www.mozilla.gr.jp/standards/webtips0014.html">Mozillaには複数のレンダリングモードがあります - Web標準普及プロジェクト</a></li>
+<li><a href="http://www.mozilla.gr.jp/standards/webtips0004.html">ブロックレベル要素をセンタリングする方法 - Web標準普及プロジェクト</a></li>
+</ul>
+
+<dl>
+<dt>宣言順序に注意</dt>
+<dd>
+<p>あるあるかも。これ忘れてドタバタしたし何度も（汗）</p>
+<ul>
+<li><a href="http://www.mozilla.gr.jp/standards/webtips0012.html">:hover疑似クラスは宣言順序に注意が必要です - Web標準普及プロジェクト</a>
+	<ul>
+	<li><a href="http://www.mozilla.gr.jp/standards/index.html">Web標準普及プロジェクト</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p>a要素だけでなく、記述順序もきっちり考えとかないと。</p>
+
+
+<dl>
+<dt>文書型宣言とブラウザでの表示</dt>
+<dd>
+<ul>
+<li><a href="http://web8341.info/advanced/dtd.htm">文書型宣言とブラウザでの表示</a></li>
+</ul>
+
+<p><acronym title="Internet Explorer">IE</acronym>6（<acronym title="Internet Explorer">IE</acronym>7も）の後方互換モードで <code>margin:auto;</code> が効かない</p>
+</dd>
+</dl>
+
+<p><acronym title="Internet Explorer">IE</acronym>対策として、<dfn>width</dfn> は、<dfn>margin</dfn>,<dfn>padding</dfn>,<dfn>border</dfn> などをきっちり考えて指定するべしですなぁ。でも<acronym title="Internet Explorer">IE</acronym>の後方互換モードだと・・・あれれ？</p>
+
+<dl>
+<dt>様々なブラウザでの表示確認</dt>
+<dd>
+<ul>
+<li><a href="http://browsershots.org/">Test your web design in different browsers - Browsershots</a></li>
+</ul>
+<p>URLを指定してスクリーンショットが取れます。便利です。</p>
+
+</dd>
+
+</dl>
+<h2>いろいろ</h2>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/%E3%83%A1%E3%82%A4%E3%83%AA%E3%82%AA">メイリオ - Wikipedia</a></li>
+</ul>
+
+<p><code>line-height:1</code> にすると上側がかすれたり、上付みたいで下側が空いてしまう、<strong>和文が斜体にできない</strong>とか、注意しといた方がいいかも。</p>
+
+
+<ul>
+<li><a href="http://hxxk.jp/2006/04/11/2348">hxxk.jp - line-height プロパティに関する簡単なまとめ</a></li>
+<li><a href="http://hxxk.jp/2006/04/09/1940">hxxk.jp - CSS を書く前に読んでもらいたいこと</a></li>
+</ul>
+
+<p><strong>全称セレクタ</strong>は便利かも。</p>
+
+<ul>
+<li><a href="http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1014574140">CSSのfont-familyは指定したほうがいいですか？ - Yahoo!知恵袋</a></li>
+</ul>
+
+<p>IPAフォント系とかLinuxでメジャーなフォントを指定してるサイトはほとんど見ません（してもらっても困るだけですけど）。OSデフォルトのフォントを指定するのは無意味どころか迷惑な場合もあるかと。フォント別のCSSを用意するとかなら面白いと思います。</p>
+
+<h2>ブラウザのバグ？</h2>
+
+<p><dfn>position</dfn> や <dfn>overflow</dfn> 属性など、ちょっとややこしくてバギーっぽい属性をなるべく使わないってやり方もあるかなぁ。</p>
+
+<p>なんかこれ使えたらカッコイイってな風に適当に使ってる場合もあるんじゃないでせうか。（オレノコトカー）</p>
+
+<h3><acronym title="Internet Explorer">IE</acronym>7の互換モード及び<acronym title="Internet Explorer">IE</acronym>6対策</h3>
+
+<ul>
+<li><a href="http://webtech-walker.com/archive/2007/05/21215114.html">IE6のバグのまとめ - Webtech Walker</a></li>
+<li><a href="http://mb.blog7.fc2.com/blog-entry-83.html">CSSレイアウトの定石　WinIE6バグ回避法</a></li>
+</ul>
+
+<p>FirefoxやOperaに比べなんで<abbr title="Internet Explorer">IE</abbr>はこうもややこしいのかなぁ。</p>
+
+<dl>
+<dt><acronym title="Internet Explorer">IE</acronym>7/<acronym title="Internet Explorer">IE</acronym>6 の標準モードと後方互換モード</dt>
+<dd>
+<ul>
+<li><a href="./css_memo_standard_quirks.html">IEの標準モードと互換モード</a></li>
+</ul>
+
+<p>大したもんじゃないけど一例として（あっと、作りかけです。）</p>
+<ul>
+<li><a href="./standard.html">サンプルページ</a>
+	<ul>
+	<li><a href="./quirks_width_test.html">互換モード【_width 指定】アンダースコアハック</a></li>
+	</ul>
+</li>
+</ul>
+
+<p>後方互換モードの注意点など。はてなダイアリーとかもこれなので。</p>
+
+<p>互換モードだと <dfn>width</dfn> を指定していない要素でバグ（？）が出ることが多いように思います。</p>
+
+<p>バグが出やすいのは、複数列構成のいわゆるblogスタイルとか <dfn>position</dfn> や <dfn>float</dfn> 属性を使ってる時じゃないかなと思ったり。今ははやり（というか最近はワイド画面が多いからかな）なんでおさえとかなあかんってなかんじですが、こういう流行ってまた変わってくるんじゃないかなぁとも考えたり。</p>
+</dd>
+</dl>
+
+<h3>Opera9</h3>
+
+<p>後方互換モードだと、<abbr title="Internet Explorer">IE</abbr>同様に <dfn>width</dfn> の計算がおかしいようです（Win版だけかな）。でもOperaでは <dfn>width</dfn> を指定しなくても問題が出ることはほとんどないと思われるので、最悪、どうしても<abbr title="Internet Explorer">IE</abbr>用に <dfn>width</dfn> 指定が必要な場合は<abbr title="Internet Explorer">IE</abbr>ハックを使う<del>のがいいかと</del>しかないかなぁ。</p>
+
+<p>この件は標準モードなら問題ないと思います。</p>
+
+<h3>Mozilla/Firefox</h3>
+
+<ul>
+<li>VL Pゴシック・IPAゴシック、メイリオ使用時など、<dfn>overflow</dfn> 属性を付けると不要な縦スクロールバーが表示されることがある。上下 <dfn>padding</dfn>、または <dfn>line-height</dfn> 属性の調整で回避</li>
+</ul>
+
+<ul>
+<li>li要素に <dfn>overflow</dfn> 属性を付けると、リストのマーカーが表示されない（Operaでもあるもよう）</li>
+</ul>
+<div class="quote">
+<blockquote cite="http://www.mozilla.gr.jp/standards/webtips/webtips0034.html" title="ul要素とol要素のブラウザごとの違い - Web標準普及プロジェクト">
+<p>ただし、Mozillaのスタイルを使用する場合は注意が必要です。 Mozillaのスタイルではli要素のマーカーがリスト要素のpadding領域上に配置されます。 そのため、overflow: hidden;をリスト要素に指定するとマーカーが消えてしまいます。 普段はあまり問題にならないと思いますが、頭の片隅に置いておいてください。 </p>
+</blockquote>
+<cite><a href="http://www.mozilla.gr.jp/standards/webtips/webtips0034.html">ul要素とol要素のブラウザごとの違い - Web標準普及プロジェクト</a></cite>
+</div>
+
+<h3>CSSバグリスト＠CSSバグ辞典スレッド</h3>
+
+<p><a href="http://pc11.2ch.net/hp/">web制作管理＠2ch掲示板</a>のまとめサイト。</p>
+
+<ul>
+<li><a href="http://pc11.2ch.net/test/read.cgi/hp/1144494359/">CSS/DHTMLバグ辞典スレッド【第５版】</a></li>
+<li><a href="http://cssbug.at.infoseek.co.jp/index.html">CSSバグリスト＠CSSバグ辞典スレッド</a></li>
+</ul>
+
+<ul>
+<li><a href="http://cssbug.at.infoseek.co.jp/detail/winie/b022.html">letter-spacingを指定した要素内で連続したbr要素が無視される(5.x/6.0)</a></li>
+<li><a href="http://cssbug.at.infoseek.co.jp/detail/winie/b052.html">ボックスサイズが内容物に合わせた大きさへ強制的に調整される(<acronym title="Internet Explorer">IE</acronym>6)</a></li>
+<li><a href="http://cssbug.at.infoseek.co.jp/detail/winie/b078.html">長い半角英数字の文字列に合わせてボックスの幅が強制的に修正される(<acronym title="Internet Explorer">IE</acronym>6)</a></li>
+<li><a href="http://cssbug.at.infoseek.co.jp/detail/winie/b068.html">幅と高さが明示されていない要素へのoverflow:hidden;指定が完全に反映されない</a></li>
+</ul>
+
+<h2>備考</h2>
+
+<p>最終更新日：2010.5.5</p>
+
+
+<hr>
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+</body>
+</html>

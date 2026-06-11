@@ -1,0 +1,134 @@
+@charset "Shift_JIS";
+
+/* ======================================= */
+/* ===== Mobile Settings =====*/
+/* ======================================= */
+body {
+margin: 0;
+font-size: 100%;
+}
+
+div.sidebar img {
+display:none;
+}
+
+p.rt {
+text-align: left;
+}
+
+kbd.ak {
+display:none;
+}
+
+/*===== columns =====*/
+
+.palm-body {
+	margin:0;
+	padding: 0;
+	position: relative;
+	width: 100%;
+	max-width: 100%;
+	position: relative;
+}
+
+.main {
+	margin: 1em 0 0 0;
+	padding: 0;
+	width: 100%;
+	position: relative;
+	border-style: none;
+}
+
+.sidebar {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	position: relative;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-style: none;
+}
+
+
+/*===== headings =====*/
+
+h1, span.tokai0 {
+	margin: 0.2em 0;
+	padding: 0.2em;
+	font-size: 1.2em;
+	font-style: normal;
+}
+
+.tokai1,.tokai3,.tokai0 {
+	margin: 0;
+	padding: 1px 0;
+	font-size: 1em;
+	font-style: normal;
+}
+
+
+div.sidebar h2 {
+	font-size: 1em;
+	page-break-before: auto;
+}
+
+div.main h2 {
+	margin: 0 0.1em;
+	padding: 0.2em;
+	font-size: 1em;
+	page-break-before: always;
+}
+
+div.main h3 {
+	margin: 0 0.2em;
+	padding: 0.2em;
+	font-size: 1em;
+}
+
+
+/*===== pre , blockquote =====*/
+
+pre,pre.palm-bg{
+	overflow: auto;
+}
+
+pre {
+	border: 1px solid #ccc;
+}
+
+.small pre {
+	margin: 0.5em auto;
+	padding: 1.2em 0.5em;
+}
+
+pre.scl {
+	overflow: auto;
+	white-space: pre;
+}
+
+pre.scl2 {
+	overflow: auto;
+	white-space: pre;
+	width:89%;
+	height: auto;
+}
+
+pre.scl3 {
+	overflow: auto;
+	white-space: pre;
+	width:89%;
+	height: auto;
+}
+
+pre.scl10,
+pre.scl15 {
+	overflow: auto;
+	height: auto;
+}
+
+div.ylt table {
+	margin:1em 0;
+}
+

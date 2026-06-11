@@ -1,0 +1,665 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="start" href="http://www10.plala.or.jp/palm84/index.html">
+<link rel="stylesheet" type="text/css" href="./cssmemo_utf8.css" media="all">
+<link rel="stylesheet" type="text/css" href="./cssmemo_print_utf8.css" media="print">
+<link rel="stylesheet" type="text/css" href="./cssmemo-sp_utf8.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<script type="text/javascript" charset="UTF-8" src="./cssmemo_font_utf8.js"></script>
+<title>【私的】Windows フォントのテストだYO！【ヒンティング削除】 - CSSめも＠Palm84</title>
+<style type="text/css">
+<!--
+#test_linux,
+#test_linux2,
+#test_linux3,
+#test_linux_fonts,
+#test_linux3_fonts,
+#test_linux_fonts_p,
+#test_linux2_fonts_p,
+#test_linux3_fonts_p {
+line-height: 1.2;
+letter-spacing: 0.5px;
+}
+
+#test_linux,
+#test_linux2,
+#test_linux3 {
+background-color: white;
+}
+
+#test_linux2_fonts_p {
+-webkit-text-stroke-width: 0;
+text-shadow: none;
+/* tranceform: rotate(-0.001deg); */
+}
+
+
+.font_test {
+line-height: 1;
+}
+
+body {
+background-color: white;
+}
+
+-->
+</style>
+</head>
+
+
+<body>
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+
+<script type="text/javascript">
+<!--
+setTimeout("link()", 0);
+function link(){
+location.href='https://www.palm84.com/entry/css_memo_font_unhint_test_utf8';
+}
+-->
+</script>
+
+<h1><a href="./css_memo_font_unhint_test.html" name="top">【私的】Windows フォントのテストだYO！【ヒンティング削除】</a></h1>
+<h2><a name="about" href="#about">about</a></h2>
+<p>下記ページ内容についてのテスト用ページです。</p>
+<ul>
+<li><a href="https://diary.palm84.com/entry/20190727/1564228350">Firefox69でヒンティングを無効化した「Migu 1C」を使うテスト</a> <a href="http://b.hatena.ne.jp/entry/https://diary.palm84.com/entry/20190727/1564228350" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://diary.palm84.com/entry/20190727/1564228350" alt="" class="http-bookmark" /></a></li>
+<li><a href="https://diary.palm84.com/entry/20190727/1564233306">Firefox69でヒンティング無しのRobotoJフォントを使うテスト</a> <a href="http://b.hatena.ne.jp/entry/https://diary.palm84.com/entry/20190727/1564233306" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://diary.palm84.com/entry/20190727/1564233306" alt="" class="http-bookmark" /></a></li>
+</ul>
+<h2><a name="table" href="#table">テーブル表示</a></h2>
+
+
+<div class="sp_overflow">
+<table id="table_standard" class="font_test" summary="Windows 標準フォントの表示テスト">
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のiと大文字のIと大文字のI">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="Windows">Windows</th><th abbr="プブ">プブ</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一三埒彅漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:sans-serif">
+<td>Sans-serif</td>
+<td class="center"><span style="font-family:sans-serif">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一三埒彅漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:serif">
+<td>Serif</td>
+<td class="center"><span style="font-family:serif">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一三埒彅漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:monospace">
+<td>Monospace</td>
+<td class="center"><span style="font-family:monospace;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一三埒彅漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+<p class="pink">※ 完全じゃないです。<code>font-family:フォント名,serif</code> と指定してます。指定フォントがない環境では Serif 設定のフォントで表示されます。</p>
+
+<ul class="lt small">
+<li>-webkit-text-stroke-width <a href="javascript:rmProperty('select_font', '-webkit-text-stroke-width');">削除</a> | <a href="javascript:setTextStroke('select_font', '0');">0</a> | <a href="javascript:setTextStroke('select_font', '0.1px');">0.1px</a> | <a href="javascript:setTextStroke('select_font', '0.2px');">0.2px</a> | <a href="javascript:setTextStroke('select_font', '0.3px');">0.3px</a></li>
+<li>text-shadow <a href="javascript:rmProperty('select_font', 'text-shadow');">削除</a> | <a href="javascript:setTextShadow('select_font', 'none');">none</a> | <a href="javascript:setTextShadow('select_font', '0 0 1px rgba(0,0,0,0.1),0 0 2px rgba(0,0,0,0.01),0 0 3px rgba(0,0,0,0.01)');">0 0 1px rgba(0,0,0,0.1),0 0 2px rgba(0,0,0,0.01),0 0 3px rgba(0,0,0,0.01)</a> | 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:setTextShadow('select_font', '0 0 0.1px rgba(51,51,51,0.5)');">0 0 0.1px rgba(51,51,51,0.5)</a> | <a href="javascript:setTextShadow('select_font', '0 0 0.1px rgba(0,0,0,0.5)');">0 0 0.1px rgba(0,0,0,0.5)</a> | <a href="javascript:setTextShadow('select_font', '#707070 0.05px 0.05px 0.05px');">#707070 0.05px 0.05px 0.05px</a> |<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:setTextShadow('select_font', 'transparent 0 0 0,rgba(0,0,0,0.3) 0 0 0');">transparent 0 0 0,rgba(0,0,0,0.5) 0 0 0</a> | <a href="javascript:setTextShadow('select_font', '0px 0px 1px #acacac');">0px 0px 1px #acacac</a></li>
+<li>color <a href="javascript:rmProperty('select_font', 'color');">削除</a> | <a href="javascript:setColor('select_font', '#555');">#555</a> | <a href="javascript:setColor('select_font', '#333');">#333</a> | <a href="javascript:setColor('select_font', '#111');">#111</a> | <a href="javascript:setColor('select_font', '#524336');">#524336</a> || background-color <a href="javascript:rmProperty('select_font', 'background-color');">削除</a> | <a href="javascript:setBGColor('select_font', '#ffc');">#ffc</a> | <a href="javascript:setBGColor('select_font', '#ffd');">#ffd</a> | <a href="javascript:setBGColor('select_font', '#ffe');">#ffe</a></li>
+<li>font-weight <a href="javascript:rmProperty('select_font','font-weight' );">削除</a> | <a href="javascript:setFontWeight('select_font', '500');">500</a> || line-height <a href="javascript:rmProperty('select_font', 'line-height');">削除</a> | <a href="javascript:setLineHeight('select_font', '1');">1</a> | <a href="javascript:setLineHeight('select_font', '1.1');">1.1</a> | <a href="javascript:setLineHeight('select_font', '1.2');">1.2</a> | <a href="javascript:setLineHeight('select_font', '1.5');">1.5</a> | <a href="javascript:setLineHeight('select_font', '2');">2</a> || letter-spacing <a href="javascript:rmProperty('select_font','letter-spacing' );">削除</a> | <a href="javascript:setLetterSpacing('select_font', '0');">0</a> | <a href="javascript:setLetterSpacing('select_font', '1px');">1px</a> | <a href="javascript:setLetterSpacing('select_font', '2px');">2px</a></li>
+</ul>
+
+
+<div class="sp_overflow">
+<table id="select_font" class="font_test" summary="選択したフォント">
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のiと大文字のI">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="Windows">Windows</th><th abbr="プブ">プブ</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一三埒彅漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'ＭＳ Ｐゴシック','MS PGothic';">
+<td>ＭＳ Ｐゴシック</td>
+<td class="center"><span style="font-family:'ＭＳ Ｐゴシック','MS PGothic'">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一三埒彅漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family: 'Meiryo UI',serif;">
+<td>Meiryo UI</td>
+<td class="center"><span style="font-family:'Meiryo UI',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一三埒彅漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'游ゴシック',serif;font-weight:500;">
+<td>游ゴシック w500</td>
+<td class="center"><span style="font-family:'游ゴシック',serif;font-weight:500;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一三埒彅漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Yu Gothic UI',serif;">
+<td>Yu Gothic UI</td>
+<td class="center"><span style="font-family:'Yu Gothic UI',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一三埒彅漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'UD デジタル 教科書体 NP-R',serif;">
+<td><span class="small">UD デジタル 教科書体 NP-R</span></td>
+<td class="center"><span style="font-family:'UD デジタル 教科書体 NP-R',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一三埒彅漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'BIZ UDPゴシック',serif;">
+<td>BIZ UDPゴシック</td>
+<td class="center"><span style="font-family:'BIZ UDPゴシック',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一三埒彅漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family: 'メイリオ',meiryo,serif;border-bottom-style:double;border-width:10px;border-color:#ccc;">
+<td>メイリオ</td>
+<td class="center"><span style="font-family:'メイリオ',meiryo,serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一三埒彅漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Migu 1C',serif;">
+<td>Migu 1C</td>
+<td class="center"><span style="font-family:'Migu 1C',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一三埒彅漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'M+ 1c Unhinted',serif;">
+<td>M+ 1c Unhinted</td>
+<td class="center"><span style="font-family:'M+ 1c Unhinted',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一三埒彅漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Migu 1C Unhinted',serif;">
+<td>Migu 1C Unhinted</td>
+<td class="center"><span style="font-family:'Migu 1C Unhinted',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一三埒彅漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Migu 1C ttfmod',serif;">
+<td>Migu 1C ttfmod</td>
+<td class="center"><span style="font-family:'Migu 1C ttfmod',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一三埒彅漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'RobotoJ',serif;">
+<td>RobotoJ</td>
+<td class="center"><span style="font-family:'RobotoJ',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一三埒彅漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'RobotoJ_Hint',serif;">
+<td>RobotoJ_Hint</td>
+<td class="center"><span style="font-family:'RobotoJ_Hint',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一三埒彅漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'RobotoJAA',serif;">
+<td>RobotoJAA</td>
+<td class="center"><span style="font-family:'RobotoJAA',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一三埒彅漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'RobotoJ_otf',serif;">
+<td>RobotoJ_otf</td>
+<td class="center"><span style="font-family:'RobotoJ_otf',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一三埒彅漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Migu 1C otf',serif;">
+<td>Migu 1C otf</td>
+<td class="center"><span style="font-family:'Migu 1C otf',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一三埒彅漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+<h2 class="cl"><a name="test" href="#test">表示テスト</a></h2>
+<ul class="lt small">
+<li>-webkit-text-stroke-width <a href="javascript:rmProperty('test_linux2', '-webkit-text-stroke-width');">削除</a> | <a href="javascript:setTextStroke('test_linux2', '0');">0</a> | <a href="javascript:setTextStroke('test_linux2', '0.1px');">0.1px</a> | <a href="javascript:setTextStroke('test_linux2', '0.2px');">0.2px</a> | <a href="javascript:setTextStroke('test_linux2', '0.3px');">0.3px</a></li>
+<li>text-shadow <a href="javascript:rmProperty('test_linux2', 'text-shadow');">削除</a> | <a href="javascript:setTextShadow('test_linux2', 'none');">none</a> | <a href="javascript:setTextShadow('test_linux2', '0 0 1px rgba(0,0,0,0.1),0 0 2px rgba(0,0,0,0.01),0 0 3px rgba(0,0,0,0.01)');">0 0 1px rgba(0,0,0,0.1),0 0 2px rgba(0,0,0,0.01),0 0 3px rgba(0,0,0,0.01)</a> | 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:setTextShadow('test_linux2', '0 0 0.1px rgba(51,51,51,0.5)');">0 0 0.1px rgba(51,51,51,0.5)</a> | <a href="javascript:setTextShadow('test_linux2', '0 0 0.1px rgba(0,0,0,0.5)');">0 0 0.1px rgba(0,0,0,0.5)</a> | <a href="javascript:setTextShadow('test_linux2', '#707070 0.05px 0.05px 0.05px');">#707070 0.05px 0.05px 0.05px</a> |<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:setTextShadow('test_linux2', 'transparent 0 0 0,rgba(0,0,0,0.3) 0 0 0');">transparent 0 0 0,rgba(0,0,0,0.5) 0 0 0</a> | <a href="javascript:setTextShadow('test_linux2', '0px 0px 1px #acacac');">0px 0px 1px #acacac</a></li>
+<li>transform <a href="javascript:rmProperty('test_linux2', 'transform');">削除</a> | <a href="javascript:setTranceform('test_linux2', 'rotate(0.001deg)');">rotate(0.001deg)</a> | <a href="javascript:setTranceform('test_linux2', 'rotate(0.01deg)');">rotate(0.01deg)</a> | <a href="javascript:setTranceform('test_linux2', 'rotate(0.03deg)');">rotate(0.03deg)</a> | <a href="javascript:setTranceform('test_linux2', 'rotate(0.05deg)');">rotate(0.05deg)</a> || background-color <a href="javascript:rmProperty('test_linux2', 'background-color');">削除</a> | <a href="javascript:setBGColor('test_linux2', '#ffe');">#ffe</a></li>
+<li>color <a href="javascript:rmProperty('test_linux2', 'color');">削除</a> | <a href="javascript:setColor('test_linux2', '#555');">#555</a> | <a href="javascript:setColor('test_linux2', '#333');">#333</a> | <a href="javascript:setColor('test_linux2', '#111');">#111</a> | <a href="javascript:setColor('test_linux2', '#524336');">#524336</a> || background-color <a href="javascript:rmProperty('test_linux2', 'background-color');">削除</a> | <a href="javascript:setBGColor('test_linux2', '#ffc');">#ffc</a> | <a href="javascript:setBGColor('test_linux2', '#ffd');">#ffd</a> | <a href="javascript:setBGColor('test_linux2', '#ffe');">#ffe</a></li>
+<li>font-weight <a href="javascript:rmProperty('test_linux2','font-weight' );">削除</a> | <a href="javascript:setFontWeight('test_linux2', '500');">500</a> || line-height <a href="javascript:rmProperty('test_linux2', 'line-height');">削除</a> | <a href="javascript:setLineHeight('test_linux2', '1');">1</a> | <a href="javascript:setLineHeight('test_linux2', '1.1');">1.1</a> | <a href="javascript:setLineHeight('test_linux2', '1.2');">1.2</a> | <a href="javascript:setLineHeight('test_linux2', '1.5');">1.5</a> | <a href="javascript:setLineHeight('test_linux2', '2');">2</a> || letter-spacing <a href="javascript:rmProperty('test_linux2','letter-spacing' );">削除</a> | <a href="javascript:setLetterSpacing('test_linux2', '0');">0</a> | <a href="javascript:setLetterSpacing('test_linux2', '1px');">1px</a> | <a href="javascript:setLetterSpacing('test_linux2', '2px');">2px</a></li>
+</ul>
+
+<div id="test_linux2">
+<div class="testbox5" style="padding:0.5em;margin-left:1em;">
+<p id="test_linux2_fonts_p">
+<span class="small">0123456789 \'&#034;~*#$%&#038;@ abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+<br>0123456789 \'&#034;~*#$%&#038;@ abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ
+<br><span style="font-size:120%;">0123456789 \'&#034;~*#$%&#038;@ abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+<br><span class="small">新しい朝が来た！不埒な草彅剛、髙濱、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br>新しい朝が来た！不埒な草彅剛、髙濱、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑
+<br><span style="font-size:120%;">新しい朝が来た！不埒な草彅剛、髙濱、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br><br><span style="font-size:80%;">日本の食文化において、主食とされる米飯や雑穀飯の副食として、主要な位置を占める。料亭や食堂で出される事も、家庭料理として家庭で作られる事もある、汁物料理の代表である。昆布・削り節や煮干しなどで出汁をとり、食材と味噌で味を作るという、調理法としては単純な料理であるが、出汁・味噌に加え具材も各家庭・調理者によって千差万別であるため、おふくろの味と称される事もあり、作り方は様々である。また、各地で古くから作られており、名物料理だったり町おこしの料理ともされる。</span>
+<br><br>日本の食文化において、主食とされる米飯や雑穀飯の副食として、主要な位置を占める。料亭や食堂で出される事も、家庭料理として家庭で作られる事もある、汁物料理の代表である。昆布・削り節や煮干しなどで出汁をとり、食材と味噌で味を作るという、調理法としては単純な料理であるが、出汁・味噌に加え具材も各家庭・調理者によって千差万別であるため、おふくろの味と称される事もあり、作り方は様々である。また、各地で古くから作られており、名物料理だったり町おこしの料理ともされる。
+<br><cite><a href="http://ja.wikipedia.org/wiki/%E5%91%B3%E5%99%8C%E6%B1%81">味噌汁 - Wikipedia</a></cite>
+</p>
+</div>
+</div>
+
+<ul class="lt small">
+<li><a href="javascript:rmProperty('test_linux2_fonts', 'font-family');">削除</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'メイリオ\',Meiryo');">メイリオ</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'Meiryo UI\'');">Meiryo UI</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'ＭＳ Ｐゴシック\'');">ＭＳ Ｐゴシック</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_linux2_fonts', '\'游ゴシック\'');">游ゴシック</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'Yu Gothic UI\'');">Yu Gothic UI</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'源ノ角ゴシック JP\',\'源ノ角ゴシック\', '\'Noto Sans CJK JP\'');">源ノ角ゴシック</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_linux2_fonts', '\'Migu 1C\'');">Migu 1C</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'M+ 1c Unhinted\'');">M+ 1c Unhinted</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'Migu 1C Unhinted\'');">Migu 1C Unhinted</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_linux2_fonts', 'RobotoJ');">RobotoJ</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', 'RobotoJ_Hint');">RobotoJ_Hint</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', 'RobotoJAA');">RobotoJAA</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', 'RobotoJ_otf');">RobotoJ_otf</a></li>
+</ul>
+
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_linux2_fonts', '\'BIZ UDPゴシック\'');">BIZ UDPゴシック</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'UD デジタル 教科書体 NP-R\'');">UD デジタル 教科書体 NP-R</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'Textar\'');">Textar</a></li>
+</ul>
+<h2 class="cl"><a name="bookmarklet" href="#bookmarklet">ブックマークレット</a></h2>
+
+<pre>
+* {
+font-family: RobotoJ !important;
+}
+pre,code,kbd,var,samp,pre.code,pre span.synComment,del {
+font-family: monospace,monospace!important;
+}
+.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType {
+font-family:inherit!important;
+}
+</pre>
+
+
+<ul class="small">
+<li><a href="javascript:(function(){var head=document.getElementsByTagName('head');var style=head[0].lastChild;if(style.nodeName.toLowerCase()=='style'){head[0].removeChild(style);}else{ alert('style 要素はないですYO');}})();">style削除(x1)</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='*{ font-family:\'メイリオ\',Meiryo!important;}pre,code,kbd,var,samp,pre.code,pre span.synComment,del{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">メイリオ</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='*{ font-family:\'Meiryo UI\'!important;}pre,code,kbd,var,samp,pre.code,pre span.synComment,del{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">Meiryo UI</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='*{ font-family:\'游ゴシック\',\'Yu Gothic\',\'Yu Gothic\'!important;}pre,code,kbd,var,samp,pre.code,pre span.synComment,del{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">游ゴシック</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='*{ font-family:\'游ゴシック Medium\',\'Yu Gothic Medium\',\'游ゴシック\',\'游ゴシック体\',\'Yu Gothic\',\'YuGothic\'!important;font-weight:500!important;}pre,code,kbd,var,samp,pre.code,pre span.synComment,del{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">游ゴシック w500</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='*{ font-family:\'Yu Gothic UI\'!important;}pre,code,kbd,var,samp,pre.code,pre span.synComment,del{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">Yu Gothic UI</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='*{ font-family:\'ＭＳ Ｐゴシック\',\'MS PGothic\'!important;}pre,code,kbd,var,samp,pre.code,pre span.synComment,del{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">ＭＳ Ｐゴシック</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='*{ font-family:\'Migu 1C\'!important;}pre,code,kbd,var,samp,pre.code,prespan.synComment,del{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">Migu 1C</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='*{ font-family:\'M+ 1c Unhinted\'!important;}pre,code,kbd,var,samp,pre.code,pre span.synComment,del{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">M+ 1c Unhinted</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='*{ font-family:\'Migu 1C Unhinted\'!important;}pre,code,kbd,var,samp,pre.code,pre span.synComment,del{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">Migu 1C Unhinted</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='*{ font-family:RobotoJ!important;}pre,code,kbd,var,samp,pre.code,pre span.synComment,del{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">RobotoJ</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='*{ font-family:RobotoJ_Hint!important;}pre,code,kbd,var,samp,pre.code,pre span.synComment,del{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">RobotoJ_Hint</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='*{ font-family:RobotoJAA!important;}pre,code,kbd,var,samp,pre.code,pre span.synComment,del{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">RobotoJAA</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='*{ font-family:RobotoJ_otf!important;}pre,code,kbd,var,samp,pre.code,prespan.synComment,del{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">RobotoJ_otf</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='*{ font-family:\'Migu 1C otf\'!important;}pre,code,kbd,var,samp,pre.code,pre span.synComment,del{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">Migu 1C otf</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='*{ font-family:\'BIZ UDPゴシック\'!important;}pre,code,kbd,var,samp,pre.code,pre span.synComment,del{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">BIZ UDPゴシック</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='*{ font-family:\'UD デジタル 教科書体 NP-R\'!important;}pre,code,kbd,var,samp,pre.code,pre span.synComment,del{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">UD デジタル 教科書体 NP-R</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='*{ font-family:Textar!important;}pre,code,kbd,var,samp,pre.code,pre span.synComment,del{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">Textar</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='*{ font-family:\'源ノ角ゴシック JP\',\'源ノ角ゴシック\','\'Noto Sans CJK JP\'!important;}pre,code,kbd,var,samp,pre.code,pre span.synComment,del{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">源ノ角ゴシック</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:\'Migu 1M\',monospace!important;}';head[0].appendChild(style);})();">Migu 1M (pre,etc)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:\'Migu 1M Unhinted\',monospace!important;}';head[0].appendChild(style);})();">Migu 1M Unhinted (pre,etc)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:\'M+ 1m Unhinted\',monospace!important;}';head[0].appendChild(style);})();">M+ 1m Unhinted (pre,etc)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:\'RobotoJ Mono\',monospace!important;}';head[0].appendChild(style);})();">RobotoJ Mono (pre,etc)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:\'RobotoJ Mono Hint\',monospace!important;}';head[0].appendChild(style);})();">RobotoJ Mono Hint (pre,etc)</a></li>
+</ul>
+<dl class="cl">
+<dt>-webkit-text-stroke, text-shadow, transform</dt>
+<dd>
+<p></p>
+<pre>
+function(){
+var style=document.createElement('style');
+var head=document.getElementsByTagName('head');
+style.setAttribute('type','text\/css');
+style.innerHTML='body{-webkit-text-stroke-width:0.1px !important;}';
+head[0].appendChild(style);})();
+</pre>
+
+<ul class="small">
+<li><a href="javascript:(function(){var head=document.getElementsByTagName('head');var style=head[0].lastChild;if(style.nodeName.toLowerCase()=='style'){head[0].removeChild(style);}else{ alert('style 要素はないですYO');}})();">style削除(x1)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='body{-webkit-text-stroke-width:0!important;text-shadow:none!important;transform:none;}img{transform:none!important;}';head[0].appendChild(style);})();">stylish なし</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='@font-face{font-family:\'ＭＳ Ｐゴシック\';src:local(\'Textar\');}@font-face{font-family:\'MS PGothic\';src:local(\'Textar\');}';head[0].appendChild(style);})();">ＭＳ Ｐゴシック を Textar に置換</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{-webkit-text-stroke-width:0!important;}';head[0].appendChild(style);})();">0</a> || <a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{-webkit-text-stroke-width:0.1px !important;}';head[0].appendChild(style);})();">body{-webkit-text-stroke-width: 0.1px !important;}</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{-webkit-text-stroke-width:0.15px !important;}';head[0].appendChild(style);})();">body{-webkit-text-stroke-width: 0.15px !important;}</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{-webkit-text-stroke-width:0.2px !important;}';head[0].appendChild(style);})();">body{-webkit-text-stroke-width: 0.2px !important;}</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{-webkit-text-stroke-width:0.3px !important;}';head[0].appendChild(style);})();">body{-webkit-text-stroke-width: 0.3px !important;}</a></li>
+</ul>
+
+<ul class="small">
+<li> <a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{text-shadow:none!important;}';head[0].appendChild(style);})();">none</a> || <a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{text-shadow:0 0 1px rgba(0,0,0,0.1),0 0 2px rgba(0,0,0,0.01),0 0 3px rgba(0,0,0,0.01)!important;}';head[0].appendChild(style);})();">body{text-shadow:0 0 1px rgba(0,0,0,0.1),0 0 2px rgba(0,0,0,0.01),0 0 3px rgba(0,0,0,0.01) !important;}</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{text-shadow: 0 0 0.1px rgba(51,51,51,0.5)!important;}';head[0].appendChild(style);})();">body{text-shadow: 0 0 0.1px rgba(51,51,51,0.5) !important;}</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{text-shadow: 0 0 0.1px rgba(0,0,0,0.5)!important;}';head[0].appendChild(style);})();">body{text-shadow: 0 0 0.1px rgba(0,0,0,0.5) !important;}</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{text-shadow: #707070 0.05px 0.05px 0.05px !important;}';head[0].appendChild(style);})();">body{text-shadow: #707070 0.05px 0.05px 0.05px !important;}</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{text-shadow: 0px 0px 1px #ACACAC !important;}';head[0].appendChild(style);})();">body{text-shadow: 0px 0px 1px #ACACAC !important;}</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{transform:none;}';head[0].appendChild(style);})();">none</a> || <a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{transform:rotate(0.001deg);}';head[0].appendChild(style);})();">body{transform: rotate(0.001deg);}</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{transform:rotate(0.03deg);}';head[0].appendChild(style);})();">body{transform: rotate(0.03deg);}</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{transform:rotate(0.05deg);}';head[0].appendChild(style);})();">body{transform: rotate(0.05deg);}</a></li>
+</ul>
+
+<div class="cl" style="background-color:#ffe;border:2px dotted #ccc;">
+<p>0123456789 \'"~*#$%&@ abcdefghijklmnopqrstuvwxyz
+<br>
+日本の食文化において、主食とされる米飯や雑穀飯の副食として、主要な位置を占める。料亭や食堂で出される事も、家庭料理として家庭で作られる事もある、汁物料理の代表である。昆布・削り節や煮干しなどで出汁を</p>
+<p><img src="./images/yoroku.jpg" width="160" height="160" alt="与六の「きとうはなかった」のスクリーンショット"></p>
+</div>
+
+<ul class="lt small">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{transform:none;}img{transform:none!important;}';head[0].appendChild(style);})();">none</a> || <a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{transform:rotate(0.001deg);}img{transform: rotate(0deg)!important;}';head[0].appendChild(style);})();">body{transform: rotate(0.001deg);} img{transform: rotate(0deg)!important;}</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{transform:rotate(0.03deg);}img{transform: rotate(-0.03deg)!important;}';head[0].appendChild(style);})();">body{transform: rotate(0.03deg);} img{transform: rotate(-0.03deg)!important;}</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{transform:rotate(0.05deg);}img{transform: rotate(-0.05deg)!important;}';head[0].appendChild(style);})();">body{transform: rotate(0.05deg);} img{transform: rotate(-0.05deg)!important;}</a></li>
+</ul>
+
+<p class="cl">下記は body 要素に style 属性を追記</p>
+<pre>
+function(){
+document.getElementsByTagName('body')[0].style.setProperty('transform','rotate(0.01deg)','important');})
+();
+</pre>
+<ul class="small">
+<li><a href="javascript:(function(){var myID=document.getElementsByTagName('body')[0].style.removeProperty('transform');})();">戻す</a> </li>
+<li><a href="javascript:(function(){document.getElementsByTagName('body')[0].style.setProperty('transform','rotate(0.01deg)','important');})();">transform: rotate(0.01deg)</a></li>
+<li><a href="javascript:(function(){document.getElementsByTagName('body')[0].style.setProperty('transform','rotate(0.03deg)','important');})();">transform: rotate(0.03deg)</a></li>
+<li><a href="javascript:(function(){document.getElementsByTagName('body')[0].style.setProperty('transform','rotate(0.05deg)','important');})();">transform: rotate(0.05deg)</a></li>
+</ul>
+
+</dd>
+</dl>
+
+<h2 class="cl"><a name="bikou" href="#bikou">備考</a></h2>
+
+<p>最終更新日：2019.07.29</p>
+
+<p>2019.07.29 作成。
+</p>
+
+<dl>
+<dt>ダウンロード・リンク</dt>
+<dd>
+
+<ul>
+<li><a href="http://mix-mplus-ipa.sourceforge.jp/migu/">Miguフォント : M+とIPAの合成フォント</a></li>
+</ul>
+
+
+<ul>
+<li><a href="https://ja.osdn.net/projects/robotoj-font/">RobotoJ-Font プロジェクト日本語トップページ - OSDN</a> <a href="http://b.hatena.ne.jp/entry/https://ja.osdn.net/projects/robotoj-font/" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://ja.osdn.net/projects/robotoj-font/" alt="" class="http-bookmark" /></a></li>
+</ul>
+
+<ul>
+<li><a href="https://qiita.com/mmns/items/7d268134f5915f222599">【Fontforge】ブラウザやElectron系ソフトで表示される文字がガビガビになってる時の解決法と、ヒンティングについて感じたこと - Qiita</a> <a href="http://b.hatena.ne.jp/entry/https://qiita.com/mmns/items/7d268134f5915f222599" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://qiita.com/mmns/items/7d268134f5915f222599" alt="" class="http-bookmark" /></a>
+	<ul>
+	<li><a href="https://mominisjapan.github.io/Pages/kuso_rendering/">Unhinted M+ - Chone(こーね)</a> <a href="http://b.hatena.ne.jp/entry/https://mominisjapan.github.io/Pages/kuso_rendering/" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://mominisjapan.github.io/Pages/kuso_rendering/" alt="" class="http-bookmark" /></a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="https://fontforge.github.io/en-US/">FontForge Open Source Font Editor</a> <a href="http://b.hatena.ne.jp/entry/https://fontforge.github.io/en-US/" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://fontforge.github.io/en-US/" alt="" class="http-bookmark" /></a></li>
+<li><a href="http://web1.nazca.co.jp/nzkchicagob/m6x9801/mrktb1bs5.html">メイリオ・meiryoKe・ttfname3</a> <a href="http://b.hatena.ne.jp/entry/http://web1.nazca.co.jp/nzkchicagob/m6x9801/mrktb1bs5.html" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/http://web1.nazca.co.jp/nzkchicagob/m6x9801/mrktb1bs5.html" alt="" class="http-bookmark" /></a></li>
+</ul>
+
+</dd>
+</dl>
+
+
+<hr>
+
+
+<div class="navi">
+<ul>
+<li><a href="#top">TOP</a> | </li>
+<li><a href="./index.html">HOME</a></li>
+</ul>
+</div>
+
+
+</body>
+</html>

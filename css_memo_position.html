@@ -1,0 +1,422 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" type="text/css" href="cssmemo.css">
+<link rel="start" href="./index.html">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./cssmemo-sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>position属性で2カラム構成 - CSSめも＠Palm84</title>
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="cssmemo_ie5.css">
+<![endif]-->
+</head>
+
+<body>
+
+<h1><a href="./css_memo_position.html" name="top">position属性で2カラム構成 - CSSめもめも</a></h1>
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/css_memo_position.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/css_memo_position.html"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/css_memo_position.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<h2>position属性とは</h2>
+
+<p>えーと、あんまり詳しくないのでごみんごみんですけど、ブロック要素に <code>position: absolute</code> を指定すると要素の指定順序を無視して絶対位置を指定できます。</p>
+
+<p>例えば、右側に余白を取り、そこにサイドバーを表示させたりすることが可能なのであったのでした。</p>
+<h2>作ってみる</h2>
+
+<dl>
+<dt>大枠を作成</dt>
+<dd>
+<ul>
+<li><code>width</code> から左右 <code>margin</code> 分を引く</li>
+<li>relative指定</li>
+</ul>
+</dd>
+
+<dt>左（メイン）列</dt>
+<dd>
+<ul>
+<li>sidemenu用の右 <code>margin</code> 設定</li>
+<li>sidemenu分を引いて <code>width</code> 指定</li>
+</ul>
+</dd>
+
+<dt>右サイドバー列</dt>
+<dd>
+<ul>
+<li><code>position: absolute</code> で top,right,bottom,left の絶対位置を指定</li>
+</ul>
+</dd>
+</dl>
+
+
+<p>ここから下、うほほほほいー</p>
+
+
+<div class="mainbox">
+<div class="contents">
+<h3>テスト</h3>
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/%E5%B2%A9%E5%B4%8E%E5%85%83%E6%98%AF%26WINDY">岩崎元是&#038;WINDY - Wikipedia</a></li>
+<li><a href="http://d.hatena.ne.jp/keyword/%B4%E4%BA%EA%B8%B5%C0%A7&#038;WINDY">岩崎元是&#038;WINDYとは - はてなダイアリー</a></li>
+<li><a href="http://www.heiwaboke.net/2ch/unkar02.php/bubble6.2ch.net/natsumeloj/1047097539">――――岩崎元是＆ＷＩＮＤＹ――――</a></li>
+</ul>
+<div class="kuma" title="クマーAA - もう少し僕のそばにすわっていて♪ 吐息さえ聴こえるぐらいよりそっていてよ♪ ... 君がただそこにいればいい♪ 何も話さずにいてもいい♪ 【I want you to stay by me】">
+　　 ∩＿＿＿∩
+　　 | ノ　ﾉノ　⌒ヽ
+　　/ﾉノ●)　　●) |　　　♪ <span class="small">クマがただそこにいればいい～</span>クマがただそこにいればいい～
+　 |｜　　　( _●_)　ミ
+　彡､　　　|∪|　　､｀＼　♪ I want kumar to stay by me
+ /　＿(♯) ヽノ　/´&#062;　 )
+(＿＿＿）　　　/　(_／
+</div>
+
+<pre class="kuma" title="クマーAA - もう少し僕のそばにすわっていて♪ 吐息さえ聴こえるぐらいよりそっていてよ♪ ... 君がただそこにいればいい♪ 何も話さずにいてもいい♪ 【I want you to stay by me】">
+　　 ∩＿＿＿∩
+　　 | ノ　ﾉノ　⌒ヽ
+　　/ﾉノ●)　　●) |　　　♪ <span class="small">クマがただそこにいればいい～</span>クマがただそこにいればいい～
+　 |｜　　　( _●_)　ミ
+　彡､　　　|∪|　　､｀＼　♪ I want kumar to stay by me
+ /　＿(♯) ヽノ　/´&#062;　 )
+(＿＿＿）　　　/　(_／
+</pre>
+
+<div class="overflow2">
+<p><img src="images/bgrescue_grub2.png" alt="BG-Rescue Linux 起動画面" width="577" height="274"></p>
+</div>
+
+<pre>
+div.mainbox {
+margin: 0 auto;
+padding: 0;
+width: 97%;
+position: relative;
+border: 1px dotted black;
+}
+
+div.contents {
+margin: 0 30% 0 0;
+padding: 0;
+position: relative;
+width: 70%;
+border: 1px dotted blue;
+}
+
+div.sidemenu {
+margin: 0;
+padding: 0;
+position: absolute;
+top: 0;
+left: 70%;
+right: 0;
+bottom: 0;
+width: 30%;
+border: 1px dotted red;
+}
+</pre>
+
+</div>
+
+<div class="sidemenu">
+<h2>めにゅう</h2>
+<ul>
+<li>hogehoge</li>
+<li>hagehage</li>
+<li>duradura</li>
+<li>秘打 黒鳥の湖</li>
+<li>男・岩鬼の悪球打ち</li>
+<li>ラーメン、イケメン、ボクつけめん♪</li>
+<li>がんばれ谷選手♪</li>
+<li>西武の和田</li>
+</ul>
+</div>
+
+</div>
+
+<dl>
+<dt>paddingを設定する時</dt>
+<dd>
+<p><strong>長さの値の単位は<code>%</code>で統一した方がいい</strong>かな？</p>
+<p>左右にpaddingを設定する場合は、その%分を引いてwidthを設定すること。borderに罫線を引く場合はその分 div.mainbox の <code>width</code> を 1% 程小さくしておいた方がいいかもしれません。</p>
+</dd>
+
+<dt>それぞれの要素も再設定した方が安全かも</dt>
+<dd>
+<p><code>.sidemenu h2</code> なんてかんじでセレクタを作って再設定しておいた方が安全かも</p>
+<p>特にIEでは「へんなの出ました！」になることが多いので確認は念入りに</p>
+</dd>
+
+<dt>はみ出す可能性がある要素にoverflow属性を設定しておく</dt>
+<dd>
+<p>pre要素などに<code>overflow: auto;</code>を指定しておく</p>
+<p>imgはインライン要素なので、専用divのclassを作るとか？</p>
+<p>IEでは <code>width</code> を指定していない要素でoverflowの設定が効かないことがあります。</p>
+</dd>
+
+<dt>IEのバグに注意する</dt>
+<dd>
+<p>なるべく標準モード（文書型宣言でURIあり）で書く（※但し、IE5は非対応）</p>
+<p>それぞれのカラムに入れる子要素についてはなるべくwidthを設定しておく</p>
+<p>pre要素にoverflow属性でautoを指定した場合、IEではスクロールバーも高さに含まれるため、元の高さ2文字以上ないといけない、文字がかくれてしまう。よって上下 <code>padding</code> に0.5em以上設定しておく。</p>
+</dd>
+</dl>
+
+
+<div class="mainbox2">
+<div class="contents2">
+<h3>テスト2</h3>
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/%E5%B2%A9%E5%B4%8E%E5%85%83%E6%98%AF%26WINDY">岩崎元是&#038;WINDY - Wikipedia</a></li>
+<li><a href="http://d.hatena.ne.jp/keyword/%B4%E4%BA%EA%B8%B5%C0%A7&#038;WINDY">岩崎元是&#038;WINDYとは - はてなダイアリー</a></li>
+<li><a href="http://www.heiwaboke.net/2ch/unkar02.php/bubble6.2ch.net/natsumeloj/1047097539">――――岩崎元是＆ＷＩＮＤＹ――――</a></li>
+</ul>
+<div class="kuma" title="クマーAA - もう少し僕のそばにすわっていて♪ 吐息さえ聴こえるぐらいよりそっていてよ♪ ... 君がただそこにいればいい♪ 何も話さずにいてもいい♪ 【I want you to stay by me】">
+　　 ∩＿＿＿∩
+　　 | ノ　ﾉノ　⌒ヽ
+　　/ﾉノ●)　　●) |　　　♪ <span class="small">クマがただそこにいればいい～</span>クマがただそこにいればいい～
+　 |｜　　　( _●_)　ミ
+　彡､　　　|∪|　　､｀＼　♪ <span class="small">I want kumar to stay by me</span>
+ /　＿(♯) ヽノ　/´&#062;　 )
+(＿＿＿）　　　/　(_／
+</div>
+
+<pre class="kuma" title="クマーAA - もう少し僕のそばにすわっていて♪ 吐息さえ聴こえるぐらいよりそっていてよ♪ ... 君がただそこにいればいい♪ 何も話さずにいてもいい♪ 【I want you to stay by me】">
+　　 ∩＿＿＿∩
+　　 | ノ　ﾉノ　⌒ヽ
+　　/ﾉノ●)　　●) |　　　♪ <span class="small">クマがただそこにいればいい～</span>クマがただそこにいればいい～
+　 |｜　　　( _●_)　ミ
+　彡､　　　|∪|　　､｀＼　♪ I want kumar to stay by me
+ /　＿(♯) ヽノ　/´&#062;　 )
+(＿＿＿）　　　/　(_／
+</pre>
+
+
+<pre>
+div.mainbox2 {
+margin: 0 auto;
+padding: 0;
+width: 95%;
+position: relative;
+border: 1px dotted black;
+}
+
+div.contents2 {
+margin: 0 30% 0 0;
+padding: 2%;
+position: relative;
+width: 66%;
+border: 1px dotted blue;
+}
+
+div.sidemenu2 {
+margin: 0;
+padding: 2%;
+position: absolute;
+top: 0;
+left: 70%;
+right: 0;
+bottom: 0;
+width: 26%;
+border: 1px dotted red;
+}
+
+.sidemenu2 h2 {
+margin: 1%;
+padding: 3%;
+font-size: 1.5em;
+line-height: 100%;
+letter-spacing: 1px;
+}
+</pre>
+
+</div>
+
+<div class="sidemenu2">
+<h2>めにゅう2</h2>
+<ul>
+<li>hogehoge</li>
+<li>hagehage</li>
+<li>duradura</li>
+<li>秘打 黒鳥の湖</li>
+<li>男・岩鬼の悪球打ち</li>
+<li>ラーメン、イケメン、ボクつけめん♪</li>
+<li>がんばれ谷選手♪</li>
+<li>西武の和田</li>
+<li>ブリーデンとラインバック</li>
+<li>田淵のレフトゴロ</li>
+</ul>
+</div>
+
+</div>
+<h2>サイドメニューの幅を固定</h2>
+
+<div class="mainbox3">
+<div class="contents3">
+<h3>テスト2</h3>
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/%E5%B2%A9%E5%B4%8E%E5%85%83%E6%98%AF%26WINDY">岩崎元是&#038;WINDY - Wikipedia</a></li>
+<li><a href="http://d.hatena.ne.jp/keyword/%B4%E4%BA%EA%B8%B5%C0%A7&#038;WINDY">岩崎元是&#038;WINDYとは - はてなダイアリー</a></li>
+<li><a href="http://www.heiwaboke.net/2ch/unkar02.php/bubble6.2ch.net/natsumeloj/1047097539">――――岩崎元是＆ＷＩＮＤＹ――――</a></li>
+</ul>
+<div class="kuma" title="クマーAA - もう少し僕のそばにすわっていて♪ 吐息さえ聴こえるぐらいよりそっていてよ♪ ... 君がただそこにいればいい♪ 何も話さずにいてもいい♪ 【I want you to stay by me】">
+　　 ∩＿＿＿∩
+　　 | ノ　ﾉノ　⌒ヽ
+　　/ﾉノ●)　　●) |　　　♪ <span class="small">クマがただそこにいればいい～</span>クマがただそこにいればいい～
+　 |｜　　　( _●_)　ミ
+　彡､　　　|∪|　　､｀＼　♪ <span class="small">I want kumar to stay by me</span>
+ /　＿(♯) ヽノ　/´&#062;　 )
+(＿＿＿）　　　/　(_／
+</div>
+
+<pre class="kuma" title="クマーAA - もう少し僕のそばにすわっていて♪ 吐息さえ聴こえるぐらいよりそっていてよ♪ ... 君がただそこにいればいい♪ 何も話さずにいてもいい♪ 【I want you to stay by me】">
+　　 ∩＿＿＿∩
+　　 | ノ　ﾉノ　⌒ヽ
+　　/ﾉノ●)　　●) |　　　♪ <span class="small">クマがただそこにいればいい～</span>クマがただそこにいればいい～
+　 |｜　　　( _●_)　ミ
+　彡､　　　|∪|　　､｀＼　♪ I want kumar to stay by me
+ /　＿(♯) ヽノ　/´&#062;　 )
+(＿＿＿）　　　/　(_／
+</pre>
+
+
+<pre>
+div.mainbox3 {
+margin: 0 auto;
+padding: 0;
+width: 97%;
+min-width: 750px;
+position: relative;
+border: 1px dotted black;
+}
+
+div.contents3 {
+margin: 0 200px 0 0;
+padding: 0;
+border: 1px dotted blue;
+height: 100%;
+}
+
+div.sidemenu3 {
+margin: 0;
+padding: 0;
+position: absolute;
+top: 0;
+right: 0;
+bottom: 0;
+width: 200px;
+border: 1px dotted red;
+height: 100%;
+}
+
+.mainbox3 h2,
+.mainbox3 h3 {
+margin: 0;
+padding: 0.2em 0.5em;
+font-size: 1.5em;
+line-height: 100%;
+letter-spacing: 1px;
+}
+
+div.contents3 pre {
+margin: 3% auto;
+padding: 1em 0.5em;
+background-color: #f1f1f1;
+white-space: pre;
+font-size: 95%;
+overflow: auto;
+border: 1px #ccc inset;
+line-height: 110%;
+width: 88%;
+}
+</pre>
+
+</div>
+
+<div class="sidemenu3">
+<h2>めにゅう2</h2>
+<ul>
+<li>hogehoge</li>
+<li>hagehage</li>
+<li>duradura</li>
+<li>秘打 黒鳥の湖</li>
+<li>男・岩鬼の悪球打ち</li>
+<li>ラーメン、イケメン、ボクつけめん♪</li>
+<li>がんばれ谷選手♪</li>
+<li>西武の和田</li>
+<li>ブリーデンとラインバック</li>
+<li>田淵のレフトゴロ</li>
+</ul>
+</div>
+
+</div>
+
+<dl>
+<dt>sidemenu の  <dfn>width</dfn> を px で指定</dt>
+<dd>
+<p>sidemenu の幅を固定</p>
+</dd>
+
+<dt>IE6は <dfn>min-width</dfn> 属性に非対応</dt>
+<dd>
+<p>他のブラウザでは、mainbox を750pxで固定</p>
+</dd>
+
+<dt>sidemenu3 </dt>
+<dd>
+<p></p>
+</dd>
+
+</dl>
+<h2>備考</h2>
+
+<p>最終更新日：2008.6.20</p>
+
+<p><code>float</code> 属性を使う方が安全だと言う話もあったりなかったり...orz</p>
+
+<hr>
+
+
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+
+</body>
+</html>

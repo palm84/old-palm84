@@ -1,0 +1,266 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" type="text/css" href="cssmemo_list.css">
+<link rel="start" href="./index.html">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./cssmemo-sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>ul,ol要素の設定の設定 - CSSめも＠Palm84</title>
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="cssmemo_ie5.css">
+<![endif]-->
+</head>
+<body>
+
+<h1><a href="./css_memo_list.html" name="top">ul,ol要素の設定の設定 - CSSめも</a></h1>
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/css_memo_list.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/css_memo_list.html"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/css_memo_list.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+<h2>margin と padding はどうなっているの？</h2>
+<h3>CSS指定なし</h3>
+
+<p>赤線が<span class="mono">ul</span>,<span class="mono">ol</span>要素の枠、青線は<span class="mono">li</span>要素です。</p>
+
+<div class="default">
+<ul>
+<li>欧米ですか？ <kbd>1</kbd></li>
+<li>失われた萌えを求めて <kbd>2</kbd>
+	<ul>
+	<li>馬車がかぼちゃに変わっても王子様は変わらない</li>
+	</ul>
+</li>
+<li>あーなーたーとあーたし、さつまいも♪ <kbd>3</kbd>
+	<ol>
+	<li>家政婦は寝ていた！</li>
+	</ol>
+</li>
+<li>ラーメン、イケメン、ボクつけめん？おｋ <kbd>4</kbd></li>
+</ul>
+
+<ol>
+<li>水泳部で睡眠グゥー！</li>
+<li>Operation Peace of Church
+	<ul>
+	<li>Gの侵入を阻止せよ</li>
+	</ul>
+</li>
+
+<li>3年B組クマーしやがって
+	<ol>
+	<li>はてなのこのこ電波な子</li>
+	</ol>
+</li>
+<li>やさしく殺して</li>
+</ol>
+</div>
+
+<p>枠線以外の見た目はそれ程差はないと思いますけど、IE6/7で見るとなんかおかしいですね。IE7では <code>margin-left</code> を指定して記号・数字を表示させている模様です。</p>
+
+<p>Opera9,Firefox2では <code>padding-left</code> が設定されていました。ネストは0設定みたいです？</p>
+
+<p>Opera9,Firefox2では上下 <code>margin</code> が1em 左右<code>margin</code> は0。</p>
+
+
+<h3>margin と padding を0にしてみる</h3>
+
+<pre>
+ul,ol { margin: 0;
+        padding: 0;
+        border: 1px solid red;
+}
+ul ul,ul ol,ol ul,ol ol {
+       margin: 0;
+       padding: 0;
+}
+li {   margin: 0;
+       padding: 0;
+       border: 1px solid blue;
+}
+</pre>
+
+
+<div class="testlist0">
+<ul>
+<li>欧米ですか？ <kbd>1</kbd></li>
+<li>失われた萌えを求めて <kbd>2</kbd>
+	<ul>
+	<li>馬車がかぼちゃに変わっても王子様は変わらない</li>
+	</ul>
+</li>
+<li>あーたし、さつまいも♪ <kbd>3</kbd>
+	<ol>
+	<li>家政婦は寝ていた！</li>
+	</ol>
+</li>
+<li>ラーメン、イケメン、ボクつけめん？ <kbd>4</kbd></li>
+</ul>
+
+<ol>
+<li>水泳部で睡眠グゥー！</li>
+<li>Operation Peace of Church
+	<ul>
+	<li>Gの侵入を阻止せよ</li>
+	</ul>
+</li>
+
+<li>3年B組クマーしやがって
+	<ol>
+	<li>はてなのこのこ電波な子</li>
+	</ol>
+</li>
+<li>やさしく殺して</li>
+</ol>
+</div>
+
+<p>記号・数字がはみ出しちゃってますね。つまり、記号・数字は枠に含まれていないってことですか。</p>
+<h2>基本設定を考える</h2>
+
+<p>IE7の初期状態では <code>paddin-left</code> ではなく <code>margin-left</code> の値が設定されているので、ブラウザごとの表示を統一するためには、<code>margin</code>, <code>padding</code> をきっちり指定しておく必要があるみたいですねん。うんうん。</p>
+
+<dl>
+<dt>ここがミソ</dt>
+<dd>
+<ul class="test">
+<li>数字・記号を表示させるには、<code>padding-left</code> を指定する。2em程でギリギリかな。</li>
+<li>要素のネスト（入れ子）に注意する。ネストの<code>margin</code>, <code>padding</code> は0にする
+	<ul>
+	<li><code>font-size:0.8em</code> と指定した場合、ネストするとどんどん小さくなるので、ネストに <code>font-size:1em</code> を指定しておく</li>
+	</ul>
+</li>
+<li>行間は <code>line-height</code> で調整
+	<ul>
+	<li>しかし、折り返し行にも適用されるので、<code>line-height</code> は折り返し用に小さく設定、<span class="mono">li</span>要素の <code>margin-top</code>, <code>margin-bottom</code> を設定した方がいいかもしれない</li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+<pre>
+ul,ol { margin: 1em 0;
+        padding: 0 0 0 2.5em; 
+        font-weight: normal;
+        line-height: 120%;
+}
+ul ul,ul ol,ol ul,ol ol {
+        margin: 0;
+        padding: 0 0 0 1em;
+        font-size: 1em;
+}
+li {    margin: 0.2em 0;
+        padding: 0;
+}
+</pre>
+
+
+<div class="testlist3">
+<ul>
+<li>欧米ですか？ <kbd>1</kbd></li>
+<li>失われた萌えを求めて <kbd>2</kbd>
+	<ul>
+	<li>馬車がかぼちゃに変わっても王子様は変わらない</li>
+	</ul>
+</li>
+<li>あーたし、さつまいも♪ <kbd>3</kbd>
+	<ol>
+	<li>家政婦は寝ていた！</li>
+	</ol>
+</li>
+<li>ラーメン、イケメン、ボクつけめん？ <kbd>4</kbd></li>
+<li>その時○間が疼いた  <kbd>5</kbd></li>
+</ul>
+
+<ol>
+<li>水泳部で睡眠グゥー！</li>
+<li>Operation Peace of Church
+	<ul>
+	<li>Gの侵入を阻止せよ</li>
+	</ul>
+</li>
+
+<li>3年B組クマーしやがって
+	<ol>
+	<li>はてなのこのこ電波な子</li>
+	</ol>
+</li>
+<li>やさしく殺して</li>
+<li>&hearts; ガチャコ マイ ラブ &hearts;</li>
+<li>どうぞ&yen;&yen;やらしく&yen;&yen;</li>
+<li>100m<sup>3</sup> </li>
+<li>H<sub>2</sub>Oがいっぱい</li>
+<li><bdo dir="rtl">ヘブライ語</bdo></li>
+<li>&spades; &clubs; &hearts; &diams;</li>
+</ol>
+</div>
+
+<p>実際に書く場合は、<strong>記号・表示が枠外であってもページに表示されればいい</strong>わけですから、ページの状態に合わせて左<code>padding</code>だけ調整しやがってくださいまし、ってかんじですか。</p>
+<h2>備考</h2>
+
+<p>最終更新日：2010.5.5</p>
+
+<ul>
+<li><a href="http://www.mozilla.gr.jp/standards/webtips/webtips0034.html">ul要素とol要素のブラウザごとの違い - Web標準普及プロジェクト</a></li>
+</ul>
+
+<dl>
+<dt>【基本】値の指定個数</dt>
+<dd>
+<p>margin や border など 上下左右を指定する場合</p>
+<ul>
+<li>4つ - 上, 右, 下, 左（時計回り）</li>
+<li>3つ - 上, 左右, 下</li>
+<li>2つ - 上下, 左右</li>
+<li>1つ - 一括</li>
+</ul>
+</dd>
+</dl>
+
+
+
+
+<hr>
+
+
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+
+
+</body>
+</html>

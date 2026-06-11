@@ -1,0 +1,791 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_Jis">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="GENERATOR" content="EdTex Version 3.11">
+<link rel="index" href="./index.html">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>ブート関連ツールリンク集＠Palm84</title>
+<style type="text/css">
+<!--
+td { 
+	border-right:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+}
+
+table.book2 {
+	border-top:1px solid #ccc;
+	border-left:1px solid #ccc;
+	margin:0 2em;
+	font-size:90%;
+}
+
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+</head>
+
+
+<body>
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+
+<h1><span class="tokai1"><a href="./boot_tool.html">ブート関連ツールリンク集</a></span></h1>
+
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+<ul>
+<li><a href="#bootloader" accesskey="3">ブートローダ</a> <kbd class="ak">3</kbd>
+	<ul class="nest small">
+	<li><a href="#syslinux">SYSLINUX</a></li>
+	<li><a href="#grub4dos">GRUB for DOS</a></li>
+	<li><a href="#mbm">MBM</a></li>
+	</ul>
+</li>
+<li><a href="#fd" accesskey="4">ブートFD</a> <kbd class="ak">4</kbd>
+	<ul class="nest small">
+	<li><a href="#fdlinux">FD Linux</a></li>
+	<li><a href="#fddos">DOS</a></li>
+	<li><a href="#288fdimage">2.88MBイメージ</a></li>
+	</ul>
+</li>
+<li><a href="#cd" accesskey="5">ブータブルCD</a> <kbd class="ak">5</kbd>
+	<ul class="nest small">
+	<li><a href="#livecd">Linux LiveCD</a></li>
+	<li><a href="#multibootcd">マルチブートCD</a></li>
+	</ul>
+</li>
+<li><a href="#usb" accesskey="6">USBメモリブート</a> <kbd class="ak">6</kbd></li>
+<li><a href="#network" accesskey="7">ネットワークブート</a> <kbd class="ak">7</kbd>
+	<ul class="nest small">
+	<li><a href="#tftpd32">tftp/dhcpサーバ</a></li>
+	<li><a href="#pxebootdisk">起動ディスク</a></li>
+	<li><a href="#linux_installer">Linuxインストーラ</a></li>
+	</ul>
+</li>
+<li><a href="#etc" accesskey="8">いろいろ</a> <kbd class="ak">8</kbd></li>
+</ul>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+
+
+
+
+</div>
+</div>
+
+
+<div class="main">
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/boot_tool.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/boot_tool.html"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/boot_tool.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<p class="small">2008.1.20 作成。絶賛校正中（何）
+<br>2008.3.1 <a href="#mbm">MBM</a>について追記
+<br>最終更新日 2012.3.20</p>
+
+
+<div class="palmst pink">
+<p>【ご注意】使用の際はドキュメントなどをよく読みませう。<span class="small">（オレモナー...）</span></p>
+</div>
+<h2><a href="#bootloader"><span class="ms">■</span></a> <a name="bootloader">ブートローダ</a> <kbd class="ak">3</kbd></h2>
+
+<h3><a href="#syslinux"><span class="ms">■</span></a> <a name="syslinux">SYSLINUX</a></h3>
+
+<p>CD,FD,USBメモリ,ネットワークブート</p>
+<ul>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/The_Syslinux_Project">The Syslinux Project - Syslinux Wiki</a>
+	<ul>
+	<li>FD,USBメモリ - <span class="small"><a href="http://syslinux.zytor.com/wiki/index.php/SYSLINUX">SYSLINUX - Syslinux Wiki</a></span></li>
+	<li>CD - <span class="small"><a href="http://syslinux.zytor.com/wiki/index.php/ISOLINUX">ISOLINUX - Syslinux Wiki</a>
+</span></li>
+	<li>ネットワーク - <span class="small"><a href="http://syslinux.zytor.com/wiki/index.php/PXELINUX">PXELINUX - Syslinux Wiki</a>
+</span></li>
+	<li>仮想FD/ISO（FD, iso イメージ） - <span class="small"><a href="http://syslinux.zytor.com/wiki/index.php/MEMDISK">MEMDISK - Syslinux Wiki</a>
+</span></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>ダウンロード：
+	<ul class="small">
+	<li><a href="http://www.ring.gr.jp/pub/linux/kernel.org/utils/boot/syslinux/">Index of /pub/linux/kernel.org/utils/boot/syslinux</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/Changelog">Changelog - Syslinux Wiki</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://syslinux.zytor.com/wiki/index.php/Menu">Menu - Syslinux Wiki</a>
+	<ul>
+	<li><a href="http://syslinux.zytor.com/wiki/index.php/Comboot/menu.c32">Comboot/menu.c32 - Syslinux Wiki</a></li>
+	</ul>
+</li>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/Comboot/chain.c32">Comboot/chain.c32 - Syslinux Wiki</a></li>
+<li><a href="http://www.hdt-project.org/">HDT</a></li>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/Hdt">Hdt (Hardware Detection Tool) - Syslinux Wiki</a>
+	<ul>
+	<li>pci.ids - <a href="http://pciids.sourceforge.net/">The PCI ID Repository</a></li>
+	<li><a href="http://konilope.linuxeries.org/tmp/modules.pcimap">modules.pcimap</a></li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="./livecd_usb.html">Linux LiveCDをUSBメモリでブートするめも</a>
+	<ul class="nest small">
+	<li><a href="./livecd_usb.html#syslinux">SYSLINUXのインストール</a></li>
+	<li><a href="./livecd_usb.html#config">syslinux.cfgの設定</a></li>
+	</ul>
+</li>
+<li><a href="http://d.hatena.ne.jp/palm84/20071129/1196347399">SYSLINUXにグラフィカル・メニューを入れるの巻</a></li>
+<li><a href="./syslinux_basic.html">SYSLINUXでマルチブート【基本編】</a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#grub4dos"><span class="ms">■</span></a> <a name="grub4dos">GRUB for DOS</a></h3>
+
+<p>FD,HD,USBメモリ,CD、他のブートローダからのチェインロードが可能。</p>
+<ul>
+<li><a href="http://grub4dos.sourceforge.net/wiki/index.php/Main_Page">Main Page - Grub4Dos Wiki</a>
+	<ul>
+	<li><a href="http://grub4dos.sourceforge.net/wiki/index.php/Grub4dos_tutorial">Grub4dos tutorial - Grub4Dos Wiki</a></li>
+	</ul>
+</li>
+<li><a href="http://diddy.boot-land.net/grub4dos/Grub4dos.htm">Grub4dos Guide - Contents</a></li>
+<li>ダウンロード：
+	<ul class="nest small">
+	<li><a href="http://sourceforge.net/projects/grub4dos/">GRUB4DOS and WINGRUB | Get GRUB4DOS and WINGRUB at SourceForge.net</a></li>
+	<li><a href="http://download.gna.org/grub4dos/">Index of /grub4dos</a></li>
+	</ul>
+</li>
+<li>Windos上からGUIでHD,FD,USBメモリへインストール - <a href="http://download.gna.org/grubutil/">GRUB Utilities</a></li>
+</ul>
+
+<dl>
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="./grub4dos.html">GRUB for DOS めも</a></li>
+<li><a href="./grub4dos_bootdisk.html">GRUB起動ディスクを作っておくの巻</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h3><a href="#mbm"><span class="ms">■</span></a> <a name="mbm">MBM (Multiple Boot Manager)</a></h3>
+
+<p>HDのMBRにインストール。またはFD起動ディスク。</p>
+<ul>
+<li><a href="http://elm-chan.org/fsw/mbm/mbm.html">ELM - Multiple Boot Manager</a></li>
+</ul>
+
+<dl>
+<dt>GRUBとの違い</dt>
+<dd>
+<p>私はあまり使ってないのよくわかっていませんが...</p>
+<ul>
+<li>メニューで選択が簡単</li>
+<li>HDにインストールした場合、ファイルが不要なのでパーティションをフォーマットしてもMBMは残る</li>
+<li>チェーンロードのみ、GRUBの様にカーネルロードはできない</li>
+</ul>
+</dd>
+
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/827usembm.html">MBM（Multiple Boot Manager）を使うには（フロッピーディスク編） － ＠IT</a></li>
+<li><a href="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/831usembmhd.html">MBM（Multiple Boot Manager）を使うには（MBR編） － ＠IT</a></li>
+</ul>
+</dd>
+</dl>
+
+<h2><a href="#fd"><span class="ms">■</span></a> <a name="fd">ブートFD</a> <kbd class="ak">4</kbd></h2>
+
+
+<ul>
+<li>イメージ作成・書き込みツール
+	<ul class="nest">
+	<li><a href="http://www.chrysocome.net/rawwrite">RawWrite for Windows - chrysocome.net</a></li>
+	</ul>
+</li>
+<li>仮想FDドライブ - マウント、イメージの展開
+	<ul class="nest">
+	<li><a href="http://sourceforge.jp/projects/sfnet_vfd/">Virtual Floppy Drive</a></li>
+	</ul>
+</li>
+<li>FDイメージの展開
+	<ul>
+	<li><a href="http://www.legroom.net/software/uniextract">Universal Extractor | LegRoom.net</a>(UniExtract Binary Archive)</li>
+	</ul>
+</li>
+</ul>
+
+<h3><a href="#fdlinux"><span class="ms">■</span></a> <a name="fdlinux">FD Linux</a></h3>
+
+<ul>
+<li><a href="http://www.giannone.eu/rescue/current/">BG-Rescue Linux</a></li>
+<li><a href="http://www003.upp.so-net.ne.jp/tshiono/partboot-usb/index-jp.html">Partboot for USB floppy drives</a></li>
+<li><a href="http://www1.ocn.ne.jp/~fdlinux/">1fd-partimage</a></li>
+</ul>
+
+<dl>
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="./bg_rescue_linux.html">BG-Rescue Linuxめも</a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#fddos"><span class="ms">■</span></a> <a name="fddos">DOS</a></h3>
+<ul>
+<li><a href="http://www.freedos.org/">FreeDOS | The FreeDOS Project</a>
+	<ul class="nest">
+	<li><a href="http://www.finnix.org/Balder">Balder - Finnix</a></li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="./dosdisk.html">私的「DOS起動ディスク」めも（未整理）</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20080202/1201979929">FDドライブなしでNetwork Client for DOS(TCP/IP)起動ディスクを作るの巻</a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#288fdimage"><span class="ms">■</span></a> <a name="288fdimage">2.88MBイメージ作成</a></h3>
+
+<ul>
+<li><a href="./dosdisk.html#288">2.88MB FDイメージ作成 - 私的「DOS起動ディスク」めも（未整理）</a></li>
+<li><a href="http://www.nu2.nu/mkbt/">MKBT, Make Bootable</a></li>
+<li><a href="http://ms-sys.sourceforge.net/">ms-sys</a></li>
+</ul>
+
+
+<h2><a href="#cd"><span class="ms">■</span></a> <a name="cd">ブータブルCD</a> <kbd class="ak">5</kbd></h2>
+
+
+<ul>
+<li><a href="http://sourceforge.jp/projects/sfnet_cdrtoolswin/">cdrtoolswin プロジェクト日本語トップページ - SourceForge.JP</a></li>
+<li>フォルダからイメージ作成（+ CD書き込み）
+	<ul>
+	<li><a href="http://mouneru.web.fc2.com/cdrecord_fe/cdr_fe.htm">CDRtoolsの フロントエンド</a> （※ DLリンク切れ？）<span class="small"> (<a href="http://web.archive.org/web/20090114220829/http://mouneru.web.fc2.com/cdrecord_fe/cdr_fe.htm">Internet Archive</a>)</span></li>
+	</ul>
+</li>
+<li>isoイメージ展開・抽出
+	<ul>
+	<li><del><a href="http://www.intercom.co.jp/iso/index.html">イメージファイル編集・変換・作成ソフト Super ウルトラISO - インターコム</a></del></li>
+	<li><a href="http://www.ezbsystems.com/ultraiso/index.html">UltraISO</a></li>
+	<li><a href="http://sevenzip.sourceforge.jp/">7-Zip</a></li>
+	<li><a href="http://www.legroom.net/software/uniextract">Universal Extractor | LegRoom.net</a>(UniExtract Binary Archive)</li>
+	</ul>
+</li>
+<li>仮想CDドライブ
+	<ul>
+	<li><a href="http://www.daemon-tools.cc/jpn/downloads">ダウンロード :: DAEMON-Tools.cc</a></li>
+	<li><a href="http://www.vector.co.jp/soft/winnt/util/se460083.html">Daemon Tools Lite</a>
+		<ul class="small">
+		<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/539dmntool/dmntool.html">仮想CD／DVDイメージをマウントする（DAEMON Tools Lite編） － ＠IT</a></li>
+		</ul>
+	</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20081216/1229446904">【取り扱い注意】ウイルススキャンLiveCDを試すの巻（書きかけでござる）</a></li>
+</ul>
+
+
+<dl>
+<dt>isoイメージ作成</dt>
+<dd>
+<ul>
+<li><a href="http://www.linux.or.jp/JM/html/cdrecord/man8/mkhybrid.8.html">Manpage of MKISOFS</a></li>
+<li><a href="http://euc.jp/periphs/iso9660.ja.html">ISO 9660 CD-ROMファイルシステムの概要</a></li>
+<li><a href="http://ja.wikipedia.org/wiki/ISO_9660">ISO 9660 - Wikipedia</a></li>
+<li><a href="http://itpro.nikkeibp.co.jp/article/COLUMN/20060228/231110/">【 ブートCD/DVDを作成する 】 - Linuxコマンド逆引き大全：ITpro</a></li>
+</ul>
+
+<ul>
+<li><strong class="ms">mkisofs.exe</strong> と <strong class="ms">cygwin1.dll</strong> を仮想CDディレクトリルートにコピー</li>
+<li>isoイメージの保存先はひとつ上のディレクトリ</li>
+</ul>
+<ul>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/ISOLINUX">ISOLINUX - Syslinux Wiki</a>
+	<ul class="small">
+	<li>ファイル名は英数30文字（拡張子除き）まで、記号はアンダースコア(<kbd>_</kbd>)のみ</li>
+	</ul>
+</li>
+</ul>
+<pre class="scl">
+mkisofs -v <span class="red">-l</span> -r -J -o ../isolinux.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table .
+</pre>
+
+<ul>
+<li>BCDW（※いまいちかもしれない？）</li>
+</ul>
+<pre class="scl">
+mkisofs.exe -iso-level 4 -joliet -joliet-long -r -hide-rr-moved -force-uppercase -volid "BCDW" -A MKISOFS -sysid "Win32" -b "bcdw/loader.bin" -no-emul-boot -boot-load-size 4 -hide boot.catalog -o ../BCDW.iso .
+</pre>
+<p>または、</p>
+<pre class="scl">
+mkisofs -iso-level 4 -r -hide TRANS.TBL -T -b "bcdw/loader.bin" -c boot.cat -no-emul-boot -boot-load-size 4 -o ../bcdw.iso .
+</pre>
+
+<dl>
+<dt>Windows XP Service Pack 統合isoイメージの作成</dt>
+<dd>
+<p>上記のCDRtoolsバイナリの <code>mkisofs.exe</code> と <code>cygwin1.dll</code> を使うと7階層目のフォルダ内のファイルが作成されない模様？下記の古い（？）バージョンならおｋでした。</p>
+<ul>
+<li><a href="ftp://ftp.berlios.de/pub/cdrecord/alpha/win32/cdrtools-1.11a12-win32-bin.zip">cdrtools-1.11a12-win32-bin.zip</a></li>
+<li><a href="./windows.html#integrate">Service Pack 適用済みイメージ（CD）作成 - 私的 Windows めも（未整理）</a>
+</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+<h3><a href="#livecd"><span class="ms">■</span></a> <a name="livecd">Linux LiveCD</a></h3>
+
+<ul>
+<li><a href="http://www.rcis.aist.go.jp/project/knoppix/">KNOPPIX Japanese edition</a></li>
+<li><a href="http://simosnet.com/livecdroom/index.html#knoppix">Knoppix 日本語版(LCR版) - ライブＣＤの部屋</a></li>
+<li><a href="http://www.knoppix.net/wiki/Main_Page">Knoppix Documentation Wiki</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.sysresccd.org/Main_Page">SystemRescueCd</a></li>
+<li><a href="http://hatochan.dyndns.org/slax-ja/index.php">slax-ja - PukiWiki</a></li>
+<li><a href="http://cdlinux.info/wiki/doku.php">about [CDlinux]</a></li>
+<li><a href="http://partedmagic.com/">Parted Magic</a></li>
+<li><a href="http://unit.aist.go.jp/itri/knoppix/http-fuse/">HTTP-FUSE-KNOPPIX</a></li>
+</ul>
+
+<dl>
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="./livecd.html">私的 Linux LiveCDめも</a></li>
+<li><a href="./knoppix511cd.html">KNOPPIX 5.1.1 CD で Windows XP のファイル救出</a></li>
+<li><a href="./knoppix_boot.html">Knoppixを起動する方法を試しためも</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20070120/1169289979">Berry Linux 0.78</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20090118/1232208347">【取り扱い注意】Clonezilla Live を試してみるの巻</a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#winpe"><span class="ms">■</span></a> <a name="winpe">Windows PE</a></h3>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/%E3%82%A6%E3%82%A3%E3%83%B3%E3%83%89%E3%82%A6%E3%82%BA%E3%83%97%E3%83%AC%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E7%92%B0%E5%A2%83">Windows プレインストール環境 - Wikipedia</a></li>
+<li><a href="http://www.microsoft.com/downloads/details.aspx?displaylang=ja&#038;FamilyID=c7d4bc6d-15f3-4284-9123-679830d629f2">ダウンロードの詳細 : Windows AIK</a></li>
+<li><a href="http://technet.microsoft.com/ja-jp/windows/aa905120.aspx">Windows PE 2.0 for Windows Vista の概要</a></li>
+</ul>
+
+<dl>
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://uiuicy.cs.land.to/winpe_index.html">WinPE (Windows Preinstallation Environment) について</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www10.plala.or.jp/palm84/winpe.html">Windows PE 2.0 めも</a></li>
+</ul>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20091024/1256479144">「Windows 回復環境」のisoイメージを作るの巻</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20100727/1280180893">Windows PE/RE のネットワークブート</a></li>
+</ul>
+
+</dd>
+</dl>
+
+
+
+
+<h3><a href="#multibootcd"><span class="ms">■</span></a> <a name="multibootcd">マルチブートCD</a></h3>
+
+<ul>
+<li><strong class="ms">Bootable CD Wizard</strong>
+	<ul>
+	<li><del>CD Shell User Contribution</del> （リンク切れ）
+		<ul class="small">
+		<li>Internet Archive : <a href="http://web.archive.org/web/20081225164500/http://cdshell.org/files/contributions/reanimatolog/bcdw.html">CD Shell User Contribution</a></li>
+		</ul>
+	</li>
+	<li><a href="http://bootcd.narod.ru/index_e.htm">BCDW</a>
+		<ul class="small">
+		<li>Internet Archive : <a href="http://web.archive.org/web/20071013074729/http://bcdw.wolfgang-brinkmann.de/bcdw_e.html">BootableCDWizard BCDW</a></li>
+		</ul>
+	</li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://uiuicy.cs.land.to/bootcd/index.html">マルチブータブルCD/DVD製作法　目次</a></li>
+</ul>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20070401/1175363610">マルチブートCDの作成 - 【Bootable CD Wizard】</a></li>
+</ul>
+
+<ul>
+<li><a href="./syslinux_basic.html#multidvd">マルチブートDVD/CD - SYSLINUXでマルチブート【基本編】</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://d.hatena.ne.jp/palm84/20120307/1331133210">【取扱注意】XBOOT - マルチブート LiveCD/LiveUSB 作成ツール</a>
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20120310/1331307365">XBOOT でウイルススキャンてんこもり LiveCD (LiveUSB) を作ってみたYO！</a></li>
+	</ul>
+</li>
+<li><a href="http://d.hatena.ne.jp/palm84/20120228/1330434373">【取扱注意】SARDU - マルチブート LiveCD/LiveUSB 作成ツール</a>
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20120304/1330799228">【取扱注意】SARDU の追加設定アレコレ - マルチブート LiveCD/LiveUSB 作成ツール</a></li>
+	</ul>
+</li>
+</ul>
+
+</dd>
+</dl>
+
+
+<h2><a href="#usb"><span class="ms">■</span></a> <a name="usb">USBメモリブート</a> <kbd class="ak">6</kbd></h2>
+
+
+<ul>
+<li><a href="http://grub4dos.sourceforge.net/wiki/index.php/USB_booting">USB booting - Grub4Dos Wiki</a></li>
+<li><a href="http://orz.kakiko.com/kaeru/usbboot/">USBブート推進協議会</a></li>
+<li><a href="http://h50146.www5.hp.com/products/software/oe/linux/mainstream/support/doc/option/usb/usb-key.html">日本HP_Linux_技術文書_USB-keyメモリからのシステムブートに関して</a></li>
+</ul>
+
+<ul>
+<li><a href="./livecd_usb.html">Linux LiveCDをUSBメモリでブートするめも</a></li>
+<li><a href="./syslinux_basic.html">SYSLINUXでマルチブート【基本編】</a></li>
+<li><a href="http://www10.plala.or.jp/palm84/syslinux.html">【私的】SYSLINUXでマルチブート（USBメモリ＆ネットワーク）</a></li>
+<li><a href="./liveusb_creator.html">Windows 版 LiveUSB 作成ツールいろいろ</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.plop.at/en/bootmanager.html">PLoP - Bootmanager</a>
+	<ul class="small">
+	<li><a href="http://www.plop.at/en/bootmanagerdl.html">PLoP Boot Manager Downloads</a></li>
+	<li><a href="http://d.hatena.ne.jp/palm84/20080816/1218896213">PLoP Boot Manager（USBブート非対応PC用起動ディスク）</a></li>
+	</ul>
+</li>
+</ul>
+
+
+<dl>
+<dt>イメージ作成・書き込みツール</dt>
+<dd>
+<ul>
+<li><a href="http://www.si-linux.co.jp/wiki/silinux/index.php?DDforWindows">DDforWindows - Silicon Linux Wiki</a></li>
+<li><a href="http://www.chrysocome.net/dd">dd for windows - chrysocome.net</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.nu2.nu/mkbt/">MKBT, Make Bootable</a>(Windows) - DOSブートセクタ(DOS-IPL)のコピー</li>
+<li><a href="http://ms-sys.sourceforge.net/">ms-sys</a> (Linux) - MBRブートストラップ・IPL書き込み</li>
+</ul>
+</dd>
+
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20070304/1173019239">USBメモリでブートいろいろ DOS(Windows)編</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://www10.plala.or.jp/palm84/fdboot_liveusb.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻</a></li>
+<li><a href="http://www10.plala.or.jp/palm84/fdboot_liveusb2.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻【その2】</a></li>
+<li><a href="http://www10.plala.or.jp/palm84/fdboot_liveusb3.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻【合体版】</a></li>
+<li><a href="http://www10.plala.or.jp/palm84/fdboot_liveusb4.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻【GRUB編】</a></li>
+</ul>
+
+<ul>
+<li><a href="./kexec_loader.html">【私的】 USBブート非対応PC用起動フロッピー/CDを作るの巻【kexec-loader編】</a></li>
+</ul>
+
+</dd>
+</dl>
+
+
+<h2><a href="#network"><span class="ms">■</span></a> <a name="network">ネットワークブート</a> <kbd class="ak">7</kbd></h2>
+
+<ul>
+<li><a href="http://etherboot.org/wiki/start">Etherboot/gPXE Wiki</a></li>
+</ul>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/Preboot_Execution_Environment">Preboot Execution Environment - Wikipedia</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Preboot_Execution_Environment">Preboot Execution Environment - Wikipedia(en)</a></li>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/PXELINUX">PXELINUX - Syslinux Wiki</a></li>
+</ul>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20070422/1177208004">PXEネットワークブートについてのめも</a></li>
+</ul>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20070201/1173126958">Vine Linux 4.1 で PXEネットワークブート用サーバの設定</a></li>
+<li><a href="./debian_lenny.html#pxe_server">PXEネットワークブート用サーバ <span class="small">- Debian GNU/Linux 5.x (lenny) インストールめも</span></a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20080818/1218988041">InetBoot (GRUB+BuildRoot) 【0731版】</a></li>
+</ul>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20100727/1280180893">Windows PE/RE のネットワークブート</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20100911/1284215276">Windows XP のインストールに「ネットワークブート」を使うYO！の巻</a></li>
+</ul>
+
+
+<h3><a href="#tftpd32"><span class="ms">■</span></a> <a name="tftpd32">Windows用 tftp/dhcpサーバ</a></h3>
+
+<ul>
+<li><a href="http://tftpd32.jounin.net/">Tftpd32</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20070403/1175609650">WindowsでPXEネットワークブート用サーバの設定 - TFTPD32</a></li>
+</ul>
+
+<p>FDイメージ、Linuxインストーラ、HTTP-FUSE-KNOPPIX、<a href="http://www.sysresccd.org/Main_Page">SystemRescueCd</a>
+, <a href="http://ping.windowsdream.com/">PING</a>(Partimage)、<a href="http://partedmagic.com/">Parted Magic</a>(GParted) などは、これのみでブート可能。</p>
+
+
+<h3><a href="#pxebootdisk"><span class="ms">■</span></a> <a name="pxebootdisk">起動ディスク</a></h3>
+
+<p>PC自身は非対応でも、NICが内蔵 or PCIなら他のブートローダ(Grub,lilo,syslinux)からネットワークブートが可能。起動用FDイメージ、起動用CDイメージあり</p>
+
+<ul>
+<li><a href="http://rom-o-matic.net/">ROM-o-matic.net</a></li>
+<li class="small"><a href="http://buxus.s31.xrea.com/pukiwiki/pukiwiki.php?knoppix-terminalserver#content_1_3">クライアントPCのNICに適合した.lzdskファイルを探すには - knoppix-terminalserver - Knoppix Temporary Directory</a></li>
+</ul>
+
+<dl>
+<dt>汎用イメージ</dt>
+<dd>
+<p>メジャーどこには対応してるかと。</p>
+<ul>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/UseCases">UseCases - Syslinux Wiki</a>
+	<ul>
+	<li><a href="ftp://ftp.scyld.com/private/jlehan/pxe-on-a-disk.html">PXE-On-A-Disk</a>（自動検出FDイメージとisoイメージ）</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><strong class="ms">Curtis's floppy.img</strong> - <a href="http://ping.windowsdream.com/ping/download.html">PING (Partimage Is Not Ghost)</a>
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20071206/1196954397">ネットワークブート用起動ディスク</a></li>
+	</ul>
+</li>
+</ul>
+
+<p>※ 但し、少し古いので下記のgPXE対応版の方がいいのかもしれない？</p>
+
+<dl>
+<dt>gPXE対応汎用カーネル</dt>
+<dd>
+<p>GRUB, LILO, SYSLINUX の kernel に指定</p>
+<ul class="small">
+<li><a href="http://rom-o-matic.net/gpxe/gpxe-git/gpxe.git/contrib/rom-o-matic/">ROM-o-matic.net for gPXE 0.9.7+</a></li>
+<li>Choose an output format
+	<ul>
+	<li><code>Linux kernel (SYSLINUX/GRUB/LILO) loadable image (.lkrn)</code> を選択</li>
+	</ul>
+</li>
+<li>Choose a NIC type
+	<ul>
+	<li><code>all-drivers</code> を選択</li>
+	</ul>
+</li>
+<li>[Get Image] をポチっと</li>
+</ul>
+
+<ul>
+<li>FDイメージなら
+	<ul>
+	<li><code>SYSLINUX-based bootable floppy image (.sdsk)</code> を選択</li>
+	</ul>
+</li>
+<li>CD(iso)イメージは
+	<ul>
+	<li><code>ISO bootable image (.iso)</code> を選択</li>
+	</ul>
+</li>
+</ul>
+
+
+
+
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+
+<h3><a href="#linux_installer"><span class="ms">■</span></a> <a name="linux_installer">Linuxインストーラ</a></h3>
+
+<p>カーネル（<code>linux</code> or <code>vmlinuz</code> etc）とinitrd（<code>initrd.gz</code> など）</p>
+
+<ul>
+<li><a href="http://www.ring.gr.jp/pub/linux/">Ring Server</a></li>
+<li><a href="http://ftp.jaist.ac.jp/pub/Linux/">JAIST サーバ</a></li>
+<li><a href="ftp://ftp.riken.go.jp/pub/Linux/">理研 サーバ</a></li>
+</ul><ul>
+<li>Debian stable
+	<ul class="small">
+	<li><a href="http://www.ring.gr.jp/pub/linux/debian/debian/dists/stable/main/installer-i386/current/images/netboot/debian-installer/i386/">/netboot/debian-installer/i386</a></li>
+	</ul>
+</li>
+<li>Vine Linux 5.2
+	<ul class="small">
+	<li><a href="http://www.ring.gr.jp/pub/linux/Vine/Vine-5.2/i386/images/pxeboot/">/Vine-5.2/i386/images/pxeboot</a></li>
+	</ul>
+</li>
+<li>Ubuntu Lucid (10.04)
+	<ul class="small">
+	<li><a href="http://ubuntu.mithril-linux.org/archives/dists/lucid/main/installer-i386/current/images/netboot/ubuntu-installer/i386/">/netboot/ubuntu-installer/i386</a></li>
+	</ul>
+</li>
+<li>Ubuntu Oneiric (11.10)
+	<ul class="small">
+	<li><a href="http://ubuntu.mithril-linux.org/archives/dists/oneiric/main/installer-i386/current/images/netboot/ubuntu-installer/i386/">/netboot/ubuntu-installer/i386</a></li>
+	</ul>
+</li>
+<li>Ubuntu Precise (12.04 ※ 正式リリースは4月予定)
+	<ul class="small">
+	<li><a href="http://ubuntu.mithril-linux.org/archives/dists/precise/main/installer-i386/current/images/netboot/ubuntu-installer/i386/">/netboot/ubuntu-installer/i386</a></li>
+	</ul>
+</li>
+</ul>
+
+
+<h2><a href="#etc"><span class="ms">■</span></a> <a name="etc">いろいろ</a> <kbd class="ak">8</kbd></h2>
+
+<ul>
+<li><a href="http://www.911cd.net/forums//index.php?">The CD Forum (Powered by Invision Power Board)</a></li>
+<li><a href="http://reboot.pro/">reboot.pro</a></li>
+</ul>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20061211/1165843188">ディスクイメージの作成と書き込み - Windows編</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20071011/1192104583">ms-sysコマンドとfdisk</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20071116/1195223260">フラッシュメモリのパーティションテーブル</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20071116/1195139861">dd for windowsでMBR/ブートセクタをバックアップ</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20070423/1177328827">VMware Player めも</a></li>
+</ul>
+
+
+
+
+</div>
+</div>
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+
+<address>Written by yassy</address>
+
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,952 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8">
+<meta name="GENERATOR" content="EdTex Version 3.11">
+<link rel="start" href="./index.html">
+<link rel="stylesheet" type="text/css" href="./cssmemo.css">
+<link rel="stylesheet" type="text/css" href="./css_memo_test_ie.css">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./cssmemo-sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>IE 7/8 テスト (IE8) - CSSめも＠Palm84</title>
+</head>
+
+<body>
+
+<h1><a href="./css_memo_test_ie8.html" name="top">IE 7/8 テスト (IE8) - CSSめも</a></h1>
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/css_memo_test_ie8.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/css_memo_test_ie8.html"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/css_memo_test_ie8.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<ul>
+<li>IE 7/8 テスト (IE8)  (EmulateIE8) <strong class="msg red">&#8592; 今ここ</strong></li>
+<li><a href="./css_memo_test_ie7.html">IE 7/8 テスト (IE7)</a> (EmulateIE7)</li>
+</ul>
+
+<ul>
+<li><a href="./css_memo_test_ie8_utf8.html">IE 7/8 テスト (IE8 UTF-8)</a> (EmulateIE8)</li>
+<li><a href="./css_memo_test_ie7_utf8.html">IE 7/8 テスト (IE7 UTF-8)</a> (EmulateIE7)</li>
+</ul>
+
+<ul>
+<li><a href="javascript:alert(document.documentMode);">DocumentMode</a> (JavaScript)</li>
+</ul>
+
+<ul>
+<li><a href="./css_memo_test_ie9.html">IE 7/8 テスト (IE9)</a> (EmulateIE9)</li>
+<li><a href="./css_memo_test_ie9_utf8.html">IE 7/8 テスト (IE9 UTF-8)</a> (EmulateIE9)</li>
+</ul>
+
+<ul>
+<li><a href="./css_memo_test_ie_edge.html">IE 7/8 テスト (IE edge)</a> (IE=edge)</li>
+<li><a href="./css_memo_test_ie_edge_utf8.html">IE 7/8 テスト (IE edge UTF-8)</a> (IE=edge)</li>
+</ul>
+<h2><a name="index" href="#index">目次</a></h2>
+
+<ol>
+<li><a href="#about">これはなに？</a></li>
+<li><a href="#ie7_test">IE8環境でIE7表示確認</a></li>
+<li><a href="#conditional_comment">IE7 に別CSSを指定するには</a></li>
+<li><a href="#font_family">font-family 指定時の違い</a></li>
+<li><a href="#overflow">overflow:auto 指定時のスクロール・バー</a></li>
+<li><a href="#meiryo">メイリオ</a></li>
+<li><a href="#ul_ol">ul , ol 要素の設定</a></li>
+<li><a href="#list_style">list-style-type</a></li>
+<li><a href="#ascii_art">AA表示</a></li>
+<li><a href="#bikou">備考</a></li>
+</ol>
+<h2><a name="about" href="#about">これはなに？</a></h2>
+
+<p>IE8とIE7で表示上の微妙な違いや注意点などを書いていくつもりです。</p>
+<h2><a name="ie7_test" href="#ie7_test">IE8環境でIE7表示確認</a></h2>
+
+<p>「モードスイッチ」の指定でもある程度の確認は可能ですが、フォントなど全く同じとはならない様です。</p>
+
+<p>下記ツール「<strong class="ms">IETester</strong>」が便利です。</p>
+
+<ul>
+<li><a href="http://www.my-debugbar.com/wiki/IETester/HomePage">My DebugBar | IETester / Browser Compatibility Check for Internet Explorer Versions from 5.5 to 9</a></li>
+</ul>
+
+<p>但し、結構クラッシュするので注意。</p>
+
+<ul>
+<li>参考：
+	<ul>
+	<li><a href="http://coliss.com/articles/browser/ie/928.html">IE5.5, IE6, IE7, IE8の確認が同時にできる -IETester | コリス</a></li>
+	</ul>
+</li>
+</ul>
+
+<h2><a name="conditional_comment" href="#conditional_comment">IE7 に別CSSを指定するには</a></h2>
+
+<ul>
+<li>注意点：
+	<ul>
+	<li>IE8であっても、互換表示設定でIE7モードとなることがある</li>
+	<li>IE8に対してIE8モード固定とするには「<strong>モードスイッチ</strong>」を指定する</li>
+	<li>IE7（またはIEの7以下）に対して別CSSを指定するには「<strong>コンディショナルコメント</strong>」で指定する</li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt>一例</dt>
+<dd>
+<pre>
+&#060;head&#062;
+&#060;meta http-equiv=&#034;Content-Type&#034; content=&#034;text/html; charset=Shift_JIS&#034;&#062;
+&#060;meta http-equiv=&#034;Content-Language&#034; content=&#034;ja&#034;&#062;
+&#060;meta http-equiv=&#034;Content-Style-Type&#034; content=&#034;text/css&#034;&#062;
+<strong class="ms red">&#060;meta http-equiv=&#034;X-UA-Compatible&#034; content=&#034;IE=Edge&#034;&#062;</strong>
+&#060;link rev=&#034;made&#034; href=&#034;mailto:palm84@example.com&#034;&#062;
+&#060;link rel=&#034;index&#034; href=&#034;http://www.example.com/palm84/index.html&#034;&#062;
+&#060;link rel=&#034;stylesheet&#034; type=&#034;text/css&#034; href=&#034;./basic.css&#034; media=&#034;all&#034;&#062;
+&#060;link rel=&#034;stylesheet&#034; type=&#034;text/css&#034; href=&#034;./print.css&#034; media=&#034;print&#034;&#062;
+&#060;link rel=&#034;shortcut icon&#034; href=&#034;./favicon.ico&#034;&#062;
+&#060;title&#062;ページのタイトル&#060;/title&#062;
+<strong class="ms red">&#060;!--[if lte IE 7]&#062;</strong>
+&#060;link rel=&#034;stylesheet&#034; type=&#034;text/css&#034; href=&#034;./basic_ie7.css&#034;&#062;
+<strong class="ms red">&#060;![endif]--&#062;</strong>
+&#060;/head&#062;
+</pre>
+</dd>
+
+<dt>モードスイッチ</dt>
+<dd>
+<p>最新IEを指定します。互換表示設定が有効でも <del>IE8</del> <ins>最新IE</ins> モードとなります。</p>
+<pre>
+&#060;meta http-equiv=&#034;X-UA-Compatible&#034; content=&#034;IE=Edge&#034;&#062;
+</pre>
+</dd>
+
+<dt>コンディショナルコメント</dt>
+<dd>
+<p>IE7以下に対して別CSSを指定。</p>
+<pre>
+<strong class="ms red">&#060;!--[if lte IE 7]&#062;</strong>
+&#060;link rel=&#034;stylesheet&#034; type=&#034;text/css&#034; href=&#034;./basic_ie7.css&#034;&#062;
+<strong class="ms red">&#060;![endif]--&#062;</strong>
+</pre>
+<p>通常CSSより後に指定して上書きさせます。</p>
+</dd>
+</dl>
+
+<h2><a name="font_family" href="#font_family">font-family 指定時の違い</a></h2>
+<h3>一般名（種類名）指定</h3>
+
+<ul>
+<li><code><span class="sansserif">Sans-Serif</span></code> 指定
+	<ul>
+	<li>IE7 - <strong class="lucida">Lucida Sans Unicode</strong> + <strong class="mspg">ＭＳ Ｐゴシック</strong></li>
+	<li>IE8 - <strong class="mspg">ＭＳ Ｐゴシック</strong></li>
+	<li>UTF-8ページでは、どちらも <strong class="arial">Arial</strong> + <strong class="mspg">ＭＳ Ｐゴシック</strong></li>
+	</ul>
+</li>
+<li><code><span class="serif">Serif</span></code> 指定
+	<ul>
+	<li>XPのIE7/8 - <span style="font-family:'ＭＳ 明朝'">ＭＳ 明朝</span></li>
+	<li>UTF-8ページでは、どちらも <strong class="timesnr">Time New Roman</strong> + <strong class="mspg">ＭＳ Ｐゴシック</strong></li>
+	<li>※ <strong>7のIE8 - <span style="font-family:Batang">Batang</span></strong></li>
+	</ul>
+</li>
+</ul>
+
+
+
+<div class="sp_overflow">
+<table summary="font-family 指定">
+<caption>font-family</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th>
+<th abbr="欧文">欧文</th>
+<th abbr="和文">和文</th>
+<th abbr="ascii 0x5C"> \ (0x5C)</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>abcde ABCDE</td>
+<td>あいうえお</td>
+<td>\</td>
+</tr>
+
+<tr class="sansserif">
+<td>Sans-Serif</td>
+<td>abcde ABCDE</td>
+<td>あいうえお</td>
+<td>\</td>
+</tr>
+
+<tr class="serif">
+<td>Serif</td>
+<td>abcde ABCDE</td>
+<td>あいうえお</td>
+<td>\</td>
+</tr>
+
+<tr class="ms">
+<td>monospace</td>
+<td>abcde ABCDE</td>
+<td>あいうえお</td>
+<td>\</td>
+</tr>
+</table>
+</div>
+
+<div class="sp_overflow">
+<table class="sample" summary="font-family 指定 - XP IE比較画像 (Shift_JIS)">
+<caption>IE 比較 - XP Shift_JIS（画像）</caption>
+<tr>
+<th abbr="IE8">IE8</th>
+<th abbr="IE7">IE7</th>
+</tr>
+
+<tr>
+<td><img src="./images/css_memo_test_ie/font_ie8.png" width="350" height="238" alt="hogehoge"></td>
+<td><img src="./images/css_memo_test_ie/font_ie7.png" width="354" height="238" alt="hogehoge"></td>
+</tr>
+</table>
+</div>
+
+<div class="sp_overflow">
+<table class="sample" summary="font-family 指定 - XP IE比較画像 (UTF-8)">
+<caption>IE 比較 - XP UTF-8 （画像）</caption>
+<tr>
+<th abbr="IE8">IE8</th>
+<th abbr="IE7">IE7</th>
+</tr>
+
+<tr>
+<td><img src="./images/css_memo_test_ie/font_ie8_utf8.png" width="370" height="235" alt="hogehoge"></td>
+<td><img src="./images/css_memo_test_ie/font_ie7_utf8.png" width="370" height="240" alt="hogehoge"></td>
+</tr>
+</table>
+</div>
+
+<div class="sp_overflow">
+<table class="sample" summary="Windows7 - IE8 Serif （画像）">
+<caption>Windows7 - IE8 Serif （画像）</caption>
+<tr>
+<td><img src="./images/css_memo_test_ie/win7_ie8_serif.png" width="370" height="50" alt="hogehoge"></td>
+</tr>
+</table>
+</div>
+
+<div class="sp_overflow">
+<table class="sample cl" summary="font-family 参考表示">
+<caption>参考画像</caption>
+<tr>
+<td><img src="./images/css_memo_test_ie/font_sample.png" width="495" height="457" alt="hogehoge"></td>
+</tr>
+</table>
+</div>
+
+<h3>日本語フォント名で指定</h3>
+
+<p>IE7/8 で違いはなし。</p>
+
+<p>html/CSS とも文字コードはきっちり合わせて保存しませう。</p>
+
+<pre>
+font-family: 'ＭＳ Ｐ明朝';
+</pre>
+
+<div class="sp_overflow">
+<table>
+<caption>ＭＳ Ｐ明朝</caption>
+<tr class="font_ja1">
+<td>テスト</td>
+<td>abcde ABCDE</td>
+<td>あいうえお</td>
+<td>\</td>
+</tr>
+</table>
+</div>
+
+<pre>
+font-family: 'MS PMincho';
+</pre>
+
+<div class="sp_overflow">
+<table>
+<caption>MS PMincho</caption>
+<tr class="font_ja2">
+<td>テスト</td>
+<td>abcde ABCDE</td>
+<td>あいうえお</td>
+<td>\</td>
+</tr>
+</table>
+</div>
+
+<h3>欧文フォント指定時の和文表示</h3>
+
+<ul>
+<li>IE7 - <strong>和文がすべて<span class="mspg">ＭＳ Ｐゴシック</span></strong></li>
+<li>IE8 - 2番目以降の指定も有効</li>
+</ul>
+
+<h4>欧文フォント + 和文日本語名 + 一般名</h4>
+
+<pre>
+font-family: 'Comic Sans MS', 'ＭＳ Ｐ明朝', sans-serif;
+</pre>
+
+<ul>
+<li>IE7 - <strong>和文がすべて<span class="mspg">ＭＳ Ｐゴシック</span></strong></li>
+</ul>
+
+<div class="lt">
+<div class="sp_overflow">
+<table summary="欧文フォント指定1">
+<caption>テスト</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th>
+<th abbr="欧文">欧文</th>
+<th abbr="和文">和文</th>
+<th abbr="ascii 0x5C">\</th>
+</tr>
+
+<tr class="font_test1">
+<td>テスト</td>
+<td>abcde ABCDE</td>
+<td>あいうえお</td>
+<td>\</td>
+</tr>
+</table>
+</div>
+</div>
+
+<div class="sp_overflow">
+<table class="sample" summary="欧文フォント指定1 - IE比較画像">
+<caption>IE 比較 （画像）</caption>
+<tr>
+<th abbr="IE8">IE8</th>
+<th abbr="IE7">IE7</th>
+</tr>
+
+<tr>
+<td><img src="./images/css_memo_test_ie/font_test1_8.png" width="346" height="108" alt="hogehoge">
+</td>
+<td><img src="./images/css_memo_test_ie/font_test1_7.png" width="346" height="109" alt="hogehoge">
+</td>
+</tr>
+</table>
+</div>
+
+
+
+<h4 class="cl">存在しないフォント + 和文日本語名 + 一般名</h4>
+
+<pre>
+font-family: hogehoge, hagehage, 'ＭＳ Ｐ明朝', sans-serif;
+</pre>
+
+<ul>
+<li>IE7/8とも2番目以降が適用される</li>
+</ul>
+
+<div class="lt">
+<div class="sp_overflow">
+<table summary="欧文フォント指定2">
+<caption>テスト</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th>
+<th abbr="欧文">欧文</th>
+<th abbr="和文">和文</th>
+<th abbr="ascii 0x5C">\</th>
+</tr>
+
+<tr class="font_test2">
+<td>テスト</td>
+<td>abcde ABCDE</td>
+<td>あいうえお</td>
+<td>\</td>
+</tr>
+</table>
+</div>
+</div>
+
+<div class="sp_overflow">
+<table class="sample" summary="欧文フォント指定2 - IE比較画像">
+<caption>IE 比較 （画像）</caption>
+<tr>
+<th abbr="IE8">IE8</th>
+<th abbr="IE7">IE7</th>
+</tr>
+
+<tr>
+<td><img src="./images/css_memo_test_ie/font_test2_8.png" width="340" height="112" alt="hogehoge">
+</td>
+<td><img src="./images/css_memo_test_ie/font_test2_7.png" width="340" height="112" alt="hogehoge">
+</td>
+</tr>
+</table>
+</div>
+
+<h4 class="cl">欧文フォント + 和文英語名 + 一般名</h4>
+
+<pre>
+font-family: 'Comic Sans MS', 'MS PMincho', sans-serif;
+</pre>
+
+<ul>
+<li>IE7 - <strong>和文がすべて<span class="mspg">ＭＳ Ｐゴシック</span></strong></li>
+</ul>
+
+<div class="sp_overflow">
+<table summary="欧文フォント指定3">
+<caption>テスト</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th>
+<th abbr="欧文">欧文</th>
+<th abbr="和文">和文</th>
+<th abbr="ascii 0x5C">\</th>
+</tr>
+
+<tr class="font_test3">
+<td>テスト</td>
+<td>abcde ABCDE</td>
+<td>あいうえお</td>
+<td>\</td>
+</tr>
+</table>
+</div>
+
+<h4>存在しないフォント + 和文英語名 + 一般名</h4>
+
+<pre>
+font-family: hogehoge, hagehage, 'MS PMincho', sans-serif;
+</pre>
+
+<ul>
+<li>IE7/8とも2番目以降が適用される</li>
+</ul>
+
+<div class="sp_overflow">
+<table summary="欧文フォント指定4">
+<caption>テスト</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th>
+<th abbr="欧文">欧文</th>
+<th abbr="和文">和文</th>
+<th abbr="ascii 0x5C">\</th>
+</tr>
+
+<tr class="font_test4">
+<td>テスト</td>
+<td>abcde ABCDE</td>
+<td>あいうえお</td>
+<td>\</td>
+</tr>
+</table>
+</div>
+
+<h2 class="cl"><a name="overflow" href="#overflow">overflow:auto 指定時のスクロール・バー</a></h2>
+
+<ul>
+<li><code>overflow:auto</code> でスクロール・バー表示時
+	<ul>
+	<li>IE7 - 最下行が横スクロール・バーで隠れる</li>
+	<li>IE8 - 最下行は隠れない、縦スクロール・バーは不要なら非表示</li>
+	</ul>
+</li>
+</ul>
+
+<pre>
+padding: 0;
+</pre>
+
+<div class="box">
+<pre class="overflow_test0">
+クマーくまークマー
+</pre>
+</div>
+
+<div class="box">
+<pre class="overflow_test0">
+クマーくまークマーくまークマーくまークマーくまークマーくまークマーくまー
+</pre>
+</div>
+
+<div class="box">
+<pre class="overflow_test0">
+クマーくまークマーくまークマーくまークマーくまークマーくまークマーくまー
+クマーくまークマーくまークマーくまークマーくまークマーくまークマーくまー
+クマーくまークマーくまークマーくまークマーくまークマーくまークマーくまー
+</pre>
+</div>
+
+<div class="sp_overflow">
+<table class="sample" summary="overflow IE比較画像1">
+<caption>IE 比較 （画像）</caption>
+<tr>
+<th abbr="IE8">IE8</th>
+<th abbr="IE7">IE7</th>
+</tr>
+
+<tr>
+<td><img src="./images/css_memo_test_ie/overflow_test1_8.png" width="341" height="223" alt="hogehoge"></td>
+<td><img src="./images/css_memo_test_ie/overflow_test1_7.png" width="341" height="189" alt="hogehoge"></td>
+</tr>
+</table>
+</div>
+
+
+<p class="cl">IE7では横スクロールバーの高さ分（1em程？）だけ、<code>padding-bottom</code> を指定しておかないと、最下行が隠れてしまう。1行だと全く見えない。</p>
+
+<pre>
+padding-bottom: 1em;
+</pre>
+
+<div class="box">
+<pre class="overflow_test1">
+クマーくまークマー
+</pre>
+</div>
+
+<div class="box">
+<pre class="overflow_test1">
+クマーくまークマーくまークマーくまークマーくまークマーくまークマーくまー
+</pre>
+</div>
+
+<div class="box">
+<pre class="overflow_test1">
+クマーくまークマーくまークマーくまークマーくまークマーくまークマーくまー
+クマーくまークマーくまークマーくまークマーくまークマーくまークマーくまー
+クマーくまークマーくまークマーくまークマーくまークマーくまークマーくまー
+</pre>
+</div>
+
+<div class="sp_overflow">
+<table class="sample" summary="overflow IE比較画像1">
+<caption>IE 比較 （画像）</caption>
+<tr>
+<th abbr="IE8">IE8</th>
+<th abbr="IE7">IE7</th>
+</tr>
+
+<tr>
+<td><img src="./images/css_memo_test_ie/overflow_test2_8.png" width="341" height="273" alt="hogehoge"></td>
+<td><img src="./images/css_memo_test_ie/overflow_test2_7.png" width="341" height="238" alt="hogehoge"></td>
+</tr>
+</table>
+</div>
+<h2><a name="meiryo" href="#meiryo">メイリオ</a></h2>
+
+<p><span class="meiryo">メイリオ</span>は若干上付き表示気味なので注意かも。IE7では <code>line-height</code> を1.5以上取らないと <strong class="ms">underline</strong> が重なってしまうことも。</p>
+
+<ul>
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='meiryo';"><span class="meiryo">メイリオ</span>指定</a> (JavaScript)</li>
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='MS PGothic';"><span class="mspg">ＭＳ Ｐゴシック</span>指定</a> (JavaScript)</li>
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='VL PGothic';"><span class="vlpg">VL Pゴシック</span>指定</a> (JavaScript)</li>
+</ul>
+
+<pre>
+line-height: 1;
+text-decoration: underline;
+</pre>
+
+<div class="box lt">
+<p class="test10 meiryo">クマーくまークマーくまークマーくまークマーくまークマーくまークマーくまー
+クマーくまークマーくまークマーくまークマーくまークマーくまークマーくまー</p>
+</div>
+<div class="box lt">
+<p class="test10">クマーくまークマーくまークマーくまークマーくまークマーくまークマーくまー
+クマーくまークマーくまークマーくまークマーくまークマーくまークマーくまー</p>
+</div>
+
+<div class="sp_overflow">
+<table class="cl sample" summary="メイリオ IE比較画像1">
+<caption>IE 比較 （画像）</caption>
+<tr>
+<th abbr="IE8">IE8</th>
+<th abbr="IE7">IE7</th>
+</tr>
+
+<tr>
+<td><img src="./images/css_memo_test_ie/meiryo1_ie8.png" width="340" height="85" alt="hogehoge"></td>
+<td><img src="./images/css_memo_test_ie/meiryo1_ie7.png" width="340" height="86" alt="hogehoge"></td>
+</tr>
+</table>
+</div>
+
+<pre class="cl">
+line-height: 1.2;
+</pre>
+
+<div class="box lt">
+<p class="test12 meiryo">クマーくまークマーくまークマーくまークマーくまークマーくまークマーくまー
+クマーくまークマーくまークマーくまークマーくまークマーくまークマーくまー</p>
+</div>
+<div class="box lt">
+<p class="test12">クマーくまークマーくまークマーくまークマーくまークマーくまークマーくまー
+クマーくまークマーくまークマーくまークマーくまークマーくまークマーくまー</p>
+</div>
+
+<div class="sp_overflow">
+<table class="cl sample" summary="メイリオ IE比較画像2">
+<caption>IE 比較 （画像）</caption>
+<tr>
+<th abbr="IE8">IE8</th>
+<th abbr="IE7">IE7</th>
+</tr>
+
+<tr>
+<td><img src="./images/css_memo_test_ie/meiryo2_ie8.png" width="340" height="97" alt="hogehoge"></td>
+<td><img src="./images/css_memo_test_ie/meiryo2_ie7.png" width="340" height="99" alt="hogehoge"></td>
+</tr>
+</table>
+</div>
+
+<pre class="cl">
+line-height: 1.5;
+</pre>
+
+<div class="box lt">
+<p class="test15 meiryo">クマーくまークマーくまークマーくまークマーくまークマーくまークマーくまー
+クマーくまークマーくまークマーくまークマーくまークマーくまークマーくまー</p>
+</div>
+<div class="box lt">
+<p class="test15">クマーくまークマーくまークマーくまークマーくまークマーくまークマーくまー
+クマーくまークマーくまークマーくまークマーくまークマーくまークマーくまー</p>
+</div>
+
+<div class="sp_overflow">
+<table class="cl sample" summary="メイリオ IE比較画像3">
+<caption>IE 比較 （画像）</caption>
+<tr>
+<th abbr="IE8">IE8</th>
+<th abbr="IE7">IE7</th>
+</tr>
+
+<tr>
+<td><img src="./images/css_memo_test_ie/meiryo3_ie8.png" width="340" height="118" alt="hogehoge"></td>
+<td><img src="./images/css_memo_test_ie/meiryo3_ie7.png" width="340" height="119" alt="hogehoge"></td>
+</tr>
+</table>
+</div>
+
+<h2 class="cl"><a name="ul_ol" href="#ul_ol">ul , ol 要素の設定</a></h2>
+
+<p>赤線が<span class="mono">ul</span>,<span class="mono">ol</span>要素の枠、青線は<span class="mono">li</span>要素です。</p>
+
+<p>IE8ではFirefoxなどとほぼ同じ。IE7のデフォルトでは <code>margin-left</code> で記号を表示させている。</p>
+<p>表示を合わすには、margin, padding ともきっちり指定すべしかな。</p>
+
+<div class="sp_overflow">
+<table class="sample" summary="ul,ol IE比較画像">
+<caption>IE 比較 （画像）</caption>
+<tr>
+<th abbr="IE8">IE8</th>
+<th abbr="IE7">IE7</th>
+</tr>
+
+<tr>
+<td><img src="./images/css_memo_test_ie/list_ie8.png" width="340" height="340" alt="hogehoge"></td>
+<td><img src="./images/css_memo_test_ie/list_ie7.png" width="340" height="327" alt="hogehoge"></td>
+</tr>
+</table>
+</div>
+
+<p>ちなみに私の個人的設定はこんなかんじ。</p>
+
+<pre>
+ul,ol {
+padding: 0 0 0 1.5em;
+margin: 1em 0 1em 0;
+line-height: 150%;
+}
+
+ul ul,ul ol,ol ul,ol ol {
+padding: 0 0 0 2em;
+margin: 0 0 0 0;
+font-size: 1em;
+}
+
+li {
+margin:  0.2em 0; 
+padding: 0;
+}
+
+ul li a,
+ol li a {
+margin:  0.4em 0; ; 
+padding:  0;
+line-height: 150%;
+}
+</pre>
+
+<div class="box lt">
+<ul class="border_red">
+<li>クマクマー</li>
+<li>くまくまー
+	<ul class="border_red">
+	<li>クマクマー</li>
+	<li>くまくま</li>
+	</ul>
+</li>
+<li>クマクマー
+	<ol class="border_red">
+	<li>クマクマー</li>
+	<li>くまくま</li>
+	</ol>
+</li>
+</ul>
+</div>
+
+<div class="box lt">
+<ol class="border_red">
+<li>クマクマー</li>
+<li>くまくまー
+	<ol class="border_red">
+	<li>クマクマー</li>
+	<li>くまくま</li>
+	</ol>
+</li>
+<li>クマクマー
+	<ul class="border_red">
+	<li>クマクマー</li>
+	<li>くまくま</li>
+	</ul>
+</li>
+</ol>
+</div>
+
+<h2 class="cl"><a name="list_style" href="#list_style">list-style-type</a></h2>
+
+<div class="box">
+<ul>
+<li>くまー
+	<ul>
+	<li>クマー
+		<ul>
+		<li>くまー</li>
+		</ul>
+	</li>
+	<li>クマー</li>
+	</ul>
+</li>
+<li>くまー</li>
+</ul>
+</div>
+
+<pre>
+list-style-type:disc;
+</pre>
+
+
+<div class="box">
+<ul style="list-style-type:disc">
+<li>くまー</li>
+</ul>
+</div>
+
+<div class="sp_overflow">
+<table class="sample" summary="list-style-type IE比較画像1-Shift_JIS">
+<caption>IE 比較 （Shift_JIS）</caption>
+<tr>
+<th abbr="IE8">IE8</th>
+<th abbr="IE7">IE7</th>
+</tr>
+
+<tr>
+<td><img src="./images/css_memo_test_ie/list_style_disk_ie8.png" width="340" height="75" alt="hogehoge"></td>
+<td><img src="./images/css_memo_test_ie/list_style_disk_ie7.png" width="340" height="76" alt="hogehoge"></td>
+</tr>
+</table>
+</div>
+
+<div class="sp_overflow">
+<table class="sample" summary="list-style-type IE比較画像1-UTF-8">
+<caption>IE 比較 （UTF-8）</caption>
+<tr>
+<th abbr="IE8">IE8</th>
+<th abbr="IE7">IE7</th>
+</tr>
+
+<tr>
+<td><img src="./images/css_memo_test_ie/list_style_disk_ie8_utf8.png" width="340" height="80" alt="hogehoge"></td>
+<td><img src="./images/css_memo_test_ie/list_style_disk_ie7_utf8.png" width="340" height="80" alt="hogehoge"></td>
+</tr>
+</table>
+</div>
+
+
+<pre class="cl">
+list-style-type:circle;
+</pre>
+
+<div class="box">
+<ul style="list-style-type:circle">
+<li>くまー</li>
+</ul>
+</div>
+
+<div class="sp_overflow">
+<table class="sample" summary="list-style-type IE比較画像2-Shift_JIS">
+<caption>IE 比較 （Shift_JIS）</caption>
+<tr>
+<th abbr="IE8">IE8</th>
+<th abbr="IE7">IE7</th>
+</tr>
+
+<tr>
+<td><img src="./images/css_memo_test_ie/list_style_circle_ie8.png" width="339" height="77" alt="hogehoge"></td>
+<td><img src="./images/css_memo_test_ie/list_style_circle_ie7.png" width="340" height="78" alt="hogehoge"></td>
+</tr>
+</table>
+</div>
+
+<div class="sp_overflow">
+<table class="sample" summary="list-style-type IE比較画像2-UTF-8">
+<caption>IE 比較 （UTF-8）</caption>
+<tr>
+<th abbr="IE8">IE8</th>
+<th abbr="IE7">IE7</th>
+</tr>
+
+<tr>
+<td><img src="./images/css_memo_test_ie/list_style_circle_ie8_utf8.png" width="340" height="79" alt="hogehoge"></td>
+<td><img src="./images/css_memo_test_ie/list_style_circle_ie7_utf8.png" width="340" height="80" alt="hogehoge"></td>
+</tr>
+</table>
+</div>
+
+<pre class="cl">
+list-style-type:square;
+</pre>
+
+<div class="box">
+<ul style="list-style-type:square">
+<li>くまー</li>
+</ul>
+</div>
+
+<div class="sp_overflow">
+<table class="sample" summary="list-style-type IE比較画像3-Shift_JIS">
+<caption>IE 比較 （Shift_JIS）</caption>
+<tr>
+<th abbr="IE8">IE8</th>
+<th abbr="IE7">IE7</th>
+</tr>
+
+<tr>
+<td><img src="./images/css_memo_test_ie/list_style_square_ie8.png" width="340" height="77" alt="hogehoge"></td>
+<td><img src="./images/css_memo_test_ie/list_style_square_ie7.png" width="340" height="76" alt="hogehoge"></td>
+</tr>
+</table>
+</div>
+
+<div class="sp_overflow">
+<table class="sample" summary="list-style-type IE比較画像3-UTF-8">
+<caption>IE 比較 （UTF-8）</caption>
+<tr>
+<th abbr="IE8">IE8</th>
+<th abbr="IE7">IE7</th>
+</tr>
+
+<tr>
+<td><img src="./images/css_memo_test_ie/list_style_square_ie8_utf8.png" width="341" height="79" alt="hogehoge"></td>
+<td><img src="./images/css_memo_test_ie/list_style_square_ie7_utf8.png" width="340" height="80" alt="hogehoge"></td>
+</tr>
+</table>
+</div>
+
+<h2 class="cl"><a name="ascii_art" href="#ascii_art">AA表示</a></h2>
+
+<p>違いはほぼなさそうですね。<code>line-height</code> が少し違うかな？</p>
+
+<pre class="aa_test">
+　　 ∩＿＿＿∩
+　　 | ノ　　　　　 ヽ
+　　/　　●　　　● |　クマ──！！
+　 |　　　　( _●_)　 ミ
+　彡､　　　|∪|　　､｀＼
+/　＿＿　 ヽノ　/´&#062;　 )
+(＿＿＿）　　　/　(_／
+　|　　　　　　 /
+　|　　／＼　＼
+　|　/　　　 )　 )
+　∪　　　 （　 ＼
+　　　　　　 ＼＿) 
+</pre>
+
+<pre>
+margin: 3% auto;
+padding: 0.5em;
+white-space: pre;
+font-family: 'ＭＳ Ｐゴシック','IPA モナー Pゴシック',IPAMonaPGothic,Mona,sans-serif;
+line-height: 1.1;
+letter-spacing: 0;
+font-size: 1em;
+background-color: #fff0f0;
+border: 1px #ccc inset;
+overflow: auto;
+width: 15em;
+</pre>
+
+<div class="sp_overflow">
+<table class="sample" summary="AA表示">
+<caption>IE 比較 （画像）</caption>
+<tr>
+<th abbr="IE8">IE8</th>
+<th abbr="IE7">IE7</th>
+</tr>
+
+<tr>
+<td><img src="./images/css_memo_test_ie/aa_ie8.png" width="260" height="231" alt="hogehoge"></td>
+<td><img src="./images/css_memo_test_ie/aa_ie7.png" width="260" height="239" alt="hogehoge"></td>
+</tr>
+</table>
+</div>
+<h2><a name="bikou" href="#bikou">備考</a></h2>
+
+<p>最終更新日：2012.4.6</p>
+<p>「EmulateIE9」ページを追加。</p>
+
+<hr>
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+
+</body>
+</html>

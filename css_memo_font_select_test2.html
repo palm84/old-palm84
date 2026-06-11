@@ -1,0 +1,1538 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="start" href="http://www10.plala.or.jp/palm84/index.html">
+<link rel="stylesheet" type="text/css" href="./cssmemo.css" media="all">
+<link rel="stylesheet" type="text/css" href="./cssmemo_print.css" media="print">
+<link rel="stylesheet" type="text/css" href="./cssmemo-sp.css" media="only screen and (max-device-width:480px)">
+<link href="https://fonts.googleapis.com/css?family=Kosugi|Kosugi+Maru|M+PLUS+1p|M+PLUS+Rounded+1c|Noto+Sans+JP|Noto+Serif+JP|Sawarabi+Gothic|Sawarabi+Mincho" rel="stylesheet">
+<link rel="shortcut icon" href="./favicon.ico">
+<script type="text/javascript" charset="Shift_JIS" src="./cssmemo_font.js"></script>
+<title>【私的】Windows フォントのテストだYO！【DirectWrite】 - CSSめも＠Palm84</title>
+<style type="text/css">
+<!--
+#test_linux,
+#test_linux2,
+#test_linux3,
+#test_linux_fonts,
+#test_linux3_fonts,
+#test_linux_fonts_p,
+#test_linux2_fonts_p,
+#test_linux3_fonts_p {
+line-height: 1.2;
+letter-spacing: 0.5px;
+}
+
+#test_linux,
+#test_linux2,
+#test_linux3 {
+background-color: white;
+}
+
+#test_linux2_fonts_p {
+-webkit-text-stroke-width: 0;
+text-shadow: none;
+/* tranceform: rotate(-0.001deg); */
+}
+
+
+.font_test {
+line-height: 1;
+}
+
+-->
+</style>
+</head>
+
+
+<body>
+
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>移行作業中です...</ins></dt>
+<dd>
+<p>はてなブログの該当ページへ<strong>リダイレクトします</strong>。お手数をおかけします。ご容赦ください。</p>
+</dd>
+</dl>
+
+<h1><a href="./css_memo_font_select_test.html" name="top">【私的】Windows フォントのテストだYO！【DirectWrite】</a></h1>
+
+<p><script src="http://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/css_memo_font_select_test.html"><img src="http://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/css_memo_font_select_test.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+<h2><a name="index" href="#index">目次</a></h2>
+<p>【2016.12.7 追記】<ins>Firefox50 にて、DirectWrite 設定 + 拡張機能 Stylish での表示を追加しました</ins>。</p>
+<p>【2018.10.2 追記】<ins>Google Fonts を追加しました</ins>。</p>
+<p>Windows の DirectWrite でまぁまぁイケそうなフォントの表示テストしますん。</p>
+<p>Firefox の DirectWrite 設定については下記ページに書いとりました。</p>
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20140725/1406290403">Windows版 Firefox の DirectWrite を設定してフォントを見やすくしてみたけどいまいちかなぁ。orz</a> <a href="http://b.hatena.ne.jp/entry/http://d.hatena.ne.jp/palm84/20140725/1406290403" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/http://d.hatena.ne.jp/palm84/20140725/1406290403" alt="" class="http-bookmark" /></a></li>
+</ul>
+
+
+<ol>
+<li><a href="#font">選択したフォント</a></li>
+<li><a href="#google">Google Fonts（Web フォント）</a></li>
+<li><a href="#stylish">DirectWrite + <del>Stylish</del> <ins>Stylus</ins></a></li>
+<li><a href="#test">表示テスト</a></li>
+<li><a href="#test2">表示テスト - -webkit-text-stroke, text-shadow, transform</a></li>
+<li><a href="#bookmarklet">ブックマークレット</a></li>
+<li><a href="#bikou">備考</a></li>
+</ol>
+
+<p>表示テストの項目については下記の通りです。</p>
+
+<div class="sp_overflow">
+<table class="cl font_test_item" summary="表示テストの項目">
+<caption>表示テストの項目</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C">\</th><th abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">オー</th><th abbr="小文字のiと大文字のI">アイ</th><th abbr="小文字のl">小文字エル</th><th abbr="大文字のQ">Q</th><th abbr="Windows">Windows</th><th abbr="濁点">濁点</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="カナ漢字長音漢数字">カナ漢字長音漢数字</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:sans-serif">
+<td>Sans-serif</td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+</table>
+</div>
+
+<ul class="small">
+<li><a href="javascript:var fontFamily=document.getElementsByTagName('body')[0].style.fontSize='80%';">font 80%</a> | <a href="javascript:var fontFamily=document.getElementsByTagName('body')[0].style.fontSize='90%';">font 90%</a> | <a href="javascript:var fontFamily=document.getElementsByTagName('body')[0].style.fontSize='100%';">font 100%</a> | <a href="javascript:var fontFamily=document.getElementsByTagName('body')[0].style.fontSize='110%';">font 110%</a> | <a href="javascript:var fontFamily=document.getElementsByTagName('body')[0].style.fontSize='120%';">font 120%</a> | <a href="javascript:var fontFamily=document.getElementsByTagName('body')[0].style.fontSize='150%';">font 150%</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='80%')">font 80%</a> | <a href="javascript:void(document.body.style.fontSize='90%')">font 90%</a> | <a href="javascript:void(document.body.style.fontSize='100%')">font 100%</a> | <a href="javascript:void(document.body.style.fontSize='110%')">font 110%</a> | <a href="javascript:void(document.body.style.fontSize='120%')">font 120%</a> | <a href="javascript:void(document.body.style.fontSize='150%')">font 150%</a></li>
+</ul>
+<h2><a name="font" href="#font">選択したフォント</a></h2>
+
+<p>ブラウザ（Firefox, Chrome）で読みやすそうなフォントを独断と偏見でチョイスしました。</p>
+
+<div class="testbox_fonts">
+<ul>
+<li>スクリーンショット - on Windows 10 Firefox50 64bit DirectWrite</li>
+</ul>
+<p><img src="./images/css_memo_font_select_test/10_firefox50x64_directwrite.png" width="960" height="670" alt="Windows 10 Firefox50 64bit DirectWrite のスクリーンショット"></p>
+<ul>
+<li>スクリーンショット - RobotoJフォント on Windows 10 Firefox51 64bit DirectWrite（上から TTF / TTF-Hint / OTF）</li>
+</ul>
+<p><img src="./images/css_memo_font_select_test/10_firefox51x64_robotoj_directwrite_ttf.png" width="964" height="74" alt="RobotoJフォント on Windows 10 Firefox51 64bit DirectWrite(TTF) のスクリーンショット">
+<br><img src="./images/css_memo_font_select_test/10_firefox51x64_robotoj_directwrite_ttf-hint.png" width="964" height="74" alt="RobotoJフォント on Windows 10 Firefox51 64bit DirectWrite(TTF-Hint) のスクリーンショット">
+<br><img src="./images/css_memo_font_select_test/10_firefox51x64_robotoj_directwrite_otf.png" width="961" height="74" alt="RobotoJフォント on Windows 10 Firefox51 64bit DirectWrite(OTF) のスクリーンショット"></p>
+
+<ul>
+<li>スクリーンショット - BIZ UDPゴシック R フォント on Windows 10 Firefox59 64bit DirectWrite</li>
+</ul>
+<p><img src="./images/css_memo_font_select_test/10_firefox59x64_udpgothic_directwrite.png" width="974" height="38" alt="BIZ UDPゴシック R フォント on Windows 10 Firefox59 64bit DirectWrite のスクリーンショット"></p>
+</div>
+
+<div class="sp_overflow">
+<table id="table_standard" class="font_test" summary="Windows 標準フォントの表示テスト">
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のiと大文字のIと大文字のI">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="Windows">Windows</th><th abbr="プブ">プブ</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:sans-serif">
+<td>Sans-serif</td>
+<td class="center"><span style="font-family:sans-serif">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:serif">
+<td>Serif</td>
+<td class="center"><span style="font-family:serif">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:monospace">
+<td>Monospace</td>
+<td class="center"><span style="font-family:monospace;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+<p class="pink">※ 完全じゃないです。<code>font-family:フォント名,serif</code> と指定してます。指定フォントがない環境では Serif 設定のフォントで表示されます。</p>
+
+<div class="sp_overflow">
+<table id="select_font" class="font_test" summary="選択したフォント">
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のiと大文字のI">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="Windows">Windows</th><th abbr="プブ">プブ</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'ＭＳ Ｐゴシック','MS PGothic';">
+<td>ＭＳ Ｐゴシック</td>
+<td class="center"><span style="font-family:'ＭＳ Ｐゴシック','MS PGothic'">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'MS PGothic';">
+<td>MS PGothic</td>
+<td class="center"><span style="font-family:'MS PGothic';">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family: 'メイリオ',meiryo,serif;">
+<td>メイリオ</td>
+<td class="center"><span style="font-family:'メイリオ',meiryo,serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family: 'Meiryo UI',serif;">
+<td>Meiryo UI</td>
+<td class="center"><span style="font-family:'Meiryo UI',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'游ゴシック',serif;">
+<td>游ゴシック</td>
+<td class="center"><span style="font-family:'游ゴシック',serif">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'游ゴシック',serif;font-weight:500;">
+<td>游ゴシック w500</td>
+<td class="center"><span style="font-family:'游ゴシック',serif;font-weight:500;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Yu Gothic UI',serif;border-bottom-style:double;">
+<td>Yu Gothic UI</td>
+<td class="center"><span style="font-family:'Yu Gothic UI',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Droid Sans Fallback',serif;">
+<td>Droid Sans Fallback</td>
+<td class="center"><span style="font-family:'Droid Sans Fallback',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック JP','源ノ角ゴシック',serif;">
+<td>源ノ角ゴシック</td>
+<td class="center"><span style="font-family:'源ノ角ゴシック JP','源ノ角ゴシック',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Sans CJK JP',serif;">
+<td>Noto Sans CJK JP</td>
+<td class="center"><span style="font-family:'Noto Sans CJK JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'源真ゴシック',serif;">
+<td>源真ゴシック</td>
+<td class="center"><span style="font-family:'源真ゴシック',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Mgen+ 1p',serif;">
+<td>Mgen+ 1p</td>
+<td class="center"><span style="font-family:'Mgen+ 1p',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'07やさしさゴシック',serif;">
+<td>07やさしさゴシック</td>
+<td class="center"><span style="font-family:'07やさしさゴシック',serif">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'07やさしさゴシック手書き',serif;">
+<td><span class="small">07やさしさゴシック手書き</span></td>
+<td class="center"><span style="font-family:'07やさしさゴシック手書き',serif">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Migu 1P',serif;">
+<td>Migu 1P</td>
+<td class="center"><span style="font-family:'Migu 1P',serif';">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Koruri',serif;">
+<td>Koruri</td>
+<td class="center"><span style="font-family:'Koruri',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'MMCedar P','MMCedar P W3 mono',serif;">
+<td>MMCedar P</td>
+<td class="center"><span style="font-family:'MMCedar P','MMCedar P W3 mono',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'nukamisoOTF',serif;">
+<td>nukamisoOTF</td>
+<td class="center"><span style="font-family:'nukamisoOTF',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Textar',serif;">
+<td>Textar</td>
+<td class="center"><span style="font-family:'Textar',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:RobotoJ,serif;">
+<td>RobotoJ</td>
+<td class="center"><span style="font-family:RobotoJ,serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:RobotoJAA,serif;">
+<td>RobotoJAA</td>
+<td class="center"><span style="font-family:RobotoJAA,serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'BIZ UDPゴシック',serif;">
+<td>BIZ UDPゴシック</td>
+<td class="center"><span style="font-family:'BIZ UDPゴシック',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+<p class="small">※ <span style="font-family:'游ゴシック',serif;font-weight:500;">游ゴシック w500</span> は <code>font-weight:500</code> を指定、Medium と同じ筈です。</p>
+
+<dl>
+<dt>【追記】webkit (Chrome, Opera) では...</dt>
+<dd>
+<p>源ノ角ゴシック, Noto Sans CJK JP, Koruri、源真ゴシック, Mgen+ 1p については、ウェイト名なしで指定しないとだめなようなので、ファイル <code>Preferences</code> を直接編集する必要があるかも？</p>
+<ul>
+<li>Chrome - <code>C:\Users\ユーザー名\AppData\Local\Google\Chrome\User Data\Default\Preferences</code></li>
+<li>Opera - <code>C:\Users\ユーザー名\AppData\Roaming\Opera Software\Opera Stable\Preferences</code></li>
+</ul>
+
+<pre>
+   &#034;webkit&#034;: {
+      &#034;webprefs&#034;: {
+         &#034;fonts&#034;: {
+            &#034;standard&#034;: {
+               &#034;Zyyy&#034;: &#034;<strong>源ノ角ゴシック</strong>&#034;
+            }
+</pre>
+<p>【追記】<ins>文字コードは <strong>UTF-8</strong> で開く＆保存するべし</ins>。</p>
+</dd>
+</dl>
+
+
+<h2><a name="ibmplex" href="#ibmplex">IBM Plex</a></h2>
+
+<div class="sp_overflow">
+<table id="table_standard2" class="font_test" summary="Windows 標準フォントの表示テスト">
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のiと大文字のIと大文字のI">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="Windows">Windows</th><th abbr="プブ">プブ</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:sans-serif">
+<td>Sans-serif</td>
+<td class="center"><span style="font-family:sans-serif">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'IBM Plex Sans JP',serif;border-bottom:10px double #ccc;">
+<td>IBM Plex Sans JP</td>
+<td class="center"><span style="font-family:'IBM Plex Sans JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:monospace">
+<td>Monospace</td>
+<td class="center"><span style="font-family:monospace;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:PlemolJP,serif;">
+<td>PlemolJP</td>
+<td class="center"><span style="font-family:PlemolJP,serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'PlemolJP Console',serif;">
+<td>PlemolJP Console</td>
+<td class="center"><span style="font-family:'PlemolJP Console',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:PlemolJP35,serif;">
+<td>PlemolJP35</td>
+<td class="center"><span style="font-family:PlemolJP35,serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'PlemolJP35 Console',serif;">
+<td>PlemolJP35 Console</td>
+<td class="center"><span style="font-family:'PlemolJP35 Console',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+
+
+
+
+
+
+
+<h2><a name="google" href="#google">Google Fonts（Web フォント）</a></h2>
+
+<ul>
+<li><a href="https://fonts.google.com/?subset=japanese">Google Fonts</a> <a href="http://b.hatena.ne.jp/entry/https://fonts.google.com/?subset=japanese" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://fonts.google.com/?subset=japanese" alt="" class="http-bookmark" /></a></li>
+</ul>
+
+<div class="testbox_fonts">
+<ul>
+<li>スクリーンショット - on Windows 10 Firefox62 64bit DirectWrite</li>
+</ul>
+<p><img src="./images/css_memo_font_select_test/10_firefox62x64_directwrite.png" width="948" height="282" alt="Windows 10 Firefox62 64bit DirectWrite のスクリーンショット"></p>
+</div>
+
+<p class="pink">※ <code>font-family:フォント名,serif</code> と指定してます。指定フォントがダウンロードできないない環境では Serif 設定のフォントで表示されます。</p>
+
+<div class="sp_overflow">
+<table id="select_font" class="font_test" summary="選択したフォント">
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のiと大文字のI">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="Windows">Windows</th><th abbr="プブ">プブ</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'ＭＳ Ｐゴシック','MS PGothic';">
+<td>ＭＳ Ｐゴシック</td>
+<td class="center"><span style="font-family:'ＭＳ Ｐゴシック','MS PGothic'">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family: 'メイリオ',meiryo,serif;">
+<td>メイリオ</td>
+<td class="center"><span style="font-family:'メイリオ',meiryo,serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr>
+<td>Yu Gothic UI</td>
+<td class="center"><span style="font-family:'Yu Gothic UI',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:serif,serif;border-bottom-style:double;">
+<td class="red">Serif</td>
+<td class="center"><span style="font-family:serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'M PLUS 1p',serif;">
+<td>M PLUS 1p</td>
+<td class="center"><span style="font-family:'M PLUS 1p',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'M PLUS Rounded 1c',serif;">
+<td>M PLUS Rounded 1c</td>
+<td class="center"><span style="font-family:'M PLUS Rounded 1c',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Kosugi',serif;">
+<td>Kosugi</td>
+<td class="center"><span style="font-family:'Kosugi',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Kosugi Maru',serif;">
+<td>Kosugi Maru</td>
+<td class="center"><span style="font-family:'Kosugi Maru',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Sans JP',serif;">
+<td>Noto Sans JP</td>
+<td class="center"><span style="font-family:'Noto Sans JP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Noto Serif JP',serif;">
+<td>Noto Serif JP</td>
+<td class="center"><span style="font-family:'Noto Serif JP',serif">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Sawarabi Gothic',serif;">
+<td>Sawarabi Gothic</td>
+<td class="center"><span style="font-family:'Sawarabi Gothic',serif">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'Sawarabi Mincho',serif;">
+<td>Sawarabi Mincho</td>
+<td class="center"><span style="font-family:'Sawarabi Mincho',serif';">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+<h2><a name="stylish" href="#stylish">DirectWrite + <del>Stylish</del> <ins>Stylus</ins></a></h2>
+
+<p>Firefox50 64bit にて、DirectWrite 設定に拡張機能 Stylish を追加してユーザースタイルシートを設定してみました。MacType 使用時に近い表示になりました。</p>
+
+<p><ins>【2018.8.4 追記】Stylish はやらかしたので下記の Stylus を使いませう</ins>。<span class="aa">(´・ω・｀)</span></p>
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/styl-us/">Stylus - Firefox 向けアドオン</a> <a href="http://b.hatena.ne.jp/entry/https://addons.mozilla.org/ja/firefox/addon/styl-us/" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://addons.mozilla.org/ja/firefox/addon/styl-us/" alt="" class="http-bookmark" /></a></li>
+<li><a href="https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne?hl=ja">Stylus - Chrome ウェブストア</a> <a href="http://b.hatena.ne.jp/entry/https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne?hl=ja" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne?hl=ja" alt="" class="http-bookmark" /></a></li>
+</ul>
+
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/stylish/"><del>Stylish :: Add-ons for Firefox</del></a> <a href="http://b.hatena.ne.jp/entry/https://addons.mozilla.org/ja/firefox/addon/stylish/" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://addons.mozilla.org/ja/firefox/addon/stylish/" alt="" class="http-bookmark" /></a></li>
+<li><a href="https://chrome.google.com/webstore/detail/stylish/fjnbnpbmkenffdnngjfgmeleoegfcffe?hl=ja"><del>Stylish - Chrome ウェブストア</del></a> <a href="http://b.hatena.ne.jp/entry/https://chrome.google.com/webstore/detail/stylish/fjnbnpbmkenffdnngjfgmeleoegfcffe?hl=ja" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://chrome.google.com/webstore/detail/stylish/fjnbnpbmkenffdnngjfgmeleoegfcffe?hl=ja" alt="" class="http-bookmark" /></a></li>
+<li>拙作めも :
+	<ul>
+	<li><a href="http://palm84.hatenablog.com/entry/20161208/1481192861">Firefox - DirectWrite + Stylish で MacType 風フォント表示にしてみる</a> <a href="http://b.hatena.ne.jp/entry/http://palm84.hatenablog.com/entry/20161208/1481192861" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/http://palm84.hatenablog.com/entry/20161208/1481192861" alt="" class="http-bookmark" /></a></li>
+	</ul>
+</li>
+</ul>
+
+<p>Stylish 設定はとりあえずこれだけで。<code>-webkit-text-stroke-width</code> 及び <code>text-shadow</code> を設定。</p>
+<pre>
+body {
+-webkit-text-stroke-width: 0.1px;
+text-shadow: 0 0 1px rgba(0,0,0,0.1), 0 0 2px rgba(0,0,0,0.01), 0 0 3px rgba(0,0,0,0.01) !important;
+}
+</pre>
+
+<div class="testbox_fonts">
+<ul>
+<li>スクリーンショット - on Windows 10 Firefox50 64bit DirectWrite + Stylish</li>
+</ul>
+<p><img src="./images/css_memo_font_select_test/10_firefox50x64_directwrite_stylish.png" width="960" height="670" alt="Windows 10 Firefox50 64bit DirectWrite + Stylish のスクリーンショット"></p>
+<ul>
+<li>スクリーンショット - RobotoJフォント on Windows 10 Firefox51 64bit DirectWrite（上から TTF / TTF-Hint / OTF）</li>
+</ul>
+<p><img src="./images/css_memo_font_select_test/10_firefox51x64_robotoj_directwrite_ttf_stylish.png" width="964" height="76" alt="RobotoJフォント on Windows 10 Firefox51 64bit DirectWrite (TTF) のスクリーンショット">
+<br><img src="./images/css_memo_font_select_test/10_firefox51x64_robotoj_directwrite_ttf-hint_stylish.png" width="964" height="76" alt="RobotoJフォント on Windows 10 Firefox51 64bit DirectWrite (TTF-Hint) のスクリーンショット">
+<br><img src="./images/css_memo_font_select_test/10_firefox51x64_robotoj_directwrite_otf_stylish.png" width="962" height="76" alt="RobotoJフォント on Windows 10 Firefox51 64bit DirectWrite (OTF) のスクリーンショット"></p>
+<ul>
+<li>スクリーンショット - BIZ UDPゴシック R フォント on Windows 10 Firefox59 64bit DirectWrite + Stylish</li>
+</ul>
+<p><img src="./images/css_memo_font_select_test/10_firefox59x64_udpgothic_directwrite_stylish.png" width="975" height="38" alt="BIZ UDPゴシック R フォント on Windows 10 Firefox59 64bit DirectWrite のスクリーンショット"></p>
+
+<ul>
+<li>スクリーンショット - on Windows 10 Chrome55 64bit DirectWrite + Stylish</li>
+</ul>
+<p><img src="./images/css_memo_font_select_test/10_chrome55x64_directwrite_stylish.png" width="970" height="670" alt="Windows 10 Firefox50 64bit DirectWrite + Stylish のスクリーンショット"></p>
+<ul>
+<li>スクリーンショット - Robotoフォント on Windows 10 Chrome55 64bit DirectWrite + Stylish（上から TTF / TTF-Hint / OTF）</li>
+</ul>
+<p><img src="./images/css_memo_font_select_test/10_chrome55x64_robotoj_directwrite_ttf_stylish.png" width="965" height="73" alt="Robotoフォント on Windows 10 Chrome55 64bit DirectWrite + Stylish (TTF) のスクリーンショット">
+<br><img src="./images/css_memo_font_select_test/10_chrome55x64_robotoj_directwrite_ttf-hint_stylish.png" width="965" height="73" alt="Robotoフォント on Windows 10 Chrome55 64bit DirectWrite + Stylish (TTF-Hint) のスクリーンショット">
+<br><img src="./images/css_memo_font_select_test/10_chrome55x64_robotoj_directwrite_otf_stylish.png" width="965" height="73" alt="Robotoフォント on Windows 10 Chrome55 64bit DirectWrite + Stylish (OTF) のスクリーンショット"></p>
+
+<ul>
+<li>スクリーンショット - on Windows 10 Firefox62 64bit DirectWrite + Stylus</li>
+</ul>
+<p><img src="./images/css_memo_font_select_test/10_firefox62x64_googlefonts_directwrite_stylus.png" width="947" height="283" alt="Windows 10 Firefox62 64bit DirectWrite + Stylus のスクリーンショット"></p>
+</div>
+<h2><a name="test" href="#test">表示テスト</a></h2>
+<p>※ Google Fonts（Web フォント）については、ダウンロードする（1個数MBぐらい？）のでモバイル環境など通信量に注意。</p>
+
+<ul class="small">
+<li>font-size <a href="javascript:rmProperty('test_linux', 'font-size');">削除</a> | <a href="javascript:setZoom('test_linux', '80%');">80%</a> | <a href="javascript:setZoom('test_linux', '100%');">100%</a> | <a href="javascript:setZoom('test_linux', '110%');">110%</a> | <a href="javascript:setZoom('test_linux', '120%');">120%</a> | <a href="javascript:setZoom('test_linux', '150%');">150%</a> | font-style <a href="javascript:rmProperty('test_linux','font-style' );">削除</a> | <a href="javascript:setFontStyle('test_linux', 'normal');">normal</a> | <a href="javascript:setFontStyle('test_linux', 'italic');">italic</a> | <a href="javascript:setFontStyle('test_linux', 'oblique');">oblique</a></li>
+<li>line-height <a href="javascript:rmProperty('test_linux', 'line-height');">削除</a> | <a href="javascript:setLineHeight('test_linux', '1');">1</a> | <a href="javascript:setLineHeight('test_linux', '1.1');">1.1</a> | <a href="javascript:setLineHeight('test_linux', '1.2');">1.2</a> | <a href="javascript:setLineHeight('test_linux', '1.3');">1.3</a> | <a href="javascript:setLineHeight('test_linux', '1.4');">1.4</a> | <a href="javascript:setLineHeight('test_linux', '1.5');">1.5</a> | <a href="javascript:setLineHeight('test_linux', '2');">2</a> | letter-spacing <a href="javascript:rmProperty('test_linux','letter-spacing' );">削除</a> | <a href="javascript:setLetterSpacing('test_linux', '0');">0</a> | <a href="javascript:setLetterSpacing('test_linux', '0.5px');">0.5px</a> | <a href="javascript:setLetterSpacing('test_linux', '1px');">1px</a> | <a href="javascript:setLetterSpacing('test_linux', '1.5px');">1.5px</a> | <a href="javascript:setLetterSpacing('test_linux', '2px');">2px</a></li>
+<li>font-weight <a href="javascript:rmProperty('test_linux','font-weight' );">削除</a> | <a href="javascript:setFontWeight('test_linux', 'lighter');">lighter</a> | <a href="javascript:setFontWeight('test_linux', 'normal');">normal</a> | <a href="javascript:setFontWeight('test_linux', 'bold');">bold</a> | <a href="javascript:setFontWeight('test_linux', 'bolder');">bolder</a> | <a href="javascript:setFontWeight('test_linux', '100');">100</a> | <a href="javascript:setFontWeight('test_linux', '200');">200</a> | <a href="javascript:setFontWeight('test_linux', '300');">300</a> | <a href="javascript:setFontWeight('test_linux', '400');">400</a> | <a href="javascript:setFontWeight('test_linux', '500');">500</a> | <a href="javascript:setFontWeight('test_linux', '600');">600</a> | <a href="javascript:setFontWeight('test_linux', '700');">700</a> | <a href="javascript:setFontWeight('test_linux', '800');">800</a> | <a href="javascript:setFontWeight('test_linux', '900');">900</a></li>
+<li>color <a href="javascript:rmProperty('test_linux','color' );">削除</a> | <a href="javascript:setColor('test_linux', 'black');">black</a> | <a href="javascript:setColor('test_linux', '#595959');">#595959</a> | <a href="javascript:setColor('test_linux', 'white');">white</a> | background-color <a href="javascript:rmProperty('test_linux','background-color' );">削除</a> | <a href="javascript:setBGColor('test_linux', 'white');">white</a> | <a href="javascript:setBGColor('test_linux', '#ffe');">#ffe</a> | <a href="javascript:setBGColor('test_linux', 'black');">black</a></li>
+<li><a href="javascript:rmStyle('test_linux')">style削除</a></li>
+</ul>
+
+<div id="test_linux">
+
+<div class="sp_overflow">
+<table class="cl font_test_script" summary="フォントの表示テスト">
+<caption>表示テスト</caption>
+<tr>
+<td><span class="red">無指定</span></td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>MWayg9~*@</td>
+<td class="center">プブ</td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr id="test_linux_fonts">
+<td><span class="red" style="font-weight:bold;">テスト</span></td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>MWayg9~*@</td>
+<td class="center">プブ</td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+<div class="testbox5" style="padding:0.5em;margin-left:1em;">
+<p id="test_linux_fonts_p">
+<span class="small">0123456789 \'&#034;~*#$%&#038;@ abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+<br>0123456789 \'&#034;~*#$%&#038;@ abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ
+<br><span style="font-size:120%;">0123456789 \'&#034;~*#$%&#038;@ abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+<br><span class="small">新しい朝が来た！不埒な草彅剛、髙濱、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br>新しい朝が来た！不埒な草彅剛、髙濱、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑
+<br><span style="font-size:120%;">新しい朝が来た！不埒な草彅剛、髙濱、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br><br><span style="font-size:80%;">日本の食文化において、主食とされる米飯や雑穀飯の副食として、主要な位置を占める。料亭や食堂で出される事も、家庭料理として家庭で作られる事もある、汁物料理の代表である。昆布・削り節や煮干しなどで出汁をとり、食材と味噌で味を作るという、調理法としては単純な料理であるが、出汁・味噌に加え具材も各家庭・調理者によって千差万別であるため、おふくろの味と称される事もあり、作り方は様々である。また、各地で古くから作られており、名物料理だったり町おこしの料理ともされる。</span>
+<br><br>日本の食文化において、主食とされる米飯や雑穀飯の副食として、主要な位置を占める。料亭や食堂で出される事も、家庭料理として家庭で作られる事もある、汁物料理の代表である。昆布・削り節や煮干しなどで出汁をとり、食材と味噌で味を作るという、調理法としては単純な料理であるが、出汁・味噌に加え具材も各家庭・調理者によって千差万別であるため、おふくろの味と称される事もあり、作り方は様々である。また、各地で古くから作られており、名物料理だったり町おこしの料理ともされる。
+<br><cite><a href="http://ja.wikipedia.org/wiki/%E5%91%B3%E5%99%8C%E6%B1%81">味噌汁 - Wikipedia</a></cite>
+</p>
+</div>
+</div>
+
+<ul class="lt small">
+<li><a href="javascript:rmProperty('test_linux_fonts', 'font-family');">削除</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'メイリオ\',Meiryo');">メイリオ</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'Meiryo UI\'');">Meiryo UI</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'ＭＳ Ｐゴシック\'');">ＭＳ Ｐゴシック</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'MS UI Gothic\'');">MS UI Gothic</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_linux_fonts', '\'游ゴシック\'');">游ゴシック</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'Yu Gothic UI\'');">Yu Gothic UI</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'源ノ角ゴシック JP\',\'源ノ角ゴシック\'');">源ノ角ゴシック</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'Noto Sans CJK JP\'');">Noto Sans CJK JP</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'源真ゴシック\'');">源真ゴシック</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'Mgen+ 1P\'');">Mgen+ 1P</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_linux_fonts', '\'Droid Sans Fallback\'');">Droid Sans Fallback</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'07やさしさゴシック\'');">07やさしさゴシック</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'07やさしさゴシック手書き\'');">07やさしさゴシック手書き</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'Migu 1P\'');">Migu 1P</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', 'Koruri');">Koruri</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'BIZ UDPゴシック\'');">BIZ UDPゴシック</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_linux_fonts', '\'MMCedar P\',\'MMCedar P W3 mono\'');">MMCedar P</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'nukamisoOTF\'');">nukamisoOTF</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'Textar\'');">Textar</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', 'RobotoJ');">RobotoJ</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', 'RobotoJAA');">RobotoJAA</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_linux_fonts', '\'M PLUS 1p\'');">M PLUS 1p</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'M PLUS Rounded 1c\'');">M PLUS Rounded 1c</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', 'Kosugi');">Kosugi</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'Kosugi Maru\'');">Kosugi Maru</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_linux_fonts', '\'Noto Sans JP\'');">Noto Sans JP</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'Noto Serif JP\'');">Noto Serif JP</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'Sawarabi Gothic\'');">Sawarabi Gothic</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'Mgen+ 1P\'');">Sawarabi Mincho</a></li>
+</ul>
+
+<h2 class="cl"><a name="test2" href="#test2">表示テスト - -webkit-text-stroke, text-shadow, transform</a></h2>
+<p>※ Google Fonts（Web フォント）については、ダウンロードする（1個数MBぐらい？）のでモバイル環境など通信量に注意。</p>
+
+<ul class="lt small">
+<li>-webkit-text-stroke-width <a href="javascript:rmProperty('test_linux2', '-webkit-text-stroke-width');">削除</a> | <a href="javascript:setTextStroke('test_linux2', '0');">0</a> | <a href="javascript:setTextStroke('test_linux2', '0.1px');">0.1px</a> | <a href="javascript:setTextStroke('test_linux2', '0.2px');">0.2px</a> | <a href="javascript:setTextStroke('test_linux2', '0.3px');">0.3px</a></li>
+<li>text-shadow <a href="javascript:rmProperty('test_linux2', 'text-shadow');">削除</a> | <a href="javascript:setTextShadow('test_linux2', 'none');">none</a> | <a href="javascript:setTextShadow('test_linux2', '0 0 1px rgba(0,0,0,0.1),0 0 2px rgba(0,0,0,0.01),0 0 3px rgba(0,0,0,0.01)');">0 0 1px rgba(0,0,0,0.1),0 0 2px rgba(0,0,0,0.01),0 0 3px rgba(0,0,0,0.01)</a> | 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:setTextShadow('test_linux2', '0 0 0.1px rgba(51,51,51,0.5)');">0 0 0.1px rgba(51,51,51,0.5)</a> | <a href="javascript:setTextShadow('test_linux2', '0 0 0.1px rgba(0,0,0,0.5)');">0 0 0.1px rgba(0,0,0,0.5)</a> | <a href="javascript:setTextShadow('test_linux2', '#707070 0.05px 0.05px 0.05px');">#707070 0.05px 0.05px 0.05px</a> |<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:setTextShadow('test_linux2', 'transparent 0 0 0,rgba(0,0,0,0.3) 0 0 0');">transparent 0 0 0,rgba(0,0,0,0.5) 0 0 0</a></li>
+<li>transform <a href="javascript:rmProperty('test_linux2', 'transform');">削除</a> | <a href="javascript:setTranceform('test_linux2', 'rotate(0.001deg)');">rotate(0.001deg)</a> | <a href="javascript:setTranceform('test_linux2', 'rotate(0.05deg)');">rotate(0.05deg)</a></li>
+<li>font-weight <a href="javascript:rmProperty('test_linux2','font-weight' );">削除</a> | <a href="javascript:setFontWeight('test_linux2', '500');">500</a> || line-height <a href="javascript:rmProperty('test_linux2', 'line-height');">削除</a> | <a href="javascript:setLineHeight('test_linux2', '1');">1</a> | <a href="javascript:setLineHeight('test_linux2', '1.1');">1.1</a> | <a href="javascript:setLineHeight('test_linux2', '1.2');">1.2</a> | <a href="javascript:setLineHeight('test_linux2', '1.5');">1.5</a> | <a href="javascript:setLineHeight('test_linux2', '2');">2</a> || letter-spacing <a href="javascript:rmProperty('test_linux2','letter-spacing' );">削除</a> | <a href="javascript:setLetterSpacing('test_linux2', '0');">0</a> | <a href="javascript:setLetterSpacing('test_linux2', '1px');">1px</a> | <a href="javascript:setLetterSpacing('test_linux2', '2px');">2px</a></li>
+</ul>
+
+<div id="test_linux2">
+<div class="testbox5" style="padding:0.5em;margin-left:1em;">
+<p id="test_linux2_fonts_p">
+<span class="small">0123456789 \'&#034;~*#$%&#038;@ abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+<br>0123456789 \'&#034;~*#$%&#038;@ abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ
+<br><span style="font-size:120%;">0123456789 \'&#034;~*#$%&#038;@ abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+<br><span class="small">新しい朝が来た！不埒な草彅剛、髙濱、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br>新しい朝が来た！不埒な草彅剛、髙濱、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑
+<br><span style="font-size:120%;">新しい朝が来た！不埒な草彅剛、髙濱、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br><br><span style="font-size:80%;">日本の食文化において、主食とされる米飯や雑穀飯の副食として、主要な位置を占める。料亭や食堂で出される事も、家庭料理として家庭で作られる事もある、汁物料理の代表である。昆布・削り節や煮干しなどで出汁をとり、食材と味噌で味を作るという、調理法としては単純な料理であるが、出汁・味噌に加え具材も各家庭・調理者によって千差万別であるため、おふくろの味と称される事もあり、作り方は様々である。また、各地で古くから作られており、名物料理だったり町おこしの料理ともされる。</span>
+<br><br>日本の食文化において、主食とされる米飯や雑穀飯の副食として、主要な位置を占める。料亭や食堂で出される事も、家庭料理として家庭で作られる事もある、汁物料理の代表である。昆布・削り節や煮干しなどで出汁をとり、食材と味噌で味を作るという、調理法としては単純な料理であるが、出汁・味噌に加え具材も各家庭・調理者によって千差万別であるため、おふくろの味と称される事もあり、作り方は様々である。また、各地で古くから作られており、名物料理だったり町おこしの料理ともされる。
+<br><cite><a href="http://ja.wikipedia.org/wiki/%E5%91%B3%E5%99%8C%E6%B1%81">味噌汁 - Wikipedia</a></cite>
+</p>
+</div>
+</div>
+
+<ul class="lt small">
+<li><a href="javascript:rmProperty('test_linux2_fonts', 'font-family');">削除</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'メイリオ\',Meiryo');">メイリオ</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'Meiryo UI\'');">Meiryo UI</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'ＭＳ Ｐゴシック\'');">ＭＳ Ｐゴシック</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'MS UI Gothic\'');">MS UI Gothic</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_linux2_fonts', '\'游ゴシック\'');">游ゴシック</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'Yu Gothic UI\'');">Yu Gothic UI</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'源ノ角ゴシック JP\',\'源ノ角ゴシック\'');">源ノ角ゴシック</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'Noto Sans CJK JP\'');">Noto Sans CJK JP</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'源真ゴシック\'');">源真ゴシック</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'Mgen+ 1P\'');">Mgen+ 1P</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_linux2_fonts', '\'Droid Sans Fallback\'');">Droid Sans Fallback</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'07やさしさゴシック\'');">07やさしさゴシック</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'07やさしさゴシック手書き\'');">07やさしさゴシック手書き</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'Migu 1P\'');">Migu 1P</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', 'Koruri');">Koruri</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'BIZ UDPゴシック\'');">BIZ UDPゴシック</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_linux2_fonts', '\'MMCedar P\',\'MMCedar P W3 mono\'');">MMCedar P</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'nukamisoOTF\'');">nukamisoOTF</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'Textar\'');">Textar</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', 'RobotoJ');">RobotoJ</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', 'RobotoJAA');">RobotoJAA</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_linux2_fonts', '\'M PLUS 1p\'');">M PLUS 1p</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'M PLUS Rounded 1c\'');">M PLUS Rounded 1c</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', 'Kosugi');">Kosugi</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'Kosugi Maru\'');">Kosugi Maru</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_linux2_fonts', '\'Noto Sans JP\'');">Noto Sans JP</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'Noto Serif JP\'');">Noto Serif JP</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'Sawarabi Gothic\'');">Sawarabi Gothic</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'Mgen+ 1P\'');">Sawarabi Mincho</a></li>
+</ul>
+
+<h2 class="cl"><a name="bookmarklet" href="#bookmarklet">ブックマークレット</a></h2>
+
+<pre>
+function(){
+var style=document.createElement('style');
+var head=document.getElementsByTagName('head');
+style.setAttribute('type','text\/css');
+style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'Meiryo UI\'!important;}';
+head[0].appendChild(style);})();
+</pre>
+
+
+<ul class="small">
+<li><a href="javascript:(function(){var head=document.getElementsByTagName('head');var style=head[0].lastChild;if(style.nodeName.toLowerCase()=='style'){head[0].removeChild(style);}else{ alert('style 要素はないですYO');}})();">style削除(x1)</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:inherit!important;}';head[0].appendChild(style);})();">inherit (many)</a> | <a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:sans-serif!important;}';head[0].appendChild(style);})();">sans-serif (many)</a> | <a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'ＭＳ Ｐゴシック\'!important;}';head[0].appendChild(style);})();">ＭＳ Ｐゴシック (many)</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'メイリオ\',Meiryo!important;}';head[0].appendChild(style);})();">メイリオ (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'Meiryo UI\'!important;}';head[0].appendChild(style);})();">Meiryo UI (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'游ゴシック\'!important;}';head[0].appendChild(style);})();">游ゴシック (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'游ゴシック\'!important;font-weight:500!important}';head[0].appendChild(style);})();">游ゴシック w500 (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'Yu Gothic UI\'!important;}';head[0].appendChild(style);})();">Yu Gothic UI  (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'Droid Sans Fallback\'!important;}';head[0].appendChild(style);})();">Droid Sans Fallback (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:RobotoJ!important;}';head[0].appendChild(style);})();">RobotoJ (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:RobotoJAA!important;}';head[0].appendChild(style);})();">RobotoJAA (many)</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'07やさしさゴシック\'!important;}';head[0].appendChild(style);})();">07やさしさゴシック (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'07やさしさゴシック手書き\'!important;}';head[0].appendChild(style);})();">07やさしさゴシック手書き (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'Migu 1P\'!important;}';head[0].appendChild(style);})();">Migu 1P (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'MMCedar P\',\'MMCedar P W3 mono\'!important;}';head[0].appendChild(style);})();">MMCedar P (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:nukamisoOTF!important;}';head[0].appendChild(style);})();">nukamisoOTF (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:Textar!important;}';head[0].appendChild(style);})();">Textar (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'BIZ UDPゴシック\'!important;}';head[0].appendChild(style);})();">BIZ UDPゴシック (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'源真ゴシック\'!important;}';head[0].appendChild(style);})();">源真ゴシック (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'Mgen+ 1P\'!important;}';head[0].appendChild(style);})();">Mgen+ 1P (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'Rounded Mgen+ 1p\'!important;}';head[0].appendChild(style);})();">Rounded Mgen+ 1p (many)</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'源ノ角ゴシック\',\'源ノ角ゴシック JP\'!important;}';head[0].appendChild(style);})();">源ノ角ゴシック (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'源ノ角ゴシック\',\'源ノ角ゴシック JP\'!important;font-weight:100!important;}';head[0].appendChild(style);})();">源ノ角ゴシック 100 (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'源ノ角ゴシック\',\'源ノ角ゴシック JP\'!important;font-weight:300!important;}';head[0].appendChild(style);})();">源ノ角ゴシック 300 (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'源ノ角ゴシック\',\'源ノ角ゴシック JP\'!important;font-weight:350!important;}';head[0].appendChild(style);})();">源ノ角ゴシック 350 (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'源ノ角ゴシック\',\'源ノ角ゴシック JP\'!important;font-weight:400!important;}';head[0].appendChild(style);})();">源ノ角ゴシック 400 (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'源ノ角ゴシック\',\'源ノ角ゴシック JP\'!important;font-weight:500!important;}';head[0].appendChild(style);})();">源ノ角ゴシック 500 (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'源ノ角ゴシック\',\'源ノ角ゴシック JP\'!important;font-weight:700!important;}';head[0].appendChild(style);})();">源ノ角ゴシック 700 (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'源ノ角ゴシック\',\'源ノ角ゴシック JP\'!important;font-weight:900!important;}';head[0].appendChild(style);})();">源ノ角ゴシック 900 (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'Noto Sans CJK JP\'!important;}';head[0].appendChild(style);})();">Noto Sans CJK JP (many)</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:Koruri!important;}';head[0].appendChild(style);})();">Koruri (many)</a></li>
+
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:Koruri!important;font-weight:100!important;}';head[0].appendChild(style);})();">Koruri 100 (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:Koruri!important;font-weight:400!important;}';head[0].appendChild(style);})();">Koruri 400 (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:Koruri!important;font-weight:600!important;}';head[0].appendChild(style);})();">Koruri 600 (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:Koruri!important;font-weight:700!important;}';head[0].appendChild(style);})();">Koruri 700 (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:Koruri!important;font-weight:800!important;}';head[0].appendChild(style);})();">Koruri 800 (many)</a></li>
+</ul>
+
+<ul class="cl small">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'M PLUS 1p\'!important;}';head[0].appendChild(style);})();">M PLUS 1p (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'M PLUS Rounded 1c\'!important;}';head[0].appendChild(style);})();">M PLUS Rounded 1c (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:Kosugi !important;}';head[0].appendChild(style);})();">Kosugi (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'Kosugi Maru\'!important;}';head[0].appendChild(style);})();">Kosugi Maru (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'Noto Sans JP\'!important;}';head[0].appendChild(style);})();">Noto Sans JP (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'Noto Serif JP\'!important;}';head[0].appendChild(style);})();">Noto Serif JP (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'Sawarabi Gothic\'!important;}';head[0].appendChild(style);})();">Sawarabi Gothic (many)</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span{font-family:\'Sawarabi Mincho\'!important;}';head[0].appendChild(style);})();">Sawarabi Mincho (many)</a></li>
+</ul>
+
+
+<p class="cl">下記は body要素に適用なのでCSSで指定されてる要素には効きません。</p>
+
+<pre>
+javascript:void(document.body.style.fontFamily='\'メイリオ\',Meiryo')
+</pre>
+
+
+<ul class="small">
+<li><a href="javascript:(function(){var myTag=document.getElementsByTagName('Body');myTag[0].removeAttribute('style')})();">(body) style 削除</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='inherit')">inherit</a> ( <a href="javascript:void(document.body.style.fontFamily='sans-serif')">sans-serif</a> | <a href="javascript:void(document.body.style.fontFamily='serif')">serif</a> | <a href="javascript:void(document.body.style.fontFamily='monospace')">monospace</a> | <a href="javascript:void(document.body.style.fontFamily='cursive')">cursive</a> | <a href="javascript:void(document.body.style.fontFamily='fantasy')">fantasy</a> ) ( <a href="javascript:void(document.body.style.fontFamily='monospace,\'ＭＳ ゴシック\'')">monospace, 'ＭＳ ゴシック'</a> |  <a href="javascript:void(document.body.style.fontFamily='monospace, serif')">monospace, serif</a> )</li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='\'メイリオ\',Meiryo')">メイリオ</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'Meiryo UI\'')">Meiryo UI</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'游ゴシック\'')">游ゴシック</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'Droid Sans Fallback\'')">Droid Sans Fallback</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック\',\'源ノ角ゴシック JP\'')">源ノ角ゴシック</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'Noto Sans CJK JP\'')">Noto Sans CJK JP</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'源真ゴシック\'')">源真ゴシック</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'Mgen+ 1P\'')">Mgen+ 1P</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'Rounded Mgen+ 1p\'')">Rounded Mgen+ 1p</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='\'07やさしさゴシック\'')">07やさしさゴシック</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'07やさしさゴシック手書き\'')">07やさしさゴシック手書き</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'Migu 1P\'')">Migu 1P</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='Koruri')">Koruri</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'MMCedar P\',\'MMCedar P W3 mono\'')">MMCedar P</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='RobotoJ')">RobotoJ</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='RobotoJAA')">RobotoJAA</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='nukamisoOTF')">nukamisoOTF</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='nukamiso')">nukamiso</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='Textar')">Textar</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'BIZ UDPゴシック\'')">BIZ UDPゴシック</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='\'M PLUS 1p\'')">M PLUS 1p</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'M PLUS Rounded 1c\'')">M PLUS Rounded 1c</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='Kosugi')">Kosugi</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'Kosugi Maru\'')">Kosugi Maru</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'Noto Sans JP\'')">Noto Sans JP</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'Noto Serif JP\'')">Noto Serif JP</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'Sawarabi Gothic\'')">Sawarabi Gothic</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'Sawarabi Mincho\'')">Sawarabi Mincho</a></li>
+</ul>
+
+<ul class="cl lt small">
+<li><a href="javascript:void(document.body.style.fontSize='80%')">font 80%</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='100%')">font 100%</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='120%')">font 120%</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='150%')">font 150%</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontSize='12px')">font 12px</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='14px')">font 14px</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='15px')">font 15px</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='16px')">font 16px</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='18px')">font 18px</a></li>
+</ul>
+
+
+<dl class="cl">
+<dt>-webkit-text-stroke, text-shadow, transform</dt>
+<dd>
+<p></p>
+<pre>
+function(){
+var style=document.createElement('style');
+var head=document.getElementsByTagName('head');
+style.setAttribute('type','text\/css');
+style.innerHTML='body{-webkit-text-stroke-width:0.1px !important;}';
+head[0].appendChild(style);})();
+</pre>
+
+<ul class="small">
+<li><a href="javascript:(function(){var head=document.getElementsByTagName('head');var style=head[0].lastChild;if(style.nodeName.toLowerCase()=='style'){head[0].removeChild(style);}else{ alert('style 要素はないですYO');}})();">style削除(x1)</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='@font-face{font-family:\'ＭＳ Ｐゴシック\';src:local(\'Textar\');}@font-face{font-family:\'MS PGothic\';src:local(\'Textar\');}';head[0].appendChild(style);})();">ＭＳ Ｐゴシック を Textar に置換</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{-webkit-text-stroke-width:0.1px !important;}';head[0].appendChild(style);})();">body{-webkit-text-stroke-width: 0.1px !important;}</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{-webkit-text-stroke-width:0.2px !important;}';head[0].appendChild(style);})();">body{-webkit-text-stroke-width: 0.2px !important;}</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{-webkit-text-stroke-width:0.3px !important;}';head[0].appendChild(style);})();">body{-webkit-text-stroke-width: 0.3px !important;}</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{text-shadow:0 0 1px rgba(0,0,0,0.1),0 0 2px rgba(0,0,0,0.01),0 0 3px rgba(0,0,0,0.01)!important;}';head[0].appendChild(style);})();">body{text-shadow:0 0 1px rgba(0,0,0,0.1),0 0 2px rgba(0,0,0,0.01),0 0 3px rgba(0,0,0,0.01) !important;}</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{text-shadow: 0 0 0.1px rgba(51,51,51,0.5)!important;}';head[0].appendChild(style);})();">body{text-shadow: 0 0 0.1px rgba(51,51,51,0.5) !important;}</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{text-shadow: 0 0 0.1px rgba(0,0,0,0.5)!important;}';head[0].appendChild(style);})();">body{text-shadow: 0 0 0.1px rgba(0,0,0,0.5) !important;}</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{text-shadow: #707070 0.05px 0.05px 0.05px !important;}';head[0].appendChild(style);})();">body{text-shadow: #707070 0.05px 0.05px 0.05px !important;}</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{transform:rotate(0.001deg);}';head[0].appendChild(style);})();">body{transform: rotate(0.001deg);}</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{transform:rotate(0.03deg);}';head[0].appendChild(style);})();">body{transform: rotate(0.03deg);}</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{transform:rotate(0.05deg);}';head[0].appendChild(style);})();">body{transform: rotate(0.05deg);}</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{transform:rotate(0.001deg);}img{transform: rotate(0deg)!important;}';head[0].appendChild(style);})();">body{transform: rotate(0.001deg);} img{transform: rotate(0deg)!important;}</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{transform:rotate(0.03deg);}img{transform: rotate(-0.03deg)!important;}';head[0].appendChild(style);})();">body{transform: rotate(0.03deg);} img{transform: rotate(-0.03deg)!important;}</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body{transform:rotate(0.05deg);}img{transform: rotate(-0.05deg)!important;}';head[0].appendChild(style);})();">body{transform: rotate(0.05deg);} img{transform: rotate(-0.05deg)!important;}</a></li>
+</ul>
+
+<p class="cl">下記は body 要素に style 属性を追記</p>
+<pre>
+function(){
+document.getElementsByTagName('body')[0].style.setProperty('transform','rotate(0.01deg)','important');})
+();
+</pre>
+<ul class="small">
+<li><a href="javascript:(function(){var myID=document.getElementsByTagName('body')[0].style.removeProperty('transform');})();">戻す</a> </li>
+<li><a href="javascript:(function(){document.getElementsByTagName('body')[0].style.setProperty('transform','rotate(0.01deg)','important');})();">transform: rotate(0.01deg)</a></li>
+<li><a href="javascript:(function(){document.getElementsByTagName('body')[0].style.setProperty('transform','rotate(0.03deg)','important');})();">transform: rotate(0.03deg)</a></li>
+<li><a href="javascript:(function(){document.getElementsByTagName('body')[0].style.setProperty('transform','rotate(0.05deg)','important');})();">transform: rotate(0.05deg)</a></li>
+</ul>
+
+</dd>
+</dl>
+
+<dl class="cl">
+<dt>Web フォント を適用</dt>
+<dd>
+<p>ダウンロードする（1個数MBぐらい？）のでモバイル環境など通信量に注意。</p>
+<ul class="lt">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Noto+Sans+JP\');*{ font-family:\'Noto Sans JP\' !important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">Noto Sans JP</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Noto+Sans+TC\');*{ font-family:\'Noto Sans TC\' !important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">Noto Sans TC</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Noto+Sans+SC\');*{ font-family:\'Noto Sans SC\' !important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">Noto Sans SC</a></li>
+</ul>
+<ul class="lt">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=M+PLUS+1p\');*{ font-family:\'M PLUS 1p\' !important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">M PLUS 1p</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c\');*{ font-family:\'M PLUS Rounded 1c\' !important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">M PLUS Rounded 1c</a></li>
+</ul>
+<ul class="lt">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Kosugi\');*{ font-family:Kosugi!important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">Kosugi</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Kosugi+Maru\');*{ font-family:\'Kosugi Maru\' !important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">Kosugi Maru</a></li>
+</ul>
+<ul class="lt">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Sawarabi+Gothic\');*{ font-family:\'Sawarabi Gothic\' !important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">Sawarabi Gothic</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Sawarabi+Mincho\');*{ font-family:\'Sawarabi Mincho\' !important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">Sawarabi Mincho</a></li>
+</ul>
+<ul class="lt">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Noto+Serif+JP\');*{ font-family:\'Noto Serif JP\' !important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">Noto Serif JP</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Noto+Serif+SC\');*{ font-family:\'Noto Serif SC\' !important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">Noto Serif SC</a></li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Noto+Serif+TC\');*{ font-family:\'Noto Serif TC\' !important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();">Noto Serif TC</a></li>
+</ul>
+<ul class="cl small">
+<li><a href="javascript:(function(){var head=document.getElementsByTagName('head');var style=head[0].lastChild;if(style.nodeName.toLowerCase()=='style'){head[0].removeChild(style);}else{ alert('style 要素はないですYO');}})();">style削除(x1)</a></li>
+</ul>
+</dd>
+</dl>
+<h2 class="cl"><a name="bikou" href="#bikou">備考</a></h2>
+
+<p>最終更新日：2019.04.14</p>
+
+<p>2014.07.25 作成。
+<br>2014.09.18 Google Noto Fonts (<span style="font-family:'Noto Sans CJK JP';">Noto Sans CJK JP</span>) を追記。<span style="font-family:'源ノ角ゴシック','源ノ角ゴシック JP';">源ノ角ゴシック</span>と殆ど同じですけど...
+<br>2014.10.03 <span style="font-family:'源真ゴシック';">源真ゴシック</span>, <span style="font-family:'Mgen+ 1P';">Mgen+ 1P</span> を追記。
+<br>2014.10.19 <span style="font-family:'07やさしさゴシック手書き';">07やさしさゴシック手書き</span> を追加。
+<br>2014.10.22 スクリーンショットを追加。
+<br>2016.12.07 Firefox50 にて、DirectWrite 設定 + 拡張機能 Stylish での表示を追加。
+<br>2016.12.07 <span style="font-family:'游ゴシック',serif;font-weight:500;">游ゴシック w500 (Medium)</span>, <span style="font-family:'Yu Gothic UI',serif;">Yu Gothic UI</span> を追加。
+<br>2016.12.11 表示テストに <code>transform </code> プロパティ追記。
+<br>2017.01.27 <span style="font-family:RobotoJ;">RobotoJ</span>, <span style="font-family:RobotoJAA;">RobotoJAA</span> を追加。
+<br>2017.01.28 RobotoJフォント TTF-Hint のスクリーンショットを追加。
+<br>2017.02.15 Stylish 関連のブックマークレットをちょっと変更
+<br>2018.03.16 <span style="font-family:'BIZ UDPゴシック';">BIZ UDPゴシック <del>R</del></span> を追加
+<br>2018.10.02 Google Fonts - <span style="font-family:'M PLUS 1p';">M PLUS 1p</span>, <span style="font-family:'M PLUS Rounded 1c';">M PLUS Rounded 1c</span>, <span style="font-family:Kosugi;">Kosugi</span>, <span style="font-family:'Kosugi Maru';">Kosugi Maru</span>, <span style="font-family:'Noto Sans JP';">Noto Sans JP</span>, <span style="font-family:'Noto Serif JP';">Noto Serif JP</span>, <span style="font-family:'Sawarabi Gothic';">Sawarabi Gothic</span>, <span style="font-family:'Sawarabi Mincho';">Sawarabi Mincho</span> を追加
+<br>2018.12.29 BIZ UD フォント の指定方法修正
+<br>2019.04.14 Web フォント (Google Fonts) のブックマークレット追記
+</p>
+
+<dl>
+<dt>ダウンロード・リンク</dt>
+<dd>
+<ul>
+<li><a href="https://fonts.google.com/?subset=japanese">Google Fonts</a> <a href="http://b.hatena.ne.jp/entry/https://fonts.google.com/?subset=japanese" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://fonts.google.com/?subset=japanese" alt="" class="http-bookmark" /></a></li>
+</ul>
+
+<ul>
+<li>Droid フォント, モトヤLシーダ3等幅 (MTLc3m), モトヤLマルベリ3等幅 (MTLmr3m) - <a href="http://developer.android.com/sdk/index.html">Download Android Studio and SDK Tools | Android Developers</a>
+	<ul>
+	<li><a href="https://github.com/android/platform_frameworks_base/tree/master/data/fonts">platform_frameworks_base/data/fonts at master ・ android/platform_frameworks_base ・ GitHub</a></li>
+	</ul>
+</li>
+<li>源ノ角ゴシック <a href="http://sourceforge.net/adobe/source-han-sans/wiki/Home/">Source Han Sans / Home / Home</a>
+	<ul>
+	<li><a href="https://github.com/adobe-fonts/source-han-sans/tree/release">adobe-fonts/source-han-sans at release ・ GitHub</a></li>
+	</ul>
+</li>
+<li><a href="https://www.google.com/get/noto/">Google Noto Fonts</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.fontna.com/blog/379/">フリーフォントやさしさゴシックのダウンロード | フォントな情報。オープンソースの安心フリーフォント</a>（※ <code>.otf</code> ファイル同梱）</li>
+<li><a href="http://fontna.com/freefont/?p=40">やさしさゴシック手書きのフリーダウンロード | フォントな自由｜日本語フリーフォント無料ダウンロード</a></li>
+<li><a href="http://mix-mplus-ipa.sourceforge.jp/migu/">Miguフォント : M+とIPAの合成フォント</a></li>
+<li><a href="http://koruri.lindwurm.biz/">小瑠璃フォント (koruri)</a></li>
+<li>UmePlus, Komatuna, Monapo, MMCedar - <a href="http://www.geocities.jp/ep3797/modified_fonts_01.html">modified_fonts_01</a></li>
+<li>ぬかみそフォント - <a href="http://www.h7.dion.ne.jp/~beta-rev/virtualboy/download/download.html">ダウンロード</a>（<a href="http://www.h7.dion.ne.jp/~beta-rev/index.html">&#946;-reverse - 64DDポリゴンサイト</a>）</li>
+<li><del>Textar Font</del> - アスキーアート対応ウェブフォント（※ <code>.otf</code> ファイル同梱）
+	<ul>
+	<li>Textar - <a href="https://code.google.com/archive/p/textar-font/downloads">Google Code Archive - Long-term storage for Google Code Project Hosting.</a> <a href="http://b.hatena.ne.jp/entry/https://code.google.com/archive/p/textar-font/downloads" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://code.google.com/archive/p/textar-font/downloads" alt="" class="http-bookmark" /></a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://jikasei.me/">自家製フォント工房</a>
+	<ul>
+	<li><a href="http://jikasei.me/font/genshin/">源真ゴシック (げんしんゴシック) | 自家製フォント工房</a></li>
+	<li><a href="http://jikasei.me/font/mgenplus/">Mgen+ (ムゲンプラス) | 自家製フォント工房</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="https://ja.osdn.net/projects/robotoj-font/">RobotoJ-Font プロジェクト日本語トップページ - OSDN</a></li>
+</ul>
+
+<ul>
+<li><a href="http://bizplus.morisawa.co.jp/">MORISAWA BIZ+ | 株式会社モリサワ</a></li>
+</ul>
+
+</dd>
+</dl>
+
+
+<hr>
+
+
+
+
+<div class="navi">
+<ul>
+<li><a href="#top">TOP</a> | </li>
+<li><a href="./css_memo.html">Index</a> | </li>
+<li><a href="./index.html">HOME</a></li>
+</ul>
+</div>
+
+
+</body>
+</html>

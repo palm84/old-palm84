@@ -1,0 +1,308 @@
+@charset "Shift_JIS";
+
+body {
+margin: 0;
+padding: 1em 0.5em;
+font-size: 1em;
+/* line-height: 150%; */
+/* letter-spacing: 1px; */
+background-color: #ffe;
+}
+
+
+/*===== navigation =====*/
+
+/*.navi {
+}*/
+
+.navi ul {
+margin: 0;
+padding: 0 1.5%;
+position: fixed;
+top: 94%;
+left: 65%;
+right: 0;
+bottom: 1%;
+width: 30%;
+text-align:center;
+line-height: 150%;
+border-style: solid;
+border-width: 2px;
+border-color: #ccc #fff #fff #ccc;
+}
+
+.navi ul li {
+margin: 0;
+padding: 0;
+display: inline;
+font-size: 1em;
+font-family: sans-serif;
+width: 20%;
+line-height: 150%;
+}
+
+.navi ul a {
+position: relative;
+margin: 0;
+padding: 0;
+border-style: solid;
+border-width: 1px;
+border-color: #fff #000 #000 #fff;
+text-decoration: none;
+}
+
+.navi ul a:link {
+margin: 0;
+padding: 0;
+border-style: solid;
+border-width: 1px;
+border-color: #fff #000 #000 #fff;
+}
+
+.navi ul a:visited {
+margin: 0;
+padding: 0;
+border-style: solid;
+border-width: 1px;
+border-color: #fff #000 #000 #fff;
+}
+
+.navi ul a:hover {
+margin: 0;
+padding: 0;
+color: red;
+border-style: solid;
+border-width: 1px;
+border-color: #000 #fff #fff #000;
+z-index: 0;
+}
+
+.navi ul a:active {
+margin: 0;
+padding: 0;
+color: blue;
+border-style: solid;
+border-width: 1px;
+border-color: #000 #fff #fff #000;
+}
+
+
+/*===== basic elements=====*/
+
+p {
+margin: 3% 1%;
+padding:0;
+line-height: 150%;
+letter-spacing: 1px;
+}
+
+strong {
+font-family: monospace;
+}
+
+code {
+font-size: 1em;
+background-color: #f1f1f1;
+}
+
+hr {
+}
+
+.mono {
+font-family: monospace;
+}
+
+img {
+	border-width: 0;
+}
+
+
+/*===== headings =====*/
+
+h1 {
+margin: 0;
+padding: 0;
+font-size: 2em;
+font-weight: normal;
+line-height: 120%;
+}
+
+h1 a {
+color: #002;
+background-color: #ffe;
+}
+
+h2,h3 {
+vertical-align: bottom;
+line-height: 1.3;
+}
+
+
+h2 {
+margin: 3% 0;
+padding: 0 1em;
+font-size: 2em;
+font-weight: normal;
+background-color: #ccc;
+border: 1px #fff outset;
+}
+
+h3 {
+margin: 1em 0;
+padding: 0.1em 1em;
+font-size: 1.5em;
+font-weight: normal;
+background-color: #f1f1f1;
+border-style: solid;
+border-width: 1px;
+border-color: #fff #000 #000 #fff;
+}
+
+
+/*===== pre =====*/
+
+pre {
+margin: 3%;
+padding: 1em 0.5em;
+background-color: #f1f1f1;
+font-size: 95%;
+overflow: auto;
+border: 1px #ccc inset;
+line-height: 100%;
+width: 90%;
+}
+
+
+/*===== dl =====*/
+
+dl {
+margin: 3%;
+padding: 0.5em;
+border-style: dotted;
+border-width: 1px;
+border-color: #fff #000 #fff #000 ;
+width: 90%
+}
+
+dt {
+margin: 0;
+padding: 0 0 0 1em;
+font-size: 1em;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+border-color: #fff #000 #000 #fff ;
+width: 90%
+}
+
+dd {
+margin: 0;
+padding: 0.5em 0 0 2em;
+width: 90%
+}
+
+
+/*===== list default =====*/
+
+.default {
+margin: 1em 5em;
+padding: 0;
+border: 2px solid #ccc;
+}
+
+.default ul,.default ol {
+border: 1px solid red;
+}
+
+.default li{
+border: 1px dotted blue;
+}
+
+
+/*===== list test0 =====*/
+
+.testlist0 {
+margin: 1em 5em;
+padding: 0;
+border: 2px solid #ccc;
+}
+
+.testlist0 ul,
+.testlist0 ol {
+margin:0;
+padding:0;
+border: 1px solid red;
+}
+
+.testlist0 ul ul,
+.testlist0 ul ol,
+.testlist0 ol ul,
+.testlist0 ol ol {
+margin:0;
+padding:0;
+}
+
+.testlist0 li {
+margin:0;
+padding:0;
+border: 1px solid blue;
+}
+
+
+/*===== list test3 =====*/
+
+.testlist3 {
+margin: 1em 5em;
+padding: 0;
+border: 2px solid #ccc;
+}
+
+
+.testlist3 ul,
+.testlist3 ol {
+border: 1px solid red;
+margin: 1em 0;
+padding: 0 0 0 2.5em; 
+font-weight: normal;
+line-height: 120%;
+}
+
+.testlist3 ul ul,
+.testlist3 ul ol,
+.testlist3 ol ul,
+.testlist3 ol ol {
+margin: 0;
+padding: 0 0 0 1em;
+font-size: 1em;
+}
+
+.testlist3 li {
+border: 1px solid blue;
+margin: 0.2em 0;
+padding: 0;
+}
+
+
+/*===== list test last =====*/
+
+ul.test,
+ol.test {
+margin: 1em 0;
+padding: 0 0 0 2.5em; 
+font-weight: normal;
+line-height: 120%;
+}
+
+ul.test ul,
+ul.test ol,
+ol.test ul,
+ol.test ol {
+margin: 0;
+padding: 0 0 0 1em;
+font-size: 1em;
+}
+
+.test li {
+margin: 0.5em 0;
+padding: 0;
+}

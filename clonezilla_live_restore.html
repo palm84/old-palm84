@@ -1,0 +1,509 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="START" href="./">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>Clonezilla Live - イメージ・レストア編＠Palm84</title>
+<style type="text/css">
+<!--
+/*
+a:link,a:visited,
+a:hover,a:active {
+ font-weight: normal;
+}
+*/
+
+h2 a:link,h2 a:visited,
+h2 a:hover,h2 a:active {
+ font-weight: bold;
+}
+
+dl.small dd pre {
+font-size: 100%;
+}
+
+div.ylt table {
+text-align: left;
+margin: 3% 5% 3% 9%;
+width: 81%;
+}
+
+div.ylt td {
+padding: 0.5em;
+}
+
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="./basic_ie5.css">
+<![endif]-->
+</head>
+
+
+<body>
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+
+<script type="text/javascript">
+<!--
+setTimeout("link()", 0);
+function link(){
+location.href='https://www.palm84.com/entry/clonezilla_live_restore';
+}
+-->
+</script>
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>移行作業中です...</ins></dt>
+<dd>
+<p>はてなブログの該当ページへ<strong>リダイレクトします</strong>。お手数をおかけします。ご容赦ください。</p>
+</dd>
+</dl>
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" accesskey="z" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd>
+ | <a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,h1,h2,h3,h4,h5,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span,#blog-title,.index,.white,.palmst,pre{color:white!important;background-color:#333!important;text-shadow:none!important;}code{color:#333!important;text-shadow:none!important;}a:link{color:orange!important;text-shadow:none!important;text-decoration:underline!important;}a:visited{color:sienna!important;text-shadow:none!important;text-decoration:underline!important;}a:hover{color:brown!important;background-color:white!important;text-decoration:none!important;}';head[0].appendChild(style);})();">反転</a> <a href="javascript:(function(){var head=document.getElementsByTagName('head');var style=head[0].lastChild;if (style.nodeName.toLowerCase() == 'style'){head[0].removeChild(style);}else{alert('追加したstyle要素はないですYO');}})();">戻す</a> | <span class="font_change">* font-change * <a href="javascript:void(document.body.style.fontFamily='inherit')" title="inherit">inherit</a> <a href="javascript:void(document.body.style.fontFamily='sans-serif')" title="Sans-serif">Ss</a> <a href="javascript:void(document.body.style.fontFamily='serif')" title="Serif">Sf</a> <a href="javascript:void(document.body.style.fontFamily='\'メイリオ\'')" title="メイリオ">メ</a> <a href="javascript:void(document.body.style.fontFamily='\'游ゴシック Medium\',\'游ゴシック\',\'Yu Gothic\',YuGothic')" title="游ゴシック">游</a> <a href="javascript:void(document.body.style.fontFamily='\'ＭＳ Ｐゴシック\'')" title="ＭＳ Ｐゴシック">MS</a> <a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Regular\',\'源ノ角ゴシック JP Regular\',\'Noto Sans Japanese Regular\',\'Noto Sans CJK JP Regular\',\'源ノ角ゴシック\',\'源ノ角ゴシック JP\',\'Noto Sans Japanese\',\'Noto Sans CJK JP\'')" title="源ノ角ゴシック / Sonrce Han Sans">源</a> <a href="javascript:void(document.body.style.fontSize='12px')" title="12px">12</a>
+ <a href="javascript:void(document.body.style.fontSize='14px')" title="14px">14</a>
+ <a href="javascript:void(document.body.style.fontSize='16px')" title="16px">16</a> <a href="javascript:void(document.body.removeAttribute('style'));" title="body style 削除">戻す</a> *</span>
+ </div>
+
+
+<h1><span class="tokai1"><a href="./clonezilla_live_restore.html">Clonezilla Live - イメージ・レストア編</a></span></h1>
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+<div class="sidebar_body">
+<ul>
+<li><a href="#about" accesskey="3">これって何？</a> <kbd class="ak small">3</kbd></li>
+<li><a href="#oomaka" accesskey="5">おおまかな流れ</a> <kbd class="ak small">5</kbd></li>
+<li><a href="#intro" accesskey="6">Intro - 国別設定等</a> <kbd class="ak small">6</kbd></li>
+<li><a href="#mount" accesskey="7">Mount - バックアップイメージのマウント</a> <kbd class="ak small">7</kbd>
+	<ul>
+	<li><a href="#usbhdd">USB HD</a></li>
+	<li><a href="#samba">Sambaサーバ</a></li>
+	</ul>
+</li>
+<li><a href="#target" accesskey="8">Target - レストア対象</a> <kbd class="ak small">8</kbd></li>
+<li><a href="#memo" accesskey="9">めも</a> <kbd class="ak small">9</kbd></li>
+</ul>
+</div>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+
+
+
+<p class="small">リンク is フリーダム<span class="ms">♪</span></p>
+
+<div class="hateb">
+<script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://www10.plala.or.jp/palm84/";
+Hatena.BookmarkWidget.title = "はてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+
+<script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://d.hatena.ne.jp/palm84/";
+Hatena.BookmarkWidget.title = "某所のはてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+</div>
+
+</div>
+</div>
+
+<div class="main">
+
+<div class="palmst white">
+<ul>
+<li><a href="./clonezilla_live_backup.html">Clonezilla Live - イメージ・バックアップ編</a></li>
+<li><span style="font-weight:bold;">Clonezilla Live - イメージ・レストア編</span> <span class="ms">←</span> <strong class="red">今ココ</strong></li>
+</ul>
+</div>
+
+<p class="small">作成日 2015.4.21</p>
+
+<p><script src="http://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+
+<a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/clonezilla_live_restore.html"><img src="http://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/clonezilla_live_restore.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a>
+ 
+</p>
+
+<p>ぶっちゃけスクリーンショット取っただけです... orz</p>
+
+<p><code>clonezilla-live-2.3.2-22-amd64.iso</code> での確認です。アップデートで内容が変更されたり、PC環境によって表示される画面（オプションとか）違ったりすると考えられるのでご注意をば。</p>
+<p>あっと・・・<strong>at your own risk</strong> のおやくそくにてたてまつり。...</p>
+<p ><strong style="font-size:120%;">バックアップと違って間違ったりすると怖いYO！</strong></p>
+<h2><a href="#about" name="about">これって何？</a> <kbd class="ak">3</kbd></h2>
+<ul>
+<li>MBR(BIOS) モードのブートメニュー</li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/bios_bootmenu.png" width="512" height="384" alt="BIOSブートメニュのスクリーンショット"></p>
+
+<ul>
+<li><a href="./clonezilla_live_backup.html">Clonezilla Live - イメージ・バックアップ編</a></li>
+</ul>
+<p>上記の続きであります。こっちはレストア（復元）を試してみたわけであります。</p>
+
+<p>試したのは ... </p>
+<ul>
+<li>バックアップ（パーティション・イメージ）<span class="ms">→</span> パーティションへレストア</li>
+</ul>
+<p>... だけだす。。。あくまで一例というか、参考までというか、ただのめもとか言いますか...</p>
+
+<p>Clonezilla Live の概要とかは上記ページをご笑覧くだされ。</p>
+
+
+<h2><a href="#oomaka" name="oomaka">おおまかな流れ</a> <kbd class="ak">5</kbd></h2>
+
+<dl class="small">
+<dt>実行環境</dt>
+<dd>
+<p>後述の確認は以下の環境で行いました。</p>
+<ul>
+<li>VMware Player 6 (EFI)</li>
+<li>保存対象 : VM上の Windows 8.1</li>
+<li>保存先 : USB HD, Windows共有 (Samba)</li>
+<li><code>clonezilla-live-2.2.3-10-amd64.iso</code> 2015.2 リリース</li>
+<li>LiveCD UEFI ブート</li>
+</ul>
+<p>※ <strong>VMware はセキュアブート非対応なので実機とは多少違いあると思われます</strong>。アシカラズ...</p>
+</dd>
+</dl>
+
+<p><span class="aa">（´・ω・｀）</span><strong>【1】と【2】はバックアップ編と同じなので画像使いまわしです</strong>。手抜きですみません。</p>
+
+<ol>
+<li>Introduction - 国別設定など
+	<ol>
+	<li>言語</li>
+	<li>キーボード設定</li>
+	<li>イメージバックアップ/レストア, or disk to disk の選択</li>
+	</ol>
+</li>
+<li>Mount - バックアップイメージのマウント - 内蔵/USB HD, SSH, Samba（Windows共有）など
+	<ul>
+	<li>Sambaなどの場合はネットワーク設定</li>
+	</ul>
+</li>
+<li>Target - レストア対象の設定 : 初心者モード （or エキスパートモード）
+	<ol>
+	<li>初心者モード</li>
+	<li>作業種類 - 保存/レストア, パーティション/ディスク, etc（※ マウント先にClonezillaファイルがない場合はバックアップのみ）</li>
+	<li>イメージセット（イメージ・ディレクトリ名）を選択</li>
+	<li>バックアップイメージ選択</li>
+	<li>レストア対象パーティションを選択</li>
+	<li>Partclone (partimage, dd, ntfsclone) 実行</li>
+	<li>結果メッセージ</li>
+	<li>終了選択</li>
+	</ol>
+</li>
+</ol>
+
+
+<h2><a href="#intro" name="intro">Introduction - 国別/作業種類設定等</a> <kbd class="ak">6</kbd></h2>
+
+<p class="white">※ バックアップ編と同じです。</p>
+
+<ul>
+<li>UEFI ブートメニュー - そのまま <kbd>Enter</kbd>、またはお好みで（<code>TO RAM</code> はオンメモリ）</li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/uefi_boot_menu.png" width="563" height="422" alt="「UEFI ブートメニュー」のスクリーンショット"></p>
+
+<ul>
+<li>言語選択 - 日本語を選択</li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console1.png" width="471" height="332" alt="「言語選択」のスクリーンショット"></p>
+
+<ul>
+<li>キーボード設定 - 「アーキテクチャリストから...」を選択</li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console2_keyboard1.png" width="605" height="377" alt="「キーボード設定1」のスクリーンショット"></p>
+
+<ul>
+<li>キーボード設定 - <code>qwerty</code> そのまま <kbd>Enter</kbd></li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console2_keyboard2.png" width="922" height="257" alt="「キーボード設定2」のスクリーンショット"></p>
+
+<ul>
+<li>キーボード設定 -  <code>Japanese</code> 選択</li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console2_keyboard3.png" width="653" height="660" alt="「キーボード設定3」のスクリーンショット"></p>
+
+<ul>
+<li>キーボード設定 - <code>PC110</code> そのまま <kbd>Enter</kbd></li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console2_keyboard4.png" width="757" height="207" alt="「キーボード設定4」のスクリーンショット"></p>
+
+<ul>
+<li>Clonezilla 開始 - そのまま <kbd>Enter</kbd></li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console3_start.png" width="577" height="190" alt="「開始画面」のスクリーンショット"></p>
+
+<ul>
+<li>選択（イメージ作成 or disk to disk 直接） - 上選択のまま <kbd>Enter</kbd></li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console4_image_or_device.png" width="707" height="263" alt="「コピー手段選択」のスクリーンショット"></p>
+
+<h2><a href="#mount" name="mount">Mount - バックアップイメージのマウント</a> <kbd class="ak">7</kbd></h2>
+
+<p class="white">※ バックアップ編と同じです。</p>
+
+<p>保存先をマウントします...</p>
+<p class="overflow2"><img src="./images/clonezilla_live/console5_usbmount1.png" width="922" height="289" alt="「保存先設定 USB HD」のスクリーンショット"></p>
+
+<p>一応2通りで確認。他にも SSH, NFS, WebDAV に対応ってなってます。</p>
+
+<ul>
+<li><a href="#usbhdd">USB HD をマウント</a></li>
+<li><a href="#samba">Sambaサーバ（Windows共有/NAS）をマウント</a></li>
+</ul>
+<h3><a href="#usbhdd" name="usbhdd">USB HD をマウント</a></h3>
+
+<p>USB HD の例です ...</p>
+
+<ul>
+<li>保存（マウント）先 - 「ローカルディスク」で <kbd>Enter</kbd></li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console5_usbmount1.png" width="922" height="289" alt="「保存先設定 USB HD」のスクリーンショット"></p>
+
+<ul>
+<li>（USB HDを繋いでない場合はここで繋いでから） - そのまま <kbd>Enter</kbd></li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console5_usbmount2_kakunin.png" width="563" height="127" alt="「USB HD 接続確認」のスクリーンショット"></p>
+
+<ul>
+<li>マウント先パーティションを指定 - ここでは  <code>sdb1</code> 選択で <kbd>Enter</kbd></li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console5_usbmount3_part_select.png" width="922" height="328" alt="「USB HD パーティション」のスクリーンショット"></p>
+
+<ul>
+<li>マウント先のディレクトリ指定 - 選択して <kbd>Enter</kbd></li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console5_usbmount4_dir_select.png" width="922" height="262" alt="「USB HD ディレクトリ」のスクリーンショット"></p>
+
+<ul>
+<li>マウント先パーティションの確認 - <strong>Avail</strong> が空き容量</li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console5_usbmount5_kakunin.png" width="656" height="362" alt="「USB HD 確認」のスクリーンショット"></p>
+
+<p>続きは <a href="#target">Target 設定</a>へ</p>
+
+
+<h3><a href="#samba" name="samba">Sambaサーバ（Windows共有/NAS）をマウント</a></h3>
+
+<p>下記はネットワーク上の Windows PC または SambaサーバのNASなどをマウントする例...</p>
+
+
+<ul>
+<li>マウント先の選択 - <strong>Samba サーバ</strong> を選択して <kbd>Enter</kbd></li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console5_smbmount1.png" width="922" height="287" alt="「保存先設定 Samba」のスクリーンショット"></p>
+
+<ul>
+<li>ネットワーク設定 -  <code>dhcp</code> でそのまま <kbd>Enter</kbd></li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console5_smbmount2_dhcp.png" width="670" height="206" alt="「Samba DHCP設定」のスクリーンショット"></p>
+
+<ul>
+<li>サーバのIPアドレスを入力して <kbd>Enter</kbd></li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console5_smbmount3_serveraddress.png" width="451" height="164" alt="「Samba サーバーIP」のスクリーンショット"></p>
+
+<ul>
+<li>ドメイン -（空白）そのまま <kbd>Enter</kbd>（※ 必要なら入力）</li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console5_smbmount4_domain.png" width="543" height="168" alt="「Samba ドメイン」のスクリーンショット"></p>
+
+<ul>
+<li>認証ユーザ名入力して <kbd>Enter</kbd>（※ 認証不要の場合は <code>aaa</code> とか適当に）</li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console5_smbmount5_username.png" width="671" height="156" alt="「Samba アカウント名」のスクリーンショット"></p>
+
+<ul>
+<li><code>/共有名/ディレクトリ名</code> を入力して <kbd>Enter</kbd></li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console5_smbmount6_directory_name.png" width="674" height="145" alt="「Samba ディレクトリ」のスクリーンショット"></p>
+
+<ul>
+<li>セキュリティ - そのまま <kbd>Enter</kbd>（※ 多分おｋ...）</li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console5_smbmount7_security.png" width="769" height="182" alt="「Samba セキュリティ」のスクリーンショット"></p>
+
+<ul>
+<li>設定確認 - そのまま <kbd>Enter</kbd></li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console5_smbmount8_password1.png" width="626" height="137" alt="「Samba パスワード1」のスクリーンショット"></p>
+
+<ul>
+<li>画面下の方 - パスワードを入力して <kbd>Enter</kbd>（※ 入力しても表示されないので注意）</li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console5_smbmount9_password2.png" width="577" height="55" alt="「Samba パスワード2」のスクリーンショット"></p>
+
+<ul>
+<li>マウント先パーティションの確認 - <strong>Avail</strong> が空き容量</li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console5_smbmount10_password3.png" width="922" height="322" alt="「Samba パスワード3」のスクリーンショット"></p>
+<p class="small">※ すみません。。。差し替えたので上の内容と微妙に違いあったりｗ</p>
+
+
+<h2><a href="#target" name="target">Target - レストア対象の設定</a> <kbd class="ak">8</kbd></h2>
+
+<p>Target（レストア対象）の指定デース。対象を指定したらレストアが実行されます。</p>
+<p>エキスパートモードではオプションの変更が可能ですが、Windows 対象だとあまり変わらないような気がするようなしないような...</p>
+
+<ul>
+<li>モード選択 - 「初心者モード」 そのまま <kbd>Enter</kbd></li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console6_beginner_restore1.png" width="628" height="178" alt="「レストア開始」のスクリーンショット"></p>
+
+<ul>
+<li>作業選択 - 今回は「restoreparts イメージをローカルパーティションにリストア」選択 <kbd>Enter</kbd></li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console6_beginner_restore2_disk_or_drive_backup_or_restore.png" width="922" height="361" alt="「レストア disk or partition」のスクリーンショット"></p>
+
+<ul>
+<li>イメージセットを選択 - <kbd>Enter</kbd></li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console6_beginner_restore3_select_source_image.png" width="550" height="164" alt="「レストア イメージファイル選択」のスクリーンショット"></p>
+
+<ul>
+<li>レストア用イメージを選択 - 今回は <strong>Windows 上の C: ドライブ</strong> <code>sda4</code> のみ選択 <kbd>Enter</kbd>（※ EFIとか回復パーティションとかややこしそうなので ...）</li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console6_beginner_restore4_select_source_partition.png" width="922" height="256" alt="「レストア パーティション」のスクリーンショット"></p>
+
+<ul>
+<li>レストア 対象パーティション - <code>sda4</code> を選択 <kbd>Enter</kbd></li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console6_beginner_restore5_select_target_partition.png" width="922" height="258" alt="「レストア 対象パーティション」のスクリーンショット"></p>
+
+<ul>
+<li>コマンドライン確認 - 確認して <kbd>Enter</kbd></li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console6_beginner_restore6_kakunin1.png" width="922" height="148" alt="「レストア 確認1」のスクリーンショット"></p>
+
+<ul>
+<li>確認再び - 確認して <kbd>Enter</kbd></li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console6_beginner_restore7_kakunin2.png" width="922" height="80" alt="「レストア 確認2」のスクリーンショット"></p>
+
+<ul>
+<li>確認 x 3 times- <kbd>y</kbd> で <kbd>Enter</kbd></li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console6_beginner_restore8_kakunin3.png" width="922" height="290" alt="「レストア 確認3」のスクリーンショット"></p>
+
+<ul>
+<li>ファイナル確認 - 間違いなければ <kbd>y</kbd> で <kbd>Enter</kbd></li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console6_beginner_restore9_kakunin4.png" width="922" height="211" alt="「レストア 確認4」のスクリーンショット"></p>
+
+<ul>
+<li>Partclone 実行中 ... </li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console7_beginner_restore10_partclone1.png" width="470" height="340" alt="「初心者モード partclone 実行中」のスクリーンショット"></p>
+
+<ul>
+<li>結果確認 - （※ EFIパーティションは変更してないので）EFI は大丈夫だよ！みたいなメッセージが書いてあります。赤字なければいいみたいです...</li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console7_beginner_restore11_finish1.png" width="922" height="691" alt="「初心者モード 結果確認」のスクリーンショット"></p>
+<p class="small">※ sda3 は未フォーマットなので dd で実行された模様。</p>
+
+<ul>
+<li>終了デース！</li>
+</ul>
+<p class="overflow2"><img src="./images/clonezilla_live/console7_beginner_restore12_finish2.png" width="922" height="217" alt="「初心者モード 終了の選択」のスクリーンショット"></p>
+
+<p><strong style="font-size:200%;">おつかりさんDOS！</strong></p>
+
+
+<h3><a href="#expert" name="expert">エキスパートモード</a></h3>
+
+<p class="overflow2"><img src="./images/clonezilla_live/console6_expert_restore1.png" width="629" height="184" alt="「レストア開始」のスクリーンショット"></p>
+<p><strong>エキスパートモード</strong>ではオプションの変更が可能です。</p>
+<p>でも怖いのでいじれません。orz</p>
+<ul>
+<li>拡張パラメータ</li>
+<li>終了時シャットダウン or 再起動 - デフォルトはオフ</li>
+</ul>
+
+<p class="overflow2"><img src="./images/clonezilla_live/console6_expert_restore6_kakutyou1.png" width="922" height="536" alt="「拡張パラメータ」のスクリーンショット"></p>
+<p class="overflow2"><img src="./images/clonezilla_live/console6_expert_restore7_kakutyou2.png" width="922" height="294" alt="「拡張パラメータ」のスクリーンショット"></p>
+<p class="overflow2"><img src="./images/clonezilla_live/console6_expert_restore8_syuuryouji.png" width="504" height="206" alt="「終了時の動作選択」のスクリーンショット"></p>
+
+
+<h2><a href="#memo" name="memo">めも</a> <kbd class="ak">9</kbd></h2>
+
+<p>ウチの超しょぼPCでは参考になりませんけど... orz</p>
+<ul>
+<li>C:ドライブ使用領域 22.1GiB - 保存サイズ 10.33 GiB (46.7 %)</li>
+<li>おおよそのレストア所要時間 : USB 3.0 HD 約20分、NAS 約1時間以上？</li>
+</ul>
+
+
+
+</div>
+</div>
+
+
+<div class="navi">
+<a href="./index.html">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd>
+</div>
+
+<address>Written by yassy</address>
+
+<ul class="toTop-nav">
+<li><a href="javascript:void(0);" onclick="smoothScroll(0);return false;">↑</a></li>
+</ul>
+<script type="text/javascript">
+function smoothScroll(o){var e=window.pageYOffset,l=o>e;setTimeout(function(){l&&o>=e?(e=e+(o-e)/20+1,window.scrollTo(0,e),setTimeout(arguments.callee,10)):!l&&e>=o?(e=e-(e-o)/20-1,window.scrollTo(0,e),setTimeout(arguments.callee,10)):window.scrollTo(0,o)},10)}
+</script>
+
+</body>
+
+</html>
+

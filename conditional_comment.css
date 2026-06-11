@@ -1,0 +1,192 @@
+@charset "Shift_JIS";
+
+body {
+font-size: 100%;
+line-height: 120%;
+letter-spacing: 0;
+margin: 0;
+padding: 0;
+color: #001;
+background-color: #ffe;
+}
+
+h1 {
+font-size: 300%;
+line-height: 120%;
+letter-spacing: 0;
+margin: 0;
+padding: 0;
+
+}
+
+h2 {
+font-size: 150%;
+line-height: 120%;
+letter-spacing: 0;
+margin: 0;
+padding: 0;
+
+}
+
+p {
+margin: 3%;
+color: red;
+}
+
+dfn {
+font-family: monospace;
+font-style: normal;
+border-bottom: 1px dashed #003;
+}
+
+code {
+font-size: 100%;
+color: #000;
+background-color: #f1f1f1;
+}
+
+
+/*===== div.box =====*/
+
+div.box {
+margin: 0;
+padding: 0;
+font-size: 1em;
+line-height: 100%;
+letter-spacing: 0px;
+background-color: #ffc;
+width: 100%;
+}
+
+
+
+
+/*===== columns =====*/
+
+div.palm-body {
+border: 1px outset #009;
+position:relative;
+margin:1% auto;
+padding:0;
+width: 90%;
+background-color:#f1f1f1;
+}
+
+div.main {
+margin: 0 26% 0 0;
+padding: 3% 0 3% 3%;
+background-color: #fff;
+}
+
+div.sidebar {
+position:absolute;
+background-color: #f1f1f1;
+margin: 0;
+padding: 0;
+top: 0;
+left: 75%;
+right: 0;
+bottom: 0;
+width:24%;
+line-height:1;
+}
+
+
+/*===== pre =====*/
+
+pre {
+margin: 0 5%;
+padding: 1em 0;
+overflow:auto;
+white-space: pre;
+background-color: #f1f1f1;
+font-size:0.9em;
+}
+
+.scroll {
+overflow:scroll;
+padding: 0;
+}
+
+.hidden {
+overflow:hidden;
+padding: 0;
+}
+
+.w90 {
+margin:0 5%;
+width:90%;
+}
+
+.w95 {
+margin:0 5%;
+width:95%;
+}
+
+.w100 {
+margin:0 5%;
+width:100%;
+}
+
+
+/*===== list =====*/
+
+ul,ol {
+padding: 0 0 0 2em;
+margin: 0.5em 0;
+line-height: 120%;
+width:95%;
+list-style-type: disc;
+}
+
+ul ul,ul ol,ol ul,ol ol {
+padding: 0 0 0 2em;
+margin: 0 0 0 0;
+font-size: 1em;
+list-style-type: circle;
+}
+
+li {
+margin: 0.2em 0; 
+padding: 0;
+line-height: 120%;
+}
+
+ul.browser {
+padding: 0 0 0 1em;
+margin: 1em;
+width:100%;
+}
+
+ul.browser2 {
+padding: 0 0 0 0.5em;
+margin: 0;
+list-style-type: none;
+}
+
+ul.small {
+font-size: 80%;
+}
+
+dl {
+margin: 2%;
+padding: 0;
+width: 100%
+}
+
+dt {
+margin: 0;
+padding: 0;
+font-weight: bold;
+text-decoration: underline;
+}
+
+dd {
+margin: 0;
+padding: 0;
+}
+
+dl ul {
+padding: 0 0 0 1em;
+
+}

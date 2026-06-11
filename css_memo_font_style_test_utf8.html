@@ -1,0 +1,1138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="start" href="./index.html">
+<link rel="stylesheet" type="text/css" href="./cssmemo_utf8.css" media="all">
+<link rel="stylesheet" type="text/css" href="./cssmemo_print_utf8.css" media="print">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./cssmemo-sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<script type="text/javascript" charset="UTF-8" src="./cssmemo_font_utf8.js"></script>
+<title>フォントスタイル表示切替テスト (UTF-8版) - CSSめも＠Palm84</title>
+<style type="text/css">
+<!--
+div#kuma {
+white-space: pre !important;
+margin: 1% auto;
+padding: 0.5em;
+line-height: 1.1;
+letter-spacing: 0px;
+background-color: #f1f1f1;
+border-style: solid;
+border-width: 3px;
+border-color: #fff #ccc #ccc #fff;
+overflow: auto;
+width: 90%;
+}
+
+/*
+table {
+line-height: 1;
+letter-spacing: 0;
+}
+*/
+
+#test_sans,
+#test_sans_fonts,
+#test_sans_fonts_p,
+#test_serif,
+#test_serif_fonts,
+#test_serif_fonts_p,
+#test_mono,
+#test_mono_fonts,
+#test_mono_fonts_p,
+#test_tegaki,
+#test_tegaki_fonts,
+#test_tegaki_fonts_p {
+line-height: 1;
+letter-spacing: 0;
+}
+
+#test_sans,
+#test_serif,
+#test_mono,
+#test_tegaki,
+#test_pre_fonts,
+#test_pre_fonts_p {
+background-color: white;
+}
+
+-->
+</style>
+</head>
+
+
+<body>
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+
+
+<h1><a href="./css_memo_font_style_test_utf8.html" name="top">フォントスタイル表示切替テスト (UTF-8版)</a></h1>
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/css_memo_font_style_test_utf8.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/css_memo_font_style_test_utf8.html"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/css_memo_font_style_test_utf8.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<ul class="pink">
+<li><a href="./index.html">HOME</a></li>
+<li><a href="./css_memo_font_style_test.html">Shit_JIS 版</a></li>
+<li>UTF-8 版　<strong class="msg red">← 今ここ</strong></li>
+</ul>
+<p class="small">※ IEでは文字エンコードで表示に差異があります。</p>
+<h2><a name="index" href="#index">目次</a></h2>
+
+<ol>
+<li><a href="#about">これって何？</a></li>
+<li><a href="#sansserif">表示テスト - Sans-serif, プロポーショナル・ゴシック系</a></li>
+<li><a href="#serif">表示テスト - Serif, プロポーショナル・明朝体</a></li>
+<li><a href="#monospace">表示テスト - Monospace, 等幅</a>
+	<ul>
+	<li><a href="#pre">pre 要素</a></li>
+	</ul>
+</li>
+<li><a href="#tegaki">表示テスト - 手書き風、面白系</a></li>
+<li><a href="#aa">表示テスト - AA表示</a>
+	<ul>
+	<li><a href="#aa_div">div 要素</a></li>
+	<li><a href="#aa_pre">pre 要素</a></li>
+	</ul>
+</li>
+<li><a href="#bikou">備考</a></li>
+</ol>
+<h2><a name="about" href="#about">これって何？</a></h2>
+
+<p>JavaScript については見よう見まねの初心者レベルなので間違いあらばご容赦。</p>
+<p>フォントの表示テスト用に作ってみました。</p>
+<p>JavaScript で <code>style</code> 属性を追記して表示確認します。（※ 一部機能 <code>removeProperty</code> メソッドなどはIE8ではエラーとなります。）</p>
+<pre>
+&#060;p id=&#034;test_sans_fonts_p&#034; <span class="red">style=&#034;font-family: 'Meiryo UI';&#034;</span>&#062;
+</pre>
+
+<p>表示テストの項目については下記の通りです。</p>
+
+<div class="sp_overflow">
+<table class="cl font_test_item" summary="表示テストの項目">
+<caption>表示テストの項目</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">オー</th><th abbr="小文字のiと大文字のI">アイ</th><th abbr="小文字のl">小文字エル</th><th abbr="大文字のQ">Q</th><th abbr="Windows">Windows</th><th abbr="濁点">濁点</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="カナ漢字長音漢数字">カナ漢字長音漢数字</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>プブ</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+<h2 class="cl"><a name="sansserif" href="#sansserif">Sans-serif, プロポーショナル・ゴシック系</a></h2>
+
+<p class="pink">※ 完全じゃないです。<code>font-family</code> は一つのみ指定してます。指定フォントがない環境では標準設定のフォントで表示されます。<span class="small">(※ 欧文フォントのみ指定の場合、和文が何になるかはブラウザにより若干差異がある模様。）</span></p>
+
+<ul class="small">
+<li>font-size <a href="javascript:rmProperty('test_sans', 'font-size');">削除</a> | <a href="javascript:setZoom('test_sans', '80%');">80%</a> | <a href="javascript:setZoom('test_sans', '100%');">100%</a> | <a href="javascript:setZoom('test_sans', '110%');">110%</a> | <a href="javascript:setZoom('test_sans', '120%');">120%</a> | <a href="javascript:setZoom('test_sans', '150%');">150%</a> | font-style <a href="javascript:rmProperty('test_sans','font-style' );">削除</a> | <a href="javascript:setFontStyle('test_sans', 'normal');">normal</a> | <a href="javascript:setFontStyle('test_sans', 'italic');">italic</a> | <a href="javascript:setFontStyle('test_sans', 'oblique');">oblique</a></li>
+<li>line-height <a href="javascript:rmProperty('test_sans', 'line-height');">削除</a> | <a href="javascript:setLineHeight('test_sans', '1');">1</a> | <a href="javascript:setLineHeight('test_sans', '1.1');">1.1</a> | <a href="javascript:setLineHeight('test_sans', '1.2');">1.2</a> | <a href="javascript:setLineHeight('test_sans', '1.3');">1.3</a> | <a href="javascript:setLineHeight('test_sans', '1.4');">1.4</a> | <a href="javascript:setLineHeight('test_sans', '1.5');">1.5</a> | <a href="javascript:setLineHeight('test_sans', '2');">2</a> | letter-spacing <a href="javascript:rmProperty('test_sans','letter-spacing' );">削除</a> | <a href="javascript:setLetterSpacing('test_sans', '0');">0</a> | <a href="javascript:setLetterSpacing('test_sans', '0.5px');">0.5px</a> | <a href="javascript:setLetterSpacing('test_sans', '1px');">1px</a> | <a href="javascript:setLetterSpacing('test_sans', '1.5px');">1.5px</a> | <a href="javascript:setLetterSpacing('test_sans', '2px');">2px</a></li>
+
+<li>font-weight <a href="javascript:rmProperty('test_sans','font-weight' );">削除</a> | <a href="javascript:setFontWeight('test_sans', 'lighter');">lighter</a> | <a href="javascript:setFontWeight('test_sans', 'normal');">normal</a> | <a href="javascript:setFontWeight('test_sans', 'bold');">bold</a> | <a href="javascript:setFontWeight('test_sans', 'bolder');">bolder</a> | <a href="javascript:setFontWeight('test_sans', '100');">100</a> | <a href="javascript:setFontWeight('test_sans', '200');">200</a> | <a href="javascript:setFontWeight('test_sans', '300');">300</a> | <a href="javascript:setFontWeight('test_sans', '400');">400</a> | <a href="javascript:setFontWeight('test_sans', '500');">500</a> | <a href="javascript:setFontWeight('test_sans', '600');">600</a> | <a href="javascript:setFontWeight('test_sans', '700');">700</a> | <a href="javascript:setFontWeight('test_sans', '800');">800</a> | <a href="javascript:setFontWeight('test_sans', '900');">900</a></li>
+<li>color <a href="javascript:rmProperty('test_sans','color' );">削除</a> | <a href="javascript:setColor('test_sans', 'black');">black</a> | <a href="javascript:setColor('test_sans', '#595959');">#595959</a> | <a href="javascript:setColor('test_sans', 'white');">white</a> | background-color <a href="javascript:rmProperty('test_sans','background-color' );">削除</a> | <a href="javascript:setBGColor('test_sans', 'white');">white</a> | <a href="javascript:setBGColor('test_sans', '#ffe');">#ffe</a> | <a href="javascript:setBGColor('test_sans', 'black');">black</a></li>
+<li><a href="javascript:rmStyle('test_sans')">style削除</a> | font-variant  <a href="javascript:rmProperty('test_sans','font-variant' );">削除</a> | <a href="javascript:setFontVariant('test_sans', 'small-caps');">small-caps</a></li>
+</ul>
+
+<div id="test_sans">
+
+<div class="sp_overflow">
+<table class="cl font_test_script" summary="Sans-serif フォントの表示テスト">
+<caption>表示テスト - Sans-serif</caption>
+<tr style="font-family:sans-serif;">
+<td><span class="red">Sans-serif</span></td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>プブ</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>プブ</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr id="test_sans_fonts">
+<td><span class="red" style="font-weight:bold;">テスト</span></td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>プブ</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+</table>
+</div>
+
+<div class="testbox5" style="padding:0.5em;margin-left:1em;">
+<p id="test_sans_fonts_p">
+<span class="small">0123456789 \'&#034;~*#$%&#038;@ abcilw ABCILW windows WINDOWS</span>
+<br>0123456789 \'&#034;~*#$%&#038;@ abcilw ABCILW windows WINDOWS
+<br><span style="font-size:120%;">0123456789 \'&#034;~*#$%&#038;@ abcilw ABCILW windows WINDOWS</span>
+<br><span class="small">新しい朝が来た！不埒な草彅剛、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br>新しい朝が来た！不埒な草彅剛、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑
+<br><span style="font-size:120%;">新しい朝が来た！不埒な草彅剛、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br><br><span style="font-size:80%;">日本の食文化において、主食とされる米飯や雑穀飯の副食として、主要な位置を占める。料亭や食堂で出される事も、家庭料理として家庭で作られる事もある、汁物料理の代表である。昆布・削り節や煮干しなどで出汁をとり、食材と味噌で味を作るという、調理法としては単純な料理であるが、出汁・味噌に加え具材も各家庭・調理者によって千差万別であるため、おふくろの味と称される事もあり、作り方は様々である。また、各地で古くから作られており、名物料理だったり町おこしの料理ともされる。</span>
+<br><br>日本の食文化において、主食とされる米飯や雑穀飯の副食として、主要な位置を占める。料亭や食堂で出される事も、家庭料理として家庭で作られる事もある、汁物料理の代表である。昆布・削り節や煮干しなどで出汁をとり、食材と味噌で味を作るという、調理法としては単純な料理であるが、出汁・味噌に加え具材も各家庭・調理者によって千差万別であるため、おふくろの味と称される事もあり、作り方は様々である。また、各地で古くから作られており、名物料理だったり町おこしの料理ともされる。
+<br><cite><a href="http://ja.wikipedia.org/wiki/%E5%91%B3%E5%99%8C%E6%B1%81">味噌汁 - Wikipedia</a></cite>
+</p>
+</div>
+
+</div>
+
+<ul class="small">
+<li><a href="javascript:rmProperty('test_sans_fonts', 'font-family');">削除</a> | <a href="javascript:setFont('test_sans_fonts', 'sans-serif');">Sans-serif</a> ( <a href="javascript:setFont('test_sans_fonts', 'inherit');">inherit</a> | <a href="javascript:setFont('test_sans_fonts', 'serif');">Serif</a> | <a href="javascript:setFont('test_sans_fonts', 'monospace');">monospace</a> | <a href="javascript:setFont('test_sans_fonts', 'cursive');">cursive</a> | <a href="javascript:setFont('test_sans_fonts', 'fantasy');">fantasy</a> ) ( <a href="javascript:setFont('test_sans_fonts', 'monospace, \'ＭＳ ゴシック\'');">monospace, 'ＭＳ ゴシック'</a> | <a href="javascript:setFont('test_sans_fonts', 'monospace, serif');">monospace, serif</a> )</li>
+<li><a href="javascript:setFont('test_sans_fonts', '\'メイリオ\'');">メイリオ</a> | 
+<a href="javascript:setFont('test_sans_fonts', '\'Meiryo UI\'');">Meiryo UI</a> | 
+<a href="javascript:setFont('test_sans_fonts', '\'ＭＳ Ｐゴシック\'');">ＭＳ Ｐゴシック</a> | 
+<a href="javascript:setFont('test_sans_fonts', '\'MS UI Gothic\'');">MS UI Gothic</a> | 
+<a href="javascript:setFont('test_sans_fonts', 'Arial');">Arial</a> | 
+<a href="javascript:setFont('test_sans_fonts', 'Verdana');">Verdana</a> | 
+<a href="javascript:setFont('test_sans_fonts', 'Tahoma');">Tahoma</a> | 
+<a href="javascript:setFont('test_sans_fonts', 'Impact');">Impact</a> | 
+<a href="javascript:setFont('test_sans_fonts', '\'Segoe UI\'');">Segoe UI</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_sans_fonts', '\'游ゴシック\'');">游ゴシック</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '\'游ゴシック Light\'');">游ゴシック Light</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;Microsoft Sans Serif&#034;');">Microsoft Sans Serif</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;MS Sans Serif&#034;');">MS Sans Serif</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;Trebuchet MS&#034;');">Trebuchet MS</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;Century Gothic&#034;');">Century Gothic</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', 'Calibri');">Calibri</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', 'Corbel');">Corbel</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', 'Candara');">Candara</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_sans_fonts', '\'Yu Gothic UI\'');">Yu Gothic UI</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', 'MeiryoKe_PGothic');">MeiryoKe_PGothic</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', 'MeiryoKe_UIGothic');">MeiryoKe_UIGothic</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '\'小塚ゴシック Pr6N M\',\'小塚ゴシック Pr6N\'');">小塚ゴシック Pr6N M</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;源ノ角ゴシック Regular&#034;,&#034;源ノ角ゴシック JP Regular&#034;,&#034;源ノ角ゴシック&#034;,&#034;源ノ角ゴシック JP&#034;');">源ノ角ゴシック</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '\'源真ゴシック Regular\',\'源真ゴシック\'');">源真ゴシック</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '\'Mgen+ 1p regular\',\'Mgen+ 1p\'');">Mgen+ 1p</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', 'MoboExGothic');">MoboExGothic</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '\'Minori 0P04\',Minori0P04');">Minori 0P04</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;IPA Pゴシック&#034;');">IPA Pゴシック</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;IPAexゴシック&#034;');">IPAexゴシック</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;Takao Pゴシック&#034;');">Takao Pゴシック</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;TakaoExゴシック&#034;');">TakaoExゴシック</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;VL Pゴシック&#034;');">VL Pゴシック</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;Migu 1P&#034;');">Migu 1P</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;MigMix 1P&#034;');">MigMix 1P</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;Koruri Regular&#034;,Koruri');">Koruri</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;IPA モナー Pゴシック&#034;');">IPA モナー Pゴシック</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', 'Monapo');">Monapo</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;梅Pゴシック&#034;');">梅Pゴシック</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;梅UIゴシック&#034;');">梅UIゴシック</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', 'Textar');">Textar</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;UmePlus P Gothic&#034;');">UmePlus P Gothic</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;Komatuna P&#034;');">Komatuna P</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;MMCedar P&#034;,&#034;MMCedar P W3 mono&#034;');">MMCedar P</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;Bitstream Vera Sans&#034;');">Bitstream Vera Sans</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;07やさしさゴシック&#034;');">07やさしさゴシック</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', 'nukamiso');">nukamiso</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', 'nukamisoOTF');">nukamisoOTF</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;01フロップデザイン&#034;');">01フロップデザイン</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;ぼくたちのゴシック&#034;');">ぼくたちのゴシック</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '\'Windows TV Pゴシック\'');">Windows TV Pゴシック</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '\'Windows TV P丸ゴシック\'');">Windows TV P丸ゴシック</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;Droid Sans Japanese&#034;');">Droid Sans Japanese</a></li>
+<li><a href="javascript:setFont('test_sans_fonts', '&#034;Droid Sans Fallback&#034;');">Droid Sans Fallback</a></li>
+</ul>
+
+<h2 class="cl"><a name="serif" href="#serif">Serif, プロポーショナル・明朝体</a></h2>
+
+<p class="pink">※ 完全じゃないです。<code>font-family</code> は一つのみ指定してます。指定フォントがない環境では標準設定のフォントで表示されます。<span class="small">(※ 欧文フォントのみ指定の場合、和文が何になるかはブラウザにより若干差異がある模様。）</span></p>
+
+<ul class="small">
+<li>font-size <a href="javascript:rmProperty('test_serif', 'font-size');">削除</a> | <a href="javascript:setZoom('test_serif', '80%');">80%</a> | <a href="javascript:setZoom('test_serif', '100%');">100%</a> | <a href="javascript:setZoom('test_serif', '110%');">110%</a> | <a href="javascript:setZoom('test_serif', '120%');">120%</a> | <a href="javascript:setZoom('test_serif', '150%');">150%</a> | font-style <a href="javascript:rmProperty('test_serif','font-style' );">削除</a> | <a href="javascript:setFontStyle('test_serif', 'normal');">normal</a> | <a href="javascript:setFontStyle('test_serif', 'italic');">italic</a> | <a href="javascript:setFontStyle('test_serif', 'oblique');">oblique</a></li>
+<li>line-height <a href="javascript:rmProperty('test_serif', 'line-height');">削除</a> | <a href="javascript:setLineHeight('test_serif', '1');">1</a> | <a href="javascript:setLineHeight('test_serif', '1.1');">1.1</a> | <a href="javascript:setLineHeight('test_serif', '1.2');">1.2</a> | <a href="javascript:setLineHeight('test_serif', '1.3');">1.3</a> | <a href="javascript:setLineHeight('test_serif', '1.4');">1.4</a> | <a href="javascript:setLineHeight('test_serif', '1.5');">1.5</a> | <a href="javascript:setLineHeight('test_serif', '2');">2</a> | letter-spacing <a href="javascript:rmProperty('test_serif','letter-spacing' );">削除</a> | <a href="javascript:setLetterSpacing('test_serif', '0');">0</a> | <a href="javascript:setLetterSpacing('test_serif', '0.5px');">0.5px</a> | <a href="javascript:setLetterSpacing('test_serif', '1px');">1px</a> | <a href="javascript:setLetterSpacing('test_serif', '1.5px');">1.5px</a> | <a href="javascript:setLetterSpacing('test_serif', '2px');">2px</a></li>
+
+<li>font-weight <a href="javascript:rmProperty('test_serif','font-weight' );">削除</a> | <a href="javascript:setFontWeight('test_serif', 'lighter');">lighter</a> | <a href="javascript:setFontWeight('test_serif', 'normal');">normal</a> | <a href="javascript:setFontWeight('test_serif', 'bold');">bold</a> | <a href="javascript:setFontWeight('test_serif', 'bolder');">bolder</a> | <a href="javascript:setFontWeight('test_serif', '100');">100</a> | <a href="javascript:setFontWeight('test_serif', '200');">200</a> | <a href="javascript:setFontWeight('test_serif', '300');">300</a> | <a href="javascript:setFontWeight('test_serif', '400');">400</a> | <a href="javascript:setFontWeight('test_serif', '500');">500</a> | <a href="javascript:setFontWeight('test_serif', '600');">600</a> | <a href="javascript:setFontWeight('test_serif', '700');">700</a> | <a href="javascript:setFontWeight('test_serif', '800');">800</a> | <a href="javascript:setFontWeight('test_serif', '900');">900</a></li>
+<li>color <a href="javascript:rmProperty('test_serif','color' );">削除</a> | <a href="javascript:setColor('test_serif', 'black');">black</a> | <a href="javascript:setColor('test_serif', '#595959');">#595959</a> | <a href="javascript:setColor('test_serif', 'white');">white</a> | background-color <a href="javascript:rmProperty('test_serif','background-color' );">削除</a> | <a href="javascript:setBGColor('test_serif', 'white');">white</a> | <a href="javascript:setBGColor('test_serif', '#ffe');">#ffe</a> | <a href="javascript:setBGColor('test_serif', 'black');">black</a></li>
+<li><a href="javascript:rmStyle('test_serif')">style削除</a> | font-variant  <a href="javascript:rmProperty('test_serif','font-variant' );">削除</a> | <a href="javascript:setFontVariant('test_serif', 'small-caps');">small-caps</a></li>
+</ul>
+
+<div id="test_serif">
+
+<div class="sp_overflow">
+<table class="cl font_test_script" summary="Serif フォントの表示テスト">
+<caption>表示テスト - Serif</caption>
+<tr style="font-family:sans-serif;">
+<td>Sans-serif</td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>プブ</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:serif;">
+<td><span class="red">Serif</span></td>
+<td class="center"><span style="font-family:serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>プブ</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>プブ</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr id="test_serif_fonts">
+<td><span class="red" style="font-weight:bold;">テスト</span></td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>プブ</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+</table>
+</div>
+
+<div class="testbox5" style="padding:0.5em;margin-left:1em;">
+<p id="test_serif_fonts_p">
+<span class="small">0123456789 \'&#034;~*#$%&#038;@ abcilw ABCILW windows WINDOWS</span>
+<br>0123456789 \'&#034;~*#$%&#038;@ abcilw ABCILW windows WINDOWS
+<br><span style="font-size:120%;">0123456789 \'&#034;~*#$%&#038;@ abcilw ABCILW windows WINDOWS</span>
+<br><span class="small">新しい朝が来た！不埒な草彅剛、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br>新しい朝が来た！不埒な草彅剛、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑
+<br><span style="font-size:120%;">新しい朝が来た！不埒な草彅剛、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br><br><span style="font-size:80%;">日本の食文化において、主食とされる米飯や雑穀飯の副食として、主要な位置を占める。料亭や食堂で出される事も、家庭料理として家庭で作られる事もある、汁物料理の代表である。昆布・削り節や煮干しなどで出汁をとり、食材と味噌で味を作るという、調理法としては単純な料理であるが、出汁・味噌に加え具材も各家庭・調理者によって千差万別であるため、おふくろの味と称される事もあり、作り方は様々である。また、各地で古くから作られており、名物料理だったり町おこしの料理ともされる。</span>
+<br><br>日本の食文化において、主食とされる米飯や雑穀飯の副食として、主要な位置を占める。料亭や食堂で出される事も、家庭料理として家庭で作られる事もある、汁物料理の代表である。昆布・削り節や煮干しなどで出汁をとり、食材と味噌で味を作るという、調理法としては単純な料理であるが、出汁・味噌に加え具材も各家庭・調理者によって千差万別であるため、おふくろの味と称される事もあり、作り方は様々である。また、各地で古くから作られており、名物料理だったり町おこしの料理ともされる。
+<br><cite><a href="http://ja.wikipedia.org/wiki/%E5%91%B3%E5%99%8C%E6%B1%81">味噌汁 - Wikipedia</a></cite>
+</p>
+</div>
+
+</div>
+
+<ul class="small">
+<li><a href="javascript:rmProperty('test_serif_fonts', 'font-family');">削除</a> | <a href="javascript:setFont('test_serif_fonts', 'serif');">Serif</a> ( <a href="javascript:setFont('test_serif_fonts', 'inherit');">inherit</a> | <a href="javascript:setFont('test_serif_fonts', 'sans-serif');">Sans-serif</a> | <a href="javascript:setFont('test_serif_fonts', 'monospace');">monospace</a> | <a href="javascript:setFont('test_serif_fonts', 'cursive');">cursive</a> | <a href="javascript:setFont('test_serif_fonts', 'fantasy');">fantasy</a> ) ( <a href="javascript:setFont('test_serif_fonts', 'monospace, \'ＭＳ ゴシック\'');">monospace, 'ＭＳ ゴシック'</a> | <a href="javascript:setFont('test_serif_fonts', 'monospace, serif');">monospace, serif</a> )</li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;ＭＳ Ｐ明朝&#034;');">ＭＳ Ｐ明朝</a></li>
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;游明朝&#034;');">游明朝</a></li>
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;游明朝 Light&#034;');">游明朝 Light</a></li>
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;游明朝 Demibold&#034;');">游明朝 Demibold</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;Times New Roman&#034;');">Times New Roman</a></li>
+<li><a href="javascript:setFont('test_serif_fonts', 'Times');">Times</a></li>
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;MS Serif&#034;');">MS Serif</a></li>
+<li><a href="javascript:setFont('test_serif_fonts', 'Georgia');">Georgia</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_serif_fonts', 'Cambria');">Cambria</a></li>
+<li><a href="javascript:setFont('test_serif_fonts', 'Constantia');">Constantia</a></li>
+<li><a href="javascript:setFont('test_serif_fonts', 'Batang');">Batang</a></li>
+<li><a href="javascript:setFont('test_serif_fonts', 'Century');">Century</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;HG明朝B&#034;');">HG明朝B</a></li>
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;HG明朝E&#034;');">HG明朝E</a></li>
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;HGP明朝B&#034;');">HGP明朝B</a></li>
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;HGP明朝E&#034;');">HGP明朝E</a></li>
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;HGS明朝B&#034;');">HGS明朝B</a></li>
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;HGS明朝E&#034;');">HGS明朝E</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;IPA P明朝&#034;');">IPA P明朝</a></li>
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;IPAex明朝&#034;');">IPAex明朝</a></li>
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;IPAmj明朝&#034;');">IPAmj明朝</a></li>
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;Takao P明朝&#034;');">Takao P明朝</a></li>
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;TakaoEx明朝&#034;');">TakaoEx明朝</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;梅P明朝&#034;');">梅P明朝</a></li>
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;IPA モナー P明朝&#034;');">IPA モナー P明朝</a></li>
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;Droid Serif&#034;');">Droid Serif</a></li>
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;Bitstream Vera Serif&#034;');">Bitstream Vera Serif</a></li>
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;02うつくし明朝体&#034;');">02うつくし明朝体</a></li>
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;はんなり明朝&#034;');">はんなり明朝</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;ＭＳ 明朝&#034;');">ＭＳ 明朝</a>（※ 等幅）</li>
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;梅明朝&#034;');">梅明朝</a>（※ 等幅）</li>
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;さざなみ明朝&#034;');">さざなみ明朝</a>（※ 等幅）</li>
+<li><a href="javascript:setFont('test_serif_fonts', '&#034;小塚明朝 Pr6N R&#034;,&#034;小塚明朝 Pr6N&#034;');">小塚明朝 Pr6N R</a></li>
+</ul>
+
+<h2 class="cl"><a name="monospace" href="#monospace">Monospace, 等幅</a></h2>
+
+<p class="pink">※ 完全じゃないです。<code>font-family</code> は一つのみ指定してます。指定フォントがない環境では標準設定のフォントで表示されます。<span class="small">(※ 欧文フォントのみ指定の場合、和文が何になるかはブラウザにより若干差異がある模様。）</span></p>
+
+<ul class="small">
+<li>font-size <a href="javascript:rmProperty('test_mono', 'font-size');">削除</a> | <a href="javascript:setZoom('test_mono', '80%');">80%</a> | <a href="javascript:setZoom('test_mono', '100%');">100%</a> | <a href="javascript:setZoom('test_mono', '110%');">110%</a> | <a href="javascript:setZoom('test_mono', '120%');">120%</a> | <a href="javascript:setZoom('test_mono', '150%');">150%</a> | font-style <a href="javascript:rmProperty('test_mono','font-style' );">削除</a> | <a href="javascript:setFontStyle('test_mono', 'normal');">normal</a> | <a href="javascript:setFontStyle('test_mono', 'italic');">italic</a> | <a href="javascript:setFontStyle('test_mono', 'oblique');">oblique</a></li>
+<li>line-height <a href="javascript:rmProperty('test_mono', 'line-height');">削除</a> | <a href="javascript:setLineHeight('test_mono', '1');">1</a> | <a href="javascript:setLineHeight('test_mono', '1.1');">1.1</a> | <a href="javascript:setLineHeight('test_mono', '1.2');">1.2</a> | <a href="javascript:setLineHeight('test_mono', '1.3');">1.3</a> | <a href="javascript:setLineHeight('test_mono', '1.4');">1.4</a> | <a href="javascript:setLineHeight('test_mono', '1.5');">1.5</a> | <a href="javascript:setLineHeight('test_mono', '2');">2</a> | letter-spacing <a href="javascript:rmProperty('test_mono','letter-spacing' );">削除</a> | <a href="javascript:setLetterSpacing('test_mono', '0');">0</a> | <a href="javascript:setLetterSpacing('test_mono', '0.5px');">0.5px</a> | <a href="javascript:setLetterSpacing('test_mono', '1px');">1px</a> | <a href="javascript:setLetterSpacing('test_mono', '1.5px');">1.5px</a> | <a href="javascript:setLetterSpacing('test_mono', '2px');">2px</a></li>
+
+<li>font-weight <a href="javascript:rmProperty('test_mono','font-weight' );">削除</a> | <a href="javascript:setFontWeight('test_mono', 'lighter');">lighter</a> | <a href="javascript:setFontWeight('test_mono', 'normal');">normal</a> | <a href="javascript:setFontWeight('test_mono', 'bold');">bold</a> | <a href="javascript:setFontWeight('test_mono', 'bolder');">bolder</a> | <a href="javascript:setFontWeight('test_mono', '100');">100</a> | <a href="javascript:setFontWeight('test_mono', '200');">200</a> | <a href="javascript:setFontWeight('test_mono', '300');">300</a> | <a href="javascript:setFontWeight('test_mono', '400');">400</a> | <a href="javascript:setFontWeight('test_mono', '500');">500</a> | <a href="javascript:setFontWeight('test_mono', '600');">600</a> | <a href="javascript:setFontWeight('test_mono', '700');">700</a> | <a href="javascript:setFontWeight('test_mono', '800');">800</a> | <a href="javascript:setFontWeight('test_mono', '900');">900</a></li>
+<li>color <a href="javascript:rmProperty('test_mono','color' );">削除</a> | <a href="javascript:setColor('test_mono', 'black');">black</a> | <a href="javascript:setColor('test_mono', '#595959');">#595959</a> | <a href="javascript:setColor('test_mono', 'white');">white</a> | background-color <a href="javascript:rmProperty('test_mono','background-color' );">削除</a> | <a href="javascript:setBGColor('test_mono', 'white');">white</a> | <a href="javascript:setBGColor('test_mono', '#ffe');">#ffe</a> | <a href="javascript:setBGColor('test_mono', 'black');">black</a></li>
+<li><a href="javascript:rmStyle('test_mono')">style削除</a> | font-variant  <a href="javascript:rmProperty('test_mono','font-variant' );">削除</a> | <a href="javascript:setFontVariant('test_mono', 'small-caps');">small-caps</a></li>
+</ul>
+
+<div id="test_mono">
+
+<div class="sp_overflow">
+<table class="cl font_test_script" summary="monospace フォントの表示テスト">
+<caption>表示テスト - monospace</caption>
+<tr style="font-family:sans-serif;">
+<td>Sans-serif</td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>プブ</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:monospace;">
+<td><span class="red">Monospace</span></td>
+<td class="center"><span style="font-family:monospace">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>プブ</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>プブ</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr id="test_mono_fonts">
+<td><span class="red" style="font-weight:bold;">テスト</span></td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>プブ</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+</table>
+</div>
+
+<div class="testbox5" style="padding:0.5em;margin-left:1em;">
+<p id="test_mono_fonts_p">
+<span class="small">0123456789 \'&#034;~*#$%&#038;@ abcilw ABCILW windows WINDOWS</span>
+<br>0123456789 \'&#034;~*#$%&#038;@ abcilw ABCILW windows WINDOWS
+<br><span style="font-size:120%;">0123456789 \'&#034;~*#$%&#038;@ abcilw ABCILW windows WINDOWS</span>
+<br><span class="small">新しい朝が来た！不埒な草彅剛、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br>新しい朝が来た！不埒な草彅剛、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑
+<br><span style="font-size:120%;">新しい朝が来た！不埒な草彅剛、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br><br><span style="font-size:80%;">日本の食文化において、主食とされる米飯や雑穀飯の副食として、主要な位置を占める。料亭や食堂で出される事も、家庭料理として家庭で作られる事もある、汁物料理の代表である。昆布・削り節や煮干しなどで出汁をとり、食材と味噌で味を作るという、調理法としては単純な料理であるが、出汁・味噌に加え具材も各家庭・調理者によって千差万別であるため、おふくろの味と称される事もあり、作り方は様々である。また、各地で古くから作られており、名物料理だったり町おこしの料理ともされる。</span>
+<br><br>日本の食文化において、主食とされる米飯や雑穀飯の副食として、主要な位置を占める。料亭や食堂で出される事も、家庭料理として家庭で作られる事もある、汁物料理の代表である。昆布・削り節や煮干しなどで出汁をとり、食材と味噌で味を作るという、調理法としては単純な料理であるが、出汁・味噌に加え具材も各家庭・調理者によって千差万別であるため、おふくろの味と称される事もあり、作り方は様々である。また、各地で古くから作られており、名物料理だったり町おこしの料理ともされる。
+<br><cite><a href="http://ja.wikipedia.org/wiki/%E5%91%B3%E5%99%8C%E6%B1%81">味噌汁 - Wikipedia</a></cite>
+</p>
+</div>
+
+</div>
+
+<ul class="small">
+<li><a href="javascript:rmProperty('test_mono_fonts', 'font-family');">削除</a> | <a href="javascript:setFont('test_mono_fonts', 'monospace');">monospace</a> ( <a href="javascript:setFont('test_mono_fonts', 'inherit');">inherit</a> | <a href="javascript:setFont('test_mono_fonts', 'serif');">Serif</a> | <a href="javascript:setFont('test_mono_fonts', 'sans-serif');">Sans-serif</a> | <a href="javascript:setFont('test_mono_fonts', 'cursive');">cursive</a> | <a href="javascript:setFont('test_mono_fonts', 'fantasy');">fantasy</a> ) ( <a href="javascript:setFont('test_mono_fonts', 'monospace, \'ＭＳ ゴシック\'');">monospace, 'ＭＳ ゴシック'</a> | <a href="javascript:setFont('test_mono_fonts', 'monospace, serif');">monospace, serif</a> )</li>
+<li><a href="javascript:setFont('test_mono_fonts', '&#034;ＭＳ ゴシック&#034;');">ＭＳ ゴシック</a> | <a href="javascript:setFont('test_mono_fonts', '&#034;ＭＳ 明朝&#034;');">ＭＳ 明朝</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_mono_fonts', 'MeiryoKe_Gothic');">MeiryoKe_Gothic</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', 'MeiryoKe_Console');">MeiryoKe_Console</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', '&#034;Courier New&#034;');">Courier New</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', 'Courier');">Courier</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', 'Consolas');">Consolas</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', '&#034;Lucida Console&#034;');">Lucida Console</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', '&#034;Source Code Pro&#034;');">Source Code Pro</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_mono_fonts', '&#034;IPAゴシック&#034;');">IPAゴシック</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', '&#034;IPA モナー ゴシック&#034;');">IPA モナー ゴシック</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', '&#034;Takaoゴシック&#034;');">Takaoゴシック</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', '&#034;VL ゴシック&#034;');">VL ゴシック</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', '&#034;Migu 1M&#034;');">Migu 1M</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', '&#034;MigMix 1M&#034;');">MigMix 1M</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', 'Komatuna');">Komatuna</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_mono_fonts', '\'源ノ角ゴシック HW\'');">源ノ角ゴシック HW</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', '\'源ノ角ゴシック Code JP Regular\',\'源ノ角ゴシック Code JP\'');">源ノ角ゴシック Code JP</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', '\'源真ゴシック等幅 Regular\',\'源真ゴシック等幅\'');">源真ゴシック等幅</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', '\'Mgen+ 1m regular\',\'Mgen+ 1m\'');">Mgen+ 1ｍ</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', '\'Minori 0M04\',Minori0M04');">Minori 0M04</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', 'MoboGothic');">MoboGothic</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', '&#034;UmePlus Gothic&#034;');">UmePlus Gothic</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_mono_fonts', '&#034;モトヤLシーダ3等幅&#034;,&#034;MotoyaLCedar W3 mono&#034;,MotoyaLCedar');">モトヤLシーダ3等幅</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', '&#034;モトヤLマルベリ3等幅&#034;,&#034;MotoyaLMaru W3 mono&#034;,MotoyaLMaruberi');">モトヤLマルベリ3等幅</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', 'MMCedar,&#034;MMCedar W3 mono&#034;');">MMCedar</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', 'Ricty');">Ricty</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', '&#034;Ricty Diminished&#034;');">Ricty Diminished</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', '&#034;Ricty Diminished Discord&#034;');">Ricty Diminished Discord</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', '&#034;Droid Sans Mono&#034;');">Droid Sans Mono</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', '&#034;Bitstream Vera Sans Mono&#034;');">Bitstream Vera Sans Mono</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_mono_fonts', '&#034;さざなみゴシック&#034;');">さざなみゴシック</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', '&#034;梅ゴシック&#034;');">梅ゴシック</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', '&#034;IPA明朝&#034;');">IPA明朝</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', '&#034;IPA モナー 明朝&#034;');">IPA モナー 明朝</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', '&#034;Takao明朝&#034;');">Takao明朝</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', '&#034;さざなみ明朝&#034;');">さざなみ明朝</a></li>
+<li><a href="javascript:setFont('test_mono_fonts', '&#034;梅明朝&#034;');">梅明朝</a></li>
+</ul>
+
+<h3 class="cl"><a name="pre" href="#pre">pre 要素に適用</a></h3>
+
+<p class="small pink">【注意】このページのCSSでは <code>pre</code> に <code>monospace, 'ＭＳ ゴシック', 95%, line-height:110%, letter-spacing:1px</code> が指定されてます。</p>
+<ul class="small">
+<li>font-size  <a href="javascript:rmProperty('test_pre', 'font-size');">削除</a> | <a href="javascript:setZoom('test_pre', '80%');">80%</a> | <a href="javascript:setZoom('test_pre', '85%');">85%</a> | <a href="javascript:setZoom('test_pre', '90%');">90%</a> | <a href="javascript:setZoom('test_pre', '95%');">95%</a> | <a href="javascript:setZoom('test_pre', '100%');">100%</a> | <a href="javascript:setZoom('test_pre', '120%');">120%</a> | <a href="javascript:setZoom('test_pre', '12px');">12px</a> | <a href="javascript:setZoom('test_pre', '13px');">13px</a> | <a href="javascript:setZoom('test_pre', '13.5px');">13.5px</a> | <a href="javascript:setZoom('test_pre', '14px');">14px</a> | <a href="javascript:setZoom('test_pre', '16px');">16px</a></li>
+<li>line-height <a href="javascript:rmProperty('test_pre', 'line-height');">削除</a> | <a href="javascript:setLineHeight('test_pre', '1');">1</a> | <a href="javascript:setLineHeight('test_pre', '1.1');">1.1</a> | <a href="javascript:setLineHeight('test_pre', '1.2');">1.2</a> | <a href="javascript:setLineHeight('test_pre', '1.3');">1.3</a> | <a href="javascript:setLineHeight('test_pre', '1.4');">1.4</a> | <a href="javascript:setLineHeight('test_pre', '1.5');">1.5</a> | <a href="javascript:setLineHeight('test_pre', '2');">2</a> | letter-spacing <a href="javascript:rmProperty('test_pre','letter-spacing' );">削除</a> | <a href="javascript:setLetterSpacing('test_pre', '0');">0</a> | <a href="javascript:setLetterSpacing('test_pre', '0.5px');">0.5px</a> | <a href="javascript:setLetterSpacing('test_pre', '1px');">1px</a> | <a href="javascript:setLetterSpacing('test_pre', '1.5px');">1.5px</a> | <a href="javascript:setLetterSpacing('test_pre', '2px');">2px</a></li>
+<li>font-weight <a href="javascript:rmProperty('test_pre','font-weight');">削除</a> | <a href="javascript:setFontWeight('test_pre', 'lighter');">lighter</a> | <a href="javascript:setFontWeight('test_pre', 'normal');">normal</a> | <a href="javascript:setFontWeight('test_pre', 'bold');">bold</a> | <a href="javascript:setFontWeight('test_pre', 'bolder');">bolder</a> | <a href="javascript:setFontWeight('test_pre', '100');">100</a> | <a href="javascript:setFontWeight('test_pre', '200');">200</a> | <a href="javascript:setFontWeight('test_pre', '300');">300</a> | <a href="javascript:setFontWeight('test_pre', '400');">400</a> | <a href="javascript:setFontWeight('test_pre', '500');">500</a> | <a href="javascript:setFontWeight('test_pre', '600');">600</a> | <a href="javascript:setFontWeight('test_pre', '700');">700</a> | <a href="javascript:setFontWeight('test_pre', '800');">800</a> | <a href="javascript:setFontWeight('test_pre', '900');">900</a></li>
+<li>color <a href="javascript:rmProperty('test_pre','color');">削除</a> | <a href="javascript:setColor('test_pre', 'black');">black</a> | <a href="javascript:setColor('test_pre', '#595959');">#595959</a> | <a href="javascript:setColor('test_pre', 'white');">white</a> | background-color <a href="javascript:rmStylePre();">削除</a> | <a href="javascript:(function(){var myTag=document.getElementsByTagName('pre');for (var i=0;myTag.length&#062;i;i++){myTag[i].style.backgroundColor='white';}})();">white</a> | <a href="javascript:(function(){var myTag=document.getElementsByTagName('pre');for (var i=0;myTag.length&#062;i;i++){myTag[i].style.backgroundColor='#f1f1f1';}})();">#f1f1f1</a> | <a href="javascript:(function(){var myTag=document.getElementsByTagName('pre');for (var i=0;myTag.length&#062;i;i++){myTag[i].style.backgroundColor='black';}})();">black</a></li>
+<li><a href="javascript:rmStyle('test_pre')">style削除</a> | font-style <a href="javascript:rmProperty('test_pre','font-style' );">削除</a> | <a href="javascript:setFontStyle('test_pre', 'normal');">normal</a> | <a href="javascript:setFontStyle('test_pre', 'italic');">italic</a> | <a href="javascript:setFontStyle('test_pre', 'oblique');">oblique</a></li>
+</ul>
+
+<div id="test_pre">
+
+<pre id="test_pre_fonts">
+&#060;pre <span class="red" style="font-weight:normal;">style=&#034;font-size: 95%; font-family: 'VL ゴシック',monospace;&#034;</span>&#062;
+
+葛噌彅埒一三語漢片 あいうえお 味噌汁
+\\ 0 O i I l Q 0123456789 ～カ力エ工ロ口ー一ニ二フプブ ※→↑
+title Avira Rescue System == /rescue-system.iso
+ls /rescue-system.iso || find --set-root /rescue-system.iso
+map /rescue-system.iso (0xff) || map --mem /rescue-system.iso (0xff)
+</pre>
+
+<pre id="test_pre_fonts_p">
+&#060;pre <span class="red" style="font-weight:normal;">style=&#034;font-size: 95%; font-family:'源ノ角ゴシック HW Regular','源ノ角ゴシック HW',monospace;&#034;</span>&#062;
+
+葛噌彅埒一三語漢片 あいうえお 味噌汁
+\\ 0 O i I l Q 0123456789 ～カ力エ工ロ口ー一ニ二フプブ ※→↑
+title Avira Rescue System == /rescue-system.iso
+ls /rescue-system.iso || find --set-root /rescue-system.iso
+map /rescue-system.iso (0xff) || map --mem /rescue-system.iso (0xff)
+</pre>
+
+</div>
+
+<ul class="small">
+<li><a href="javascript:rmProperty('test_pre_fonts_p', 'font-family');">削除</a> | <a href="javascript:setFont('test_pre_fonts_p', 'monospace');">monospace</a> ( <a href="javascript:setFont('test_pre_fonts_p', 'inherit');">inherit</a> )</li>
+<li><a href="javascript:setFont('test_pre_fonts_p', 'monospace, \'ＭＳ ゴシック\'' );">monospace, 'ＭＳ ゴシック'</a> | <a href="javascript:setFont('test_pre_fonts_p', 'monospace, serif');">monospace, serif</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;ＭＳ ゴシック&#034;,monospace');">ＭＳ ゴシック</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;ＭＳ 明朝&#034;,monospace');">ＭＳ 明朝</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;Courier New&#034;,monospace');">Courier New</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', 'Courier,monospace');">Courier</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', 'Consolas,monospace');">Consolas</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;Lucida Console&#034;,monospace');">Lucida Console</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;Source Code Pro&#034;,monospace');">Source Code Pro</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', 'MeiryoKe_Gothic,monospace');">MeiryoKe_Gothic</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', 'MeiryoKe_Console,monospace');">MeiryoKe_Console</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;IPAゴシック&#034;,monospace');">IPAゴシック</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;IPA モナー ゴシック&#034;,monospace');">IPA モナー ゴシック</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;Takaoゴシック&#034;,monospace');">Takaoゴシック</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;VL ゴシック&#034;,monospace');">VL ゴシック</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;Migu 1M&#034;,monospace');">Migu 1M</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;MigMix 1M&#034;,monospace');">MigMix 1M</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '\'Minori 0M04\',Minori0M04,monospace');">Minori 0M04</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', 'MoboGothic,monospace');">MoboGothic</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_pre_fonts_p', '\'源ノ角ゴシック Code JP Regular\',\'源ノ角ゴシック Code JP\',monospace');">源ノ角ゴシック Code JP</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '\'源ノ角ゴシック HW Regular\',\'源ノ角ゴシック HW\',monospace');">源ノ角ゴシック HW</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '\'源真ゴシック等幅 Regular\',\'源真ゴシック等幅\',monospace');">源真ゴシック等幅</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '\'Mgen+ 1m regular\',\'Mgen+ 1m\',monospace');">Mgen+ 1m</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', 'Komatuna,monospace');">Komatuna</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;UmePlus Gothic&#034;,monospace');">UmePlus Gothic</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;モトヤLシーダ3等幅&#034;,&#034;MotoyaLCedar W3 mono&#034;,MotoyaLCedar,monospace');">モトヤLシーダ3等幅</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;モトヤLマルベリ3等幅&#034;,&#034;MotoyaLMaru W3 mono&#034;,MotoyaLMaruberi,monospace');">モトヤLマルベリ3等幅</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;MMCedar&#034;,&#034;MMCedar W3 mono&#034;,monospace');">MMCedar</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;IPA明朝&#034;,monospace');">IPA明朝</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;IPA モナー 明朝&#034;,monospace');">IPA モナー 明朝</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;Takao明朝&#034;,monospace');">Takao明朝</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;さざなみ明朝&#034;,monospace');">さざなみ明朝</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;梅明朝&#034;,monospace');">梅明朝</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;さざなみゴシック&#034;,monospace');">さざなみゴシック</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;梅ゴシック&#034;,monospace');">梅ゴシック</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;Droid Sans Mono&#034;,monospace');">Droid Sans Mono</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;Bitstream Vera Sans Mono&#034;,monospace');">Bitstream Vera Sans Mono</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', 'Ricty,monospace');">Ricty</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;Ricty Diminished&#034;,monospace');">Ricty Diminished</a></li>
+<li><a href="javascript:setFont('test_pre_fonts_p', '&#034;Ricty Diminished Discord&#034;,monospace');">Ricty Diminished Discord</a></li>
+</ul>
+
+<h2 class="cl"><a name="tegaki" href="#tegaki">手書き風、面白系</a></h2>
+
+<p class="pink">※ 完全じゃないです。<code>font-family</code> は一つのみ指定してます。指定フォントがない環境では標準設定のフォントで表示されます。</p>
+
+<ul class="small">
+<li>font-size <a href="javascript:rmProperty('test_tegaki', 'font-size');">削除</a> | <a href="javascript:setZoom('test_tegaki', '80%');">80%</a> | <a href="javascript:setZoom('test_tegaki', '100%');">100%</a> | <a href="javascript:setZoom('test_tegaki', '110%');">110%</a> | <a href="javascript:setZoom('test_tegaki', '120%');">120%</a> | <a href="javascript:setZoom('test_tegaki', '150%');">150%</a> | font-style <a href="javascript:rmProperty('test_tegaki','font-style' );">削除</a> | <a href="javascript:setFontStyle('test_tegaki', 'normal');">normal</a> | <a href="javascript:setFontStyle('test_tegaki', 'italic');">italic</a> | <a href="javascript:setFontStyle('test_tegaki', 'oblique');">oblique</a></li>
+<li>line-height <a href="javascript:rmProperty('test_tegaki', 'line-height');">削除</a> | <a href="javascript:setLineHeight('test_tegaki', '1');">1</a> | <a href="javascript:setLineHeight('test_tegaki', '1.1');">1.1</a> | <a href="javascript:setLineHeight('test_tegaki', '1.2');">1.2</a> | <a href="javascript:setLineHeight('test_tegaki', '1.3');">1.3</a> | <a href="javascript:setLineHeight('test_tegaki', '1.4');">1.4</a> | <a href="javascript:setLineHeight('test_tegaki', '1.5');">1.5</a> | <a href="javascript:setLineHeight('test_tegaki', '2');">2</a> | letter-spacing <a href="javascript:rmProperty('test_tegaki','letter-spacing' );">削除</a> | <a href="javascript:setLetterSpacing('test_tegaki', '0');">0</a> | <a href="javascript:setLetterSpacing('test_tegaki', '0.5px');">0.5px</a> | <a href="javascript:setLetterSpacing('test_tegaki', '1px');">1px</a> | <a href="javascript:setLetterSpacing('test_tegaki', '1.5px');">1.5px</a> | <a href="javascript:setLetterSpacing('test_tegaki', '2px');">2px</a></li>
+
+<li>font-weight <a href="javascript:rmProperty('test_tegaki','font-weight' );">削除</a> | <a href="javascript:setFontWeight('test_tegaki', 'lighter');">lighter</a> | <a href="javascript:setFontWeight('test_tegaki', 'normal');">normal</a> | <a href="javascript:setFontWeight('test_tegaki', 'bold');">bold</a> | <a href="javascript:setFontWeight('test_tegaki', 'bolder');">bolder</a> | <a href="javascript:setFontWeight('test_tegaki', '100');">100</a> | <a href="javascript:setFontWeight('test_tegaki', '200');">200</a> | <a href="javascript:setFontWeight('test_tegaki', '300');">300</a> | <a href="javascript:setFontWeight('test_tegaki', '400');">400</a> | <a href="javascript:setFontWeight('test_tegaki', '500');">500</a> | <a href="javascript:setFontWeight('test_tegaki', '600');">600</a> | <a href="javascript:setFontWeight('test_tegaki', '700');">700</a> | <a href="javascript:setFontWeight('test_tegaki', '800');">800</a> | <a href="javascript:setFontWeight('test_tegaki', '900');">900</a></li>
+<li>color <a href="javascript:rmProperty('test_tegaki','color' );">削除</a> | <a href="javascript:setColor('test_tegaki', 'black');">black</a> | <a href="javascript:setColor('test_tegaki', '#595959');">#595959</a> | <a href="javascript:setColor('test_tegaki', 'white');">white</a> | background-color <a href="javascript:rmProperty('test_tegaki','background-color' );">削除</a> | <a href="javascript:setBGColor('test_tegaki', 'white');">white</a> | <a href="javascript:setBGColor('test_tegaki', '#ffe');">#ffe</a> | <a href="javascript:setBGColor('test_tegaki', 'black');">black</a></li>
+<li><a href="javascript:rmStyle('test_tegaki')">style削除</a> | font-variant  <a href="javascript:rmProperty('test_tegaki','font-variant' );">削除</a> | <a href="javascript:setFontVariant('test_tegaki', 'small-caps');">small-caps</a></li>
+</ul>
+
+<div id="test_tegaki">
+
+<div class="sp_overflow">
+<table class="cl font_test_script" summary="手書き風他いろいろフォントの表示テスト">
+<caption>表示テスト - 手書き風他いろいろ</caption>
+<tr style="font-family:sans-serif;">
+<td>Sans-serif</td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>プブ</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:cursive;">
+<td><span class="red">cursive</span></td>
+<td class="center"><span style="font-family:cursive;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>プブ</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:fantasy;">
+<td>fantasy <span class="small sansserif">(fantasy)</span></td>
+<td class="center"><span style="font-family:fantasy;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>プブ</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr>
+<td><span class="red">無指定</span></td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>プブ</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr id="test_tegaki_fonts">
+<td><span class="red" style="font-weight:bold;">テスト</span></td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>プブ</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+</table>
+</div>
+
+<div class="testbox5" style="padding:0.5em;margin-left:1em;">
+<p id="test_tegaki_fonts_p">
+<span class="small">0123456789 \'&#034;~*#$%&#038;@ abcilw ABCILW windows WINDOWS</span>
+<br>0123456789 \'&#034;~*#$%&#038;@ abcilw ABCILW windows WINDOWS
+<br><span style="font-size:120%;">0123456789 \'&#034;~*#$%&#038;@ abcilw ABCILW windows WINDOWS</span>
+<br><span class="small">新しい朝が来た！不埒な草彅剛、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br>新しい朝が来た！不埒な草彅剛、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑
+<br><span style="font-size:120%;">新しい朝が来た！不埒な草彅剛、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br><br><span style="font-size:80%;">日本の食文化において、主食とされる米飯や雑穀飯の副食として、主要な位置を占める。料亭や食堂で出される事も、家庭料理として家庭で作られる事もある、汁物料理の代表である。昆布・削り節や煮干しなどで出汁をとり、食材と味噌で味を作るという、調理法としては単純な料理であるが、出汁・味噌に加え具材も各家庭・調理者によって千差万別であるため、おふくろの味と称される事もあり、作り方は様々である。また、各地で古くから作られており、名物料理だったり町おこしの料理ともされる。</span>
+<br><br>日本の食文化において、主食とされる米飯や雑穀飯の副食として、主要な位置を占める。料亭や食堂で出される事も、家庭料理として家庭で作られる事もある、汁物料理の代表である。昆布・削り節や煮干しなどで出汁をとり、食材と味噌で味を作るという、調理法としては単純な料理であるが、出汁・味噌に加え具材も各家庭・調理者によって千差万別であるため、おふくろの味と称される事もあり、作り方は様々である。また、各地で古くから作られており、名物料理だったり町おこしの料理ともされる。
+<br><cite><a href="http://ja.wikipedia.org/wiki/%E5%91%B3%E5%99%8C%E6%B1%81">味噌汁 - Wikipedia</a></cite>
+</p>
+</div>
+
+</div>
+
+<ul class="small">
+<li><a href="javascript:rmProperty('test_tegaki_fonts', 'font-family');">削除</a> | <a href="javascript:setFont('test_tegaki_fonts', 'sans-serif');">Sans-serif</a> ( <a href="javascript:setFont('test_tegaki_fonts', 'inherit');">inherit</a> | <a href="javascript:setFont('test_tegaki_fonts', 'serif');">Serif</a> | <a href="javascript:setFont('test_tegaki_fonts', 'monospace');">monospace</a> | <a href="javascript:setFont('test_tegaki_fonts', 'cursive');">cursive</a> | <a href="javascript:setFont('test_tegaki_fonts', 'fantasy');">fantasy</a> ) ( <a href="javascript:setFont('test_tegaki_fonts', 'monospace, \'ＭＳ ゴシック\'');">monospace, 'ＭＳ ゴシック'</a> | <a href="javascript:setFont('test_tegaki_fonts', 'monospace, serif');">monospace, serif</a> )</li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;Comic Sans MS&#034;');">Comic Sans MS</a> | 
+<a href="javascript:setFont('test_tegaki_fonts', '&#034;Estrangelo Edessa&#034;');">Estrangelo Edessa</a> | 
+<a href="javascript:setFont('test_tegaki_fonts', 'script');">script</a> | 
+<a href="javascript:setFont('test_tegaki_fonts', 'Gabriola');">Gabriola</a> | 
+<a href="javascript:setFont('test_tegaki_fonts', 'Impact');">Impact</a> | 
+<a href="javascript:setFont('test_tegaki_fonts', 'Symbol');">Symbol</a> | 
+<a href="javascript:setFont('test_tegaki_fonts', 'Webdings');">Webdings</a> | 
+<a href="javascript:setFont('test_tegaki_fonts', '&#034;HG行書体&#034;');">HG行書体</a> | 
+<a href="javascript:setFont('test_tegaki_fonts', '&#034;HG白洲行草書体&#034;');">HG白洲行草書体</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;瀬戸フォント&#034;');">瀬戸フォント</a></li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;あんずもじ&#034;');">あんずもじ</a></li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;あずきフォント&#034;');">あずきフォント</a></li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;あくあＰフォント&#034;');">あくあＰフォント</a></li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;きろ字&#034;');">きろ字</a></li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;きろ字 - B&#034;');">きろ字 - B</a></li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;きろ字 - D&#034;');">きろ字 - D</a></li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;きろ字 - P&#034;');">きろ字 - P</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;みかちゃん&#034;');">みかちゃん</a></li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;みかちゃん-P&#034;');">みかちゃん-P</a></li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;みかちゃん-PS&#034;');">みかちゃん-PS</a></li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;みかちゃん-PB&#034;');">みかちゃん-PB</a></li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;みかちゃん-ぷち&#034;');">みかちゃん-ぷち</a></li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;みかちゃん-ぷちB&#034;');">みかちゃん-ぷちB</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;みかちゃん_o&#034;');">みかちゃん_o</a></li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;みかちゃん_o-P&#034;');">みかちゃん_o-P</a></li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;みかちゃん_o-PS&#034;');">みかちゃん_o-PS</a></li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;みかちゃん_o-PB&#034;');">みかちゃん_o-PB</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;りいポップ角&#034;,&#034;りいポップ角 R&#034;');">りいポップ角</a> (<a href="javascript:setFont('test_tegaki_fonts', '&#034;りいポップ角 R&#034;,&#034;りいポップ角&#034;');">りいポップ角 R</a>)</li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;りいてがきN&#034;,&#034;りいてがきN R&#034;');">りいてがきN</a> (<a href="javascript:setFont('test_tegaki_fonts', '&#034;りいてがきN R&#034;,&#034;りいてがきN&#034;');">りいてがきN R</a>)</li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;りいてがき筆&#034;');">りいてがき筆</a></li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;07ロゴたいぷゴシック7&#034;');">07ロゴたいぷゴシック7</a></li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;07やさしさアンチック&#034;');">07やさしさアンチック</a></li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;フォントポにほんご&#034;');">フォントポにほんご</a></li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;ＫＦひま字&#034;');">ＫＦひま字</a></li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;じゆうちょうフォント&#034;');">じゆうちょうフォント</a></li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;不忘フェルトペン書体04&#034;');">不忘フェルトペン書体04</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;ジンペン糸-R&#034;,&#034;ZinPenito R&#034;');">ジンペン糸-R</a> (<a href="javascript:setFont('test_tegaki_fonts', '&#034;ZinPenito R&#034;,&#034;ジンペン糸-R&#034;');">ZinPenito R</a>)</li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;ジンペン毛羽-R&#034;,&#034;ZinPenKeba R&#034;');">ジンペン毛羽-R</a> (<a href="javascript:setFont('test_tegaki_fonts', '&#034;ZinPenKeba R&#034;,&#034;ジンペン毛羽-R&#034;');">ZinPenKeba R</a>)</li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;ジンへな墨流-RCF&#034;,&#034;ZinHenaBokuryu RCF&#034;');">ジンへな墨流-RCF</a> (<a href="javascript:setFont('test_tegaki_fonts', '&#034;ZinHenaBokuryu RCF&#034;,&#034;ジンへな墨流-RCF&#034;');">ZinHenaBokuryu RCF</a>)</li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;ジン乱角-R&#034;,&#034;ZinRankaku R&#034;');">ジン乱角-R</a> (<a href="javascript:setFont('test_tegaki_fonts', '&#034;ZinRankaku R&#034;,&#034;ジン乱角-R&#034;');">ZinRankaku R</a>)</li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;ぎゃーてーるみねっせんす&#034;');">ぎゃーてーるみねっせんす</a></li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;きずだらけのぎゃーてー&#034;');">きずだらけのぎゃーてー</a></li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;怨霊&#034;');">怨霊</a></li>
+<li><a href="javascript:setFont('test_tegaki_fonts', '&#034;吐き溜&#034;');">吐き溜</a></li>
+</ul>
+
+<h2 class="cl"><a name="aa" href="#aa">AA表示</a></h2>
+
+<p class="pink">※ 完全じゃないです。<code>font-family</code> は一つのみ指定してます。指定フォントがない環境では標準設定のフォントで表示されます。</p>
+
+<h3><a name="aa_div" href="#aa_div">div 要素に適用</a></h3>
+
+<pre>
+div#kuma {
+white-space: pre !important;
+margin: 1% auto;
+padding: 0.5em;
+line-height: 1.1;
+letter-spacing: 0px;
+background-color: #f1f1f1;
+border-style: solid;
+border-width: 3px;
+border-color: #fff #ccc #ccc #fff;
+overflow: auto;
+width: 90%;
+}
+</pre>
+
+<ul class="small">
+<li>font-size <a href="javascript:rmProperty('kuma', 'font-size');">削除</a> | <a href="javascript:setZoom('kuma', '16px');">16px</a> | <a href="javascript:setZoom('kuma', '80%');">80%</a> | <a href="javascript:setZoom('kuma', '100%');">100%</a> | <a href="javascript:setZoom('kuma', '120%');">120%</a></li>
+<li>line-height <a href="javascript:rmProperty('kuma', 'line-height');">削除</a> | <a href="javascript:setLineHeight('kuma', '18px');">18px</a> | <a href="javascript:setLineHeight('kuma', '1');">1</a> | <a href="javascript:setLineHeight('kuma', '1.1');">1.1</a> | <a href="javascript:setLineHeight('kuma', '1.2');">1.2</a></li>
+<li>letter-spacing <a href="javascript:rmProperty('kuma', 'letter-spacing');"> 削除</a> | <a href="javascript:setLetterSpacing('kuma', '0');">0</a> | <a href="javascript:setLetterSpacing('kuma', '0.5px');">0.5px</a> | <a href="javascript:setLetterSpacing('kuma', '1px');">1px</a></li>
+<li><a href="javascript:rmStyle('kuma');">style削除</a></li>
+</ul>
+
+<div id="kuma">
+／￣￣￣￣￣＼
+|　 マイヤヒー♪ |　　　　　　 　 　 ／￣￣￣￣￣＼
+＼＿＿_ 　 ＿_／　　　　　　　　　 |　 マイヤフー♪ |　／￣￣￣￣￣＼
+　　　　　∨　　　　　　　　　　 　 　 ＼＿＿_ 　 ＿_／　|　 マイヤホー♪ |
+　　　　　　　　　　　　　　　　　　　　 　 　 　 ∨ 　 　 　 ＼＿_ 　 ＿＿__／
+　　 ∩＿＿＿∩ 　　　　　　　　　　　　 ∩＿＿＿_∩　 　 　 ∨
+　　 | ノ　　　　　ヽ 　　　　　　　　　　　/　　　　　　ヽ|　　∩＿＿＿_∩
+　　/　 ●　　　● |　 　　　　　　　　　 | ●　　　●　 ヽ / 　　　　　ヽ|
+　 |　　　　( _●_)　 ミ　　　　　　　　 彡 　 (_●_ ) 　 　 | ●　　　●　 ヽ
+　彡､　　　|∪|　　､｀＼　　　　　 　 ／ 　 　 |∪| 　　 彡　 (_●_)　　　 |
+/　＿＿　 ヽノ　/´&#062;　 )　　　　　　（　 &#060;　　 ヽ ﾉ 　 ／ 　　 |∪|　　　　ミ
+(＿＿＿）　　　/　(_／　　　　 　 　 ＼_ )　　　　 　（ 　&#060; 　 ヽ ﾉ　　　　 ヽ
+</div>
+
+<ul class="small">
+<li>( <a href="javascript:rmProperty('kuma', 'font-family');">font-family 削除</a> ) <a href="javascript:setFont('kuma', 'inherit');">inherit</a> | <a href="javascript:setFont('kuma', 'sans-serif');">Sans-serif</a></li>
+<li><a href="javascript:setFont('kuma', '&#034;ＭＳ Ｐゴシック&#034;');">ＭＳ Ｐゴシック</a> | <a href="javascript:setFont('kuma', 'Monapo');">Monapo</a> | <a href="javascript:setFont('kuma', 'Mona');">Mona</a> | <a href="javascript:setFont('kuma', '&#034;IPA モナー Pゴシック&#034;');">IPA モナー Pゴシック</a> | <a href="javascript:setFont('kuma', '&#034;IPA モナー P明朝&#034;');">IPA モナー P明朝</a></li>
+<li><a href="javascript:setFont('kuma', '梅Pゴシック');">梅Pゴシック</a> | <a href="javascript:setFont('kuma', '梅UIゴシック');">梅UIゴシック</a> | <a href="javascript:setFont('kuma', '梅P明朝');">梅P明朝</a> | <a href="javascript:setFont('kuma', 'Textar');">Textar</a></li>
+</ul>
+
+<h3><a name="aa_pre" href="#aa_pre">pre 要素に適用</a></h3>
+
+<p class="small pink">【注意】このページのCSSでは <code>pre</code> に <code>monospace, 'ＭＳ ゴシック', 95%, line-height:110%, letter-spacing:1px</code> が指定されてます。</p>
+
+<ul class="small">
+<li>font-size <a href="javascript:rmProperty('pre_kuma','font-size' );">削除</a> | <a href="javascript:setZoom('pre_kuma', '16px');">16px</a> | <a href="javascript:setZoom('pre_kuma', '80%');">80%</a> | <a href="javascript:setZoom('pre_kuma', '90%');">90%</a> | <a href="javascript:setZoom('pre_kuma', '95%');">95%</a> | <a href="javascript:setZoom('pre_kuma', '100%');">100%</a> | <a href="javascript:setZoom('pre_kuma', '120%');">120%</a></li>
+<li>line-height <a href="javascript:rmProperty('pre_kuma', 'line-height');">削除</a> | <a href="javascript:setLineHeight('pre_kuma', '18px');">18px</a> | <a href="javascript:setLineHeight('pre_kuma', '1');">1</a> | <a href="javascript:setLineHeight('pre_kuma', '1.1');">1.1</a> | <a href="javascript:setLineHeight('pre_kuma', '1.2');">1.2</a></li>
+<li>letter-spacing <a href="javascript:rmProperty('pre_kuma','letter-spacing' );">削除</a> | <a href="javascript:setLetterSpacing('pre_kuma', '0');">0</a> | <a href="javascript:setLetterSpacing('pre_kuma', '0.5px');">0.5px</a> | <a href="javascript:setLetterSpacing('pre_kuma', '1px');">1px</a></li>
+<li><a href="javascript:rmStyle('pre_kuma');">style削除</a></li>
+</ul>
+
+<pre id="pre_kuma">
+／￣￣￣￣￣＼
+|　 マイヤヒー♪ |　　　　　　 　 　 ／￣￣￣￣￣＼
+＼＿＿_ 　 ＿_／　　　　　　　　　 |　 マイヤフー♪ |　／￣￣￣￣￣＼
+　　　　　∨　　　　　　　　　　 　 　 ＼＿＿_ 　 ＿_／　|　 マイヤホー♪ |
+　　　　　　　　　　　　　　　　　　　　 　 　 　 ∨ 　 　 　 ＼＿_ 　 ＿＿__／
+　　 ∩＿＿＿∩ 　　　　　　　　　　　　 ∩＿＿＿_∩　 　 　 ∨
+　　 | ノ　　　　　ヽ 　　　　　　　　　　　/　　　　　　ヽ|　　∩＿＿＿_∩
+　　/　 ●　　　● |　 　　　　　　　　　 | ●　　　●　 ヽ / 　　　　　ヽ|
+　 |　　　　( _●_)　 ミ　　　　　　　　 彡 　 (_●_ ) 　 　 | ●　　　●　 ヽ
+　彡､　　　|∪|　　､｀＼　　　　　 　 ／ 　 　 |∪| 　　 彡　 (_●_)　　　 |
+/　＿＿　 ヽノ　/´&#062;　 )　　　　　　（　 &#060;　　 ヽ ﾉ 　 ／ 　　 |∪|　　　　ミ
+(＿＿＿）　　　/　(_／　　　　 　 　 ＼_ )　　　　 　（ 　&#060; 　 ヽ ﾉ　　　　 ヽ
+</pre>
+
+<ul class="small">
+<li>( <a href="javascript:rmProperty('pre_kuma', 'font-family');">font-family 削除</a> ) <a href="javascript:setFont('pre_kuma', 'monospace');">monospace</a> | <a href="javascript:setFont('pre_kuma', 'inherit');">inherit</a> | <a href="javascript:setFont('pre_kuma', 'sans-serif');">Sans-serif</a> | <a href="javascript:setFont('pre_kuma', 'monospace, \'ＭＳ ゴシック\'');">monospace, 'ＭＳ ゴシック'</a></li>
+<li><a href="javascript:setFont('pre_kuma', '&#034;ＭＳ Ｐゴシック&#034;');">ＭＳ Ｐゴシック</a> | <a href="javascript:setFont('pre_kuma', 'Monapo');">Monapo</a> | <a href="javascript:setFont('pre_kuma', 'Mona');">Mona</a> | <a href="javascript:setFont('pre_kuma', '&#034;IPA モナー Pゴシック&#034;');">IPA モナー Pゴシック</a> | <a href="javascript:setFont('pre_kuma', '&#034;IPA モナー P明朝&#034;');">IPA モナー P明朝</a></li>
+<li><a href="javascript:setFont('pre_kuma', '梅Pゴシック');">梅Pゴシック</a> | <a href="javascript:setFont('pre_kuma', '梅UIゴシック');">梅UIゴシック</a> | <a href="javascript:setFont('pre_kuma', '梅P明朝');">梅P明朝</a> | <a href="javascript:setFont('pre_kuma', 'Textar');">Textar</a></li>
+</ul>
+<h2><a name="bikou" href="#bikou">備考</a></h2>
+
+<p>最終更新日：2015.7.13</p>
+<p>2014.01.24 <a href="./css_memo_fontfamily_bookmarklet.html">font-family 切替用ブックマークレット</a>からページ分割。JavaScript をIE8で動く仕様に変更。CSSプロパティを追加。
+<br>2014.01.25 <span style="font-family:'Segoe UI';">Segoe UI</span>, <span style="font-family:Century;">Century</span>, <span style="font-family:'Century Gothic';">Century Gothic</span>, <span style="font-family:'Lucida Console';">Lucida Console</span> 追加。
+<br>2014.04.07 <span style="font-family:'梅Pゴシック';">梅Pゴシック</span>・ <span style="font-family:'梅UIゴシック';">梅UIゴシック</span>, <span style="font-family:'梅P明朝';">梅P明朝</span> を追加。
+<br>2014.04.10  <span style="font-family:'MigMix 1P';">MigMix 1P</span>, <span style="font-family:'MigMix 1M';">MigMix 1M</span>, <span style="font-family:'UmePlus P Gothic';">UmePlus P Gothic</span>, <span style="font-family:'UmePlus Gothic';">UmePlus Gothic</span>, <span style="font-family:'Komatuna P';">Komatuna P</span>, <span style="font-family:'Komatuna';">Komatuna</span>, 
+<br><span style="font-family:'モトヤLシーダ3等幅',MotoyaLCedar;">モトヤLシーダ3等幅</span>, <span style="font-family:'モトヤLマルベリ3等幅',MotoyaLMaruberi;">モトヤLマルベリ3等幅</span>, <span style="font-family:'MMCedar','MMCedar W3 mono';">MMCedar</span>, <span style="font-family:'MMCedar P','MMCedar P W3 mono';">MMCedar P</span>, 
+<br><span style="font-family:'Koruri Regular',Koruri;">小瑠璃フォント (Koruri Regular)</span>, <span style="font-family:nukamiso;">ぬかみそフォント</span> (<span style="font-family:nukamiso;">nukamiso</span>, <span style="font-family:nukamisoOTF;">nukamisoOTF</span>), <span style="font-family:Textar;">Textar</span>, 
+<br><span style="font-family:'みかちゃん-ぷち';">みかちゃん-ぷち</span>, <span style="font-family:'みかちゃん-ぷちB';">みかちゃん-ぷちB</span>, <span style="font-family:'きろ字';">きろ字</span>, <span style="font-family:'きろ字 - B';">きろ字 - B</span>, <span style="font-family:'きろ字 - D';">きろ字 - D</span>, <span style="font-family:'きろ字 - P';">きろ字 - P</span>, <span style="font-family:'不忘フェルトペン書体04';">不忘フェルトペン書体04</span>, 
+<br><span style="font-family:'07ロゴたいぷゴシック7';">07ロゴたいぷゴシック7</span> を追加。
+<br>2014.04.19 Adobe <span style="font-family:'Source Sans Pro';">Source Sans Pro</span>, <span style="font-family:'Source Code Pro';">Source Code Pro</span>, <span style="font-family:'Droid Sans';">Droid Sans</span>, <span style="font-family:'Droid Sans Japanese';">Droid Sans Japanese</span>, <span style="font-family:'Droid Sans Fallback';">Droid Sans Fallback</span>, <span style="font-family:'Droid Serif';">Droid Serif</span>, <span style="font-family:'Droid Sans Mono';">Droid Sans Mono</span> を追加。
+<br>2014.05.25 <span style="font-family:'小塚ゴシック Pr6N M','小塚ゴシック Pr6N';">小塚ゴシック Pr6N M</span>, <span style="font-family:'小塚明朝 Pr6N R','小塚明朝 Pr6N';">小塚明朝 Pr6N R</span>を追加。
+<br>2014.07.24 Adobe <span style="font-family:'源ノ角ゴシック Regular','源ノ角ゴシック JP Regular','源ノ角ゴシック','源ノ角ゴシック JP';">Source Han Sans</span> （<span style="font-family:'源ノ角ゴシック Regular','源ノ角ゴシック';">源ノ角ゴシック</span>）を追加。
+<br>2014.07.31 <span style="font-family:Ricty;">Ricty</span>, <span style="font-family:'Ricty Diminished';">Ricty Diminished</span>, <span style="font-family:'Ricty Diminished Discord';">Ricty Diminished Discord</span> を追加。
+<br>2015.07.13  <span style="font-family:'Yu Gothic UI';">Yu Gothic UI</span>, <span style="font-family:MeiryoKe_PGothic;">MeiryoKe_PGothic</span>, <span style="font-family:MeiryoKe_UIGothic;">MeiryoKe_UIGothic</span>, <span style="font-family:'源真ゴシック Regular','源真ゴシック';">源真ゴシック</span>, <span style="font-family:'Mgen+ 1p regular','Mgen+ 1p';">Mgen+ 1p</span>, <span style="font-family:;MoboExGothic">MoboExGothic</span>, <span style="font-family:'Minori 0P04',Minori0P04;">Minori 0P04</span>
+<br><span style="font-family:MeiryoKe_Gothic;">MeiryoKe_Gothic</span>, <span style="font-family:;MeiryoKe_Console">MeiryoKe_Console</span>, <span style="font-family:'源真ゴシック等幅 Regular','源真ゴシック等幅';">源真ゴシック等幅</span>, <span style="font-family:'Mgen+ 1m regular','Mgen+ 1m';">Mgen+ 1m</span>, <span style="font-family:'源ノ角ゴシック Code JP Regular','源ノ角ゴシック Code JP';">源ノ角ゴシック Code JP</span>, <span style="font-family:'源ノ角ゴシック HW Regular','源ノ角ゴシック HW';">源ノ角ゴシック HW</span>, <span style="font-family:MoboGothic;">MoboGothic</span>, <span style="font-family:'Minori 0M04',Minori0M04;">Minori 0M04</span> を追加。
+<br>2015.07.13 
+<br>2015.07.13 pre 要素テストをちょっと変更。
+</p>
+
+<dl>
+<dt>ダウンロード・リンク</dt>
+<dd>
+<ul>
+<li>源ノ角ゴシック <a href="http://sourceforge.net/adobe/source-han-sans/wiki/Home/">Source Han Sans / Home / Home</a>
+	<ul>
+	<li><a href="https://github.com/adobe-fonts/source-han-sans">adobe-fonts/source-han-sans ・ GitHub</a>
+		<ul>
+			<li><a href="https://github.com/adobe-fonts/source-han-sans/tree/release/OTF/Japanese">source-han-sans/OTF/Japanese at release</a></li>
+		<li><a href="https://github.com/adobe-fonts/source-han-sans/tree/release/OTF/JapaneseHW">source-han-sans/OTF/JapaneseHW at release</a></li>
+		</ul>
+	</li>
+	</ul>
+</li>
+<li><a href="https://www.google.com/get/noto/">Google Noto Fonts</a></li>
+<li><a href="http://blogs.adobe.com/CCJKType/2015/06/source-han-code-jp.html">Introducing Source Han Code JP</a>
+	<ul>
+	<li><a href="https://github.com/adobe-fonts/source-han-code-jp">adobe-fonts/source-han-code-jp ・ GitHub</a>
+		<ul>
+		<li><a href="https://github.com/adobe-fonts/source-han-code-jp/tree/release/OTF/SourceHanCodeJP">source-han-code-jp/OTF/SourceHanCodeJP at release</a></li>
+		</ul>
+	</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=f7d758d2-46ff-4c55-92f2-69ae834ac928&#038;DisplayLang=ja">Windows XP 向け ClearType 対応日本語フォント</a>
+	<ul>
+	<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/1020meiryo02/meiryo02.html">メイリオ・フォントをWindows XP／Server 2003で利用する（改訂版） － ＠IT</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>Droid フォント, モトヤLシーダ3等幅 (MTLc3m), モトヤLマルベリ3等幅 (MTLmr3m) - <a href="http://developer.android.com/sdk/index.html">Download Android Studio and SDK Tools | Android Developers</a>
+	<ul>
+	<li><a href="https://github.com/android/platform_frameworks_base/tree/master/data/fonts">platform_frameworks_base/data/fonts at master ・ android/platform_frameworks_base ・ GitHub</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>IPAフォント
+	<ul>
+	<li><a href="http://ipafont.ipa.go.jp/">IPAexフォント/IPAフォント</a></li>
+	<li><a href="http://mojikiban.ipa.go.jp/1300.html">IPAmj明朝フォント | 文字情報基盤整備事業</a></li>
+	<li><a href="https://launchpad.net/takao-fonts">Takao Fonts in Launchpad</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>M+ フォント系
+	<ul>
+	<li><a href="http://mix-mplus-ipa.sourceforge.jp/migmix/">MigMixフォント : M+とIPAの合成フォント</a></li>
+	<li><a href="http://mix-mplus-ipa.sourceforge.jp/migu/">Miguフォント : M+とIPAの合成フォント</a></li>
+	<li><a href="http://dicey.org/vlgothic/">VLゴシックフォントファミリ</a></li>
+	<li><a href="http://www.fontna.com/blog/379/">フリーフォントやさしさゴシックのダウンロード | フォントな。無料日本語フリーフォント</a></li>
+	<li><a href="http://sourceforge.jp/projects/koruri/">Koruri (コルリ) プロジェクト日本語トップページ - SourceForge.JP</a></li>
+	<li>UmePlus, Komatuna, MMCedar - <a href="http://www.geocities.jp/ep3797/modified_fonts_01.html">modified_fonts_01</a></li>
+	</ul>
+</li>
+<li>MoboGothic - <a href="http://yozvox.web.fc2.com/82A882B782B782DF8374834883938367.html">おすすめフォント</a> (<a href="http://yozvox.web.fc2.com/">Y.Oz Vox</a>)</li>
+<li><a href="http://slashdot.jp/journal/586309/%E8%87%AA%E4%BD%9C%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E4%BD%9C%E6%88%90%E4%B8%B8%E3%82%B4%E3%82%B7%E3%83%83%E3%82%AF%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88Minori%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88">自作フォント作成(丸ゴシックフォント:Minoriフォント) | Takahiro_Chouの日記 | スラッシュドット・ジャパン</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.gnome.org/fonts/">Bitstream Vera Fonts README</a></li>
+<li><a href="http://sourceforge.jp/projects/efont/">efont プロジェクト日本語トップページ - SourceForge.JP</a>（さざなみフォント）</li>
+<li><a href="http://sourceforge.jp/projects/ume-font/">Ume-font プロジェクト日本語トップページ - SourceForge.JP</a></li>
+<li>ぬかみそフォント - <a href="http://www.h7.dion.ne.jp/~beta-rev/virtualboy/download/download.html">ダウンロード</a>（<a href="http://www.h7.dion.ne.jp/~beta-rev/index.html">&#946;-reverse - 64DDポリゴンサイト</a>）</li>
+</ul>
+
+<ul>
+<li><a href="http://jikasei.me/">自家製フォント工房</a>
+	<ul>
+	<li><a href="http://jikasei.me/font/genshin/">源真ゴシック (げんしんゴシック) | 自家製フォント工房</a></li>
+	<li><a href="http://jikasei.me/font/mgenplus/">Mgen+ (ムゲンプラス) | 自家製フォント工房</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www001.upp.so-net.ne.jp/mikachan/">オリジナルフォント【みかちゃん】</a>（※ ダウンロードページの下部に OpenType 版もあります）</li>
+<li><a href="http://www.ez0.net/distribution/font/kiloji/">SecondWave  手書き風総合書体 - きろ字</a></li>
+<li>瀬戸フォント - <a href="http://setofont.sourceforge.jp/">Project Web of setofont on SourceForge.JP Web space</a></li>
+<li><a href="http://azukifont.com/">あずきフォント</a></li>
+<li><a href="http://www8.plala.or.jp/p_dolce/">あんずいろapricot×colorフリー写真素材・手書きフォント・人物写真素材</a></li>
+<li><a href="http://www.vector.co.jp/soft/data/writing/se244261.html">あくあフォントの詳細情報 : Vector ソフトを探す！</a>
+	<ul>
+	<li><a href="http://www.vector.co.jp/soft/data/writing/se244262.html">あくあPフォントの詳細情報 : Vector ソフトを探す！</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.fontna.com/blog/1122/">フリーフォントやさしさアンチック（漫画用書体）のダウンロード | フォントな情報。オープンソースの安心フリーフォント</a></li>
+<li><a href="http://www.fontna.com/blog/1226/">フリーフォント　ロゴたいぷゴシックのダウンロード　 | フォントな。無料日本語フリーフォント</a></li>
+<li><a href="http://www.flopdesign.com/freefont/flopdesignfont.html">フロップデザインフォント無料ダウンロードFONT - フリーフォント</a></li>
+<li><a href="http://yoshihisa.que.jp/fontopo/">無料フォントfontopo | ぼくたちのゴシック</a></li>
+<li><a href="http://yoshihisa.que.jp/fontopo/nihongo.html">無料フォントfontopo | フォントポにほんご</a></li>
+<li><a href="http://flopdesign.com/freefont/utsukushi-mincho-font.html">フリーフォントうつくし明朝体 - 漢字日本語フォント</a></li>
+<li>はんなり明朝 - <a href="http://typingart.net/">フォント無料ダウンロード ｜ Typing Art</a></li>
+<li><a href="http://www.kcc.zaq.ne.jp/in-mlg/freefont/riipopkk/">りいポップ角：フリーフォント</a></li>
+<li><a href="http://www.kcc.zaq.ne.jp/in-mlg/freefont/riitn/index.html">りいてがきN：フリーフォント</a></li>
+<li><a href="http://www.kcc.zaq.ne.jp/in-mlg/freefont/riitf/index.html">りいてがき筆：フリーフォント</a></li>
+<li>ぎゃーてーるみねっせんす, きずだらけのぎゃーてー, じゆうちょうフォント - <a href="http://marusexijaxs.web.fc2.com/tegakifont.html">よく飛ばない鳥　手書きフォントのページ</a></li>
+<li>ジンペン糸-R, ジンペン毛羽-R, ジンへな墨流-RCF, ジン乱角-R - <a href="http://zinsta.jp/font/freefont.html">フリーフォント・尋スタジオ／手書き・子ども・下手文字・絵文字・遊書・漫画・コミック・アニメ・ゲーム・ポップなどのフォント／無料フォント</a></li>
+<li><a href="http://www.kfstudio.net/himaji/">KF STUDIO | ＫＦひま字</a></li>
+<li><a href="http://www.ankokukoubou.com/font/onryou.htm">暗黒工房 日本語フリーホラーフォント怨霊</a></li>
+<li><a href="http://www.ankokukoubou.com/font/hakidame.htm">暗黒工房 日本語フリーホラーフォント「吐き溜フォント」</a></li>
+<li><a href="http://fuboh.jp/dl_002.html">不忘印刷所 不忘フェルトペン書体 フリーフォント 漢字</a></li>
+</ul>
+
+<ul>
+<li>小塚ゴシック Pr6N M, 小塚明朝 Pr6N R - <a href="http://www.adobe.com/support/downloads/thankyou.jsp?ftpID=4881&#038;fileID=4554">Adobe Reader X Font Packs - Japanese</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.geocities.jp/meir000/meiryoKe/index.html">MeiryoKe</a></li>
+</ul>
+
+</dd>
+</dl>
+
+
+<hr>
+
+
+
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,503 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="start" href="http://www10.plala.or.jp/palm84/index.html">
+<link rel="stylesheet" type="text/css" href="./cssmemo.css" media="all">
+<link rel="stylesheet" type="text/css" href="./cssmemo_print.css" media="print">
+<link rel="stylesheet" type="text/css" href="./cssmemo-sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<script type="text/javascript" charset="Shift_JIS" src="./cssmemo_font.js"></script>
+<title>游ゴシックの表示テスト - CSSめも＠Palm84</title>
+<style type="text/css">
+<!--
+#test_win,
+#test_win_fonts,
+#test_win_fonts_p,
+#test_win_hg,
+#test_win_hg_fonts,
+#test_win_hg_fonts_p,
+#test_win_ar,
+#test_win_ar_fonts,
+#test_win_ar_fonts_p,
+#test_win_df,
+#test_win_df_fonts,
+#test_win_df_fonts_p,
+#test_win_etc,
+#test_win_etc_fonts,
+#test_win_etc_fonts_p,
+#test_win_aoyagi,
+#test_win_aoyagi_fonts,
+#test_win_aoyagi_fonts_p {
+line-height: 1;
+letter-spacing: 0;
+background-color: white;
+}
+
+.font_test {
+line-height: 1;
+}
+
+#test_linux,
+#test_linux2,
+#test_linux3,
+#test_linux_fonts,
+#test_linux3_fonts,
+#test_linux_fonts_p,
+#test_linux2_fonts_p,
+#test_linux3_fonts_p {
+line-height: 1.2;
+letter-spacing: 0.5px;
+}
+
+#test_linux,
+#test_linux2,
+#test_linux3 {
+background-color: white;
+}
+
+#test_linux2_fonts_p {
+-webkit-text-stroke-width: 0;
+text-shadow: none;
+/* tranceform: rotate(-0.001deg); */
+}
+
+
+-->
+</style>
+</head>
+
+
+<body>
+
+<h1><a href="./css_memo_font_yugothic.html" name="top">游ゴシックの表示テスト</a></h1>
+
+<p><script src="http://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/css_memo_font_yugothic.html"><img src="http://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/css_memo_font_yugothic.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<ul class="pink">
+<li>Shit_JIS 版　<strong class="msg red">← 今ここ</strong></li>
+<li><a href="css_memo_font_yugothic_utf8.html">UTF-8 版</a></li>
+</ul>
+<p class="small">※ IEでは文字エンコードで表示に差異があります。</p>
+<h2><a name="index" href="#index">目次</a></h2>
+
+<ol>
+<li><a href="#css">CSS表示</a></li>
+<li><a href="#test">表示テスト</a></li>
+<li><a href="#test2">表示テスト - -webkit-text-stroke, text-shadow, transform</a></li>
+<li><a href="#"></a></li>
+<li><a href="#"></a></li>
+</ol>
+
+<p>表示テストの項目については下記の通りです。</p>
+
+<div class="sp_overflow">
+<table class="cl font_test_item" summary="表示テストの項目">
+<caption>表示テストの項目</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C">\</th><th abbr="ゼロ">ゼロ</th><th abbr="大文字のO">オー</th><th abbr="小文字のiと大文字のI">アイ</th><th abbr="小文字のl">小文字エル</th><th abbr="大文字のQ">Q</th><th abbr="Windows">Windows</th><th abbr="濁点">濁点</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="カナ漢字長音漢数字">カナ漢字長音漢数字</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:sans-serif">
+<td>Sans-serif</td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td class="center">プブ</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+<ul class="small">
+<li><a href="javascript:var fontFamily=document.getElementsByTagName('body')[0].style.fontSize='80%';">font 80%</a> | <a href="javascript:var fontFamily=document.getElementsByTagName('body')[0].style.fontSize='90%';">font 90%</a> | <a href="javascript:var fontFamily=document.getElementsByTagName('body')[0].style.fontSize='100%';">font 100%</a> | <a href="javascript:var fontFamily=document.getElementsByTagName('body')[0].style.fontSize='110%';">font 110%</a> | <a href="javascript:var fontFamily=document.getElementsByTagName('body')[0].style.fontSize='120%';">font 120%</a> | <a href="javascript:var fontFamily=document.getElementsByTagName('body')[0].style.fontSize='150%';">font 150%</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='80%')">font 80%</a> | <a href="javascript:void(document.body.style.fontSize='90%')">font 90%</a> | <a href="javascript:void(document.body.style.fontSize='100%')">font 100%</a> | <a href="javascript:void(document.body.style.fontSize='110%')">font 110%</a> | <a href="javascript:void(document.body.style.fontSize='120%')">font 120%</a> | <a href="javascript:void(document.body.style.fontSize='150%')">font 150%</a></li>
+</ul>
+<h2><a name="css" href="#css">游ゴシック</a></h2>
+<ul>
+<li>ブックマークレット <a class="font_change" href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='* { font-family:\'游ゴシック Medium\',\'Yu Gothic Medium\',\'游ゴシック\',\'Yu Gothic\',\'游ゴシック体\',YuGothic!important;font-weight:500!important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace !important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();" title="游ゴシック Medium">游ゴシック Medium</a> | <a class="font_change" href="javascript:(function(){var head=document.getElementsByTagName('head');var style=head[0].lastChild;if(style.nodeName.toLowerCase()=='style'){head[0].removeChild(style);}else{ alert('追加した style 要素はないですYO');}})();">戻す</a></li>
+</ul>
+
+
+<div class="sp_overflow">
+<table id="YuGothic" class="font_test" summary="游ゴシックの表示テスト" style="margin-bottom:0;">
+<caption>游ゴシック</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C"> \ </th><th abbr="Q">Q</th><th abbr="Windows">Windows</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Chrome">Ch</th><th abbr="Firefox">Fx</th><th abbr="Firefox DirectWrite無効">Fx*</th><th abbr="Microsoft Edge">Eg</th><th abbr="IE11">IE</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:sans-serif">
+<td><span class="sansserif red">Sans-serif</span></td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:serif;border-bottom-style:double;">
+<td><span class="serif red">Serif</span></td>
+<td class="center"><span style="font-family:serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:'游ゴシック Light',serif;">
+<td>游ゴシック Light</td>
+<td class="center"><span style="font-family:'游ゴシック Light',serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>×</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+</tr>
+
+<tr style="font-family:'Yu Gothic Light',serif;border-bottom:solid 5px #ccc;">
+<td>Yu Gothic Light</td>
+<td class="center"><span style="font-family:'Yu Gothic Light',serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td>×</td>
+</tr>
+
+<tr style="font-family:'游ゴシック',serif;">
+<td>游ゴシック</td>
+<td class="center"><span style="font-family:'游ゴシック',serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+</tr>
+
+<tr style="font-family:'Yu Gothic',serif;border-bottom:solid 5px #ccc;">
+<td>Yu Gothic</td>
+<td class="center"><span style="font-family:'Yu Gothic',serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+</tr>
+
+<tr style="font-family:'游ゴシック','Yu Gothic',serif;font-weight:500;">
+<td>游ゴシック (500)</td>
+<td class="center"><span style="font-family:'游ゴシック','Yu Gothic',serif;font-weight:500;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>×</td>
+<td>〇</td>
+<td>〇</td>
+</tr>
+
+<tr style="font-family:'游ゴシック Medium',serif;">
+<td>游ゴシック Medium</td>
+<td class="center"><span style="font-family:'游ゴシック Medium',serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>×</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+</tr>
+
+<tr style="font-family:'Yu Gothic Medium',serif;border-bottom:solid 5px #ccc;">
+<td>Yu Gothic Medium</td>
+<td class="center"><span style="font-family:'Yu Gothic Medium',serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td>×</td>
+</tr>
+
+<tr style="font-family:'游ゴシック体',serif;">
+<td>游ゴシック体</td>
+<td class="center"><span style="font-family:'游ゴシック体',serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+
+<tr style="font-family:YuGothic,serif;border-bottom:solid 5px #ccc;">
+<td>YuGothic</td>
+<td class="center"><span style="font-family:YuGothic,serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+
+<tr style="font-family:'游ゴシック体',serif;font-weight:500;">
+<td>游ゴシック体 (500)</td>
+<td class="center"><span style="font-family:''游ゴシック体',serif;font-weight:500;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+
+<tr style="font-family:YuGothic,serif;font-weight:500;">
+<td>YuGothic (500)</td>
+<td class="center"><span style="font-family:YuGothic,serif;font-weight:500;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+
+</table>
+</div>
+
+
+<h2><a name="test" href="#test">表示テスト</a></h2>
+
+<ul class="small">
+<li>font-size <a href="javascript:rmProperty('test_linux', 'font-size');">削除</a> | <a href="javascript:setZoom('test_linux', '80%');">80%</a> | <a href="javascript:setZoom('test_linux', '100%');">100%</a> | <a href="javascript:setZoom('test_linux', '110%');">110%</a> | <a href="javascript:setZoom('test_linux', '120%');">120%</a> | <a href="javascript:setZoom('test_linux', '150%');">150%</a> | font-style <a href="javascript:rmProperty('test_linux','font-style' );">削除</a> | <a href="javascript:setFontStyle('test_linux', 'normal');">normal</a> | <a href="javascript:setFontStyle('test_linux', 'italic');">italic</a> | <a href="javascript:setFontStyle('test_linux', 'oblique');">oblique</a></li>
+<li>line-height <a href="javascript:rmProperty('test_linux', 'line-height');">削除</a> | <a href="javascript:setLineHeight('test_linux', '1');">1</a> | <a href="javascript:setLineHeight('test_linux', '1.1');">1.1</a> | <a href="javascript:setLineHeight('test_linux', '1.2');">1.2</a> | <a href="javascript:setLineHeight('test_linux', '1.3');">1.3</a> | <a href="javascript:setLineHeight('test_linux', '1.4');">1.4</a> | <a href="javascript:setLineHeight('test_linux', '1.5');">1.5</a> | <a href="javascript:setLineHeight('test_linux', '2');">2</a> | letter-spacing <a href="javascript:rmProperty('test_linux','letter-spacing' );">削除</a> | <a href="javascript:setLetterSpacing('test_linux', '0');">0</a> | <a href="javascript:setLetterSpacing('test_linux', '0.5px');">0.5px</a> | <a href="javascript:setLetterSpacing('test_linux', '1px');">1px</a> | <a href="javascript:setLetterSpacing('test_linux', '1.5px');">1.5px</a> | <a href="javascript:setLetterSpacing('test_linux', '2px');">2px</a></li>
+<li>font-weight <a href="javascript:rmProperty('test_linux','font-weight' );">削除</a> | <a href="javascript:setFontWeight('test_linux', 'lighter');">lighter</a> | <a href="javascript:setFontWeight('test_linux', 'normal');">normal</a> | <a href="javascript:setFontWeight('test_linux', 'bold');">bold</a> | <a href="javascript:setFontWeight('test_linux', 'bolder');">bolder</a> | <a href="javascript:setFontWeight('test_linux', '100');">100</a> | <a href="javascript:setFontWeight('test_linux', '200');">200</a> | <a href="javascript:setFontWeight('test_linux', '300');">300</a> | <a href="javascript:setFontWeight('test_linux', '400');">400</a> | <a href="javascript:setFontWeight('test_linux', '500');">500</a> | <a href="javascript:setFontWeight('test_linux', '600');">600</a> | <a href="javascript:setFontWeight('test_linux', '700');">700</a> | <a href="javascript:setFontWeight('test_linux', '800');">800</a> | <a href="javascript:setFontWeight('test_linux', '900');">900</a></li>
+<li>color <a href="javascript:rmProperty('test_linux','color' );">削除</a> | <a href="javascript:setColor('test_linux', 'black');">black</a> | <a href="javascript:setColor('test_linux', '#595959');">#595959</a> | <a href="javascript:setColor('test_linux', 'white');">white</a> | background-color <a href="javascript:rmProperty('test_linux','background-color' );">削除</a> | <a href="javascript:setBGColor('test_linux', 'white');">white</a> | <a href="javascript:setBGColor('test_linux', '#ffe');">#ffe</a> | <a href="javascript:setBGColor('test_linux', 'black');">black</a></li>
+<li><a href="javascript:rmStyle('test_linux')">style削除</a></li>
+</ul>
+
+<div id="test_linux">
+
+<div class="sp_overflow">
+<table class="cl font_test_script" summary="フォントの表示テスト">
+<caption>表示テスト</caption>
+<tr>
+<td><span class="red">無指定</span></td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>MWayg9~*@</td>
+<td class="center">プブ</td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr id="test_linux_fonts">
+<td><span class="red" style="font-weight:bold;">テスト</span></td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>MWayg9~*@</td>
+<td class="center">プブ</td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三語漢片</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+<div class="testbox5" style="padding:0.5em;margin-left:1em;">
+<p id="test_linux_fonts_p">
+<span class="small">0123456789 \'&#034;~*#$%&#038;@ abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+<br>0123456789 \'&#034;~*#$%&#038;@ abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ
+<br><span style="font-size:120%;">0123456789 \'&#034;~*#$%&#038;@ abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+<br><span class="small">新しい朝が来た！不埒な草彅剛、髙濱、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br>新しい朝が来た！不埒な草彅剛、髙濱、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑
+<br><span style="font-size:120%;">新しい朝が来た！不埒な草彅剛、髙濱、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br><br><span style="font-size:80%;">日本の食文化において、主食とされる米飯や雑穀飯の副食として、主要な位置を占める。料亭や食堂で出される事も、家庭料理として家庭で作られる事もある、汁物料理の代表である。昆布・削り節や煮干しなどで出汁をとり、食材と味噌で味を作るという、調理法としては単純な料理であるが、出汁・味噌に加え具材も各家庭・調理者によって千差万別であるため、おふくろの味と称される事もあり、作り方は様々である。また、各地で古くから作られており、名物料理だったり町おこしの料理ともされる。</span>
+<br><br>日本の食文化において、主食とされる米飯や雑穀飯の副食として、主要な位置を占める。料亭や食堂で出される事も、家庭料理として家庭で作られる事もある、汁物料理の代表である。昆布・削り節や煮干しなどで出汁をとり、食材と味噌で味を作るという、調理法としては単純な料理であるが、出汁・味噌に加え具材も各家庭・調理者によって千差万別であるため、おふくろの味と称される事もあり、作り方は様々である。また、各地で古くから作られており、名物料理だったり町おこしの料理ともされる。
+<br><cite><a href="http://ja.wikipedia.org/wiki/%E5%91%B3%E5%99%8C%E6%B1%81">味噌汁 - Wikipedia</a></cite>
+</p>
+</div>
+</div>
+
+<ul class="lt small">
+<li><a href="javascript:rmProperty('test_linux_fonts', 'font-family');">削除</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', 'inherit');">inherit</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', 'Sans-serif');">Sans-serif</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', 'Serif');">Serif</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_linux_fonts', '\'メイリオ\',Meiryo');">メイリオ</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'Meiryo UI\'');">Meiryo UI</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'ＭＳ Ｐゴシック\'');">ＭＳ Ｐゴシック</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'Yu Gothic UI\'');">Yu Gothic UI</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_linux_fonts', '\'游ゴシック Light\'');">游ゴシック Light</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'游ゴシック\'');">游ゴシック</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'游ゴシック Medium\'');">游ゴシック Medium</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'游ゴシック体\'');">游ゴシック体</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_linux_fonts', '\'Yu Gothic Light\'');">Yu Gothic Light</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'Yu Gothic\'');">Yu Gothic</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', '\'Yu Gothic Medium\'');">Yu Gothic Medium</a></li>
+<li><a href="javascript:setFont('test_linux_fonts', 'YuGothic');">YuGothic</a></li>
+</ul>
+
+<h2 class="cl"><a name="test2" href="#test2">表示テスト - -webkit-text-stroke, text-shadow, transform</a></h2>
+
+<ul class="lt small">
+<li>-webkit-text-stroke-width <a href="javascript:rmProperty('test_linux2', '-webkit-text-stroke-width');">削除</a> | <a href="javascript:setTextStroke('test_linux2', '0');">0</a> | <a href="javascript:setTextStroke('test_linux2', '0.1px');">0.1px</a> | <a href="javascript:setTextStroke('test_linux2', '0.2px');">0.2px</a> | <a href="javascript:setTextStroke('test_linux2', '0.3px');">0.3px</a></li>
+<li>text-shadow <a href="javascript:rmProperty('test_linux2', 'text-shadow');">削除</a> | <a href="javascript:setTextShadow('test_linux2', 'none');">none</a> | <a href="javascript:setTextShadow('test_linux2', '0 0 1px rgba(0,0,0,0.1),0 0 2px rgba(0,0,0,0.01),0 0 3px rgba(0,0,0,0.01)');">0 0 1px rgba(0,0,0,0.1),0 0 2px rgba(0,0,0,0.01),0 0 3px rgba(0,0,0,0.01)</a> | 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:setTextShadow('test_linux2', '0 0 0.1px rgba(51,51,51,0.5)');">0 0 0.1px rgba(51,51,51,0.5)</a> | <a href="javascript:setTextShadow('test_linux2', '0 0 0.1px rgba(0,0,0,0.5)');">0 0 0.1px rgba(0,0,0,0.5)</a> | <a href="javascript:setTextShadow('test_linux2', '#707070 0.05px 0.05px 0.05px');">#707070 0.05px 0.05px 0.05px</a> |<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:setTextShadow('test_linux2', 'transparent 0 0 0,rgba(0,0,0,0.3) 0 0 0');">transparent 0 0 0,rgba(0,0,0,0.5) 0 0 0</a></li>
+<li>transform <a href="javascript:rmProperty('test_linux2', 'transform');">削除</a> | <a href="javascript:setTranceform('test_linux2', 'rotate(0.001deg)');">rotate(0.001deg)</a> | <a href="javascript:setTranceform('test_linux2', 'rotate(0.05deg)');">rotate(0.05deg)</a></li>
+<li>font-weight <a href="javascript:rmProperty('test_linux2','font-weight' );">削除</a> | <a href="javascript:setFontWeight('test_linux2', '500');">500</a> || line-height <a href="javascript:rmProperty('test_linux2', 'line-height');">削除</a> | <a href="javascript:setLineHeight('test_linux2', '1');">1</a> | <a href="javascript:setLineHeight('test_linux2', '1.1');">1.1</a> | <a href="javascript:setLineHeight('test_linux2', '1.2');">1.2</a> | <a href="javascript:setLineHeight('test_linux2', '1.5');">1.5</a> | <a href="javascript:setLineHeight('test_linux2', '2');">2</a> || letter-spacing <a href="javascript:rmProperty('test_linux2','letter-spacing' );">削除</a> | <a href="javascript:setLetterSpacing('test_linux2', '0');">0</a> | <a href="javascript:setLetterSpacing('test_linux2', '1px');">1px</a> | <a href="javascript:setLetterSpacing('test_linux2', '2px');">2px</a></li>
+</ul>
+
+<div id="test_linux2">
+<div class="testbox5" style="padding:0.5em;margin-left:1em;">
+<p id="test_linux2_fonts_p">
+<span class="small">0123456789 \'&#034;~*#$%&#038;@ abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+<br>0123456789 \'&#034;~*#$%&#038;@ abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ
+<br><span style="font-size:120%;">0123456789 \'&#034;~*#$%&#038;@ abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+<br><span class="small">新しい朝が来た！不埒な草彅剛、髙濱、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br>新しい朝が来た！不埒な草彅剛、髙濱、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑
+<br><span style="font-size:120%;">新しい朝が来た！不埒な草彅剛、髙濱、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br><br><span style="font-size:80%;">日本の食文化において、主食とされる米飯や雑穀飯の副食として、主要な位置を占める。料亭や食堂で出される事も、家庭料理として家庭で作られる事もある、汁物料理の代表である。昆布・削り節や煮干しなどで出汁をとり、食材と味噌で味を作るという、調理法としては単純な料理であるが、出汁・味噌に加え具材も各家庭・調理者によって千差万別であるため、おふくろの味と称される事もあり、作り方は様々である。また、各地で古くから作られており、名物料理だったり町おこしの料理ともされる。</span>
+<br><br>日本の食文化において、主食とされる米飯や雑穀飯の副食として、主要な位置を占める。料亭や食堂で出される事も、家庭料理として家庭で作られる事もある、汁物料理の代表である。昆布・削り節や煮干しなどで出汁をとり、食材と味噌で味を作るという、調理法としては単純な料理であるが、出汁・味噌に加え具材も各家庭・調理者によって千差万別であるため、おふくろの味と称される事もあり、作り方は様々である。また、各地で古くから作られており、名物料理だったり町おこしの料理ともされる。
+<br><cite><a href="http://ja.wikipedia.org/wiki/%E5%91%B3%E5%99%8C%E6%B1%81">味噌汁 - Wikipedia</a></cite>
+</p>
+</div>
+</div>
+
+<ul class="lt small">
+<li><a href="javascript:rmProperty('test_linux2_fonts', 'font-family');">削除</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', 'inherit');">inherit</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', 'Sans-serif');">Sans-serif</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', 'Serif');">Serif</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_linux2_fonts', '\'メイリオ\',Meiryo');">メイリオ</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'Meiryo UI\'');">Meiryo UI</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'ＭＳ Ｐゴシック\'');">ＭＳ Ｐゴシック</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'Yu Gothic UI\'');">Yu Gothic UI</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_linux2_fonts', '\'游ゴシック Light\'');">游ゴシック Light</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'游ゴシック\'');">游ゴシック</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'游ゴシック Medium\'');">游ゴシック Medium</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'游ゴシック体\'');">游ゴシック体</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_linux2_fonts', '\'Yu Gothic Light\'');">Yu Gothic Light</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'Yu Gothic\'');">Yu Gothic</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', '\'Yu Gothic Medium\'');">Yu Gothic Medium</a></li>
+<li><a href="javascript:setFont('test_linux2_fonts', 'YuGothic');">YuGothic</a></li>
+</ul>
+
+
+
+
+<div class="cl navi">
+<ul>
+<li><a href="#top">TOP</a> | </li>
+<li><a href="./css_memo.html">Index</a> | </li>
+<li><a href="./index.html">HOME</a></li>
+</ul>
+</div>
+
+
+</body>
+</html>

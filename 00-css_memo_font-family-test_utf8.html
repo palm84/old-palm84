@@ -1,0 +1,2689 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="start" href="./index.html">
+<link rel="stylesheet" type="text/css" href="./cssmemo_utf8.css" media="all">
+<link rel="stylesheet" type="text/css" href="./cssmemo_print_utf8.css" media="print">
+<link rel="stylesheet" type="text/css" href="./cssmemo-sp_utf8.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<script type="text/javascript" charset="UTF-8" src="./cssmemo_font_utf8.js"></script>
+<title>font-family 表示テスト (UTF-8版) - CSSめも＠Palm84</title>
+<style type="text/css">
+<!--
+#test_win,
+#test_win_fonts,
+#test_win_fonts_p,
+#test_win_hg,
+#test_win_hg_fonts,
+#test_win_hg_fonts_p,
+#test_win_ar,
+#test_win_ar_fonts,
+#test_win_ar_fonts_p,
+#test_win_df,
+#test_win_df_fonts,
+#test_win_df_fonts_p,
+#test_win_etc,
+#test_win_etc_fonts,
+#test_win_etc_fonts_p,
+#test_win_aoyagi,
+#test_win_aoyagi_fonts,
+#test_win_aoyagi_fonts_p {
+line-height: 1;
+letter-spacing: 0;
+background-color: white;
+}
+
+.font_test {
+line-height: 1;
+}
+
+#test_linux,
+#test_linux2,
+#test_linux3,
+#test_linux_fonts,
+#test_linux3_fonts,
+#test_linux_fonts_p,
+#test_linux2_fonts_p,
+#test_linux3_fonts_p {
+line-height: 1.2;
+letter-spacing: 0.5px;
+}
+
+#test_linux,
+#test_linux2,
+#test_linux3 {
+background-color: white;
+}
+
+#test_linux2_fonts_p {
+-webkit-text-stroke-width: 0;
+text-shadow: none;
+/* tranceform: rotate(-0.001deg); */
+}
+
+.kugiri {
+border-bottom-color: brown;
+border-bottom-style:solid;
+border-bottom-width: 4px;
+}
+.kugiri2 {
+border-bottom-color: #ccc;
+border-bottom-style:double;
+border-bottom-width: 6px;
+}
+
+
+-->
+</style>
+</head>
+<body>
+
+<h1 id="top">font-family 表示テスト (UTF-8版)</h1>
+<h2 id="about">about</h2>
+<dl class="index no_sp" style="background-color:white!important;margin-bottom:1em;">
+<dt>サイドバー表示 on/off</dt>
+<dd>
+<ul class="no_sp">
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='#container{width:1024px;margin:0;padding:0;}#wrapper{width:auto;margin:0;padding:10px;}#box2{margin:auto;}';head[0].appendChild(style);})();">サイドバーを下に</a> (画面を広げる)</li>
+<li><a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='#container{width:1010px;margin:auto;padding:0 10px;;}#wrapper{width: 660px;float: fontlist;margin-right:10px;padding:10px;}#box2{margin:auto;}';head[0].appendChild(style);})();">戻す</a></li>
+</ul>
+</dd>
+</dl>
+<p>はいはい、font-family 指定いろいろです。日本語名と英語名を併記するのが基本みたいなかんじになってますが、ややこしいですよね。一度確認しても、OS, ブラウザのアップデートで認識がおかしくなったりとかややこしすぎ。</p>
+<p>ちゅうわけで、確認用のテストページなのです。あんまり役に立たんのちゃうかという気がしないでもないけど... <span class="aa">｡ﾟ(ﾟ´Д｀ﾟ)ﾟ｡</span></p>
+
+<dl>
+<dt>ttfname3 でフォント情報の確認</dt>
+<dd>
+<p>フォントファイルをドラッグ＆ドロップするだけで xml ファイルに書き出してくれるのですよ。</p>
+<ul>
+<li><a href="http://okrchicagob.blog4.fc2.com/blog-entry-169.html">ことば・その周辺 PC版「ブログ内記事で取りあげたソフト・ファイルのＤＬ情報」</a> <a href="https://b.hatena.ne.jp/entry/http://okrchicagob.blog4.fc2.com/blog-entry-169.html" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/http://okrchicagob.blog4.fc2.com/blog-entry-169.html" alt="" class="http-bookmark" /></a></li>
+</ul>
+<p><img src="https://cdn-ak.f.st-hatena.com/images/fotolife/p/palm84/20210122/20210122220338.png" width="409" height="297" alt="ttfname3のスクリーンショット"></p>
+<div style="margin-left:1em;">
+[f:id:palm84:20210122220338p:plain]
+</div>
+</dd>
+
+<dt>インストール済フォントの確認</dt>
+<dd>
+<p></p>
+<ol>
+<li>[設定]<span class="ms">→</span>[個人用設定]<span class="ms">→</span>[フォント]</li>
+<li>フォント名を入力して選択</li>
+<li>フォントフェイスを選択して、フォントファイルのパスを確認</li>
+<li>コマンドプロンプトからコピー</li>
+</ol>
+<ul>
+<li>「<span style="font-family:'游ゴシック Medium','Yu Gothic Medium';">游ゴシック Medium</span>」の例…</li>
+</ul>
+<pre>
+C:\Users\yassy>pushd Desktop
+
+C:\Users\yassy\Desktop>copy c:\Windows\Fonts\YuGothM.ttc .
+        1 個のファイルをコピーしました。
+</pre>
+<p>行末は <code><strong class="red">.</strong></code> (ドット) です。デスクトップへコピーされます。<code>copy</code> コマンドでだめなら <code>xcopy /h</code> で。</p>
+
+<p><img src="https://cdn-ak.f.st-hatena.com/images/fotolife/p/palm84/20210122/20210122222326.png" width="748" height="217" alt="hogehogeのスクリーンショット"></p>
+<div style="margin-left:1em;">
+[f:id:palm84:20210122222326p:plain]
+</div>
+</dd>
+</dl>
+
+
+<p>表示テストの項目については下記の通りです。</p>
+
+<table class="cl font_test_item" summary="表示テストの項目">
+<caption>表示テストの項目</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C">\</th><th abbr="大文字のQ">Q</th><th abbr="Windows">Windows</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+</tr>
+
+<tr style="font-family:sans-serif">
+<td>Sans-serif</td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+</tr>
+</table>
+</div>
+<h2 id="ms">MSフォント</h2>
+<ul>
+<li>ブックマークレット <a class="font_change" href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='* { font-family:\'游ゴシック Medium\',\'Yu Gothic Medium\',\'游ゴシック\',\'Yu Gothic\',\'游ゴシック体\',YuGothic!important;font-weight:500!important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace !important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();" title="游ゴシック Medium">游ゴシック Medium</a> | <a class="font_change" href="javascript:(function(){var head=document.getElementsByTagName('head');var style=head[0].lastChild;if(style.nodeName.toLowerCase()=='style'){head[0].removeChild(style);}else{ alert('追加した style 要素はないですYO');}})();">戻す</a></li>
+</ul>
+
+
+<p>認識不可は <span class="red" style="font-family:serif;">Serif</span> 表示となります。</p>
+
+<table id="ms_font" class="font_test" summary="游ゴシックの表示テスト" style="margin-bottom:0;">
+<caption><span  style="font-family:'游ゴシック','Yu Gothic';">游ゴシック</span></caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C"> \ </th><th abbr="Q">Q</th><th abbr="Windows">Windows</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Chrome">Ch</th><th abbr="Firefox">Fx</th><th abbr="Edge">Ed</th><th abbr="Chrome Linux">ChL</th><th abbr="Firefox Linux">FxL</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:sans-serif">
+<td><span class="sansserif red">Sans-serif</span></td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr class="kugiri" style="font-family:serif;">
+<td><span class="serif red">Serif</span></td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:'メイリオ',serif;">
+<td>メイリオ</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:Meiryo,serif;" class="kugiri">
+<td>Meiryo</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'ＭＳ Ｐゴシック',serif;">
+<td>ＭＳ Ｐゴシック</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'MS PGothic',serif;" class="kugiri">
+<td>MS PGothic</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'ＭＳ Ｐ明朝',serif;">
+<td>ＭＳ Ｐ明朝</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'MS PMincho',serif;">
+<td>MS PMincho</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+</table>
+</div>
+
+<h2 id="yugo">游ゴシック</h2>
+<ul>
+<li>ブックマークレット <a class="font_change" href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='* { font-family:\'游ゴシック Medium\',\'Yu Gothic Medium\',\'游ゴシック\',\'Yu Gothic\',\'游ゴシック体\',YuGothic!important;font-weight:500!important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace !important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();" title="游ゴシック Medium">游ゴシック Medium</a> | <a class="font_change" href="javascript:(function(){var head=document.getElementsByTagName('head');var style=head[0].lastChild;if(style.nodeName.toLowerCase()=='style'){head[0].removeChild(style);}else{ alert('追加した style 要素はないですYO');}})();">戻す</a></li>
+</ul>
+
+
+<p>認識不可は <span class="red" style="font-family:serif;">Serif</span> 表示となります。</p>
+
+<table id="YuGothic" class="font_test" summary="游ゴシックの表示テスト" style="margin-bottom:0;">
+<caption><span  style="font-family:'游ゴシック','Yu Gothic';">游ゴシック</span></caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C"> \ </th><th abbr="Q">Q</th><th abbr="Windows">Windows</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Chrome">Ch</th><th abbr="Firefox">Fx</th><th abbr="Edge">Ed</th><th abbr="Chrome Linux">ChL</th><th abbr="Firefox Linux">FxL</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:sans-serif">
+<td><span class="sansserif red">Sans-serif</span></td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr class="kugiri" style="font-family:serif;">
+<td><span class="serif red">Serif</span></td>
+<td class="center"><span style="font-family:serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:'游ゴシック Light',serif;">
+<td>游ゴシック Light</td>
+<td class="center"><span style="font-family:'游ゴシック Light',serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>×</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'游ゴシック',serif;">
+<td>游ゴシック</td>
+<td class="center"><span style="font-family:'游ゴシック',serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'游ゴシック Medium',serif;" class="kugiri">
+<td>游ゴシック Medium</td>
+<td class="center"><span style="font-family:'游ゴシック Medium',serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>×</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'Yu Gothic Light',serif;">
+<td>Yu Gothic Light</td>
+<td class="center"><span style="font-family:'Yu Gothic Light',serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'Yu Gothic',serif;">
+<td>Yu Gothic</td>
+<td class="center"><span style="font-family:'Yu Gothic',serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'Yu Gothic Medium',serif;" class="kugiri">
+<td>Yu Gothic Medium</td>
+<td class="center"><span style="font-family:'Yu Gothic Medium',serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'游ゴシック','Yu Gothic',serif;font-weight:500;" class="kugiri">
+<td>游ゴシック (500)</td>
+<td class="center"><span style="font-family:'游ゴシック','Yu Gothic',serif;font-weight:500;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'游ゴシック体',serif;">
+<td>游ゴシック体</td>
+<td class="center"><span style="font-family:'游ゴシック体',serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'游ゴシック体',serif;font-weight:500;" class="kugiri">
+<td>游ゴシック体 (500)</td>
+<td class="center"><span style="font-family:'游ゴシック体',serif;font-weight:500;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:YuGothic,serif;">
+<td>YuGothic</td>
+<td class="center"><span style="font-family:YuGothic,serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:YuGothic,serif;font-weight:500;">
+<td>YuGothic (500)</td>
+<td class="center"><span style="font-family:YuGothic,serif;font-weight:500;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td></td>
+<td></td>
+</tr>
+
+</table>
+</div>
+
+<h2 id="yumi">游明朝</h2>
+
+<p>認識不可は <span class="red" style="font-family:Sans-serif;">Sans-serif</span> 表示となります。</p>
+
+<table id="YuMincho" class="font_test" summary="游明朝の表示テスト" style="margin-bottom:0;">
+<caption>游明朝</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C"> \ </th><th abbr="Q">Q</th><th abbr="Windows">Windows</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Chrome">Ch</th><th abbr="Firefox">Fx</th><th abbr="Edge">Ed</th><th abbr="Chrome Linux">ChL</th><th abbr="Firefox Linux">FxL</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:sans-serif">
+<td><span class="sans-serif red">Sans-serif</span></td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:serif;">
+<td><span class="serif red">Serif</span></td>
+<td class="center"><span style="font-family:serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:'ＭＳ Ｐ明朝','MS PMincho',sans-serif;">
+<td><span class="serif red">ＭＳ Ｐ明朝</span></td>
+<td class="center"><span style="font-family:'ＭＳ Ｐ明朝','MS PMincho,sans-serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'BIZ UDP明朝',sans-serif;" class="kugiri">
+<td><span class="red">BIZ UDP明朝</span></td>
+<td class="center"><span style="font-family:'BIZ UDP明朝','BIZ UDPMincho',sans-serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'游明朝',sans-serif;">
+<td>游明朝</td>
+<td class="center"><span style="font-family:'游明朝',sans-serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'游明朝','Yu Mincho',sans-serif;font-weight:500;">
+<td>游明朝 (500)</td>
+<td class="center"><span style="font-family:'游明朝','Yu Mincho',sans-serif;font-weight:500;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'游明朝 Light',sans-serif;">
+<td>游明朝 Light</td>
+<td class="center"><span style="font-family:'游明朝 Light',sans-serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>×</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'游明朝 Regular',sans-serif;">
+<td>游明朝 Regular</td>
+<td class="center"><span style="font-family:'游明朝 Regular',sans-serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>×</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'游明朝 Demibold',sans-serif;" class="kugiri">
+<td>游明朝 Demibold</td>
+<td class="center"><span style="font-family:'游明朝 Demibold',sans-serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>×</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'Yu Mincho',sans-serif;">
+<td>Yu Mincho</td>
+<td class="center"><span style="font-family:'Yu Mincho',sans-serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'Yu Mincho Light',sans-serif;">
+<td>Yu Mincho Light</td>
+<td class="center"><span style="font-family:'Yu Mincho Light',sans-serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'Yu Mincho Regular',sans-serif;">
+<td>Yu Mincho Regular</td>
+<td class="center"><span style="font-family:'Yu Mincho Regular',sans-serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'Yu Mincho Demibold',sans-serif;" class="kugiri">
+<td>Yu Mincho Demibold</td>
+<td class="center"><span style="font-family:'Yu Mincho Demibold',sans-serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+
+<tr style="font-family:'游明朝体',sans-serif;">
+<td>游明朝体</td>
+<td class="center"><span style="font-family:'游明朝体',sans-serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'游明朝体',sans-serif;font-weight:500;">
+<td>游明朝体 (500)</td>
+<td class="center"><span style="font-family:'游明朝体',sans-serif;font-weight:500;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:YuMincho,sans-serif;">
+<td>YuMincho</td>
+<td class="center"><span style="font-family:YuMincho,sans-serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:YuMincho,sans-serif;font-weight:500;">
+<td>YuMincho (500)</td>
+<td class="center"><span style="font-family:YuMincho,sans-serif;font-weight:500;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td></td>
+<td></td>
+</tr>
+
+</table>
+</div>
+
+<h2 id="biz">BIZ フォント</h2>
+
+<p>認識不可は <span class="red" style="font-family:Sans-serif;">Sans-serif</span> 表示となります。</p>
+
+<table id="biz_font" class="font_test" summary="sonotaの表示テスト" style="margin-bottom:0;">
+<caption>UD デジタル 教科書体</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C"> \ </th><th abbr="Q">Q</th><th abbr="Windows">Windows</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Chrome">Ch</th><th abbr="Firefox">Fx</th><th abbr="Edge">Ed</th><th abbr="Chrome Linux">ChL</th><th abbr="Firefox Linux">FxL</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:sans-serif">
+<td><span class="sans-serif red">Sans-serif</span></td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:serif;">
+<td><span class="serif red">Serif</span></td>
+<td class="center"><span style="font-family:serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:'xxxxx',sans-serif;">
+<td>xxxxx</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'xxxxx',sans-serif;" class="kugiri">
+<td>xxxxx</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'UD デジタル 教科書体 N-R',sans-serif;">
+<td>UD デジタル 教科書体 N-R</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'UD Digi Kyokasho N-R',sans-serif;" class="kugiri">
+<td>UD Digi Kyokasho N-R</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'UD デジタル 教科書体 NP-R',sans-serif;">
+<td>UD デジタル 教科書体 NP-R</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'UD Digi Kyokasho NP-R',sans-serif;" class="kugiri">
+<td>UD Digi Kyokasho NP-R</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'UD デジタル 教科書体 NK-R',sans-serif;">
+<td>UD デジタル 教科書体 NK-R</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'UD Digi Kyokasho NK-R',sans-serif;" class="kugiri">
+<td>UD Digi Kyokasho NK-R</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'BIZ UDゴシック',sans-serif;">
+<td>BIZ UDゴシック</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'BIZ UDGothic',sans-serif;">
+<td>BIZ UDGothic</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'BIZ UDゴシック Regular',sans-serif;">
+<td>BIZ UDゴシック Regular</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td></td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'BIZ UDGothic Regular',sans-serif;" class="kugiri">
+<td>BIZ UDGothic Regular</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td></td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'BIZ UDPゴシック',sans-serif;">
+<td>BIZ UDPゴシック</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'BIZ UDPGothic',sans-serif;">
+<td>BIZ UDPGothic</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'BIZ UDPゴシック Regular',sans-serif;">
+<td>BIZ UDPゴシック Regular</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td></td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'BIZ UDPGothic Regular',sans-serif;" class="kugiri">
+<td>BIZ UDPGothic Regular</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td></td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'BIZ UD明朝',sans-serif;">
+<td>BIZ UD明朝</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'BIZ UDMincho',sans-serif;">
+<td>BIZ UDMincho</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'BIZ UD明朝 Medium',sans-serif;">
+<td>BIZ UD明朝 Medium</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td></td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'BIZ UDMincho Medium',sans-serif;" class="kugiri">
+<td>BIZ UDMincho Medium</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'BIZ UDP明朝',sans-serif;">
+<td>BIZ UDP明朝</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'BIZ UDPMincho',sans-serif;">
+<td>BIZ UDPMincho</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'BIZ UDP明朝 Medium',sans-serif;">
+<td>BIZ UDP明朝 Medium</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td></td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'BIZ UDPMincho Medium',sans-serif;">
+<td>BIZ UDPMincho Medium</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+</table>
+</div>
+
+<h2 id="hg_go">HGゴシック</h2>
+
+<p>認識不可は <span class="red" style="font-family:serif;">Serif</span> 表示となります。</p>
+
+<table id="hg_gothic" class="font_test" summary="sonotaの表示テスト" style="margin-bottom:0;">
+<caption>HGゴシック</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C"> \ </th><th abbr="Q">Q</th><th abbr="Windows">Windows</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Chrome">Ch</th><th abbr="Firefox">Fx</th><th abbr="Edge">Ed</th><th abbr="Chrome Linux">ChL</th><th abbr="Firefox Linux">FxL</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:sans-serif">
+<td><span class="sans-serif red">Sans-serif</span></td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:serif;">
+<td><span class="serif red">Serif</span></td>
+<td class="center"><span style="font-family:serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:'xxxxx',serif;">
+<td>xxxxx</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'xxxxx',serif;" class="kugiri">
+<td>xxxxx</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+
+<tr style="font-family:'HGPｺﾞｼｯｸM',serif;">
+<td>HGPｺﾞｼｯｸM</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'HGPゴシックM',serif;">
+<td>HGPゴシックM</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td>×</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'HGPGothicM',serif;" class="kugiri">
+<td>HGPGothicM</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'HGPｺﾞｼｯｸE',serif;">
+<td>HGPｺﾞｼｯｸE</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'HGPゴシックE',serif;">
+<td>HGPゴシックE</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td>×</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'HGPGothicE',serif;" class="kugiri">
+<td>HGPGothicE</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'HGSｺﾞｼｯｸM',serif;">
+<td>HGSｺﾞｼｯｸM</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'HGSゴシックM',serif;">
+<td>HGSゴシックM</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td>×</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'HGSGothicM',serif;" class="kugiri">
+<td>HGSGothicM</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'HGSｺﾞｼｯｸE',serif;">
+<td>HGSｺﾞｼｯｸE</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'HGSゴシックE',serif;">
+<td>HGSゴシックE</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td>×</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'HGSGothicE',serif;" class="kugiri">
+<td>HGSGothicE</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+</table>
+</div>
+
+<h2 id="hg_mi">HG明朝</h2>
+
+<p>認識不可は <span class="red" style="font-family:Sans-serif;">Sans-serif</span> 表示となります。</p>
+
+<table id="hg_minco" class="font_test" summary="sonotaの表示テスト" style="margin-bottom:0;">
+<caption>HG明朝</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C"> \ </th><th abbr="Q">Q</th><th abbr="Windows">Windows</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Chrome">Ch</th><th abbr="Firefox">Fx</th><th abbr="Edge">Ed</th><th abbr="Chrome Linux">ChL</th><th abbr="Firefox Linux">FxL</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:sans-serif">
+<td><span class="sans-serif red">Sans-serif</span></td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:serif;">
+<td><span class="serif red">Serif</span></td>
+<td class="center"><span style="font-family:serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:'xxxxx',sans-serif;">
+<td>xxxxx</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'xxxxx',sans-serif;" class="kugiri">
+<td>xxxxx</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+
+<tr style="font-family:'HGP明朝B',sans-serif;">
+<td>HGP明朝B</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'HGPMinchoB',sans-serif;" class="kugiri">
+<td>HGPMinchoB</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'HGP明朝E',sans-serif;">
+<td>HGP明朝E</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'HGPMinchoE',sans-serif;" class="kugiri">
+<td>HGPMinchoE</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'HGS明朝B',sans-serif;">
+<td>HGS明朝B</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'HGSMinchoB',sans-serif;" class="kugiri">
+<td>HGSMinchoB</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'HGS明朝E',sans-serif;">
+<td>HGS明朝E</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'HGSMinchoE',sans-serif;" class="kugiri">
+<td>HGSMinchoE</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+</table>
+</div>
+
+<h2 id="source_han_sans">源ノ角ゴシック</h2>
+
+<p>認識不可は <span class="red" style="font-family:serif;">Serif</span> 表示となります。</p>
+
+<table id="shs" class="font_test" summary="sonotaの表示テスト" style="margin-bottom:0;">
+<caption>源ノ角ゴシック</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C"> \ </th><th abbr="Q">Q</th><th abbr="Windows">Windows</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Chrome">Ch</th><th abbr="Firefox">Fx</th><th abbr="Edge">Ed</th><th abbr="Chrome Linux">ChL</th><th abbr="Firefox Linux">FxL</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:sans-serif">
+<td><span class="sans-serif red">Sans-serif</span></td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:serif;">
+<td><span class="serif red">Serif</span></td>
+<td class="center"><span style="font-family:serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:'xxxxx',serif;">
+<td>xxxxx</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'xxxxx',serif;" class="kugiri">
+<td>xxxxx</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック',serif;">
+<td>源ノ角ゴシック</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Regular',serif;">
+<td>源ノ角ゴシック Regular</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>×</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'源ノ角ゴシック Medium',serif;" class="kugiri">
+<td>源ノ角ゴシック Medium</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>×</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'Source Han Sans',serif;">
+<td>Source Han Sans</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'Source Han Sans Regular',serif;">
+<td>Source Han Sans Regular</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'Source Han Sans Medium',serif;">
+<td>Source Han Sans Medium</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+</table>
+</div>
+
+<h2 id="source_han_serif">源ノ明朝</h2>
+
+<p>認識不可は <span class="red" style="font-family:Sans-serif;">Sans-serif</span> 表示となります。</p>
+
+<table id="ssf" class="font_test" summary="sonotaの表示テスト" style="margin-bottom:0;">
+<caption>源ノ明朝</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C"> \ </th><th abbr="Q">Q</th><th abbr="Windows">Windows</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Chrome">Ch</th><th abbr="Firefox">Fx</th><th abbr="Edge">Ed</th><th abbr="Chrome Linux">ChL</th><th abbr="Firefox Linux">FxL</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:sans-serif">
+<td><span class="Sans-serif red">sans-serif</span></td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:serif;">
+<td><span class="serif red">Serif</span></td>
+<td class="center"><span style="font-family:serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:'xxxxx',sans-serif;">
+<td>xxxxx</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'xxxxx',sans-serif;" class="kugiri">
+<td>xxxxx</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'源ノ明朝',sans-serif;">
+<td>源ノ明朝</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'源ノ明朝 Regular',sans-serif;">
+<td>源ノ明朝 Regular</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>×</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'源ノ明朝 Medium',sans-serif;" class="kugiri">
+<td>源ノ明朝 Medium</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>×</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'Source Han Serif',sans-serif;">
+<td>Source Han Serif</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'Source Han Serif Regular',sans-serif;">
+<td>Source Han Serif Regular</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'Source Han Serif Medium',sans-serif;" class="kugiri">
+<td>Source Han Serif Medium</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+</table>
+</div>
+
+<h2 id="linux_gothic">Linuxゴシック</h2>
+
+<p>認識不可は <span class="red" style="font-family:serif;">Serif</span> 表示となります。</p>
+
+<table id="lina_go" class="font_test" summary="sonotaの表示テスト" style="margin-bottom:0;">
+<caption>Linuxゴシック</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C"> \ </th><th abbr="Q">Q</th><th abbr="Windows">Windows</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Chrome">Ch</th><th abbr="Firefox">Fx</th><th abbr="Edge">Ed</th><th abbr="Chrome Linux">ChL</th><th abbr="Firefox Linux">FxL</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:sans-serif">
+<td><span class="sans-serif red">Sans-serif</span></td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:serif;">
+<td><span class="serif red">Serif</span></td>
+<td class="center"><span style="font-family:serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:'xxxxx',sans-serif;">
+<td>xxxxx</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'xxxxx',sans-serif;" class="kugiri">
+<td>xxxxx</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'TakaoPゴシック',serif;">
+<td>TakaoPゴシック</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'Takao Pゴシック',serif;">
+<td>Takao Pゴシック</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+
+<tr style="font-family:'TakaoPGothic',serif;">
+<td>TakaoPGothic</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+
+<tr style="font-family:'Takao PGothic',serif;" class="kugiri">
+<td>Takao PGothic</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'Takaoexゴシック',serif;">
+<td>Takaoexゴシック</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'Takao exゴシック',serif;">
+<td>Takao exゴシック</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'TakaoexGothic',serif;">
+<td>TakaoexGothic</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'Takao exGothic',serif;" class="kugiri">
+<td>Takao exGothic</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPAPゴシック',serif;">
+<td>IPAPゴシック</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPA Pゴシック',serif;">
+<td>IPA Pゴシック</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPAPGothic',serif;">
+<td>IPAPGothic</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPA PGothic',serif;" class="kugiri">
+<td>IPA PGothic</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+
+<tr style="font-family:'IPAexゴシック',serif;">
+<td>IPAexゴシック</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPA exゴシック',serif;">
+<td>IPA exゴシック</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPAexGothic',serif;">
+<td>IPAexGothic</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPA exGothic',serif;" class="kugiri">
+<td>IPA exGothic</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPAモナーPゴシック',serif;">
+<td>IPAモナーPゴシック</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPA モナーPゴシック',serif;">
+<td>IPA モナーPゴシック</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPA モナー Pゴシック',serif;">
+<td>IPA モナー Pゴシック</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPAMonaPGothic',serif;">
+<td>IPAMonaPGothic</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPA MonaPGothic',serif;">
+<td>IPAMona PGothic</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPA Mona PGothic',serif;" class="kugiri">
+<td>IPA Mona PGothic</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+</table>
+</div>
+
+<h2 id="linux_mincho">Linux明朝</h2>
+
+<p>認識不可は <span class="red" style="font-family:Sans-serif;">Sans-serif</span> 表示となります。</p>
+
+<table id="lina_mi" class="font_test" summary="sonotaの表示テスト" style="margin-bottom:0;">
+<caption>Linux明朝</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="ascii 0x5C"> \ </th><th abbr="Q">Q</th><th abbr="Windows">Windows</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Chrome">Ch</th><th abbr="Firefox">Fx</th><th abbr="Edge">Ed</th><th abbr="Chrome Linux">ChL</th><th abbr="Firefox Linux">FxL</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:sans-serif">
+<td><span class="sans-serif red">Sans-serif</span></td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:serif;">
+<td><span class="serif red">Serif</span></td>
+<td class="center"><span style="font-family:serif;">\</span></td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td colspan="5"></td>
+</tr>
+
+<tr style="font-family:'xxxxx',sans-serif;">
+<td>xxxxx</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'xxxxx',sans-serif;" class="kugiri">
+<td>xxxxx</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'TakaoP明朝',sans-serif;">
+<td>TakaoP明朝</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'Takao P明朝',sans-serif;">
+<td>Takao P明朝</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'TakaoPMincho',sans-serif;">
+<td>TakaoPMincho</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'Takao PMincho',sans-serif;" class="kugiri">
+<td>Takao PMincho</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'Takaoex明朝',sans-serif;">
+<td>Takaoex明朝</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'Takao ex明朝',sans-serif;">
+<td>Takao ex明朝</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'TakaoexMincho',sans-serif;">
+<td>TakaoexMincho</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'Takao exMincho',sans-serif;" class="kugiri">
+<td>Takao exMincho</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPAP明朝',sans-serif;">
+<td>IPAP明朝</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPA P明朝',sans-serif;">
+<td>IPA P明朝</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPAPMincho',sans-serif;">
+<td>IPAPMincho</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPA PMincho',sans-serif;" class="kugiri">
+<td>IPA PMincho</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+
+<tr style="font-family:'IPAex明朝',sans-serif;">
+<td>IPAex明朝</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPA ex明朝',sans-serif;">
+<td>IPA ex明朝</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPAexMincho',sans-serif;">
+<td>IPAexMincho</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPA exMincho',sans-serif;" class="kugiri">
+<td>IPA exMincho</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPAmj明朝',sans-serif;">
+<td>IPAmj明朝</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPA mj明朝',sans-serif;">
+<td>IPA mj明朝</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPAmjMincho',sans-serif;">
+<td>IPAmjMincho</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPA mjMincho',sans-serif;" class="kugiri">
+<td>IPA mjMincho</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPAモナーP明朝',sans-serif;">
+<td>IPAモナーP明朝</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPA モナーP明朝',sans-serif;">
+<td>IPA モナーP明朝</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPA モナー P明朝',sans-serif;">
+<td>IPA モナー P明朝</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPAMonaPMincho',sans-serif;">
+<td>IPAMonaPMincho</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td>〇</td>
+<td>〇</td>
+<td>〇</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPA MonaPMincho',sans-serif;">
+<td>IPAMona PMincho</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr style="font-family:'IPA Mona PMincho',sans-serif;" class="kugiri">
+<td>IPA Mona PMincho</td>
+<td class="center">\</td>
+<td class="center">Q</td>
+<td>Windows</td>
+<td>あいうえお</td>
+<td>葛噌一二三語漢字片</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+</table>
+</div>
+<h2 id="etc">いろいろ</h2>
+
+
+</body>
+</html>

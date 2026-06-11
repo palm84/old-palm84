@@ -1,0 +1,250 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" type="text/css" href="cssmemo.css">
+<link rel="stylesheet" type="text/css" href="cssmemo_test.css">
+<link rel="start" href="./index.html">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./cssmemo-sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>pre要素とoverflow属性に纏わる苦悩 - CSSめも＠Palm84</title>
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="cssmemo_ie5.css">
+<![endif]-->
+</head>
+
+<body>
+
+<h1><a href="./css_memo_pre_overflow.html" name="top">pre要素とoverflow属性に纏わる苦悩</a></h1>
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/css_memo_pre_overflow.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/css_memo_pre_overflow.html"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/css_memo_pre_overflow.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<p class="pink">このページでは <code>meta</code> 要素で最新IEを指定しています。IE7指定ページは下記にて。</p>
+<ul>
+<li><a href="./css_memo_pre_overflow_ie7.html">pre要素とoverflow属性に纏わる苦悩【IE7版】</a></li>
+</ul>
+
+<p>※ IE以外のブラウザでは指定は無視されるので表示は（h1 以外は）変わりません。</p>
+<h2>overflow属性</h2>
+
+<p>要素がはみ出してしまう場合にどうするかという属性でありんす。pre要素については <code>overflow: auto</code> を指定するのが一般的であったりするかもしれないという気がしないでもないというお話。</p>
+
+
+<p>FirefoxやOperaではほとんど問題ないけど、IEは気絶するほど悩ましい...（おおげさ！）</p>
+
+<pre>
+margin: 0%;
+padding: 0;
+background-color: #f1f1f1;
+font-size: 100%;
+letter-spacing: 0;
+overflow: auto;
+line-height: 100%;
+width: 100%;
+border-style :none;
+border-width : 0px;
+</pre>
+
+<p>親要素の div.box には <code>padding:1em; width: 30%;</code> を指定してあります。</p>
+
+
+<div class="box">
+<pre>
+あいうえお
+かきくけこ
+</pre>
+</div>
+
+<p>Firefox + <span class="vlpg">VL <del>P</del>ゴシック</span> などでは縦スクロールバーが出てしまうことがあります。<code>line-height</code> を130%以上などに調整するか、或いは無指定の方が安全かもしれません。あっと上下 <code>padding</code> の調整の方がいいかな？</p>
+
+<ul>
+<li><span class="vlpg">VL <del>P</del>ゴシック</span></li>
+</ul>
+<div class="box">
+<pre>
+<span class="vlg">あいうえお</span>
+<span class="vlg">かきくけこ</span>
+</pre>
+</div>
+
+<ul>
+<li><span class="ipag">IPA モナー <del>P</del>ゴシック</span></li>
+</ul>
+<div class="box">
+<pre>
+<span class="monag">あいうえお</span>
+<span class="monag">かきくけこ</span>
+</pre>
+</div>
+
+<ul>
+<li><span class="msg">ＭＳ ゴシック</span> -  <code>line-height:130%</code> </li>
+</ul>
+<div class="box">
+<pre class="line130">
+<span class="msg">あいうえお</span>
+<span class="msg">かきくけこ</span>
+</pre>
+</div>
+
+<ul>
+<li><span class="vlg">VL <del>P</del>ゴシック</span> -  <code>line-height:130%</code> </li>
+</ul>
+<div class="box">
+<pre class="line130">
+<span class="vlg">あいうえお</span>
+<span class="vlg">かきくけこ</span>
+</pre>
+</div>
+
+<ul>
+<li><span class="monapg">IPA モナー <del>P</del>ゴシック</span> -  <code>line-height:130%</code> </li>
+</ul>
+<div class="box">
+<pre class="line130">
+<span class="monag">あいうえお</span>
+<span class="monag">かきくけこ</span>
+</pre>
+</div>
+
+<h3>overflowの確認</h3>
+
+<div class="box">
+<pre>
+♪ クマがただそこにいればいい～クマがただそこにいればいい～
+♪ I want kumar to stay by me
+♪ クマがただそこにいればいい～クマがただそこにいればいい～
+</pre>
+</div>
+
+<div class="box">
+<pre>
+♪ クマがただそこにいればいい～クマがただそこにいればいい～
+</pre>
+</div>
+
+<p>IE6,IE7ではおかしいですよね。スクロールバーの分が、幅・高さから引かれるようです。</p>
+<dl class="small pink">
+<dt>【追記】</dt>
+<dd>
+<p>IE8の「標準」表示では高さからは引かれない様ですね。IE8の互換表示、及びIE6,IE7だと高さも引かれて1行のテキストが見えなくなるかと。</p>
+</dd>
+</dl>
+
+<dl>
+<dt>IEのpre要素デフォルト設定</dt>
+<dd>
+<p>もちろん他のブラウザで再現できませんが...こんなかんじかと。</p>
+<pre>
+margin: 0 0 18px 0;
+padding: 0;
+font-size: 80%;
+font-family: 'ＭＳ ゴシック',monospace;
+line-height: 120%;
+letter-spacing: 0;
+width: 100%;
+border-style : none;
+border-width : 0px;
+</pre>
+</dd>
+
+</dl>
+
+<p><code>padding</code>を上下指定してみませう。</p>
+<pre>
+padding: 1em 0 1em 0;
+</pre>
+
+
+<div class="box">
+<pre class="line130padding">
+♪ クマがただそこにいればいい～クマがただそこにいればいい～
+♪ I want kumar to stay by me
+♪ クマがただそこにいればいい～クマがただそこにいればいい～
+</pre>
+</div>
+
+<div class="box">
+<pre class="line130padding">
+♪ クマがただそこにいればいい～クマがただそこにいればいい～
+</pre>
+</div>
+
+<p>IEでもマシになったかと。縦スクロールバーは邪魔なんですけどね（IE8の標準モードでは出ないかな？）。</p>
+
+<p>ただ、1行preの場合高さがちょっとなぁとは思ってしまいますが...</p>
+
+<div class="box">
+<pre class="line130padding">
+♪ クマしかいない
+</pre>
+</div>
+<h2>備考</h2>
+
+<p>IE8 について少し追記。</p>
+<p>IE7指定ページを追加。</p>
+<p>最終更新日：2010.3.30</p>
+
+<p>ちなみにここのpre設定はこんなかんじです。</p>
+
+<pre>
+margin: 3%;
+padding: 1em 0.5em;
+background-color: #f1f1f1;
+font-size: 95%;
+overflow: auto;
+border: 1px #ccc inset;
+line-height: 110%;
+width: 90%;
+</pre>
+
+<p> <code>border</code> を指定する際には <code>width</code> に注意（若干小さめにする）。 <code>width</code> を指定しないとIEでバグが出やすいです。</p>
+
+
+
+<hr>
+
+
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+
+</body>
+</html>

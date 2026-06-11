@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta name="GENERATOR" content="EdLeaf Version 1.02">
+<link rel="start" href="./index.html">
+<title>pre要素とoverflow属性に纏わる苦悩 - CSSめも＠Palm84</title>
+<style type="text/css">
+<!--
+pre {   
+background-color: #ccc;
+}
+
+.box {
+margin: 3%;
+padding: 0;
+border: 1px solid #ccc;
+width: 50%;
+}
+
+.overflow {
+overflow: auto;
+}
+
+pre.iedefault {
+margin: 0 0 18px 0;
+padding: 0;
+font-size: 80%;
+font-family: monospace;
+line-height: 120%;
+letter-spacing: 0;
+}
+
+-->
+</style>
+
+
+</head>
+<body>
+
+<h1><a name="top">pre要素とoverflow属性に纏わる苦悩</a></h1>
+<h2>overflow属性</h2>
+
+<p>要素がはみ出してしまう場合にどうするかという属性でありんす。pre要素については <code>overflow: auto</code> を指定するのが一般的であったりするかもしれないという気がしないでもないというお話。</p>
+
+
+<p>FirefoxやOperaではほとんど問題ないけど、IEは気絶するほど悩ましい...（おおげさ！）</p>
+
+<div class="box">
+<pre>
+margin: 0%;
+padding: 0;
+background-color: #f1f1f1;
+font-size: 100%;
+letter-spacing: 0;
+overflow: auto;
+line-height: 100%;
+width: 100%;
+border-style :none;
+border-width : 0px;
+</pre>
+</div>
+
+<div class="box">
+<pre class="iedefault">
+margin: 0%;
+padding: 0;
+background-color: #f1f1f1;
+font-size: 100%;
+letter-spacing: 0;
+overflow: auto;
+line-height: 100%;
+width: 100%;
+border-style :none;
+border-width : 0px;
+</pre>
+</div>
+
+<p>親要素の div.box には <code>padding:1em; width: 30%;</code> を指定してあります。</p>
+
+
+<div class="box">
+<pre >
+あいうえお
+かきくけこ
+</pre>
+</div>
+
+
+<div class="box">
+<pre class="iedefault">
+あいうえお
+かきくけこ
+</pre>
+</div>
+
+<p>Firefox + <span class="vlpg">VL Pゴシック</span> などでは縦スクロールバーが出てしまうことがあります。<code>line-height</code> を110%以上などに調整するか、或いは無指定の方が安全かもしれません。</p>
+
+<div class="box">
+<pre>
+あいうえお
+かきくけこ
+</pre>
+</div>
+
+<h3>overflowの確認</h3>
+
+<div class="box">
+<pre class="overflow">
+♪ クマがただそこにいればいい～クマがただそこにいればいい～
+♪ I want kumar to stay by me
+♪ クマがただそこにいればいい～クマがただそこにいればいい～
+</pre>
+</div>
+
+<div class="box">
+<pre class="overflow">
+♪ クマがただそこにいればいい～クマがただそこにいればいい～
+</pre>
+</div>
+
+<p>IEではおかしいですよね。スクロールバーの分が、幅・高さから引かれるようです。</p>
+
+<p><code>padding</code>を上下指定してみませう。</p>
+<pre>
+padding: 1em 0 1em 0;
+</pre>
+
+
+<div class="box">
+<pre class="overflow">
+♪ クマがただそこにいればいい～クマがただそこにいればいい～
+♪ I want kumar to stay by me
+♪ クマがただそこにいればいい～クマがただそこにいればいい～
+</pre>
+</div>
+
+<div class="box">
+<pre class="iedefault overflow">
+♪ クマがただそこにいればいい～クマがただそこにいればいい～
+♪ I want kumar to stay by me
+♪ クマがただそこにいればいい～クマがただそこにいればいい～
+</pre>
+</div>
+
+<div class="box">
+<pre class="overflow">
+♪ クマがただそこにいればいい～クマがただそこにいればいい～
+</pre>
+</div>
+
+<div class="box">
+<pre class="iedefault overflow">
+♪ クマがただそこにいればいい～クマがただそこにいればいい～
+</pre>
+</div>
+
+<p>IEでもマシになったかと。縦スクロールバーは邪魔なんですけどね。</p>
+
+<p>ただ、1行preの場合高さがちょっとなぁとは思ってしまいますが...</p>
+
+<div class="box">
+<pre class="overflow">
+♪ クマしかいない
+</pre>
+</div>
+<h2>備考</h2>
+
+<p>ちなみにここのpre設定はこんなかんじです。</p>
+
+<pre>
+margin: 3%;
+padding: 1em 0.5em;
+background-color: #f1f1f1;
+font-size: 95%;
+overflow: auto;
+border: 1px #ccc inset;
+line-height: 110%;
+width: 90%;
+</pre>
+
+<p> <code>border</code> を指定する際には <code>width</code> に注意（若干小さめにする）。 <code>width</code> を指定しないとIEでバグが出やすいです。</p>
+
+
+
+<hr>
+
+
+
+<div class="navi">
+<ul>
+<li><a href="#top">TOP</a> | </li>
+<li><a href="./css_memo.html">Index</a> | </li>
+<li><a href="./index.html">HOME</a></li>
+</ul>
+</div>
+
+
+
+</body>
+</html>

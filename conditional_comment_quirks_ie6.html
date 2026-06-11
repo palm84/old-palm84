@@ -1,0 +1,253 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="X-UA-Compatible" content="IE=6">
+<meta name="GENERATOR" content="EdLeaf Version 1.02">
+<link rel="stylesheet" type="text/css" href="conditional_quirks.css">
+<link rel="start" href="./index.html">
+<title>コンディショナルコメント (IE6)【互換モード】</title>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="conditional_quirks_ie8.css">
+<![endif]-->
+
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" href="conditional_quirks_ie7.css">
+<![endif]-->
+
+<!--[if lte IE 6]>
+<link rel="stylesheet" type="text/css" href="conditional_quirks_ie6.css">
+<![endif]-->
+</head>
+
+
+<body>
+
+<div style="text-align:center" id="top">
+<a href="./css_memo.html">index</a> | 
+<a href="./css_memo_mame.html">豆</a>
+</div>
+
+<h1>コンディショナルコメント (IE6)【互換モード】</h1>
+
+<div class="header">
+<ul class="small">
+<li><acronym title="Internet Explorer">IE</acronym> の標準モード = HTML 4.01 Transitional,URLあり</li>
+<li><acronym title="Internet Explorer">IE</acronym> の後方互換モード = HTML 4.01 Transitional,URLなし</li>
+</ul>
+
+<ul class="small">
+<li>【width 指定なし】
+	<ul>
+	<li><a href="./standard_ie6.html">標準モード</a> 【pre要素に margin:0 5% 指定】</li>
+	<li><a href="./quirks_ie6.html">互換モード</a> 【pre要素に margin:0 5% 指定】</li>
+	</ul>
+</li>
+<li>【width 指定あり】
+	<ul>
+	<li><a href="./standard_width_ie6.html">標準モード - width 指定</a> 【pre要素に margin:0 5%;width:90% 指定】</li>
+	<li><a href="./quirks_width_ie6.html">互換モード - width 指定</a> 【pre要素に margin:0 5%;width:90% 指定】</li>
+	</ul>
+</li>
+</ul>
+
+<ul class="small">
+<li><a href="./standard_test_ie6.html">標準モード【修正版】</a></li>
+<li><a href="./quirks_width_test_ie6.html">互換モード【修正版】[_width] 指定</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="conditional_comment_standard_ie6.html">標準モード</a> - 【コンディショナルコメント】（※書きかけ中）</li>
+<li>互換モード - 【コンディショナルコメント】</li>
+</ul>
+</div>
+
+
+
+<div class="mainbox">
+<div class="sidemenu">
+
+
+<p>コンニチハコンニチハ</p>
+
+<dl>
+<dt><abbr title="Internet Explorer">IE</abbr>対策</dt>
+<dd>
+<ul>
+<li>head要素に【コンディショナルコメント】記述</li>
+<li>別CSSを用意</li>
+</ul>
+</dd>
+</dl>
+
+<dl>
+<dt><abbr title="Internet Explorer">IE</abbr>6,<abbr title="Internet Explorer">IE</abbr>7対策</dt>
+<dd>
+<ul>
+<li>mainboxにbackground-colorを付ける</li>
+<li>sidemenuにはbackground-colorを付けない</li>
+</ul>
+</dd>
+</dl>
+</div>
+
+
+<div class="contents">
+<h2>てすと</h2>
+
+<p>【注】<abbr title="Internet Explorer">IE</abbr>は別CSSで（主な）ブロックレベル要素はすべて <code>width:100%;</code> </p>
+
+<ul>
+<li>width指定なし - <code>margin: 0 5% 2%;</code> (<code>padding: 1em 2%;</code>)</li>
+</ul>
+<div class="box">
+<pre>
+1あいうえおかきくけこさしすせそあいうえ
+2あいうえおかきくけこさしすせそあいうえ
+3あいうえおかきくけこさしすせそあいうえ
+4あいうえおかきくけこさしすせそあいうえ
+5あいうえおかきくけこさしすせそあいうえ
+</pre>
+<pre>
+1あいうえおかきくけこさしすせそあいうえ
+2あいうえおかきくけこさしすせそあいうえ
+3あいうえおかきくけこさしすせそあいうえ
+4あいうえおかきくけこさしすせそあいうえ
+5あいうえおかきくけこさしすせそあいうえ
+</pre>
+</div>
+
+<ul>
+<li>リスト
+	<ul>
+	<li>ネスト</li>
+	<li>nest</li>
+	</ul>
+</li>
+<li>list</li>
+<li>LIST</li>
+</ul>
+
+
+<dl>
+<dt>Opera向け</dt>
+<dd>
+<p><strong>div.contents</strong>に <dfn>width</dfn> を指定しない</p>
+<p><dfn><strong>pre</strong></dfn> に <dfn>width</dfn> を指定しない</p>
+</dd>
+
+<dt><abbr title="Internet Explorer">IE</abbr>6/<abbr title="Internet Explorer">IE</abbr>7向け</dt>
+<dd>
+<p>（別CSSで）主なブロックレベル要素に<strong>width:100%</strong>を指定。カラムの <dfn>margin</dfn> , <dfn>padding</dfn> を微調整。</p>
+</dd>
+
+</dl>
+<h2>コンディショナルコメント</h2>
+
+<p>head要素内に記述する。<abbr title="Internet Explorer">IE</abbr>7と<abbr title="Internet Explorer">IE</abbr>6を別のスタイルシートへ。</p>
+<p>link要素で通常CSSを指定、且つコメントで<abbr title="Internet Explorer">IE</abbr>用CSSを指定する場合は、別適用ではなく<abbr title="Internet Explorer">IE</abbr>用CSSで上書きとなるらしい。</p>
+
+<pre>
+&#060;!--[if <strong class="ms rd">gte</strong> IE 8]&#062;
+&#060;link rel=&#034;stylesheet&#034; type=&#034;text/css&#034; href=&#034;conditional_quirks_ie8.css&#034; /&#062;
+&#060;![endif]--&#062;
+
+&#060;!--[if IE 7]&#062;
+&#060;link rel=&#034;stylesheet&#034; type=&#034;text/css&#034; href=&#034;conditional_quirks_ie7.css&#034; /&#062;
+&#060;![endif]--&#062;
+
+&#060;!--[if lte IE 6]&#062;
+&#060;link rel=&#034;stylesheet&#034; type=&#034;text/css&#034; href=&#034;conditional_quirks_ie6.css&#034; /&#062;
+&#060;![endif]--&#062;
+</pre>
+
+<ul>
+<li><a href="./conditional_quirks.css">conditional_quirks.css</a></li>
+<li><a href="./conditional_quirks_ie8.css">conditional_quirks_ie8.css</a></li>
+<li><a href="./conditional_quirks_ie7.css">conditional_quirks_ie7.css</a></li>
+<li><a href="./conditional_quirks_ie6.css">conditional_quirks_ie6.css</a></li>
+</ul>
+<p>（今のところ）<abbr title="Internet Explorer">IE</abbr>用はどれも同じ内容。</p>
+
+<h2>overflow 確認</h2>
+
+<p>【注】<abbr title="Internet Explorer">IE</abbr>は別CSSで（主な）ブロックレベル要素はすべて <code>width:100%;</code> </p>
+
+<dl>
+<dt>width指定なし - <code>margin: 0 5% 2%;overflow:auto;</code>(<code>padding: 1em 2%;</code>)</dt>
+<dd>
+<div class="box">
+<pre>
+1あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+</pre>
+</div>
+</dd>
+
+<dt>width指定なし - <code>margin: 0 5% 2%;overflow:auto;</code>(<code>padding: 1em 2%;</code>)</dt>
+<dd>
+<div class="box">
+<pre>
+1あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+2あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+3あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+4あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+5あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+</pre>
+</div>
+</dd>
+
+<dt>width指定なし - <code>margin: 0 5% 2%;overflow:scroll;</code>(<code>padding: 1em 2%;</code>)</dt>
+<dd>
+<div class="box">
+<pre class="scroll">
+1あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+2あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+3あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+4あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+5あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+</pre>
+</div>
+</dd>
+
+<dt>width指定なし - <code>margin: 0 5% 2%;overflow:hidden;</code>(<code>padding: 1em 2%;</code>)</dt>
+<dd>
+<div class="box">
+<pre class="hidden">
+1あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+2あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+3あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+4あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+5あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+</pre>
+</div>
+</dd>
+</dl>
+
+<p>Firefox + VL ゴシック（VL Pゴシック）では、不要な縦スクロールバーが出ることがある（上下 <dfn>padding</dfn> か <dfn>line-height</dfn> 調整で回避）。</p>
+
+
+
+</div>
+</div>
+
+
+<div class="footer">
+
+<p>最終更新日：2010.5.3</p>
+<div style="text-align:center">
+<a href="#top">TOP</a> | 
+<a href="./css_memo.html">index</a> | 
+<a href="./css_memo_mame.html">豆</a>
+</div>
+
+</div>
+
+<hr>
+
+<address>Written by yassy</address>
+
+</body>
+</html>

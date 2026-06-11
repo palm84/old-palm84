@@ -1,0 +1,3858 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="GENERATOR" content="EdTex Version 3.11">
+<link rel="START" href="./">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>【私的】Windowsのコマンドラインツール＠Palm84</title>
+<style type="text/css">
+<!--
+h4 {
+	font-size: 1em;
+	font-weight: bold;
+	margin:0.5em 0.5em 0.5em 1em;
+	padding-left: 0.5em;
+	border-left: 1em solid #ccc;
+	border-right: 1em solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+}
+
+dl.small ul,dl.small ul {
+	font-size: 1.1em;
+}
+
+/*===== columns =====*/
+
+.main {
+	border-color: #ccc;
+}
+
+.sidebar {
+	border-color: #ffd;
+}
+
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+</head>
+
+
+<body>
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+<script type="text/javascript">
+<!--
+setTimeout("link()", 0);
+function link(){
+location.href='https://www.palm84.com/entry/commandline';
+}
+-->
+</script>
+
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>移行作業中です...</ins></dt>
+<dd>
+<p>はてなブログの該当ページへ<strong>リダイレクトします</strong>。お手数をおかけします。ご容赦ください。</p>
+<ul>
+<li><a href="https://www.palm84.com/entry/commandline">【私的】Windowsのコマンドラインツール - palm84.com</a> <a href="https://b.hatena.ne.jp/entry/https://www.palm84.com/entry/commandline" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://www.palm84.com/entry/commandline" alt="" class="http-bookmark" /></a></li>
+<li>このページの旧URLは
+	<ul>
+	<li> <code><strong>http://www10.plala.or.jp/palm84/commandline.html</strong></code> </li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+<h1><a href="./commandline.html"><span class="tokai1">【私的】Windowsのコマンドラインツール</span></a></h1>
+
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+<ul>
+<li><a href="#about">これって何</a> <kbd class="ak">3</kbd></li>
+<li><a href="#tool">基本ツール</a> <kbd class="ak">4</kbd></li>
+<li><a href="#support_tool">サポート ツール</a> <kbd class="ak">5</kbd></li>
+<li><a href="#wget">wget.exe で環境準備</a> <kbd class="ak">6</kbd></li>
+<li><a href="#batfiles">自作バッチ</a> <kbd class="ak">7</kbd></li>
+<li><a href="#fdos_scl">FreeDOS起動FD</a> <kbd class="ak">8</kbd></li>
+<li><a href="#command_option">コマンド・オプション</a> <kbd class="ak">9</kbd></li>
+</ul>
+
+<ul>
+<li><a href="#win_command">Windows コマンド</a></li>
+<li><a href="#for">for 構文</a></li>
+<li><a href="#batfiles2">自作バッチ その2</a></li>
+<li><a href="#memo">めも</a></li>
+<li><a href="#tips">私的Tips</a></li>
+<li><a href="#link">参考リンク</a></li>
+</ul>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+
+<div class="ct">
+<p><a href="http://getfirefox.jp/" title="Get Firefox - Web を取り戻せ">
+<img src="./images/takebacktheweb_small.png" width="125" height="50" alt="Get Firefox"></a></p>
+
+
+
+
+<p class="small">リンク is フリーダム<span class="ms">♪</span></p>
+
+</div>
+</div>
+
+
+<div class="main">
+
+<p><script src="http://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/commandline.html"><img src="http://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/commandline.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<p class="small">2010.3.8 Windows 7 対応について確認中...
+<br>2010.6.3 00_Tool_download.bat などの一部URL,ファイル名を更新
+<br>2012.3.20 00_Tool_download.bat などの一部URL,ファイル名を更新,自作ばっち追加
+<br>最終更新日 2012.3.20</p>
+
+<p><strong class="ms">※Windows XP</strong> 用です。</p>
+<p>あぁ私的、とっても私的（何）・・・</p>
+
+<dl class="palmst small">
+<dt>お約束？</dt>
+<dd>
+<p>尚、ここのバッチファイルについては、はなはだ初心者レベルで大したことしてませんが、内容及び実行については、お約束の“<em>at your own risk</em>”ということで。少しずつでもよくなっていけたらいいなと思ってはいるのですが...</p>
+<p>Vista 以降では<del>確認してません</del> <ins>確認中です</ins>...。Windows 2000 でも一応は確認してますが自信ないです...。</p>
+</dd>
+</dl>
+<h2><a href="#about" name="about" accesskey="3"><span class="tokai1">これって何</span></a> <kbd class="ak">3</kbd></h2>
+
+<p>Windows XP のコマンドラインで使えるツールのめも。定型処理はバッチファイルで。</p>
+
+<p>インストール不要なので、USBメモリなどで持ち運びもおｋ。</p>
+
+
+<p>他のPCでも環境を簡単に作れる、バッチファイル作成。ダウンロードなども自動。ってか、USBメモリにコピーしてあればイランけど...</p>
+
+<p>...ってか、Linux では標準でできることばっかりだったりだなぁ...</p>
+
+<p>...あっと、Windows の場合はコマンドの方が楽なんてことはほとんどないと思います。この目的はあくまでバッチファイルでの定型処理、及びプチUnix環境ってとこです。</p>
+
+<h2><a href="#tool" name="tool" accesskey="4"><span class="tokai1">基本ツールのリンク</span></a> <kbd class="ak">4</kbd></h2>
+
+<p>どれもインストール不要で必要ファイルをコピーしただけで使えるもの。また、コマンドライン、バッチファイルでの実行ももちろん可能なツール類。</p>
+
+<dl>
+<dt><a href="http://www.info-zip.org/UnZip.html">UnZip</a></dt>
+<dd>
+<p>zip の展開。 <code>unzip</code>.exeは<strong class="ms">UnxUtils</strong>にも入ってるのに、なぜかというと...こっちは元々Win32版だし、配布ファイルが自己解凍式だから。（※ 後述の <code>wget</code>.exeで自動ダウンロード＆自動展開に使うため）</p>
+<p class="small">※ってか、Windowsは標準コマンドでzip解凍できないのはなんだかなぁ。</p>
+</dd>
+
+<dt><a href="http://w32tex.org/index-ja.html">W32TeX</a></dt>
+<dd>
+<p><code>tar</code>.exe, <code>gzip</code>.exe, <code>bzip2</code>.exeなど。<code>tar</code> コマンドでjオプションも使えます。（※UnxUtilsのはjオプションだめだった）</p>
+</dd>
+
+<dt><a href="http://www.rarlab.com/">UnRAR for Windows</a></dt>
+<dd>
+<p>RARファイルの解凍。</p>
+<p>UnxUtils なんかにも入ってますが、新しいほうが安全かなと。<span class="small">（※でもコマンドラインから解凍するのにはunrar.exeを使うのでUnxUtilsを先に入れとくというウロボロス...）</span></p>
+</dd>
+
+<dt><a href="http://mouneru.web.fc2.com/cdrecord_fe/cdr_fe.htm">CDRtoolsバイナリ</a></dt>
+<dd>
+<p class="pink">【注意】2012.3.20 現在、サイトはありますがファイルがリンク切れになってます。</p>
+<p class="small pink">※ <strong>Windows 7 / Vista 未確認</strong>。</p>
+
+<p><code>mkisofs.exe</code>, <code>cygwin1.dll</code></p>
+<p>isoイメージの作成。BootableCDWizard BCDW マルチブートCDやISOLINUXのisoイメージ作成。</p>
+
+<p>下記は 未確認ですがまぁまぁ新しい Windows 版</p>
+<ul>
+<li><a href="http://sourceforge.jp/projects/sfnet_cdrtoolswin/">cdrtoolswin プロジェクト日本語トップページ - SourceForge.JP</a></li>
+</ul>
+
+<p>下記に古いですが Windows 版オリジナルがあります。</p>
+<ul>
+<li><a href="ftp://ftp.berlios.de/pub/cdrecord/alpha/win32/">ftp://ftp.berlios.de/pub/cdrecord/alpha/win32/ の一覧</a></li>
+</ul>
+</dd>
+
+
+<dt><a href="http://www.chrysocome.net/dd">dd for windows - chrysocome.net</a></dt>
+<dd>
+<p class="small pink">※ Windows 7 / Vista では一部の機能は「管理者として実行」する必要があります。</p>
+
+<p><code>dd</code>.exe。Windows用 <code>dd</code> コマンド。制限あるけどイメージの作成やFD書き込みに便利。</p>
+<dl class="small palmst">
+<dt>注意点</dt>
+<dd>
+<ul class="small">
+<li>制限あり</li>
+</ul>
+</dd>
+</dl>
+</dd>
+
+<dt><a href="http://unxutils.sourceforge.net/UnxUtils.html">Native Win32 ports of some GNU utilities</a> (<strong class="ms">UnxUtils</strong>)</dt>
+<dd>
+<p>Unixコマンドがいっぱい。 <code>sed</code> , <code>split</code> , <code>unzip</code> , <code>unrar</code> , <code>diff</code> , <code>grep</code> など</p>
+<dl class="small palmst">
+<dt>注意点</dt>
+<dd>
+<ul class="small">
+<li>Windowsの内部コマンドと一部重複（echo,mkdir,type などWin優先）</li>
+<li>PATHの設定に注意</li>
+<li>find,sort など重複する</li>
+<li>日本語ファイル名など制限あり</li>
+</ul>
+</dd>
+</dl>
+</dd>
+
+
+<dt><a href="http://sourceforge.jp/projects/sfnet_vfd/">vfd</a> (Virtual Floppy Drive)</dt>
+<dd>
+<p><code>vfd21-080206.zip</code></p>
+<p class="small pink">※ Windows 7 / Vista では「管理者として実行」しませう。（※ <del>エクスプローラーではドライブ文字が出ませんが...</del> <ins>ドライブ文字設定で「固定・グローバル」にチェックしないとドライブ文字は出ません</ins>）。<strong>64-bit 非対応</strong>。</p>
+
+<p>仮想FDドライブ。GUIもあり。実FDと違ってメチャ早いのでかなり便利。</p>
+
+<ul>
+<li><a href="http://sourceforge.jp/magazine/11/08/25/0830211">仮想的なフロッピーディスクドライブを作成する「Virtual Floppy Drive」 - SourceForge.JP Magazine : オープンソースの話題満載</a></li>
+</ul>
+
+
+<dl class="small palmst">
+<dt>注意点</dt>
+<dd>
+<ul class="small">
+<li>VMware Player など仮想マシンと同時使用すると危険かも？...Windowsがフリーズしました。</li>
+<li>もしかすると、Daemon Tools とかも同時使用すると危険なのかもしれないような関係ないような</li>
+</ul>
+</dd>
+</dl>
+</dd>
+
+<dt><a href="http://grub4dos.sourceforge.net/wiki/index.php/Main_Page">GRUB for DOS</a></dt>
+<dd>
+<p>ブートローダ<a href="http://www.gnu.org/software/grub/">GNU GRUB</a>の多機能版。これの起動ディスクは必需品？</p>
+</dd>
+
+<dt><a href="http://sourceforge.net/project/showfiles.php?group_id=104188&#038;package_id=215976">grubinst </a>
+</dt>
+<dd>
+<p class="small pink">※ <strong>Windows 7 / Vista 未確認</strong>。</p>
+
+<p>Windows上でGRUBをインストール。GUI版もあり。</p>
+</dd>
+
+<dt><a href="http://syslinux.zytor.com/wiki/index.php/The_SYSLINUX_Project">The SYSLINUX Project - Syslinux Wiki</a></dt>
+<dd>
+<p class="small pink">※ Windows 7 / Vista では「管理者として実行」しませう。</p>
+
+<p>USBメモリにブートローダをインストール。ISOLINUX CDにメニューを入れたり。</p>
+</dd>
+
+<dt><a href="http://www.legroom.net/software/uniextract">Universal Extractor | LegRoom.net</a></dt>
+<dd>
+<p>多種の書庫に対応した展開専用ツール。これの <strong class="ms">UniExtract Binary Archive</strong> はインストール不要、GUIもあり。というか小さなパッケージを集めてGUIを付けたようなかんじかな。</p>
+<p>ISOイメージやFDイメージの展開も可能なんで便利。</p>
+<dl class="small palmst">
+<dt>注意点</dt>
+<dd>
+<ul class="small">
+<li>対象ファイルのパスに日本語が含まれてるとだめみたい</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+
+<dl class="palmst small">
+<dt>安全面について</dt>
+<dd>
+<p>UnxUtilsに含まれるunzip,unrarやUniExtractに含まれるunrarなどバージョンがやや古い。</p>
+<p>コマンドだから安全ということはないし、GUI最新版でも同様、信用できないファイルなど展開<strong>しないように注意しておく</strong>のが吉。圧縮・解凍ソフトの脆弱性はしょっちゅう見つかってるので...</p>
+</dd>
+</dl>
+
+
+<h2><a href="#support_tool" name="support_tool" accesskey="5"><span class="tokai1">サポート ツール</span></a> <kbd class="ak">5</kbd></h2>
+
+<p>インストールが必要ですが（※コマンドの展開のみも一応できますけど...）、便利なコマンドがいっぱい。</p>
+
+<ul class="small">
+<li><code>filever.exe</code> - 
+	<ul>
+	<li><a href="http://support.microsoft.com/kb/913111/ja">特定の Windows のファイルに関する情報を取得するために、 Filever.exe ツールを使用する方法</a></li>
+	</ul>
+</li>
+<li><code>browstat.exe</code> - 
+	<ul>
+	<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/406browstat/browstat.html">Windowsネットワークのマスタ・ブラウザを調査する － ＠IT</a></li>
+	</ul>
+</li>
+<li><code>dskprobe.exe</code> - HDのセクタを直接見る</li>
+<li><code>extract.exe</code> - CAB ファイルからファイルを抽出（XPだけ？）</li>
+</ul>
+
+<dl>
+<dt>Windows XP Service Pack 2</dt>
+<dd>
+<ul>
+<li><a href="http://support.microsoft.com/kb/838079">Windows XP Service Pack 2 サポート ツール</a>
+	<ul class="small">
+	<li><a href="http://www.microsoft.com/downloads/details.aspx?familyid=49ae8576-9bb9-4126-9761-ba8011fabf38&#038;displaylang=ja">ダウンロードの詳細 : 上級者用サポート ツール</a></li>
+	<li><a href="http://support.microsoft.com/kb/314203/ja">コマンド プロンプトから Windows サポート ツールをインストールする方法</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>Windows 2000 SP4 サポート ツール</dt>
+<dd>
+<ul>
+<li><a href="http://support.microsoft.com/kb/812809/ja">Windows 2000 SP4 サポート ツール</a>
+	<ul class="small">
+	<li><a href="http://www.microsoft.com/japan/windows2000/downloads/servicepacks/sp4/supporttools.mspx">Windows 2000 SP4 サポート ツール（ダウンロード）</a></li>
+	<li><a href="http://support.microsoft.com/kb/246926/ja">Windows 2000 に含まれるサポート ツール フォルダの一覧</a></li>
+	</ul>
+</li>
+</ul>
+<p class="small">2000標準では入っていない、 <code>reg.exe</code> や <code>tlist.exe</code> (tasklist), <code>kill.exe</code> (taskkill)なども...</p>
+</dd>
+</dl>
+
+<dl class="small">
+<dt>リソースキット・ツール</dt>
+<dd>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/379reskittool/reskittool.html">＠IT：Windows TIPS -- Hints：Windows OS向けリソースキット・ツールを入手する</a></li>
+<li><a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=9d467a69-57ff-4ae7-96ee-b18c4790cffd&amp;DisplayLang=en&#038;displaylang=en">Download details: Windows Server 2003 Resource Kit Tools</a>
+	<ul>
+	<li class="small"><a href="http://www.microsoft.com/japan/windowsserver2003/techinfo/reskit/resourcekit.mspx">Microsoft Windows Server 2003 リソース キット</a></li>
+	</ul>
+</li>
+</ul>
+<p>2003用ですが、XPでも一応使えてます。 <strong class="ms">robocopy</strong> は同期ができるのでバックアップにはxcopyなんかよりかなり便利。</p>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/877robomir/robomir.html">robocopyでフォルダをバックアップ／同期させる － ＠IT</a></li>
+</ul>
+</dd>
+</dl>
+
+<h2><a href="#wget" name="wget" accesskey="6"><span class="tokai1">wget.exe で環境準備</span></a> <kbd class="ak">6</kbd></h2>
+
+<dl class="palmst small pink">
+<dt>【ちょっと変更中...】</dt>
+<dd>
+<p>（<em>使ってる人いないと思いますが</em>、）ディレクトリ名を変更してるので以前のやつは動かないかも。PATHの設定が違ってくるので。</p>
+</dd>
+</dl>
+
+<p class="small">※バッチファイルは <strong class="ms">Windows XP</strong> 用なのでご注意。Vista以降では確認していません。</p>
+
+<dl>
+<dt>wget</dt>
+<dd>
+<ul>
+<li><a href="http://www.christopherlewis.com/WGet/WGetFiles.htm">Windows Wget files</a>
+	<ul>
+	<li><a href="http://gnuwin32.sourceforge.net/packages/wget.htm">Wget for Windows</a></li>
+	</ul>
+</li>
+</ul>
+<p><del>最新のSTABLE</del> <ins>Binaries</ins>, <ins>Dependencies</ins>をダウンロードして、wget用ディレクトリを作成、下記ファイルを展開する。</p>
+<pre>
+\---wget
+        libeay32.dll
+        libiconv2.dll
+        libintl3.dll
+        libssl32.dll
+        wget.exe
+</pre>
+
+<ul>
+<li><a href="http://www.gnu.org/software/wget/">GNU Wget</a>
+	<ul>
+	<li><a href="http://www.gnu.org/software/wget/manual/html_node/index.html">GNU Wget 1.11.4 Manual</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p>作業用ディレクトリに wget を準備すれば、自動ダウンロードするバッチファイルを作成。</p>
+
+<ul>
+<li><a href="../archives/commandline/00_Tool_download.bat.txt">00_Tool_download.bat</a>(.txt)</li>
+<li><a href="../archives/commandline/toollist.txt">toollist.txt</a> - ツールのチェックリスト（ディレクトリ名）</li>
+<li><a href="../archives/commandline/url_list.txt">url_list.txt</a> - ツールのダウンロードURL</li>
+<li class="small"><a href="../archives/commandline/00_Command_only.bat.txt">00_Command_only.bat</a>(.txt)</li>
+</ul>
+
+<dl class="palmst pink small">
+<dt>2012.3.20 更新</dt>
+<dd>
+<ul>
+<li><a href="../archives/commandline/00_changelog.txt">00_changelog.txt</a></li>
+</ul>
+<p>ツール類のURLを更新。</p>
+</dd>
+</dl>
+
+<pre>
+適当なディレクトリ:.
+|   <strong class="ms">00_Tool_download.bat</strong>
+|   00_Command_only.bat
+|   <strong class="ms">toollist.txt</strong>
+|   <strong class="ms">url_list.txt</strong>
+|       
++---backup
+|       
++---download_files
+|       
+\---<strong class="ms">wget</strong>
+        libeay32.dll
+        libiconv2.dll
+        libintl3.dll
+        libssl32.dll
+        wget.exe
+</pre>
+
+<div class="pc">
+<table summary="ダウンロード容量" class="ms">
+<caption>ダウンロード容量</caption>
+<tr>
+	<td></td><td>ダウンロード</td><td>展開後</td>
+</tr>
+<tr>
+	<td>* UnZip *</td><td class="rt">404 KB</td><td class="rt">584 KB</td>
+</tr>
+<tr>
+	<td>* W32TeX *</td><td class="rt">842 KB</td><td class="rt">1.29 MB</td>
+</tr>
+<tr>
+	<td>* UnRAR *</td><td class="rt">192 KB</td><td class="rt">199 KB</td>
+</tr>
+<tr>
+	<td>* Virtual Floppy Drive *</td><td class="rt">140 KB</td><td class="rt">403 KB</td>
+</tr>
+<tr>
+	<td>* cdrtools *</td><td class="rt">2.60 MB</td><td class="rt">5.75 MB</td>
+</tr>
+<tr>
+	<td>* dd for Windows *</td><td class="rt">187 KB</td><td class="rt">356KB</td>
+</tr>
+<tr>
+	<td>* SYSLINUX 4.05 *</td><td class="rt">7.32 MB</td><td class="rt"><span class="red">18.9 MB</span></td>
+</tr>
+<tr>
+	<td>* GRUB for DOS(0.4.4) *</td><td class="rt">800 KB</td><td class="rt">1.57 MB</td>
+</tr>
+<tr>
+	<td>* grubinst *</td><td class="rt">68 KB</td><td class="rt">177 KB</td>
+</tr>
+<tr>
+	<td>* UnxUtils *</td><td class="rt">3.20 MB</td><td class="rt">6.17 MB</td>
+</tr>
+<tr>
+	<td>* UniExtract Binary Archive *</td><td class="rt">4.94 MB</td><td class="rt"><span class="red">10.7 MB</span></td>
+</tr>
+<tr>
+	<td>* Wget for Windows *</td><td class="rt">2.18 MB</td><td class="rt">2.83 MB</td>
+</tr>
+<tr>
+	<td>計</td><td class="rt">約 <strong class="ms">23 MB</strong></td><td class="rt">約 <strong class="ms">49 MB</strong></td>
+</tr>
+</table>
+</div>
+
+<p><strong class="ms">SYSLINUX</strong> と <strong class="ms">UniExtract</strong> が容量デカイ。不要なら外した方がいいかも。 <code>toollist.txt</code> 内にないものはダウンロードしません。</p>
+
+<p>再実行時について、<code>toollist.txt</code>とディレクトリを照らし合わせ。展開済（\リストのディレクトリ名があっるかどうか）のものはダウンロード・再展開はしない。</p>
+
+<p>ディレクトリ名はバージョン名なしに変更。更新ややこしいし。</p>
+<pre>
+適当なディレクトリ:.
+|   
+|   <strong class="ms">00_Tool_download.bat</strong>
+|   Command_only.bat
+|   <strong class="ms">toollist.txt</strong>
+|   <strong class="ms">url_list.txt</strong>
+|   hogehoge.bat
+|   hagehage.bat
+|   kumakuma.bat
+|   
++---backup
+|   
++---cdrtools
+|
++---dd
+|
++---download_files
+|
++---syslinux
+|
++---texinst
+|
++---uniextract
+|
++---unrarw32
+|
++---UnxUtils
+|
++---<del>unz552xN</del> <ins>unzipxN</ins>
+|
++---vfd
+|
+\---wget
+
+</pre>
+
+<dl class="small">
+<dt>別の wget</dt>
+<dd>
+<p>※こっちは以前に使ってたやつ。ちょっと古いかな？</p>
+<ul>
+<li><a href="http://xoomer.alice.it/hherold/">Heiko Herold's windows wget spot</a>
+	<ol>
+	<li><strong class="ms">THIS ONE: 1.10.2 complete</strong> をクリック </li>
+	<li>wget-1.10.2b.zip </li>
+	<li>[wgetフォルダ]を作成して、解凍したファイルをコピー </li>
+	<li><strong class="ms">00_Tool_download.bat</strong>,  <strong class="ms">toollist.txt</strong> ,  <strong class="ms">url_list.txt</strong> を[wgetフォルダ]の一つ上のディレクトリにコピー、実行するとツール類のダウンロードが始まり、勝手に展開します</li>
+</ol>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+<h2><a href="#batfiles" name="batfiles" accesskey="7"><span class="tokai1">自作バッチ</span></a> <kbd class="ak">7</kbd></h2>
+
+<dl class="palmst small pink">
+<dt>【すみませんすみません。。】</dt>
+<dd>
+<p>現在、<del>URLの変更やバージョンアップ（ファイル名変更）などでダウンロードできないものがあると思われます。後日修正致します。今やってるのですが一つ直すと次から次へなので、すみません</del>。</p>
+<p>【2009.0707追記】だいたい修正しました。（筈ですが。。。）</p>
+<p class="small">「下手なやつが作ると、もう～」ですね。（滝汗）</p>
+</dd>
+</dl>
+
+<p class="small">※バッチファイルは <strong class="ms">Windows XP</strong> 用なのでご注意。Vista以降では確認していません。</p>
+
+<p><strong>上記の <del>wget.exe 用に作った</del> <ins>作業ディレクトリ</ins>に置いて実行すれば</strong>いいはずです...</p>
+
+<ul class="small">
+<li><a href="#freedos">FreeDOS スペシャル（謎）起動ディスク作成</a></li>
+<li><a href="#fdimage">FDイメージ関連</a></li>
+<li><a href="#grub4dos">GRUB 起動ディスク</a></li>
+<li><a href="#md5sum">MD5チェックサム</a></li>
+<li><a href="#dd">ddコマンドでMBR・ブートセクタのバック</a></li>
+<li><a href="#uniextract">ISOイメージの展開</a></li>
+<li><a href="#makeiso">CDからISOイメージ作成</a></li>
+<li><a href="#syslinux">SYSLINUX のインストール</a></li>
+<li><del>マルチブートUSBメモリ</del></li>
+<li><del>マルチブートCD/DVD</del></li>
+</ul>
+
+<dl class="palmst small">
+<dt>vfd.exe (Virtual Floppy Drive) 使用時の注意点</dt>
+<dd>
+<p>VMware Player を起動するとWindowsがフリーズしてしまうことがありました。よって、 <strong class="ms">vfd.exe</strong> 使用時は他の仮想マシンなどを起動しないように注意。また、念の為、Daemon Tools などの仮想ドライブソフトも停止させた方が安全かもしれません。</p>
+<p>バッチファイルでは、 <strong class="ms">vfd.exe</strong> 使用後はエラーのあるなしに関わらずアンインストール処理をしていますが、使用後はWindowsを再起動しておいた方がいいかもしれません。</p>
+<p>※仮想ドライブのドライブ文字は、(V,W,X,Y,Z) から使用中でないものを一時割当します。その際に <code>reg.exe</code> でレジストリを見るのでWindows 2000 では<a href="http://www.microsoft.com/japan/windows2000/downloads/servicepacks/sp4/supporttools.mspx">サポート・ツール</a>が必要です。</p>
+</dd>
+</dl>
+
+
+
+
+<h3><a href="#freedos"><span class="ms">■</span></a> <a name="freedos">FreeDOS スペシャル（謎）起動ディスク作成</a></h3>
+
+<p>後述...長いので（笑）。</p>
+
+
+<h3><a href="#fdimage"><span class="ms">■</span></a> <a name="fdimage">FDイメージ関連</a></h3>
+
+<dl>
+<dt>FDイメージをファイルに展開</dt>
+<dd>
+<p class="small pink">※ Windows 7 / Vista 確認（※ <strong>64-bit はだめ</strong>）。</p>
+
+<ul class="small">
+<li>必要コマンド - <code>.\vfd\vfd.exe</code></li>
+</ul>
+
+<p class="small">※reg.exe でレジストリを見るので、Windows 2000 ではサポート・ツールが必要。</p>
+<p>UniExtractでもできるし、他にもGUIツールはあるけど、ファイル名を<strong>確実に</strong>小文字で（大文字と区別して）出せるのはvfd.exeだけのような（Super ウルトラISOでは8.3形式）。バックグラウンドで一時マウントして展開。</p>
+<ul>
+<li><a href="../archives/commandline/backup/FDimage_to_Files.bat.txt">FDimage_to_Files.bat</a>(.txt)</li>
+</ul>
+</dd>
+
+<dt>FDからイメージファイル作成</dt>
+<dd>
+<p class="small pink">※ Windows 7 32/64-bit 確認（※ <strong>Vista 未確認</strong>）。</p>
+
+<ul class="small">
+<li>必要コマンド - <code>dd.exe</code></li>
+</ul>
+
+<p>ぶっちゃけ RawWrite for Windows の方が簡単かと。これは <code>dd.exe</code> で。</p>
+<ul>
+<li><a href="../archives/commandline/backup/Floppy_to_Image.bat.txt">Floppy_to_Image.bat</a>(.txt)</li>
+</ul>
+</dd>
+
+<dt>FDイメージをFDへ書き込み</dt>
+<dd>
+<p class="small pink">※ Windows 7 32/64-bit 確認（※ <strong>Vista 未確認</strong>）。</p>
+
+<ul class="small">
+<li>必要コマンド - <code>dd.exe</code></li>
+</ul>
+
+<p>これも <code>dd.exe</code> で。</p>
+<ul>
+<li><a href="../archives/commandline/backup/FDImage_to_Floppy.bat.txt">FDImage_to_Floppy.bat</a>(.txt)</li>
+</ul>
+</dd>
+</dl>
+
+
+<h3><a href="#grub4dos"><span class="ms">■</span></a> <a name="grub4dos">GRUB 起動ディスク</a></h3>
+
+<p>0.4.3 のイメージは配布されてないし...</p>
+<dl>
+<dt>GRUB(for DOS)起動ディスク作成</dt>
+<dd>
+<p class="small pink">※ Windows 7 32/64-bit 確認（※ <strong>Vista 未確認</strong>）。</p>
+
+<ul class="small">
+<li>必要コマンド - <code>grubinst.exe</code></li>
+<li>必要ファイル - <strong class="ms">grldr</strong></li>
+<li>必要ファイル - <strong class="ms">menu.lst</strong></li>
+</ul>
+
+<p>直接FDへ書き込み</p>
+<ul>
+<li><a href="../archives/commandline/backup/GRUB_Floppy_Write.bat.txt">GRUB_Floppy_Write.bat</a>(.txt)</li>
+</ul>
+</dd>
+
+<dt>GRUB(for DOS)起動ディスクイメージ作成</dt>
+<dd>
+<p class="small pink">※ Windows 7 32-bit 確認（※ <strong>Vista 未確認、64-bit はだめ</strong>）。</p>
+
+<ul class="small">
+<li>必要コマンド - <code>grubinst.exe</code></li>
+<li>必要コマンド - <code>.\vfd\vfd.exe</code></li>
+<li>必要コマンド - <code>dd.exe</code></li>
+<li>必要ファイル - <strong class="ms">grldr</strong></li>
+<li>必要ファイル - <strong class="ms">menu.lst</strong></li>
+</ul>
+<p class="small">※reg.exe でレジストリを見るので、Windows 2000 ではサポート・ツールが必要。</p>
+<p><code>dd.exe</code> で空イメージ作って、<code>vfd.exe</code>をバックグランドで一時起動、マウントしてコピー。すべてイメージファイルへの操作。</p>
+<ul>
+<li><a href="../archives/commandline/backup/GRUB_Image_Make.bat.txt">GRUB_Image_Make.bat</a>(.txt)</li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#md5sum"><span class="ms">■</span></a> <a name="md5sum">MD5チェックサム</a></h3>
+
+<dl class="palmst pink">
+<dt>右クリックの「送る」でごにょごにゅ</dt>
+<dd>
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20091107/1257527264">右クリックの「送る」でMD5をチェックするの巻</a></li>
+</ul>
+</dd>
+</dl>
+
+<p>MD5チェックサムの計算と照合</p>
+<p><del>2</del><ins>3</ins>種類作ってます...</p>
+<p class="small">※チェックしたファイル名の付け方がいまいちだなぁ。なんかいい方法ないかな？</p>
+
+<dl>
+<dt>指定ディレクトリのファイル</dt>
+<dd>
+<p class="small pink">※ <strong>Windows 7 / Vista 未確認</strong>。</p>
+
+<ul class="small">
+<li>必要コマンド - <code>md5sum.exe</code></li>
+<li>必要コマンド - <code>diff.exe</code></li>
+</ul>
+
+<p>（※<strong>サブディレクトリ除く</strong>）</p>
+<p>指定ディレクトリのファイルのみ計算。<span class="ms">md5sum</span> ディレクトリを作成して <span class="ms">md5.txt</span> 保存。</p>
+<p>照合は、指定ディレクトリのファイルのみ計算して <span class="ms">.\md5sum.\md5_check.txt</span> 作成。<code>diff</code> コマンドで <span class="ms">.\md5sum\md5.txt</span> と比較して <span class="ms">.\md5sum\diff.txt</span> 作成。</p>
+<p class="small">※既存のチェックファイルもリネームして削除されないようにする。</p>
+<ul>
+<li><a href="../archives/commandline/backup/md5sum_make.bat.txt">md5sum_make.bat</a>(.txt)</li>
+<li><a href="../archives/commandline/backup/md5sum_check.bat.txt">md5sum_check.bat</a>(.txt)</li>
+</ul>
+</dd>
+
+<dt>ディレクトリツリーを計算</dt>
+<dd>
+<p class="small pink">※ <strong>Windows 7 / Vista 未確認</strong>。</p>
+
+<ul class="small">
+<li>必要コマンド - <code>md5sum.exe</code></li>
+<li>必要コマンド - <code>diff.exe</code></li>
+</ul>
+
+<p>サブディレクトリも含めて計算。実行元ディレクトリに md5sum.txt 作成。</p>
+<p>照合は、現在の md5sum_check%now%.txt 作成。チェック済みファイルを指定して <code>diff</code> コマンドで照合。</p>
+<p class="small">※既存のチェックファイルもリネームして削除されないようにする。</p>
+<ul>
+<li><a href="../archives/commandline/backup/md5sum_s_make.bat.txt">md5sum_s_make.bat</a>(.txt)</li>
+<li><a href="../archives/commandline/backup/md5sum_s_check.bat.txt">md5sum_s_check.bat</a>(.txt)</li>
+</ul>
+</dd>
+</dl>
+
+<dl>
+<dt>単一ファイルのチェック</dt>
+<dd>
+<p class="small pink">※ <strong>Windows 7 / Vista 未確認</strong>。</p>
+<ul class="small">
+<li>必要コマンド - <code>md5sum.exe</code></li>
+</ul>
+
+<p>MD5（記録）ファイルの値と実際値を照合します。MD5ファイルは同一ディレクトリに置きます。ダウンロードしたISOイメージの確認とかに。</p>
+
+<div class="small">
+<ul>
+<li>MD5ファイルの書式</li>
+</ul>
+<pre class="scl">
+1b8de822b8296471383feeaac1a64056  knoppix_v5.3.1CD_20080326-20080520.iso
+</pre>
+</div>
+
+<ul>
+<li><a href="../archives/commandline/backup/Check_MD5sum.bat.txt">Check_MD5sum.bat</a>(.txt)</li>
+</ul>
+
+
+
+<dl>
+<dt>SHA1でチェック</dt>
+<dd>
+<p class="small pink">※ <strong>Windows 7 / Vista 未確認</strong>。</p>
+
+<p><strong class="ms">openssl.exe</strong> が必要</p>
+<ol class="small">
+<li><a href="http://stunnel.mirt.net/?page=downloads">Downloads</a>
+	<ul>
+	<li><a href="ftp://stunnel.mirt.net/stunnel/openssl/">ftp://stunnel.mirt.net/stunnel/openssl/</a></li>
+	</ul>
+</li>
+<li><strong class="ms">openssl.zip</strong> をダウンロード</li>
+<li><code>openssl</code> ディレクトリを作業用ディレクトリにコピー</li>
+</ol>
+
+
+<div class="small">
+<ul>
+<li>SHA1ファイルの書式</li>
+</ul>
+<pre class="scl">
+4dccee9f0059434ef77dc2835dc9df10925a1cee  knoppix_v6.0.1CD_20090208-20090225_opt.iso
+</pre>
+</div>
+
+<ul>
+<li><a href="../archives/commandline/backup/Check_SHA1sum.bat.txt">Check_SHA1sum.bat</a>(.txt)</li>
+</ul>
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+<h3><a href="#dd"><span class="ms">■</span></a> <a name="dd">ddコマンドでMBR・ブートセクタのバックアップ</a></h3>
+
+<p class="small pink">※ 2012.3.20 更新。Windows 7 / Vista 確認。64-bit もOK。</p>
+
+<ul class="small">
+<li>必要コマンド - <code>dd.exe</code> (dd for Windows)</li>
+<li>必要コマンド - <code>dd.exe</code> (UnxUtils)</li>
+<li>必要コマンド - <code>fsutil.exe</code>（XP以降）</li>
+</ul>
+
+<p>dd for Windows は使用中パーティションのブートセクタ取得がだめみたいなので、UnxUtilsのやつで。<code>fsutil.exe</code> はドライブ文字の確認のため。</p>
+
+<ul>
+<li><a href="../archives/commandline/backup/dd-dd-backup.bat.txt">dd-dd-backup.bat</a>(.txt)</li>
+</ul>
+
+<p class="small">HD/USBメモリのMBR及びPBR（EPBR除く）を保存します。</p>
+<ul class="small">
+<li>MBR - 1セクタ</li>
+<li>MBR - 65セクタ（※ 第1パーティションの第2セクタまで）</li>
+<li>MBR - 2050セクタ（※ Vista以降向け - 第1パーティションの第2セクタまで）</li>
+<li>PBR - 1セクタ</li>
+<li>PBR - 16セクタ（※ NTFS用）</li>
+</ul>
+<p class="small">4KiBセクタの場合は</p>
+<ul class="small">
+<li>MBR - 1セクタ</li>
+<li>MBR - 257セクタ（※ Vista以降向け - 第1パーティションの第1セクタまで）</li>
+<li>PBR - 1セクタ</li>
+<li>PBR - 10セクタ</li>
+</ul>
+
+<p class="small pink">※ 空のマルチカードリーダーなどがあるとエラーメッセージが出ることがあります。とりあえずキャンセルすれば実行はできます。</p>
+
+
+<h3><a href="#uniextract"><span class="ms">■</span></a> <a name="uniextract">ISOイメージの展開</a></h3>
+
+<p class="small pink">※ Windows 7 32/64-bit 確認（※ <strong>Vista 未確認</strong>）。</p>
+
+<p class="pink">FDイメージの展開も可能ですが、DOSフォーマット (FAT) FDイメージでは、半角英数8文字以内のファイル名（※ 8.3形式等）は、すべて大文字となってしまうので注意。</p>
+
+<ul class="small">
+<li>必要コマンド - <code>.\uniextract\UniExtract.exe</code></li>
+</ul>
+
+<p>作ってみたけど、GUIでやるのと同じなのであんまり意味なし。</p>
+
+<p>GUIなら、7-zipやSuper ウルトラISOが内容の確認もできて便利ですけど、UniExtractはコマンドラインおｋなのでバッチファイルに組み込めるということで。</p>
+
+<ul>
+<li><a href="../archives/commandline/backup/UniExtract_to_Files.bat.txt">UniExtract_to_Files.bat</a>(.txt)</li>
+</ul>
+
+<ul class="small">
+<li>対象ファイルのパスに日本語が含まれてるとだめみたいだ...</li>
+</ul>
+
+<h3><a href="#makeiso"><span class="ms">■</span></a> <a name="makeiso">CDからISOイメージ作成</a></h3>
+
+<p class="small pink">※ Windows 7 / Vista 確認。64-bit もOK。</p>
+
+<ul class="small">
+<li>必要コマンド - <code>dd.exe</code></li>
+</ul>
+
+<p>まぁこの辺もGUIで簡単にできますけど、ddコマンドは結構早いような気もします。</p>
+<p class="small">※reg.exe でレジストリを見るので、Windows 2000 ではサポート・ツールが必要。</p>
+<ul>
+<li><a href="../archives/commandline/backup/CD_to_ISO.bat.txt">CD_to_ISO.bat</a>(.txt)</li>
+</ul>
+
+<p class="small">ddでいいのかなと確認してみた。mkisofs.exeでiso作成<span class="ms">→</span>CD焼き<span class="ms">→</span>CDからiso作成で、MD5は一致したので大丈夫みたい。</p>
+
+
+
+<h3><a href="#syslinux"><span class="ms">■</span></a> <a name="syslinux">SYSLINUX のインストール</a></h3>
+
+<p class="small pink">※ Windows 7 / Vista 確認。64-bit もOK。</p>
+
+<ul class="small">
+<li>必要コマンド - <code>syslinux.exe</code></li>
+</ul>
+
+<p>USBメモリのブートローダに</p>
+<p class="small">※reg.exe でレジストリを見るので、Windows 2000 ではサポート・ツールが必要。</p>
+
+<p>レジストリでリムーバブル メディアのドライブ文字を検索、ドライブを選択してインストール。</p>
+<ul>
+<li><a href="../archives/commandline/backup/SYSLINUX_Install.bat.txt">SYSLINUX_Install.bat</a>(.txt)</li>
+</ul>
+
+<p>下記は、syslinux.exe と バッチをUSBメモリのルートなどに置いて実行するだけ。USBメモリ自身にインストール。</p>
+<ul>
+<li><a href="../archives/commandline/backup/SYSLINUX_Install_CurrentDrive.bat.txt">SYSLINUX_Install_CurrentDrive.bat</a>(.txt)</li>
+</ul>
+
+
+<h2><a href="#fdos_scl" name="fdos_scl" accesskey="8"><span class="fdos_scl">FreeDOS スペシャル（謎）起動ディスク作成</span></a> <kbd class="ak">8</kbd></h2>
+
+<p>この起動ディスクの詳細は下記ページにて...</p>
+
+<ul>
+<li><a href="./fdboot_liveusb3.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻【合体版】</a></li>
+</ul>
+
+<p>上記ページ起動ディスクの、ダウンロードからFD書き込みまで自動の簡単作成バッチ作ってみた。</p>
+
+<ol>
+<li>必要ファイルの自動ダウンロード</li>
+<li>起動ディスク・イメージファイル作成</li>
+<li>イメージファイルをFDへ書き込み</li>
+<li>LiveCDのカーネルを分割して、FDへ連続コピー</li>
+</ol>
+
+<ul>
+<li>GRUB for DOS</li>
+<li>ネットワークブート用起動ディスクとして</li>
+<li>BG-Recue Linux ブートディスクとして（+2枚FDが必要）</li>
+<li>Memtest86+</li>
+</ul>
+
+<p>さらに、GRUBで作りこみすると、PLoP Boot Manager なども 1枚のFDへ組み込み可能（※1枚のFD内に複数のFDイメージを組み込み可能ってこと）。</p>
+
+
+
+<h3><a href="#createdisk"><span class="ms">■</span></a> <a name="createdisk">作成バッチファイル</a></h3>
+
+<p class="small pink">※ <strong>Windows 7 / Vista 未確認</strong>。<strong>64-bit だめ</strong>。</p>
+
+<ul class="small">
+<li>下記分が必要
+	<ul>
+	<li><strong class="ms">UnZip</strong> (unzip.exe)</li>
+	<li><strong class="ms">W32TeX</strong> (tar.exe,bzip2.exe)</li>
+	<li><strong class="ms">Virtual Floppy Drive</strong> (vfd.exe)</li>
+	<li><strong class="ms">dd for Windows</strong> (dd.exe)</li>
+	<li><strong class="ms">GRUB for DOS</strong> (grub.exe)</li>
+	</ul>
+</li>
+</ul>
+
+<p>上記のwget.exeで準備してあれば、順番に実行するだけで作成できるはずですが...</p>
+
+<ul>
+<li><a href="../archives/commandline/backup/1_Fdos_SCL_DL.bat.txt">1_Fdos_SCL_DL.bat</a>(.txt) - 必要ファイルをダウンロード</li>
+<li><a href="../archives/commandline/backup/2_Fdos_SCL_Make.bat.txt">2_Fdos_SCL_Make.bat</a>(.txt) - イメージファイル作成
+	<ul class="small">
+	<li>※注：DOS用USBドライバはコピーしません</li>
+	</ul>
+</li>
+<li><a href="../archives/commandline/backup/3_Fdos_SCL_FDwrite.bat.txt">3_Fdos_SCL_FDwrite.bat</a>(.txt) - イメージをFDへ書き込み</li>
+<li><a href="../archives/commandline/backup/4_Fdos_SCL_split_FD.bat.txt">4_Fdos_SCL_split_FD.bat</a>(.txt) - （必要なら）LiveCDブート用のカーネル分割FD作成</li>
+</ul>
+
+
+
+<h2><a href="#command_option" name="command_option" accesskey="9"><span class="tokai1">コマンド・オプション</span></a> <kbd class="ak">9</kbd></h2>
+
+<p>help表示は、<code>/?</code> , <code>-h</code> , <code>--help</code> , <code>-help</code></p>
+
+<ul class="small">
+<li><a href="#wget.exe">wget.exe</a></li>
+<li><a href="#unzip">unzip.exe</a></li>
+<li><a href="#tar">tar.exe</a></li>
+<li><a href="#gzip">gzip.exe(gunzip.exe)</a></li>
+<li><a href="#bzip2">bzip2.exe(bunzip2.exe)</a></li>
+</ul>
+
+<h3><a href="#wget.exe"><span class="ms">■</span></a> <a name="wget.exe">wget.exe</a></h3>
+
+<pre>
+wget -nc -P "%down_dir%" --passive-ftp URL
+</pre>
+
+<ul class="small">
+<li><code>-i "%listfile%"</code> - URLファイルを指定</li>
+<li><code>-P</code> - 保存ディレクトリ指定</li>
+<li><code>-nc</code> - 既存ファイルはダウンロードしない</li>
+<li><code>--passive-ftp</code> - パッシブFTP</li>
+<li><code>-o log.txt</code> - ログ上書</li>
+<li><code>-a log.txt</code> - ログ追記</li>
+</ul>
+
+<dl class="small">
+<dt>参考リンク</dt>
+<dd>
+<ul>
+<li><a href="http://gnuwin32.sourceforge.net/packages/wget.htm">Wget for Windows</a></li>
+<li><a href="http://tech.bayashi.net/svr/doc/wget.html">wget の使い方</a></li>
+<li><a href="http://members.at.infoseek.co.jp/futora/wget153/">wget</a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#unzip"><span class="ms">■</span></a> <a name="unzip">unzip.exe</a></h3>
+
+<ul>
+<li><a href="http://www.info-zip.org/UnZip.html">Info-ZIP's UnZip</a></li>
+</ul>
+
+<dl>
+<dt class="small">内容表示</dt>
+<dd>
+<pre>
+unzip -l "grub_for_dos-0.4.1.zip"
+</pre>
+</dd>
+
+<dt class="small">展開先指定</dt>
+<dd>
+<pre>
+unzip.exe "zipfile" <strong class="ms">-d</strong> "%down_dir%"
+</pre>
+</dd>
+
+<dt class="small">特定のファイルのみ展開</dt>
+<dd>
+<p class="small">ファイル名を先に指定</p>
+<pre class="scl">
+unzip.exe "zipfile" "grub_for_dos-0.4.1/grub.exe" -d "%down_dir%"
+</pre>
+<p class="small">ディレクトリがある場合はディレクトリも作られる</p>
+</dd>
+</dl>
+
+<dl>
+<dt>zip.exe</dt>
+<dd>
+<ul>
+<li><a href="http://www.info-zip.org/Zip.html">Info-ZIP's Zip</a></li>
+</ul>
+<pre>
+zip -j filename.zip "file1" "file2"
+</pre>
+<p class="small">ファイルへのパスを指定している場合はディレクトリも含めて作成されるので、ファイルのみアーカイブするには <code>-j</code> オプション。</p>
+</dd>
+</dl>
+
+
+
+<h3><a href="#tar"><span class="ms">■</span></a> <a name="tar">tar.exe</a></h3>
+
+<ul>
+<li><a href="http://www.fsci.fuk.kindai.ac.jp/kakuto/win32-ptex/web2c75.html">W32TeX</a></li>
+</ul>
+
+<dl>
+<dt class="small">内容表示</dt>
+<dd>
+<p class="small"><code>t</code> 指定（<code>j</code> はbzip、<code>z</code> はgzip）</p>
+<pre>
+tar.exe j<strong class="ms">t</strong>f "bzipfile"
+</pre>
+<p class="small">ディレクトリも作成される</p>
+</dd>
+
+<dt class="small">展開先を指定</dt>
+<dd>
+<p class="small">展開は <code>x</code> 指定。<code>-C</code> でディレクトリ指定</p>
+<pre>
+tar.exe jxvf "bzipfile" <strong class="ms">-C</strong> "%down_dir%"
+</pre>
+</dd>
+
+<dt class="small">特定のファイルのみ展開</dt>
+<dd>
+<p class="small">ファイル名を後に指定</p>
+<pre class="scl">
+tar jxvf %down_dir%\fc5fd.tar.bz2 -C %down_dir% "FC5-FloppyInstall-1.img"
+tar.exe jxvf "bzipfile" -C "%down_dir%" "pxe-on-a-disk/pxe-on-a-disk.floppy"
+</pre>
+<p class="small">ディレクトリも作成される</p>
+</dd>
+</dl>
+
+
+
+
+<h3><a href="#gzip"><span class="ms">■</span></a> <a name="gzip">gzip.exe(gunzip.exe)</a></h3>
+
+<p class="small">ファイルのあるディレクトリに展開（圧縮）</p>
+<p class="small"><code>c</code> で標準出力、 <code>d</code> で解凍、リダイレクトでファイル作成。（ <code>l</code> で内容表示）</p>
+<pre>
+gzip -dc &#034;%down_dir%\floppy.img.gz&#034; &#062; &#034;%down_dir%\floppy.img&#034;
+</pre>
+<p class="small">標準出力してリダイレクトしないと元のファイルはなくなる。</p>
+
+<h3><a href="#bzip2"><span class="ms">■</span></a> <a name="bzip2">bzip2.exe(bunzip2.exe)</a></h3>
+
+<p class="small"><code>d</code> で解凍、<code>k</code> は元ファイルを消さない</p>
+<p class="small">ファイルのあるディレクトリに展開（圧縮）</p>
+<pre>
+bzip2.exe -dk "bzipfile"
+</pre>
+<p class="small">作成場所を指定するには <code>c</code> で標準出力してリダイレクトを使う</p>
+
+
+
+<h3><a href="#unrar"><span class="ms">■</span></a> <a name="unrar">UnRAR.exe</a></h3>
+
+<p class="small"><code>x</code> でカレントディレクトリに書庫内そのまま展開。<code>e</code> だとフォルダ無視してカレントディレクトリにファイルのみ展開。（ <code>t</code> で内容表示）</p>
+
+<pre>
+unrar.exe <strong class="ms red">x</strong> "%down_dir%\rarfile.rar"
+</pre>
+<p class="small">元ファイルは残る。</p>
+
+<ul class="small">
+<li>展開先指定</li>
+</ul>
+<pre>
+unrar.exe <strong class="ms red">x</strong> "%down_dir%\rarfile.rar" "<strong class="ms">path</strong>"
+</pre>
+
+<ul class="small">
+<li>特定のファイルのみ</li>
+</ul>
+<pre>
+unrar.exe <strong class="ms red">x</strong> "%down_dir%\rarfile.rar" "<strong class="ms">path\filename</strong>" "<strong class="ms">path</strong>"
+</pre>
+
+
+<h2><a href="#win_command" name="win_command"><span class="tokai1">Windows コマンド</span></a></h2>
+
+<ul class="small">
+<li><a href="#reference">コマンド ライン リファレンス</a></li>
+<li><a href="#if">if コマンド</a></li>
+<li><a href="#path">Path</a></li>
+<li><a href="#enabledelayedexpansion">遅延環境変数</a></li>
+<li><a href="#tokusyu">特殊文字の扱い</a></li>
+<li><a href="#subroutine">サブルーチン</a></li>
+<li><a href="#set">set</a></li>
+<li><a href="#pushd">pushd / popd</a></li>
+<li><a href="#findstr">findstr.exe</a></li>
+<li><a href="#xcopy">xcopy.exe</a></li>
+<li><a href="#regedit">regedit.exe</a></li>
+<li><a href="#reg">reg.exe</a></li>
+<li><a href="#regini">regini.exe (XP)</a></li>
+<li><a href="#inffile">INFファイルでレジストリ設定 (Rundll32)</a></li>
+<li><a href="#ipconfig">ipconfig.exe</a></li>
+<li><a href="#netsh">netsh.exe</a></li>
+<li><a href="#fsutil">fsutil.exe (XP)</a></li>
+<li><a href="#sc">sc.exe (XP)</a></li>
+</ul>
+
+
+
+<h3><a href="#reference"><span class="ms">■</span></a> <a name="reference">コマンド ライン リファレンス</a></h3>
+
+<ul>
+<li><a href="http://technet.microsoft.com/ja-jp/library/cc785423%28WS.10%29.aspx">コマンド ライン リファレンス</a>(Windows Server 2003)
+	<ul>
+	<li><a href="http://technet.microsoft.com/ja-jp/library/cc737438(WS.10).aspx">コマンド シェルの概要</a></li>
+	<li><a href="http://technet.microsoft.com/ja-jp/library/cc755880(WS.10).aspx">バッチ パラメータを使用する</a></li>
+
+	</ul>
+</li>
+</ul>
+
+<dl class="small">
+<dt>リダイレクト演算子</dt>
+<dd>
+<ul>
+	<li><a href="http://technet.microsoft.com/ja-jp/library/cc772622(WS.10).aspx">コマンド リダイレクト演算子を使用する</a></li>
+</ul>
+
+
+<dl>
+<dt>出力の非表示（<code>nul</code> デバイス）</dt>
+<dd>
+<ul>
+<li>標準出力をnulへ - <code>&#062;nul</code></li>
+</ul>
+
+<ul>
+<li>標準エラー出力をnulへ - <code>2&#062;nul</code></li>
+</ul>
+
+<ul>
+<li>両方nulへ - <code>&#062;nul 2&#062;nul</code>,  <code>&#062;nul 2&#062;&#038;1</code> </li>
+</ul>
+</dd>
+
+<dt>ファイルへ出力</dt>
+<dd>
+<ul>
+<li>標準出力をファイルへ追記 - <code>&#062;&#062;"%logfile%"</code></li>
+</ul>
+<pre>
+<span class="red">&#062;&#062;</span>"%logfile%" (COMMAND1)
+</pre>
+
+<ul>
+<li>標準エラー出力をファイルへ追記 - <code>2&#062;&#062;"%logfile%"</code></li>
+</ul>
+<pre>
+<span class="red">2&#062;&#062;</span>"%logfile%" (COMMAND1)
+</pre>
+
+<ul>
+<li>両方をファイルへ追記 - <code>&#062;&#062;"%logfile%"</code></li>
+</ul>
+<pre>
+<span class="red">&#062;&#062;</span>"%logfile%" (COMMAND1 <span class="red">2&#062;&#038;1</span>)
+</pre>
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+<h3><a href="#if"><span class="ms">■</span></a> <a name="if">if 構文</a></h3>
+
+
+<ul>
+<li><a href="http://technet2.microsoft.com/WindowsServer/ja/library/65315b58-33fe-499e-a4cd-5c284a84fc611041.mspx">If</a></li>
+<li class="small"><a href="http://www.atmarkit.co.jp/fwin2k/operation/command003/command2.html">連載：Windows 2000コマンドライン徹底活用　第3回　スクリプト入門　(その1) -- 2．スクリプト中での条件判断</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.ne.jp/asahi/hishidama/home/tech/windows/bat.html#if">if - バッチメモ(Hishidama's bat-file Memo)</a>
+</ul>
+
+<dl>
+<dt>ERRORLEVEL</dt>
+<dd>
+<ul>
+<li><code>if ERRORLEVEL 1</code> - <strong class="ms">ERRORLEVEL</strong> が1以上なら</li>
+<li><code>if not "%ERRORLEVEL%"=="0"</code> - <strong class="ms">%ERRORLEVEL%</strong> が0以外なら</li>
+</ul>
+
+<p class="small">同じ意味のようであるが、下記の場合など違ってくる</p>
+
+<p class="small">環境変数 <code>%ERRORLEVEL%</code> は（行の）コマンド実行前のものであるため、Command1のエラーがわからない</p>
+<pre>
+Command1 &#038; if &#034;%ERRORLEVEL%&#034;==&#034;0&#034; Command2
+</pre>
+
+<p class="small">Command1のエラーがわかる</p>
+<pre>
+Command1 &#038; if ERRORLEVEL 1 Command2
+</pre>
+
+<ul>
+<li>エラーなしの場合...
+	<ul>
+	<li><code>if not ERRORLEVEL 1</code> - <strong class="ms">ERRORLEVEL</strong> が0なら（1以上でない）</li>
+	<li><code>if "%ERRORLEVEL%"=="0"</code> - <strong class="ms">%ERRORLEVEL%</strong> が0なら</li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>defined</dt>
+<dd>
+<pre>
+if defined hoge echo hage
+</pre>
+<p>下記と同義になりますが、ERRORLEVEL 同様で構文内でも遅延展開。後者では構文内では問題出るかも。。</p>
+<pre>
+if not &#034;%hoge%&#034;==&#034;&#034; echo hage
+</pre>
+</dd>
+
+<dt>分岐処理</dt>
+<dd>
+<ul>
+<li>ファイルの存在を確認</li>
+</ul>
+<pre>
+if exist &#034;%filename%&#034; (
+echo ありますた！
+) else (
+echo ないですYO！
+)
+</pre>
+
+<ul>
+<li>エラー処理</li>
+</ul>
+<pre>
+if ERRORLEVEL 1 (
+echo エラー出ますた！orz
+) else (
+echo 正常終了しますたYO！
+)
+</pre>
+
+</dd>
+</dl>
+
+
+<h3><a href="#path"><span class="ms">■</span></a> <a name="path">Path</a></h3>
+
+<dl class="small">
+<dt><code>Path</code> コマンド</dt>
+<dd>
+<p>システム環境変数PATHの表示</p>
+<pre class="scl">
+C:\&#062;path
+PATH=C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32\Wbem;C:\Program Files\Windows Resource Kits\Tools\;C:\Perl\bin\;C:\Program Files\Common Files\Roxio Shared\DLLShared;C:\Program Files\Support Tools\;C:\Program Files\Windows Imaging\
+</pre>
+<p>リストの先頭に近いものが優先</p>
+
+<pre>
+set path=C:\hoge;%path%
+</pre>
+<p>下記と同義</p>
+<pre>
+path=C:\hoge;%path%
+</pre>
+</dd>
+</dl>
+
+<div class="small">
+<ul>
+<li>コマンドをフルパスで表示</li>
+</ul>
+<pre>
+C:\&#062;for /f &#034;delims=&#034; %I in (&#034;robocopy.exe&#034;) do echo %~$PATH:I
+
+C:\Program Files\Windows Resource Kits\Tools\robocopy.exe
+</pre>
+</div>
+
+
+
+<h3><a href="#enabledelayedexpansion"><span class="ms">■</span></a> <a name="enabledelayedexpansion">遅延環境変数</a></h3>
+
+<p><strong class="ms">if</strong> や <strong class="ms">for</strong> など構文内で環境変数を使う場合の注意点。既定では「遅延環境変数の展開」が無効（「即時展開」が有効）なので環境変数の値はコマンド実行時（実行前）のものが展開される。構文内でsetしても反映されない。</p>
+
+<p class="small pink"><code>if ERRORLVEL</code> の場合は関数なので <strong class="ms">for</strong> 文内でも有効、<code>if defined</code> も問題ないですね。もしくは、<code>&#038;&#038;</code> や <code>||</code> を使う手もあるかな。</p>
+
+<ul>
+<li><a href="http://technet2.microsoft.com/WindowsServer/ja/library/0df63b3c-267c-44b7-9361-ae2c4461330f1041.mspx">Set</a></li>
+<li><a href="http://technet2.microsoft.com/WindowsServer/ja/library/d226cd43-42c1-46ae-87f1-b3e78400b4371041.mspx">Setlocal</a></li>
+</ul>
+
+<ul>
+<li><a href="http://f32.aaa.livedoor.jp/~kobun/index.php?CMD.EXE%A4%CE%C3%D9%B1%E4%B4%C4%B6%AD%CA%D1%BF%F4%A4%CE%C5%B8%B3%AB">CMD.EXEの遅延環境変数の展開 - KOBUN</a>
+	<ul class="small">
+	<li><code>setlocal enabledelayedexpansion</code></li>
+	</ul>
+</li>
+</ul>
+
+<pre>
+@echo off
+set hoge=Heloo
+if defined hoge set hoge=Good-bye &#038; echo %hoge%
+echo %hoge%
+echo.
+
+<strong class="ms">setlocal enabledelayedexpansion</strong>
+set hoge=Heloo
+if defined hoge set hoge=Good-bye &#038; echo !hoge!
+echo %hoge%
+<strong class="ms">endlocal</strong>
+echo.
+pause
+</pre>
+<p class="small">結果は...</p>
+<pre>
+Heloo
+Good-bye
+
+Good-bye
+Good-bye
+</pre>
+
+<p class="small">【注意】<strong class="ms">endlocal</strong> を打ってしまうとと <code>setlocal</code> 内で設定が無効になる。バッチ終了まで有効にするには <strong class="ms">endlocal</strong> は打たない。</p>
+
+<p class="small">条件付き処理記号 <code>&#038;&#038;</code> だと...</p>
+<pre>
+C:\&#062;set aaa=bbb
+C:\&#062;set aaa=ccc &#038; echo %aaa%
+bbb
+
+C:\&#062;set aaa=ccc &#038;&#038; echo %aaa%
+ccc
+</pre>
+
+<p>サブルーチンでも問題ないみたい。</p>
+<pre>
+for %%x ウンタラ～ (
+set hoge=%%x &#038;&#038; call :NANTOKA
+)
+</pre>
+
+
+
+<h3><a href="#tokusyu"><span class="ms">■</span></a> <a name="tokusyu">特殊文字の扱い</a></h3>
+
+<dl>
+<dt>特殊文字のクォート</dt>
+<dd class="small">
+<p>文字として出力させる</p>
+<pre>
+@echo off
+echo ^^
+echo ^&#060;
+echo ^&#062;
+echo ^|
+echo ^&#060;
+echo &#060;
+pause
+</pre>
+<pre>
+^
+&#060;
+&#062;
+|
+&#060;
+ECHO は &#060;OFF&#062; です。
+</pre>
+</dd>
+
+<dt>バッチファイ内での <code>%</code></dt>
+<dd>
+<p class="small">単独の%は無視（削除）される</p>
+<pre>
+@echo off
+echo %
+echo %%
+echo %%%
+echo %%%%
+echo %%%%%
+echo %%%%%%
+echo %%%%%%%
+echo %%%%%%%%
+echo %%%%%%%%%
+echo %%%%%%%%%%
+pause
+</pre>
+<pre>
+ECHO は &#060;OFF&#062; です。
+%
+%
+%%
+%%
+%%%
+%%%
+%%%%
+%%%%
+%%%%%
+</pre>
+
+<p class="small">環境変数を入れ子にすると...</p>
+<pre>
+@echo off
+set aaa=bbb
+set bbb=ccc
+echo %aaa%
+echo %%aaa%%
+echo %%%aaa%%%
+echo %%%%aaa%%%%
+echo %%%%%aaa%%%%%
+echo %%%%%%aaa%%%%%%
+pause
+</pre>
+<pre>
+bbb
+%aaa%
+%bbb%
+%%aaa%%
+%%bbb%%
+%%%aaa%%%
+</pre>
+
+<p class="small">遅延環境変数の展開を有効にすると...</p>
+<pre>
+@echo off
+set aaa=bbb
+set bbb=ccc
+setlocal enabledelayedexpansion
+
+echo %aaa%
+echo !%aaa%!
+pause
+</pre>
+<pre>
+bbb
+ccc
+</pre>
+</dd>
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+<h3><a href="#subroutine"><span class="ms">■</span></a> <a name="subroutine">サブルーチン</a></h3>
+
+<ul>
+<li><a href="http://technet2.microsoft.com/WindowsServer/ja/library/df115179-bdc8-4017-9e73-f16b7001a6461041.mspx">Goto</a></li>
+<li><a href="http://technet2.microsoft.com/WindowsServer/ja/library/14622133-ced5-4ad4-a898-73b8f2b654f31041.mspx">Call</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/command004/command1.html">連載：Windows 2000コマンドライン徹底活用　第4回　スクリプト入門　(その2) -- 1．ジャンプ（gotoステートメント）</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/command004/command2.html">連載：Windows 2000コマンドライン徹底活用　第4回　スクリプト入門　(その2) -- 2．サブルーチン（callステートメント）</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://www.ne.jp/asahi/hishidama/home/tech/windows/bat.html#%E3%82%B5%E3%83%96%E3%83%AB%E3%83%BC%E3%83%81%E3%83%B3">サブルーチン - バッチメモ(Hishidama's bat-file Memo)</a></li>
+<li><a href="http://otnx.jp/CMD/%A5%B3%A5%DE%A5%F3%A5%C9%CA%CC/call/">コマンド別/call - CMD.EXE TIPs</a></li>
+</ul>
+
+
+
+
+
+<h3><a href="#set"><span class="ms">■</span></a> <a name="set">set</a></h3>
+
+<ul>
+<li><a href="http://technet2.microsoft.com/WindowsServer/ja/library/0df63b3c-267c-44b7-9361-ae2c4461330f1041.mspx">Set コマンド</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://otnx.jp/CMD/%A5%B3%A5%DE%A5%F3%A5%C9%CA%CC/set/">コマンド別/set - CMD.EXE TIPs</a></li>
+<li><a href="http://www.ne.jp/asahi/hishidama/home/tech/windows/env.html">ウィンドウズの環境変数メモ(Hishidama's Windows Environment Memo)</a></li>
+</ul>
+
+<ul class="small">
+<li>値にスペースや特殊文字は引用符で囲んでみる</li>
+</ul>
+<pre>
+set &#034;filename=aaa bbb.txt&#034;
+</pre>
+
+<ul class="small">
+<li><code>set 変数の一部</code> で変数の列挙が可能</li>
+</ul>
+<pre>
+C:\&#062;set file
+file1=aaa.txt
+file2=bbb.txt
+file3=ccc.txt
+</pre>
+
+
+
+<h3><a href="#pushd"><span class="ms">■</span></a> <a name="pushd">pushd / popd</a></h3>
+
+<p><code>cd</code>(<code>cd /d</code>) コマンドよりかなり便利です。</p>
+
+<ul>
+<li><a href="http://technet.microsoft.com/ja-jp/library/cc771180(WS.10).aspx">Pushd</a></li>
+<li><a href="http://technet.microsoft.com/ja-jp/library/cc771942(WS.10).aspx">Popd</a></li>
+<li><a href="http://www.microsoft.com/windows/windows2000/ja/server/help/pushd.htm">Pushd</a>（Windows 2000 コマンド リファレンス）</li>
+<li><a href="http://support.microsoft.com/kb/317379/ja">PUSHD コマンドを使用して Windows 2000 でコマンド プロンプトで、UNC パスにアクセスする方法</a></li>
+</ul>
+
+
+<h3><a href="#findstr"><span class="ms">■</span></a> <a name="findstr">findstr.exe</a></h3>
+
+<ul>
+<li><a href="http://technet2.microsoft.com/WindowsServer/ja/library/2b01d7f5-ab5a-407f-b5ec-f46248289db91041.mspx">Findstr</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/511findstr/findstr.html">＠IT：Windows TIPS -- Tips：findstrで正規表現を検索する</a></li>
+<li><a href="http://itpro.nikkeibp.co.jp/free/NT/WinKeyWord/20040805/1/findstr.shtml">Windowsコマンド集：（findstr）</a></li>
+<li><a href="http://otnx.jp/CMD/%A5%B3%A5%DE%A5%F3%A5%C9%CA%CC/findstr/">コマンド別/findstr - CMD.EXE TIPs</a></li>
+</ul>
+
+<dl>
+<dt>ユニコードのファイルは検索できない？</dt>
+<dd>
+<p class="small">みたいです。findコマンドを使うか、typeコマンドでShift_JISファイルに変換コピーするとか。</p>
+<pre>
+type Unicode.txt&#062;Shift_JIS.txt
+</pre>
+</dd>
+</dl>
+
+
+
+<h3><a href="#xcopy"><span class="ms">■</span></a> <a name="xcopy">xcopy.exe</a></h3>
+
+<ul>
+<li><a href="http://technet2.microsoft.com/WindowsServer/ja/library/edb837cc-e0db-4673-8c79-1a085cb3692c1041.mspx">Xcopy</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/446xcopy/xcopy.html">＠IT：Windows TIPS -- Tips：xcopyでファイルをバックアップする</a></li>
+<li><a href="http://itpro.nikkeibp.co.jp/free/NT/WinKeyWord/20040805/1/xcopy.shtml">Windowsコマンド集：（xcopy）</a></li>
+</ul>
+
+<div class="small">
+<ul>
+<li><code>C:\hoge</code> ディレクトリを <code>D:\hoge</code> としてコピーしたい場合は <strong class="ms">/i</strong> オプション（及びサブディレクトリ指定の <strong class="ms">/s/e</strong>）を付ける</li>
+</ul>
+<pre>
+xcopy C:\hoge D:\hobe /i/s/e/h/r/k/y
+</pre>
+
+<p><code>xcopy C:\hoge D:\</code> などとすると、C:\hogeの内容はD:\直下にコピーされてしまうので注意。</p>
+</div>
+
+
+
+<h3><a href="#regedit"><span class="ms">■</span></a> <a name="regedit">regedit.exe</a></h3>
+
+<ul>
+<li><a href="http://technet2.microsoft.com/WindowsServer/ja/library/aa9cf37b-48e5-4942-ae85-84fba21b94171041.mspx">レジストリ エディタの概要</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://support.microsoft.com/kb/256986/ja">Microsoft Windows レジストリの説明</a></li>
+<li><a href="http://support.microsoft.com/kb/310516/ja">登録エントリ (.reg) ファイルを使用してレジストリ サブキーおよび値を追加、変更、または削除する方法</a></li>
+<li><a href="http://itaya.corso-b.net/TIPS/TIPS015.html">regeditのコマンドラインオプション</a></li>
+<li><a href="http://support.microsoft.com/kb/310426/ja">Windows XP および Windows Server 2003 のレジストリ エディタの機能を使用する方法</a></li>
+</ul>
+
+<div class="small">
+<ul>
+<li>レジストリエディタからエクスポート（または書き出し）した場合はユニコード(UTF-16)</li>
+</ul>
+
+<ul>
+<li>エクスポート - ASCII で（※ファイルはShift_JISで保存される）</li>
+</ul>
+<pre>
+regedit /e /a "dhcp_temp.txt" "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dhcp"
+</pre>
+
+<ul>
+<li>エクスポート - ユニコード (UTF-16)</li>
+</ul>
+<pre>
+regedit /e "dhcp_temp.txt" "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dhcp"
+</pre>
+
+<ul>
+<li>適用（※ユニコード + 【REG_EXPAND_SZ】を使う場合は '<code>REGEDIT4</code>'ではだめらしい？）</li>
+</ul>
+<pre>
+&#062; set_temp.reg echo <strong class="ms">Windows Registry Editor Version 5.00</strong>
+
+&#062;&#062;set_temp.reg echo.
+&#062;&#062;set_temp.reg echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dhcp]
+&#062;&#062;set_temp.reg echo &#034;Start&#034;=dword:00000002
+
+regedit /s set_temp.reg
+</pre>
+
+</div>
+
+<dl>
+<dt>ユニコードについての注意</dt>
+<dd class="small">
+<p>値エントリの種類が【REG_EXPAND_SZ】の場合にASCIIでエクスポートすると、ユニコードの1バイト目が切り取られてしまうようです。よって、日本語などASCII文字以外を含む【REG_EXPAND_SZ】値を復元する際には注意。つまり、ASCIIでエクスポートしたレジストリファイルでは、日本語【REG_EXPAND_SZ】値は正常に復元できません。（※文字列値【REG_SZ】では問題ないと思います）</p>
+<ul>
+<li>参考 : <a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/019regunic/regunic.html">Windows 2000のレジストリ ファイルはUnicode形式 － ＠IT</a></li>
+</ul>
+</dd>
+</dl>
+
+<dl>
+<dt>regedit.exe の無効化</dt>
+<dd class="small">
+<p>マルウェア感染時などregedit.exeが起動できないことがよくあります。（※或いは管理者によって使用禁止に設定されている場合も）</p>
+<pre>
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+&#034;DisableRegistryTools&#034;=dword:00000001
+</pre>
+<ul>
+<li><a href="http://support.microsoft.com/kb/831787/ja">Windows XP および Windows Server 2003 での "レジストリ編集ツールへアクセスできないようにする" ポリシーの変更点</a></li>
+</ul>
+<p><code>DisableRegistryTools</code> の <strong class="ms">値が 1</strong> ならサイレント モード（※コマンドラインから <code>regedit /s</code>）での実行は可能ですが、<strong class="ms">値が2</strong> だとすべて実行不可になりました。</p>
+<p><strong class="ms">値が2</strong> の場合は、修正は下記の方法になるかな...</p>
+<ul>
+<li>infファイル作成して、 <strong class="ms">Rundll32.exe</strong> を実行（※使えれば）</li>
+<li>vbsファイルを実行</li>
+<li><strong class="ms">reg.exe</strong> の実行（※使えれば）</li>
+</ul>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/310426/ja">Windows XP および Windows Server 2003 のレジストリ エディタの機能を使用する方法</a></li>
+</ul>
+<p>設定変更などができない場合は、アクセス許可（※拒否設定は優先される）及び所有者などの確認が必要になります。アクセス許可の変更は、 <strong class="ms">Regini.exe</strong> (XP)や <strong class="ms">Regperm.exe</strong> で可能。</p>
+</dd>
+
+<dt>regedit.exe を実行するとメモ帳が起動する</dt>
+<dd class="small">
+<p>或いは何も起動しない場合などは...下記のような不正なレジストリが設定されているかもしれません。</p>
+<pre>
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\regedit.exe]
+&#034;Debugger&#034;=&#034;notepad.exe&#034;
+</pre>
+<p>キーの削除、または <code>Debugger</code> エントリの削除が必要。</p>
+<p>削除するにはいずれかの方法でできるかな...</p>
+<ul>
+<li>regedit.exe をリネーム・コピーして実行</li>
+<li>infファイル作成して、 <strong class="ms">Rundll32.exe</strong> を実行（※使えれば）</li>
+<li>vbsファイルを実行</li>
+<li><strong class="ms">reg.exe</strong> の実行（※使えれば）</li>
+</ul>
+<p>上記の例と同じく、レジストリキーのアクセス許可の確認も必要になるかも。</p>
+</dd>
+</dl>
+
+
+
+<h3><a href="#reg"><span class="ms">■</span></a> <a name="reg">reg.exe</a></h3>
+
+<ul>
+<li><a href="http://technet2.microsoft.com/WindowsServer/ja/library/820b0e5b-0371-404d-8a22-a255273d32891041.mspx">Reg</a></li>
+</ul>
+
+<p class="small">Windows 2000 で <strong class="ms">reg.exe</strong> を使うにはサポートツールのインストールが必要</p>
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/391cmdreg/cmdreg.html">＠IT：Windows TIPS -- Tips：コマンド・プロンプトでレジストリを操作する</a></li>
+<li><a href="http://itpro.nikkeibp.co.jp/free/NT/WinReadersOnly/20040325/219/">コマンド・ラインからレジストリを操作するツール「reg.exe」を使ってダブル・クォーテーション・マーク「"」やパーセント・マーク「％」を入力するにはどうすればよいですか？：ITpro</a></li>
+<li><a href="http://www.microsoft.com/japan/windows2000/downloads/servicepacks/sp4/supporttools.mspx">Windows 2000 SP4 サポート ツール</a></li>
+</ul>
+
+<div class="small">
+<p><strong>標準出力</strong>可能。長い <code>REG_BINARY</code> 値も<strong>カンマ・改行区切りなしの1行で出力</strong>（<code>regedit</code> ではカンマ・改行区切りなので長い値を検索できないことがある）。</p>
+<pre>
+reg query HKLM\SYSTEM\MountedDevices
+</pre>
+
+<ul>
+<li>regeditファイル形式でエクスポート</li>
+</ul>
+<pre>
+reg export &#034;HKLM\SYSTEM\MountedDevices&#034; &#034;MountedDevices.reg.txt&#034;
+</pre>
+
+<ul>
+<li>regedit形式ファイルをインポート</li>
+</ul>
+<pre>
+reg import &#034;MountedDevices.reg&#034;
+</pre>
+
+<ul>
+<li>値エントリの修正</li>
+</ul>
+<pre>
+reg add &#034;HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System&#034; /v DisableRegistryTools /t REG_DWORD /d &#034;0x00000000&#034; /f
+</pre>
+
+<ul>
+<li>値エントリの削除</li>
+</ul>
+<pre>
+reg delete &#034;HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System&#034; /v DisableRegistryTools /f
+</pre>
+
+<dl>
+<dt>データ取り出し</dt>
+<dd>
+<ul>
+<li>サブキー列挙</li>
+</ul>
+<pre class="scl">
+C:\&#062;reg query HKU | findstr HKEY_USERS\
+HKEY_USERS\.DEFAULT
+HKEY_USERS\S-1-5-19
+HKEY_USERS\S-1-5-19_Classes
+HKEY_USERS\S-1-5-20
+HKEY_USERS\S-1-5-20_Classes
+HKEY_USERS\S-1-5-21-1960408961-507921405-1343024091-1014
+HKEY_USERS\S-1-5-21-1960408961-507921405-1343024091-1014_Classes
+HKEY_USERS\S-1-5-18
+</pre>
+
+<ul>
+<li>値のデータの取り出し</li>
+</ul>
+<pre class="scl">
+C:\&#062;set key=HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders
+C:\&#062;set value=cache
+C:\&#062;for /f &#034;usebackq tokens=3,*&#034; %H in (`reg query &#034;%key%&#034; /v %value% ^| findstr &#034;%value% REG_&#034;`) do @echo %H %I
+%USERPROFILE%\Local Settings\Temporary Internet Files
+</pre>
+</dd>
+</dl>
+</div>
+
+<dl class="palmst small pink">
+<dt>for 実行時のトークンについて</dt>
+<dd>
+<p>出力が Windows XP では Tab 区切り、7 ではスペース区切りとなってますね。デリミタ無指定だとトークン文字は Tab とスペースとなるので両方イケそうに思われますが...</p>
+<p>XPなら Tab 指定でおｋですが、7 では値エントリ名にスペースがあるとトークンの番号がズレちゃいますよねー。どうしたらいいんでしょうか。わかりませぬ... orz</p>
+</dd>
+</dl>
+
+
+<h3><a href="#regini"><span class="ms">■</span></a> <a name="regini">regini.exe (XP)</a></h3>
+
+<p class="small">※Windows 2000 ではリソース キットが必要？</p>
+
+<p>レジストリキーのアクセス許可設定変更。</p>
+<ul class="small">
+<li><a href="http://support.microsoft.com/?kbid=237607">Regini.exe を使用してレジストリ キーにアクセス許可を設定する方法</a></li>
+<li><a href="http://support.microsoft.com/kb/264584/ja">コマンドラインまたはスクリプトからレジストリ値またはアクセス許可を変更する方法。</a></li>
+</ul>
+<p>マルウェア感染時など、不正レジストリキーの削除時などに必要になるかも。</p>
+
+<ul class="small">
+<li>注意点
+	<ul>
+	<li>サブキーにアクセス許可がない、または、削除拒否設定がある場合は親キーは削除できない</li>
+	<li>Everyoneに削除拒否設定される場合があるので、確実に置換する</li>
+	<li>ユーザに読み取り許可がない場合は設定はロードされない（つまりレジストリの設定内容は無視）</li>
+	</ul>
+</li>
+</ul>
+
+<dl class="small">
+<dt>書式</dt>
+<dd>
+<ul>
+<li>基本</li>
+</ul>
+
+<pre>
+regini ＜スクリプトファイル＞
+</pre>
+
+<ul>
+<li>スクリプトファイル</li>
+</ul>
+
+<pre>
+\registry\machine\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\regedit.exe [1 17]
+\registry\machine\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\regedit.com [1 17]
+</pre>
+<p>※System と Administrators にフルコントロール設定。それ以外は削除。（※Everyone:削除拒否の 置換（消去）もこれで可能）</p>
+</dd>
+</dl>
+
+<ul class="small">
+<li>1  - Administrators フル アクセス</li>
+<li>2  - Administrators 読み取りアクセス</li>
+<li>3  - Administrators 読み取りおよび書き込みアクセス</li>
+<li>4  - Administrators 読み取り、書き込み、および削除アクセス</li>
+<li>17 - System フル アクセス</li>
+<li>18 - System 読み取りおよび書き込みアクセス</li>
+</ul>
+
+<dl class="small palmst">
+<dt>Regperm</dt>
+<dd>
+<ul>
+<li><a href="http://homepages.cae.wisc.edu/~micro/regperm/">Regperm for Win NT/2000/XP</a></li>
+</ul>
+
+<pre>
+regperm /K &#034;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\regedit.exe&#034; /A:System:F /A:Administrators:F /A:USERS:R /R
+</pre>
+<p>※Everyone:削除拒否の 置換（消去）もこれで可能。但し、<code>/R</code> でサブキーへの適用も可能みたいですが、サブキーにEveryone拒否設定のみあるとかだとややこしいかも？</p>
+</dd>
+</dl>
+
+<p>アクセス許可があれば、INFファイルの使用、または、 <code>regedit2 /s DelBadKey.reg</code>（※念の為に <strong class="ms">regedit.exe</strong> をリネーム・コピーしてコマンドラインから実行する）とかすれば削除可能になるはず...かな？</p>
+
+<dl>
+<dt>雑記</dt>
+<dd>
+<ul class="small">
+<li><code>Image File Execution Options</code> に不正キーが作成されると <strong class="ms">regedit</strong> が実行できなくなる場合があるけど、登録名以外のものにリネーム・コピーすれば実行可能になるかも</li>
+<li><code>Policies</code> キーの <code>DisableRegistryTools</code> エントリを有効化されると、リネームしてもGUIのレジストリ エディタは起動できないけど、<strong class="ms">値が 1</strong> ならコマンドラインから <code>regedit /s regファイル</code> の実行は可能（<strong class="ms">値が 2</strong> だとコマンドラインもだめ）</li>
+<li><strong class="ms">Rundll32.exe</strong> が不正（或いは不正設定）な場合、INFファイルの使用はだめかも</li>
+<li><code>DisableRegistryTools</code> エントリの無効化は <a href="http://www.trendsecure.com/portal/en-US/tools/security_tools/hijackthis">HijackThis</a> 使うほうがいいかも...ってか、 <strong class="red">マルウェア感染が原因ならこれだけ治してもだめで</strong> 、<a href="http://www.silentrunners.org/index.html">Silent Runners</a>とかで調べないとって話になりますけれども...。
+</li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#inffile"><span class="ms">■</span></a> <a name="inffile">INFファイルでレジストリ設定 (Rundll32)</a></h3>
+
+<p>infファイルを右クリック【インストール】、または、コマンドラインから <code>Rundll32.exe</code> 実行。</p>
+
+<ul>
+<li><a href="http://msdn.microsoft.com/en-us/library/ms794514.aspx">INF AddReg Directive</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/ms794568.aspx">INF DelReg Directive</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://www.monyo.com/technical/windows/09.html">REGEDIT.EXEとREGEDT32.EXEの使い分け</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/xpsp2dep02/xpsp2dep02_03.html">＠IT：運用 ：システム管理者のためのXP SP2展開計画　第2回 Windowsファイアウォールの管理　2．INFファイル／レジストリによる設定</a></li>
+</ul>
+
+<dl class="small">
+<dt>infファイルで Image File Execution Options の不正なキーを削除する例</dt>
+<dd>
+<pre>
+[Version]
+Signature="$Chicago$"
+
+[DefaultInstall]
+DelReg=DelImageEx
+
+[DelImageEx]
+HKLM, &#034;SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\regedit.exe&#034;
+</pre>
+<pre>
+rundll32 syssetup,SetupInfObjectInstallAction DefaultInstall 128 .\DelImageEx.inf
+</pre>
+<p>ファイル名にパスの指定が必須みたい。</p>
+<p>※バージョンはホントは <code>$Windows NT$</code> にすべきなのかな？</p>
+</dd>
+
+<dt>不正な値エントリを削除する例</dt>
+<dd>
+<p>上記では、サブキーに削除許可がないと削除できないので、値エントリだけ削除する。</p>
+<pre>
+[Version]
+Signature="$Chicago$"
+
+[DefaultInstall]
+DelReg=DelImageEx
+
+[DelImageEx]
+HKLM, &#034;SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\regedit.exe&#034;,Debugger
+</pre>
+<pre>
+rundll32 syssetup,SetupInfObjectInstallAction DefaultInstall 128 .\DelImageEx.inf
+</pre>
+</dd>
+
+<dt>レジストリ エディタの有効化</dt>
+<dd>
+<p>正確には起動禁止設定の無効化</p>
+<pre>
+[Version]
+Signature="$Chicago$"
+
+[DefaultInstall]
+AddReg=UnhookRegKey
+
+[UnhookRegKey]
+HKCU, Software\Microsoft\Windows\CurrentVersion\Policies\System,DisableRegistryTools,0x00000020,0
+</pre>
+<pre>
+rundll32 syssetup,SetupInfObjectInstallAction DefaultInstall 128 .\EnabeleRegedit.inf
+</pre>
+<ul>
+<li><a href="http://www.symantec.com/region/jp/sarcj/data/t/tool.to.reset.shellopencommand.registry.keys.html">shell\open\command レジストリキーのリセットツール</a></li>
+</ul>
+</dd>
+</dl>
+
+<ul class="small">
+<li><code>0x00000</code> - REG_SZ（文字列）</li>
+<li><code>0x10001</code> - REG_DWORD（整数値）</li>
+<li><code>0x20000</code> - REG_EXPAND_SZ（環境変数を含む文字列）</li>
+<li><code>0x10000</code> - REG_MULTI_SZ（複数文字列）</li>
+<li><code>0x00001</code> - REG_BINARY（バイナリ）</li>
+<li><code>0x20001</code> - REG_NONE（上書しない）</li>
+</ul>
+
+
+
+
+<p>※該当キーにアクセス許可がない、または拒否設定されている場合は使えないので注意。</p>
+
+
+
+
+<h3><a href="#ipconfig"><span class="ms">■</span></a> <a name="ipconfig">ipconfig.exe</a></h3>
+
+<ul>
+<li><a href="http://technet2.microsoft.com/WindowsServer/ja/Library/86ac50f1-0fbb-42c4-ba68-727efb24136f1041.mspx">Ipconfig</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://itpro.nikkeibp.co.jp/article/COLUMN/20060224/230603/"> - ipconfigコマンド(Windows NT/2000/XP/2003)：ITpro</a></li>
+<li><a href="http://www.atmarkit.co.jp/fnetwork/netcom/ipconfig/ipconfig.html">ipconfig - Windowsのネットワーク設定を確認する</a></li>
+</ul>
+
+<p class="small"><code>ERRORLEVEL</code> を返さないのでメッセージから判断する？</p>
+
+<dl>
+<dt>ipconfig</dt>
+<dd>
+<div class="small">
+<ul>
+<li>Windows XP</li>
+</ul>
+<pre>
+Windows IP Configuration
+
+Ethernet adapter ローカル エリア接続:
+
+        Connection-specific DNS Suffix  . :
+        IP Address. . . . . . . . . . . . : 192.168.0.2
+        Subnet Mask . . . . . . . . . . . : 255.255.255.0
+        Default Gateway . . . . . . . . . : 192.168.0.1
+
+Ethernet adapter ローカル エリア接続 2:
+
+        Media State . . . . . . . . . . . : Media disconnected
+
+Ethernet adapter ワイヤレス ネットワーク接続:
+
+        Media State . . . . . . . . . . . : Media disconnected
+</pre>
+
+<ul>
+<li>Windows 7</li>
+</ul>
+<pre>
+Windows IP 構成
+
+
+イーサネット アダプター ローカル エリア接続:
+
+   接続固有の DNS サフィックス . . . : 
+   リンクローカル IPv6 アドレス. . . . : fe80::5037:xxxx:xxxx:xxxx%11
+   IPv4 アドレス . . . . . . . . . . : 192.168.0.7
+   サブネット マスク . . . . . . . . : 255.255.255.0
+   デフォルト ゲートウェイ . . . . . : 192.168.0.1
+
+Tunnel adapter isatap.{CC568812-F1C2-xxxx-xxxx-xxxxxxxxxxxx}:
+
+   メディアの状態. . . . . . . . . . : メディアは接続されていません
+   接続固有の DNS サフィックス . . . : 
+
+Tunnel adapter ローカル エリア接続*:
+
+   接続固有の DNS サフィックス . . . : 
+   IPv6 アドレス . . . . . . . . . . . : 2001:0:xxxx:xxxx:xxxx:xxx:xxxx:fff8
+   リンクローカル IPv6 アドレス. . . . : fe80::xxxx:xxx:xxxx:fff8%13
+   デフォルト ゲートウェイ . . . . . : ::
+</pre>
+
+<ul>
+<li>Windows 2000（※ローカル エリア接続 4 は無線LAN）</li>
+</ul>
+<pre>
+Ethernet adapter ローカル エリア接続 4:
+
+        Media State . . . . . . . . . . . : Cable Disconnected
+
+Ethernet adapter ローカル エリア接続:
+
+        Connection-specific DNS Suffix  . :
+        IP Address. . . . . . . . . . . . : 192.168.0.4
+        Subnet Mask . . . . . . . . . . . : 255.255.255.0
+        Default Gateway . . . . . . . . . : 192.168.0.1
+
+Ethernet adapter ローカル エリア接続 3:
+
+        Media State . . . . . . . . . . . : Cable Disconnected
+</pre>
+</div>
+</dd>
+
+
+<dt>ipconfig /release</dt>
+<dd>
+<dl class="small">
+<dt>ipconfig /release &#034;接続名&#034; 成功</dt>
+<dd>
+<ul>
+<li><code>ipconfig /release &#034;%iface%&#034;</code></li>
+</ul>
+
+<ul>
+<li>Windows XP</li>
+</ul>
+<pre>
+Windows IP Configuration
+
+Ethernet adapter ローカル エリア接続 2:
+
+        Connection-specific DNS Suffix  . :
+        IP Address. . . . . . . . . . . . : 0.0.0.0
+        Subnet Mask . . . . . . . . . . . : 0.0.0.0
+        Default Gateway . . . . . . . . . :
+
+&#062;ipconfig /release &#034;%iface%&#034;
+
+Windows IP Configuration
+
+IP Address for adapter ローカル エリア接続 2 has already been released.
+</pre>
+
+<ul>
+<li>Windows 7</li>
+</ul>
+<pre>
+Windows IP 構成
+
+
+イーサネット アダプター ローカル エリア接続:
+
+   接続固有の DNS サフィックス . . . :
+   リンクローカル IPv6 アドレス. . . . : fe80::xxxx:xxxx:xxxx:xxxx%11
+   デフォルト ゲートウェイ . . . . . :
+
+Tunnel adapter isatap.HOGE-NETWORK:
+
+   メディアの状態. . . . . . . . . . : メディアは接続されていません
+   接続固有の DNS サフィックス . . . :
+
+Tunnel adapter ローカル エリア接続*:
+
+   接続固有の DNS サフィックス . . . :
+   IPv6 アドレス . . . . . . . . . . . : 2001:0:xxxx:xxxx:xxxx:xxx:xxxx:ff36
+   リンクローカル IPv6 アドレス. . . . : fe80::xxxx:xxx:xxxx:xxxx%13
+   デフォルト ゲートウェイ . . . . . : ::
+</pre>
+
+<ul>
+<li>Windows 2000</li>
+</ul>
+<pre>
+Windows 2000 IP Configuration
+
+IP address successfully released for adapter &#034;ローカル エリア接続 2&#034;
+
+&#062;ipconfig /release &#034;%iface%&#034;
+
+Windows 2000 IP Configuration
+
+IP Address for adapter ローカル エリア接続 2 is already released
+</pre>
+</dd>
+
+<dt>ipconfig /release &#034;接続名&#034; ケーブル（or 無線）未接続</dt>
+<dd>
+<ul>
+<li>Windows XP</li>
+</ul>
+<pre>
+No operation can be performed on ローカル エリア接続 2 while it has its media disconnected
+</pre>
+
+<ul>
+<li>Windows 7</li>
+</ul>
+<pre>
+メディアが接続されていないと、ローカル エリア接続 に対する処理はいずれも実行でき
+ません。
+</pre>
+
+<ul>
+<li>Windows 2000</li>
+</ul>
+<pre>
+No operation can be performed on adapter ローカル エリア接続 2 as this connection
+has its media/cable disconnected.
+</pre>
+<p>※よくわかってませんが、下記はWindows 2000でAPIPAによって自動プライベートIPアドレスが振られている場合に出るようです（無線LANのユーティリティを入れてないとか）。</p>
+<pre>
+All adapters bound to DHCP do not have DHCP addresses.  The addresses were autom
+atically configured and can not be released.
+
+Adapter ローカル エリア接続 2 was automatically configured and does not currentl
+y have a DHCP address.  The IP address for this adapter can not be released.
+</pre>
+</dd>
+
+
+<dt>ipconfig /release  DHCP有効な接続名なし</dt>
+<dd>
+<ul>
+<li>Windows XP</li>
+</ul>
+<pre>
+The operation failed as no adapter is in the state permissible for
+this operation.
+</pre>
+
+<ul>
+<li>Windows 7</li>
+</ul>
+<pre>
+インターフェイス Loopback Pseudo-Interface 1 の解放中にエラーが発生しました: 指
+定されたファイルが見つかりません。
+
+この処理に対して許容される状態のアダプターが存在しないため、
+処理に失敗しました。
+</pre>
+
+<ul>
+<li>Windows 2000</li>
+</ul>
+<pre>
+Error: No adapters bound to TCP/IP are enabled for DHCP
+</pre>
+</dd>
+
+
+<dt>ipconfig /release &#034;接続名&#034; 指定接続名DHCP無効</dt>
+<dd>
+<ul>
+<li>Windows XP</li>
+</ul>
+<pre>
+Adapter ローカル エリア接続 2 is not enabled for Dhcp.
+</pre>
+
+<ul>
+<li>Windows 7</li>
+</ul>
+<pre>
+アダプター ローカル エリア接続 が DHCP に対して有効ではありません。
+</pre>
+
+<ul>
+<li>Windows 2000</li>
+</ul>
+<pre>
+Error: Release
+Adapter &#034;ローカル エリア接続 2&#034; is not enabled for DHCP
+</pre>
+</dd>
+</dl>
+</dd>
+
+
+<dt>ipconfig /renew  &#034;接続名&#034;</dt>
+<dd>
+
+<dl class="small">
+<dt>【成功】ipconfig /renew &#034;接続名&#034;</dt>
+<dd>
+<ul>
+<li>Windows XP</li>
+</ul>
+<pre>
+Ethernet adapter ローカル エリア接続 2:
+
+        Connection-specific DNS Suffix  . : hoge-network
+        IP Address. . . . . . . . . . . . : 192.168.0.219
+        Subnet Mask . . . . . . . . . . . : 255.255.255.0
+        Default Gateway . . . . . . . . . : 192.168.0.1
+</pre>
+
+<ul>
+<li>Windows 7</li>
+</ul>
+<pre>
+イーサネット アダプター ローカル エリア接続:
+
+   接続固有の DNS サフィックス . . . : HOGE-NETWORK
+   リンクローカル IPv6 アドレス. . . . : fe80::xxxx:xxxx:xxxx:xxxx%11
+   IPv4 アドレス . . . . . . . . . . : 192.168.0.201
+   サブネット マスク . . . . . . . . : 255.255.255.0
+   デフォルト ゲートウェイ . . . . . : 192.168.0.1
+
+Tunnel adapter isatap.{CC568812-xxxx-xxxx-xxxx-xxxxxxxxxxxx}:
+
+   メディアの状態. . . . . . . . . . : メディアは接続されていません
+   接続固有の DNS サフィックス . . . :
+
+Tunnel adapter ローカル エリア接続*:
+
+   接続固有の DNS サフィックス . . . :
+   リンクローカル IPv6 アドレス. . . . : fe80::xxxx:xxx:xxxx:xxxx%13
+   デフォルト ゲートウェイ . . . . . : ::
+</pre>
+
+<ul>
+<li>Windows 2000</li>
+</ul>
+<pre>
+Ethernet adapter ローカル エリア接続 2:
+
+        Connection-specific DNS Suffix  . : hoge-network
+        IP Address. . . . . . . . . . . . : 192.168.0.207
+        Subnet Mask . . . . . . . . . . . : 255.255.255.0
+        Default Gateway . . . . . . . . . : 192.168.0.1
+</pre>
+</dd>
+
+<dt>ipconfig /renew &#034;接続名&#034; （DHCPサーバの応答なし）</dt>
+<dd>
+<ul>
+<li>Windows XP</li>
+</ul>
+<pre>
+An error occurred while renewing interface ローカル エリア接続 2: unable to contact your
+DHCP server. Request has timed out.
+</pre>
+
+<ul>
+<li>Windows 7</li>
+</ul>
+<pre>
+インターフェイス ローカル エリア接続 の更新中にエラーが発生しました: DHCP サーバ
+ーに接続できません。要求がタイムアウトしました。
+</pre>
+
+<ul>
+<li>Windows 2000</li>
+</ul>
+<pre>
+The following error occurred when renewing adapter ローカル エリア接続 2: DHCP Ser
+ver unreachable
+</pre>
+
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+
+
+
+<h3><a href="#netsh"><span class="ms">■</span></a> <a name="netsh">netsh.exe</a></h3>
+
+<ul>
+<li><a href="http://technet2.microsoft.com/WindowsServer/ja/library/61427fbd-de1f-4c8a-b613-321f7a3cca6a1041.mspx">Netsh の概要</a>
+	<ul class="small">
+	<li><a href="http://technet2.microsoft.com/WindowsServer/ja/library/b2c92af5-425a-4c0b-8604-7a8c4ac497e01041.mspx">インターフェイス IP のための Netsh コマンド</a></li>
+	</ul>
+</li>
+</ul>
+
+
+<ul>
+<li><a href="http://itpro.nikkeibp.co.jp/article/COLUMN/20060809/245475/">netsh interface ipコマンド：ITpro</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/1264netship/netship.html">netshコマンドでTCP/IPのパラメータを設定する － ＠IT</a></li>
+</ul>
+
+<div class="small">
+<ul>
+<li>DHCPクライアント有効</li>
+</ul>
+<pre>
+netsh interface ip set address "ローカル エリア接続" dhcp
+netsh interface ip set dns  "ローカル エリア接続" dhcp
+</pre>
+
+<ul>
+<li>固定</li>
+</ul>
+<pre>
+netsh interface ip set address "ローカル エリア接続" static 192.168.0.2 255.255.255.0 192.168.0.1 1
+netsh interface ip set dns "ローカル エリア接続" static 192.168.0.1
+
+netsh interface ip add dns "ローカル エリア接続" 192.168.0.10
+</pre>
+
+<ul>
+<li>設定の保存（書き出し）</li>
+</ul>
+<pre>
+netsh -c interface dump &#062; start.nsh
+</pre>
+
+<ul>
+<li>設定の復元（読み込み）</li>
+</ul>
+<pre>
+netsh -f start.nsh
+</pre>
+
+<ul>
+<li>設定されているゲートウェイにPing</li>
+</ul>
+<pre class="scl">
+C:\&#062;netsh diag ping <strong class="ms">gateway</strong>
+
+デフォルト ゲートウェイ
+     1. [00000001] VIA Compatable Fast Ethernet Adapter
+        DefaultIPGateway = 192.168.0.10 同じサブネット
+                Pinging 192.168.0.10 with 32 bytes of data:
+                192.168.0.10 からの応答:  バイト=32 time&#060;1ms TTL=0
+                192.168.0.10 からの応答:  バイト=32 time&#060;1ms TTL=0
+                192.168.0.10 からの応答:  バイト=32 time&#060;1ms TTL=0
+                192.168.0.10 からの応答:  バイト=32 time&#060;1ms TTL=0
+                Ping 統計情報 - 192.168.0.10:
+                    パケット: 送信 = 4, 受信 = 4, 損失 = 0 (0% 損失)
+                往復にかかったおよその時間 (ミリ秒単位):
+                    最小 = 0ms, 最大 = 0ms, 平均 = 0ms
+</pre>
+
+<ul>
+<li>設定されているDNSサーバにPing</li>
+</ul>
+<pre class="scl">
+C:\&#062;netsh diag ping <strong class="ms">dns</strong>
+
+DNS サーバー
+     1. [00000001] VIA Compatable Fast Ethernet Adapter
+        DNSServerSearchOrder = 192.168.0.10
+                Pinging 192.168.0.10 with 32 bytes of data:
+                192.168.0.10 からの応答:  バイト=32 time&#060;1ms TTL=0
+                192.168.0.10 からの応答:  バイト=32 time&#060;1ms TTL=0
+                192.168.0.10 からの応答:  バイト=32 time&#060;1ms TTL=0
+                192.168.0.10 からの応答:  バイト=32 time&#060;1ms TTL=0
+                Ping 統計情報 - 192.168.0.10:
+                    パケット: 送信 = 4, 受信 = 4, 損失 = 0 (0% 損失)
+                往復にかかったおよその時間 (ミリ秒単位):
+                    最小 = 0ms, 最大 = 0ms, 平均 = 0ms
+</pre>
+</div>
+
+
+
+
+<h3><a href="#fsutil"><span class="ms">■</span></a> <a name="fsutil">fsutil.exe (XP)</a></h3>
+
+<ul>
+<li><a href="http://technet2.microsoft.com/WindowsServer/ja/library/3dd141a8-57b8-4bd8-81dd-69c515fd059f1041.mspx">Fsutil</a></li>
+</ul>
+
+<p>内蔵ドライブ、使用中リムーバブル、使用中ネットワークドライブを検出</p>
+<pre>
+D:\CommandLine&#062;fsutil fsinfo drives
+
+ドライブ: A:\ C:\ D:\ E:\ F:\ G:\ H:\ Z:\ 
+</pre>
+
+<p><code>drivetype</code> を表示</p>
+<pre>
+D:\CommandLine&#062;fsutil fsinfo drivetype c:
+c: - 固定ドライブ
+
+D:\CommandLine&#062;fsutil fsinfo drivetype g:
+g: - CD-ROM ドライブ
+
+F:\CommandLine&#062;fsutil fsinfo drivetype j:
+j: - リムーバブル ドライブ
+
+D:\CommandLine&#062;fsutil fsinfo drivetype z:
+z: - リモート ドライブまたはネットワーク ドライブ
+</pre>
+
+
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/xp_feature/013commandtool/commandtool3.html">＠IT：Windows XPの正体　強化されたコマンドライン・ツール（中編）　2．ディスク／ファイル関連ツール（2）</a></li>
+</ul>
+
+
+
+<h3><a href="#sc"><span class="ms">■</span></a> <a name="sc">sc.exe (XP)</a></h3>
+
+<ul>
+<li><a href="http://technet2.microsoft.com/WindowsServer/ja/library/0a658e97-51d5-4109-b461-a474c799964e1041.mspx">SC</a>
+	<ul class="small">
+	<li><a href="http://support.microsoft.com/kb/251192/ja">Sc.exe を使用して Windows サービスを作成する方法</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/xp_feature/013commandtool/commandtool.html">＠IT：Windows XPの正体　強化されたコマンドライン・ツール（前編）</a></li>
+</ul>
+
+
+
+
+<h2><a href="#for" name="for"><span class="tokai1">for 構文</span></a></h2>
+
+
+<ul>
+<li><a href="http://technet2.microsoft.com/WindowsServer/ja/library/7a2c7d08-bf35-414a-8a04-7e870559c82d1041.mspx">For</a></li>
+</ul>
+
+<ul>
+<li><a href="http://otnx.jp/CMD/?%A5%B3%A5%DE%A5%F3%A5%C9%CA%CC%2Ffor">コマンド別/for - CMD.EXE TIPs</a></li>
+<li><a href="http://www.ne.jp/asahi/hishidama/home/tech/windows/bat.html#for">for - バッチメモ(Hishidama's bat-file Memo)</a></li>
+</ul>
+<h3><a href="#for_set"><span class="ms">■</span></a> <a name="for_set">環境変数をセット・置換</a></h3>
+
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/command007/command01.html">連載：Windows 2000コマンドライン徹底活用　第７回　forコマンド（その1） -- 1．forコマンドの基本</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/command007/command02.html">連載：Windows 2000コマンドライン徹底活用　第7回　forコマンド（その1） -- 2．for変数の修飾子</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/command007/command03.html">連載：Windows 2000コマンドライン徹底活用　第７回　forコマンド（その1） -- 3．ｆｏｒステートメントの基本的な使い方</a></li>
+</ul>
+
+
+<ul class="small">
+<li>set file=boot.img</li>
+<li> <code>for %I in (%file%) do set foo=%~dpnxI</code> </li>
+<li><code>%~dpnxI</code> -  <code>C:\CommandLine\boot.img</code> </li>
+<li><code>%~I</code> -  引用符 <code>"</code> があれば削除</li>
+<li><code>%~fI</code> - 完全パス ( <code>C:\CommandLine\boot.img</code> )</li>
+<li><code>%~dI</code> - ドライブ文字のみ ( <code>C:</code> )</li>
+<li><code>%~pI</code> - パスのみ ( <code>\CommandLine\</code> )</li>
+<li><code>%~nI</code> - ファイル名のみ ( <code>boot</code> )</li>
+<li><code>%~xI</code> - 拡張子のみ ( <code>.img</code> )</li>
+<li><code>%~tI</code> - 更新日時 ( <code>2007/02/26 20:19</code> )</li>
+<li><code>%~zI</code> - ファイルのサイズ ( <code>1474560</code> )</li>
+<li><code>%~aI</code> - ファイルの属性 ( <code>--a------</code> )</li>
+</ul>
+
+<ul class="small">
+<li>コマンドのパスを表示 - <code>%~$PATH:I</code></li>
+</ul>
+<pre>
+set xxx=regedit.exe
+for %I in (%xxx%) do echo %~$PATH:I
+C:\WINDOWS\regedit.exe
+</pre>
+
+<ul class="small">
+<li>相対ディレクトリパスを絶対パスに置換</li>
+</ul>
+<pre>
+C:\CommandLine\dd-0.5&#062;set dir=..\
+
+C:\CommandLine\dd-0.5&#062;<strong class="ms">for %I in (&#034;%dir%&#034;) do set dir=%~dpI</strong>
+
+C:\CommandLine\dd-0.5&#062;set dir=C:\CommandLine\
+</pre>
+
+<p class="small">この場合、末尾の <code>\</code> に注意しておくこと</p>
+
+<dl>
+<dt>環境変数に 空白があり、引用符がある時ない時を考えて</dt>
+<dd>
+<p class="small"><code>set /p</code> でエクスプローラからドラッグした場合など、引用符がある時ない時両方で使う</p>
+<pre>
+set /p target=  [キャンセル は qq ] : 
+for /f &#034;usebackq delims=&#034; %%I in ('%target%') do set target=%%~I
+if /i &#034;%target%&#034;==&#034;qq&#034; GOTO CANCEL
+if &#034;%target%&#034;==&#034;&#034; set target=%cd%
+for /f &#034;delims=&#034; %%I in (&#034;%target%&#034;) do set target=%%~fI
+if not exist &#034;%target%&#034; echo %target% はありません &#038;&#038; GOTO CHOICE
+</pre>
+<p class="small">2行目は <code>if defined target set target=%target:&#034;=%</code> とかの方がいいのかな？...</p>
+</dd>
+</dl>
+
+
+
+<h3><a href="#for_f"><span class="ms">■</span></a> <a name="for_f">/F オプション - ファイルの内容解析</a></h3>
+
+<p class="small">文字列、コマンドの内容などでも。</p>
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/command008/command02.html">連載：Windows 2000コマンドライン徹底活用　第8回　forコマンド（その2） -- 2．ファイル解析による繰り返し処理</a></li>
+</ul>
+
+<div class="pc">
+<table class="pc" summary="usebackqコマンドとファイル・セット指定の関係">
+<caption>usebackq</caption>
+<tr>
+<th abbr="記号の有無">記号</th><th abbr="記号なし">なし</th><th abbr="記号ダブルクォート">ダブルクォート</th><th abbr="記号シングルクォート">シングルクォート</th><th abbr="記号バッククォート">バッククォート</th>
+</tr>
+
+<tr>
+<th abbr="usebackqなし">usebackqなし</th><td>ファイル名</td><td>文字列</td><td>コマンド</td><td>バッククォート記号を含むファイル名</td>
+</tr>
+
+<tr>
+<th abbr="usebackqあり">usebackqあり</th><td>ファイル名</td><td>ファイル名</td><td>文字列</td><td>コマンド</tr>
+</table>
+</div>
+
+<ul class="small">
+<li><code>delims</code> - デリミタ（区切り文字）指定。<code>delims=</code> とするとスペースをデリミタにしない</li>
+<li><code>tokens</code> - カラム（区切られた文字列の番号）の指定。</li>
+<li><code>usebackq</code></li>
+</ul>
+
+<div class="quote small">
+<blockquote cite="http://www.atmarkit.co.jp/fwin2k/operation/command008/command02.html" title="連載：Windows 2000コマンドライン徹底活用　第8回　forコマンド（その2） -- 2．ファイル解析による繰り返し処理">
+<p>まず、空白を含むファイル名を指定する場合には、これをダブルクォートで囲む必要があるため、かならず“usebackq”を指定しなければならない。なぜなら、ファイル・セットは、空白で区切って複数のファイルを指定するようになっているからである。
+
+　基本的には、usebackqを必ず指定することにして、ファイル名は必要に応じてダブルクォート記号で囲み、コマンドならばバッククォート、文字列ならシングルクォート記号で囲むという使い分けが安全だろう。</p>
+</blockquote>
+</div>
+
+<dl class="palmst small">
+<dt>パスの取得時に引用符を除去</dt>
+<dd>
+<p>う～ん、3番目が確実かなと思いますがどうなんでしょ？</p>
+<pre>
+if defined dirpath set dirpath=%dirpath:"=%
+</pre>
+<pre>
+for /f "delims=" %%I in ("%dirpath%") do set dirpath=%%~I
+</pre>
+<pre>
+for /f "usebackq delims=" %%I in ('%dirpath%') do set dirpath=%%~I
+</pre>
+</dd>
+</dl>
+
+
+<h3><a href="#for_l"><span class="ms">■</span></a> <a name="for_l">/L オプション - 開始,増分,終了を指定</a></h3>
+
+
+<pre>
+for /L %変数 in (開始,増分,終了) do コマンド
+</pre>
+<p class="small"><code>(10,10,100)</code> とすれば、10,20,30,...100</p>
+
+
+
+<h3><a href="#for_wildcard"><span class="ms">■</span></a> <a name="for_wildcard">ワイルドカード（ファイル・ディレクトリの列挙）</a></h3>
+
+<p>※隠しファイルは列挙されない。</p>
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/command008/command01.html">連載：Windows 2000コマンドライン徹底活用　第8回　forコマンド（その2） -- 1．ディレクトリの再帰的処理</a></li>
+</ul>
+
+<p class="small">パスを指定しない場合はカレントディレクトリ（以下）が対象</p>
+
+<ul class="small">
+<li>ファイル（ディレクトリ除く）</li>
+</ul>
+<pre>
+for %x in (*) do コマンド "%x"
+</pre>
+<p class="small">%x をコマンドの引数にする場合は、ファイル名にスペースがある場合を考えて引用符を付けておく</p>
+
+<ul class="small">
+<li>ディレクトリのみ</li>
+</ul>
+<pre>
+for <strong class="ms">/d</strong> %x in (*) do コマンド "%x"
+</pre>
+
+<ul class="small">
+<li>再帰的に（完全パスで）</li>
+</ul>
+<pre>
+for <strong class="ms">/r</strong> %x in (*) do コマンド "%x"
+</pre>
+
+<dl>
+<dt>隠しファイルもすべて表示するには <code>/f</code> + <code>dir</code> コマンドで</dt>
+<dd>
+<ul class="small">
+<li>ファイル名のみ再帰的に列挙する例</li>
+</ul>
+<pre>
+C:\test&#062;for /f &#034;delims=&#034; %x in ('dir /a-d/b/s') do @echo %x
+C:\test\aaa.txt
+C:\test\dir1\44.txt
+</pre>
+</dd>
+</dl>
+
+
+<h2><a href="#batfiles2" name="batfiles2">自作バッチ その2</a></h2>
+
+<p class="small">※バッチファイルは <strong class="ms">Windows XP</strong> 用なのでご注意。Vista以降では確認していません。</p>
+
+<p>Windows XP/2000 の基本設定の確認とか。Windows XP/2000 標準で使えるはずです...</p>
+
+<dl>
+<dt>DHCPクライアントの設定 (Windows XP/2000)</dt>
+<dd>
+<ul class="small">
+<li>必要コマンド - Windowsの標準コマンドのみ</li>
+</ul>
+
+<p>TCP/IPの設定を「IPアドレスの自動取得」に設定。ってか、これは初期設定で有効な筈ですが、繋がらない時などに、LANアダプタや <strong class="ms">DHCP Client</strong> サービスの設定を再確認してみまひょ、という...</p>
+
+<ul>
+<li><a href="../archives/commandline/backup/DHCP_enable.bat.txt">DHCP_enable.bat</a>(.txt)</li>
+</ul>
+</dd>
+
+
+<dt>ネットワークドライブの接続・切断 (Windows XP/2000)</dt>
+<dd>
+<ul class="small">
+<li>必要コマンド - Windowsの標準コマンドのみ</li>
+</ul>
+
+<p>ログオン・ログオフの確認や実行。要するに、<code>net use</code> と <code>net view</code> コマンド...</p>
+<ul>
+<li><a href="../archives/commandline/backup/Network_Drive.bat.txt">Network_Drive.bat</a>(.txt)</li>
+</ul>
+</dd>
+
+<dt>【簡易】セキュリティチェック (Windows XP/2000)</dt>
+<dd>
+<p class="small pink">※ Windows 7 / Vista 確認。</p>
+
+<ul class="small">
+<li>必要コマンド - Windowsの標準コマンドのみ（※reg.exeもあった方が）</li>
+<li>※サポート ツールの <strong class="ms">filever.exe</strong> がない場合は、WSH(VBScript)でファイルのバージョンを調べます</li>
+</ul>
+
+<p>順に Autorun.inf、スタートアップフォルダ、アンインストールリストのチェック</p>
+<ul>
+<li><a href="../archives/commandline/backup/Check_Autorun.inf.bat.txt">Check_Autorun.inf.bat</a> (.txt)</li>
+<li><a href="../archives/commandline/backup/Check_StartUpDir.bat.txt">Check_StartUpDir.bat</a> (.txt)</li>
+<li><a href="../archives/commandline/backup/Check_Uninstall.bat.txt">Check_Uninstall.bat</a> (.txt)</li>
+</ul>
+
+<p>レジストリの自動起動関連とアンインストールリストの書き出し。スタートアップ フォルダと <strong class="ms">autorun.inf</strong> のチェック。</p>
+
+<ul>
+<li><a href="../archives/commandline/backup/Security_Check_NOVC.bat.txt">Security_Check_NOVC.bat</a> (.txt)</li>
+</ul>
+<p>【追記】<del>プラグイン関連のバージョンチェックを追加。でも、旧バージョンのチェックが甘いかも...</del></p>
+</dd>
+
+<dt>「送る」でディレクトリ・ファイル名などの操作</dt>
+<dd>
+<ul>
+<li>拙作めも :
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20110525/1306334042">「送る」でファイル名をごにょごにょするバッチファイル</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>HDチェック</dt>
+<dd>
+<p>C: ドライブのチェックディスク</p>
+<ul>
+<li><a href="../archives/commandline/backup/Chkdsk_Run.bat.txt">Chkdsk_Run.bat</a> (.txt)</li>
+</ul>
+<p>HD全ドライブのチェックディスク、ログ表示</p>
+<ul>
+<li><a href="../archives/commandline/backup/Chkdsk_Run-All.bat.txt">Chkdsk_Run-All.bat</a> (.txt)</li>
+</ul>
+<p>HD全ドライブのデフラグ状態チェック、ログ表示</p>
+<ul>
+<li><a href="../archives/commandline/backup/Check_Defrag.bat.txt">Check_Defrag.bat</a> (.txt)</li>
+</ul>
+</dd>
+
+
+<dt>隠しファイル・拡張子表示設定切替。</dt>
+<dd>
+<p>regedit.exe は使わず inf ファイル (<strong class="ms">rundll32.exe</strong>) で設定変更。</p>
+<ul>
+<li><a href="../archives/commandline/backup/Explorer_ShowHiddenFiles.bat.txt">Explorer_ShowHiddenFiles.bat</a> (.txt)</li>
+</ul>
+</dd>
+
+<dt>Autorun.inf の無効化をレジストリに設定（ウイルス対策）</dt>
+<dd>
+<p class="small pink">※Windows XP 用です。（※ 7 でも一応確認してますけど...）</p>
+
+<ul>
+<li><a href="http://www.kb.cert.org/vuls/id/889747">US-CERT Vulnerability Note VU#889747</a>
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/hasegawayosuke/20090123/p1">US-CERT Vulnerability Note VU#889747 の日本語訳 - 葉っぱ日記</a></li>
+	</ul>
+</li>
+</ul>
+
+<p>USBメモリ内の <code>autorun.inf</code> での自動実行によるウイルス感染防止対策として、上記ページの説明にある「<code>autorun.inf</code> の無効化」レジストリを設定します（解除も可能）。</p>
+
+<p class="small">※Windows XP用です。（※ 7 でも一応確認してますけど...）</p>
+
+<ul>
+<li><a href="../archives/commandline/backup/Reg_NoAutorun.bat.txt">Reg_NoAutorun.bat</a> (.txt)</li>
+</ul>
+</dd>
+
+<dt>Windows PE 2.x, 3.x 【基本的】isoイメージの作成</dt>
+<dd>
+<p class="small pink">※ Windows 7 / Vista 確認。64-bit もOK。<ins>Windows 8 では今のところ使えないです</ins>。</p>
+
+<p class="small">※ Windows 自動インストール キット (AIK)のインストールが必要</p>
+<p class="pink">【2012.3.4】PATHの設定にミスがあったので修正しました。申し訳ございません...。</p>
+<p>XP + PE 2.0, Vista SP2, 7 (Home 32-bit, Pro 64-bit) で確認しました。</p>
+
+<p>ごく普通に...PE 基本イメージ作成</p>
+
+<ul>
+<li><a href="../archives/commandline/backup/WinPE_Make-ISO.bat.txt">WinPE_Make-ISO.bat</a> (.txt)</li>
+</ul>
+<ul class="small">
+<li>imagex.exe 追加</li>
+<li>BootSect.exe 追加 （2.x のみ、3.0は元々あり）</li>
+<li>bootfix.bin 削除</li>
+<li>すべてのファイルを表示するレジストリ修正 <del>ファイル ShowAll.cmd 作成</del> <ins><code>startnet.cmd</code> へ書き込み</ins></li>
+</ul>
+
+<p>Vista/7 のインストールDVDの <code>sources\boot.wim</code> から <strong class="ms">Windows RE</strong>（Windows 回復環境）のisoイメージ作成。7 のシステム修復ディスクのちょっとカスタマイズ版。</p>
+
+<ul>
+<li><a href="../archives/commandline/backup/WinRE_Make-ISO.bat.txt">WinRE_Make-ISO.bat</a> (.txt)</li>
+</ul>
+<ul class="small">
+<li>imagex.exe 追加</li>
+<li>BootSect.exe 追加 （2.x のみ、3.0は元々あり）</li>
+<li>bootfix.bin 削除</li>
+<li>winpeshl.ini 作成</li>
+<li>すべてのファイルを表示するレジストリ修正ファイル <code>ShowAll.cmd</code> 作成</li>
+</ul>
+
+<p class="small pink">※ インストールDVDがないメーカー製PCなどの場合は <code>C:\Recovery\winre.wim</code> や隠しパーティション内の <code>winre.wim</code> などを <code>sources\boot.wim</code> としてコピーして実行します。</p>
+<ul>
+<li>参考拙作：<a href="http://d.hatena.ne.jp/palm84/20091024/1256479144">「Windows 回復環境」のisoイメージを作るの巻</a></li>
+</ul>
+
+<dl class="small">
+<dt>Windows RE 作成のテスト版</dt>
+<dd>
+<p>しっかり確認してないのであしからず。一応インストールDVDがない場合でも作れるように。</p>
+<p>まず、<code>C:\Recovery</code> 内の <code>winre.wim</code> を検索し見つかった場合は選択画面を出します。</p>
+<ul>
+<li><a href="../archives/commandline/backup/WinRE_Make-ISO-RC.bat.txt">WinRE_Make-ISO-RC.bat</a> (.txt)</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+<h2><a href="#memo" name="memo"><span class="tokai1">めも</span></a></h2>
+
+<ul class="small">
+<li><a href="#help">Windows付属のヘルプ</a></li>
+<li><a href="#cmd_window">コマンド プロンプト ウィンドウ</a></li>
+<li><a href="#editor">bat/cmdファイルをテキストエディタで開く</a></li>
+<li><a href="#commandprompt_here">エクスプローラからコマンド プロンプトを開く</a></li>
+<li><a href="#karennduke">関連付け実行</a></li>
+<li><a href="#unit">ファイル結合（と分割）</a></li>
+<li><a href="#error">エラー出ますた！</a></li>
+</ul>
+
+
+
+
+
+<h3><a href="#help"><span class="ms">■</span></a> <a name="help">Windows付属のヘルプ</a></h3>
+
+<p class="small">※ Windows XP の場合。</p>
+
+<ul>
+<li>chmファイル
+	<ul class="small">
+	<li><code>%windir%\Help\ntcmds.chm</code></li>
+	</ul>
+</li>
+</ul>
+
+<p>ヘルプとサポートから開く<span class="small"> ( <code>%systemroot%\pchealth\helpctr\binaries\HelpCtr.exe</code> )</span></p>
+
+<ul class="small">
+<li>コマンド シェルの概要
+	<ul>
+	<li><code>HelpCtr.exe /url ms-its:ntcmds.chm::/ntcmds_shelloverview.htm</code></li>
+	</ul>
+</li>
+<li>コマンド ライン リファレンス
+	<ul>
+	<li><code>HelpCtr.exe /url ms-its:ntcmds.chm::/ntcmds_o.htm</code></li>
+	</ul>
+</li>
+<li>バッチ ファイルを使用する
+	<ul>
+	<li><code>HelpCtr.exe /url ms-its:ntcmds.chm::/batch.htm</code></li>
+	</ul>
+</li>
+<li>バッチ パラメータを使用する
+	<ul>
+	<li><code>HelpCtr.exe /url ms-its:ntcmds.chm::/percent.htm</code></li>
+	</ul>
+</li>
+<li>コマンド リダイレクト演算子を使用する
+	<ul>
+	<li><code>HelpCtr.exe /url ms-its:ntcmds.chm::/redirection.htm</code></li>
+	</ul>
+</li>
+</ul>
+
+
+
+
+
+
+<h3><a href="#cmd_window"><span class="ms">■</span></a> <a name="cmd_window">コマンド プロンプト ウィンドウ</a></h3>
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/command002/command2.html">連載：Windows 2000コマンドライン徹底活用　第2回コマンド プロンプト入門（その2） -- 2．コマンドプロンプトの編集機能とコマンド履歴</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/072cmdcompletion/cmdprompt.html">＠IT：Windows TIPS -- Tips：コマンド・プロンプトで入力補完機能を使う方法</a></li>
+<li><a href="http://support.microsoft.com/kb/244407/ja">コマンド プロンプト (Cmd.exe) の自動補完を有効にする方法</a>（※Windows 2000 など）</li>
+</ul>
+
+<ul class="small">
+<li><code>Esc</code> - 入力をクリア</li>
+<li><code>F1</code> - 入力履歴 1文字ずつ</li>
+<li><code>F2</code> - カーソルの前をコピー</li>
+<li><code>F3</code> - 直前に実行したコマンド</li>
+<li><code>F4</code> - カーソル以降削除</li>
+<li><code>F5</code> - 履歴（番号0から）</li>
+<li><code>F7</code> - 履歴（番号選択）</li>
+</ul>
+
+
+
+<h3><a href="#editor"><span class="ms">■</span></a> <a name="editor">bat/cmdファイルをテキストエディタで開く</a></h3>
+
+<p class="small">「右クリックメニューの編集」の指定を書き換え</p>
+<ul class="small">
+<li>【元】<code>%SystemRoot%\System32\NOTEPAD.EXE %1</code></li>
+</ul>
+<pre class="small scl">
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\batfile\shell\edit\command]
+@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
+  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,4e,00,4f,00,\
+  54,00,45,00,50,00,41,00,44,00,2e,00,45,00,58,00,45,00,20,00,25,00,31,00,00,\
+  00
+
+[HKEY_CLASSES_ROOT\cmdfile\shell\edit\command]
+@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
+  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,4e,00,4f,00,\
+  54,00,45,00,50,00,41,00,44,00,2e,00,45,00,58,00,45,00,20,00,25,00,31,00,00,\
+  00
+</pre>
+<ul class="small">
+<li>【EdTex】<code>&#034;C:\Program Files\EdTex\edtex.exe&#034; &#034;%1&#034;</code></li>
+</ul>
+<pre class="small">
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\batfile\shell\edit\command]
+@=&#034;\&#034;C:\\Program Files\\EdTex\\edtex.exe\&#034; \&#034;%1\&#034;&#034;
+
+[HKEY_CLASSES_ROOT\cmdfile\shell\edit\command]
+@=&#034;\&#034;C:\\Program Files\\EdTex\\edtex.exe\&#034; \&#034;%1\&#034;&#034;
+</pre>
+
+<ul class="small">
+<li>【秀丸】<code>&#034;C:\Program Files\Hidemaru\Hidemaru.exe&#034; &#034;%1&#034;</code></li>
+</ul>
+<pre class="small">
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\batfile\shell\edit\command]
+@=&#034;\&#034;C:\\Program Files\\Hidemaru\\Hidemaru.exe\&#034; \&#034;%1\&#034;&#034;
+
+[HKEY_CLASSES_ROOT\cmdfile\shell\edit\command]
+@=&#034;\&#034;C:\\Program Files\\Hidemaru\\Hidemaru.exe\&#034; \&#034;%1\&#034;&#034;
+</pre>
+
+
+
+<h3><a href="#commandprompt_here"><span class="ms">■</span></a> <a name="commandprompt_here">エクスプローラからコマンド プロンプトを開く</a></h3>
+
+<p class="small">フォルダを右クリックでそのフォルダをカレント・ディレクトリとしてコマンド プロンプトを開くregファイル。</p>
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/325openhere/openhere.html">＠IT：Windows TIPS -- Tips：エクスプローラでカレント・フォルダを選択してコマンド・プロンプトを開く</a></li>
+</ul>
+
+<ul>
+<li>※ Windows XP</li>
+</ul>
+<pre class="small">
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\shell\cmd]
+@=&#034;コマンドプロンプト(&#038;Z)&#034;
+
+[HKEY_CLASSES_ROOT\Directory\shell\cmd\command]
+@=&#034;cmd.exe /k \&#034;cd /d %L\&#034;&#034;
+
+[HKEY_CLASSES_ROOT\Drive\shell\cmd]
+@=&#034;コマンドプロンプト(&#038;Z)&#034;
+
+[HKEY_CLASSES_ROOT\Drive\shell\cmd\command]
+@=&#034;cmd.exe /k \&#034;cd /d %L\&#034;&#034;
+</pre>
+
+<ul class="small">
+<li>元に戻す</li>
+</ul>
+<pre class="small">
+Windows Registry Editor Version 5.00
+
+[-HKEY_CLASSES_ROOT\Directory\shell\cmd]
+[-HKEY_CLASSES_ROOT\Drive\shell\cmd]
+</pre>
+
+
+<p>Windows 7 では...</p>
+
+<ul class="small">
+<li><a href="http://journal.mycom.co.jp/column/windows/072/index.html">【コラム】Windowsスマートチューニング (72) Win7編: ＜コマンドウィンドウをここで開く＞を常に表示し、コマンドプロンプトを簡単起動する | パソコン | マイコミジャーナル</a></li>
+</ul>
+
+<pre class="small">
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\shell\cmd]
+&#034;Extended&#034;=-
+
+[HKEY_CLASSES_ROOT\Drive\shell\cmd]
+&#034;Extended&#034;=-
+</pre>
+
+<ul class="small">
+<li>元に戻す</li>
+</ul>
+<pre class="small">
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\shell\cmd]
+&#034;Extended&#034;=&#034;&#034;
+
+[HKEY_CLASSES_ROOT\Drive\shell\cmd]
+&#034;Extended&#034;=&#034;&#034;
+</pre>
+
+<p><strong class="ms">pushd</strong> コマンドで移動してるので、ネットワーク上だとネットワークドライブが自動割り当てされますね。</p>
+
+<p>Shift キー押しながらって方法もあるのですね。（※ 7 非対応ファイラーでは使えないかも。）</p>
+<ul class="small">
+<li><a href="http://www.relief.jp/itnote/archives/003057.php">コマンドウィンドウをここで開く－Vistaのエクスプローラ：コマンドプロンプトの使い方</a></li>
+</ul>
+
+
+
+<h3><a href="#karennduke"><span class="ms">■</span></a> <a name="karennduke">関連付け実行</a></h3>
+
+<p>エディタで編集中のbatファイルを直接実行。ツールバーのボタンなどに登録しておくと便利。</p>
+<dl>
+<dt>秀丸エディタ</dt>
+<dd>
+<ul class="small">
+<li>コマンド一覧<span class="ms">→</span>ファイル系<span class="ms">→</span>関連付けで開く</li>
+<li>プログラム実行 - <code>cmd /c &#034;%f&#034;</code></li>
+</ul>
+</dd>
+
+<dt>EdTex(EdLeaf)</dt>
+<dd>
+<p class="small">【外部ツール】の実行、または【ユーザーツール】に登録</p>
+<ul class="small">
+<li>パス - <code>C:\WINDOWS\system32\cmd.exe</code></li>
+<li>パラメータ - <code>/c &#034;$f&#034;</code></li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#unit"><span class="ms">■</span></a> <a name="unit">ファイル結合（と分割）</a></h3>
+
+<dl>
+<dt>ファイル結合</dt>
+<dd>
+<p class="small">※<code>/b</code> はバイナリの場合（<code>/A</code> ASCII テキスト ファイル）</p>
+<ul class="small">
+<li>一つずつ</li>
+</ul>
+<pre>
+copy /b "test.000"  "test.zip"
+copy /b "test.zip" + "test.001"  "test.zip"
+copy /b "test.zip" + "test.002"  "test.zip"
+</pre>
+
+<ul class="small">
+<li>足し算</li>
+</ul>
+<pre>
+C:\&#062;copy /b test.000 + test.001 + test.002 test.zip
+test.000
+test.001
+test.002
+        1 個のファイルをコピーしました。
+</pre>
+
+<ul class="small">
+<li>ワイルドカード</li>
+</ul>
+<pre>
+C:\&#062;copy /b test.0* test.zip
+test.000
+test.001
+test.002
+        1 個のファイルをコピーしました。
+</pre>
+
+<dl>
+<dt>Linux</dt>
+<dd>
+<p class="small">WIndows でも <strong class="ms">UnxUtils</strong> の <strong class="ms">split.exe</strong>, <strong class="ms">cat.exe</strong> でできます...</p>
+<ul class="small">
+<li>結合</li>
+</ul>
+<pre>
+$ cat test.zip.* &#062; test.zip
+</pre>
+
+<ul class="small">
+<li>分割</li>
+</ul>
+<pre>
+$ split --verbose -b 1423k test.zip test.zip.
+creating file `test.zip.aa'
+creating file `test.zip.ab'
+creating file `test.zip.ac'
+</pre>
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+
+<h3><a href="#error"><span class="ms">■</span></a> <a name="error">エラー出ますた！</a></h3>
+
+<p>しょっちゅうやってるミス（汗）</p>
+
+<ul>
+<li>空白を含むパスの処理・・・引数は引用符で囲む</li>
+<li>if文の = が一つしか...</li>
+<li>引用符が片方だけ</li>
+<li>変数の % が片方だけ</li>
+<li>for文の変数が %x (%%x)</li>
+<li>for文のdoなし</li>
+<li>環境変数に引用符が...</li>
+<li>環境変数とコマンド名が重複するとたまにおかしくなるなる</li>
+<li>GOTO の行き先が変</li>
+<li>ラベルがないー</li>
+<li>なんか全角文字が...</li>
+<li>PATHの設定忘れてた...</li>
+<li>大文字小文字を区別</li>
+<li><code>set path=.\texinst;%path%</code> の後の <code>;%path%</code> 忘れ</li>
+</ul>
+
+<ul>
+<li>バッチファイルの名前がコマンド名と同じ！</li>
+</ul>
+
+
+<p>などなど...</p>
+
+
+<h2><a href="#tips" name="tips"><span class="tokai1">私的Tips</span></a></h2>
+
+<ul class="small">
+<li><a href="#temp_dir">一時ファイル・ディレクトリの作成</a></li>
+<li><a href="#date_time">日付・時刻</a></li>
+<li><a href="#aki">ドライブの空き領域</a></li>
+<li><a href="#directory">ディレクトリ関係</a></li>
+<li><a href="#drive_letter">ドライブレターを調べる</a></li>
+<li><a href="#count_files">ファイル数を数える</a></li>
+<li><a href="#os_version">OS名・バージョン名</a></li>
+<li><a href="#find_file">ファイルを検索</a></li>
+</ul>
+
+
+
+
+<h3><a href="#temp_dir"><span class="ms">■</span></a> <a name="temp_dir">一時ファイル・ディレクトリの作成</a></h3>
+
+<p class="small">ファイル名重複の可能性や、エラー時などの削除忘れ、CDなどから実行する場合などを考えて、こんなかんじにしてます。</p>
+
+<pre>
+set temp_dir=%temp%\%random%
+mkdir %temp_dir%
+</pre>
+<p class="small">一時ファイル名は簡単に <code>&#034;%temp_dir%\0&#034;</code> とかでも指定可能。</p>
+
+
+<ul class="small">
+<li>バッチ終了時、または中断時にはディレクトリごと削除</li>
+</ul>
+<pre>
+rd /s /q &#034;%temp_dir%&#034;
+</pre>
+
+
+<h3><a href="#date_time"><span class="ms">■</span></a> <a name="date_time">日付・時刻</a></h3>
+
+<dl>
+<dt>現在の日付時刻を環境変数に設定</dt>
+<dd>
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/419batchdate/batchdate.html">バッチ・ファイル中で日付をファイル名に使用する － ＠IT</a></li>
+<li><a href="http://otnx.jp/CMD/%B5%A1%C7%BD%CA%CC/%C6%FC%BB%FE%A4%F2%C6%C0%A4%EB/#content_1_1">機能別/日時を得る - CMD.EXE TIPs</a></li>
+</ul>
+
+<p class="small">XP と 2000 でちょっと違い（2000では前に曜日が入る）があるので...</p>
+<pre>
+set now=%date%_%time%
+set now=%now: =0%
+set now=%now:~-20,2%%now:~-17,2%%now:~-14,5%%now:~-8,2%%now:~-5,2%
+</pre>
+
+<pre>
+080909_223558
+</pre>
+
+<ol class="small">
+<li>1:00から9:00は01:00にならずにスペースが入ってしまうので、スペースがあれば0に置換</li>
+<li>XPと2000で違いがあるので、末尾から数えて文字を抜き出し</li>
+</ol>
+
+<p class="small">またはこんなかんじでもいいのかな</p>
+<pre>
+set now=%date%_%time%
+set now=%now: =0%
+for /f "tokens=1-5 delims=/:." %%H in ("%now%") do set now=%%H%%I%%J%%K%%L
+set now=%now:~-13,13%
+</pre>
+</dd>
+
+<dt>既存ファイルにファイル自身の更新日時を付けてリネーム</dt>
+<dd>
+<p class="small">XP と 2000 でちょっと違いがあるので...</p>
+<pre>
+set file=boot.img
+
+<span class="red">REM # 更新日時取得</span>
+for %%I in (%file%) do set bt=%%~tI
+&#062; bt=2008/09/09 07:11
+<span class="red">REM # 日と時の間のスペース削除</span>
+set bt=%bt: =%
+&#062; bt=2008/09/0907:11
+<span class="red">REM # 文字列の後ろから抜き出し</span>
+set bt=%bt:~-13,2%%bt:~-10,2%%bt:~-7,2%_%bt:~-5,2%%bt:~-2,2%_%RANDOM%
+&#062; bt=080909_0711_7062
+<span class="red">REM # backnameを boot_日付_時間_乱数.img 設定</span>
+for %%I in (%file%) do set backname=%%~nI_%bt%%%~xI
+&#062; backname=boot_080909_0711_7062.img
+
+ren %file% %backname%
+</pre>
+
+<ol class="small">
+<li>ファイルから更新日時を抜き出し</li>
+<li>2000では末尾にスペースが含まれることがあるので、スペースを全削除</li>
+<li>末尾から数えて文字を抜き出し</li>
+<li>念の為に末尾に乱数をセット（秒がないので重複する可能性が）</li>
+<li>ファイル名_%bt%.拡張子 にする</li>
+<li>元ファイルをリネーム</li>
+</ol>
+
+<pre>
+boot_080909_0711_7062.img
+</pre>
+
+<p class="small">※上記ではスペースを含むパス、値に引用符がある場合に問題あり。</p>
+<pre>
+set /p file="C:\Documents and Settings\palm84\デスクトップ\boot.img"
+
+<span class="red">REM # 変数の値に引用符があれば除去</span>
+if defined file set file=%file:"=%      
+<span class="red">REM # セットの変数を引用符で囲んで更新日時取得</span>
+for %%I in ("%file%") do set bt=%%~tI
+set bt=%bt: =%
+set bt=%bt:~-13,2%%bt:~-10,2%%bt:~-7,2%_%bt:~-5,2%%bt:~-2,2%_%RANDOM%
+for %%I in ("%file%") do set backname=%%~nI_%bt%%%~xI
+
+ren "%file%" "%backname%"
+</pre>
+
+<p class="small">またはこんなかんじでもいいのかな</p>
+<pre>
+if defined file set file=%file:"=%      
+for %%I in ("%file%") do set bt=%%~tI
+for /f "tokens=1-5 delims=/: " %%H in ("%bt%") do set bt=%%H%%I%%J_%%K%%L
+set bt=%bt: =%
+set bt=%bt:~-11,11%
+for %%I in ("%file%") do set backname=%%~nI_%bt%_%RANDOM%%%~xI
+
+ren "%file%" "%backname%"
+</pre>
+</dd>
+</dl>
+
+
+
+<h3><a href="#aki"><span class="ms">■</span></a> <a name="aki">ドライブの空き領域</a></h3>
+
+<p class="small">dirコマンドの出力から</p>
+
+<pre class="scl">
+for /f "usebackq tokens=3,4" %%x in (`dir /a ^| findstr の空き領域`) do set aki=%%x %%y
+(set aki=xxx,xxx,xxx バイトの空き領域)
+</pre>
+
+<h3><a href="#directory"><span class="ms">■</span></a> <a name="directory">ディレクトリ関係</a></h3>
+
+<dl>
+<dt>ディレクトリ容量</dt>
+<dd>
+<p class="small">dirコマンドの出力から</p>
+<pre class="scl">
+for /f &#034;usebackq tokens=3-4&#034; %%x in (`dir /a /s ^| findstr 個のファイル`) do set dir_size=%%x %%y
+(set dir_size=xx,xxx,xxx バイト)
+</pre>
+
+<p class="small">事前に行数を出して <code>skip=%gyousu%</code> とかした方がスマートかもしれませんが、使えない場合もあったりしました。</p>
+<pre class="scl">
+for /f &#034;usebackq&#034; %%x in (`dir /a /s ^| find /c &#034;個のファイル&#034;`) do set /a gyousu=%%x-1
+</pre>
+</dd>
+
+<dt>ファイルとディレクトリの判別</dt>
+<dd>
+<p class="small">forコマンドでファイル属性を取得</p>
+<pre>
+mkdir test_dir
+set D_dir=test_dir
+
+for %x in (&#034;%D_dir%&#034;) do set D_test=%~ax
+set D_test=d--------
+if &#034;%D_test:~0,1%&#034;==&#034;d&#034; echo directory
+</pre>
+<p class="small">ネットワークドライブではなくローカル上なら、 <code>if exist test_dir<strong class="ms">\</strong></code> や <code>if exist test_dir<strong class="ms">\nul</strong></code> でディレクトリの判断は可能なはず。</p>
+</dd>
+
+<dt>ディレクトリが空かどうか</dt>
+<dd>
+<pre>
+set test=test_dir
+set nakami=nasi
+for /f %%x in ('dir /a/b &#034;%test%&#034;') do set nakami=ari
+</pre>
+
+<p class="small">ドライブルートの場合は、空っぽだと、<code>dir /a/b</code> がエラーになるので下記でも判別可能かと。</p>
+<pre>
+set nakami=nasi
+dir /a /b A:\ &#062;nul 2&#062;nul &#038;&#038; set nakami=ari
+</pre>
+
+
+
+<ul class="small">
+<li>容量を調べて、0なら空ファイル・空ディレクトリの存在をチェックする例</li>
+</ul>
+<pre class="scl">
+set test=test_dir
+for /f &#034;usebackq tokens=3&#034; %%x in (`dir /a /s &#034;%test%&#034; ^| findstr 個のファイル`) do set test_size=%%x
+if not %test_size%==0 echo ディレクトリは内容あり
+if %test_size%==0 (
+dir /a-d /b /s &#034;%test%&#034; &#062;nul 2&#062;nul &#038;&#038; set empty_file=yes
+for /f &#034;usebackq delims=&#034; %%x in (`dir /ad /s /b &#034;%test%&#034;`) do set empty_dir=yes
+
+echo ディレクトリ容量は 0 です...
+if defined empty_file echo 空ファイルあり
+if defined empty_dir echo 空ディレクトリあり
+if not defined empty_file (if not defined empty_dir @echo 空っぽです))
+</pre>
+</dd>
+</dl>
+
+
+
+<h3><a href="#drive_letter"><span class="ms">■</span></a> <a name="drive_letter">ドライブレターを調べる</a></h3>
+
+<p class="small">未割り当て、及び未使用のドライブレターを調べる場合など...</p>
+
+<ul class="small">
+<li><code>if exist</code> では、空の内蔵光学ドライブもnot existになってしまう</li>
+<li>レジストリから割り当て済みドライブレターをチェック</li>
+<li> <strong class="ms">レジストリにはネットワークドライブは記録されない</strong> ので、<code>if exist</code> でもチェック</li>
+<li><strong class="ms">Reg.exe</strong> でレジストリの <strong class="ms">REG_BINARY</strong> 値を出力、findstrコマンドでCd-ROM, RemovableMediaの文字列をチェック</li>
+</ul>
+
+<p class="small">※ Windows 2000 で <strong class="ms">reg.exe</strong> を使うにはサポートツールのインストールが必要</p>
+
+<dl>
+<dt>レジストリの割り当て済みドライブレターを列挙</dt>
+<dd>
+<pre class="scl">
+regedit /e /a &#034;mount_reg.txt&#034; &#034;HKEY_LOCAL_MACHINE\SYSTEM\MountedDevices&#034;
+for %%x in (A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z) do findstr \\%%x: &#034;mount_reg.txt&#034; &#062;nul &#038;&#038; echo %%x:
+</pre>
+<p class="small">reg.exe なら...</p>
+<pre class="scl">
+for %%x in (A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z) do reg query HKLM\SYSTEM\MountedDevices /v \DosDevices\%%x: &#062;nul 2&#062;nul &#038;&#038; echo %%x:
+</pre>
+</dd>
+
+
+<dt>空きドライブ文字を列挙</dt>
+<dd>
+<pre class="scl">
+regedit /e /a &#034;mount_reg.txt&#034; &#034;HKEY_LOCAL_MACHINE\SYSTEM\MountedDevices&#034;
+for %%x in (A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z) do findstr \\%%x: mount_reg.txt &#062;nul || if not exist %%x:\ echo %%x:
+</pre>
+<p class="small">reg.exe なら...</p>
+<pre class="scl">
+for %%x in (A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z) do reg query HKLM\SYSTEM\MountedDevices /v \DosDevices\%%x: &#062;nul 2&#062;nul || if not exist %%x:\ echo %%x:
+</pre>
+</dd>
+
+
+<dt>CDドライブを列挙</dt>
+<dd>
+<pre class="scl">
+reg query HKLM\SYSTEM\MountedDevices | findstr 4300640052006F006D00 | findstr DosDevices &#062;temp.txt
+for %%x in (D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z) do findstr \\%%x: temp.txt &#062;nul &#038;&#038; echo %%x: - CD-ROM ドライブ
+</pre>
+
+<ul class="small">
+<li>リストファイルを作らない</li>
+</ul>
+<pre class="scl">
+for %%x in (D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z) do (
+reg query HKLM\SYSTEM\MountedDevices | findstr 4300640052006F006D00 | findstr DosDevices\%%x: &#062;nul &#038;&#038; echo %%x: - CD-ROM ドライブ)
+</pre>
+</dd>
+
+
+<dt>リムーバブルメディア（フラッシュメモリなど）を列挙</dt>
+<dd>
+<pre class="scl">
+reg query HKLM\SYSTEM\MountedDevices | findstr 520065006D006F007600610062006C0065004D0065006400690061 | findstr DosDevices &#062;temp.txt
+for %%x in (D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z) do findstr \\%%x: temp.txt &#062;nul &#038;&#038; echo %%x: - RemovableMedia
+</pre>
+
+<ul class="small">
+<li>リストファイルを作らない</li>
+</ul>
+<pre class="scl">
+for %%x in (D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z) do (
+reg query HKLM\SYSTEM\MountedDevices | findstr 520065006D006F007600610062006C0065004D0065006400690061 | findstr DosDevices\%%x: &#062;nul &#038;&#038; echo %%x: - RemovableMedia)
+</pre>
+
+<p class="small">※ Windows 7 では...</p>
+<pre class="scl">
+for %%x in (D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z) do (
+reg query HKLM\SYSTEM\MountedDevices | findstr 550053004200530054004f00520023004400690073006b00 | findstr DosDevices\%%x: &#062;nul &#038;&#038; echo %%x: - RemovableMedia)
+</pre>
+</dd>
+</dl>
+
+
+
+
+<h3><a href="#count_files"><span class="ms">■</span></a> <a name="count_files">ファイル数を数える</a></h3>
+
+<p class="small">単純ですが...</p>
+<pre class="scl">
+for /f "tokens=1" %%x in ('dir /a ^| findstr 個のファイル') do set count=%%x
+</pre>
+
+<p class="small">ワイルドカードで特定のファイルを数えるのもアリかと</p>
+<pre class="scl">
+for /f &#034;tokens=1&#034; %%x in ('dir /a /s *.bat ^| findstr 個のファイル') do set count=%%x
+</pre>
+
+
+<h3><a href="#os_version"><span class="ms">■</span></a> <a name="os_version">OS名・バージョン名</a></h3>
+
+<p class="small pink">※ Server 2003, 2008 が区別できませんが...</p>
+
+<ul class="small">
+<li>OS名
+	<ul>
+	<li>参考 : <a href="http://otnx.jp/CMD/%A5%B3%A5%DE%A5%F3%A5%C9%CA%CC/ver/">コマンド別/ver - CMD.EXE TIPs</a></li>
+	</ul>
+</li>
+</ul>
+<pre class="scl">
+ver | find &#034;Windows XP&#034; &#062;nul &#038;&#038; set &#034;osname=Microsoft Windows XP&#034;
+ver | find &#034;Windows 2000&#034; &#062;nul &#038;&#038; set &#034;osname=Microsoft Windows 2000&#034;
+ver | find &#034;Version 6.0&#034; &#062;nul &#038;&#038; set &#034;osname=Microsoft Windows Vista&#034;
+ver | find &#034;Version 6.1&#034; &#062;nul &#038;&#038; set &#034;osname=Microsoft Windows  7&#034;
+echo %osname%
+</pre>
+
+<ul class="small">
+<li>Service Pack</li>
+</ul>
+<pre class="scl">
+regedit /s /e /a &#034;reg_temp.txt&#034; &#034;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion&#034;
+for /f &#034;usebackq tokens=2 delims==&#034; %%x in (`find /i &#034;CSDVersion&#034;&#034;=&#034;&#034;Service Pack&#034; &#034;reg_temp.txt&#034;`) do set spnumber=%%x
+if defined spnumber set spnumber=%spnumber:&#034;=%
+echo %spnumber%
+</pre>
+
+<ul class="small">
+<li>XP Home EditionとProfessional</li>
+</ul>
+<pre class="scl">
+regedit /s /e &#034;reg_xphome.txt&#034; &#034;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\ProductOptions&#034;
+
+find /i &#034;ProductSuite&#034;&#034;=hex(7):50,00,65&#034; &#034;reg_xphome.txt&#034; &#062;nul
+if ERRORLEVEL 1 (
+set osname=Microsoft Windows XP Professional
+) Else (
+set osname=Microsoft Windows XP Home Edition
+)
+echo %osname%
+</pre>
+
+<dl>
+<dt>Reg.exe で</dt>
+<dd>
+<ul>
+<li>XP</li>
+</ul>
+<pre class="scl">
+&#062;reg query &#034;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion&#034; /v ProductName
+
+ REG.EXE VERSION 3.0
+
+KEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+   ProductName REG_SZ  Microsoft Windows XP
+
+&#062;reg query &#034;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion&#034; /v CSDVersion
+
+! REG.EXE VERSION 3.0
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+    CSDVersion  REG_SZ  Service Pack 3
+</pre>
+
+<pre class="scl">
+&#062;for /f &#034;usebackq tokens=3 delims=&#009;&#034; %%x in (`reg query &#034;HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion&#034; /v ProductName`) do set &#034;osname=%%x&#034;
+&#062;for /f &#034;usebackq tokens=3 delims=&#009;&#034; %%x in (`reg query &#034;HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion&#034; /v CSDVersion`) do set &#034;spnumber=%%x&#034;
+&#062;if &#034;%osname%&#034;==&#034;Microsoft Windows XP&#034; (
+&#062;reg query HKLM\SYSTEM\CurrentControlSet\Control\ProductOptions /v ProductSuite | findstr /i Personal &#062;nul
+&#062;if ERRORLEVEL 1 (set &#034;osname=Microsoft Windows XP Professional&#034;) else (
+set &#034;osname=Microsoft Windows XP Home Edition&#034;))
+&#062;echo %osname% %spnumber%
+</pre>
+
+<ul>
+<li>Vista</li>
+</ul>
+<pre class="scl">
+&#062;reg query &#034;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion&#034; /v ProductName
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+    ProductName    REG_SZ    Windows Vista (TM) Home Premium
+
+&#062;reg query &#034;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion&#034; /v CSDVersion
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+    CSDVersion    REG_SZ    Service Pack 2
+</pre>
+
+<ul>
+<li>7</li>
+</ul>
+<pre class="scl">
+&#062;reg query &#034;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion&#034; /v ProductName
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+    ProductName    REG_SZ    Windows 7 Ultimate
+
+&#062;reg query &#034;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion&#034; /v CSDVersion
+
+エラー: 指定されたレジストリ キーまたは値が見つかりませんでした
+</pre>
+
+</dd>
+</dl>
+
+
+
+<h3><a href="#find_file"><span class="ms">■</span></a> <a name="find_file">ファイルを検索</a></h3>
+
+<p>ファイル名で検索して、フルパスで一覧表示。ワイルドカード【<code>*</code>】使用可能。（※一覧表示はファイル名のみだがディレクトリ名も検索対象になる）</p>
+
+<pre class="scl">
+pushd C:\
+dir /a-d/b/s regedit.exe
+
+C:\WINDOWS\regedit.exe
+C:\WINDOWS\system32\dllcache\regedit.exe
+C:\WinPE\mount\Windows\regedit.exe
+C:\winpe_x86\mount\Windows\regedit.exe
+</pre>
+
+<ul class="small">
+<li>複数ファイル
+	<ul>
+	<li>※【<code>$</code>】で行末指定</li>
+	<li>※【<code>\\</code>】を付けないと、\ナントカreg.exeも対象になってしまう</li>
+	<li>ワイルドカード指定は【<code>.*</code>】（※ディレクトリ名も対象になってしまう）</li>
+	</ul>
+</li>
+</ul>
+<pre class="scl">
+dir /a-d/b/s C:\ | findstr /i &#034;<strong class="ms">\\</strong>reg.exe$ <strong class="ms">\\</strong>regedit.exe$&#034;
+</pre>
+
+
+<h4>forでの処理</h4>
+
+
+<p class="small">ログに書き出す場合はこちらの方がいいかなぁ。上記ではログファイル名に検索ファイル名を付ける場合にアスタリスク【*】の置換ができないようなので...</p>
+
+<ul class="small">
+<li>ファイル名のみ検索するには、 <code>\\<var>filename</var>$</code> など正規表現を使う</li>
+<li>ワイルドカード指定は、【<code>.*</code>】</li>
+<li>ログファイル名は、【<code>.*</code>】を【-】などに置換する</li>
+</ul>
+
+
+<ul class="small">
+<li>ファイル名のみ指定した場合
+	<ul>
+	<li>ディレクトリ名も対象、regedit.exeナントカも対象</li>
+	</ul>
+</li>
+</ul>
+<pre class="scl">
+for /f &#034;usebackq delims=&#034; %x in (`dir /a-d/b/s C:\ ^| findstr /i regedit.exe`) do @echo %x
+
+C:\WINDOWS\regedit.exe
+C:\WINDOWS\$NtServicePackUninstall$\regedit.exe
+C:\WINDOWS\Prefetch\REGEDIT.EXE-2AE3423E.pf
+C:\WINDOWS\ServicePackFiles\i386\regedit.exe
+C:\WINDOWS\system32\dllcache\regedit.exe</pre>
+
+
+<ul class="small">
+<li>ワイルドカード使用 - <code>\reg.exe</code>, <code>\regナントカ.exe</code> を検索
+	<ul>
+	<li>\reg...\ナントカ.exeも対象になってしまう</li>
+	<li>※【<code>\\</code>】を付けないと、...reg\ナントカ.exeも対象になってしまう</li>
+	</ul>
+</li>
+</ul>
+<pre class="scl">
+for /f "usebackq delims=" %x in (`dir /a-d/b/s C:\ ^| findstr /i <strong class="ms">\\</strong>reg<strong class="ms">.*</strong>.exe`) do @echo %x
+
+C:\WINDOWS\regedit.exe
+C:\WINDOWS\system32\reg.exe
+C:\WINDOWS\system32\regedt32.exe
+C:\WINDOWS\system32\regini.exe
+C:\WINDOWS\system32\regsvr32.exe
+C:\WINDOWS\system32\regwiz.exe
+＜以下略＞
+</pre>
+
+<ul class="small">
+<li>複数ファイル
+	<ul>
+	<li>引用符囲み、スペース区切り</li>
+	</ul>
+</li>
+</ul>
+<pre class="scl">
+for /f "usebackq delims=" %x in (`dir /a-d/b/s C:\ ^| findstr /i <strong class="ms">&#034;</strong>\\reg.exe \\regini.exe<strong class="ms">&#034;</strong>`) do @echo %x
+
+C:\Program Files\Windows Resource Kits\Tools\regini.exe
+C:\WINDOWS\$NtServicePackUninstall$\reg.exe
+C:\WINDOWS\ServicePackFiles\i386\reg.exe
+C:\WINDOWS\system32\reg.exe
+C:\WINDOWS\system32\regini.exe
+C:\WINDOWS\system32\dllcache\regini.exe
+＜以下略＞
+</pre>
+
+<dl>
+<dt>バッチファイル</dt>
+<dd>
+<p>ワイルドカード使用、複数ファイル指定を可能にして、対象をファイル名のみにするにはこんなかんじでいいのでせうか？</p>
+
+<pre class="scl">
+for /f &#034;usebackq delims=&#034; %%I in (`dir /a-d/b/s C:\ ^| findstr /i /e &#034;%filename%&#034;`) do (
+echo %%~nxI | findstr /i /b &#034;%filename%&#034; &#062;nul &#038;&#038; echo %%I)
+</pre>
+
+<ul>
+<li>ファイルを検索して、<strong class="ms">filever.exe</strong> でファイル情報を書き出すバッチファイル
+	<ul class="small">
+	<li>ワイルドカード指定は【<code>.*</code>】</li>
+	<li>複数ファイルはスペース区切りで指定</li>
+	</ul>
+</li>
+</ul>
+<div class="small">
+<pre class="scl">
+@echo off
+title %~nx0
+:ASK_FILE
+cls
+echo.
+set /p filename= ファイル名を入力 : 
+echo.
+if defined filename set filename=%filename:&#034;=%
+if &#034;%filename%&#034;==&#034;&#034; GOTO ASK_FILE
+set log=%filename:.*=-%
+set log=%log: =_%
+set log=Filever_%log%.txt
+&#062; &#034;%log%&#034; echo =========================================================
+&#062;&#062;&#034;%log%&#034; echo %date% %time% -- %filename%
+&#062;&#062;&#034;%log%&#034; echo =========================================================
+for /f &#034;usebackq delims=&#034; %%I in (`dir /a-d/b/s C:\ ^| findstr /i /e &#034;%filename%&#034;`) do (
+echo %%~nxI | findstr /i /b &#034;%filename%&#034; &#062;nul
+if not ERRORLEVEL 1 (
+&#062;&#062;&#034;%log%&#034; echo ---------------------------------------------------------
+&#062;&#062;&#034;%log%&#034; echo %%I
+&#062;&#062;&#034;%log%&#034; echo ---------------------------------------------------------
+&#062;&#062;&#034;%log%&#034; filever /v &#034;%%I&#034;
+&#062;&#062;&#034;%log%&#034; echo.)
+)
+&#034;%log%&#034;
+</pre>
+</div>
+
+<p class="small pink">※ 下記は <strong>Windows 7 / Vista 非対応</strong>。</p>
+
+<p>※ C,Dドライブから検索</p>
+<ul>
+<li><a href="../archives/commandline/backup/Find_and_FileVer.bat.txt">Find_and_FileVer.bat</a> (.txt)</li>
+</ul>
+
+<p class="small">※<strong class="ms">filever.exe</strong> が使えない場合は、VBScriptで... <code>ProductVersion</code> は出ませんが。</p>
+
+<p class="small pink">※ 次のは Windows 7 / Vista でも使えるはず。</p>
+
+<ul>
+<li><a href="../archives/commandline/backup/Find_and_FileVer_vbs.bat.txt">Find_and_FileVer_vbs.bat</a> (.txt)</li>
+</ul>
+
+<p>※ 全ドライブから検索</p>
+<ul>
+<li><a href="../archives/commandline/backup/Find_and_FileVer_vbs_All.bat.txt">Find_and_FileVer_vbs_All.bat</a> (.txt)</li>
+</ul>
+</dd>
+</dl>
+
+
+<h2><a href="#link" name="link"><span class="tokai1">参考リンク</span></a></h2>
+
+<dl>
+<dt>２ちゃんねる</dt>
+<dd>
+<p>かなり参考になりました。</p>
+<ul class="small">
+<li><a href="http://pc11.2ch.net/test/read.cgi/tech/1217860043/">【.cmd】 バッチファイルスクリプト %3 【.bat】</a></li>
+<li><a href="http://unkar.jp/read/pc11.2ch.net/tech/1178281991">【.cmd】 バッチファイルスクリプト %1 【.bat】</a></li>
+<li><a href="http://www.23ch.info/test/read.cgi/tech/1197881068/">【.cmd】 バッチファイルスクリプト %2 【.bat】</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://pc11.2ch.net/test/read.cgi/win/1217738171/">初心者～管理者まで必読！コマンドライン(DOS Pt.7)</a></li>
+<li><a href="http://pc.2ch.net/win/kako/1002/10023/1002392089.html">初心者必読！最低限知っておくべきDOSコマンド</a></li>
+<li><a href="http://pc5.2ch.net/win/kako/1013/10138/1013833995.html">初心者必読！最低限知っておくべきDOSコマンド 2</a></li>
+<li><a href="http://www.23ch.info/test/read.cgi/win/1176558776/">ユーザー必読！コマンドライン(DOS Pt.6)</a></li>
+</ul>
+</dd>
+</dl>
+
+<ul>
+<li><a href="http://www.linux.or.jp/JM/index.html">JM Project (Japanese)</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.microsoft.com/windows/windows2000/ja/server/help/dos_diffs.htm">MS-DOS との違い</a></li>
+</ul>
+
+<ul>
+<li><a href="http://windows.g.hatena.ne.jp/cx20/20100203/p1">Windowsコマンドプロンプト基礎文法最速マスター - CX's Memo（Windows関連） - Club Windows</a></li>
+</ul>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/318754/ja">[HOWTO] Xcacls.exe を使用して NTFS アクセス許可を変更する方法</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/index/index.html">Windows TIPS － ＠IT</a>
+	<ul class="small">
+	<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/551cmdhelp/cmdhelp.html">＠IT：Windows TIPS -- Tips：コマンドライン・リファレンスを手早く表示する</a></li>
+	<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/511findstr/findstr.html">＠IT：Windows TIPS -- Tips：findstrで正規表現を検索する</a></li>
+	<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/446xcopy/xcopy.html">＠IT：Windows TIPS -- Tips：xcopyでファイルをバックアップする</a></li>
+	<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/877robomir/robomir.html">robocopyでフォルダをバックアップ／同期させる － ＠IT</a></li>
+	<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/psh01/psh01_02.html">Windows PowerShellコマンド＆スクリプティング入門（前編） － ＠IT</a></li>
+	<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/731caclsy/caclsy.html">caclsコマンドをバッチ・ファイルで利用する － ＠IT</a> (<code>echo y| </code>)</li>
+	</ul>
+</li>
+</ul>
+
+
+
+<ul>
+<li><a href="http://itpro.nikkeibp.co.jp/win/index.html">Windows ： ITpro</a>
+	<ul class="small">
+	<li><a href="http://itpro.nikkeibp.co.jp/article/COLUMN/20080603/305831/">Windows XP Tips 25：ITpro</a>
+	<li><a href="http://itpro.nikkeibp.co.jp/free/NT/WinKeyWord/20040805/1/">Windowsコマンド集：ITpro</a></li>
+	<li><a href="http://itpro.nikkeibp.co.jp/article/COLUMN/20060822/246171/">openfilesコマンドを使ってファイルやフォルダを利用しているプログラムを確認する：ITpro</a></li>
+	</ul>
+</li>
+</ul>
+
+
+<ul>
+<li><a href="http://otnx.jp/CMD/">CMD.EXE TIPs</a>
+	<ul class="small">
+	<li><a href="http://otnx.jp/CMD/?%A5%B3%A5%DE%A5%F3%A5%C9%CA%CC%2Ffor">コマンド別/for - CMD.EXE TIPs</a></li>
+	<li><a href="http://otnx.jp/CMD/%C1%B4%C8%CC/%A5%D5%A5%A1%A5%A4%A5%EB%A5%C7%A5%A3%A5%B9%A5%AF%A5%EA%A5%D7%A5%BF%A4%C8%A5%EA%A5%C0%A5%A4%A5%EC%A5%AF%A5%C8/">全般/ファイルディスクリプタとリダイレクト - CMD.EXE TIPs</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.ne.jp/asahi/hishidama/home/tech/index.html">ひしだまのコンピューター関連技術メモ(Hishidama's Programming MemoPage)</a>
+	<ul class="small">
+	<li><a href="http://www.ne.jp/asahi/hishidama/home/tech/windows/bat.html">バッチメモ(Hishidama's bat-file Memo)</a></li>
+	<li><a href="http://www.ne.jp/asahi/hishidama/home/tech/windows/command.html">WindowsのDOSコマンド(Hishidama's Windows DOS-command Memo)</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.fpcu.jp/dosvcmd/">DOS/Vコマンド・リファレンス＠FPCU</a></li>
+</ul>
+
+<ul>
+<li><a href="http://cmd-pro.com/index.html">コマンドプロンプトで作業効率UP</a></li>
+</ul>
+
+
+<ul class="small">
+<li><a href="http://journal.mycom.co.jp/special/2002/xpcommand/menu.html">【特集】コマンドで操るWindows XP　-　CUIのアドバンテージを堪能しよう | パソコン | マイコミジャーナル</a></li>
+</ul>
+
+
+
+
+</div>
+</div>
+
+
+<div class="navi">
+<a href="./index.html">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+
+<address>Written by yassy</address>
+
+</body>
+
+</html>

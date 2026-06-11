@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta name="GENERATOR" content="EdLeaf Version 1.02">
+<link rel="stylesheet" type="text/css" href="cssmemo.css">
+<link rel="stylesheet" type="text/css" href="testpage.css">
+<link rel="start" href="./index.html">
+<title>テストページ - CSSめも＠Palm84</title>
+</head>
+<body>
+
+<h1><a name="top">テストページ - CSSめも</a></h1>
+<h2>border と width の関係</h2>
+
+<pre>
+margin: 0;
+padding: 0;
+font-size: 0.8em;
+line-height: 100%;
+letter-spacing: 0px;
+background-color: #f1f1f1;
+overflow: auto;
+width: 50%;
+</pre>
+
+<p>こんなかんじ</p>
+
+<div class="test50">
+<p>あいうえ<span class="mono">○</span>っぱい</p>
+<p>か<span class="mono">○</span>んたま</p>
+<p>さしすえ<span class="mono">○</span>ーどで</p>
+<p>た<span class="mono">○</span>んぽこ</p>
+</div>
+
+
+<p>これにborderを付けると、幅・高さとも変わってしまう。</p>
+
+<div class="test50_border">
+<p>あいうえ<span class="mono">○</span>っぱい</p>
+<p>か<span class="mono">○</span>んたま</p>
+<p>さしすえ<span class="mono">○</span>ーどで</p>
+<p>た<span class="mono">○</span>んぽこ</p>
+</div>
+
+<p>width: 100% にすると</p>
+
+
+<div class="test100">
+<p>あいうえ<span class="mono">○</span>っぱい</p>
+<p>か<span class="mono">○</span>んたま</p>
+<p>さしすえ<span class="mono">○</span>ーどで</p>
+<p>た<span class="mono">○</span>んぽこ</p>
+</div>
+
+<p>とりあえず親要素内で100%となるらしい？これにborderを付けるとはみだしてしまうわけ、かな？</p>
+
+<p>「なるべく単位を同じにせよ」と言うのは、つまり計算違いを避けるためってことなんでしょうね。</p>
+<h3>em で指定してみる</h3>
+
+<p>width:9em を指定。8emだと<span class="vlpg">VL Pゴシック</span>などでは改行されてしまう。つまりフォントによって幅が若干違うって事かな？</p>
+
+<div class="test9em">
+あいうえ<span class="mono">○</span>っぱい<br>
+か<span class="mono">○</span>んたま<br>
+さしすえ<span class="mono">○</span>ーどで<br>
+た<span class="mono">○</span>んぽこ<br>
+</div>
+
+<p>p要素で囲む</p>
+
+<div class="test9em">
+<p>あいうえ<span class="mono">○</span>っぱい</p>
+<p>か<span class="mono">○</span>んたま</p>
+<p>さしすえ<span class="mono">○</span>ーどで</p>
+<p>た<span class="mono">○</span>んぽこ</p>
+</div>
+
+<p>p要素で囲む + border 付ける</p>
+
+<div class="test9em_border">
+<p>あいうえ<span class="mono">○</span>っぱい</p>
+<p>か<span class="mono">○</span>んたま</p>
+<p>さしすえ<span class="mono">○</span>ーどで</p>
+<p>た<span class="mono">○</span>んぽこ</p>
+</div>
+<h2>pre要素とoverflow属性の苦悩</h2>
+
+<p>IEが悩ましい</p>
+
+<pre>
+margin: 0%;
+padding: 0;
+background-color: #f1f1f1;
+font-size: 100%;
+letter-spacing: 0;
+overflow: auto;
+line-height: 100%;
+width: 100%;
+border-style :none;
+border-width : 0px;
+</pre>
+
+親要素の div.box には padding:1em; width: 30%; を指定してあります。
+
+
+<div class="box">
+<pre>
+あいうえお
+かきくけこ
+</pre>
+</div>
+
+
+<div class="box">
+<pre>
+あいうえお
+かきくけこ
+</pre>
+</div>
+
+<p><span class="vlpg">VL Pゴシック</span>などでは縦スクロールバーが出てしまうことがあります。line-heightを110%以上などに調整するか、或いは無指定の方が安全かもしれません。</p>
+
+<div class="box">
+<pre class="line110">
+あいうえお
+かきくけこ
+</pre>
+</div>
+
+
+<p>overflowの確認</p>
+
+
+
+<div class="box">
+<pre>
+♪ クマがただそこにいればいい～クマがただそこにいればいい～
+♪ I want kumar to stay by me
+♪ クマがただそこにいればいい～クマがただそこにいればいい～
+</pre>
+</div>
+
+<p>IEではおかしいですよね。スクロールバーの分が、幅・高さから引かれるようです。</p>
+
+<p>paddingを上下指定してみませう。</p>
+<pre>
+padding-top: 1em;
+padding-bottom: 1em;
+</pre>
+
+
+<div class="box">
+<pre class="line110padding">
+♪ クマがただそこにいればいい～クマがただそこにいればいい～
+♪ I want kumar to stay by me
+♪ クマがただそこにいればいい～クマがただそこにいればいい～
+</pre>
+</div>
+
+<p>IEでもマシになったかと。縦スクロールバーは邪魔なんですけどね。</p>
+
+<p>ただ、1行preの場合高さがちょっとなぁとは思ってしまいますが...</p>
+
+<div class="box">
+<pre class="line110padding">
+♪ クマがただそこにいればいい
+</pre>
+</div>
+
+<div class="box">
+<pre class="line110padding">
+♪ クマがただそこにいればいい～クマがただそこにいればいい～
+</pre>
+</div>
+
+<p>ちなみにここのpre設定はこんなかんじです。</p>
+
+<pre>
+margin: 3%;
+padding: 1em 0.5em;
+background-color: #f1f1f1;
+font-size: 95%;
+overflow: auto;
+border: 1px #ccc inset;
+line-height: 110%;
+width: 90%;
+</pre>
+
+<p>borderを指定する際にはwidthに注意（若干小さめにるす）。widthを指定しないとIEでバグが出やすいです。</p>
+
+
+
+<hr>
+
+<div class="navi">
+<ul>
+<li><a href="#top">TOP</a> | </li>
+<li><a href="./css_memo.html">Index</a> | </li>
+<li><a href="./index.html">HOME</a></li>
+</ul>
+</div>
+
+
+
+</body>
+</html>

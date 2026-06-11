@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta name="GENERATOR" content="EdLeaf Version 1.02">
+<link rel="stylesheet" type="text/css" href="cssmemo_test.css">
+<link rel="start" href="./index.html">
+<title>等幅フォントの設定を考える - CSSめも＠Palm84</title>
+<style type="text/css">
+
+<!--
+pre {
+background-color: yellow;
+}
+
+code {
+background-color: #fff0f0;
+}
+
+kbd {
+background-color: #fff0f0;
+}
+
+pre.memo {
+background-color: #fff0f0;
+}
+
+/* safari only 
+
+body:first-of-type pre {
+font-family: 'Courier New', monospace;
+}
+*/
+
+-->
+
+</style>
+<!--[if IE]>
+<link rel="stylesheet" type="text/css" href="css_memo_monospace_font_ie.css">
+<![endif]-->
+</head>
+<body>
+
+<h1><a href="./css_memo_monospace_font.html" name="top">等幅フォントの設定を考える - CSSめも</a></h1>
+<h2 id="border">borderを付けるとどうなるの？</h2>
+
+<p>こんなboxを作ってみる。(<code>div.test20em</code>)</p>
+
+<pre class="memo">
+margin: 0;
+padding: 0;
+background-color: #f1f1f1;
+overflow: auto;
+width: 20em;
+</pre>
+
+<p>こんなかんじ</p>
+
+<div class="test20em">
+あいうえお  要素なし 無指定<br>
+aiueoaiueo  要素なし 無指定<br>
+</div>
+
+<p>背景の黄色は <code>pre</code> 要素の枠です。</p>
+
+<ul>
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontSize='100%'">font-size:100%</a></li>
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontSize='150%'">font-size:150%</a></li>
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontSize='50%'">font-size:50%</a></li>
+</ul>
+
+<div class="test20em">
+<pre>
+あいうえお  pre 無指定
+aiueoaiueo  pre 無指定
+</pre>
+</div>
+
+<div class="test20em">
+<pre>
+aiueoaiueo  無指定
+<span style="font-family:monospace">aiueoaiueo  monospace</span>
+<span style="font-family:'ＭＳ ゴシック',monospace;">aiueoaiueo  ＭＳ ゴシック</span>
+<span style="font-family:'Courier New',monospace;">aiueoaiueo  Courier New</span>
+<span style="font-family:'VL ゴシック',monospace;">aiueoaiueo  VL ゴシック</span>
+</div>
+
+<div class="test20em">
+<pre>
+あいうえお  無指定
+<span style="font-family:monospace">あいうえお  monospace</span>
+<span style="font-family:'ＭＳ ゴシック',monospace;">あいうえお  ＭＳ ゴシック</span>
+<span style="font-family:'Courier New',monospace;">あいうえお  Courier New</span>
+<span style="font-family:'VL ゴシック',monospace;">あいうえお  VL ゴシック</span>
+<span style="font-family:'ＭＳ ゴシック',monospace;color:red;font-size:13px;">あいうえお  ＭＳ ゴシック 13px</span>
+</div>
+
+<p><code>font-family</code> 指定はフォント名と共に末尾に <code>monospace</code> も指定しています。</p>
+<h2>備考</h2>
+
+<p>最終更新日：2010.</p>
+
+
+<hr>
+
+
+<div class="navi">
+<ul>
+<li><a href="#top">TOP</a> | </li>
+<li><a href="./css_memo.html">Index</a> | </li>
+<li><a href="./index.html">HOME</a></li>
+</ul>
+</div>
+
+
+
+</body>
+</html>

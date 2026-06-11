@@ -1,0 +1,302 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" type="text/css" href="cssmemo.css">
+<link rel="start" href="./index.html">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./cssmemo-sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>リンクボタンを作っちゃっるき - CSSめも＠Palm84</title>
+</head>
+<body>
+
+<h1><a href="./css_memo_linkbutton.html" name="top">リンクボタンを作っちゃっるき - CSSめも</a></h1>
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/css_memo_linkbutton.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/css_memo_linkbutton.html"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/css_memo_linkbutton.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+<h2>なんじゃらほい</h2>
+
+<p>ありきたり、というか誰もが作りたがる（オレモナー）やつかもしれません（オレモカー）。</p>
+
+<p>リンクを立体的なボタンするきに、なお話（そのままやき！）。</p>
+
+<p>こういうのを</p>
+
+<ul>
+<li><a href="./css_memo_font.html">family affair</a></li>
+<li><a href="./css_memo_list.html">あなたにもul,ol</a></li>
+<li><a href="./css_memo_position.html">What's Position</a></li>
+<li><a href="./css_memo_border_width.html">恐怖の四角関係</a></li>
+<li><a href="./css_memo_pre_overflow.html">pre要素はママの味</a></li>
+</ul>
+
+
+<p>こういう風にするわけー</p>
+
+<div class="menu">
+<ul>
+<li><a href="./css_memo_font.html">family affair</a></li>
+<li><a href="./css_memo_list.html">あなたにもul,ol</a></li>
+<li><a href="./css_memo_position.html">What's Position</a></li>
+<li><a href="./css_memo_border_width.html">恐怖の四角関係</a></li>
+<li><a href="./css_memo_pre_overflow.html">pre要素はママの味</a></li>
+</ul>
+</div>
+
+<div class="menu">
+<ul>
+<li><a href="./css_memo_font.html">family affair</a></li>
+<li class="thispage">あなたにもul,ol</li>
+<li><a href="./css_memo_position.html">What's Position</a></li>
+<li><a href="./css_memo_border_width.html">恐怖の四角関係</a></li>
+<li><a href="./css_memo_pre_overflow.html">pre要素はママの味</a></li>
+</ul>
+</div>
+
+<p class="cl">高さが微妙に違うのでもうちょっと微調整が必要かも。（汗）</p>
+
+
+<h2 class="cl">立体的にするには</h2>
+
+
+<p>基本は、<code>border-top</code> と <code>border-left</code>  を明るく、<code>border-right</code> と <code>border-bottom</code> を暗い色にする。凹ますにはその逆。</p>
+
+<p>つまり、<code>a:link</code> で 凸にして、<code>a:hover</code> で凹にするというわけでんな。</p>
+<h2>ブロックレベル要素にしちゃうのだ</h2>
+
+<p>上記の方法だけだと幅が文字数に左右されるんで、同じ大きさのボタンにするには a要素を <code>diplay:block</code> にしてブロック要素にしちゃうというわけ。</p>
+
+<p>とりあえず、こんなかんじ。</p>
+
+<pre>
+div.menu {
+margin: 0 0 1% 5%;
+padding: 0;
+width: 40%;
+border: 1px outset #ccc;
+float: left;
+line:height: 1.5;
+}
+
+.menu ul {
+margin: 1em;
+padding: 0;
+list-style-type: none;
+}
+
+.menu li {
+margin: 0;
+padding: 0;
+font-size: 1.2em;
+text-align: center;
+border-style: solid;
+border-width: 1px;
+border-color: #fff #333 #333 #fff;
+}
+
+.menu li a {
+margin: 1px 0;
+padding: 0.2em 0.5em;
+color: #009;
+background-color: #ccc;
+display: block;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+border-color: #fff #333 #333 #fff;
+}
+
+.menu li a:visited {
+color: #010;
+background-color: #ccc;
+}
+
+.menu li a:hover {
+color: #003;
+background-color: #ffd;
+border-style: solid;
+border-width: 1px;
+border-color: #333 #fff #fff #333;
+}
+
+.menu li a:active {
+color: #003;
+background-color: #ff9;
+border-style: solid;
+border-width: 1px;
+border-color: #333 #fff #fff #333;
+}
+
+.menu li.thispage {
+margin: 3px 0;
+padding: 0.2em 0.5em;
+color: #003;
+background-color: #ffe;
+border-style: solid;
+border-width: 1px;
+border-color: #fff #333 #333 #fff;
+text-decoration: underline;
+font-weight: bold;
+line:height: 1.5;
+}
+</pre>
+<h2>横に並べる</h2>
+
+<ul>
+<li><a href="css_memo.html">ご案内</a></li>
+<li><a href="css_memo.html">about</a></li>
+<li><a href="css_memo.html">プロダクト</a></li>
+<li><a href="css_memo.html">お問合せ</a></li>
+<li><a href="css_memo.html">会社紹介</a></li>
+<li><a href="css_memo.html">blog</a></li>
+</ul>
+
+<div class="topmenu">
+<ul>
+<li><a class="topmenu2" href="css_memo.html">ご案内</a></li>
+<li><a class="topmenu2" href="css_memo.html">about</a></li>
+<li><a class="topmenu2" href="css_memo.html">プロダクト</a></li>
+<li><a class="topmenu2" href="css_memo.html">お問合せ</a></li>
+<li><a class="topmenu2" href="css_memo.html">会社紹介</a></li>
+<li><a class="topmenu2" href="css_memo.html">blog</a></li>
+</ul>
+</div>
+
+<div class="topmenu">
+<ul>
+<li><a class="topmenu2" href="css_memo.html">ご案内</a></li>
+<li><a class="topmenu2" href="css_memo.html">about</a></li>
+<li class="thispage">プロダクト</li>
+<li><a class="topmenu2" href="css_memo.html">お問合せ</a></li>
+<li><a class="topmenu2" href="css_memo.html">会社紹介</a></li>
+<li><a class="topmenu2" href="css_memo.html">blog</a></li>
+</ul>
+</div>
+
+<p class="cl">a要素にclass属性を付けてみます。</p>
+
+<pre>
+.topmenu {
+margin: auto;
+padding: 10px 0;
+clear: both;
+width: 700px;
+}
+
+.topmenu ul {
+margin: auto;
+padding: 0;
+width: 690px;
+list-style-type: none;
+font-size: 0.9em;
+}
+
+.topmenu li {
+margin: 0;
+padding: 0;
+color: #fff;
+background-color: #1841CE;
+text-align: center;
+float:left;
+font-weight: bold;
+}
+
+.topmenu2 {
+margin: 1px;
+padding: 1em 0;
+display: block;
+line-height: 5;
+border-width: 1px;
+border-color: #1841CE #000 #000 #1841CE;
+border-style: solid;
+width: 100px;
+float:left;
+}
+
+.topmenu a:link, .topmenu a:visited {
+margin: 1px;
+padding: 0.2em;
+color: #ffe;
+background-color: #1841CE;
+}
+
+.topmenu a:hover {
+text-decoration: none;
+color: #1841CE;
+background-color: #ffe;
+border-width: 1px;
+border-color: #000 #fff #fff #000;
+border-style: solid;
+}
+
+.topmenu a:active {
+text-decoration: underline;
+}
+
+.topmenu li.thispage {
+margin: 1px;
+padding: 0.2em;
+color: #1841CE;
+background-color: #ffe;
+display: block;
+line-height: 5;
+width: 100px;
+border-width: 1px;
+border-color: #1841CE #000 #1841CE #fff;
+border-style: solid;
+}
+</pre>
+<h2>備考</h2>
+
+<p>説明する能力・気力がありません...orz</p>
+
+
+<p>最終更新日：2008.6.20</p>
+
+
+
+<hr>
+
+
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+
+</body>
+</html>

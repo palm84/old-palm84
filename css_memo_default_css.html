@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta name="GENERATOR" content="EdLeaf Version 1.02">
+<link rel="stylesheet" type="text/css" href="cssmemo_default.css">
+<link rel="start" href="./index.html">
+<title>ブラウザのデフォルトスタイル設定を探るの巻 - CSSめも＠Palm84</title>
+<style type="text/css">
+<!--
+
+
+-->
+</style>
+</head>
+<body>
+
+<h1 id="top">ブラウザのデフォルト設定を探るの巻 - CSSめも</h1>
+<h2>color</h2>
+
+
+<table class="colorname">
+<caption>font-color</caption>
+<tr>
+<td class="font-black">black</td>
+<td class="font-green">green</td>
+<td class="font-silver">silver</td>
+<td class="font-lime">lime</td>
+</tr>
+
+<tr>
+<td class="font-gray">gray</td>
+<td class="font-olive">olive</td>
+<td class="font-white">white</td>
+<td class="font-yellow">yellow</td>
+</tr>
+
+<tr>
+<td class="font-maroon">maroon</td>
+<td class="font-navy">navy</td>
+<td class="font-red">red</td>
+<td class="font-purple">purple</td>
+</tr>
+
+<tr>
+<td class="font-teal">teal</td>
+<td class="font-fuchsia">fuchsia</td>
+<td class="font-aqua">aqua</td>
+<td class="font-blue">blue</td>
+</tr>
+</table>
+
+
+<table class="colorname">
+<caption>Color Name</caption>
+<tr>
+<td class="black"><span class="font-white">black</span></td>
+<td class="green">green</td>
+<td class="silver">silver</td>
+<td class="lime">lime</td>
+</tr>
+
+<tr>
+<td class="gray">gray</td>
+<td class="olive">olive</td>
+<td class="white">white</td>
+<td class="yellow">yellow</td>
+</tr>
+
+<tr>
+<td class="maroon">maroon</td>
+<td class="navy">navy</td>
+<td class="red">red</td>
+<td class="purple">purple</td>
+</tr>
+
+<tr>
+<td class="teal">teal</td>
+<td class="fuchsia">fuchsia</td>
+<td class="aqua">aqua</td>
+<td class="blue">blue</td>
+</tr>
+</table>
+
+
+<h2>margin/padding/line-height</h2>
+<h3>p要素</h3>
+
+<div class="test w40 lt">
+<p class="lime">
+line-heightは無指定<br>
+line-heightは無指定
+</p>
+
+<p class="lime lh10">
+line-heightは無指定じゃなくて、1<br>
+line-heightは無指定じゃなくて、1
+</p>
+
+<p class="lime lh12">
+line-heightは無指定じゃなくて、1.2<br>
+line-heightは無指定じゃなくて、1.2
+</p>
+
+<p class="lime lh13">
+line-heightは無指定じゃなくて、1.3<br>
+line-heightは無指定じゃなくて、1.3
+</p>
+
+<p class="lime lh15">
+line-heightは無指定じゃなくて、1.5<br>
+line-heightは無指定じゃなくて、1.5
+</p>
+
+<p class="lime lh17">
+line-heightは無指定じゃなくて、1.7<br>
+line-heightは無指定じゃなくて、1.7
+</p>
+
+<p class="lime lh20">
+line-heightは無指定じゃなくて、2<br>
+line-heightは無指定じゃなくて、2
+</p>
+</div>
+
+<p>Firefox + VL Pゴシックで約1.3</p>
+
+<p>XP + IE7 + メイリオで約1.7</p>
+
+<div class="test w40 lt">
+<p class="aqua">
+margin,paddingは無指定
+</p>
+<p class="aqua">
+margin,paddingは無指定
+</p>
+
+<p class="aqua p0 m0">
+margin,paddingは0指定
+</p>
+
+<p class="aqua m16px">
+margin,paddingはmargin:16px;
+</p>
+<p class="aqua 1em">
+margin,paddingはmargin:1em
+</p>
+</div>
+
+<p>margin: 16px 0;padding:0; </p>
+
+<h3 class="cl">dl要素</h3>
+
+<div class="test w40">
+<dl class="pink">
+<dt class="aqua">定義済みlist</dt>
+<dd class="lime">
+あいうえお
+</dd>
+</dl>
+</div>
+
+<div class="test w40">
+<dl class="pink">
+<dt class="aqua">定義済みlist＋p要素</dt>
+<dd class="lime">
+<p class="fuchsia">あいうえお</p>
+</dd>
+</dl>
+</div>
+
+<div class="test w40">
+<dl class="pink">
+<dt class="aqua">定義済みlist</dt>
+<dd class="lime">
+あいうえお
+</dd>
+</dl>
+
+<dl class="pink">
+<dt class="aqua">定義済みlist</dt>
+<dd class="lime">
+あいうえお
+</dd>
+</dl>
+</div>
+
+<div class="test w40">
+<dl class="pink">
+<dt class="aqua">定義済みlist</dt>
+<dd class="lime">
+あいうえお
+</dd>
+</dl>
+<p class="fuchsia">あいうえお</p>
+
+</div>
+<h3 class="cl">pre要素</h3>
+
+<div class="test">
+<pre>
+&#060;meta http-equiv=&#034;Content-Type&#034; content=&#034;text/html; charset=Shift_JIS&#034;&#062;
+</pre>
+
+</div>
+
+<div class="test lt">
+
+</div>
+
+
+
+
+
+
+<hr>
+
+<div class="navi">
+<ul>
+<li><a href="#top">TOP</a> | </li>
+<li><a href="./css_memo.html">Index</a> | </li>
+<li><a href="./index.html">HOME</a></li>
+</ul>
+</div>
+
+</body>
+</html>

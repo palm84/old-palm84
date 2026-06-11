@@ -1,0 +1,596 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" type="text/css" href="cssmemo.css">
+<link rel="stylesheet" type="text/css" href="cssmemo_test.css">
+<link rel="start" href="./index.html">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./cssmemo-sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>borderとwidthとmarginとpaddingの悩ましい四角関係 - CSSめも＠Palm84</title>
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="cssmemo_ie5.css">
+<![endif]-->
+</head>
+<body>
+
+<h1><a href="./css_memo_border_width.html" name="top">borderとwidthとmarginとpaddingの悩ましい四角関係 - CSSめも</a></h1>
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/css_memo_border_width.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/css_memo_border_width.html"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/css_memo_border_width.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+<h2 id="border">borderを付けるとどうなるの？</h2>
+
+<p>こんなboxを作ってみる。(<code>div.test50</code>)</p>
+
+<pre>
+margin: 0;
+padding: 0;
+font-size: 1em;
+line-height: 100%;
+letter-spacing: 0px;
+background-color: #f1f1f1;
+overflow: auto;
+width: 50%;
+border-bottom: 1px dotted #000;
+</pre>
+
+<p>こんなかんじ</p>
+
+<div class="test50">
+クマがいるだけで<br>
+クマちゃう<br>
+クマしかいない夜<br>
+クマだらけ<br>
+</div>
+
+
+<p>これに <code>border</code> を付けると、幅・高さとも変わってしまう。</p>
+
+<pre>
+border : 10px solid #ccc;
+</pre>
+
+<div class="test50">
+クマがいるだけで<br>
+クマちゃう<br>
+クマしかいない夜<br>
+クマだらけ<br>
+</div>
+<div class="test50 w50b10x">
+クマがいるだけで<br>
+クマちゃう<br>
+クマしかいない夜<br>
+クマだらけ<br>
+</div>
+
+
+<p><strong>反則</strong>ですけど、borderを%で指定すると...</p>
+
+<pre>
+width: 46%;
+border-style: solid;
+border-width: 2%;
+border-color: #ccc;
+</pre>
+
+<div class="test50">
+クマがいるだけで<br>
+クマちゃう<br>
+クマしかいない夜<br>
+クマだらけ<br>
+</div>
+<div class="test50 w46b2p">
+クマがいるだけで<br>
+クマちゃう<br>
+クマしかいない夜<br>
+クマだらけ<br>
+</div>
+
+
+<p>ブラウザごとに表示が異なるんでだめみたいですね。</p>
+
+
+<p><code>width:100%</code> にすると</p>
+
+
+<div class="test100">
+クマがいるだけで<br>
+クマちゃう<br>
+クマしかいない夜<br>
+クマだらけ<br>
+</div>
+
+<p>とりあえず親要素内で100%となるらしい？これに <code>border</code> を付けるとはみだしてしまうわけ、かな？</p>
+
+<p><strong>反則</strong>ですけど、borderを <code>%</code> で指定。<code>border-width:2%;width:96%;</code> だとブラウザによって表示が違いますね。</p>
+
+<div class="test100 w96b2p">
+クマがいるだけで<br>
+クマちゃう<br>
+クマしかいない夜<br>
+クマだらけ<br>
+</div>
+
+<p><strong><code>width:100%</code> に<code>border</code> を付ける場合は親要素への影響に注意</strong>ですね。</p>
+
+<p>「なるべく単位を同じにせよ」と言うのは、つまり計算違いを避けるためってことなんでしょうね。でも <code>border-width</code> は%で指定しちゃだめよだめよだめなのよ。（コケ）</p>
+
+
+<h2 id="margin_padding">margin・padding を設定すると</h2>
+
+<p>div要素での確認です。通常はwidthなしでいい場合が多いと思いますけど、IE対策でwidthを設定する時のためにmargin,paddingからの計算方法とか考えてみる。</p>
+
+<p><code>padding:2%</code> を設定したらはみ出しました。左右のpadding分を引いて <code>width:96%</code> を指定。</p>
+
+<div class="test100 w96p2">
+クマがいるだけで<br>
+クマちゃう<br>
+クマしかいない夜<br>
+クマだらけ<br>
+</div>
+
+<p> <code>padding:2%</code> な親箱に <code>width:100%</code> の小箱</p>
+
+<div class="test100 w96p2">
+<div class="test100white">
+クマがいるだけで<br>
+クマちゃう<br>
+クマしかいない夜<br>
+クマだらけ<br>
+</div>
+</div>
+
+<p>同様に <code>margin:2%</code> を設定したらはみ出しました。左右のmargin分を引いて <code>width: 96%</code> を指定。</p>
+
+<div class="test100 w96m2">
+クマがいるだけで<br>
+クマちゃう<br>
+クマしかいない夜<br>
+クマだらけ<br>
+</div>
+
+<p> <code>margin:2%</code> な親箱に <code>width:100%</code> の小箱</p>
+
+<div class="test100 w96m2">
+<div class="test100white">
+クマがいるだけで<br>
+クマちゃう<br>
+クマしかいない夜<br>
+クマだらけ<br>
+</div>
+</div>
+
+
+<h3>子要素にmargin,padding,borderを設定すると</h3>
+
+<p>背景色付けてみると一目瞭然ですけど、きっちりwidthを指定しないとはみでたりするんですねぇ。注意かも。（div要素だからかな？）</p>
+
+<p><code>background-color:wihte</code> の子要素を入れる</p>
+
+<div class="test50">
+クマがいるだけで<br>
+クマちゃう<br>
+クマしかいない夜<br>
+クマだらけ<br>
+</div>
+<div class="test50">
+<div class="test100white">
+クマがいるだけで<br>
+クマちゃう<br>
+クマしかいない夜<br>
+クマだらけ<br>
+</div>
+</div>
+
+<p>子要素に <code>margin:5%;width:90%</code>（Opera,Firefoxは上marginの背景色がない、IE6では上下marginがおかしいなぁ）</p>
+
+<div class="test50">
+クマがいるだけで<br>
+クマちゃう<br>
+クマしかいない夜<br>
+クマだらけ<br>
+</div>
+<div class="test50">
+<div class="test100white w90m5">
+クマがいるだけで<br>
+クマちゃう<br>
+クマしかいない夜<br>
+クマだらけ<br>
+</div>
+</div>
+
+<p>子要素に <code>margin:1em;width:90%</code>（Opera,Firefoxは上marginの背景色がない）</p>
+
+<div class="test50">
+クマがいるだけで<br>
+クマちゃう<br>
+クマしかいない夜<br>
+クマだらけ<br>
+</div>
+<div class="test50">
+<div class="test100white w90m1em">
+クマがいるだけで<br>
+クマちゃう<br>
+クマしかいない夜<br>
+クマだらけ<br>
+</div>
+</div>
+
+<p>親箱に <code>padding:1em;width:46%;</code> 子要素に <code>margin:0;width:100%</code></p>
+
+<div class="test50p1em">
+クマがいるだけで<br>
+クマちゃう<br>
+クマしかいない夜<br>
+クマだらけ<br>
+</div>
+<div class="test50p1em">
+<div class="test100white">
+クマがいるだけで<br>
+クマちゃう<br>
+クマしかいない夜<br>
+クマだらけ<br>
+</div>
+</div>
+
+<p>子要素に <code>padding:5%;width:90%</code> </p>
+
+<div class="test50">
+クマがいるだけで<br>
+クマちゃう<br>
+クマしかいない夜<br>
+クマだらけ<br>
+</div>
+<div class="test50">
+<div class="test100white w90p5">
+クマがいるだけで<br>
+クマちゃう<br>
+クマしかいない夜<br>
+クマだらけ<br>
+</div>
+</div>
+
+<p>子要素に <code>border:10px solid yellow;width:94%</code></p>
+
+<div class="test50">
+クマがいるだけで<br>
+クマちゃう<br>
+クマしかいない夜<br>
+クマだらけ<br>
+</div>
+<div class="test50">
+<div class="test100white w94b10px">
+クマがいるだけで<br>
+クマちゃう<br>
+クマしかいない夜<br>
+クマだらけ<br>
+</div>
+</div>
+
+
+
+
+<p>親箱に <code>padding:1em;width:46%;</code> 子要素に ul要素 <code>margin:0;padding:0 0 0 1em;</code></p>
+
+<div class="test50p1em">
+<ul>
+<li>クマがいるだけで</li>
+<li>クマちゃう</li>
+<li>クマだらけ</li>
+</ul>
+</div>
+
+<p>親箱 <code>padding:5%;width40%;</code> 子要素に ul要素 <code>margin:0;padding:0 0 0 1em;</code>
+</p>
+
+<div class="test50p5">
+<ul>
+<li>クマがいるだけで</li>
+<li>クマちゃう</li>
+<li>クマだらけ</li>
+</ul>
+</div>
+
+<p>う～んなんか頭痛くなってきました...</p>
+
+<h2 id="width_em">width を em で指定してみる</h2>
+
+<p>こんなboxで。(<code>div.test8em</code>)</p>
+
+<pre>
+margin: 2% 0 0 10%;
+padding: 0;
+font-size: 1em;
+line-height: 100%;
+letter-spacing: 0px;
+background-color: #f1f1f1;
+width: 8em;
+</pre>
+
+<p><code>width:8em</code> を指定。フォントによって幅・高さが若干違うみたいですが？</p>
+
+<div class="test8em">
+クマがいるだけで<br>
+クマしかいない夜<br>
+windows123456789<br>
+windows 12345678<br>
+llliillliillliil<br>
+</div>
+
+<p><code>margin</code> も <code>padding</code> も0のはずなのに、<span class="mspg">ＭＳ Ｐゴシック</span>では右側に余白があるのはなぜなのかな、って <code>1em</code> は基準フォントの高さだからですか。</p>
+
+<dl>
+<dt>p要素で囲んだり、border 付けたり...</dt>
+<dd>
+<p>p要素で囲む。p要素に <code>margin</code>,<code>padding</code> が指定されてると改行されてますね（p要素なのだから改行していいんですけどね。文字を改行なしで表示する目的には使うべきじゃないし）。区切り文字のない長い単語ははみ出します。</p>
+
+<div class="test8em">
+<p>クマがいるだけで</p>
+<p>クマしかいない夜</p>
+<p>windows123456789</p>
+<p>windows 12345678</p>
+<p>llliillliillliil</p>
+</div>
+
+<p><code>border</code> 付ける</p>
+
+<div class="test8em w8emb10px">
+クマがいるだけで<br>
+クマしかいない夜<br>
+windows123456789<br>
+windows 12345678<br>
+llliillliillliil<br>
+</div>
+</dd>
+</dl>
+
+<p>というわけで、<code>width</code> など長さの単位をemで指定する場合は、環境次第で変わってしまうということに注意かな？</p>
+
+<ul>
+<li><code>letter-spacing</code> をチェック</li>
+<li><code>line-height</code> をチェック</li>
+<li><ins>設定フォントの高さ</ins>が基準なので文字の内容により、右余白が変動</li>
+<li>フォントによっては、高さ・幅に若干の違いがあるかもしれない。OS標準以外のフォントを使っている場合は注意</li>
+</ul>
+
+<h3>等幅フォントで</h3>
+
+
+<div class="test8em mono">
+クマがいるだけで<br>
+クマしかいない夜<br>
+windows123456789<br>
+windows 12345678<br>
+llliillliillliil<br>
+</div>
+
+<p>環境によって基準フォントは違うってことを考えておかないといけないかも。</p>
+
+<dl>
+<dt>等幅フォントで <code>letter-spacing:1px</code></dt>
+<dd>
+<pre>
+letter-spacing: 1px;
+</pre>
+
+<div class="test8em mono w8emls1px">
+クマがいるだけで<br>
+クマしかいない夜<br>
+windows123456789<br>
+windows 12345678<br>
+llliillliillliil<br>
+</div>
+
+<p>これは改行 or はみだしが必定...</p>
+</dd>
+
+
+<dt>等幅フォントで <code>font-size:80%</code></dt>
+<dd>
+<pre>
+font-size : 80%;
+</pre>
+
+<p>幅は通常サイズの時と同じですね...ってこれもあたりまえか...orz2</p>
+<div class="test8em mono">
+<span class="small">クマがいるだけで</span><br>
+<span class="small">クマしかいない夜</span><br>
+<span class="small">windows123456789</span><br>
+<span class="small">windows 12345678</span><br>
+<span class="small">llliillliillliil</span><br>
+</div>
+
+<p><code>line-height:120%</code> にしてみると</p>
+
+<div class="test8em mono w8emlh120">
+<span class="small">クマがいるだけで</span><br>
+<span class="small">クマしかいない夜</span><br>
+<span class="small">windows123456789</span><br>
+<span class="small">windows 12345678</span><br>
+<span class="small">llliillliillliil</span><br>
+</div>
+</dd>
+</dl>
+<h3 id="vlgothic">VL Pゴシック と VL ゴシック</h3>
+
+<p><strong class="vlpg">VL Pゴシック</strong>（プロポーショナル）と<strong class="vlg">VL ゴシック</strong>（等幅）を標準にして使っていない環境でも入っていれば確認できるように、明示的に指定してみました。</p>
+
+<p>【注意】このフォントがない環境では <strong class="sansserif">Sans-Serif</strong> 設定のフォントとなります。</p>
+
+
+<div class="vlpg">
+<p><code>width:8em</code> を指定。フォントによって幅・高さが若干違うみたいですねぇ。</p>
+<p>サイズはきっちり8emになってますね。でも、よくわかりませんが英数は0.5em以下とは限らないようではみ出してたり。</p>
+
+<div class="test8em">
+クマがいるだけで<br>
+クマしかいない夜<br>
+windows123456789<br>
+windows 12345678<br>
+llliillliillliil<br>
+</div>
+
+<div class="test8em">
+クマがいるだけで<br>
+クマしかいない夜<br>
+windows123456789<br>
+windows 12345678<br>
+llliillliillliil<br>
+</div>
+
+<p><code>overflow:auto</code> を指定してみると</p>
+
+<div class="test8em overflow">
+クマがいるだけで<br>
+クマしかいない夜<br>
+</div>
+
+<div class="test8em overflow">
+クマがいるだけで<br>
+クマしかいない夜<br>
+windows123456789<br>
+windows 12345678<br>
+llliillliillliil<br>
+</div>
+
+<p>Firefox,Safariでは出なくていいはずの縦スクロールバーが出たりします。高さが違うのでしょうか？</p>
+
+<p>Firefox,Safariでの縦スクロールバーに関しては、 <code>line-height</code> 調整すると消えるかな？</p>
+<div class="test8em overflow w8emlh130">
+クマがいるだけで<br>
+クマしかいない夜<br>
+</div>
+
+<div class="test8em overflow w8emlh130">
+クマがいるだけで<br>
+クマしかいない夜<br>
+windows123456789<br>
+windows 12345678<br>
+llliillliillliil<br>
+</div>
+
+</div>
+
+
+
+
+
+<dl>
+<dt><strong class="vlg">VL ゴシック</strong>（等幅）を指定</dt>
+<dd>
+<p>ここから<strong class="vlg">VL ゴシック</strong>を指定します。</p>
+
+<p>【注意】このフォントがない環境では <strong class="mono">monospace</strong> 設定のフォントとなります。</p>
+
+<div class="vlg">
+<p>サイズは英数ともきっちり8emになってますね。</p>
+
+<div class="test8em">
+クマがいるだけで<br>
+クマしかいない夜<br>
+</div>
+
+<div class="test8em">
+クマがいるだけで<br>
+クマしかいない夜<br>
+windows123456789<br>
+windows 12345678<br>
+llliillliillliil<br>
+</div>
+
+<p><code>overflow:auto</code> を指定してみると</p>
+
+<div class="test8em overflow">
+クマがいるだけで<br>
+クマしかいない夜<br>
+</div>
+
+<div class="test8em overflow">
+クマがいるだけで<br>
+クマしかいない夜<br>
+windows123456789<br>
+windows 12345678<br>
+llliillliillliil<br>
+</div>
+
+<p>Firefoxでは出なくていいはずの縦スクロールバーが出たりします。高さが違うのでしょうか？</p>
+
+
+<p>Firefoxでの縦スクロールバーに関しては、 <code>line-height</code> 調整すると消えるかな？</p>
+<div class="test8em overflow w8emlh130">
+クマがいるだけで<br>
+クマしかいない夜<br>
+</div>
+
+<div class="test8em overflow w8emlh130">
+クマがいるだけで<br>
+クマしかいない夜<br>
+windows123456789<br>
+windows 12345678<br>
+llliillliillliil<br>
+</div>
+
+</div>
+</dd>
+</dl>
+<h2>備考</h2>
+
+<p>最終更新日：2010.5.5</p>
+
+<p><code>em</code> について勘違いしてたので訂正しました。すみません。</p>
+
+<p>VL ゴシックはLinuxなどで標準になりつつあるので表示確認しておいた方がいいかもしれませんねぇ。</p>
+
+<p>なんて、自分がWindowsでもこれを使ってるもんだから勝手に思い込んでるだけだったりするかもしれないという気がしないかもしれない。</p>
+
+<p>以下、つづく...（予定は未定）</p>
+
+
+
+<hr>
+
+
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+
+
+
+</body>
+</html>

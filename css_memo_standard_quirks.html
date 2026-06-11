@@ -1,0 +1,364 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" type="text/css" href="cssmemo.css">
+<link rel="start" href="./index.html">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./cssmemo-sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>IEの標準モードと互換モード - CSSめも＠Palm84</title>
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="cssmemo_ie5.css">
+<![endif]-->
+</head>
+<body>
+
+<h1><a href="./css_memo_standard_quirks.html" name="top">IEの標準モードと互換モード - CSSめも</a></h1>
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/css_memo_standard_quirks.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/css_memo_standard_quirks.html"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/css_memo_standard_quirks.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<ul>
+<li><a href="http://www.microsoft.com/japan/msdn/ie/expie/ie7_css_compat_reviced.aspx">Internet Explorer 7.0 に関するカスケード スタイル シートの互換性</a></li>
+<li><a href="http://www.microsoft.com/japan/msdn/ie/ie60/cssenhancements.aspx">Internet Explorer 6 における CSS の拡張</a></li>
+</ul>
+<h2><a name="index" href="#index">目次</a></h2>
+
+<ol>
+<li><a href="#standard_quirks">標準準拠モードと後方互換モード</a></li>
+<li><a href="#dtd">文書型宣言</a></li>
+<li><a href="#test_page">確認ページ</a></li>
+<li><a href="#taisaku">対策</a></li>
+<li><a href="#ie8_switch">IE8の「互換表示設定」と「モードスイッチ」</a></li>
+<li><a href="#bikou">備考</a></li>
+</ol>
+<h2><a name="standard_quirks" href="#standard_quirks">標準準拠モードと後方互換モード</a></h2>
+<h3>標準準拠モード</h3>
+
+
+<p><abbr title="Internet Explorer">IE</abbr>のバージョン6以上。いわゆる（それなり？）標準準拠なので互換モードよりはかなりバグは少ない。でもFirefoxやOperaに比べるとやはりおかしな挙動がある。また、<abbr title="Internet Explorer">IE</abbr>7と<abbr title="Internet Explorer">IE</abbr>6でも差異が見られる。</p>
+
+<p><abbr title="Internet Explorer">IE</abbr>6では <dfn>width</dfn> を指定しないブロックレベル要素で後述の互換モード時と同様な問題が出ることがあります。（但し、<dfn>width</dfn> の計算は標準）</p>
+
+<h3>後方互換モード</h3>
+
+<p><abbr title="Internet Explorer">IE</abbr>5など古いバージョンのブラウザにも対応したモード。<abbr title="Internet Explorer">IE</abbr>のそれは別名【変態】モードなんて言い方もあったり（笑）。<abbr title="Internet Explorer">IE</abbr>5は標準準拠ではないので、<abbr title="Internet Explorer">IE</abbr>5対応を考えてあえてこのモードを使う場合も多いようです。</p>
+
+<p>よく知られる、というか私の知ってる問題点に以下のものがあります。</p>
+
+<ul>
+<li><dfn>width</dfn> の計算がおかしい</li>
+<li><code>margin:auto</code> が効かない</li>
+<li><dfn>width</dfn> を指定しないブロックレベル要素で <dfn>overflow</dfn> 属性が無視されたり、 <dfn>background-color</dfn> や <dfn>border</dfn> が消えるなどおかしな挙動がある</li>
+</ul>
+
+<p><dfn>width</dfn> の指定で修正される場合が多いのですが、その計算方法が標準モード時とは違うことに注意する必要があります。普通に指定すると他のブラウザで表示がおかしくなってしまいます。</p>
+<h2><a name="dtd" href="#dtd">文書型宣言</a></h2>
+
+<ul>
+<li><a href="http://www.asahi-net.or.jp/~sd5a-ucd/rec-html401j/struct/global.html#version-info">HTMLバージョン情報 - The global structure of an HTML document (ja)</a></li>
+<li><a href="http://www.kanzaki.com/docs/html/doctype.html">文書型宣言の意味 -- ごく簡単なHTMLの説明</a></li>
+<li><a href="http://members.jcom.home.ne.jp/pctips/www/DOCTYPE.html">文書型宣言について</a></li>
+<li><a href="http://bakera.jp/yomoyama/doctype">文書型宣言の読み方@鳩丸よもやま話</a></li>
+</ul>
+
+<p>htmlファイルの先頭に書くべきものかな。<dfn><strong>HTML 4.01 Transitional</strong></dfn> では以下の通り。</p>
+<p><abbr title="Internet Explorer">IE</abbr>6/7/8ではシステム識別子の有無でモードが選択されます。</p>
+
+<ul>
+<li>URI（システム識別子）あり - <abbr title="Internet Explorer">IE</abbr>6/7/8では標準モード</li>
+</ul>
+<pre>
+&#060;!DOCTYPE HTML PUBLIC &#034;-//W3C//DTD HTML 4.01 Transitional//EN&#034; &#034;http://www.w3.org/TR/html4/loose.dtd&#034;&#062;
+</pre>
+
+<ul>
+<li>URI（システム識別子）なし - <abbr title="Internet Explorer">IE</abbr>6/7/8では後方互換モード</li>
+</ul>
+<pre>
+&#060;!DOCTYPE HTML PUBLIC &#034;-//W3C//DTD HTML 4.01 Transitional//EN&#034;&#062;
+</pre>
+<h2><a name="test_page" href="#test_page">確認ページ</a></h2>
+
+<p>各々のモードについて確認してみました。</p>
+
+<ul>
+<li><dfn>overflow</dfn> や <dfn>width</dfn> の確認</li>
+<li>主なブロック要素に <dfn>width</dfn> を設定してみる</li>
+<li>互換モード用アンダスコアハックを試してみる</li>
+<li>CSSの振り分け（コンディショナルコメント）</li>
+</ul>
+
+<ul>
+<li><a href="./standard.html">標準モード</a></li>
+<li><a href="./quirks.html">互換モード</a></li>
+</ul>
+
+<ul>
+<li><a href="./standard_width.html">標準モード【width 指定】</a></li>
+<li><a href="./quirks_width.html">互換モード【width 指定】</a></li>
+</ul>
+
+<ul>
+<li><a href="./standard_test.html">標準モード【修正版】</a></li>
+<li><a href="./quirks_width_test.html">互換モード【修正版】[_width] 指定</a></li>
+</ul>
+
+<ul>
+<li><a href="./conditional_comment_standard.html">コンディショナルコメント【標準モード】</a></li>
+<li><a href="./conditional_comment_quirks.html">コンディショナルコメント【互換モード】</a></li>
+</ul>
+
+<dl class="small">
+<dt>EmulateIE8 指定</dt>
+<dd>
+<ul>
+<li><a href="./standard_ie8.html">標準モード (IE8)</a></li>
+<li><a href="./quirks_ie8.html">互換モード (IE8)</a></li>
+</ul>
+
+<ul>
+<li><a href="./standard_width_ie8.html">標準モード (IE8)【width 指定】</a></li>
+<li><a href="./quirks_width_ie8.html">互換モード (IE8)【width 指定】</a></li>
+</ul>
+
+<ul>
+<li><a href="./standard_test_ie8.html">標準モード (IE8)【修正版】</a></li>
+<li><a href="./quirks_width_test_ie8.html">互換モード (IE8)【修正版】[_width] 指定</a></li>
+</ul>
+
+<ul>
+<li><a href="./conditional_comment_standard_ie8.html">コンディショナルコメント (IE8)【標準モード】</a></li>
+<li><a href="./conditional_comment_quirks_ie8.html">コンディショナルコメント (IE8)【互換モード】</a></li>
+</ul>
+</dd>
+
+<dt>EmulateIE7 指定</dt>
+<dd>
+<ul>
+<li><a href="./standard_ie7.html">標準モード (IE7)</a></li>
+<li><a href="./quirks_ie7.html">互換モード (IE7)</a></li>
+</ul>
+
+<ul>
+<li><a href="./standard_width_ie7.html">標準モード (IE7)【width 指定】</a></li>
+<li><a href="./quirks_width_ie7.html">互換モード (IE7)【width 指定】</a></li>
+</ul>
+
+<ul>
+<li><a href="./standard_test_ie7.html">標準モード (IE7)【修正版】</a></li>
+<li><a href="./quirks_width_test_ie7.html">互換モード (IE7)【修正版】[_width] 指定</a></li>
+</ul>
+
+<ul>
+<li><a href="./conditional_comment_standard_ie7.html">コンディショナルコメント (IE7)【標準モード】</a></li>
+<li><a href="./conditional_comment_quirks_ie7.html">コンディショナルコメント (IE7)【互換モード】</a></li>
+</ul>
+</dd>
+
+<dt>IE 5 指定</dt>
+<dd>
+<p>IE5には標準モードはないのですべて互換モードとなります。IE5では未確認なので多分修正できてないと思います。</p>
+<ul>
+<li><a href="./standard_ie5.html">標準モード (IE5)</a></li>
+</ul>
+<p>※ IE7/8 上ではIE5と全く同様の表示とはならないようです。</p>
+</dd>
+</dl>
+
+
+<dl>
+<dt>アンダースコア フィルタ（アンダースコアハック）</dt>
+<dd>
+<p>文法違反となりますが、<abbr title="Internet Explorer">IE</abbr>のバグ（独自仕様？）を利用して、<abbr title="Internet Explorer">IE</abbr>のみに属性の値を上書きさせます。<abbr title="Internet Explorer">IE</abbr>7の標準モードでは無効です。</p>
+</dd>
+
+<dt>条件分岐コメント（コンディショナルコメント）</dt>
+<dd>
+<p><abbr title="Internet Explorer">IE</abbr>の独自規格ですが、文法違反とはならないようです。コメント（&#060;!-- --&#062;）で<abbr title="Internet Explorer">IE</abbr>用CSSを振り分けします。</p>
+<ul>
+<li><a href="http://journal.mycom.co.jp/special/2007/ie7/017.html">【特集】正式版完全対応! Internet Explorer 7 CSS攻略法 (18) 04-02 コンディショナルコメント | クリエイティブ | マイコミジャーナル</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/ms537512.aspx">About Conditional Comments</a></li>
+</ul>
+</dd>
+</dl>
+<h2><a name="taisaku" href="#taisaku">対策</a></h2>
+
+<p>標準モードに関しては<abbr title="Internet Explorer">IE</abbr>7では問題は少ないと思いますが、<abbr title="Internet Explorer">IE</abbr>6での確認は必須だと思います。</p>
+
+<ul>
+<li>主なブロックレベル要素にwidthを指定するとか。</li>
+</ul>
+<p>また、<abbr title="Internet Explorer">IE</abbr>5などに対応するためには別の手段が必要。</p>
+
+<p>互換モードでは、<abbr title="Internet Explorer">IE</abbr>5/6/7はほぼ同じ設定が使えると思いますが、他のブラウザに適用されないように（つまり<abbr title="Internet Explorer">IE</abbr>のみ適用される）手段を採る必要がありますね。</p>
+
+<p>個人的には、商用サイトなどを除き<abbr title="Internet Explorer">IE</abbr>5まで対応を考えるべきかは疑問です。CSSをオフにしても読めるようにHTMLは正しく書いておくべきだと思いますけど。</p>
+<h2><a name="ie8_switch" href="#ie8_switch">IE8の「互換表示設定」と「モードスイッチ」</a></h2>
+
+<ul>
+<li><a href="http://blogs.technet.com/jpieblog/archive/2009/09/09/3280034.aspx">Japan IE Support Team Blog : IE8互換モードについて</a></li>
+<li><a href="http://standards.mitsue.co.jp/archives/001326.html">IE8のモードスイッチ | Web標準Blog | ミツエーリンクス</a></li>
+</ul>
+
+<p>IE8ではブラウザに「互換表示」ボタン、及びファイルの <code>meta</code> 要素での「モードスイッチ」が実装されました。</p>
+
+<dl>
+<dt>「互換表示」設定</dt>
+<dd>
+<p>ブラウザ側での操作。</p>
+<ul>
+<li>IE7モードとなる</li>
+<li>文書型宣言に基づき、標準・互換モードとなる</li>
+</ul>
+
+<ul>
+<li><a href="http://www.microsoft.com/japan/windows/products/winfamily/ie/function/comp/default.mspx">Internet Explorer 8: 互換表示</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/ie/dd218492.aspx">互換表示機能の紹介 - Internet Explorer デベロッパー センター</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/productreview/ie801/ie801_02.html">標準規格への準拠と互換表示モード - Internet Explorer 8（前編） － ＠IT</a></li>
+</ul>
+
+<p>F12キー（またはメニューの【ツール】<span class="ms">→</span>【開発者ツール】）でも確認・切替が可能ですね。</p>
+
+<dl>
+<dt>互換表示リスト</dt>
+<dd>
+<ul>
+<li><a href="http://blogs.msdn.com/jpwin/archive/2009/04/06/ie8.aspx">Windows 開発統括部 Blog : IE8 の互換表示について</a></li>
+<li><a href="http://hebikuzure.spaces.live.com/blog/cns!7B8DEE551B8CBD04!256.entry">互換表示リストを理解する - Windows Live</a></li>
+</ul>
+
+<p>「<strong>互換表示一覧用の更新プログラム</strong>」がインストール済みで、「<strong>マイクロソフトからの更新された Web サイト一覧を含める</strong>」の設定が有効な場合、登録されているサイトでは互換表示設定が有効となります（※ IE7モードとなる）。互換表示ボタンは非表示となりますね。</p>
+<p>※ 設定が有効でも非登録サイトでは通常通り。</p>
+
+<p>尚、登録サイトであっても <strong class="ms">meta</strong> 要素で指定すればIE8モードでの表示も可能になりました。</p>
+
+<ul>
+<li><a href="http://www.microsoft.com/downloads/details.aspx?familyid=65136BD7-3C1A-42BE-A173-A253E0482401&#038;displaylang=ja">ダウンロードの詳細 : Internet Explorer 8 の互換表示一覧用の更新プログラム (Windows XP 版) (KB980302)</a></li>
+<li><a href="http://www.microsoft.com/downloads/details.aspx?familyid=8ABAC6EA-A4BA-42BE-BC78-DC389B189FEC&#038;displaylang=ja">ダウンロードの詳細 : Internet Explorer 8 の互換表示一覧用の更新プログラム (Windows 7 版) (KB980302)</a></li>
+<li><a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=0e5a5cd2-c81b-4499-9eda-d9d37fae42b8&#038;DisplayLang=ja">ダウンロードの詳細 : Internet Explorer 8 の互換表示一覧用の更新プログラム (Windows 7 x64 Edition 版) (KB980302)</a></li>
+</ul>
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+<dl>
+<dt>モードスイッチ</dt>
+<dd>
+<p>こちらは製作者側での操作。</p>
+<ul>
+<li><strong class="ms">meta</strong> 要素でIEのバージョンを指定する</li>
+<li>無指定ならIE8モード</li>
+</ul>
+
+<ul>
+<li><a href="http://msdn.microsoft.com/ja-jp/ie/cc405106.aspx">Internet Explorer の互換性、IE アプリケーションの互換性、X-UA-Compatible タグ、および開発者向けのその他の情報</a>
+	<ul>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc817574.aspx">META タグと将来の互換性のロック</a></li>
+	</ul>
+</li>
+<li><a href="http://builder.japan.zdnet.com/sp/internet-explorer-8-2009/story/0,3800095257,20391111,00.htm">IE8のレンダリングモードと互換表示 - builder by ZDNet Japan</a></li>
+<li><a href="http://www.atmarkit.co.jp/fdotnet/special/ie8review/ie8review_01.html">Internet Explorer 8正式版レビュー － ＠IT</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/1154iisiecmp/iisiecmp.html">IISのサイト設定でIE8の互換表示モードを強制する － ＠IT</a></li>
+</ul>
+
+<p class="small pink">※ 外部CSSファイルの指定より前に指定する必要すること。（link 要素より先に）</p>
+<div class="quote">
+<blockquote cite="http://msdn.microsoft.com/ja-jp/library/cc817574.aspx" title="META タグと将来の互換性のロック">
+<p>X-UA-compatible ヘッダーでは、大文字と小文字が区別されません。ただし、他のすべての要素よりも先に (TITLE 要素と他の META 要素は除く)、Web ページのヘッダー (HEAD セクション) 内に記述される必要があります。</p>
+</blockquote>
+<cite><a href="http://msdn.microsoft.com/ja-jp/library/cc817574.aspx">META タグと将来の互換性のロック</a></cite>
+</div>
+
+<p>下記は、HTML 4.01 の場合です。（※【注意】XHTML では <code>&nbsp;/&#062;</code> でタグを閉じること
+<ul>
+<li>IE8 標準モードで表示</li>
+</ul>
+<pre>
+&#060;meta http-equiv=&#034;X-UA-Compatible&#034; content=&#034;IE=8&#034;&#062;
+</pre>
+
+<ul>
+<li>IE7 標準モードで表示</li>
+</ul>
+<pre>
+&#060;meta http-equiv=&#034;X-UA-Compatible&#034; content=&#034;IE=7&#034;&#062;
+</pre>
+
+<ul>
+<li>最新のIEで</li>
+</ul>
+<pre>
+&#060;meta http-equiv=&#034;X-UA-Compatible&#034; content=&#034;IE=edge&#034;&#062;
+</pre>
+
+<ul>
+<li>文書型宣言に合わせて、IE8の標準/互換モードで表示</li>
+</ul>
+<pre>
+&#060;meta http-equiv=&#034;X-UA-Compatible&#034; content=&#034;IE=EmulateIE8&#034;&#062;
+</pre>
+</dd>
+</dl>
+
+<p>IE互換タブブラウザ（※ unDonut）“など”では無指定だと互換表示設定（※ IE7モード）となったりしたので、IE8向けには <code>IE=edge</code> を指定しておいた方が安全かもしれませんね。</p>
+
+<p>標準準拠により近付いたのはいいことなのですが、今までのIEハックのIE8向け修正が必要になったりで、ちょっと確認はややこしいかも。</p>
+
+<p>IE8モードで作成しても閲覧者側の設定次第でIE7モードとなることもあるので、結局、IE7/IE8 の両方で確認は必要でしょうか。或いは、<code>IE=7</code> で常にIE7モードにしたら確認は楽かも（邪道かな？）</p>
+<h2><a name="bikou" href="#bikou">備考</a></h2>
+
+<p>IE8 について追記。</p>
+<p>「互換表示リスト」について追記</p>
+<p>確認ページを修正</p>
+<p>最終更新日：2010.7.25</p>
+
+
+<hr>
+
+
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+
+
+</body>
+</html>

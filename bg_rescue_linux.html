@@ -1,0 +1,1354 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="START" href="./">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>BG-Rescue Linuxめも＠Palm84</title>
+<style type="text/css">
+<!--
+
+pre.scl2 {
+	overflow: scroll;
+	white-space: pre;
+	width: 85%;
+	height: 20em;
+}
+
+pre.scl3 {
+	overflow: scroll;
+	white-space: pre;
+	width: 85%;
+	height: 10em;
+}
+
+h4 {
+	font-size: 1em;
+	font-weight: bold;
+	margin:0.5em 0.5em 0.5em 1.5em;
+	padding-left: 0.5em;
+	border-left: 1em double #ccc;
+}
+
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+</head>
+
+
+<body>
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+<h1><span class="tokai1"><a href="./bg_rescue_linux.html">BG-Rescue Linuxめも</a></span></h1>
+
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+<ul>
+<li><a href="#about">これって何？</a>
+	<ul class="nest">
+	<li><a href="#dekirukoto">できること</a></li>
+	</ul>
+</li>
+<li><a href="#bootdisk">起動ディスク作成</a></li>
+<li><a href="#screenshot">スクリーンショット</a></li>
+<li><a href="#network">ネットワーク</a></li>
+<li><a href="#mount">マウント</a></li>
+<li><a href="#file_copy">ファイル救出</a></li>
+<li><a href="#ntfs_write">NTFSへ書き込み</a></li>
+<li><a href="#livecd_boot">Linux LiveCDのブート</a></li>
+<li><a href="#link">関連リンク</a></li>
+</ul>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+<p><a href="http://getfirefox.jp/" title="Get Firefox - Web を取り戻せ">
+<img src="./images/takebacktheweb_small.png" width="125" height="50" alt="Get Firefox"></a></p>
+
+
+
+
+<p class="small">リンク is フリーダム<span class="ms">♪</span></p>
+</div>
+</div>
+
+
+
+<div class="main">
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/bg_rescue_linux.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/bg_rescue_linux.html"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/bg_rescue_linux.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<p class="small">2008.4.19 作成</p>
+<h2><a href="#about"><span class="ms">■</span></a> <a name="about">これって何？</a></h2>
+
+
+<ul>
+<li><a href="http://www.giannone.eu/rescue/current/">BG-Rescue Linux</a></li>
+</ul>
+
+<p>FDのみでブート可能なLinux。GUIはありません。英語版なので日本語表示できません。ブート手段がFDしかない場合に。</p>
+
+<p>CDやUSBデバイスでのブートが可能なら出番はないと思われますけど...。</p>
+<p>※ <strong>このページの内容はバージョン0.9.1で確認したものです</strong>。</p>
+<ul>
+<li><a href="http://www.giannone.eu/rescue/0.9.1/">BG-Rescue Linux 0.9.1</a></li>
+</ul>
+
+<h3><a href="#dekirukoto"><span class="ms">■</span></a> <a name="dekirukoto">できること</a></h3>
+
+<dl>
+<dt>ネットワークの利用</dt>
+<dd>
+<p>smbmountはないけど、wget, smbclient, ftpget, コマンドでネットワーク（インターネット含む）からのダウンロードが可能。</p>
+<p>PCMCIAやUSBのNIC（LANアダプタ）にもいくつか対応しているので内蔵NICの故障時など便利かも。</p>
+</dd>
+
+<dt>USBデバイスの利用</dt>
+<dd>
+<p>起動しないWindowsマシンからUSBメモリなどへファイルの救出。USB CDからファイルのコピーとか。</p>
+</dd>
+
+<dt>その他メンテナンス系ツール</dt>
+<dd>
+<p><a href="http://ms-sys.sourceforge.net/">ms-sys</a>でWinNTのブートストラップ(fixmbr)、DOSのブートセクタ(IPL)書き込み。</p>
+<p><a href="http://www.stud.uni-hannover.de/user/76201/gpart/">GPart</a>でパーティションテーブルの調査。</p>
+<p>fdisk, dd, <a href="http://www.garloff.de/kurt/linux/ddrescue/">dd_rescue</a>
+, <a href="http://syslinux.zytor.com/">syslinux</a>, <a href="http://man.linux-ntfs.org/ntfsfix.8.html">ntfsfix</a>
+, <a href="http://man.linux-ntfs.org/ntfsundelete.8.html">ntfsundelete</a> など</p>
+</dd>
+
+
+</dl>
+
+<h2><a href="#bootdisk"><span class="ms">■</span></a> <a name="bootdisk">起動ディスク作成</a></h2>
+
+<dl class="palmst">
+<dt>GRUB起動ディスクで</dt>
+<dd>
+<p>GRUB for DOSの起動ディスク使うほうが楽かなぁ...</p>
+
+<ul class="small">
+<li><a href="http://sourceforge.net/projects/grub4dos/files/">ダウンロード</a>
+	<ol>
+	<li>0.4.2 または 0.4.1 をダウンロード</li>
+	<li>fat12grldr.img（FDイメージ）を rawrite などでFDへ書き込み</li>
+	<li><code>menu.lst</code> に下記を追記</li>
+	<li>FDへ <strong class="ms">vmlinuz</strong> と <strong class="ms">initrd.img</strong> をそれぞれコピー</li>
+	</ol>
+</li>
+</ul>
+<pre class="scl10">
+title BG-Rescue Linux 0.9.1 -- vga=normal
+pause  Insert ' vmlinuz ' Floppy and Press Enter
+kernel (fd0)/vmlinuz 
+pause  Insert ' initrd.img ' Floppy and Press Enter
+initrd (fd0)/initrd.img
+boot
+
+title BG-Rescue Linux 0.9.1 -- vga=769
+pause  Insert ' vmlinuz ' Floppy and Press Enter
+kernel (fd0)/vmlinuz vga=769
+pause  Insert ' initrd.img ' Floppy and Press Enter
+initrd (fd0)/initrd.img
+boot
+
+title BG-Rescue Linux 0.9.1 -- 
+pause  Insert ' vmlinuz ' Floppy and Press Enter
+kernel (fd0)/vmlinuz vga=771
+pause  Insert ' initrd.img ' Floppy and Press Enter
+initrd (fd0)/initrd.img
+boot
+
+title BG-Rescue Linux 0.9.1 -- vga=773
+pause  Insert ' vmlinuz ' Floppy and Press Enter
+kernel (fd0)/vmlinuz vga=773
+pause  Insert ' initrd.img ' Floppy and Press Enter
+initrd (fd0)/initrd.img
+boot
+
+title BG-Rescue Linux 0.9.1 -- vga=775
+pause  Insert ' vmlinuz ' Floppy and Press Enter
+kernel (fd0)/vmlinuz vga=775
+pause  Insert ' initrd.img ' Floppy and Press Enter
+initrd (fd0)/initrd.img
+boot
+
+title BG-Rescue Linux 0.9.1 --  SafeMode (vga=normal apm=off)
+pause  Insert ' vmlinuz ' Floppy and Press Enter
+kernel (fd0)/vmlinuz vga=normal apm=off
+pause  Insert ' initrd.img ' Floppy and Press Enter
+initrd (fd0)/initrd.img
+boot
+</pre>
+
+</dd>
+
+<dt>FD + USBデバイス用起動ディスク</dt>
+<dd>
+<p>下記ページの起動ディスクの方が便利かもしれない（手順が多いけど）</p>
+<ul class="small">
+<li><a href="http://www10.plala.or.jp/palm84/fdboot_liveusb2.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻【その2】</a></li>
+</ul>
+</dd>
+</dl>
+
+<p>配布されてるbootディスクとrootディスクそのままでは起動できないことが多いようなのでFreeDOSで起動ディスク作成。</p>
+
+<dl>
+<dt>FreeDOS起動ディスク</dt>
+<dd>
+<ul>
+<li><a href="http://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/distributions/1.0/">Index of /pub/micro/pc-stuff/freedos/files/distributions/1.0</a></li>
+</ul>
+<p>fdboot.imgをダウンロード</p>
+<ul>
+<li><a href="http://busybox.net/~vda/linld/">Index of /~vda/linld</a></li>
+</ul>
+<p>LINLD.COMをダウンロード</p>
+<ul>
+<li><a href="http://www.giannone.eu/rescue/current/#Downloads">Downloads - BG-Rescue Linux</a></li>
+<li>( <a href="http://www.giannone.eu/rescue/0.9.1/#Downloads">BG-Rescue Linux 0.9.1</a> )</li>
+</ul>
+<p>rescue-0.9.1.zipをダウンロード。</p>
+
+<ol>
+<li>fdboot.imgを<a href="http://www.chrysocome.net/rawwrite">RawWrite for Windows</a>などでFDへ書き込み</li>
+<li>fdconfig.sys削除</li>
+<li>rescue-0.9.1.zip内の <strong class="ms">welcome.txt</strong> をコピー</li>
+<li><strong class="ms">LINLD.COM</strong> をコピー</li>
+<li><strong class="ms">autoexec.bat</strong> 作成</li>
+</ol>
+<p>※<strong class="ms">A:\kernel.sys</strong>, <strong class="ms">A:\command.com</strong>, <strong class="ms">A:\freedos\choice.exe</strong> 以外のドライバ類は基本的に不要ですけど。</p>
+
+<ul>
+<li><strong class="ms">autoexec.bat</strong></li>
+</ul>
+<pre class="scl2">
+@echo off
+set path=a:\freedos
+cls
+type a:\welcome.txt
+choice /C:123456X boot:
+IF ERRORLEVEL=7 GOTO Ende
+IF ERRORLEVEL=6 GOTO 6
+IF ERRORLEVEL=5 GOTO 5
+IF ERRORLEVEL=4 GOTO 4
+IF ERRORLEVEL=3 GOTO 3
+IF ERRORLEVEL=2 GOTO 2
+IF ERRORLEVEL=1 GOTO 1
+
+:1
+linld image=B:\vmlinuz initrd=A:\initrd.img
+
+:2
+linld image=B:\vmlinuz initrd=A:\initrd.img vga=769
+
+:3
+linld image=B:\vmlinuz initrd=A:\initrd.img vga=771
+
+:4
+linld image=B:\vmlinuz initrd=A:\initrd.img vga=773
+
+:5
+linld image=B:\vmlinuz initrd=A:\initrd.img vga=775
+
+:6
+linld image=B:\vmlinuz initrd=A:\initrd.img vga=normal "cl=apm=off"
+
+:Ende
+</pre>
+<dl>
+<dt>ファイル一覧</dt>
+<dd>
+<pre>
+A:\
+|   autoexec.bat
+|   command.com
+|   kernel.sys
+|   welcome.txt
+|
+\---freedos
+        choice.exe
+        LINLD.COM
+</pre>
+</dd>
+</dl>
+</dd>
+
+<dt>kernel と initrd をコピー</dt>
+<dd>
+<p>rescue-0.9.1.zip内の <strong class="ms">vmlinuz</strong> と <strong class="ms">initrd.img</strong> をそれぞれFDへそのままコピー。</p>
+</dd>
+</dl>
+
+
+<h2><a href="#screenshot"><span class="ms">■</span></a> <a name="screenshot">スクリーンショット</a></h2>
+
+<dl class="palmst small">
+<dt>Bドライブに入れなさい？</dt>
+<dd>
+<p class="lt"><img src="images/into_b_drive.png" alt="BドライブFD入替メッセージ" width="299" height="84"></p>
+<p>ファイルのパスに<code> <strong class="ms">B:\</strong></code> を指定すると<q><code><strong class="ms">Insert diskette in Drive B:</strong></code></q>とメッセージが出ますが、BIOSで2台目のFDDを有効にしていなければ（通常無効）単純に入替で読み込みが可能かと。</p>
+</dd>
+</dl>
+
+<p><img src="images/bgrescue_boot.png" alt="BG-Rescue Linux 起動画面" width="469" height="313"></p>
+
+<p>ビデオモードを数字で選択</p>
+
+<p><img src="images/bgrescue_drive_b.png" alt="FD入替メッセージ画面 B:" width="305" height="49"></p>
+
+<p><q><code><strong class="ms">Insert diskette in Drive B:</strong></code></q>のメッセージが出たら、<strong class="ms">vmlinuz</strong>をコピーしたFDに【ゆっくり】と入れ替えてEnter</p>
+
+<p><img src="images/bgrescue_drive_a.png" alt="FD入替メッセージ画面 A:" width="299" height="49"></p>
+
+<p><q><code><strong class="ms">Insert diskette in Drive A:</strong></code></q>のメッセージが出たら、<strong class="ms">initrd.img</strong>をコピーしたFDに【ゆっくり】と入れ替えてEnter</p>
+
+<p>以下の選択は起動後に再設定（再起動）も可能。</p>
+
+
+<p><img src="images/bgrescue_keymap.png" alt="キーボード選択画面" width="476" height="243"></p>
+<p>キーボードの選択は <code>jp</code> で。</p>
+
+<p class="overflow2"><img src="images/bgrescue_pcmcia_support.png" alt="PCMCIAサポート選択画面" width="460" height="21"></p>
+
+<p>PCMCIAサポート。YesならEnter。Noなら <code>n</code> </p>
+
+<p class="overflow2"><img src="images/bgrescue_ehci_support.png" alt="USB2.0 サポート選択画面" width="559" height="22"></p>
+
+<p>USB2.0サポート。YesならEnter。Noなら <code>n</code> </p>
+
+<p class="overflow2"><img src="images/bgrescue_network_support.png" alt="ネットワーク サポート選択画面" width="575" height="21"></p>
+
+<p>ネットワークサポート。YesならEnter。Noなら <code>n</code> </p>
+<div class="palmst">
+<p>DHCPサーバがある環境では自動でIPアドレスが設定される。</p>
+<p>内蔵LANアダプタが故障で追加のLANアダプタを使いたい場合はここで <code>n</code> を入力しないと起動できないかもしれない。</p>
+</div>
+
+
+<dl>
+<dt>サービスの再起動（再設定）</dt>
+<dd>
+<ul>
+<li>キーボードの設定</li>
+</ul>
+<pre>
+# keymap
+</pre>
+
+<ul>
+<li>PCMCIAサポート</li>
+</ul>
+<pre>
+# /etc/init.d/S20pcmcia
+</pre>
+
+<ul>
+<li>USB 2.0サポート</li>
+</ul>
+<pre>
+# /etc/init.d/S40ehci
+</pre>
+
+<ul>
+<li>ネットワーク</li>
+</ul>
+<pre>
+# /etc/init.d/S50network
+</pre>
+</dd>
+
+<dt>シャットダウン</dt>
+<dd>
+<ul>
+<li>シャットダウン</li>
+</ul>
+<pre>
+# poweroff
+</pre>
+<ul>
+<li>再起動</li>
+</ul>
+<pre>
+# reboot
+</pre>
+</dd>
+</dl>
+
+<h2><a href="#network"><span class="ms">■</span></a> <a name="network">ネットワーク</a></h2>
+
+
+<p>DHCPサーバがある環境では起動時にIPアドレス、ゲートウェイ、DNSサーバ、など自動設定されます。</p>
+
+<ul>
+<li>NIC（LANアダプタ）の状態確認</li>
+</ul>
+<pre>
+# ifconfig -a
+</pre>
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fnetwork/netcom/ifconfig/ifconfig.html">ifconfig - （IP）ネットワーク環境の確認／設定を行う</a></li>
+</ul>
+<pre class="scl3">
+# ifconfig -a
+dummy0    Link encap:Ethernet  HWaddr 00:00:00:00:00:00  
+          BROADCAST NOARP  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+eth0      Link encap:Ethernet  HWaddr 00:40:45:xx:xx:xx 
+          BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:623 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:24 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:90326 (88.2 KiB)  TX bytes:7624 (7.4 KiB)
+          Interrupt:11 Base address:0xd000 
+
+eth1      Link encap:Ethernet  HWaddr 00:A0:B0:xx:xx:xx  
+          <em class="red">inet addr:192.168.0.100  Bcast:192.168.0.255  Mask:255.255.255.0</em>
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:58 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:51 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:30824 (30.1 KiB)  TX bytes:3950 (3.8 KiB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+</pre>
+
+
+<h3>ネットワークの手動設定</h3>
+
+<p>LAN内でのみ使うならIPアドレスのみ、インターネットも使うなら、ゲートウェイ、DNSサーバを設定</p>
+<dl>
+<dt>IPアドレス</dt>
+<dd>
+<p>※ネットマスクが255.255.255.0の場合の例</p>
+<pre>
+# ifconfig <var>eth1</var> inet <var>192.168.0.100</var>
+</pre>
+<p>※追加のNIC（LANアダプタ）を使う場合は<var>eth1</var>などを指定</p>
+
+<ul>
+<li>確認</li>
+</ul>
+<pre class="scl3">
+# ifconfig
+eth1      Link encap:Ethernet  HWaddr 00:A0:B0:xx:xx:xx  
+          <em class="red">inet addr:192.168.0.100  Bcast:192.168.0.255  Mask:255.255.255.0</em>
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:58 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:51 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:30824 (30.1 KiB)  TX bytes:3950 (3.8 KiB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+</pre>
+</dd>
+
+<dt>ゲートウェイ</dt>
+<dd>
+<p>ルーターのIPアドレスを指定（※確認は <code># route</code>）</p>
+<pre>
+# route add default gw <var>192.168.0.1</var>
+</pre>
+
+<ul>
+<li>確認</li>
+</ul>
+<pre class="scl">
+# route
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+192.168.0.0     *               255.255.255.0   U     0      0        0 eth1
+127.0.0.0       *               255.0.0.0       U     0      0        0 lo
+default         192.168.0.1     0.0.0.0         UG    0      0        0 eth1
+</pre>
+</dd>
+
+<dt>DNSサーバ</dt>
+<dd>
+<p>※ルーターを指定する場合（※確認は # <code>cat /etc/resolv.conf</code>）</p>
+<pre>
+# cat &#060;&#060;end&#062;&#062; /etc/resolv.conf
+&#062; nameserver <var>192.168.0.1</var>
+&#062; end
+</pre>
+
+<ul>
+<li>確認</li>
+</ul>
+<pre>
+# cat /etc/resolv.conf
+search PALM84-NETWORK
+nameserver 192.168.0.1
+</pre>
+</dd>
+</dl>
+
+
+<h2><a href="#mount"><span class="ms">■</span></a> <a name="mount">マウント</a></h2>
+
+<p>FDドライブも含め自動マウントはされないのでmountコマンドを実行</p>
+<h3>HD(NTFS)のマウント</h3>
+<p>パーティションを確認</p>
+<ul>
+<li><a href="http://www.a-yu.com/opt/fdisk.html">FDISK の使い方</a></li>
+</ul>
+<pre>
+# fdisk -l /dev/<var>hda</var>
+</pre>
+
+<p>または、<code>/dev/hdb</code> , <code>/dev/sda</code> , <code>/dev/sdb</code></p>
+
+<pre>
+# fdisk -l /dev/<var>sda</var>
+</pre>
+<div class="palmst small">
+<p>【注】USB FDが<code>/dev/sda</code>の場合、<code>I/O error</code> や <code>unable to read partition table</code> などとメッセージが表示される</p>
+</div>
+
+<p><strong class="ms">Id</strong>と<strong class="ms">System</strong>の確認</p>
+
+<pre class="scl">
+# fdisk -l /dev/<var>hda</var>
+
+Disk /dev/hda: 20.0 GB, 20003880960 bytes
+255 heads, 63 sectors/track, 2432 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/hda1   *           1         892     7164958+   <em class="red">7</em>  <em class="red">HPFS/NTFS</em>
+/dev/hda2             893        1763     6996307+  <em class="red">1c  Hidden</em> W95 FAT32 (LBA)
+/dev/hda3            1764        1801      305235   82  Linux swap / Solaris
+/dev/hda4            1802        2432     5068507+  83  Linux
+
+</pre>
+
+<p>通常NTFSはIdが<strong class="ms">7</strong>、Systemが<strong class="ms">HPFS/NTFS</strong>。</p>
+<p>メーカー製PCでは通常<strong class="ms">隠し(Hidden)パーティション</strong>にリカバリープログラムやイメージがあるのでこれはさわらない様に注意。</p>
+
+<ul>
+<li>NTFSパーティション <code>/dev/<var>hda1</var></code> のマウント（※読み取りのみ）</li>
+</ul>
+<pre>
+# mkdir /mnt/<var>hda1</var>
+# mount -t ntfs -o ro,nls=utf8 /dev/<var>hda1</var> /mnt/<var>hda1</var>
+</pre>
+
+<ul>
+<li>アンマウント</li>
+</ul>
+<pre>
+# umount /mnt/<var>hda1</var>
+</pre>
+
+<h3>USBデバイスのマウント</h3>
+
+
+<dl>
+<dt>USBメモリ</dt>
+<dd>
+<p>Linux起動後にUSBデバイスを接続。表示されるメッセージからデバイス（ファイル）名を確認。</p>
+<pre class="scl">
+hub.c: new USB device 00:07.2-3, assigned address 2
+scsi1 : SCSI emulation for USB Mass Storage devices
+  Vendor: USB 2.0   Model: SD/MMC Reader     Rev:     
+  Type:   Direct-Access                      ANSI SCSI revision: 02
+Attached scsi removable disk sdb at scsi1, channel 0, id 0, lun 0
+SCSI device sdb: 3932160 512-byte hdwr sectors (2013 MB)
+<em class="red">sdb</em>: Write Protect is off
+ /dev/scsi/host1/bus0/target0/lun0: <em class="red">p1</em>
+</pre>
+<p>パーティションを確認。<code>unknown partition table</code>が表示される場合は多分パーティションは切られていない（または認識できない）。</p>
+
+<pre class="scl">
+# fdisk -l /dev/<var>sdb</var>
+
+Disk /dev/sdb: 2013 MB, 2013265920 bytes
+62 heads, 62 sectors/track, 1022 cylinders
+Units = cylinders of 3844 * 512 = 1968128 bytes
+
+   Device Boot      Start         End      Blocks  Id System
+/dev/<em class="red">sdb1</em>   *           1        1022     1964253   6 <em class="red">FAT16</em>
+</pre>
+<p><code>/dev/sdb1 ?</code> などのエラーの様な表示が出る場合はパーティションが切られていない（または認識できない）</p>
+
+<ul>
+<li><code>/dev/<var>sdb1</var></code> のマウント</li>
+</ul>
+<pre>
+# mkdir /mnt/usbkey
+# mount -t vfat -o utf8,shortname=winnt /dev/<var>sdb1</var> /mnt/usbkey
+</pre>
+<p>【注】パーティションが切られていない場合は<code>/dev/sdb</code>と指定する</p>
+<ul>
+<li>アンマウント</li>
+</ul>
+<pre>
+# umount /mnt/usbkey
+</pre>
+</dd>
+
+
+<dt>USB CD</dt>
+<dd>
+<p>Linux起動後にUSBデバイスを接続。表示されるメッセージからデバイス（ファイル）名を確認。</p>
+<pre class="scl">
+hub.c: new USB device 00:07.2-2, assigned address 3
+scsi2 : SCSI emulation for USB Mass Storage devices
+  Vendor: TEAC      Model: CD-224E           Rev: 9.9A
+  Type:   CD-ROM                             ANSI SCSI revision: 02
+Attached scsi CD-ROM sr0 at scsi2, channel 0, id 0, lun 0
+<em class="red">sr0</em>: scsi3-mmc drive: 24x/24x cd/rw xa/form2 cdda tray
+<em class="red">sr0</em>: mmc-3 profile capable, current profile: 0h
+</pre>
+
+<ul>
+<li><code>/dev/<var>sr0</var></code> のマウント</li>
+</ul>
+<pre>
+# mkdir /mnt/usbcd
+# mount /dev/<var>sr0</var> /mnt/usbcd
+</pre>
+
+<ul>
+<li>アンマウント</li>
+</ul>
+<pre>
+# umount /mnt/usbcd
+</pre>
+
+<dl>
+<dt>参考</dt>
+<dd>
+<p>オプションなしでも問題なさそうですが、Windows向けCDでは、<code>-o norock,map=off</code> を付けてマウントした方がいい場合があるかも？</p>
+<ul class="small">
+<li><a href="http://www.linux.or.jp/JM/html/util-linux/man8/mount.8.html#lbAQ">iso9660 のマウントオプション - Manpage of MOUNT</a></li>
+<li><a href="http://www15.big.or.jp/~yamamori/sun/sd-2000-06/mount.html">Solaris/Linux/FreeBSDでCD-Rを焼こう＠謎の処理系 SunOS 4.1.4</a></li>
+</ul>
+
+</dd>
+
+</dl>
+</dd>
+
+<dt>USB FD</dt>
+<dd>
+<p>USB FDでブートした場合でも、Linux自体はオンメモリで動いているのでFDを使うにはマウント操作が必要</p>
+
+<ul>
+<li><code>/dev/<var>sda</var></code> のマウント</li>
+</ul>
+<pre>
+# mkdir /mnt/floppy
+# mount /dev/sda /mnt/floppy
+</pre>
+
+<ul>
+<li>アンマウント</li>
+</ul>
+<pre>
+# umount /mnt/floppy
+</pre>
+</dd>
+</dl>
+
+
+
+
+
+
+<h2><a href="#file_copy"><span class="ms">■</span></a> <a name="file_copy">ファイル救出</a></h2>
+
+
+<p>USBメモリなどへファイルをコピーする。日本語ファイル名などは指定できないので親ディレクトリを指定してディレクトリごとコピーする。</p>
+
+<pre>
+# cd /mnt/<var>hda1</var>/Documents\ and\ Settings/<var>username</var>
+# cp -r My\ Documents /mnt/usbkey
+</pre>
+
+<dl class="palmst">
+<dt>ディレクトリの容量表示</dt>
+<dd>
+<ul>
+<li>パーティション全体</li>
+</ul>
+<pre>
+# cd /mnt/<var>hda1</var>
+# du -sh
+7.0G   .
+</pre>
+
+<ul>
+<li>My Documents</li>
+</ul>
+<pre>
+# cd /mnt/<var>hda1</var>
+# du -hs  Documents\ and\ Settings/<var>palm84</var>/My\ Documents/
+988M  Documents and Settings/<var>palm84</var>/My Documents
+</pre>
+</dd>
+</dl>
+<h3>smbclientコマンド</h3>
+
+<p>Windowsマシンの共有へ接続</p>
+<p>但し、日本語ファイル名はすべて文字化け。スペース含む場合もだめかもしれない。</p>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/193smbclientuse.html">SambaでほかのLinuxにアクセスするには</a></li>
+<li><a href="http://www.samba.gr.jp/project/translation/current/htmldocs/smbclient.1.html">smbclient</a></li>
+</ul>
+
+<p>Windowsマシンへ接続するにはhostsファイルの修正が必要？ifconfigでIPアドレスを確認。（※<var>192.168.0.100</var>の場合）</p>
+
+<pre>
+# cat &#060;&#060;END&#062; /etc/hosts 
+&#062; 127.0.0.1 localhost
+&#062; <var>192.168.0.100</var> rescue
+&#062; END
+</pre>
+
+<ul>
+<li>対象ホストの共有一覧表示 </li>
+</ul>
+<pre>
+# smbclient -L <var>hostname</var> -U <var>username</var>
+</pre>
+
+<ul>
+<li>ホストへ接続 </li>
+</ul>
+<pre>
+# smbclient //<var>hostname</var>/<var>sharename</var> -U <var>username</var>
+</pre>
+
+<ul>
+<li>prompt - 問い合わせを表示しない</li>
+<li>recurse - ディレクトリを再帰的に取得</li>
+<li>!コマンド名 - ローカル上でコマンド実行</li>
+<li>lcd - ローカルのディレクトリ移動</li>
+<li>help - コマンド一覧表示</li>
+</ul>
+
+
+<ul>
+<li>ローカルのディレクトリをリモートへコピー</li>
+</ul>
+<pre class="scl">
+# tar cf - ディレクトリ名 | smbclient //<var>hostname</var>/<var>sharename</var> "<var>password</var>" -U <var>username</var> -N -Tx -
+</pre>
+
+
+<h3>NFSマウント</h3>
+
+<p>LinuxなどのNFSサーバへ接続</p>
+
+<ul>
+<li>192.168.0.2の <code>/mnt/hda3/share</code> をマウント</li>
+</ul>
+<pre>
+# mkdir /mnt/nfs
+# mount -t nfs -o nolock 192.168.0.2:<var>/mnt/hda3/share</var> /mnt/nfs
+</pre>
+
+
+<h2><a href="#ntfs_write"><span class="ms">■</span></a> <a name="ntfs_write">NTFSへ書き込み</a></h2>
+
+<p>！あくまで書き込みの必要がある場合！</p>
+
+
+<p>対象が<code>/dev/hda1</code>なら</p>
+<pre>
+# mkdir /mnt/<var>win</var>
+# ntfs-3g /dev/<var>hda1</var> /mnt/<var>win</var>
+</pre>
+<p>Windowsが起動できなくなって場合に「Volume is dirty」 などと警告が出ることがある。forceオプション(<code>-o force</code>)で強制マウントできるかもしれないけど危険を覚悟すること。</p>
+
+<p><strong>作業終了後は必ずアンマウントする</strong>こと。</p>
+<pre>
+# umount /mnt/<var>win</var>
+</pre>
+<p>BG-Linuxの終了は電源をいきなり切ったりせず <code>poweroff</code> コマンドを使うこと</p>
+
+<pre>
+# poweroff
+</pre>
+
+
+
+<h2><a href="#livecd_boot"><span class="ms">■</span></a> <a name="livecd_boot">Linux LiveCDのブート</a></h2>
+
+<p>HD上にファイルを保存し、GRUBからブートさせます。</p>
+
+<div class="palmst small">
+<p>あくまで、この方法でしかGUIを使えるOSを起動させる手段がない場合の最終手段ということで。Windowsが起動せず、CDやUSBブートもできない場合など。</p>
+<ul>
+<li><strong>HDが壊れかけの場合、さらに悪化する可能性もある</strong></li>
+<li>LinuxでのNTFS書き込みは100%保証されているわけではない</li>
+<li>USB CD、USBメモリがあるなら、FDブートからUSBデバイス上イメージのマウントを先に試すべき</li>
+<li>内蔵（またはPCI）LANアダプタが有効ならネットワークブートという手もある</li>
+</ul>
+<p>よって、まずはネットワークブート、FD+USBデバイスでのブートを試してみるべきかと。</p>
+</div>
+
+<dl>
+<dt>空き領域の確認</dt>
+<dd>
+<p>isoイメージの保存と展開の為に、isoイメージのサイズの2倍以上の空き領域が必要。</p>
+<pre class="scl">
+# df -h
+
+Filesystem                Size      Used Available Use% Mounted on
+rootfs                  123.9M      4.0M    119.9M   3% /
+tmpfs                   123.9M      4.0M    119.9M   3% /
+tmpfs                   123.9M      4.0M    119.9M   3% /dev/shm
+/dev/ide/host0/bus0/target0/lun0/part1
+                          6.8G     57.5M      <em class="red">6.8G</em>   1% /mnt/win
+</pre>
+</dd>
+
+
+<dt>MD5の確認</dt>
+<dd>
+<ul class="small">
+<li><a href="http://www.linux.or.jp/JM/html/GNU_textutils/man1/md5sum.1.html">Manpage of MD5SUM</a></li>
+<li><a href="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/159md5sum.html">FTPサイトに置かれているmd5sumとは</a></li>
+</ul>
+
+<p>ファイルが正しくダウンロードされたかハッシュ値（フィンガープリント）を確認</p>
+<ul>
+<li>MD5を確認</li>
+</ul>
+<pre>
+# md5sum puppy-301-JP.iso
+84291b4795f80846acf76d0d76e2baa9  puppy-301-JP.iso
+</pre>
+
+<ul>
+<li>MD5が記録されているファイルと照合（MD5とファイル名の間にスペース2つ置く）</li>
+</ul>
+<pre>
+# md5sum -c puppy-301-JP.iso.md5.txt
+puppy-301-JP.iso: OK
+</pre>
+
+<ul>
+<li>目視で確認</li>
+</ul>
+<pre>
+# md5sum puppy-301-JP.iso
+84291b4795f80846acf76d0d76e2baa9  puppy-301-JP.iso
+# cat puppy-301-JP.iso.md5.txt
+84291b4795f80846acf76d0d76e2baa9  puppy-301-JP.iso
+</pre>
+</dd>
+</dl>
+
+
+
+<h3>isoイメージのダウンロードと展開</h3>
+
+<p>下記のものについて起動を確認。（<a href="http://simosnet.com/livecdroom/index.html#insert">INSERT+ 1.2.18</a>ではだめだった。）</p>
+<ul class="small">
+<li><a href="http://ring.aist.go.jp/pub/linux/knoppix/iso/">KNOPPIX 5.3.1CD</a>
+	<ul>
+	<li><code>knoppix_v5.3.1CD_20080326-20080520-AC.iso</code></li>
+	</ul>
+</li>
+<li><a href="http://simosnet.com/livecdroom/index.html#knoppix">Knoppix 5.1.1/CD(高速起動版）</a>（ライブＣＤの部屋さん版）</li>
+<li><a href="http://hatochan.dyndns.org/slax-ja/index.php?slax-ja%2Fdownload">slax-ja-5.1.8.1-3</a>（<strong class="ms">slax-ja-5.1.8.1-3.iso</strong>）</li>
+<li><a href="http://sourceforge.net/projects/systemrescuecd/files/">systemrescuecd-x86-1.0.4</a></li>
+<li><a href="http://yui.mine.nu/berry/berry.php">Berry Linux</a>（バージョンは <strong class="ms">0.90</strong>）</li>
+<li><a href="http://openlab.jp/puppylinux/">Puppy Linux 日本語版</a>（バージョンは <strong class="ms">3.01</strong>）</li>
+</ul>
+
+
+<dl>
+<dt>puppy-301-JP.isoの例</dt>
+<dd>
+<ul>
+<li><a href="http://openlab.jp/puppylinux/">Puppy Linux 日本語版</a></li>
+</ul>
+<p>isoイメージは119MB</p>
+
+<ul>
+<li>isoイメージとMD5値のダウンロード（※<code>/mnt/win</code> に保存する場合）</li>
+</ul>
+<pre class="scl">
+# cd /mnt/win
+# wget http://www.ring.gr.jp/pub/linux/puppylinux/puppy-301-JP.iso
+# wget http://www.ring.gr.jp/pub/linux/puppylinux/puppy-301-JP.iso.md5.txt
+</pre>
+
+<ul>
+<li>MD5を確認</li>
+</ul>
+<pre>
+# md5sum -c puppy-301-JP.iso.md5.txt
+puppy-301-JP.iso: OK
+</pre>
+
+<ul>
+<li>isoイメージをマウント</li>
+</ul>
+<pre>
+# mkdir /mnt/iso
+# mount -o loop puppy-301-JP.iso /mnt/iso
+</pre>
+
+<ul>
+<li>puppyディレクトリを作成して展開</li>
+</ul>
+<pre>
+# mkdir puppy
+# cp /mnt/iso/&#x2a; /mnt/win/puppy
+</pre>
+
+<ul>
+<li>アンマウント</li>
+</ul>
+<pre>
+# cd
+# umount /mnt/iso
+# umount /mnt/win
+</pre>
+</dd>
+</dl>
+
+
+
+<h3>GRUB for DOS</h3>
+
+<p>上記で作成したFreeDOS起動ディスクに追加する。</p>
+
+<dl class="palmst small">
+<dt>見本（？）ファイル</dt>
+<dd>
+<ul>
+<li><a href="../cgi-archives/bgrescue/config.sys">config.sys</a></li>
+<li><a href="../cgi-archives/bgrescue/autoexec.bat">autoexec.bat</a></li>
+<li><a href="../cgi-archives/bgrescue/bgrescue.bat">bgrescue.bat</a></li>
+<li><a href="../archives/fdboot_liveusb3_files/menu.lst">menu.lst</a></li>
+</ul>
+
+<p>以下はgrubディレクトリを作成・コピーして使用</p>
+<ul>
+<li><a href="../archives/grub/berry.conf">berry.conf</a>（Berry Linux 0.90 用）</li>
+<li><a href="../archives/grub/knoppix3.conf">knoppix3.conf</a>（KNOPPIX 5.3.1CD 用）</li>
+<li><a href="../archives/grub/knoppix.conf">knoppix.conf</a>（Knoppix 5.1.1/CD高速起動版ライブＣＤの部屋さん版用）</li>
+<li><a href="../archives/grub/puppy.conf">puppy.conf</a>（Puppy Linux 日本語版用）</li>
+<li><a href="../archives/grub/slax.conf">slax.conf</a>（slax-ja-5.1.8.1-3.iso 用）</li>
+<li><a href="../archives/grub/sysres.conf">sysres.conf</a>（systemrescuecd-x86-1.0.4 用）</li>
+</ul>
+</dd>
+</dl>
+
+
+<p>NTFSのファイルのロードも可能なGRUB for DOSを使う。0.4.2ではなぜかだめなので、0.4.3のgrub.exeで。</p>
+
+<ol>
+<li><a href="http://sourceforge.net/projects/grub4dos/">SourceForge.net: Files</a>から <strong class="ms">grub4dos-0.4.3.zip</strong> をダウンロード</li>
+<li><strong class="ms">grub.exe</strong> をFDにコピー</li>
+<li>ファイルを変更</li>
+<li><strong class="ms">menu.lst</strong> 作成、LiveCDに合わせた設定ファイルも別に作成</li>
+</ol>
+
+<ul>
+<li><strong class="ms">config.sys</strong></li>
+</ul>
+<pre>
+menucolor=7,0
+menudefault=0,100
+menu
+menu FreeDOS BG-Rescue &#038; GRUB for DOS
+menu
+menu 0 - BG-Rescue Linux 0.9.1
+menu 1 - GRUB for DOS (grub.exe 0.4.3)
+menu 2 - none
+menu
+
+012?shell=command.com command.com /P
+!FILES=20
+!BUFFERS=20
+!LASTDRIVE=Z
+</pre>
+
+<ul>
+<li><strong class="ms">autoexec.bat</strong></li>
+</ul>
+<pre>
+@ECHO OFF
+set path=a:\freedos
+if %CONFIG% == 0 goto bgrescue
+if %CONFIG% == 1 goto grub
+if %CONFIG% == 2 goto end
+
+:bgrescue
+bgrescue.bat
+goto end
+
+:grub
+a:\grub.exe
+goto end
+
+:end
+</pre>
+
+<dl>
+<dt>menu.lst</dt>
+<dd>
+<ul>
+<li>menu.lst の例</li>
+</ul>
+<pre class="scl2">
+color white/blue yellow/blue
+# timeout 30
+# default /default
+
+# jp106 keypad
+setkey at bracketleft
+setkey doublequote at
+setkey ampersand caret
+setkey quote ampersand
+setkey parenleft asterisk
+setkey parenright parenleft
+setkey underscore parenright
+setkey equal underscore
+setkey plus colon
+setkey colon quote
+setkey asterisk doublequote
+setkey bracketleft bracketright
+setkey braceleft braceright
+setkey bracketright backslash
+setkey braceright bar
+setkey backslash backquote
+setkey tilde plus
+setkey caret equal
+setkey backquote braceleft
+setkey bar tilde
+
+
+# title configfile FD menu.lst
+# configfile (fd0)/menu.lst
+
+title boot from HDD ---    Knoppix 5.1.1 CD (LCR)  ---
+    configfile (fd0)/grub/knoppix.conf
+
+title boot from HDD ---    SLAX-ja-5.1.8.1-3       ---
+    configfile (fd0)/grub/slax.conf
+
+title boot from HDD ---    SystemRescueCd 1.0.1    ---
+    configfile (fd0)/grub/sysres.conf
+
+title boot from HDD ---    INSERT+ 1.2.18 (LCR)    ---
+    configfile (fd0)/grub/insert.conf
+
+title boot from HDD ---    Berry Linux 0.88        ---
+    configfile (fd0)/grub/berry.conf
+
+title boot from HDD ---    Puppy Linux 3.01 JP     ---
+    configfile (fd0)/grub/puppy.conf
+
+title boot from CD
+    cdrom --init
+    map --hook
+    chainloader (cd0)
+
+title load FD NTLDR (Windows XP / 2000)
+    chainloader (fd0)/ntldr
+
+title load FD FreeDOS
+    chainloader (fd0)/kernel.sys
+
+title find and load NTLDR of Windows NT/2K/XP
+    find --set-root /ntldr
+    chainloader /ntldr
+
+title find and load CMLDR of Windows NT/2K/XP
+    find --set-root /cmldr
+    chainloader /cmldr
+
+title find and load IO.SYS of Windows 9x/Me
+    find --set-root /io.sys
+    chainloader /io.sys
+
+title chainload (hda1)
+    root (hd0,0)
+    chainloader +1
+
+title chainload (hda2)
+    root (hd0,1)
+    chainloader +1
+
+title chainload (hda3)
+    root (hd0,2)
+    chainloader +1
+
+title chainload (hda4)
+    root (hd0,3)
+    chainloader +1
+
+title chainload (hda5)
+    root (hd0,4)
+    chainloader +1
+
+title find and load menu.lst 
+    find --set-root /boot/grub/menu.lst
+    configfile /boot/grub/menu.lst
+
+title commandline
+    commandline
+
+title reboot
+    reboot
+
+title halt
+    halt
+</pre>
+<p>FDに<strong>grubディレクトリを作成し</strong>、それぞれのLiveCD用にpuppy.conf,knoppix.confなどを作成</p>
+<ul>
+<li>puppy.conf の例</li>
+</ul>
+<pre class="scl2">
+color white/blue yellow/blue
+# timeout 30
+# default /default
+
+# jp106 keypad
+setkey at bracketleft
+setkey doublequote at
+setkey ampersand caret
+setkey quote ampersand
+setkey parenleft asterisk
+setkey parenright parenleft
+setkey underscore parenright
+setkey equal underscore
+setkey plus colon
+setkey colon quote
+setkey asterisk doublequote
+setkey bracketleft bracketright
+setkey braceleft braceright
+setkey bracketright backslash
+setkey braceright bar
+setkey backslash backquote
+setkey tilde plus
+setkey caret equal
+setkey backquote braceleft
+setkey bar tilde
+
+
+# title configfile FD menu.lst
+# configfile (fd0)/menu.lst
+
+# title configfile (fd0)/puppy.conf
+#     configfile (fd0)/puppy.conf
+
+
+title Puppy Linux 3.01 from HDD  /vmlinuz
+    find --set-root /vmlinuz
+    kernel /vmlinuz pmedia=idehd
+    initrd /initrd.gz
+
+title Puppy Linux 3.01 from HDD  /vmlinuz        (acpi=off)
+    find --set-root /vmlinuz
+    kernel /vmlinuz pmedia=idehd acpi=off
+    initrd /initrd.gz
+
+title Puppy Linux 3.01 from HDD  /vmlinuz        (acpi=off pfix=ram)
+    find --set-root /vmlinuz
+    kernel /vmlinuz pmedia=idehd acpi=off pfix=ram
+    initrd /initrd.gz
+
+title Puppy Linux 3.01 from HDD -- psubdir=puppy
+    find --set-root /puppy/vmlinuz
+    kernel /puppy/vmlinuz psubdir=puppy pmedia=idehd
+    initrd /puppy/initrd.gz
+
+title Puppy Linux 3.01 from HDD -- psubdir=puppy (acpi=off)
+    find --set-root /puppy/vmlinuz
+    kernel /puppy/vmlinuz psubdir=puppy pmedia=idehd acpi=off
+    initrd /puppy/initrd.gz
+
+title Puppy Linux 3.01 from HDD -- psubdir=puppy (acpi=off pfix=ram) 
+    find --set-root /puppy/vmlinuz
+    kernel /puppy/vmlinuz psubdir=puppy pmedia=idehd acpi=off  pfix=ram
+    initrd /puppy/initrd.gz
+
+title Puppy Linux 3.01 from CD                   (acpi=off pfix=ram)
+    find --set-root /vmlinuz
+    kernel /vmlinuz pmedia=cd pfix=ram
+    initrd /initrd.gz
+
+title Puppy Linux 3.01 from USB-Flash            (acpi=off pfix=ram)
+    find --set-root /vmlinuz
+    kernel /vmlinuz pmedia=usbflash pfix=ram
+    initrd /initrd.gz
+
+title *** back to main menu ***
+    configfile (fd0)/menu.lst
+
+title reboot
+    reboot
+
+title halt
+    halt
+</pre>
+</dd>
+
+
+<dt>ファイル一覧</dt>
+<dd>
+<pre>
+A:\
+│  kernel.sys
+│  command.com
+│  autoexec.bat
+│  welcome.txt
+│  config.sys
+│  bgrescue.bat
+│  menu.lst
+│  grub.exe
+│
+├─freedos
+│      choice.exe
+│      LINLD.COM
+└─grub
+        puppy.conf
+</pre>
+</dd>
+</dl>
+
+<div class="ct">
+<p class="overflow3"><img src="images/bgrescue_grub1.png" alt="BG-Rescue Linux 起動画面" width="570" height="162"></p>
+
+<p class="overflow3"><img src="images/bgrescue_grub2.png" alt="BG-Rescue Linux 起動画面" width="577" height="274"></p>
+
+<p class="overflow3"><img src="images/bgrescue_grub3.png" alt="BG-Rescue Linux 起動画面" width="575" height="275"></p>
+</div>
+
+<p class="small">※puppyディレクトリにファイルを保存した場合は、<code>psubdir=puppy</code> を選択</p>
+
+<h2><a href="#link"><span class="ms">■</span></a> <a name="link">関連リンク</a></h2>
+
+
+<ul>
+<li><a href="http://journal.mycom.co.jp/news/2003/11/10/16.html">【ハウツー】FD2枚でパーティションを復旧!(1) - BG-Linuxのインストール | ネット | マイコミジャーナル</a></li>
+<li><a href="./grub4dos.html">GRUB for DOS めも</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20071011/1192104583">ms-sysコマンドとfdisk - 某所の日記</a></li>
+</ul>
+
+<ul>
+<li><a href="http://members.at.infoseek.co.jp/futora/wget153/">wget</a> - <a href="http://members.at.infoseek.co.jp/futora/index.html">ふとら</a>さん</li>
+</ul>
+
+<dl>
+<dt>FreeDOS</dt>
+<dd>
+<ul>
+<li><a href="http://www.freedos.org/">FreeDOS | The FreeDOS Project</a></li>
+<li><a href="./dosdisk.html#freedos">FreeDOS 1.0 - 私的「DOS起動ディスク」めも（未整理）</a></li>
+</ul>
+</dd>
+
+</dl>
+
+
+
+
+
+</div>
+</div>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+<address>Written by yassy</address>
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+</body>
+
+</html>
+

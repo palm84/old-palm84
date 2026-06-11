@@ -1,0 +1,64 @@
+@charset "Shift_JIS";
+
+
+/*===== columns =====*/
+
+.main {
+width: 100%;
+}
+
+/*===== basic elements=====*/
+
+div,
+dl,
+dd,
+ui,
+ol,
+li {
+width:100%;
+}
+
+
+/*===== pre , blockquote =====*/
+
+pre,
+pre.palm-bg,
+.small pre {
+margin: 0.5em 5%;
+width:100%;
+}
+
+pre.scl {
+overflow: scroll;
+white-space: pre;
+}
+
+.kuma {
+margin: 0.5em 10%;
+width:100%;
+}
+
+blockquote {
+margin: 0.5em 5%;
+width: 100%;
+}
+
+.quote blockquote {
+width: 100%;
+}
+
+
+/*===== * Test*  Safari/Chrome monospace =====*/
+
+pre, code, var, kbd, em,
+.ms {
+font-family: monospace;
+}
+
+
+/*===== class etc =====*/
+
+
+
+
+

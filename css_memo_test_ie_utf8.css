@@ -1,0 +1,209 @@
+@charset "UTF-8";
+
+
+/*===== headings =====*/
+
+h4 {
+margin: 0.5em;
+padding: 0.5em;
+background-color: #fff0f0;
+border: 1px #fff outset;
+}
+
+
+h2 a {
+color: #000;
+text-decoration: none;
+}
+
+
+/*===== div =====*/
+
+div.box {
+margin: 1em 0 1em 1em;
+padding: 0;
+line-height: 1;
+border: 10px solid #ccc;
+width: 20em;
+}
+
+.ie7_sample {
+border: 1px solid #ccc;
+margin: 1em;
+float: left;
+}
+
+
+/*===== table =====*/
+
+table {
+margin: 1em;
+}
+
+table.sample {
+margin: 1% auto 3% 2%;
+padding: 0;
+border: 2px dotted #003;
+border-collapse: collapse;
+background-color: #fff0f0;
+}
+
+table.sample td,
+table.sample th {
+margin: 0;
+padding: 0;
+letter-spacing: 0;
+border: 1px solid #ccc;
+}
+
+/*===== font Test =====*/
+
+.font_ja1 {
+font-family: 'ＭＳ Ｐ明朝';
+}
+
+.font_ja2 {
+font-family: 'MS PMincho';
+}
+
+.font_ja3 {
+font-family: 'Comic Sans MS', 'ＭＳ Ｐ明朝';
+}
+
+.font_ja4 {
+font-family: 'Comic Sans MS', 'MS PMincho';
+}
+
+.font_ja5 {
+font-family: 'Comic Sans MS', 'ＭＳ Ｐ明朝', 'MS PMincho';
+}
+
+
+.font_test1 {
+font-family: 'Comic Sans MS', 'ＭＳ Ｐ明朝', sans-serif;
+}
+
+.font_test2 {
+font-family: hogehoge, hagehage, 'ＭＳ Ｐ明朝', sans-serif;
+}
+
+.font_test3 {
+font-family: 'Comic Sans MS', 'MS PMincho', sans-serif;
+}
+
+.font_test4 {
+font-family: hogehoge, hagehage, 'MS PMincho', sans-serif;
+}
+
+
+/*===== overflow Test =====*/
+
+pre {
+margin: 3%;
+padding: 1em 0.5em;
+background-color: #f1f1f1;
+white-space: pre;
+font-size: 95%;
+overflow: auto;
+border: 1px #ccc inset;
+line-height: 1.1;
+width: 90%;
+}
+
+.overflow_test0 {
+white-space: pre;
+overflow: auto;
+background-color: #fff0f0;
+line-height: 1.2;
+font-size: 100%;
+margin: 0;
+padding: 0;
+width: 100%;
+border-style: none;
+}
+
+.overflow_test1 {
+white-space: pre;
+overflow: auto;
+background-color: #fff0f0;
+line-height: 1.2;
+font-size: 100%;
+margin: 0;
+padding: 0 0 1em 0;
+width: 100%;
+border-style: none;
+}
+
+
+/*===== meiryo Test =====*/
+
+div.box p.test10 {
+margin: 0;
+padding: 0;
+line-height: 1;
+letter-spacing: 0;
+text-decoration: underline;
+}
+
+div.box p.test12 {
+margin: 0;
+padding: 0;
+line-height: 1.2;
+letter-spacing: 0;
+text-decoration: underline;
+}
+
+div.box p.test15 {
+margin: 0;
+padding: 0;
+line-height: 1.5;
+letter-spacing: 0;
+text-decoration: underline;
+}
+
+
+/*===== ul,ol Test =====*/
+
+div.box2 {
+margin: 1em;
+padding: 0;
+border: 10px solid #ccc;
+width: 20em;
+}
+
+div.box2 ul,
+div.box2 ol {
+border: 1px solid red;
+line-height: 1;
+}
+
+div.box2 li {
+border: 1px solid blue;
+line-height: 1;
+}
+
+.border_red {
+border: 1px solid red;
+}
+
+ul.border_red li,
+ol.border_red li {
+border: 1px solid blue;
+}
+
+
+/*===== aa Test =====*/
+
+.aa_test {
+margin: 3% auto;
+padding: 0.5em;
+white-space: pre;
+font-family: 'ＭＳ Ｐゴシック','IPA モナー Pゴシック',IPAMonaPGothic,Mona,sans-serif;
+line-height: 1.1;
+letter-spacing: 0;
+font-size: 1em;
+background-color: #fff0f0;
+border: 1px #ccc inset;
+overflow: auto;
+width: 15em;
+}

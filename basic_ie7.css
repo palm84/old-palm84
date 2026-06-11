@@ -1,0 +1,25 @@
+@charset "Shift_JIS";
+
+/*===== class overflow =====*/
+
+pre.scl {
+overflow: scroll;
+white-space: pre;
+}
+
+.overflow2 {
+padding: 0 0 1em 0;
+}
+
+
+.overflow3 {
+padding: 0 0 1em 0;
+}
+
+/*===== * Test*  Safari/Chrome monospace =====*/
+
+pre, code, var, kbd, em,
+.ms {
+font-family: monospace;
+}
+

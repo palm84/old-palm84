@@ -1,0 +1,2298 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="start" href="http://www10.plala.or.jp/palm84/index.html">
+<link rel="stylesheet" type="text/css" href="./cssmemo.css" media="all">
+<link rel="stylesheet" type="text/css" href="./cssmemo_print.css" media="print">
+<link rel="shortcut icon" href="./favicon.ico">
+<script type="text/javascript" charset="Shift_JIS" src="./cssmemo_font.js"></script>
+<title>手書き風フォントの表示テスト - CSSめも＠Palm84</title>
+<style type="text/css">
+<!--
+body {
+}
+
+#test_mika_yoz,
+#test_truetype_iroiro,
+#test_open_omoshiro {
+background-color: white;
+}
+
+#test_mika_yoz,
+#test_mika_yoz_fonts,
+#test_mika_yoz_fonts_p,
+#test_truetype_iroiro,
+#test_truetype_iroiro_fonts,
+#test_truetype_iroiro_fonts_p,
+#test_open_omoshiro,
+#test_open_omoshiro_fonts,
+#test_open_omoshiro_fonts_p {
+line-height: 1;
+letter-spacing: 0;
+}
+
+.font_test {
+line-height: 1;
+background-color: white;
+}
+
+-->
+</style>
+</head>
+
+<body>
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+<script type="text/javascript">
+<!--
+setTimeout("link()", 0);
+function link(){
+location.href='https://www.palm84.com/entry/css_memo_font_tegaki';
+}
+-->
+</script>
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>移行作業中です...</ins></dt>
+<dd>
+<p>はてなブログの該当ページへ<strong>リダイレクトします</strong>。お手数をおかけします。ご容赦ください。</p>
+</dd>
+</dl>
+
+<h1><a href="./css_memo_font_tegaki.html" name="top">手書き風フォントの表示テスト</a></h1>
+
+<p><script src="http://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/css_memo_font_tegaki.html"><img src="http://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/css_memo_font_tegaki.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+<h2><a name="index" href="#index">目次</a></h2>
+
+<ol>
+<li><a href="#about">これって何？</a></li>
+<li><a href="#mika">みかちゃん</a></li>
+<li><a href="#yoz">Y.OzFont</a></li>
+<li><a href="#takumi">takumi</a></li>
+<li><a href="#s2g">S2G</a></li>
+<li><a href="#truetype">いろいろ TrueType (.ttf フォント)</a></li>
+<li><a href="#opentype">いろいろ OpenType (.otf フォント)</a></li>
+<li><a href="#omoshiro">面白系</a></li>
+<li><a href="#test">表示テスト</a></li>
+<li><a href="#bookmarklet">ブックマークレット</a></li>
+<li><a href="#bikou">備考 （ダウンロード・リンク）</a></li>
+</ol>
+<h2><a name="about" href="#about">これって何？</a></h2>
+
+<p>宛名書きなどに使うとよさそうな手書き風フォントを独断と偏見(笑)で選んでみました。</p>
+
+<p>OpenType フォント（<code>.otf</code> ファイル）だと Windows でもそのままでブラウザ上でまぁまぁきれいに表示できます。TrueType（<code>.ttf</code> ファイル） フォントは IE などのブラウザでは綺麗に表示ができませんが印刷時は問題ないと思われます。</p>
+
+<p>表示テストの項目については下記の通りです。</p>
+
+<div class="sp_overflow">
+<table class="cl font_test_item" summary="表示テストの項目">
+<caption>表示テストの項目</caption>
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">オー</th><th abbr="小文字のiと大文字のI">アイ</th><th abbr="小文字のl">小文字エル</th><th abbr="大文字のQ">Q</th><th abbr="濁点">濁点</th><th abbr="カナ漢字長音漢数字">カナ漢字長音漢数字</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td>プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+</table>
+</div>
+
+<p class="pink">※ <code>font-family:フォント名,serif</code> と指定してます。指定フォントがない環境<del>及び足りない漢字</del>は（※ 多分）Serif 設定のフォントで表示されます。</p>
+<h2><a name="mika" href="#mika">みかちゃん</a></h2>
+
+<ul>
+<li><a href="http://www001.upp.so-net.ne.jp/mikachan/">オリジナルフォント【みかちゃん】</a></li>
+</ul>
+
+<div class="testbox_fonts">
+<ul>
+<li>スクリーンショット - みかちゃん on Windows 10 MacType + Firefox43</li>
+</ul>
+<p><img src="./images/css_memo_fonts_tegaki/mikachan_windows10_mactype_firefox43.png" width="921" height="215" alt="みかちゃん on Windows 10 MacType + Firefox43 のスクリーンショット"></p>
+</div>
+
+<ul style="margin-bottom:0;">
+<li>line-height : <a href="javascript:setLineHeight('table_tegaki_mika', '1')">1</a> <a href="javascript:setLineHeight('table_tegaki_mika', '1.5')">1.5</a></li>
+</ul>
+
+<div class="sp_overflow">
+<table id="table_tegaki_mika" class="font_test" summary="みかちゃんの表示テスト">
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のiと大文字のI">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="プブ">プブ</th><th class="small" abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:sans-serif;">
+<td><em class="mono red">Sans-serif</em></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:fantasy;">
+<td><em class="mono red">fantasy</em></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:fantasy;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:cursive;">
+<td><em class="mono red">cursive</em></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:cursive;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'みかちゃん',serif;">
+<td>みかちゃん</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'みかちゃん',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'みかちゃん-P',serif;">
+<td>みかちゃん-P</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'みかちゃん-P',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'みかちゃん-PS',serif;">
+<td>みかちゃん-PS</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'みかちゃん-PS',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'みかちゃん-PB',serif;">
+<td>みかちゃん-PB</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'みかちゃん-PB',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'みかちゃん-ぷち',serif;">
+<td>みかちゃん-ぷち</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'みかちゃん-ぷち',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'みかちゃん-ぷちB',serif;">
+<td>みかちゃん-ぷちB</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'みかちゃん-ぷちB',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+<h2><a name="yoz" href="#yoz">Y.OzFont</a></h2>
+
+<ul>
+<li>Y.OzFont - <a href="http://yozvox.web.fc2.com/82A882B782B782DF8374834883938367.html">おすすめフォント</a> (<a href="http://yozvox.web.fc2.com/">Y.Oz Vox</a>)</li>
+</ul>
+
+<div class="testbox_fonts">
+<ul>
+<li>スクリーンショット - Y.OzFont on Windows 10 MacType + Firefox43</li>
+</ul>
+<p><img src="./images/css_memo_fonts_tegaki/yozfont_windows10_mactype_firefox43.png" width="894" height="391" alt="Y.OzFont on Windows 10 MacType + Firefox43 のスクリーンショット"></p>
+</div>
+
+<ul style="margin-bottom:0;">
+<li>line-height : <a href="javascript:setLineHeight('table_tegaki_yozfont', '1')">1</a> <a href="javascript:setLineHeight('table_tegaki_yozfont', '1.5')">1.5</a></li>
+</ul>
+
+<div class="sp_overflow">
+<table id="table_tegaki_yozfont" class="font_test" summary="Y.OzFont の表示テスト">
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のiと大文字のI">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="プブ">プブ</th><th class="small" abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:sans-serif;">
+<td><em class="mono red">Sans-serif</em></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:fantasy;">
+<td><em class="mono red">fantasy</em></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:fantasy;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:cursive;">
+<td><em class="mono red">cursive</em></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:cursive;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:YOzFont,serif;">
+<td>YOzFont</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:YOzFont,serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:YOzFontN,serif;">
+<td>YOzFontN</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:YOzFontN,serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:YOzFontA,serif;">
+<td>YOzFontA</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:YOzFontA,serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:YOzFontC,serif;">
+<td>YOzFontC</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:YOzFontC,serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:YOzFontE,serif;">
+<td>YOzFontE</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:YOzFontE,serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:YOzFontP,serif;">
+<td>YOzFontP</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:YOzFontP,serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:YOzFontX,serif;">
+<td>YOzFontX</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:YOzFontX,serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:YOzFontXM,serif;">
+<td>YOzFontXM</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:YOzFontXM,serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:YOzFontF,serif;">
+<td>YOzFontF</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:YOzFontF,serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:YOzFontK,serif;">
+<td>YOzFontK</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:YOzFontK,serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:YOzFontM90,serif;">
+<td>YOzFontM90</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:YOzFontM90,serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+<h2><a name="takumi" href="#takumi">takumi</a></h2>
+
+<ul>
+<li><a href="http://slimedaisuki.blog9.fc2.com/blog-entry-2475.html">takumiのパラダイス！ |takumi書痙フォント</a></li>
+<li><a href="http://slimedaisuki.blog9.fc2.com/blog-entry-2889.html">takumiのパラダイス！ |takumiゆとりフォント</a></li>
+</ul>
+
+<div class="testbox_fonts">
+<ul>
+<li>スクリーンショット - takumiフォント on Windows 10 MacType + Firefox43</li>
+</ul>
+<p><img src="./images/css_memo_fonts_tegaki/takumi_windows10_mactype_firefox43.png" width="961" height="216" alt="takumiフォント on Windows 10 MacType + Firefox43 のスクリーンショット"></p>
+</div>
+
+<ul style="margin-bottom:0;">
+<li>line-height : <a href="javascript:setLineHeight('table_tegaki_takumi', '1')">1</a> <a href="javascript:setLineHeight('table_tegaki_takumi', '1.5')">1.5</a></li>
+</ul>
+
+<div class="sp_overflow">
+<table id="table_tegaki_takumi" class="font_test" summary="takumiフォントの表示テスト">
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のiと大文字のI">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="プブ">プブ</th><th class="small" abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:sans-serif;">
+<td><em class="mono red">Sans-serif</em></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:fantasy;">
+<td><em class="mono red">fantasy</em></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:fantasy;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:cursive;">
+<td><em class="mono red">cursive</em></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:cursive;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'takumi書痙フォント細字',serif;">
+<td>takumi<span class="small">書痙フォント細字</span></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'takumi書痙フォント細字',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'takumi書痙フォント太字',serif;">
+<td>takumi<span class="small">書痙フォント太字</span></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'takumi書痙フォント太字',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'takumi書痙フォント細字P',serif;">
+<td>takumi<span class="small">書痙フォント細字P</span></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'takumi書痙フォント細字P',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'takumi書痙フォント太字P',serif;">
+<td>takumi<span class="small">書痙フォント太字P</span></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'takumi書痙フォント太字P',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'takumiゆとりフォント',serif;">
+<td>takumi<span class="small">ゆとりフォント</span></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'takumiゆとりフォント',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'takumiゆとりフォントP',serif;">
+<td>takumi<span class="small">ゆとりフォントP</span></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'takumiゆとりフォントP',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+<h2><a name="s2g" href="#s2g">S2G</a></h2>
+
+<ul>
+<li><a href="http://s2g.jp/font/index.htm">FONT</a> - <a href="http://s2g.jp/index.htm">:::STUDIO twoG:::</a></li>
+</ul>
+
+<div class="testbox_fonts">
+<ul>
+<li>スクリーンショット - S2Gフォント on Windows 10 MacType + Firefox43</li>
+</ul>
+<p><img src="./images/css_memo_fonts_tegaki/s2gfont_windows10_mactype_firefox43.png" width="903" height="251" alt="S2Gフォント on Windows 10 MacType + Firefox43 のスクリーンショット"></p>
+</div>
+
+<ul style="margin-bottom:0;">
+<li>line-height : <a href="javascript:setLineHeight('table_tegaki_s2gfont', '1')">1</a> <a href="javascript:setLineHeight('table_tegaki_s2gfont', '1.5')">1.5</a></li>
+</ul>
+
+<div class="sp_overflow">
+<table id="table_tegaki_s2gfont" class="font_test" summary="S2GFontの表示テスト">
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のiと大文字のI">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="プブ">プブ</th><th class="small" abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:sans-serif;">
+<td><em class="mono red">Sans-serif</em></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:fantasy;">
+<td><em class="mono red">fantasy</em></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:fantasy;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:cursive;">
+<td><em class="mono red">cursive</em></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:cursive;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'S2GP海フォント',serif;">
+<td>S2GP海フォント</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'S2GP海フォント',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'S2GP月フォント',serif;">
+<td>S2GP月フォント</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'S2GP月フォント',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'S2GPつきフォント',serif;">
+<td>S2GPつきフォント</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'S2GPつきフォント',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'S2GPうにフォント',serif;">
+<td>S2GPうにフォント</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'S2GPうにフォント',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'S2GP殴り書き',serif;">
+<td>S2GP殴り書き</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'S2GP殴り書き',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'S2G らぶ',serif;">
+<td>S2G らぶ</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'S2G らぶ',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'S2Gメモ',serif;">
+<td>S2Gメモ</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'S2Gメモ',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+<h2><a name="truetype" href="#truetype">いろいろ TrueType (.ttf フォント)</a></h2>
+
+<div class="testbox_fonts">
+<ul>
+<li>スクリーンショット - いろいろ TrueType on Windows 10 MacType + Firefox43</li>
+</ul>
+<p><img src="./images/css_memo_fonts_tegaki/truetype_windows10_mactype_firefox43.png" width="969" height="427" alt="いろいろ TrueType on Windows 10 MacType + Firefox43 のスクリーンショット"></p>
+</div>
+
+<ul style="margin-bottom:0;">
+<li>line-height : <a href="javascript:setLineHeight('table_tegaki_ttf', '1')">1</a> <a href="javascript:setLineHeight('table_tegaki_ttf', '1.5')">1.5</a></li>
+</ul>
+
+<div class="sp_overflow">
+<table id="table_tegaki_ttf" class="font_test" summary="いろいろTrueTypeの表示テスト">
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のiと大文字のI">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="プブ">プブ</th><th class="small" abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:sans-serif;">
+<td><em class="mono red">Sans-serif</em></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:fantasy;">
+<td><em class="mono red">fantasy</em></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:fantasy;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:cursive;">
+<td><em class="mono red">cursive</em></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:cursive;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'きろ字',serif;">
+<td>きろ字</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'きろ字',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'きろ字 - B',serif;">
+<td>きろ字 - B</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'きろ字 - B',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'きろ字 - D',serif;">
+<td>きろ字 - D</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'きろ字 - D',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'きろ字 - P',serif;">
+<td>きろ字 - P</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'きろ字 - P',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'瀬戸フォント',serif;">
+<td>瀬戸フォント</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'瀬戸フォント',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'あずきフォント',serif;">
+<td>あずきフォント</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'あずきフォント',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'あんずもじ',serif;">
+<td>あんずもじ</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'あんずもじ',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'あくあＰフォント',serif;">
+<td>あくあＰフォント</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'あくあＰフォント',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'はなぞめフォント',serif;">
+<td>はなぞめフォント</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'はなぞめフォント',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'ふい字Ｐ',serif;">
+<td>ふい字Ｐ</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'ふい字Ｐ',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'851手書き雑フォント',serif;">
+<td>851手書き雑フォント</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'851手書き雑フォント',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'ホリデイMDJP03',serif;">
+<td>ホリデイMDJP03</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'ホリデイMDJP03',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+<h2><a name="opentype" href="#opentype">いろいろ OpenType (.otf フォント)</a></h2>
+
+<div class="testbox_fonts">
+<ul>
+<li>スクリーンショット - いろいろ OpenType on Windows 10 Microsoft Edge</li>
+</ul>
+<p><img src="./images/css_memo_fonts_tegaki/opentype_windows10_microsoftedge.png" width="960" height="390" alt="いろいろ OpenType on Windows 10 Microsoft Edge のスクリーンショット"></p>
+<ul>
+<li>スクリーンショット - いろいろ OpenType on Windows 10 MacType + Firefox43</li>
+</ul>
+<p><img src="./images/css_memo_fonts_tegaki/opentype_windows10_mactype_firefox43.png" width="963" height="392" alt="いろいろ OpenType on Windows 10 MacType + Firefox43 のスクリーンショット"></p>
+</div>
+
+<ul style="margin-bottom:0;">
+<li>line-height : <a href="javascript:setLineHeight('table_tegaki_otf', '1')">1</a> <a href="javascript:setLineHeight('table_tegaki_otf', '1.5')">1.5</a></li>
+</ul>
+
+<div class="sp_overflow">
+<table id="table_tegaki_otf" class="font_test" summary="いろいろOpenTypeの表示テスト">
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ">ゼロ</th><th  abbr="大文字のO">O</th><th abbr="小文字のi">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="プブ">プブ</th><th abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:sans-serif;">
+<td><em class="mono red">Sans-serif</em></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'みかちゃん_o',serif;">
+<td>みかちゃん_o</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'みかちゃん_o',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'みかちゃん_o-P',serif;">
+<td>みかちゃん_o-P</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'みかちゃん_o-P',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'みかちゃん_o-PS',serif;">
+<td>みかちゃん_o-PS</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'みかちゃん_o-PS',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'みかちゃん_o-PB',serif;">
+<td>みかちゃん_o-PB</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'みかちゃん_o-PB',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'りいポップ角','りいポップ角 R',serif;">
+<td>りいポップ角</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'りいポップ角','りいポップ角 R',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'りいてがきN','りいてがきN R',serif;">
+<td>りいてがきN</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'りいてがきN','りいてがきN R',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'りいてがき筆',serif;">
+<td>りいてがき筆</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'りいてがき筆',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'フォントポにほんご',serif;">
+<td>フォントポにほんご</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'フォントポにほんご',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'ジンペン糸-R','ZinPenito R',serif;">
+<td>ジンペン糸-R</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'ジンペン糸-R','ZinPenito R',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'ジンペン毛羽-R','ZinPenKeba R',serif;">
+<td>ジンペン毛羽-R</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'ジンペン毛羽-R','ZinPenKeba R',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'よもぎフォント',serif;">
+<td>よもぎフォント</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'よもぎフォント',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+</table>
+</div>
+<h2><a name="omoshiro" href="#omoshiro">面白系</a></h2>
+
+<p>※ 怨霊、吐き溜の2点のみ TrueType, あとは OpenType です。</p>
+<div class="testbox_fonts">
+<ul>
+<li>スクリーンショット - 面白系 on Windows 10 Microsoft Edge</li>
+</ul>
+<p><img src="./images/css_memo_fonts_tegaki/omoshiro_windows10_microsoftedge.png" width="970" height="320" alt="面白系 - on Windows 10 Microsoft Edge のスクリーンショット"></p>
+<ul>
+<li>スクリーンショット - 面白系 on Windows 10 MacType + Firefox43</li>
+</ul>
+<p><img src="./images/css_memo_fonts_tegaki/omoshiro_windows10_mactype_firefox43.png" width="974" height="320" alt="面白系 - on Windows 10 MacType + Firefox43 のスクリーンショット"></p>
+</div>
+
+<ul style="margin-bottom:0;">
+<li>line-height : <a href="javascript:setLineHeight('table_omoshiro', '1')">1</a> <a href="javascript:setLineHeight('table_omoshiro', '1.5')">1.5</a></li>
+</ul>
+
+<div class="sp_overflow">
+<table id="table_omoshiro" class="font_test" summary="面白系の表示テスト">
+<tr>
+<th abbr="font-family属性の指定">font-family</th><th abbr="かな">あいうえお</th><th abbr="漢字">漢字</th><th abbr="Windows">Windows</th><th abbr="ascii 0x5C"> \ </th><th class="small" abbr="ゼロ"><span class="small">ゼロ</span></th><th  abbr="大文字のO">O</th><th abbr="小文字のi">iI</th><th abbr="小文字のl">l</th><th abbr="大文字のQ">Q</th><th abbr="プブ">プブ</th><th abbr="カ力エ工ロ口ー一ニ二">カ力エ工ロ口ー一ニ二</th>
+</tr>
+
+<tr>
+<td>無指定</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:sans-serif;">
+<td><em class="mono red">Sans-serif</em></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:sans-serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'ぎゃーてーるみねっせんす',serif;">
+<td><span class="small">ぎゃーてーるみねっせんす</span></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'ぎゃーてーるみねっせんす',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'きずだらけのぎゃーてー',serif;">
+<td><span class="small">きずだらけのぎゃーてー</span></td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'きずだらけのぎゃーてー',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'ＫＦひま字',serif;">
+<td>ＫＦひま字</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'ＫＦひま字',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'じゆうちょうフォント',serif;">
+<td>じゆうちょうフォント</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'じゆうちょうフォント',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'不忘フェルトペン書体04',serif;">
+<td class="small">不忘フェルトペン書体04</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'不忘フェルトペン書体04',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'ジンへな墨流-RCF','ZinHenaBokuryu RCF',serif;">
+<td>ジンへな墨流-RCF</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'ジンへな墨流-RCF','ZinHenaBokuryu RCF',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'ジン乱角-R','ZinRankaku R',serif;">
+<td>ジン乱角-R</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'ジン乱角-R','ZinRankaku R',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'怨霊',serif;">
+<td>怨霊</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'怨霊',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:'吐き溜',serif;">
+<td>吐き溜</td>
+<td>あいうえお</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>Windows</td>
+<td class="center"><span style="font-family:'吐き溜',serif;">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+<h2><a name="test" href="#test">表示テスト</a></h2>
+
+<ul class="small">
+<li>font-size <a href="javascript:rmProperty('test_mika_yoz', 'font-size');">削除</a> | <a href="javascript:setZoom('test_mika_yoz', '80%');">80%</a> | <a href="javascript:setZoom('test_mika_yoz', '100%');">100%</a> | <a href="javascript:setZoom('test_mika_yoz', '110%');">110%</a> | <a href="javascript:setZoom('test_mika_yoz', '120%');">120%</a> | <a href="javascript:setZoom('test_mika_yoz', '150%');">150%</a> | font-style <a href="javascript:rmProperty('test_mika_yoz','font-style' );">削除</a> | <a href="javascript:setFontStyle('test_mika_yoz', 'normal');">normal</a> | <a href="javascript:setFontStyle('test_mika_yoz', 'italic');">italic</a> | <a href="javascript:setFontStyle('test_mika_yoz', 'oblique');">oblique</a></li>
+<li>line-height <a href="javascript:rmProperty('test_mika_yoz', 'line-height');">削除</a> | <a href="javascript:setLineHeight('test_mika_yoz', '1');">1</a> | <a href="javascript:setLineHeight('test_mika_yoz', '1.1');">1.1</a> | <a href="javascript:setLineHeight('test_mika_yoz', '1.2');">1.2</a> | <a href="javascript:setLineHeight('test_mika_yoz', '1.3');">1.3</a> | <a href="javascript:setLineHeight('test_mika_yoz', '1.4');">1.4</a> | <a href="javascript:setLineHeight('test_mika_yoz', '1.5');">1.5</a> | <a href="javascript:setLineHeight('test_mika_yoz', '2');">2</a> | letter-spacing <a href="javascript:rmProperty('test_mika_yoz','letter-spacing' );">削除</a> | <a href="javascript:setLetterSpacing('test_mika_yoz', '0');">0</a> | <a href="javascript:setLetterSpacing('test_mika_yoz', '0.5px');">0.5px</a> | <a href="javascript:setLetterSpacing('test_mika_yoz', '1px');">1px</a> | <a href="javascript:setLetterSpacing('test_mika_yoz', '1.5px');">1.5px</a> | <a href="javascript:setLetterSpacing('test_mika_yoz', '2px');">2px</a></li>
+<li>font-weight <a href="javascript:rmProperty('test_mika_yoz','font-weight' );">削除</a> | <a href="javascript:setFontWeight('test_mika_yoz', 'lighter');">lighter</a> | <a href="javascript:setFontWeight('test_mika_yoz', 'normal');">normal</a> | <a href="javascript:setFontWeight('test_mika_yoz', 'bold');">bold</a> | <a href="javascript:setFontWeight('test_mika_yoz', 'bolder');">bolder</a> | <a href="javascript:setFontWeight('test_mika_yoz', '100');">100</a> | <a href="javascript:setFontWeight('test_mika_yoz', '200');">200</a> | <a href="javascript:setFontWeight('test_mika_yoz', '300');">300</a> | <a href="javascript:setFontWeight('test_mika_yoz', '400');">400</a> | <a href="javascript:setFontWeight('test_mika_yoz', '500');">500</a> | <a href="javascript:setFontWeight('test_mika_yoz', '600');">600</a> | <a href="javascript:setFontWeight('test_mika_yoz', '700');">700</a> | <a href="javascript:setFontWeight('test_mika_yoz', '800');">800</a> | <a href="javascript:setFontWeight('test_mika_yoz', '900');">900</a></li>
+<li>color <a href="javascript:rmProperty('test_mika_yoz','color' );">削除</a> | <a href="javascript:setColor('test_mika_yoz', 'black');">black</a> | <a href="javascript:setColor('test_mika_yoz', '#595959');">#595959</a> | <a href="javascript:setColor('test_mika_yoz', 'white');">white</a> | background-color <a href="javascript:rmProperty('test_mika_yoz','background-color' );">削除</a> | <a href="javascript:setBGColor('test_mika_yoz', 'white');">white</a> | <a href="javascript:setBGColor('test_mika_yoz', '#ffe');">#ffe</a> | <a href="javascript:setBGColor('test_mika_yoz', 'black');">black</a></li>
+<li><a href="javascript:rmStyle('test_mika_yoz')">style削除</a></li>
+</ul>
+
+<div id="test_mika_yoz">
+
+<div class="sp_overflow">
+<table class="cl font_test_script" style="font-size:1em;margin-left:1em;margin-bottom:0.5em;" summary="フォントの表示テスト">
+<caption>表示テスト</caption>
+<tr style="font-family:sans-serif">
+<td>Sans-serif</td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>MWayg9~*@</td>
+<td class="center"><span style="font-family:sans-serif">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:serif">
+<td>Serif</td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>MWayg9~*@</td>
+<td class="center"><span style="font-family:serif">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:monospace">
+<td>monospace</td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>MWayg9~*@</td>
+<td class="center"><span style="font-family:monospace">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr>
+<td><span class="red">無指定</span></td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>MWayg9~*@</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr id="test_mika_yoz_fonts">
+<td><span class="red" style="font-weight:bold;">テスト</span></td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>MWayg9~*@</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+<div class="testbox5" style="padding:0.5em;margin-left:1em;">
+<p id="test_mika_yoz_fonts_p">
+<span class="small">0123456789 \'&#034;~*#$%&#038;@ abcilw ABCILW windows WINDOWS</span>
+<br>0123456789 \'&#034;~*#$%&#038;@ abcilw ABCILW windows WINDOWS
+<br><span style="font-size:120%;">0123456789 \'&#034;~*#$%&#038;@ abcilw ABCILW windows WINDOWS</span>
+<br><span class="small">新しい朝が来た！不埒な草彅剛、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br>新しい朝が来た！不埒な草彅剛、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑
+<br><span style="font-size:120%;">新しい朝が来た！不埒な草彅剛、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br><br><span style="font-size:80%;">謹賀新年 賀正 あけましておめでとうございます 髙田濱口</span>
+<br>謹賀新年 賀正 あけましておめでとうございます 髙田濱口
+<br><span style="font-size:120%;">謹賀新年 賀正 あけましておめでとうございます 髙田濱口</span>
+<br><br><span style="font-size:80%;">A Happy New Year ! 本年もよろしくお願いいたします</span>
+<br>A Happy New Year ! 本年もよろしくお願いいたします
+<br><span style="font-size:120%;">A Happy New Year ! 本年もよろしくお願いいたします</span>
+</p>
+</div>
+
+</div>
+
+
+<ul class="small">
+<li><a href="javascript:rmProperty('test_mika_yoz_fonts', 'font-family');">削除</a>
+ | <a href="javascript:setFont('test_mika_yoz_fonts', 'inherit');">inherit</a> ( 
+<a href="javascript:setFont('test_mika_yoz_fonts', 'sans-serif');">sans-serif</a>
+ | <a href="javascript:setFont('test_mika_yoz_fonts', 'serif');">serif</a>
+ | <a href="javascript:setFont('test_mika_yoz_fonts', 'monospace');">monospace</a>
+ | <a href="javascript:setFont('test_mika_yoz_fonts', 'cursive');">cursive</a>
+ | <a href="javascript:setFont('test_mika_yoz_fonts', 'fantasy');">fantasy</a> )
+ ( <a href="javascript:setFont('test_mika_yoz_fonts', 'monospace, \'ＭＳ ゴシック\'');">monospace, 'ＭＳ ゴシック'</a> | <a href="javascript:setFont('test_mika_yoz_fonts', 'monospace, serif');">monospace, serif</a>
+ )
+</li>
+<li><a href="javascript:setFont('test_mika_yoz_fonts', '\'メイリオ\',Meiryo');">メイリオ</a>
+ | <a href="javascript:setFont('test_mika_yoz_fonts', '\'Meiryo UI\'');">Meiryo UI</a>
+ | <a href="javascript:setFont('test_mika_yoz_fonts', '\'ＭＳ Ｐゴシック\'');">ＭＳ Ｐゴシック</a>
+ | <a href="javascript:setFont('test_mika_yoz_fonts', '\'MS UI Gothic\'');">MS UI Gothic</a>
+ | <a href="javascript:setFont('test_mika_yoz_fonts', '\'ＭＳ Ｐ明朝\'');">ＭＳ Ｐ明朝</a>
+ | <a href="javascript:setFont('test_mika_yoz_fonts', '\'ＭＳ ゴシック\'');">ＭＳ ゴシック</a>
+ | <a href="javascript:setFont('test_mika_yoz_fonts', '\'ＭＳ 明朝\'');">ＭＳ 明朝</a>
+</li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_mika_yoz_fonts', '\'みかちゃん\'');">みかちゃん</a></li>
+<li><a href="javascript:setFont('test_mika_yoz_fonts', '\'みかちゃん-P\'');">みかちゃん-P</a></li>
+<li><a href="javascript:setFont('test_mika_yoz_fonts', '\'みかちゃん-PS\'');">みかちゃん-PS</a></li>
+<li><a href="javascript:setFont('test_mika_yoz_fonts', '\'みかちゃん-PB\'');">みかちゃん-PB</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_mika_yoz_fonts', '\'みかちゃん-ぷち\'');">みかちゃん-ぷち</a></li>
+<li><a href="javascript:setFont('test_mika_yoz_fonts', '\'みかちゃん-ぷちB\'');">みかちゃん-ぷちB</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_mika_yoz_fonts', 'YOzFont');">YOzFont</a></li>
+<li><a href="javascript:setFont('test_mika_yoz_fonts', 'YOzFontN');">YOzFontN</a></li>
+<li><a href="javascript:setFont('test_mika_yoz_fonts', 'YOzFontA');">YOzFontA</a></li>
+<li><a href="javascript:setFont('test_mika_yoz_fonts', 'YOzFontC');">YOzFontC</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_mika_yoz_fonts', 'YOzFontE');">YOzFontE</a></li>
+<li><a href="javascript:setFont('test_mika_yoz_fonts', 'YOzFontP');">YOzFontP</a></li>
+<li><a href="javascript:setFont('test_mika_yoz_fonts', 'YOzFontX');">YOzFontX</a></li>
+<li><a href="javascript:setFont('test_mika_yoz_fonts', 'YOzFontXM');">YOzFontXM</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_mika_yoz_fonts', 'YOzFontF');">YOzFontF</a></li>
+<li><a href="javascript:setFont('test_mika_yoz_fonts', 'YOzFontK');">YOzFontK</a></li>
+<li><a href="javascript:setFont('test_mika_yoz_fonts', 'YOzFontM90');">YOzFontM90</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_mika_yoz_fonts', '\'takumi書痙フォント細字\'');">takumi書痙フォント細字</a></li>
+<li><a href="javascript:setFont('test_mika_yoz_fonts', '\'takumi書痙フォント太字\'');">takumi書痙フォント太字</a></li>
+<li><a href="javascript:setFont('test_mika_yoz_fonts', '\'takumi書痙フォント細字P\'');">takumi書痙フォント細字P</a></li>
+<li><a href="javascript:setFont('test_mika_yoz_fonts', '\'takumi書痙フォント太字P\'');">takumi書痙フォント太字P</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_mika_yoz_fonts', '\'takumiゆとりフォント\'');">takumiゆとりフォント</a></li>
+<li><a href="javascript:setFont('test_mika_yoz_fonts', '\'takumiゆとりフォントP\'');">takumiゆとりフォントP</a></li>
+</ul>
+
+
+<hr class="cl" style="width:96%;">
+
+<ul class="small">
+<li>font-size <a href="javascript:rmProperty('test_truetype_iroiro', 'font-size');">削除</a> | <a href="javascript:setZoom('test_truetype_iroiro', '80%');">80%</a> | <a href="javascript:setZoom('test_truetype_iroiro', '100%');">100%</a> | <a href="javascript:setZoom('test_truetype_iroiro', '110%');">110%</a> | <a href="javascript:setZoom('test_truetype_iroiro', '120%');">120%</a> | <a href="javascript:setZoom('test_truetype_iroiro', '150%');">150%</a> | font-style <a href="javascript:rmProperty('test_truetype_iroiro','font-style' );">削除</a> | <a href="javascript:setFontStyle('test_truetype_iroiro', 'normal');">normal</a> | <a href="javascript:setFontStyle('test_truetype_iroiro', 'italic');">italic</a> | <a href="javascript:setFontStyle('test_truetype_iroiro', 'oblique');">oblique</a></li>
+<li>line-height <a href="javascript:rmProperty('test_truetype_iroiro', 'line-height');">削除</a> | <a href="javascript:setLineHeight('test_truetype_iroiro', '1');">1</a> | <a href="javascript:setLineHeight('test_truetype_iroiro', '1.1');">1.1</a> | <a href="javascript:setLineHeight('test_truetype_iroiro', '1.2');">1.2</a> | <a href="javascript:setLineHeight('test_truetype_iroiro', '1.3');">1.3</a> | <a href="javascript:setLineHeight('test_truetype_iroiro', '1.4');">1.4</a> | <a href="javascript:setLineHeight('test_truetype_iroiro', '1.5');">1.5</a> | <a href="javascript:setLineHeight('test_truetype_iroiro', '2');">2</a> | letter-spacing <a href="javascript:rmProperty('test_truetype_iroiro','letter-spacing' );">削除</a> | <a href="javascript:setLetterSpacing('test_truetype_iroiro', '0');">0</a> | <a href="javascript:setLetterSpacing('test_truetype_iroiro', '0.5px');">0.5px</a> | <a href="javascript:setLetterSpacing('test_truetype_iroiro', '1px');">1px</a> | <a href="javascript:setLetterSpacing('test_truetype_iroiro', '1.5px');">1.5px</a> | <a href="javascript:setLetterSpacing('test_truetype_iroiro', '2px');">2px</a></li>
+<li>font-weight <a href="javascript:rmProperty('test_truetype_iroiro','font-weight' );">削除</a> | <a href="javascript:setFontWeight('test_truetype_iroiro', 'lighter');">lighter</a> | <a href="javascript:setFontWeight('test_truetype_iroiro', 'normal');">normal</a> | <a href="javascript:setFontWeight('test_truetype_iroiro', 'bold');">bold</a> | <a href="javascript:setFontWeight('test_truetype_iroiro', 'bolder');">bolder</a> | <a href="javascript:setFontWeight('test_truetype_iroiro', '100');">100</a> | <a href="javascript:setFontWeight('test_truetype_iroiro', '200');">200</a> | <a href="javascript:setFontWeight('test_truetype_iroiro', '300');">300</a> | <a href="javascript:setFontWeight('test_truetype_iroiro', '400');">400</a> | <a href="javascript:setFontWeight('test_truetype_iroiro', '500');">500</a> | <a href="javascript:setFontWeight('test_truetype_iroiro', '600');">600</a> | <a href="javascript:setFontWeight('test_truetype_iroiro', '700');">700</a> | <a href="javascript:setFontWeight('test_truetype_iroiro', '800');">800</a> | <a href="javascript:setFontWeight('test_truetype_iroiro', '900');">900</a></li>
+<li>color <a href="javascript:rmProperty('test_truetype_iroiro','color' );">削除</a> | <a href="javascript:setColor('test_truetype_iroiro', 'black');">black</a> | <a href="javascript:setColor('test_truetype_iroiro', '#595959');">#595959</a> | <a href="javascript:setColor('test_truetype_iroiro', 'white');">white</a> | background-color <a href="javascript:rmProperty('test_truetype_iroiro','background-color' );">削除</a> | <a href="javascript:setBGColor('test_truetype_iroiro', 'white');">white</a> | <a href="javascript:setBGColor('test_truetype_iroiro', '#ffe');">#ffe</a> | <a href="javascript:setBGColor('test_truetype_iroiro', 'black');">black</a></li>
+<li><a href="javascript:rmStyle('test_truetype_iroiro')">style削除</a></li>
+</ul>
+
+<div id="test_truetype_iroiro">
+
+<div class="sp_overflow">
+<table class="cl font_test_script" style="font-size:1em;margin-left:1em;margin-bottom:0.5em;" summary="フォントの表示テスト">
+<caption>表示テスト</caption>
+<tr style="font-family:sans-serif">
+<td>Sans-serif</td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>MWayg9~*@</td>
+<td class="center"><span style="font-family:sans-serif">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:serif">
+<td>Serif</td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>MWayg9~*@</td>
+<td class="center"><span style="font-family:serif">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:monospace">
+<td>monospace</td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>MWayg9~*@</td>
+<td class="center"><span style="font-family:monospace">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr>
+<td><span class="red">無指定</span></td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>MWayg9~*@</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr id="test_truetype_iroiro_fonts">
+<td><span class="red" style="font-weight:bold;">テスト</span></td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>MWayg9~*@</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+<div class="testbox5" style="padding:0.5em;margin-left:1em;">
+<p id="test_truetype_iroiro_fonts_p">
+<span class="small">0123456789 \'&#034;~*#$%&#038;@ abcilw ABCILW windows WINDOWS</span>
+<br>0123456789 \'&#034;~*#$%&#038;@ abcilw ABCILW windows WINDOWS
+<br><span style="font-size:120%;">0123456789 \'&#034;~*#$%&#038;@ abcilw ABCILW windows WINDOWS</span>
+<br><span class="small">新しい朝が来た！不埒な草彅剛、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br>新しい朝が来た！不埒な草彅剛、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑
+<br><span style="font-size:120%;">新しい朝が来た！不埒な草彅剛、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br><br><span style="font-size:80%;">謹賀新年 賀正 あけましておめでとうございます 髙田濱口</span>
+<br>謹賀新年 賀正 あけましておめでとうございます 髙田濱口
+<br><span style="font-size:120%;">謹賀新年 賀正 あけましておめでとうございます 髙田濱口</span>
+<br><br><span style="font-size:80%;">A Happy New Year ! 本年もよろしくお願いいたします</span>
+<br>A Happy New Year ! 本年もよろしくお願いいたします
+<br><span style="font-size:120%;">A Happy New Year ! 本年もよろしくお願いいたします</span>
+</p>
+</div>
+
+</div>
+
+
+<ul class="small">
+<li><a href="javascript:rmProperty('test_truetype_iroiro_fonts', 'font-family');">削除</a>
+ | <a href="javascript:setFont('test_truetype_iroiro_fonts', 'inherit');">inherit</a> ( 
+<a href="javascript:setFont('test_truetype_iroiro_fonts', 'sans-serif');">sans-serif</a>
+ | <a href="javascript:setFont('test_truetype_iroiro_fonts', 'serif');">serif</a>
+ | <a href="javascript:setFont('test_truetype_iroiro_fonts', 'monospace');">monospace</a>
+ | <a href="javascript:setFont('test_truetype_iroiro_fonts', 'cursive');">cursive</a>
+ | <a href="javascript:setFont('test_truetype_iroiro_fonts', 'fantasy');">fantasy</a> )
+ ( <a href="javascript:setFont('test_truetype_iroiro_fonts', 'monospace, \'ＭＳ ゴシック\'');">monospace, 'ＭＳ ゴシック'</a> | <a href="javascript:setFont('test_truetype_iroiro_fonts', 'monospace, serif');">monospace, serif</a>
+ )
+</li>
+<li><a href="javascript:setFont('test_truetype_iroiro_fonts', '\'メイリオ\',Meiryo');">メイリオ</a>
+ | <a href="javascript:setFont('test_truetype_iroiro_fonts', '\'Meiryo UI\'');">Meiryo UI</a>
+ | <a href="javascript:setFont('test_truetype_iroiro_fonts', '\'ＭＳ Ｐゴシック\'');">ＭＳ Ｐゴシック</a>
+ | <a href="javascript:setFont('test_truetype_iroiro_fonts', '\'MS UI Gothic\'');">MS UI Gothic</a>
+ | <a href="javascript:setFont('test_truetype_iroiro_fonts', '\'ＭＳ Ｐ明朝\'');">ＭＳ Ｐ明朝</a>
+ | <a href="javascript:setFont('test_truetype_iroiro_fonts', '\'ＭＳ ゴシック\'');">ＭＳ ゴシック</a>
+ | <a href="javascript:setFont('test_truetype_iroiro_fonts', '\'ＭＳ 明朝\'');">ＭＳ 明朝</a>
+</li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_truetype_iroiro_fonts', 'S2GP海フォント');">S2GP海フォント</a></li>
+<li><a href="javascript:setFont('test_truetype_iroiro_fonts', 'S2GP月フォント');">S2GP月フォント</a></li>
+<li><a href="javascript:setFont('test_truetype_iroiro_fonts', 'S2GPつきフォント');">S2GPつきフォント</a></li>
+<li><a href="javascript:setFont('test_truetype_iroiro_fonts', 'S2GPうにフォント');">S2GPうにフォント</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_truetype_iroiro_fonts', 'S2GP殴り書き');">S2GP殴り書き</a></li>
+<li><a href="javascript:setFont('test_truetype_iroiro_fonts', 'S2G らぶ');">S2G らぶ</a></li>
+<li><a href="javascript:setFont('test_truetype_iroiro_fonts', 'S2Gメモ');">S2Gメモ</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_truetype_iroiro_fonts', '\'きろ字\'');">きろ字</a></li>
+<li><a href="javascript:setFont('test_truetype_iroiro_fonts', '\'きろ字 - B\'');">きろ字 - B</a></li>
+<li><a href="javascript:setFont('test_truetype_iroiro_fonts', '\'きろ字 - D\'');">きろ字 - D</a></li>
+<li><a href="javascript:setFont('test_truetype_iroiro_fonts', '\'きろ字 - P\'');">きろ字 - P</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_truetype_iroiro_fonts', '\'瀬戸フォント\'');">瀬戸フォント</a></li>
+<li><a href="javascript:setFont('test_truetype_iroiro_fonts', '\'あんずもじ\'');">あんずもじ</a></li>
+<li><a href="javascript:setFont('test_truetype_iroiro_fonts', '\'あずきフォント\'');">あずきフォント</a></li>
+<li><a href="javascript:setFont('test_truetype_iroiro_fonts', '\'あくあＰフォント\'');">あくあＰフォント</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_truetype_iroiro_fonts', '\'はなぞめフォント\'');">はなぞめフォント</a></li>
+<li><a href="javascript:setFont('test_truetype_iroiro_fonts', '\'ふい字Ｐ\'');">ふい字Ｐ</a></li>
+<li><a href="javascript:setFont('test_truetype_iroiro_fonts', '\'851手書き雑フォント\'');">851手書き雑フォント</a></li>
+<li><a href="javascript:setFont('test_truetype_iroiro_fonts', '\'ホリデイMDJP03\'');">ホリデイMDJP03</a></li>
+</ul>
+
+<hr class="cl" style="width:96%;">
+
+<ul class="small">
+<li>font-size <a href="javascript:rmProperty('test_open_omoshiro', 'font-size');">削除</a> | <a href="javascript:setZoom('test_open_omoshiro', '80%');">80%</a> | <a href="javascript:setZoom('test_open_omoshiro', '100%');">100%</a> | <a href="javascript:setZoom('test_open_omoshiro', '110%');">110%</a> | <a href="javascript:setZoom('test_open_omoshiro', '120%');">120%</a> | <a href="javascript:setZoom('test_open_omoshiro', '150%');">150%</a> | font-style <a href="javascript:rmProperty('test_open_omoshiro','font-style' );">削除</a> | <a href="javascript:setFontStyle('test_open_omoshiro', 'normal');">normal</a> | <a href="javascript:setFontStyle('test_open_omoshiro', 'italic');">italic</a> | <a href="javascript:setFontStyle('test_open_omoshiro', 'oblique');">oblique</a></li>
+<li>line-height <a href="javascript:rmProperty('test_open_omoshiro', 'line-height');">削除</a> | <a href="javascript:setLineHeight('test_open_omoshiro', '1');">1</a> | <a href="javascript:setLineHeight('test_open_omoshiro', '1.1');">1.1</a> | <a href="javascript:setLineHeight('test_open_omoshiro', '1.2');">1.2</a> | <a href="javascript:setLineHeight('test_open_omoshiro', '1.3');">1.3</a> | <a href="javascript:setLineHeight('test_open_omoshiro', '1.4');">1.4</a> | <a href="javascript:setLineHeight('test_open_omoshiro', '1.5');">1.5</a> | <a href="javascript:setLineHeight('test_open_omoshiro', '2');">2</a> | letter-spacing <a href="javascript:rmProperty('test_open_omoshiro','letter-spacing' );">削除</a> | <a href="javascript:setLetterSpacing('test_open_omoshiro', '0');">0</a> | <a href="javascript:setLetterSpacing('test_open_omoshiro', '0.5px');">0.5px</a> | <a href="javascript:setLetterSpacing('test_open_omoshiro', '1px');">1px</a> | <a href="javascript:setLetterSpacing('test_open_omoshiro', '1.5px');">1.5px</a> | <a href="javascript:setLetterSpacing('test_open_omoshiro', '2px');">2px</a></li>
+<li>font-weight <a href="javascript:rmProperty('test_open_omoshiro','font-weight' );">削除</a> | <a href="javascript:setFontWeight('test_open_omoshiro', 'lighter');">lighter</a> | <a href="javascript:setFontWeight('test_open_omoshiro', 'normal');">normal</a> | <a href="javascript:setFontWeight('test_open_omoshiro', 'bold');">bold</a> | <a href="javascript:setFontWeight('test_open_omoshiro', 'bolder');">bolder</a> | <a href="javascript:setFontWeight('test_open_omoshiro', '100');">100</a> | <a href="javascript:setFontWeight('test_open_omoshiro', '200');">200</a> | <a href="javascript:setFontWeight('test_open_omoshiro', '300');">300</a> | <a href="javascript:setFontWeight('test_open_omoshiro', '400');">400</a> | <a href="javascript:setFontWeight('test_open_omoshiro', '500');">500</a> | <a href="javascript:setFontWeight('test_open_omoshiro', '600');">600</a> | <a href="javascript:setFontWeight('test_open_omoshiro', '700');">700</a> | <a href="javascript:setFontWeight('test_open_omoshiro', '800');">800</a> | <a href="javascript:setFontWeight('test_open_omoshiro', '900');">900</a></li>
+<li>color <a href="javascript:rmProperty('test_open_omoshiro','color' );">削除</a> | <a href="javascript:setColor('test_open_omoshiro', 'black');">black</a> | <a href="javascript:setColor('test_open_omoshiro', '#595959');">#595959</a> | <a href="javascript:setColor('test_open_omoshiro', 'white');">white</a> | background-color <a href="javascript:rmProperty('test_open_omoshiro','background-color' );">削除</a> | <a href="javascript:setBGColor('test_open_omoshiro', 'white');">white</a> | <a href="javascript:setBGColor('test_open_omoshiro', '#ffe');">#ffe</a> | <a href="javascript:setBGColor('test_open_omoshiro', 'black');">black</a></li>
+<li><a href="javascript:rmStyle('test_open_omoshiro')">style削除</a></li>
+</ul>
+
+<div id="test_open_omoshiro">
+
+<div class="sp_overflow">
+<table class="cl font_test_script" style="font-size:1em;margin-left:1em;margin-bottom:0.5em;" summary="フォントの表示テスト">
+<caption>表示テスト</caption>
+<tr style="font-family:sans-serif">
+<td>Sans-serif</td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>MWayg9~*@</td>
+<td class="center"><span style="font-family:sans-serif">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:serif">
+<td>Serif</td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>MWayg9~*@</td>
+<td class="center"><span style="font-family:serif">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr style="font-family:monospace">
+<td>monospace</td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>MWayg9~*@</td>
+<td class="center"><span style="font-family:monospace">\</span></td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr>
+<td><span class="red">無指定</span></td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>MWayg9~*@</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+<tr id="test_open_omoshiro_fonts">
+<td><span class="red" style="font-weight:bold;">テスト</span></td>
+<td>あかさたな</td>
+<td>葛噌彅埒一三髙濱片</td>
+<td>MWayg9~*@</td>
+<td class="center">\</td>
+<td class="center">0</td>
+<td class="center">O</td>
+<td class="center">iI</td>
+<td class="center">l</td>
+<td class="center">Q</td>
+<td class="center">プブ</td>
+<td>カ力エ工ロ口ー一ニ二</td>
+</tr>
+
+</table>
+</div>
+
+<div class="testbox5" style="padding:0.5em;margin-left:1em;">
+<p id="test_open_omoshiro_fonts_p">
+<span class="small">0123456789 \'&#034;~*#$%&#038;@ abcilw ABCILW windows WINDOWS</span>
+<br>0123456789 \'&#034;~*#$%&#038;@ abcilw ABCILW windows WINDOWS
+<br><span style="font-size:120%;">0123456789 \'&#034;~*#$%&#038;@ abcilw ABCILW windows WINDOWS</span>
+<br><span class="small">新しい朝が来た！不埒な草彅剛、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br>新しい朝が来た！不埒な草彅剛、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑
+<br><span style="font-size:120%;">新しい朝が来た！不埒な草彅剛、味噌汁。～カ力エ工ロ口ー一ニ二フプブ ※→↑</span>
+<br><br><span style="font-size:80%;">謹賀新年 賀正 あけましておめでとうございます 髙田濱口</span>
+<br>謹賀新年 賀正 あけましておめでとうございます 髙田濱口
+<br><span style="font-size:120%;">謹賀新年 賀正 あけましておめでとうございます 髙田濱口</span>
+<br><br><span style="font-size:80%;">A Happy New Year ! 本年もよろしくお願いいたします</span>
+<br>A Happy New Year ! 本年もよろしくお願いいたします
+<br><span style="font-size:120%;">A Happy New Year ! 本年もよろしくお願いいたします</span>
+</p>
+</div>
+
+</div>
+
+
+<ul class="small">
+<li><a href="javascript:rmProperty('test_open_omoshiro_fonts', 'font-family');">削除</a>
+ | <a href="javascript:setFont('test_open_omoshiro_fonts', 'inherit');">inherit</a> ( 
+<a href="javascript:setFont('test_open_omoshiro_fonts', 'sans-serif');">sans-serif</a>
+ | <a href="javascript:setFont('test_open_omoshiro_fonts', 'serif');">serif</a>
+ | <a href="javascript:setFont('test_open_omoshiro_fonts', 'monospace');">monospace</a>
+ | <a href="javascript:setFont('test_open_omoshiro_fonts', 'cursive');">cursive</a>
+ | <a href="javascript:setFont('test_open_omoshiro_fonts', 'fantasy');">fantasy</a> )
+ ( <a href="javascript:setFont('test_open_omoshiro_fonts', 'monospace, \'ＭＳ ゴシック\'');">monospace, 'ＭＳ ゴシック'</a> | <a href="javascript:setFont('test_open_omoshiro_fonts', 'monospace, serif');">monospace, serif</a> )
+</li>
+<li><a href="javascript:setFont('test_open_omoshiro_fonts', '\'メイリオ\',Meiryo');">メイリオ</a>
+ | <a href="javascript:setFont('test_open_omoshiro_fonts', '\'Meiryo UI\'');">Meiryo UI</a>
+ | <a href="javascript:setFont('test_open_omoshiro_fonts', '\'ＭＳ Ｐゴシック\'');">ＭＳ Ｐゴシック</a>
+ | <a href="javascript:setFont('test_open_omoshiro_fonts', '\'MS UI Gothic\'');">MS UI Gothic</a>
+ | <a href="javascript:setFont('test_open_omoshiro_fonts', '\'ＭＳ Ｐ明朝\'');">ＭＳ Ｐ明朝</a>
+ | <a href="javascript:setFont('test_open_omoshiro_fonts', '\'ＭＳ ゴシック\'');">ＭＳ ゴシック</a>
+ | <a href="javascript:setFont('test_open_omoshiro_fonts', '\'ＭＳ 明朝\'');">ＭＳ 明朝</a>
+</li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_open_omoshiro_fonts', '\'みかちゃん_o\'');">みかちゃん_o</a></li>
+<li><a href="javascript:setFont('test_open_omoshiro_fonts', '\'みかちゃん_o-P\'');">みかちゃん_o-P</a></li>
+<li><a href="javascript:setFont('test_open_omoshiro_fonts', '\'みかちゃん_o-PS\'');">みかちゃん_o-PS</a></li>
+<li><a href="javascript:setFont('test_open_omoshiro_fonts', '\'みかちゃん_o-PB\'');">みかちゃん_o-PB</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_open_omoshiro_fonts', '\'りいポップ角\',\'りいポップ角 R\'');">りいポップ角</a></li>
+<li><a href="javascript:setFont('test_open_omoshiro_fonts', '\'りいてがきN\',\'りいてがきN R\'');">りいてがきN</a></li>
+<li><a href="javascript:setFont('test_open_omoshiro_fonts', '\'りいてがき筆\'');">りいてがき筆</a></li>
+<li><a href="javascript:setFont('test_open_omoshiro_fonts', '\'よもぎフォント\'');">よもぎフォント</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_open_omoshiro_fonts', '\'フォントポにほんご\'');">フォントポにほんご</a></li>
+<li><a href="javascript:setFont('test_open_omoshiro_fonts', '\'ＫＦひま字\'');">ＫＦひま字</a></li>
+<li><a href="javascript:setFont('test_open_omoshiro_fonts', '\'じゆうちょうフォント\'');">じゆうちょうフォント</a></li>
+<li><a href="javascript:setFont('test_open_omoshiro_fonts', '\'不忘フェルトペン書体04\'');">不忘フェルトペン書体04</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_open_omoshiro_fonts', '\'ジンペン糸-R\',\'ZinPenito R\'');">ジンペン糸-R</a></li>
+<li><a href="javascript:setFont('test_open_omoshiro_fonts', '\'ジンペン毛羽-R\',\'ZinPenKeba R\'');">ジンペン毛羽-R</a></li>
+<li><a href="javascript:setFont('test_open_omoshiro_fonts', '\'ジンへな墨流-RCF\',\'ZinHenaBokuryu RCF\'');">ジンへな墨流-RCF</a></li>
+<li><a href="javascript:setFont('test_open_omoshiro_fonts', '\'ジン乱角-R\',\'ZinRankaku R\'');">ジン乱角-R</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:setFont('test_open_omoshiro_fonts', '\'ぎゃーてーるみねっせんす\'');">ぎゃーてーるみねっせんす</a></li>
+<li><a href="javascript:setFont('test_open_omoshiro_fonts', '\'きずだらけのぎゃーてー\'');">きずだらけのぎゃーてー</a></li>
+<li><a href="javascript:setFont('test_open_omoshiro_fonts', '\'怨霊\'');">怨霊</a></li>
+<li><a href="javascript:setFont('test_open_omoshiro_fonts', '\'吐き溜\'');">吐き溜</a></li>
+</ul>
+
+<h2 class="cl"><a name="bookmarklet" href="#bookmarklet">ブックマークレット</a></h2>
+
+<p>body要素に適用なのでCSSで指定されてる要素には効きません。</p>
+
+<p><code>body</code> 要素に <code>style</code> 属性を追記します。</p>
+<pre>
+&#060;body <strong class="red" style="font-weight:normal;">style=&#034;font-family: 'みかちゃん';&#034;</strong>&#062;
+</pre>
+
+
+<ul class="small">
+<li><a href="javascript:(function(){var myTag=document.getElementsByTagName('Body');myTag[0].removeAttribute('style')})();">(body) style 削除</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='inherit')">inherit</a> ( <a href="javascript:void(document.body.style.fontFamily='sans-serif')">sans-serif</a> | <a href="javascript:void(document.body.style.fontFamily='serif')">serif</a> | <a href="javascript:void(document.body.style.fontFamily='monospace')">monospace</a> | <a href="javascript:void(document.body.style.fontFamily='cursive')">cursive</a> | <a href="javascript:void(document.body.style.fontFamily='fantasy')">fantasy</a> ) ( <a href="javascript:void(document.body.style.fontFamily='monospace,\'ＭＳ ゴシック\'')">monospace, 'ＭＳ ゴシック'</a> |  <a href="javascript:void(document.body.style.fontFamily='monospace, serif')">monospace, serif</a> )</li>
+</ul>
+
+<ul class="cl lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='\'みかちゃん\'')">みかちゃん</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'みかちゃん-P\'')">みかちゃん-P</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'みかちゃん-PS\'')">みかちゃん-PS</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'みかちゃん-PB\'')">みかちゃん-PB</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'みかちゃん-ぷち\'')">みかちゃん-ぷち</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'みかちゃん-ぷちB\'')">みかちゃん-ぷちB</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='YOzFont')">YOzFont</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='YOzFontN')">YOzFontN</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='YOzFontA')">YOzFontA</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='YOzFontC')">YOzFontC</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='YOzFontE')">YOzFontE</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='YOzFontP')">YOzFontP</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='YOzFontX')">YOzFontX</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='YOzFontXM')">YOzFontXM</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='YOzFontF')">YOzFontF</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='YOzFontK')">YOzFontK</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='YOzFontM90')">YOzFontM90</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='\'S2GP海フォント\'')">S2G海フォント</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'S2GP月フォント\'')">S2G月フォント</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'S2GPつきフォント\'')">S2Gつきフォント</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'S2GPうにフォント\'')">S2Gうにフォント</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'S2GP殴り書き\'')">S2G殴り書き</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'S2G らぶ\'')">S2G らぶ</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'S2Gメモ\'')">S2Gメモ</a></li>
+</ul>
+
+<ul class="cl lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='\'きろ字\'')">きろ字</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'きろ字 - B\'')">きろ字 - B</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'きろ字 - D\'')">きろ字 - D</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'きろ字 - P\'')">きろ字 - P</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='\'瀬戸フォント\'')">瀬戸フォント</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'あんずもじ\'')">あんずもじ</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'あずきフォント\'')">あずきフォント</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'あくあＰフォント\'')">あくあＰフォント</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='\'takumi書痙フォント細字\'')">takumi書痙フォント細字</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'takumi書痙フォント太字\'')">takumi書痙フォント太字</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'takumi書痙フォント細字P\'')">takumi書痙フォント細字P</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'takumi書痙フォント太字P\'')">takumi書痙フォント太字P</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'takumiゆとりフォント\'')">takumiゆとりフォント</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'takumiゆとりフォントP\'')">takumiゆとりフォントP</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='\'はなぞめフォント\'')">はなぞめフォント</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'ふい字Ｐ\'')">ふい字Ｐ</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'851手書き雑フォント\'')">851手書き雑フォント</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'ホリデイMDJP03\'')">ホリデイMDJP03</a></li>
+</ul>
+
+<ul class="cl lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='\'みかちゃん_o\'')()">みかちゃん_o</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'みかちゃん_o-P\'')">みかちゃん_o-P</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'みかちゃん_o-PS\'')">みかちゃん_o-PS</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'みかちゃん_o-PB\'')">みかちゃん_o-PB</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='\'りいポップ角\',\'りいポップ角 R\'')">りいポップ角</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'りいてがきN\',\'りいてがきN R\'')">りいてがきN</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'りいてがき筆\'')">りいてがき筆</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='\'フォントポにほんご\'')">フォントポにほんご</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'ジンペン糸-R\',\'ZinPenito R\'')">ジンペン糸-R</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'ジンペン毛羽-R\',\'ZinPenKeba R\'')">ジンペン毛羽-R</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'よもぎフォント\'')">よもぎフォント</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='\'ぎゃーてーるみねっせんす\'')">ぎゃーてーるみねっせんす</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'きずだらけのぎゃーてー\'')">きずだらけのぎゃーてー</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'ＫＦひま字\'')">ＫＦひま字</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'じゆうちょうフォント\'')">じゆうちょうフォント</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'不忘フェルトペン書体04\'')">不忘フェルトペン書体04</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontFamily='\'ジンへな墨流-RCF\',\'ZinHenaBokuryu RCF\'')">ジンへな墨流-RCF</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'ジン乱角-R\',\'ZinRankaku R\'')">ジン乱角-R</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'怨霊\'')">怨霊</a></li>
+<li><a href="javascript:void(document.body.style.fontFamily='\'吐き溜\'')">吐き溜</a></li>
+</ul>
+
+<ul class="cl lt small">
+<li><a href="javascript:void(document.body.style.fontSize='80%')">font 80%</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='100%')">font 100%</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='120%')">font 120%</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='150%')">font 150%</a></li>
+</ul>
+
+<ul class="lt small">
+<li><a href="javascript:void(document.body.style.fontSize='12px')">font 12px</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='14px')">font 14px</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='15px')">font 15px</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='16px')">font 16px</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='18px')">font 18px</a></li>
+</ul>
+
+<h2 class="cl"><a name="bikou" href="#bikou">備考</a></h2>
+
+<p>最終更新日：2015.12.29</p>
+<p>2015.12.20 S2Gフォント, はなぞめフォント, ふい字Ｐ, 851手書き雑フォント, ホリデイMDJP03, よもぎフォント 追加
+<br>2015.12.29 スクリーンショットを変更
+</p>
+
+
+<dl>
+<dt>ダウンロード・リンク</dt>
+<dd>
+<ul>
+<li><a href="http://www001.upp.so-net.ne.jp/mikachan/">オリジナルフォント【みかちゃん】</a>（※ ダウンロードページの下部に OpenType 版もあります）</li>
+<li>Y.OzFont - <a href="http://yozvox.web.fc2.com/82A882B782B782DF8374834883938367.html">おすすめフォント</a> (<a href="http://yozvox.web.fc2.com/">Y.Oz Vox</a>)</li>
+<li>S2Gフォント - <a href="http://s2g.jp/font/index.htm">FONT</a> (<a href="http://s2g.jp/index.htm">:::STUDIO twoG:::</a>)</li>
+</ul>
+
+<ul>
+<li><a href="http://slimedaisuki.blog9.fc2.com/blog-entry-2475.html">takumiのパラダイス！ |takumi書痙フォント</a></li>
+<li><a href="http://slimedaisuki.blog9.fc2.com/blog-entry-2889.html">takumiのパラダイス！ |takumiゆとりフォント</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.ez0.net/distribution/font/kiloji/">SecondWave  手書き風総合書体 - きろ字</a></li>
+<li>瀬戸フォント - <a href="http://setofont.osdn.jp/">Project Web of setofont on OSDN Web space</a></li>
+<li><a href="http://azukifont.com/">あずきフォント</a></li>
+<li><a href="http://www8.plala.or.jp/p_dolce/">あんずいろapricot×colorフリー写真素材・手書きフォント・人物写真素材</a></li>
+<li><a href="http://www.vector.co.jp/soft/data/writing/se244261.html">あくあフォントの詳細情報 : Vector ソフトを探す！</a>
+	<ul>
+	<li><a href="http://www.vector.co.jp/soft/data/writing/se244262.html">あくあPフォントの詳細情報 : Vector ソフトを探す！</a></li>
+	</ul>
+</li>
+<li><a href="http://www.asterism-m.com/font/hanazomefont/">Asterism -はなぞめフォント-</a></li>
+<li><a href="http://www2.wind.ne.jp/maniackers/Holiday_Kanji.html">HOLIDAY-MDJP03 | ホリデイMDJP03 | Maniackers Design | Design Font</a></li>
+<li><a href="http://www39.atpages.jp/yagoinienie/851fontpage.html">851手書き雑フォント配布だす</a></li>
+<li><a href="http://hp.vector.co.jp/authors/VA039499/">ふい字置き場</a></li>
+</ul>
+
+<ul>
+<li><a href="http://fontopo.com/?p=89">フォントポにほんご | fontopo</a></li>
+<li><a href="http://www.kcc.zaq.ne.jp/in-mlg/freefont/riipopkk/">りいポップ角：フリーフォント</a></li>
+<li><a href="http://www.kcc.zaq.ne.jp/in-mlg/freefont/riitn/index.html">りいてがきN：フリーフォント</a></li>
+<li><a href="http://www.kcc.zaq.ne.jp/in-mlg/freefont/riitf/index.html">りいてがき筆：フリーフォント</a></li>
+<li><a href="http://www.asterism-m.com/font/yomogifont/">Asterism -よもぎフォント-</a></li>
+<li>ぎゃーてーるみねっせんす, きずだらけのぎゃーてー, じゆうちょうフォント - <a href="http://marusexijaxs.web.fc2.com/tegakifont.html">よく飛ばない鳥　手書きフォントのページ</a></li>
+<li>ジンペン糸-R, ジンペン毛羽-R, ジンへな墨流-RCF, ジン乱角-R - <a href="http://zinsta.jp/font/freefont.html">フリーフォント・尋スタジオ／手書き・子ども・下手文字・絵文字・遊書・漫画・コミック・アニメ・ゲーム・ポップなどのフォント／無料フォント</a></li>
+<li><a href="http://www.kfstudio.net/himaji/">KF STUDIO | ＫＦひま字</a></li>
+<li><a href="http://www.ankokukoubou.com/font/onryou.htm">暗黒工房 日本語フリーホラーフォント怨霊</a></li>
+<li><a href="http://www.ankokukoubou.com/font/hakidame.htm">暗黒工房 日本語フリーホラーフォント「吐き溜フォント」</a></li>
+<li><a href="http://fuboh.jp/dl_002.html">不忘印刷所 不忘フェルトペン書体 フリーフォント 漢字</a></li>
+</ul>
+</dd>
+</dl>
+
+<hr>
+
+
+
+<div class="navi">
+<ul>
+<li><a href="#top">TOP</a> | </li>
+<li><a href="./css_memo.html">Index</a> | </li>
+<li><a href="./index.html">HOME</a></li>
+</ul>
+</div>
+
+
+</body>
+</html>
