@@ -1,0 +1,1208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta http-equiv="Content-Language" content="ja">
+<meta name="GENERATOR" content="EdLeaf Version 1.02">
+<link rel="index" href="http://www10.plala.or.jp/palm84/index.html">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>Linux LiveCDをUSBメモリでブートするめも＠Palm84</title>
+<style type="text/css">
+<!--
+td { 
+	border-right:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+}
+
+table.book2 {
+	border-top:1px solid #ccc;
+	border-left:1px solid #ccc;
+	margin:0 2em;
+	font-size:90%;
+}
+
+dl.small pre {
+font-size: 1em;
+}
+
+/*.main ul,.main ol,pre {
+	font-size: 0.8em;
+}
+
+.main ul ul, .main ul ol {
+	font-size: 1em;
+}
+*/
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+</head>
+
+
+<body>
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+
+<script type="text/javascript">
+<!--
+setTimeout("link()", 0);
+function link(){
+location.href='https://www.palm84.com/entry/livecd_usb';
+}
+-->
+</script>
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>移行作業中です...</ins></dt>
+<dd>
+<p>はてなブログの該当ページへ<strong>リダイレクトします</strong>。お手数をおかけします。ご容赦ください。</p>
+</dd>
+</dl>
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" accesskey="z" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd>
+ | <span class="font_change">* font-change * <a href="javascript:void(document.body.style.fontFamily='inherit')" title="inherit">inherit</a> <a href="javascript:void(document.body.style.fontFamily='sans-serif')" title="Sans-serif">Ss</a> <a href="javascript:void(document.body.style.fontFamily='serif')" title="Serif">Sf</a> <a href="javascript:void(document.body.style.fontFamily='\'メイリオ\'')" title="メイリオ">メ</a> <a href="javascript:void(document.body.style.fontFamily='\'游ゴシック\',\'Yu Gothic\',YuGothic')" title="游ゴシック">游</a> <a href="javascript:void(document.body.style.fontFamily='\'ＭＳ Ｐゴシック\'')" title="ＭＳ Ｐゴシック">MS</a> <a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Regular\',\'源ノ角ゴシック JP Regular\',\'Noto Sans Japanese Regular\',\'Noto Sans CJK JP Regular\',\'源ノ角ゴシック\',\'源ノ角ゴシック JP\',\'Noto Sans Japanese\',\'Noto Sans CJK JP\'')" title="源ノ角ゴシック / Sonrce Han Sans">源</a> <a href="javascript:void(document.body.style.fontSize='12px')" title="12px">12</a>
+ <a href="javascript:void(document.body.style.fontSize='14px')" title="14px">14</a>
+ <a href="javascript:void(document.body.style.fontSize='16px')" title="16px">16</a> <a href="javascript:void(document.body.removeAttribute('style'));" title="body style 削除">戻す</a> *</span>
+</div>
+
+
+<h1><span class="tokai1"><a href="./livecd_usb.html">Linux LiveCDをUSBメモリでブートするめも</a></span></h1>
+
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+<ul>
+<li><a href="#usbboot" accesskey="3">ブート対応確認</a> <kbd class="ak small">3</kbd></li>
+<li><a href="#liveusb_creator" accesskey="4">作成ツール</a> <kbd class="ak small">4</kbd></li>
+<li><a href="#boot" accesskey="5">ブートの流れ</a> <kbd class="ak small">5</kbd></li>
+<li><a href="#bios_partition" accesskey="6">BIOSの対応とパーティション形式</a> <kbd class="ak small">6</kbd></li>
+<li><a href="#format" accesskey="7">パーティションとフォーマット</a> <kbd class="ak small">7</kbd></li>
+<li><a href="#files" accesskey="8">ファイルのコピー</a> <kbd class="ak small">8</kbd></li>
+<li><a href="#config" accesskey="9">syslinux.cfg</a> <kbd class="ak small">9</kbd></li>
+<li><a href="#syslinux">SYSLINUXのインストール</a></li>
+</ul>
+
+<ul>
+<li><a href="#isohybrid">isohybrid</a></li>
+<li><a href="#ojaru">拙作めも</a></li>
+</ul>
+
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+
+
+
+
+<p class="small">リンク is フリーダム<span class="ms">♪</span></p>
+
+<div class="hateb">
+<script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://www10.plala.or.jp/palm84/";
+Hatena.BookmarkWidget.title = "はてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+
+<script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://d.hatena.ne.jp/palm84/";
+Hatena.BookmarkWidget.title = "某所のはてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+</div>
+
+
+</div>
+</div>
+
+
+<div class="main">
+
+<p class="small">2007.11.5 作成
+<br>2010.01.31 <a href="#bios_partition">BIOSの対応とパーティション形式</a> を追記
+<br>2011.06.02 <a href="#syslinux">SYSLINUXのインストール</a> を改訂
+<br>2011.06.09 <a href="#isohybrid">isohybrid</a> を追記
+<br>最終更新日 2012.3.10</p>
+
+<p><script src="http://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+
+<a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/livecd_usb.html"><img src="http://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/livecd_usb.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a>
+
+</p>
+
+<p>全然まとまってませんが、Linux素人の覚書。</p>
+
+<ul>
+<li>参考
+	<ul class="nest">
+	<li><a href="http://hibari.2ch.net/test/read.cgi/linux/1247021426/">USBで起動・運用するLinux Part2</a></li>
+	<li><a href="http://www.unkar.org/read/pc11.2ch.net/linux/1247021426">USBで起動・運用するLinux Part2 - unkar</a> (<a href="http://www.unkar.org/">unkar</a>)</li>
+	<li><a href="http://www.unkar.org/read/pc11.2ch.net/linux/1122693869">USBで起動・運用するLinux part1 - unkar</a> (<a href="http://www.unkar.org/">unkar</a>)</li>
+	<li><a href="http://kaeru.tuzikaze.com/log/1150012547.html">◇USBブートを極めるスレ◇</a></li>
+	</ul>
+</li>
+</ul>
+
+<dl class="palmst white small">
+<dt>拙作めも</dt>
+<dd>
+<ul>
+<li><a href="./liveusb_creator.html">Windows 版 LiveUSB 作成ツールいろいろ</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20100103/1262489293">【取り扱い注意】USB（メモリ）ブート関連ツール</a></li>
+</ul>
+<p>便利ツールいろいろ。</p>
+
+<ul>
+<li><a href="./syslinux_basic.html">SYSLINUXでマルチブート【基本編】</a></li>
+</ul>
+<p>SYSLINUXでマルチブートの基本設定など。</p>
+
+<ul>
+<li><a href="./multiiso.html">isoイメージをマルチブートするの巻【その1】準備編</a>
+	<ul>
+	<li><a href="./multiiso_3_usb.html">【その3】マルチブートUSBメモリ作成編</a></li>
+	</ul>
+</li>
+</ul>
+<p>SYSLINUX から GRUB for DOS をチェインロードしてごにょごにょ。</p>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20130310/1362918805">USBメモリのパーティションをイジるんJaa！の巻</a></li>
+</ul>
+<p>BIOSで認識なれどブートせず！の際はパーティションの変更が必要かもしれない。</p>
+
+</dd>
+</dl>
+<h2><a href="#usbboot"><span class="ms">■</span></a> <a name="usbboot">USBメモリでのブート対応確認</a> <kbd class="ak">3</kbd></h2>
+
+<p>USBメモリからのブートに対応しているかどうかは、実際に<strong>試してみないとわからない</strong>ことも多いです。</p>
+
+<p>ブート可能な<strong>USBメモリを挿した状態でBIOSを起動</strong>して、bootの選択画面に「<code>USB xxx</code>」「<code>Generic USB なんとか</code>」「<code>Removable xxx</code>」などの項目が現れるかどうか確認します。対応していても挿していない場合は現れないことが多いようです。USB 2.0 非対応PCでは多分ほぼ非対応。対応の目安としては2002年以降あたりかな？</p>
+
+<p>【追記】最近のBIOSでは種類名ではなく製品名が表示されることが多い模様です。</p>
+
+<ul>
+<li>電源オン時に、F(1 - 12) キーなどを押すとリストに表示される場合がある</li>
+<li>2台目（或いは1台目）のHDとして認識される場合がある（※ 第2HDとして認識されている場合は、HDの優先順序を入れ替える必要があるかも）</li>
+<li>BIOSのブートデバイスのリストに表示されないが、リストの内容を変更するのに<kbd>Enter</kbd>キーなどを押すと変更可能リストに表示される場合がある</li>
+<li>HDのリストを変更しようとすると表示される場合がある</li>
+<li>【<strong class="ms">Boot other device</strong>】などの設定を有効にすると表示される場合がある（※ 初期設定では、内蔵HD,CD,FD,LAN 以外のUSBデバイスなどが無効になってることがあります）</li>
+<li>最近のPCでは、BIOSに【 <strong class="ms">USB Mass Storage Settings</strong> 】とか【USB ナントカ】などの設定項目があったり。</li>
+<li>【<strong class="ms">Emulation Type</strong>】などの設定項目で、HD or FD を切り替えできたり
+	<ul>
+	<li>容量の応じて、またはパーティションの有無で自動切替したり</li>
+	</ul>
+</li>
+</ul>
+
+
+<p>製品名だったり、 <strong class="ms">Generic USB xxx</strong>、<strong class="ms">USB HDD</strong>、<strong class="ms">USB ZIP</strong>、<strong class="ms">USB LS120</strong>、<strong class="ms">USB RMD-FDD</strong>、<strong class="ms">USB Flash</strong>、など機種によって認識名は様々。（※ 2台目のHDドライブとして認識される場合もあるようです。）</p>
+<p class="small">※または、電源投入後にF(F1-F12)キーを押して選択。</p>
+
+<div class="palmst small">
+<ul>
+<li>参考：
+	<ul>
+	<li><a href="http://www.milestone-net.co.jp/support/pc/epox/bios_jpn-3.html">Advanced BIOS Features - 株式会社 マイルストーン</a></li>
+	</ul>
+</li>
+</ul>
+
+<p>【追記】[<strong class="ms">USB Legacy Support</strong>]を有効にする必要があるかも？</p>
+<ul>
+<li>参考：
+	<ul class="nest">
+	<li><a href="http://www.wizpy.jp/support/boot2.php">wizpy起動ヘルプ　メーカー・機種別wizpy OS動作確認情報　wizpy Clubサポート情報</a></li>
+	</ul>
+</li>
+</ul>
+</div>
+
+<p>詳しくは下記サイトの情報を参考に。</p>
+<ul>
+<li><a href="http://orz.kakiko.com/kaeru/usbboot/">USBブート推進協議会</a></li>
+</ul>
+
+<p>USB-FDのみ対応であったり、特定のUSB-CDのみ可能だったり対応は色々。</p>
+
+<p>※ 【USB ZIP】対応の場合、<code>mkdiskimage</code> の実行でブート可能になる場合もあるようです。</p>
+<ul>
+<li><a href="http://syslinux.zytor.com/usbkey.php">README on using SYSLINUX with USB keys</a></li>
+<li><a href="http://www.knoppix.net/wiki/Bootable_USB_Key">Bootable USB Key - Knoppix Documentation Wiki</a></li>
+</ul>
+
+<dl>
+<dt>注意点いろいろ</dt>
+<dd>
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20070304/1173019239">USBメモリでブートいろいろ DOS(Windows)編</a></li>
+</ul>
+
+<p>上記のページは、DOSの場合なのでLinuxでは問題にならない場合もあるのですが、BIOSの対応の違いなど書いてます。</p>
+
+<ul>
+<li>USBを挿したまま再起動するとだめだったり、抜き挿しのタイミングによって認識しなかったりすることも。挿してから電源オン、あるいは電源オンしてから挿すとか、色々試してみるべきかも？</li>
+<li>フラッシュメモリ用カードリーダ（及びアダプタ）などは、結構相性問題や対応メモリサイズなどに制限があったりする。SDメモリはOKでもmicroSDはだめとか。</li>
+</ul>
+
+<div class="palmst small">
+<blockquote>
+<p><span class="ms">Can't find KNOPPIX filesystem sorry.</span>
+<br><span class="ms">Dropping you to (very limited) shell.</span></p>
+</blockquote>
+<p>上記の様なメッセージが出て、USBメモリ内のKnoppixイメージがマウントできない場合に、kernel,initrd読み込み後USBランプが消えた直後にUSBポートを挿し直すとマウント可能になることがあります。</p>
+<blockquote>
+<p><span class="ms">Allowing slow USB-devices some more time to register...ok</span></p>
+</blockquote>
+<p>このメッセージが出れば多分OK。</p>
+</div>
+</dd>
+</dl>
+
+<h2><a href="#liveusb_creator"><span class="ms">■</span></a> <a name="liveusb_creator">作成ツール / スクリプト</a> <kbd class="ak">4</kbd></h2>
+
+<ul>
+<li>拙作めも :
+	<ul>
+	<li><a href="./liveusb_creator.html">Windows 版 LiveUSB 作成ツールいろいろ</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://unetbootin.sourceforge.net/">UNetbootin - Homepage and Downloads</a>（※ Windows版、Linux 版、Mac版もあり）
+	<ul class="small">
+	<li><a href="http://reboot.pro/forum/79/">UNetbootin - reboot.pro</a></li>
+	<li><a href="http://sourceforge.jp/magazine/08/01/29/0117223">UNetbootinでメディアを焼かずにディストリビューションをインストールする - SourceForge.JP Magazine</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.linuxliveusb.com/">LinuxLive USB Creator (LiLi)</a>（※ Windows版）
+	<ul class="small">
+	<li><a href="http://www.pendrivelinux.com/linux-live-usb-creator/">Linux Live USB Creator (LiLi) from Windows | USB Pen Drive Linux</a></li>
+	<li><a href="http://reboot.pro/forum/127/">LinuxLive USB Creator (a.k.a "LiLi") - reboot.pro</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3/">Universal USB Installer -- Easy as 1 2 3 | USB Pen Drive Linux</a>（※ Windows版）</li>
+</ul>
+
+<ul>
+<li><a href="http://live.learnfree.eu/">LiveUSB Install | Linux on a stick!</a>（※ Windows版、Linux 版もあり）
+	<ul class="small">
+	<li><a href="http://www.pendrivelinux.com/liveusb-install-live-usb-creator/">LiveUSB Install - Live USB Creator - (Windows or linux) | USB Pen Drive Linux</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://tuxboot.org/">Tuxboot</a> - Clonezilla live, DRBL live, GParted live,  Tux2live（※ Windows版、Linux 版もあり）</li>
+</ul>
+
+<ul>
+<li>SystemRescueCd USB installer for Windows （※ Windows版 <a href="http://www.sysresccd.org/Main_Page">SystemRescueCd</a> LiveUSB 作成ツール）
+	<ul class="small">
+	<li><a href="http://www.sysresccd.org/Sysresccd-manual-en_How_to_install_SystemRescueCd_on_an_USB-stick#B.29_Recommended_USB_installation_method_from_Windows">Sysresccd-manual-en How to install SystemRescueCd on an USB-stick - SystemRescueCd</a></li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt>マルチブート LiveUSB 作成</dt>
+<dd>
+<ul>
+<li><a href="http://www.pendrivelinux.com/yumi-multiboot-usb-creator/">YUMI -- Multiboot USB Creator</a>（※ Windows版）</li>
+</ul>
+
+<ul>
+<li><a href="http://sites.google.com/site/shamurxboot/">XBOOT</a>（※ Windows版）
+	<ul class="small">
+	<li><a href="http://www.pendrivelinux.com/xboot-multiboot-iso-usb-creator/">XBOOT -- Multiboot ISO USB Creator (Windows) | USB Pen Drive Linux</a></li>
+	<li><a href="http://reboot.pro/forum/126/">XBOOT - reboot.pro</a></li>
+	<li><a href="http://www.lifehacker.jp/2011/01/1101111xbootlive_cd.html">『XBoot』は複数のlive CDやブータブルメディアをひとまとめにしてくれる救世主！ : ライフハッカー［日本版］</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.sarducd.it/">SARDU - Multi Boot USB pendrive and CD or DVD Builder</a>（※ Windows版）
+	<ul class="small">
+	<li><a href="http://reboot.pro/forum/100/">SARDU - Multi Boot Builder USB/DVD - reboot.pro</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>拙作めも :
+	<ul class="small">
+	<li><a href="http://d.hatena.ne.jp/palm84/20120228/1330434373">【取扱注意】SARDU - マルチブート LiveCD/LiveUSB 作成ツール</a></li>
+	<li><a href="http://d.hatena.ne.jp/palm84/20120304/1330799228">【取扱注意】SARDU の追加設定アレコレ</a></li>
+	<li><a href="http://d.hatena.ne.jp/palm84/20120307/1331133210">【取扱注意】XBOOT - マルチブート LiveCD/LiveUSB 作成ツール</a></li>
+	<li><a href="http://d.hatena.ne.jp/palm84/20120310/1331307365">XBOOT でウイルススキャンてんこもり LiveCD (LiveUSB) を作ってみたYO！</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+<dl class="small">
+<dt>下記はちょっと古い情報...</dt>
+<dd>
+<ul>
+<li>Knoppix 5.1.1 - <strong class="ms">mkbootdev</strong>
+	<ul class="nest">
+	<li><a href="./knoppix_boot.html#usbboot">Knoppixを起動する方法を試しためも</a></li>
+	</ul>
+</li>
+<li><a href="http://hatochan.dyndns.org/slax-ja/">slax-ja</a>
+	<ul class="nest">
+	<li>Windows版 - <strong class="ms">make_disk.bat</strong>（※ バージョン 5.x）</li>
+	<li>Windows版 - <a href="http://sites.google.com/site/myslaxcreator/">MySlax Creator</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p>うまく行かないこともあるので、その場合は手動作成で。</p>
+
+
+<h2><a href="#boot"><span class="ms">■</span></a> <a name="boot">ブートの流れ</a> <kbd class="ak">5</kbd></h2>
+
+<p>Linuxカーネルがロードされるまで。ブートローダに<strong class="ms">SYSLINUX</strong>を使う場合です。</p>
+<ol>
+<li>BIOSがブートデバイスを選択</li>
+<li>USBメモリのMBR
+	<ul class="nest">
+	<li>ブートローダ<span class="red ms">(*1)</span>読み込み</li>
+	<li>パーティションテーブルを参照</li>
+	<li>アクティブパーティションへ</li>
+	</ul>
+</li>
+<li>アクティブパーティション（bootフラッグ付）のブートセクタ
+	<ul class="nest">
+	<li>ブートローダ<span class="red ms">(*2)</span>読み込み</li>
+	<li>ブートローダ<span class="red ms">(*2)</span>が <span class="ms">ldlinux.sys</span>をロード</li>
+	</ul>
+</li>
+<li><span class="ms">ldlinux.sys</span> が<span class="ms"> syslinux.cfg</span> の設定に基づきカーネルなどのファイルをロード</li>
+</ol>
+<ul>
+<li>※<strong>パーティションを切っていない場合はMBRはないので【2】はなし</strong></li>
+<li><span class="red ms">*1</span> - いわゆる「<strong>ブートストラップローダ</strong>」</li>
+<li><span class="red ms">*2</span> - いわゆる「<strong class="ms">IPL</strong>」（イニシャル・プログラム・ローダ）</li>
+</ul>
+
+<p>ブートストラップについては、DOSやWindowsのものでもほぼブート可能ですが、IPLについてはsyslinux専用のもの、つまり <span class="ms">ldlinux.sys</span> をロードする為の専用IPLとなります。Windows上でフォーマットするとWindows用のIPLがブートセクタに書き込まれます（XPだとNT-IPL）ので、その後でsyslinuxを実行します。</p>
+
+<h2><a href="#bios_partition"><span class="ms">■</span></a> <a name="bios_partition">BIOSの対応とパーティション形式</a> <kbd class="ak">6</kbd></h2>
+
+<p>最近のPCでは臨機応変な対応が可能になってるので、あまり気にする必要はないと思われます。しかしながら、2002年頃のUSBメモリブート初期型（って言っていいのかな？）BIOSでは、USBメモリは【（大容量）FD扱い】固定なんてのも多かったので、該当しそうな場合はチェックしてみるべきかも。</p>
+
+<p>要は、下記2点の組み合わせによりブート可否の結果が変わることもあるってことで...</p>
+<ol>
+<li>BIOSの対応
+	<ul>
+	<li>HD扱い固定</li>
+	<li>FD扱い固定</li>
+	<li>自動切換</li>
+	<li>手動切換</li>
+	</ul>
+</li>
+<li>フラッシュメモリのパーティションは？
+	<ul>
+	<li>MBRあり - HD形式
+		<ul>
+		<li>Zip形式（パーティションの第4エントリを使用）なんてのもあるらしい？</li>
+	</ul>
+</li>
+	<li>MBRなし - （大容量）FD形式</li>
+	</ul>
+</li>
+</ol>
+
+
+<p>最近のフラッシュメモリでは、パーティションが切られていてMBRがあるHD形式の状態のものが殆どだと思いますが、以前はMBRのない（パーティションの切られていない）、（大容量）FD形式のものもありました。</p>
+
+<dl>
+<dt>HD扱い（固定）でのブート</dt>
+<dd>
+<ul>
+<li>USBメモリがFD形式だと、MBRがないのでブートできない</li>
+</ul>
+</dd>
+
+<dt>FD扱い（固定）でのブート</dt>
+<dd>
+<ul>
+<li>USBメモリがHD形式でもブートできるが、MBRはロードしないのでPBRにブートローダーがインストールされていないとブートできない</li>
+<li>FAT32フォーマットではブートしても、「ファイルがない」エラーが出ることがある（FAT16ならOK）</li>
+<li>第2パーティションからブートできない</li>
+<li>パーティションタイプが <strong class="ms">LBA</strong> だとブートできないことがる（ <strong class="ms">CHS</strong> ならOK）</li>
+</ul>
+<p>【追記】<ins>FAT16 の最大パーティションサイズは 2GB</ins>。</p>
+</dd>
+</dl>
+
+<p>※ 尚、USB HD のブートに対応していても、USBフラッシュメモリはFD扱い固定の場合もあったので注意（と言っても、2002年製のかなり“古い”BIOSですが...）</p>
+
+<dl>
+<dt>HD扱い・FD扱いのどちらでもブート可能にするには</dt>
+<dd>
+<p class="pink">それがベストな選択がどうかは微妙ですが...</p>
+<ol>
+<li>パーティションは切っておく</li>
+<li>第1パーティションをアクティブに</li>
+<li>第1パーティション（のPBR）へブートローダーをインストール</li>
+<li>MBRへは、SYSLINUXの <strong class="ms">mbr.bin</strong> のようなシンプルなブートストラップ（※ アクティブ・パーティションのPBRをロードするのみ）を書き込む</li>
+</ol>
+<p>【2】【3】【4】については、Windows 上で <code>syslinux.exe -ma ＜USBドライブ文字＞:</code> することと同じです。</p>
+</dd>
+</dl>
+
+<h2><a href="#format"><span class="ms">■</span></a> <a name="format">パーティションとフォーマット</a> <kbd class="ak">7</kbd></h2>
+
+<dl>
+<dt>あくまであくまで私見ですが...</dt>
+<dd>
+<p class="small palmst">※購入時の状態を残したい場合など、<a href="http://www.si-linux.co.jp/wiki/silinux/index.php?DDforWindows">DDforWindows</a>などで全体のイメージファイルをバックアップしておきませう。</p>
+<p>USBメモリ（SDメモリ + カードリーダなども含め）を確実にブート対応にするには、Linuxのfdiskでパーティションを切り直した方がいいかなと思ってます。</p>
+
+<p>※ 下記は<strong> 8 GB(<del>7.84</del> <ins>7.875</ins> GiB) 以下</strong>の場合ですが...</p>
+<ul>
+<li>パーティションテーブルは一旦消す</li>
+<li>シリンダ数は1024以下に設定される（※ 7.875 GiB 以下の場合）</li>
+<li>パーティションタイプはFAT32なら <code>B</code>、FAT16なら <code>6</code> に設定（※ 7.875 GiB 以下の場合）</li>
+</ul>
+<p>※但し、SDメモリなど携帯電話やデジタルカメラなどで使えなくなるかもしれません。また、別の機器でフォーマットしちゃうとブート不可になってしまうかもしれません。</p>
+</dd>
+</dl>
+
+
+<p>購入時にパーティションが切られているものもありますが（切られていると言っても大抵は1つだけなので「MBRがある」といった区別の方が正確かも）、切られていないもの（FDなどと同じでMBRがない状態）もあります。</p>
+
+<p class="small pink">※ Buffalo RUF2-S 512MB では購入時の状態で、MBRあり、フォーマットは FAT16 LBA (Type  = 0E, C/H/S = 1984/16/32, アクティブ) となってました。<code>syslinux.exe -ma</code> の実行のみでSYSLINUXはブートできました。</p>
+
+<p>BIOS上で <del>ZIP や</del> 所謂スーパーフロッピー(<strong class="ms">USB LS120</strong>, <strong class="ms">USB RMD-FDD</strong> などの“大容量”FD) などで認識されている場合などパーティションが切られていない状態でもブートできることもありますが、切っておいた方が確実だと思われます。</p>
+<p>パーティションが切られている場合は、対象パーティションがアクティブに設定（<strong>bootフラグ</strong>を付ける）されていて、MBRにブートストラップを書き込んでおく必要が<del>あります</del>あるはず?です（※BIOSの対応がスーパーフロッピー扱いの場合はなしでもいいのかも）。購入時点で書き込まれていたりもする様です。また、DOSのFDISKを使ってパーティションを作成した場合も自動で書き込まれるようです。</p>
+
+<div class="palmst small">
+<p>私のPCのうち、BIOSで「USB LS120」で認識されるものでは、MBRの先頭446バイトを0で埋めてブートストラップのない状態でもSYSLINUX（MS-DOSとFreeDOSではAドライブとして起動）はブートします。FAT32フォーマットではブートしません。</p>
+<p>なので、MBRのブートストラップに関してはBIOSの対応（HD扱いなのか所謂スーパーフロッピー扱いなのか）次第なのかもしれませんけど...</p>
+</div>
+
+<p><del>USB-HDでのブートに対応していない場合</del> <ins>USBメモリが <strong class="ms">USB HD</strong> としてではなく<strong>大容量FD扱い</strong>（USB LS120 など）となる場合</ins>など、<strong>FAT32フォーマットではブートできないことがあります。その際はFAT(16)フォーマット</strong>（パーティションサイズは 2GB まで）で試してみませう。</p>
+
+<dl>
+<dt>USBメモリのパーティションを作成するには...</dt>
+<dd>
+<p>Linuxの <code>fdisk</code> コマンド、またはGUI操作なら <strong class="ms">GParted</strong> とか。</p>
+<ul class="small">
+<li><a href="http://www.a-yu.com/opt/fdisk.html">FDISK の使い方</a></li>
+<li><a href="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/825usegparted.html">GPartedでパーティションを操作するには － ＠IT</a></li>
+<li><a href="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/824gparted2ntfs.html">GPartedでNTFSパーティションを操作するには － ＠IT</a></li>
+</ul>
+<p>ブート対象パーティションの<strong>アクティブ設定</strong>（<strong class="ms">boot</strong> フラグを付ける）を忘れないようにしませう。</p>
+<p>尚、Windowsのエクスプローラ上では第1パーティションしか見えないのでご注意（※ 正確には「パーティション・テーブルの第１エントリ」かな）。</p>
+</dd>
+
+<dt>パーティションを一から切り直すには...</dt>
+<dd>
+<p class="small palmst">※念のために、<a href="http://www.si-linux.co.jp/wiki/silinux/index.php?DDforWindows">DDforWindows</a>などで全体のイメージファイルをバックアップしておきませう。</p>
+<p>パーティションを作り直すだけだといわゆる <code>C/H/S</code> 設定は変わらない場合が多いので、一旦パーティションテーブルを含めMBRなど全部消してしまわないといけないのかもしれません。下記はあくまでPalm84流（何）ですけど...</p>
+<p>あっと、事前に念のため、全体のバックアップイメージの作成しときませう（※Windowsなら <a href="http://www.si-linux.co.jp/wiki/silinux/index.php?DDforWindows">DDforWindows</a> とかが便利）。</p>
+
+<p><code>/dev/sd<var class="red">x</var></code> について --- ま<strong>ちがってHDに向けてやらないように注意！</strong></p>
+
+<ul class="small">
+<li>MBRだけでなく第1パーティションの先頭あたりまで消しちゃえ！</li>
+</ul>
+<pre>
+$ dd if=/dev/<strong class="ms red">zero</strong> of=/dev/sd<var class="red">x</var> bs=<strong class="ms red">512</strong> count=<strong class="ms red">64</strong>
+</pre>
+
+<ul class="small">
+<li>そして、普通に（rootで）<strong class="ms">fdisk</strong> 実行</li>
+</ul>
+<pre>
+# fdisk /dev/sd<var class="red">x</var>
+</pre>
+</dd>
+</dl>
+
+<p>【2013.8.24 追記】取扱注意なツールとなりますが、RMPrepUSB や BOOTICE で色んな形式のフォーマットが可能です。または、オプション指定で fdisk 実行するなど。</p>
+<ul>
+<li>拙作めも :
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20130310/1362918805">USBメモリのパーティションをイジるんJaa！の巻</a></li>
+	<li><a href="http://d.hatena.ne.jp/palm84/20130723/1374508215">最近のLinuxのfdiskコマンドの初期設定のことなど</a></li>
+	</ul>
+</li>
+</ul>
+
+<h2><a href="#files"><span class="ms">■</span></a> <a name="files">ファイルのコピー</a> <kbd class="ak">8</kbd></h2>
+
+<div class="palmst pink">
+<p>Windows上で直接isoイメージを展開（抽出）するには <a href="http://sevenzip.sourceforge.jp/">7-Zip</a> や <a href="http://legroom.net/software/uniextract">Universal Extractor</a> などが便利です<span class="small">（※展開時の[BOOT]ディレクトリはブートセクタなので基本的に不要です）。</span></p>
+
+<p>仮想CDソフトやWinRARなどでは、ファイル名がすべて<strong>大文字の8.3形式</strong>となってしまうことがあるため上記をおすすめします。</p>
+</div>
+
+<p>基本的には<del>CD</del><ins>isoイメージ</ins>内のファイルを同じ状態でUSBメモリへコピーすればいいと思います。</p>
+
+<p>SLAXではオプションで任意の場所を指定可能でした（例：<code>from=/dev/hda5/MySlax</code>）。</p>
+
+<p>この後、<strong class="ms">syslinux.cfg</strong> ファイルについて確認します。</p>
+
+
+
+<h2><a href="#config"><span class="ms">■</span></a> <a name="config">syslinux.cfgの設定</a></h2>
+
+<ul>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/The_Syslinux_Project">The Syslinux Project - Syslinux Wiki</a>
+	<ul>
+	<li><a href="http://syslinux.zytor.com/wiki/index.php/HowTos">HowTos - Syslinux Wiki</a></li>
+	<li><a href="http://syslinux.zytor.com/wiki/index.php/SYSLINUX">SYSLINUX - Syslinux Wiki</a></li>
+	<li><a href="http://syslinux.zytor.com/wiki/index.php/Changelog">Changelog - Syslinux Wiki</a></li>
+	</ul>
+</li>
+</ul>
+
+<p>まず、CD内にUSBメモリブート用の <strong class="ms">syslinux.cfg</strong> がないか確認します。CDブートとは違うオプション（パラメータ）の指定が必要になることがあるので、ある場合はそのファイルを使用します。</p>
+
+<p><strong class="ms">syslinux.cfg</strong> がない場合は <code>isolinux.cfg</code> を <code>syslinux.cfg</code> にリネームして使用します。</p>
+
+<ul>
+<li>※<strong>Windowsで SYSLINUX 最新版を使う時で </strong><strong class="ms">syslinux.cfg</strong> がない場合は
+	<ol>
+	<li><code>isolinux.cfg</code> を <code>syslinux.cfg</code> にリネーム</li>
+	<li>ディレクトリ名 <code>/boot/isolinux/</code> などを <code>/boot/syslinux</code> にリネーム</li>
+	</ol>
+</li>
+</ul>
+
+<ul>
+<li>※LiveCDなどの<strong>古いバージョンのSYSLINUXを使う場合は</strong>
+	<ol>
+	<li>kernel など <code>isolinux</code> ディレクトリ内のファイルすべてをルート(<code>/</code>) に移動</li>
+	<li><code>isolinux.cfg</code> を <code>syslinux.cfg</code> にリネーム</li>
+	</ol>
+</li>
+</ul>
+
+<dl>
+<dt>保存場所</dt>
+<dd>
+<p>※バージョン<strong>3.35以降</strong>。</p>
+<div class="quote small">
+<blockquote cite="http://syslinux.zytor.com/faq.php" title="SYSLINUX - common documentation">
+<p>Starting with version 3.35, the configuration file can also be in either the /boot/syslinux or /syslinux directories (searched in that order.) If that is the case, then all filenames are assumed to be relative to that same directory, unless preceded with a slash or backslash. </p>
+</blockquote>
+<cite><a href="http://syslinux.zytor.com/faq.php">SYSLINUX - common documentation</a></cite>
+</div>
+<p>下記の順序で検索されるとあります。優先順序の様です。</p>
+<ol>
+<li><code>/boot/syslinux</code></li>
+<li><code>/syslinux</code></li>
+<li><code>/</code></li>
+</ol>
+<p><code>/</code> に作っても <code>/boot/syslinux</code> にもあれば、優先されてしまうので注意。</p>
+<p><strong>SYSLINUX のバージョンに注意</strong>。LiveCDに含まれるものは3.31など古いものが多い。旧バージョンを使う場合はルート(<code>/</code>) に置くのがよいかと。</p>
+</dd>
+
+<dt>ファイルの指定</dt>
+<dd>
+<p>kernel、及び initrd が <strong class="ms">syslinux.cfg</strong> と同じディレクトリにない場合はファイルのパスを指定する必要があります（同じディレクトリ内にあるならファイル名のみでOK）。（マルチブートする場合を除き）同じディレクトリにある方が楽かと。</p>
+
+<ul>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/SYSLINUX#How_do_I_Configure_SYSLINUX.3F">How do I Configure SYSLINUX? - SYSLINUX - Syslinux Wiki</a></li>
+</ul>
+
+<p>一例ですが..</p>
+<pre>
+<code>/</code> 
+|   ldlinux.sys
+|   xxx
++---boot
+|   |   xxx
+|   \---syslinux
+|           <strong class="ms">syslinux.cfg</strong>
+|           vmlinuz
+|           initrd.gz
+</pre>
+
+<ul>
+<li>相対パス（※同じディレクトリ）</li>
+</ul>
+<pre>
+KERNEL vmlinuz
+APPEND initrd=initrd.gz パラメータ1 パラメータ2
+</pre>
+
+<ul>
+<li>【<code>/</code>】ルートからの絶対パス</li>
+</ul>
+<pre>
+KERNEL <code><strong class="ms">/</strong>boot/syslinux/</code>vmlinuz
+APPEND initrd=<code><strong class="ms">/</strong>boot/syslinux/</code>initrd.gz パラメータ1 パラメータ2
+</pre>
+
+</dd>
+</dl>
+
+<dl class="palmst pink">
+<dt>その他・便利な追加機能など</dt>
+<dd>
+<ul>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/Menu">Menu - Syslinux Wiki</a>
+	<ul>
+	<li><a href="http://syslinux.zytor.com/wiki/index.php/Comboot/menu.c32">Comboot/menu.c32 - Syslinux Wiki</a></li>
+	</ul>
+</li>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/MEMDISK">MEMDISK - Syslinux Wiki</a></li>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/Comboot/chain.c32">Comboot/chain.c32 - Syslinux Wiki</a></li>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/UseCases">UseCases - Syslinux Wiki</a></li>
+</ul>
+
+</dd>
+</dl>
+
+
+<h3><a href="#option"><span class="ms">■</span></a> <a name="option">オプション・パラメータ調整</a></h3>
+
+<p>デバイスの対応次第ですが、デフォルト設定ではうまくブートできないこともあります。</p>
+
+<p>syslinux.cfgのデフォルト以外のlabelをブート時に指定したり、CD内の説明ファイルを参照してオプション（パラメータ、チードコード）を調整。</p>
+
+
+
+<h3><a href="#configfile"><span class="ms">■</span></a> <a name="configfile">オプションを編集</a></h3>
+
+<p>※<strong>通常は編集する必要はありません</strong>。</p>
+<p>Linuxの改行コードはLF（Windows標準はCR+LF）なのでWindowsのメモ帳で開くと表示がおかしくなります。LF対応のテキストエディタ（またはワードパッドでも）を使います。</p>
+
+<p class="small"><del>ファイル名は8文字以内、または8.3形式で</del>。<ins>最近のバージョンでは文字数制限はほぼないです</ins>。</p>
+
+<div class="small">
+<pre class="scl">
+default knoppix
+display boot.msg
+prompt 1
+F1      boot.msg
+F2      help.txt
+F3      option.txt
+
+label knoppix
+kernel linux
+append ramdisk_size=100000 init=/etc/init lang=ja apm=power-off vga=791 initrd=minirt.gz nomce highres=off loglevel=0 libata.atapi_enabled=1 quiet SELINUX_INIT=NO nmi_watchdog=0 BOOT_IMAGE=knoppix
+
+label expert
+kernel linux
+append ramdisk_size=100000 init=/etc/init lang=ja apm=power-off vga=791 initrd=minirt.gz nomce highres=off nmi_watchdog=0 BOOT_IMAGE=expert
+
+--- 略 ---
+</pre>
+</div>
+
+<ul>
+<li><code>default</code> - デフォルトの <strong class="ms">label</strong> を指定</li>
+<li><code>display</code> - ブート画面で表示するファイルを指定</li>
+<li><code>prompt 1</code> - bootプロンプトを表示。0にするとデフォルトで自動起動。</li>
+<li><code>timeout 100</code> - 10秒後に自動起動</li>
+</ul>
+
+<p><strong class="ms">label</strong> 名やオプション指定などを書いたテキストファイルを作って、<code>display menu.txt</code> などとして表示させるのもいいかも。</p>
+
+
+<h2><a href="#syslinux"><span class="ms">■</span></a> <a name="syslinux">SYSLINUXのインストール</a> <kbd class="ak">9</kbd></h2>
+
+<dl class="palmst small">
+<dt>GRUBなど他のブートローダは...</dt>
+<dd>
+<p>調べてみるとUSBメモリのパーティションの状態はHDと比べ一定とはいえない様です。MBRと第1パーティションの間の空き領域がないものがありました。GRUBはこの空き領域への書き込みが必要なのでMBRへインストールできないことがあります。SYSLINUXでは、MBR以降の空き領域へは書き込みしません。</p>
+<p>あっと、Linux の fdisk で ヘッド数とセクタ数を指定してパーティションを切り直せば変わるかもしれません...</p>
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20071116/1195223260">フラッシュメモリのパーティションテーブル - Palm84 某所の日記</a></li>
+</ul>
+</dd>
+</dl>
+
+<dl class="palmst small pink">
+<dt>【追記】SYSLINUX は一応ブートしている様だがメニューなどが出ない場合は...</dt>
+<dd>
+<p>※ <strong>元のバージョンと同じ SYSLINUX をインストールする方が楽かも</strong>。</p>
+<p>実行したSYSLINUXファイル（<code>syslinux.exe</code> とか） と元の Linux に含まれてる SYSLINUX のメニュー用ファイル <code>vesamenu.c32</code> などとのバージョン不整合かもしれないです。下記ファイルが存在する場合はダウンロードした SYSLINUX の最新バージョンに置換してみるべし。</p>
+<ul>
+<li><strong class="ms">vesamenu.c32</strong> (<code>\com32\menu\vesamenu.c32</code>)</li>
+<li><strong class="ms">menu.c32</strong> (<code>\com32\menu\menu.c32</code>)</li>
+<li><strong class="ms">chain.c32</strong> (<code>\com32\modules\chain.c32</code>)</li>
+<li><strong class="ms">reboot.c32</strong> (<code>\com32\modules\reboot.c32</code>)</li>
+<li><strong class="ms">memdisk</strong> (<code>\memdisk\memdisk</code>)</li>
+<li><strong class="ms">poweroff.com</strong> (<code>\modules\poweroff.com</code>)</li>
+</ul>
+</dd>
+</dl>
+
+<dl>
+<dt>SYSLINUX</dt>
+<dd>
+<ul>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/The_Syslinux_Project">The Syslinux Project - Syslinux Wiki</a>
+	<ul>
+	<li><a href="http://syslinux.zytor.com/wiki/index.php/SYSLINUX">SYSLINUX - Syslinux Wiki</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>ダウンロード（Windows用はzip版、gz版も中身いっしょですが...）
+	<ul class="nest">
+	<li><a href="http://syslinux.zytor.com/download.php">Where to get your SYSLINUX</a></li>
+	<li><a href="http://www.ring.gr.jp/pub/linux/kernel.org/utils/boot/syslinux/">Ring Server ミラー</a></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+<h3><a href="#install_on_windows" name="install_on_windows">Windows 上で実行</a></h3>
+
+<ol>
+<li>ダウンロードしたzipファイルを展開</li>
+<li><code>\win32</code> ディレクトリにある <strong class="ms">syslinux.exe</strong> を実行</li>
+</ol>
+
+<p class="pink">※ Vista/7ではコマンド プロンプトを「管理者として実行」すること！</p>
+
+<p><strong class="ms">syslinux.exe</strong> をUSBメモリのルートにコピーして実行するのが簡単かと。</p>
+
+<ul>
+<li>バージョン 4.04 （USBメモリが <code>X:</code> ドライブ）の例</li>
+</ul>
+<pre class="scl">
+C:\Documents and Settings\yassy&#062;x:
+
+X:\&#062;findstr SYSLINUX syslinux.exe
+SYSLINUX 4.04 
+SYSLINUX 4.04 2011-04-18 No DEFAULT or UI configuration directive found!
+
+X:\&#062;syslinux
+Usage: syslinux [options] &#060;drive&#062;: [bootsecfile]
+  --directory  -d  Directory for installation target
+  --install    -i  Install over the current bootsector
+  --update     -U  Update a previous installation
+  --zip        -z  Force zipdrive geometry (-H 64 -S 32)
+  --sectors=#  -S  Force the number of sectors per track
+  --heads=#    -H  Force number of heads
+  --stupid     -s  Slow, safe and stupid mode
+  --raid       -r  Fall back to the next device on boot failure
+  --once=...   -o  Execute a command once upon boot
+  --clear-once -O  Clear the boot-once command
+  --reset-adv      Reset auxilliary data
+  --menu-save= -M  Set the label to select as default on the next boot
+  --mbr        -m  Install an MBR
+  --active     -a  Mark partition as active
+  --force      -f  Ignore precautions
+</pre>
+
+<p>下記はUSBメモリのドライブレターが仮に【<code><var class="red">X:</var></code>】とした場合の例です。ドライブレターを間違うと Windows が起動しなくなる場合があるのでくれぐれもご注意（※ <code>--force</code> オプション付けない限り内蔵HD、USB HDへはインストールできない筈ですけど...）。</p>
+
+<p>※ インストール先ドライブのフォーマットは FAT32 or FAT16</p>
+
+<ul>
+<li>SYSLINUXの <strong class="ms">IPL</strong> と <span class="ms">ldlinux.sys</span> 書き込み（※ PBRへインストール）</li>
+</ul>
+<pre>
+syslinux.exe <var class="red">X:</var>
+</pre>
+<p class="small">または、</p>
+<pre>
+syslinux.exe --install <var class="red">X:</var>
+</pre>
+
+<ul>
+<li>SYSLINUXのMBR<strong>ブートストラップ</strong>、<strong class="ms">IPL</strong>と<span class="ms">ldlinux.sys</span>書き込み</li>
+</ul>
+<pre>
+syslinux.exe -ma <var class="red">X:</var>
+</pre>
+<p class="small">または、</p>
+<pre>
+syslinux.exe --install --active --mbr <var class="red">X:</var>
+</pre>
+<p class="small">【<span class="ms">m</span>】がMBRへブートストラップ書き込み
+<br>【<span class="ms">a</span>】はパーティションをアクティブに設定</p>
+
+<p>尚、<strong>パーティションを切っていない場合（FD扱いでのブート）はブートストラップの書き込みは不要</strong>ですがしておいた方が確実だと思われます。（元々書き込み済みの場合もあるかも）</p>
+
+<ul>
+<li><strong class="ms">ldlinux.sys</strong> を書き込むディレクトリを指定（例 : \syslinux へ）</li>
+</ul>
+<pre class="scl">
+syslinux.exe --install --active --mbr --directory <var class="red">/syslinux</var> <var class="red">X:</var>
+</pre>
+
+<dl>
+<dt>めも</dt>
+<dd>
+<dl class="small">
+<dt>SYSLINUX ブートセクタのファイル化</dt>
+<dd>
+<pre>
+syslinux.exe --install <var class="red">X:</var> syslinux.bin
+</pre>
+<p>512バイトのファイルが作成されます（USBメモリへは書き込みされない）。ルートに置けば GRUB for DOS からチェインロードが可能です。</p>
+<pre>
+title * chainload SYSLINUX Menu
+find --ser-root /syslinux.bin
+chainloader /syslinux.bin
+</pre>
+</dd>
+</dl>
+</dd>
+</dl>
+<h3><a href="#install_on_linux" name="install_on_linux">Linux 上で実行</a></h3>
+
+<p class="small pink">※ <strong>Linux上ではブートストラップの書き込みがうまく行かないことがあります</strong>。Windows上で <code>syslinux.exe -ma</code> を実行した方が確実かも。</p>
+
+<p>Linux に含まれる SYSLINUX のパッケージはバージョンが少し古めのことが多いので最新版のダウンロードをおすすめします。</p>
+
+<dl>
+<dt>おおまか手順</dt>
+<dd>
+<ol>
+<li>インストール先パーティションのフォーマットは FAT32 or FAT16</li>
+<li>インストール先パーティションをアクティブ設定</li>
+<li>インストール先パーティションへ SYSLINUX をインストール</li>
+<li><strong class="ms">dd</strong> コマンドでMBRのブートストラップ部分をクリア</li>
+<li><strong class="ms">dd</strong> コマンドで SYSLINUX の <strong class="ms">mbr.bin</strong>（※ ブートストラップ）を MBRへ 書き込み</li>
+</ol>
+</dd>
+</dl>
+
+<dl class="palmst pink small">
+<dt>USBデバイス名を確認...</dt>
+<dd>
+<p><code>dmesg</code> や <code>fdisk</code> コマンドとかで容量から判断したらいいかな。</p>
+<p class="pink">【注意】通常は内蔵の第1HDが sd<strong class="ms red">a</strong> ですが、USB HDが sd<strong class="ms red">a</strong>、内蔵HDDが sd<strong class="ms red">b</strong> となってたこともあるんでくれぐれも間違わない様にご注意！</p>
+<pre class="scl">
+root@sysresccd /root % dmesg | grep blocks
+[    7.570224] sd 0:0:0:0: [<strong class="ms red">sda</strong>] 62914560 512-byte logical blocks: (<strong class="ms red">32.2 GB</strong>/30.0 GiB)
+[   14.153323] sd 3:0:0:0: [<strong class="ms red">sdc</strong>] 3932160 512-byte logical blocks: (<strong class="ms red">2.01 GB</strong>/1.87 GiB)
+[   14.156156] sd 2:0:0:0: [<strong class="ms red">sdb</strong>] 39070080 512-byte logical blocks: (<strong class="ms red">20.0 GB</strong>/18.6 GiB)
+</pre>
+<pre class="scl">
+yassy@kubuntu:~$ sudo fdisk -l | grep /dev
+ディスク /dev/<strong class="ms red">sda</strong>: <strong class="ms red">32.2 GB</strong>, 32212254720 バイト
+/dev/sda1   *           1        2433    19543041    7  HPFS/NTFS
+/dev/sda2            2434        3916    11912197+   5  拡張領域
+/dev/sda5            2434        3916    11912166    c  W95 FAT32 (LBA)
+ディスク /dev/<strong class="ms red">sdb</strong>: <strong class="ms red">20.0 GB</strong>, 20003880960 バイト
+/dev/sdb1   *           1        1386    11133013+   c  W95 FAT32 (LBA)
+/dev/sdb2            1387        2301     7348224   83  Linux
+/dev/sdb3            2302        2432     1052257+  82  Linux スワップ / Solaris
+ディスク /dev/<strong class="ms red">sdc</strong>: <strong class="ms red">2013 MB</strong>, 2013265920 バイト
+/dev/sdc1   *           1         650     1249269    6  FAT16
+/dev/sdc2             651        1022      714984    6  FAT16
+</pre>
+</dd>
+</dl>
+
+
+<p>下記はUSBメモリの対象パーティションが <code>/dev/<strong class="ms red">sdz1</strong></code> の場合です。<strong>事前に確認</strong>。</p>
+
+
+
+<ul>
+<li>パーティション <code>sdz1</code> をアクティブ（bootフラグ）に</li>
+</ul>
+<pre>
+# parted /dev/sdz set 1 boot on
+
+# parted /dev/sdz p
+Model: BUFFALO ClipDrive (scsi)
+Disk /dev/sdz: 131MB
+Sector size (logical/physical): 512B/512B
+Partition Table: msdos
+
+Number  Start   End    Size   Type     File system  Flags
+ 1      25.6kB  131MB  131MB  primary  fat16        <strong class="ms red">boot</strong>
+</pre>
+
+<ul>
+<li>SYSLINUXの<strong class="ms">IPL</strong>と<span class="ms">ldlinux.sys</span>書き込み（※ PBRへインストール）</li>
+</ul>
+<pre>
+# syslinux --install /dev/<strong class="ms red">sdz1</strong>
+</pre>
+<p class="small">※ 新規書き込みでは <code>-i</code> ( <code>--install</code> )オ プションが必須となった模様。</p>
+
+<ul>
+<li>MBRのブートストラップ部分を念の為に一旦クリア（0書き込み）</li>
+</ul>
+<pre>
+# dd if=/dev/<strong class="ms">zero</strong> of=/dev/<strong class="ms red">sdz</strong> bs=<strong class="ms">440</strong> count=1
+</pre>
+<p class="small">※【注意】 <code>of=</code> での書き込み対象、及び <code>bs=440</code> (<code>bs=446</code> でもいいかな) を間違わないこと！</p>
+
+
+<ul>
+<li>SYSLINUXのMBR<strong>ブートストラップ</strong>書き込み
+	<ul class="small">
+	<li>SYSLINUXファイルに含まれる、<code><strong class="ms">mbr/mbr.bin</strong></code> をカレントディレクトリに準備して</li>
+	</ul>
+</li>
+</ul>
+<pre>
+# dd if=<strong class="ms">mbr.bin</strong> of=/dev/<strong class="ms red">sdz</strong> bs=440 count=1
+</pre>
+<p class="small">※【注意】 <code>of=</code> での書き込み対象を間違わないこと！</p>
+
+<dl class="palmst small pink">
+<dt>一例</dt>
+<dd>
+<p>4.04 の tar.gz 版をダウンロード、インストール先が <code>/dev/sdz1</code> の場合です。</p>
+<p>Linux LiveCD などではUSBメモリが自動マウントされていることがあります。マウントされていてもSYSLINUXのインストールはできる様ですがアンマウントした方が多分安全かと。</p>
+<pre class="scl">
+root@PartedMagic:~# tar zxvf syslinux-4.04.tar.gz 
+
+root@PartedMagic:~# cd syslinux-4.04/linux/
+
+root@PartedMagic:~/syslinux-4.04/linux# syslinux
+Usage: syslinux [options] device
+  --offset     -t  Offset of the file system on the device 
+  --directory  -d  Directory for installation target
+  --install    -i  Install over the current bootsector
+  --update     -U  Update a previous installation
+  --zip        -z  Force zipdrive geometry (-H 64 -S 32)
+  --sectors=#  -S  Force the number of sectors per track
+  --heads=#    -H  Force number of heads
+  --stupid     -s  Slow, safe and stupid mode
+  --raid       -r  Fall back to the next device on boot failure
+  --once=...       Execute a command once upon boot
+  --clear-once -O  Clear the boot-once command
+  --reset-adv      Reset auxilliary data
+  --menu-save= -M  Set the label to select as default on the next boot
+  --force      -f  Ignore precautions
+</pre>
+
+<ul>
+<li>SYSLINUX のインストール</li>
+</ul>
+<pre>
+root@PartedMagic:~/syslinux-4.04/linux# syslinux -i /dev/sdz1
+</pre>
+<p>実行できない場合は実行権限の確認 (<code>chmod +x</code>)、<code>./syslinux</code> で実行</p>
+
+<ul>
+<li>MBRブートストラップをクリア</li>
+</ul>
+<pre class="scl">
+root@PartedMagic:~/syslinux-4.04/linux# dd if=/dev/zero of=/dev/sdz bs=440 count=1
+</pre>
+
+<ul>
+<li>MBRブートストラップ書き込み</li>
+</ul>
+<pre class="scl">
+root@PartedMagic:~/syslinux-4.04/linux# cd ../mbr
+root@PartedMagic:~/syslinux-4.04/mbr# ls
+Makefile        altmbr_f.bin    gptmbr_f.bin    isohdppx.S      mbr.bin
+adjust.h        checksize.pl*   isohdpfx.S      isohdppx.bin    mbr.ld
+altmbr.S        gptmbr.S        isohdpfx.bin    isohdppx_c.bin  mbr_c.bin
+altmbr.bin      gptmbr.bin      isohdpfx_c.bin  isohdppx_f.bin  mbr_f.bin
+altmbr_c.bin    gptmbr_c.bin    isohdpfx_f.bin  mbr.S           oldmbr.asm
+
+root@PartedMagic:~/syslinux-4.04/mbr# dd if=mbr.bin of=/dev/sdz bs=440 count=1
+1+0 records out
+440 bytes (440 B) copied, 0.0255182 s, 17.2 kB/s
+</pre>
+</dd>
+</dl>
+
+<dl>
+<dt><strong class="ms">ms-sys</strong> が入ってるなら</dt>
+<dd>
+<p><strong class="ms">ms-sys</strong> はKnoppix、SystemRescueCd、Parted Magic、BG-Rescue Linux（FD版もあり）などのLiveCDに入ってます。</p>
+
+<pre>
+# syslinux -i /dev/<strong class="ms red">sdz1</strong>
+# ms-sys -z /dev/<strong class="ms red">sdz</strong>
+# ms-sys -s /dev/<strong class="ms red">sdz</strong>
+</pre>
+<p><code>-z</code> は一旦MBRの先頭446バイトをクリア、<code>-s</code> はSYSLINUXブートストラップ書き込み</p>
+</dd>
+</dl>
+
+<dl>
+<dt>めも</dt>
+<dd>
+<dl class="small">
+<dt>Linux LiveCD などでのバージョン確認</dt>
+<dd>
+<p>一例ですが。</p>
+<pre class="scl">
+root@PartedMagic:~# whereis syslinux
+syslinux: /usr/bin/syslinux /usr/X11R6/bin/syslinux /usr/X11/bin/syslinux /usr/share/syslinux
+root@PartedMagic:~# strings /usr/bin/syslinux | grep SYSLINUX
+SYSLINUX
+SYSLINUX
+SYSLINUX 4.04 
+SYSLINUX 4.04 2011-04-18
+MODE_SYSLINUX
+MODE_SYSLINUX_DOSWIN
+</pre>
+</dd>
+
+<dt><strong class="ms">install-mbr</strong> コマンドがあるなら</dt>
+<dd>
+<p>mbr パッケージに含まれる <code>install-mbr</code> コマンドでも <strong>ブートストラップ</strong>書き込みが可能です。</p>
+<pre>
+# dd if=/dev/zero of=/dev/<strong class="ms red">sdz</strong> bs=<strong class="ms">446</strong> count=1
+# install-mbr /dev/<strong class="ms red">sdz</strong>
+# syslinux -i /dev/<strong class="ms red">sdz1</strong>
+</pre>
+
+<dt>パーティションを一から切りなおす</dt>
+<dd>
+<p class="palmst">※念のために、<a href="http://www.si-linux.co.jp/wiki/silinux/index.php?DDforWindows">DDforWindows</a>などで全体のイメージファイルをバックアップしておきませう。</p>
+<p>意味わからない人はやらない方がいいかも。間違うとエライことになるので。USBメモリが<code>/dev/sdz</code> の場合です。</p>
+<ul>
+<li>パーティションテーブルを含めMBRから第1パーティションの先頭セクタあたり？までをクリア（0書き込み）</li>
+</ul>
+<pre>
+# dd if=/dev/zero of=/dev/<strong class="ms red">sdz</strong> bs=512 count=64
+</pre>
+<p>※install-mbrコマンドの実行が必要な場合もあるかな？mbr パッケージは Knoppix 5.x、SystemRescueCd、INSERT などのLiveCDにも入ってます。</p>
+<p>fdiskやGPartedなどでパーティション作成（boot指定も）、FAT(16 or 32)でフォーマット後にSYSLINUXのインストール</p>
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+<h2><a href="#isohybrid"><span class="ms">■</span></a> <a name="isohybrid">isohybrid</a></h2>
+
+<p>まだあんまり多くないようですが、こんなのもあります。</p>
+<p>isoイメージがUSBメモリ用などとの兼用になってるという... イメージ書き込みツールでisoをUSBメモリへ一発書き込みするだけでブート可能なUSBメモリが出来上がるのです。</p>
+
+<ul>
+<li><a href="http://reboot.pro/9916/">Grub4dos &#034;isohybrided&#034; - reboot.pro</a></li>
+<li><a href="http://manpages.ubuntu.com/manpages/natty/man1/isohybrid.1.html">Ubuntu Manpage: isohybrid - Postprocess ISO images for hybrid mode</a></li>
+</ul>
+
+<p>現状で私が知ってるのは下記だけだったりしますが。</p>
+
+<ul>
+<li><a href="http://www.vinelinux.org/">Vine Linux</a> インストール用 iso</li>
+<li><a href="http://www.debian.or.jp/">Debian GNU/Linux</a> インストール用 iso</li>
+<li><a href="http://partedmagic.com/">Parted Magic</a></li>
+<li><a href="http://www.supergrubdisk.org/super-grub2-disk/">Super Grub2 Disk</a></li>
+</ul>
+
+<p>ただ、これは一時使用には簡単で便利ですがそのままだと短所もあったり。</p>
+
+<ul>
+<li>Windows 上でUSBメモリが使えないとか</li>
+<li>ファイルシステムがiso9660だったりとか</li>
+</ul>
+<ul>
+<li>拙作めも :
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20100912/1284274285">isohybrid</a></li>
+	</ul>
+</li>
+</ul>
+
+<h2><a href="#ojaru"><span class="ms">■</span></a> <a name="ojaru">拙作めも</a></h2>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20100103/1262489293">【取り扱い注意】USB（メモリ）ブート関連ツール</a></li>
+</ul>
+
+<ul>
+<li><a href="./syslinux_basic.html">SYSLINUXでマルチブート【基本編】</a>
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20071129/1196347399">SYSLINUXにグラフィカル・メニューを入れるの巻</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="./knoppix_boot.html#usbboot">USBフラッシュメモリ - Knoppixを起動する方法を試しためも</a></li>
+</ul>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20070304/1173019239">DOS(Windows)編</a></li>
+</ul>
+
+<ul>
+<li><a href="./fdboot_liveusb.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻</a></li>
+<li><a href="./fdboot_liveusb2.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻【その2】</a></li>
+<li><a href="./fdboot_liveusb3.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻【合体編】</a></li>
+<li><a href="./fdboot_liveusb4.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻【GRUB編】</a></li>
+</ul>
+
+
+
+</div>
+</div>
+
+
+<div class="navi">
+<a href="./index.html">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd>
+</div>
+
+
+<address>Written by yassy</address>
+
+
+</body>
+
+</html>

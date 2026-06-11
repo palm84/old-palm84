@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="X-UA-Compatible" content="IE=6">
+<meta name="GENERATOR" content="EdLeaf Version 1.02">
+<link rel="stylesheet" type="text/css" href="cssmemo_standard_quirks.css">
+<link rel="start" href="./index.html">
+<title>互換モード (IE6)【修正版】[_width] 指定</title>
+</head>
+
+<body class="test">
+
+<div style="text-align:center" id="top">
+<a href="./css_memo.html">index</a> | 
+<a href="./css_memo_mame.html">豆</a>
+</div>
+
+<h1 class="quirks">互換モード (IE6)【修正版】[_width] 指定</h1>
+
+<div class="header-quirks">
+<ul class="small">
+<li><acronym title="Internet Explorer">IE</acronym> の標準モード = HTML 4.01 Transitional,URLあり</li>
+<li><acronym title="Internet Explorer">IE</acronym> の後方互換モード = HTML 4.01 Transitional,URLなし</li>
+</ul>
+
+<ul class="small">
+<li>【width 指定なし】
+	<ul>
+	<li><a href="./standard_ie6.html">標準モード</a> 【pre要素に margin:0 5% 指定】</li>
+	<li><a href="./quirks_ie6.html">互換モード</a> 【pre要素に margin:0 5% 指定】</li>
+	</ul>
+</li>
+<li>【width 指定あり】
+	<ul>
+	<li><a href="./standard_width_ie6.html">標準モード - width 指定</a> 【pre要素に margin:0 5%;width:90% 指定】</li>
+	<li><a href="./quirks_width_ie6.html">互換モード - width 指定</a> 【pre要素に margin:0 5%;width:90% 指定】</li>
+	</ul>
+</li>
+</ul>
+
+<ul class="small">
+<li><a href="./standard_test_ie6.html">標準モード【修正版】</a></li>
+<li>互換モード【修正版】[_width] 指定</li>
+</ul>
+
+<ul class="small">
+<li><a href="conditional_comment_standard_ie6.html">標準モード</a> - 【コンディショナルコメント】（※書きかけ中）</li>
+<li><a href="./conditional_comment_quirks_ie6.html">互換モード</a> - 【コンディショナルコメント】</li>
+</ul>
+</div>
+
+
+<div class="mainbox-quirks">
+<div class="sidemenu-quirks">
+
+<p>コンニチハコンニチハ</p>
+
+
+<dl>
+<dt><abbr title="Internet Explorer">IE</abbr>6,<abbr title="Internet Explorer">IE</abbr>7対策</dt>
+<dd>
+<ul>
+<li>mainboxにbackground-colorを付ける</li>
+<li>sidemenuにはbackground-colorを付けない</li>
+</ul>
+</dd>
+</dl>
+
+</div>
+
+
+
+<div class="contents-quirks">
+<h2>てすと</h2>
+
+<ul>
+<li><code>_width:100%</code>(<code>padding:1em 2%;</code>)</li>
+</ul>
+<div class="box">
+<pre>
+1あいうえおかきくけこさしすせそあいうえ
+2あいうえおかきくけこさしすせそあいうえ
+3あいうえおかきくけこさしすせそあいうえ
+4あいうえおかきくけこさしすせそあいうえ
+5あいうえおかきくけこさしすせそあいうえ
+</pre>
+<pre>
+1あいうえおかきくけこさしすせそあいうえ
+2あいうえおかきくけこさしすせそあいうえ
+3あいうえおかきくけこさしすせそあいうえ
+4あいうえおかきくけこさしすせそあいうえ
+5あいうえおかきくけこさしすせそあいうえ
+</pre>
+</div>
+
+<h3>互換モード用モード修正</h3>
+
+<dl>
+<dt>Opera9 対策</dt>
+<dd>
+<p><dfn>width</dfn> を指定しない。（<abbr title="Internet Explorer">IE</abbr>6/7 向けに<dfn>_width</dfn> を指定する）</p>
+</dd>
+
+<dt><abbr title="Internet Explorer">IE</abbr>6,<abbr title="Internet Explorer">IE</abbr>7対策</dt>
+<dd>
+<p><acronym title="Internet Explorer">IE</acronym>6,<acronym title="Internet Explorer">IE</acronym>7の互換モードでは、（左右）<code>margin:auto</code> が効かないので左右の <dfn>margin</dfn> を等しく指定（左右 <dfn>margin</dfn> があるのになぜか <strong>_widthは100%</strong>）</p>
+
+<ol>
+<li>カラムを調整</li>
+<li>他のブロックレベル要素もまとめて <strong>_width:100%</strong> を指定</li>
+</ol>
+</dd>
+</dl>
+
+<pre>
+.<strong class="rd">mainbox</strong>-quirks {
+position:relative;
+margin: 1% 4%;
+<strong>_width: 100%;</strong>
+background-color: #f1f1f1;
+border-style: solid;
+border-width: 1px;
+border-color: #fff #ccc #ccc #fff;
+}
+
+.<strong class="rd">contents</strong>-quirks {
+margin: 0 25% 0 0;
+padding: 0 2% 1%;
+<strong>_padding: 0 2.5% 1%;</strong>
+background-color: #fff;
+<strong>_width: 100%;</strong>
+}
+
+.<strong class="rd">sidemenu</strong>-quirks {
+position:absolute;
+margin: 0;
+padding: 1%;
+<strong>_padding: 4%;</strong>
+top: 0;
+left: 75%;
+right: 0;
+bottom: 0;
+width: 23%;
+<strong>_width: 25%;</strong>
+}
+</pre>
+
+<pre>
+.header-quirks ul,
+.header-quirks ul ul,
+.mainbox-quirks ul,
+.mainbox-quirks ol,
+.mainbox-quirks dl,
+.mainbox-quirks dt,
+.mainbox-quirks dd,
+.mainbox-quirks h2,
+.mainbox-quirks h3 {
+<strong>_width: 100%;</strong>
+}
+</pre>
+
+<p>preにも<strong>_width: 100%;</strong>を指定。<abbr title="Internet Explorer">IE</abbr>の1行 <dfn>pre</dfn>   <dfn>overflow</dfn> 対策として上下 <dfn>padding</dfn> に1em</p>
+
+<pre>
+.contents-quirks <strong class="rd">pre</strong> {
+margin: 0 5% 2%;
+padding: 1em 2%;
+overflow:auto;
+white-space: pre;
+background-color: #f1f1f1;
+<strong>_width: 100%;</strong>
+line-height: 1.1;
+}
+</pre>
+
+<p><dfn>_width</dfn> は他のブラウザでは無視される</p>
+
+<h2>overflow 確認</h2>
+
+<dl>
+<dt><code><strong>_width:100%</strong>;overflow:auto;</code>(<code>padding:1em 2%;</code>)</dt>
+<dd>
+<div class="box">
+<pre>
+1あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+</pre>
+</div>
+</dd>
+
+<dt><code><strong>_width:100%</strong>;overflow:auto;</code>(<code>padding:1em 2%;</code>)</dt>
+<dd>
+<div class="box">
+<pre>
+1あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+2あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+3あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+4あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+5あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+</pre>
+</div>
+</dd>
+
+<dt><code><strong>_width:100%</strong>;overflow:scroll;</code>(<code>padding:1em 2%;</code>)</dt>
+<dd>
+<div class="box">
+<pre class="scroll">
+1あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+2あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+3あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+4あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+5あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+</pre>
+</div>
+</dd>
+</dl>
+
+<p>Firefox + VL ゴシック（VL Pゴシック）では、不要な縦スクロールバーが出ることがある（上下 <dfn>padding</dfn> か <dfn>line-height</dfn> 調整で回避）。</p>
+
+<dl>
+<dt><code><strong>_width:100%</strong>;overflow:hidden;</code>(<code>padding:1em 2%;</code>)</dt>
+<dd>
+<div class="box">
+<pre class="hidden">
+1あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+2あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+3あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+4あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+5あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+</pre>
+</div>
+</dd>
+</dl>
+
+
+</div>
+</div>
+
+
+<div class="footer-quirks">
+
+<p>最終更新日：2008.6.</p>
+<div style="text-align:center">
+<a href="#top">TOP</a> | 
+<a href="./css_memo.html">index</a> | 
+<a href="./css_memo_mame.html">豆</a>
+</div>
+
+</div>
+
+<hr>
+
+<address>Written by yassy</address>
+
+</body>
+</html>

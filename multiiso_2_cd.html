@@ -1,0 +1,450 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="START" href="./">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>isoイメージをマルチブートするの巻【その2】マルチブートDVD(CD) 作成編＠Palm84</title>
+<style type="text/css">
+<!--
+/*
+a:link,a:visited,
+a:hover,a:active {
+ font-weight: normal;
+}
+*/
+
+h2 a:link,h2 a:visited,
+h2 a:hover,h2 a:active {
+ font-weight: bold;
+}
+
+dl.small dd pre {
+font-size: 100%;
+}
+
+div.ylt table {
+text-align: left;
+margin: 3% 5% 3% 9%;
+width: 81%;
+}
+
+div.ylt td {
+padding: 0.5em;
+}
+
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="./basic_ie5.css">
+<![endif]-->
+</head>
+
+
+<body>
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+<h1><span class="tokai1"><a href="./multiiso_2_cd.html">isoイメージをマルチブートするの巻【その2】マルチブートDVD(CD) 作成編</a></span></h1>
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+<ul>
+<li><a href="#about" accesskey="3">これって何？</a> <kbd class="ak small">3</kbd></li>
+<li><a href="#download" accesskey="4">ダウンロード</a> <kbd class="ak small">4</kbd></li>
+<li><a href="#files_copy" accesskey="5">ファイルの配置</a> <kbd class="ak small">5</kbd></li>
+<li><a href="#make_iso" accesskey="6">iso作成</a> <kbd class="ak small">6</kbd></li>
+<li><a href="#etc" accesskey="7">いろいろ</a> <kbd class="ak small">7</kbd></li>
+</ul>
+
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+
+
+
+<p class="small">リンク is フリーダム<span class="ms">♪</span></p>
+</div>
+</div>
+
+
+
+<div class="main">
+
+<p><script src="http://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+
+　<a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/multiiso_2_cd.html"><img src="http://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/multiiso_2_cd.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<div class="palmst white">
+<ul>
+<li><a href="multiiso.html">【その1】準備編</a></li>
+<li>【その2】マルチブートDVD(CD) 作成編 <span class="ms">←</span> <strong class="red">今ココ</strong></li>
+<li><a href="./multiiso_3_usb.html">【その3】マルチブートUSBメモリ作成編</a></li>
+<li><a href="./multiiso_4_hd.html">【その4】HDブート設定編</a></li>
+<li><a href="./multiiso_5_pxe_networkboot.html">【その5】PXEネットワークブートでござる</a></li>
+</ul>
+</div>
+
+
+<dl class="changelog">
+<dt>更新履歴 - 最終更新日 2013.3.6</dt>
+<dd>
+<p>2013.03.06 Bitdefender,PandaSafeCD 追加、SystemRescueCd, Parted Magic, Clonezilla Live, Slax, Ubuntu, Puppy 更新
+<br>2011.10.27 Knoppix 6.7.1 追加、Partition Wizard Bootable CD ファイル名変更
+<br>2011.07.14 EASEUS Todo Backup 追加,  3点バージョンアップ
+<br>2011.05.29 Partition Wizard Bootable CD のファイル名 pwhe6.iso に変更
+<br>2011.03.21 Norton ブータブルリカバリツール 2011版を追加
+<br>2011.03.01 4点新バージョンに入替
+<br>2010.09.15 SLAX もisoブート可能でした。なので改訂。
+<br>2010.08.25 作成</p>
+</dd>
+</dl>
+
+
+<dl class="changelog2">
+<dt>変更内容</dt>
+<dd>
+<dl>
+<dt>2013.03.06 更新 - 変更内容</dt>
+<dd>
+<ul>
+<li>Bitdefender Rescue CD 追加 (<code>bitdefender-rescue-cd.iso</code>)</li>
+<li>PandaSafeCD 追加 (<code>PandaSafeCD.iso</code>)</li>
+<li>SystemRescueCd - 2.2.0 <span class="ms">→</span> 3.4.1 (<code>systemrescuecd-x86-3.4.1.iso</code> )</li>
+<li>Slax - 6.1.2-2 <span class="ms">→</span> Porteus v1.1 (<code>porteus-ja-v1.1-i486-2.iso</code>)</li>
+<li>Puppy - 4.3.1 <span class="ms">→</span> lupu-528 (<code>lupu-528JP-mini.iso</code>)</li>
+<li>Parted Magic - 6.3 <span class="ms">→</span> 2013_01_29
+	<ul>
+	<li><code>pmagic_2013_01_29.iso</code></li>
+	<li><code>pmagic_2013_01_29_i586.iso</code></li>
+	</ul>
+</li>
+<li>Clonezilla Live - 1.2.8-46 <span class="ms">→</span> 2.1.0-26
+	<ul>
+	<li><code>clonezilla-live-2.1.0-26-amd64.iso</code></li>
+	<li><code> clonezilla-live-2.1.0-26-i486</code></li>
+	</ul>
+</li>
+<li>Ubuntu - 10.10 <span class="ms">→</span> 11.10, 12.10
+	<ul>
+	<li><code>ubuntu-ja-11.10-desktop-i386.iso</code></li>
+	<li><code>ubuntu-ja-12.10-desktop-i386.iso</code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>2011.10.27 更新 - 変更内容</dt>
+<dd>
+<ul>
+<li>Knoppix 6.7.1 追加 (<code>KNOPPIX_V6.7.1CD-2011-09-14-JP.iso</code>)</li>
+<li>Partition Wizard Bootable CD - pwhe6.iso <span class="ms">→</span> pwhe7.iso</li>
+</ul>
+</dd>
+
+<dt>2011.7.14 更新 - 変更内容</dt>
+<dd>
+<ul>
+<li>SystemRescueCd - 2.0.1 <span class="ms">→</span> 2.2.0 (<code>systemrescuecd-x86-2.2.0.iso</code>)</li>
+<li>Parted Magic 5.10 <span class="ms">→</span> 6.3 (<code>pmagic-6.3.iso</code>)</li>
+<li>Clonezilla Live - 1.2.6-59-i686 <span class="ms">→</span> 1.2.8-46-i686 (<code>clonezilla-live-1.2.8-46-i686.iso</code>)</li>
+<li>EASEUS Todo Backup 追加 - Emergencydisk.iso, Todo_Backup_WINPE.iso</li>
+<li>Super Grub Disk ファイル名変更 - <code>super_grub_disk_hybrid.iso</code>, <code>super_grub_disk.img</code></li>
+<li>EASEUS Disk Copy ファイル名変更 - <code>Disk_Copy_Image.iso</code></li>
+</ul>
+</dd>
+
+
+<dt>2011.5.29 更新 - 変更内容</dt>
+<dd>
+<ul>
+<li>Partition Wizard Bootable CD - pwhe52.iso <span class="ms">→</span> pwhe6.iso</li>
+</ul>
+</dd>
+
+<dt>2011.3.1 更新 - 変更内容</dt>
+<dd>
+<ul>
+<li>Clonezilla Live - 1.2.5-35-i686 <span class="ms">→</span> 1.2.6-59-i686</li>
+<li>SystemRescueCd - 1.5.8 <span class="ms">→</span> 2.0.1</li>
+<li>Ubuntu Desktop CD - 10.04 <span class="ms">→</span> 10.10</li>
+<li>Parted Magic - 5.3 <span class="ms">→</span> 5.10</li>
+</ul>
+</dd>
+
+</dl>
+</dd>
+</dl>
+<h2><a href="#about" name="about">これってなに？</a> <kbd class="ak">3</kbd></h2>
+
+<p><a href="multiiso.html">【その1】準備編</a>の続きであります。まずはマルチブートDVDを作ってみたなり。準備編を読んで頂いてたらなんちゃ難しいことはないがやきと思うちょります。</p>
+<p>（説明が下手すぎ！との噂がかなり流れてたりもするかもしれない）</p>
+
+<p>尚、ココで設定しているモノは下記の通り。全部だと 9 GB 程になります（4.7GB DVD には入り切らない）。必要なものを選択してクダサレ。</p>
+<p>isoのダウンロード先や、ファイル名、一部のisoの編集方法など <a href="multiiso.html">【その1】準備編</a> をお読み願いたいデス。</p>
+
+<dl class="palmst small pink">
+<dt>ウイルススキャン系はいまいちかも</dt>
+<dd>
+<ul>
+<li>2013.3.4 現在、eScan の現バージョンはアップデートができない様です</li>
+<li>2013.3.4 現在、Kaspersky Rescue Disk 10は、DVDブートだと kernel panic が出ます</li>
+</ul>
+
+<p>XBOOT の方が確実かもしれません。</p>
+<ul>
+<li>拙作めも :
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20120310/1331307365">XBOOT でウイルススキャンてんこもり LiveDVD (LiveUSB) を作ってみたYO！</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<ul>
+<li>Windows PE / RE</li>
+<li>Linux LiveCD
+	<ul>
+	<li><a href="http://www.cdlinux.info/wiki/doku.php/">CDlinux 0.9.3 Standard</a></li>
+	<li><a href="http://simosnet.com/livecdroom/index.html#knoppix">Knoppix 6.7.1CD日本語版（ライブＣＤの部屋版）</a> </li>
+	<li><a href="http://sourceforge.jp/projects/slax/">Porteus v1.1 日本語版</a></li>
+	<li><a href="http://www.sysresccd.org/">SystemRescueCd 3.4.1</a></li>
+	<li><a href="http://www.ubuntulinux.jp/">Ubuntu Desktop CD 11.10</a></li>
+	<li><a href="http://www.ubuntulinux.jp/">Ubuntu Desktop CD 12.10</a></li>
+	</ul>
+</li>
+<li>バックアップ・リカバリー
+	<ul>
+	<li><a href="http://support.wdc.com/product/downloaddetail.asp?swid=119&#038;wdc_lang=en">True Image WD Edition</a></li>
+	<li><a href="http://www.seagate.com/www/ja-jp/support/downloads/discwizard/">Seagate DiscWizard</a></li>
+	<li><a href="http://todo-backup.com/products/home/">EASEUS Todo Backup</a></li>
+	<li><a href="http://www.paragon-software.com/home/db-express/">Paragon Backup &#038; Recovery</a></li>
+	<li><a href="http://www.clonezilla.org/">Clonezilla Live 2.1.0-26-amd64</a></li>
+	<li><a href="http://www.clonezilla.org/">Clonezilla Live 2.1.0-26-i486</a></li>
+	</ul>
+</li>
+<li>ウイルススキャン LiveCD
+	<ul>
+	<li><a href="http://www.avg.com/us-en/avg-rescue-cd">AVG Rescue CD</a></li>
+	<li><a href="http://www.bitdefender.com/support/How-to-create-a-Bitdefender-Rescue-CD-627.html">Bitdefender Rescue CD</a></li>
+	<li><a href="http://support.kaspersky.com/viruses/rescuedisk?level=2"><del>Kaspersky Rescue Disk 10</del></a> （kernel panic 出ます！orz）</li>
+	</ul>
+</li>
+<li>パーティショニング・ツール LiveCD
+	<ul>
+	<li><a href="http://www.partitionwizard.com/partition-wizard-bootable-cd.html">Partition Wizard Bootable CD</a></li>
+	<li><a href="http://partedmagic.com/">Parted Magic 2013_01_29</a></li>
+	<li><a href="http://partedmagic.com/">Parted Magic 2013_01_29_i586</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="./multiiso.html#mini_iso">“ミニ” iso 方式 (Linux LiveCD)</a>
+	<ul>
+	<li>KNOPPIX 5.3.1CD (Remaster版)</li>
+	<li>Puppy Linux Lupu-528JP 日本語版</li>
+	<li>Panda SafeDisk</li>
+	</ul>
+</li>
+</ul>
+
+<h2><a href="#download" name="download">ダウンロード</a> <kbd class="ak">4</kbd></h2>
+
+<p class="pink">isoのダウンロードと編集については<a href="./multiiso.html">【その１】基本編</a>をご参照くだしあ。</p>
+
+<ul>
+<li><del>CDRtoolsバイナリ (<code>cdrtools-binary.zip</code>)</del>
+	<ul>
+	<li><del><a href="http://mouneru.web.fc2.com/cdrecord_fe/cdr_fe.htm">CDRtoolsの フロントエンド</a></del></li>
+	<li><del>必要ファイル : <code>cygwin1.dll</code> と <code>mkisofs.exe</code></del></li>
+	</ul>
+</li>
+</ul>
+<p>CDRtoolsバイナリ は入手不可となってるので（archive.org にはあるけど）下記に変更。</p>
+
+<ul>
+<li><a href="http://cdrtoolswin.sourceforge.net/">SourceForge.net: CDRTOOLS 4 Windows Installer</a>
+	<ul>
+	<li><a href="http://sourceforge.net/projects/cdrtoolswin/files/">CDRTOOLS 4 Windows Installer - Browse Files at SourceForge.net</a></li>
+	<li><strong class="ms">CDR-Tools.exe</strong> を実行してインストール</li>
+	</ul>
+</li>
+</ul>
+
+
+<ul>
+<li>GRUB for DOS (<code>grub4dos-0.4.4.zip</code>) をダウンロード
+	<ul>
+	<li><a href="http://sourceforge.net/projects/grub4dos/files/">Browse GRUB4DOS and WINGRUB Files on SourceForge.net</a></li>
+	<li>必要ファイル : <code>grldr</code></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>【私的】iso作成バッチ : <a href="./archives/multiiso/makeiso/make_iso.bat">make_iso.bat</a></li>
+<li>DVD(CD)用 : menu.lst <a href="./archives/multiiso/config/menu_cd_usb.lst">menu_cd_usb.lst</a>
+	<ul>
+	<li><code>menu.lst</code> にリネーム</li>
+	</ul>
+</li>
+<li>Knoppix 6.7.1 ブートメニュー用設定ファイル
+	<ul>
+	<li><a href="./archives/multiiso/config/kx671lcr.lst">kx671lcr.lst</a></li>
+	</ul>
+</li>
+<li>Ubuntu 11.10, 12.10 ブートメニュー用設定ファイル
+	<ul>
+	<li><a href="./archives/multiiso/config/ubuntu1110jp.lst">ubuntu1110jp.lst</a></li>
+	<li><a href="./archives/multiiso/config/ubuntu1210jp.lst">ubuntu1210jp.lst</a></li>
+	</ul>
+</li>
+</ul>
+
+<h2><a href="#files_copy" name="files_copy">ファイルの配置</a> <kbd class="ak">5</kbd></h2>
+
+<dl class="palmst small">
+<dt>DVD作成時の注意点</dt>
+<dd>
+<p> <strong class="ms">全部足すと 7GB 程になるので 4.7GB DVD（実質 4.37GB程）は入りません。調整してクダサイ</strong> 。</p>
+</dd>
+</dl>
+
+<p>iso以外の追加ファイルを下記の通りに</p>
+
+<ul>
+<li>ファイルの配置</li>
+</ul>
+<pre>
+仮想CDルート
+|
+|   AcronisMedia.iso
+|   avg.iso
+|   bitdefender-rescue-cd.iso
+|   bootcd.iso
+|   clonezilla-live-2.1.0-26-amd64.iso
+|   clonezilla-live-2.1.0-26-i486.iso
+|   Emergencydisk.iso
+|   <strong class="ms red">grldr</strong>
+|   KNOPPIX_V6.7.1CD-2011-09-14-JP.iso
+|   <strong class="ms red">kx671lcr.lst</strong>
+|   <del>liveusb</del>        <span class="red">--- Kaspersky 用空ファイル</span>
+|   <strong class="ms red">menu.lst</strong>
+|   pmagic_2013_01_29.iso
+|   pmagic_2013_01_29_i586.iso
+|   porteus-ja-v1.1-i486-2.iso
+|   pwhe7.iso
+|   SeagateMedia.iso
+|   systemrescuecd-x86-3.4.1.iso
+|   Todo_Backup_WINPE.iso
+|   <strong class="ms red">ubuntu1110jp.lst</strong>
+|   <strong class="ms red">ubuntu1210jp.lst</strong>
+|   ubuntu-ja-11.10-desktop-i386.iso
+|   ubuntu-ja-12.10-desktop-i386.iso
+|   WinPEx86.iso
+|   WinREamd64.iso
+|   WinREx86.iso
+|   WinREx86_vista.iso
+|
++---CDlinux
+|       CDlinux-0.9.3.iso
+|
++---KNOPPIX
+|   |   ＜省略＞
+|   |   knoppix_v5.3.1CD_20080326-20080520-mini.iso
+|   |   ＜省略＞
+|
++---<strong>makeiso</strong> ディレクトリ
+|       <strong class="ms red">make_iso.bat</strong>
+|
++---live ディレクトリ
+|       filesystem.squashfs
+|
++---panda ディレクトリ
+|       PandaSafeCD-mini.iso
+|
++---puppy
+|       goffice-lupu-528JP.sfs
+|       lupu_528.sfs
+|       lupu-528JP-mini.iso
+|       seamonkey-2.11-ja-1.sfs
+|
++---rescue
+|       <del>rescue.iso</del>
+|
+</pre>
+
+
+<h2><a href="#make_iso" name="make_iso">iso作成</a> <kbd class="ak">6</kbd></h2>
+
+<ol>
+<li>仮想CDの <code>makeiso</code> ディレクトリに置いた <code>make_iso.bat</code> を実行</li>
+<li>一つ上のディレクトリ、例えば CDルートが <code>D:\MultiISO</code> なら <code>D:\</code> に <code>MultiISO.iso</code> が作成されます</li>
+</ol>
+
+<p>とりあえず、mkisofs のオプションはこんなかんじにしてます。</p>
+<pre class="scl">
+mkisofs -R -J -b grldr -V MULTI_ISO -no-emul-boot -boot-load-size 4 -o &#034;%iso%&#034; .
+</pre>
+
+<p>RockRidge (Linuxなど)、Joliet (Windows) が使える環境では問題ないと思います,,,が、ちょっと警告出るのでいまいちなのかもしれませぬ。。。（汗）</p>
+
+<p>以上でisoイメージの完成なり。仮想マシンなどで起動確認できたならDVD-Rなどに焼きませう。</p>
+
+<p>オツカリサマー。</p>
+
+<h2><a href="#etc" name="etc">いろいろ</a> <kbd class="ak">7</kbd></h2>
+
+<p>単品CDに比べるとどれも若干重いように感じます。と言っても、オンメモリ起動の場合は起動してしまえば CD(DVD) 不要なので軽快操作となりますけど。</p>
+
+<p>必要スペックについては、後で詳しく確認したいと思っています。</p>
+
+<p>う～ん、すべて快適に使うには RAM 1GB 程欲しいかな。</p>
+
+<p>安定起動させたいものについては「ファイルを展開して（以下略）」方式の方が安全かと。（ま、一概に言えませんが...）</p>
+
+<p>あと、iso作成時のmkisofsのオプションについても最適値をもっと探る必要があるかなぁ。</p>
+
+
+
+</div>
+</div>
+
+
+<div class="navi">
+<a href="./index.html">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+<address>Written by yassy</address>
+
+</body>
+
+</html>
+

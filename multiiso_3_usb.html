@@ -1,0 +1,549 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="START" href="./">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>isoイメージをマルチブートするの巻【その3】マルチブートUSBメモリ作成編＠Palm84</title>
+<style type="text/css">
+<!--
+/*
+a:link,a:visited,
+a:hover,a:active {
+ font-weight: normal;
+}
+*/
+
+h2 a:link,h2 a:visited,
+h2 a:hover,h2 a:active {
+ font-weight: bold;
+}
+
+dl.small dd pre {
+font-size: 100%;
+}
+
+div.ylt table {
+text-align: left;
+margin: 3% 5% 3% 9%;
+width: 81%;
+}
+
+div.ylt td {
+padding: 0.5em;
+}
+
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="./basic_ie5.css">
+<![endif]-->
+</head>
+
+
+<body>
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+
+<script type="text/javascript">
+<!--
+setTimeout("link()", 0);
+function link(){
+location.href='https://www.palm84.com/entry/multiiso_3_usb';
+}
+-->
+</script>
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>移行作業中です...</ins></dt>
+<dd>
+<p>はてなブログの該当ページへ<strong>リダイレクトします</strong>。お手数をおかけします。ご容赦ください。</p>
+</dd>
+</dl>
+
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" accesskey="z" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd>
+ | <span class="font_change">* font-change * <a href="javascript:void(document.body.style.fontFamily='inherit')" title="inherit">inherit</a> <a href="javascript:void(document.body.style.fontFamily='sans-serif')" title="Sans-serif">Ss</a> <a href="javascript:void(document.body.style.fontFamily='serif')" title="Serif">Sf</a> <a href="javascript:void(document.body.style.fontFamily='\'メイリオ\'')" title="メイリオ">メ</a> <a href="javascript:void(document.body.style.fontFamily='\'游ゴシック\',\'Yu Gothic\',YuGothic')" title="游ゴシック">游</a> <a href="javascript:void(document.body.style.fontFamily='\'ＭＳ Ｐゴシック\'')" title="ＭＳ Ｐゴシック">MS</a> <a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Regular\',\'源ノ角ゴシック JP Regular\',\'Noto Sans Japanese Regular\',\'Noto Sans CJK JP Regular\',\'源ノ角ゴシック\',\'源ノ角ゴシック JP\',\'Noto Sans Japanese\',\'Noto Sans CJK JP\'')" title="源ノ角ゴシック / Sonrce Han Sans">源</a> <a href="javascript:void(document.body.style.fontSize='12px')" title="12px">12</a>
+ <a href="javascript:void(document.body.style.fontSize='14px')" title="14px">14</a>
+ <a href="javascript:void(document.body.style.fontSize='16px')" title="16px">16</a> <a href="javascript:void(document.body.removeAttribute('style'));" title="body style 削除">戻す</a> *</span>
+</div>
+
+
+<h1><span class="tokai1"><a href="./multiiso_3_usb.html">isoイメージをマルチブートするの巻【その3】マルチブートUSBメモリ作成編</a></span></h1>
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+<ul>
+<li><a href="#about" accesskey="3">これって何？</a> <kbd class="ak small">3</kbd></li>
+<li><a href="#download" accesskey="4">ダウンロード</a> <kbd class="ak small">4</kbd></li>
+<li><a href="#defrag" accesskey="5">isoファイルの断片化</a> <kbd class="ak small">5</kbd></li>
+<li><a href="#files_copy" accesskey="6">ファイルの配置</a> <kbd class="ak small">6</kbd></li>
+<li><a href="#syslinux" accesskey="7">SYSLINUX のインストール</a> <kbd class="ak small">7</kbd></li>
+<li><a href="#etc" accesskey="8">いろいろ</a> <kbd class="ak small">8</kbd></li>
+</ul>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+
+
+
+<p class="small">リンク is フリーダム<span class="ms">♪</span></p>
+
+<div class="hateb">
+<script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://www10.plala.or.jp/palm84/";
+Hatena.BookmarkWidget.title = "はてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+
+<script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://d.hatena.ne.jp/palm84/";
+Hatena.BookmarkWidget.title = "某所のはてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+</div>
+
+</div>
+</div>
+
+
+
+<div class="main">
+
+<div class="palmst white">
+<ul>
+<li><a href="./multiiso.html">【その1】準備編</a></li>
+<li>【その2】マルチブートDVD(CD) 作成編 （<strong class="small">※ 改訂中、まだできてません。orz</strong>）</li>
+<li>【その3】マルチブートUSBメモリ作成編 <span class="ms">←</span> <strong class="red">今ココ</strong></li>
+<li>【その4】HDブート設定編 （<strong class="small">※ まだです。orz</strong>）</li>
+<li><a href="./multiiso_5_pxe_networkboot.html">【その5】PXEネットワークブートでござる</a></li>
+</ul>
+</div>
+
+<p><script src="http://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+
+<a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/multiiso_3_usb.html"><img src="http://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/multiiso_3_usb.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a>
+
+</p>
+
+<p>【注意】EFI(UEFI)ブートには対応しておりません。最近の64bit版LiveCDはEFIブート対応なので、ここのやり方は時代遅れになりつつあるのかもしれません…。orz</p>
+
+<dl class="changelog">
+<dt>更新履歴 - 最終更新日 2014.7.05</dt>
+<dd>
+<ul>
+<li>旧ページ : <a href="./old/multiiso_3_usb_20130306.html">20130306 版</a></li>
+</ul>
+<p>2014.07.05</p>
+<ul>
+<li>linuxBean の grub4dos ブート設定ファイルを追加</li>
+</ul>
+
+<p>2014.07.04</p>
+<ul>
+<li>追加 : Lubuntu(i386), Redo Backup, Avira Rescue System, Comodo Rescue Disk, linuxBean, KonaLinux</li>
+<li>更新 : Ubuntu, Puppy Linux, SystemRescueCd, Partition Wizard Home Edition, Clonezilla Live</li>
+<li>削除 : KNOPPIX 5.3.1, CDlinux, Porteus, EASEUS Todo Backup, Parted Magic, Norton ブータブルリカバリツール</li>
+</ul>
+</dd>
+</dl>
+
+<dl class="changelog2">
+<dt>変更内容</dt>
+<dd>
+<dl>
+<dt>2014.07.04</dt>
+<dd>
+<ul>
+<li>Knoppix 6.7.1 <span class="ms">→</span> 7.2.0</li>
+<li>SystemRescueCd - 3.4.1 <span class="ms">→</span> 4.2.0 (<code>systemrescuecd-x86-4.2.0.iso</code> )</li>
+<li>Puppy - lupu-528 <span class="ms">→</span> precise-571JP (<code>precise-571JP-mini.iso</code>)</li>
+<li>Clonezilla Live - 2.1.0-26 <span class="ms">→</span> 2.2.3-10
+	<ul>
+	<li><code>clonezilla-live-2.2.3-10-amd64.iso</code></li>
+	<li><code>clonezilla-live-2.2.3-10-i486.iso</code></li>
+	</ul>
+</li>
+<li>Ubuntu - 11.10, 12.10 <span class="ms">→</span> 14.04 (amd64)
+	<ul>
+	<li><code>ubuntu-ja-14.04-desktop-amd64.iso</code></li>
+	</ul>
+</li>
+<li>Partition Wizard Home Edition <span class="ms">→</span> ファイル名変更 : <code>pwhe.iso</code></li>
+</ul>
+</dd>
+</dl>
+
+</dd>
+</dl>
+<h2><a href="#about" name="about">これってなに？</a> <kbd class="ak">3</kbd></h2>
+
+<p><a href="multiiso.html">【その1】準備編</a>の続きであります。USBメモリに入れるであります。</p>
+
+<p class="white">※ True Image, Paragon については最近のバージョンを確認しておりませぬ。違いあるかも、ご容赦。</p>
+<p>尚、ココで設定しているモノは下記の通り。必要なものを選択してクダサレ。すべてで 9 GiB 程ナリ。必要なものを選択してクダサレ。</p>
+<p>isoのダウンロード先や、ファイル名、一部のisoの編集方法など <a href="multiiso.html">【その1】準備編</a> をお読み願いたいデス。</p>
+<p class="white">※ <strong class="ms red">*</strong> 印はリメイク作業（設定ファイル置換）が必要です。</p>
+
+<ul>
+<li>Windows PE / RE</li>
+<li>Linux LiveCD
+	<ul>
+	<li><a href="http://simosnet.com/livecdroom/index.html#knoppix">Knoppix 7.2.0CD日本語版（ライブＣＤの部屋版）</a> (699MB)</li>
+	<li><a href="http://www.ubuntulinux.jp/">Ubuntu ja Desktop DVD 14.04 (amd64)</a> (1.07GB)</li>
+	<li><a href="http://lubuntu.net/">Lubuntu Desktop DVD 14.04 (i386)</a> (683MB)</li>
+	<li><strong class="ms red">*</strong> <a href="http://www.sysresccd.org/">SystemRescueCd 4.2.0</a> (380MB)</li>
+	</ul>
+</li>
+<li>バックアップ・リカバリー
+	<ul>
+	<li><a href="http://support.wdc.com/product/downloaddetail.asp?swid=119&#038;wdc_lang=en">True Image WD Edition</a> (?)</li>
+	<li><a href="http://www.seagate.com/www/ja-jp/support/downloads/discwizard/">Seagate DiscWizard</a> (?)</li>
+	<li><a href="http://www.paragon-software.com/home/db-express/">Paragon Backup &#038; Recovery</a> (?)</li>
+	<li><strong class="ms red">*</strong> <a href="http://www.clonezilla.org/">Clonezilla Live 2.2.3-10-amd64</a> (145MB)</li>
+	<li><strong class="ms red">*</strong> <a href="http://www.clonezilla.org/">Clonezilla Live 2.2.3-10-i486</a> (139MB)</li>
+	<li><strong class="ms red">*</strong> <a href="http://redobackup.org/">Redo Backup</a> (249MB)</li>
+	</ul>
+</li>
+<li>ウイルススキャン LiveCD
+	<ul>
+	<li><a href="http://www.avg.com/us-en/avg-rescue-cd">AVG Rescue CD</a> (121MB)</li>
+	<li><a href="http://www.avira.com/ja/download?product=avira-rescue-system">Avira Rescue System</a> (607MB)</li>
+	<li><a href="http://www.bitdefender.com/support/How-to-create-a-Bitdefender-Rescue-CD-627.html">Bitdefender Rescue CD</a> (513MB)</li>
+	<li><a href="http://www.comodo.com/business-security/network-protection/rescue-disk.php">Comodo Rescue Disk</a> (50MB)</li>
+	<li><a href="http://support.kaspersky.com/viruses/rescuedisk?level=2">Kaspersky Rescue Disk 10</a> (386MB) （※ かなり重いのでいまいちかも？）</li>
+	</ul>
+</li>
+<li>パーティショニング・ツール LiveCD
+	<ul>
+	<li><a href="http://www.partitionwizard.com/partition-wizard-bootable-cd.html">Partition Wizard Bootable CD</a> (48MB)</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="./multiiso.html#mini_iso">“ミニ” iso 方式 (Linux LiveCD)</a>
+	<ul>
+	<li><strong class="ms red">*</strong> <a href="http://openlab.jp/puppylinux/">Puppy Linux precise-571JP 日本語版</a> (134MB)</li>
+	</ul>
+</li>
+<li><a href="./multiiso.html#iso_sub_directory">サブディレクトリ展開方式 (Linux LiveCD)</a>
+	<ul>
+	<li><a href="http://sourceforge.jp/projects/linuxbean/">linuxBean</a> (Linux LiveCD) (648 + 626MB)
+	<li><a href="https://docs.google.com/folderview?pli=1&#038;id=0B63KzJgfI7FnRVMwXy1sQXlDdUk#list">KonaLinux</a> (Linux LiveCD) (1.26GB)</li>
+	<li><a href="http://www.pandasecurity.com/usa/homeusers/support/card?id=80152">Panda SafeDisk</a> （ウイルススキャン LiveCD） (161MB)</li>
+	</ul>
+</li>
+</ul>
+
+
+<dl class="palmst white">
+<dt>USB HDブートでは？</dt>
+<dd class="small">
+<p>パーティションがFAT32なら SYSLINUX のインストールが可能です。NTFSなどの場合は <strong class="ms">grubinst.exe</strong> でMBRへ直接 GRUB for DOSをインストールできます。詳しくは下記をご笑覧あれ。</p>
+<ul>
+<li><a href="./old/multiiso_4_hd_20130306.html#usb_hd">（※ 古いページ）USB HD へ直接インストール - 【その4】HDブート設定編</a></li>
+</ul>
+<p>【注意】SYSLINUX 4.06 でNTFSへのインストールも可能になりました。でもあまり確認してないのです。すみません。。。</p>
+</dd>
+</dl>
+
+<h2><a href="#download" name="download">ダウンロード</a> <kbd class="ak">4</kbd></h2>
+
+<p class="white">isoのダウンロードと編集については<a href="./multiiso.html">【その１】基本編</a>をご参照くだしあ。</p>
+
+<ul>
+<li>SYSLINUX（※ zip版をダウンロード）
+	<ul>
+	<li><a href="http://www.ring.gr.jp/pub/linux/kernel.org/utils/boot/syslinux/">Index of /pub/linux/kernel.org/utils/boot/syslinux</a>
+		<ul>
+		<li><a href="http://www.ring.gr.jp/pub/linux/kernel.org/utils/boot/syslinux/5.xx/">バージョン 5.xx</a></li>
+		</ul>
+	</li>
+	<li>必要ファイル : <code>win32\syslinux.exe</code>（バージョン6は <code>bios\win32\syslinux.exe</code>）</li>
+	<li>必要ファイル : <code>memdisk\memdisk</code>（バージョン6は <code>bios\memdisk\memdisk</code>）</li>
+	</ul>
+</li>
+</ul>
+
+<p class="white">SYSLINUX 5.01 で確認しています。バージョン 6 以降では確認してません。アシカラズ...</p>
+
+<ul>
+<li>GRUB for DOS (<code>grub4dos-0.4.4.zip</code>) をダウンロード
+	<ul>
+	<li><a href="http://sourceforge.net/projects/grub4dos/files/">Browse GRUB4DOS and WINGRUB Files on SourceForge.net</a></li>
+	<li>必要ファイル : <code>grub.exe</code></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>SYSLINUX 設定ファイル : <a href="./archives/multiiso/syslinux/syslinux.cfg">syslinux.cfg</a></li>
+<li>【私的】SYSLINUX インストール用ファイル : <a href="./archives/multiiso/syslinux/SYSLINUX_Install_CurrentDrive.bat">SYSLINUX_Install_CurrentDrive.bat</a></li>
+<li>USBメモリ用 : menu.lst <a href="./archives/multiiso/config/menu_cd_usb.lst">menu_cd_usb.lst</a>
+	<ul>
+	<li><code>menu.lst</code> にリネーム</li>
+	</ul>
+</li>
+<li>Knoppix 7.2.0 ブートメニュー用設定ファイル
+	<ul>
+	<li><a href="./archives/multiiso/config/kx720lcr.lst">kx720lcr.lst</a></li>
+	</ul>
+</li>
+<li>linuxBean ブートメニュー用設定ファイル
+	<ul>
+	<li><a href="./archives/multiiso/config/bean1204.lst">bean1204.lst</a></li>
+	<li><a href="./archives/multiiso/config/bean1404.lst">bean1404.lst</a></li>
+	</ul>
+</li>
+</ul>
+
+
+<h2><a href="#defrag" name="defrag">isoファイルの断片化</a> <kbd class="ak">5</kbd></h2>
+
+<p>USBメモリ内のisoファイルが断片化していると、GRUB for DOS で Direct Mapping に失敗します。 Direct Mapping に失敗しても Indirect Mapping （メモリへすべて読み込み）ならほぼOKなのですが、その分のメモリが余分に必要となってしまうため、ファイルの断片化は解消しておいた方がいいと考えます。</p>
+
+<p class="white">※ isoディレクトリ下のファイルは断片化していても問題ありません。</p>
+
+<ul>
+<li>HD上の作業用ディレクトリにすべてのファイルを作成後にUSBメモリへ一括コピーしませう！</li>
+</ul>
+
+<p>一括コピーすれば断片化は0となる筈です。空き領域が少ないとデフラグできなかったりするのでこの方法がオススメ。</p>
+
+<p>断片化チェック、及びデフラグは下記ソフトが便利です。</p>
+
+<p>個別ファイルを指定してチェック</p>
+<ul>
+<li><a href="http://wincontig.mdtzone.it/en/">WinContig</a>
+	<ul class="small">
+	<li><a href="http://www.forest.impress.co.jp/docs/review/20100531_371172.html">窓の杜 - 【REVIEW】特定のファイル・フォルダだけを定期的にデフラグできる「WinContig」</a></li>
+	</ul>
+</li>
+</ul>
+
+<p>ドライブ丸ごと、断片化ファイルのリストアップが可能</p>
+
+<ul>
+<li><a href="http://www.piriform.com/defraggler">Defraggler - File and Disk Defragmentation - Free Download</a>
+	<ul>
+	<li><a href="http://www.forest.impress.co.jp/article/2008/08/21/defraggler.html">窓の杜 - 【NEWS】断片化ファイルだけを最適化できるデフラグソフト「Defraggler」正式版が公開</a></li>
+	</ul>
+</li>
+</ul>
+
+
+
+<h2><a href="#files_copy" name="files_copy">ファイルの配置</a> <kbd class="ak">6</kbd></h2>
+
+<p>USBメモリのフォーマットは FAT32 が無難かな。（※ 最近は NTFS でもイケる場合もあるけど）</p>
+
+<ul>
+<li>ファイル構成</li>
+</ul>
+<pre>
+USBメモリルート
+|
+|   AcronisMedia.iso
+|   avg.iso
+|   <strong class="red">bean1204.lst</strong>
+|   <strong class="red">bean1404.lst</strong>
+|   bitdefender-rescue-cd.iso
+|   bootcd.iso
+|   clonezilla-live-2.2.3-10-amd64.iso
+|   clonezilla-live-2.2.3-10-i486.iso
+|   comodo_rescue_disk.iso
+|   KNOPPIX_V7.2.0CD-2013-06-16-JA-LCR.iso
+|   <strong class="ms red">kx720lcr.lst</strong>
+|   liveusb        <span class="red">--- Kaspersky 用空ファイル</span>
+|   lubuntu-14.04-desktop-i386.iso
+|   <strong class="ms red">menu.lst</strong>
+|   pwhe.iso
+|   redobackup-livecd-1.0.4.iso
+|   rescue-system.iso
+|   SeagateMedia.iso
+|   systemrescuecd-x86-4.2.0.iso
+|   ubuntu-ja-14.04-desktop-amd64.iso
+|   WinPEx86.iso
+|   WinREamd64.iso
+|   WinREx86.iso
+|   WinREx86_vista.iso
+|
++---iso
+|   |   
+|   +---bean1204
+|   |   |   ＜ <strong class="red">ここへisoを展開</strong> ＞
+|   |   |   
+|   +---bean1404
+|   |   |   ＜ <strong class="red">ここへisoを展開</strong> ＞
+|   |   |   
+|   |           
+|   +---konalinux-2.3_i386
+|   |   |   ＜ <strong class="red">ここへisoを展開</strong> ＞
+|   |   |   
+|   |           
+|   +---PandaSafeCD
+|   |   |   ＜ <strong class="red">ここへisoを展開</strong> ＞
+|   |   |   
+|   |           
+|
++---puppy ディレクトリ
+|       goffice-precise_571.sfs
+|       precise-571JP-mini.iso
+|       puppy_precise_5.7.1JP.sfs
+|
++---rescue
+|       rescue.iso
+|
+<span class="backslash">\</span>------<strong>syslinux</strong> ディレクトリ
+       <strong class="ms red">grub.exe</strong>
+       <strong class="ms red">memdisk</strong>
+       <strong class="ms red">syslinux.cfg</strong>
+       <strong class="ms red">syslinux.exe</strong>
+       <strong class="ms red">SYSLINUX_Install_CurrentDrive.bat</strong>
+
+</pre>
+
+
+
+<h2><a href="#syslinux" name="syslinux">SYSLINUX のインストール</a> <kbd class="ak">7</kbd></h2>
+
+<p>1stブートローダーとして SYSLINUX をインストールし、grub.exe をチェインロードしてGRUB for DOSを起動します。</p>
+
+<dl>
+<dt>SYSLINUXのインストール</dt>
+<dd>
+<ol>
+<li><code>syslinux</code> ディレクトリに置いた <code>SYSLINUX_Install_CurrentDrive.bat</code> を実行
+	<ul>
+	<li>コマンド <code>syslinux.exe -ma -d syslinux %~d0</code> してるだけです</li>
+	</ul>
+</li>
+<li><code>syslinux</code> ディレクトリに（隠しファイル）<code>ldlinux.sys</code> （5.x では <code>ldlinux.c32</code> も）が作成されます</li>
+</ol>
+<p class="small pink">※ バッチはUSBメモリ（リムーバブル デバイス）専用です。USB HD では使えませぬ。すみません。。。</p>
+</dd>
+
+<dt>syslinux.cfg の内容は</dt>
+<dd>
+<p><code>grub.exe</code> をチェインロードするだけ...</p>
+<pre>
+DEFAULT grub
+LABEL grub
+LINUX /syslinux/grub.exe
+APPEND --config-file="configfile /menu.lst"
+PROMPT 0
+</pre>
+</dd>
+</dl>
+
+<ul>
+<li>拙作めも : <a href="./livecd_usb.html#syslinux">SYSLINUXのインストール - Linux LiveCDをUSBメモリでブートするめも</a></li>
+</ul>
+
+<p>以上でマルチブートUSBメモリの完成なり。VMware + PLoP Boot Manager なんかでブート確認するのもいとよろし。</p>
+<ul>
+<li>拙作めも : <a href="http://d.hatena.ne.jp/palm84/20100601/1275391983">VMware Player + PLoP Boot Manager でUSBブート</a></li>
+</ul>
+
+
+<p>オツカリサマー。</p>
+
+<h2><a href="#etc" name="etc">いろいろ</a> <kbd class="ak">8</kbd></h2>
+
+<ul>
+<li>Lubuntu 14.04 では NetworkManager アイコンが表示されない模様。メニューの「実行」に <code>nm-applet</code> 入力で表示されます。</li>
+</ul>
+
+<dl class="palmst small white">
+<dt>linuxBean - HDインストール時の注意点</dt>
+<dd>
+<p>一応インストール完了＆起動できました。だがしかし…</p>
+<ol>
+<li>Live起動時になぜか「設定ウイザード」が起動する</li>
+<li>インストーラー実行後に「インストールの準備」画面が出ない</li>
+<li>GRUB2にLiveブート時のカーネル・パラメータ（コマンドライン・オプション） = <code>ignore_uuid live-media-path=/iso/bean1404</code> が引き継がれてしまう</li>
+</ol>
+<p>インストール後の修正方法...</p>
+<ol>
+<li><code>$ sudo nano /etc/default/grub</code></li>
+<li><code>GRUB_CMDLINE_LINUX=&#034;&#034;</code> とする</li>
+<li><code>$ sudo dpkg-reconfigure grub-pc</code> を実行</li>
+</ol>
+</dd>
+</dl>
+
+
+<p>以前はUSBメモリでのisoブートはかなり遅かったように思うのですが、PLoP Boot Manager 経由の確認ではHD程ではないけどかなり速くなってます、Windows 7 の RE も約1分程で起動できました。（※ ま、PCのスペック次第かもしれませんが）</p>
+
+<dl>
+<dt>isoの読み込みがめちゃくちゃ遅いです・・・orz な場合に</dt>
+<dd>
+<p>BIOSでUSBメモリがFDモード（大容量FD扱い）となってる場合はかなーり遅くなると思われます。 PE の起動に10分かかったりしました。</p>
+<p>こんな場合は、一旦ブートした後に PLoP Boot Manager で再ブートさせると HDモード（HD扱い）に切替えることができます。お困りの際は試しておくれやす。</p>
+<p class="small pink">※ 【注意】DOSブート時はUSBメモリへ書き込みできません。</p>
+<ul>
+<li><a href="./multiiso.html#plpbt">PLoP Boot Manager -【その1】準備編</a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+
+</div>
+</div>
+
+
+<div class="navi">
+<a href="./index.html">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd>
+</div>
+
+
+<address>Written by yassy</address>
+
+</body>
+
+</html>

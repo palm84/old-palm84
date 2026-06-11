@@ -1,0 +1,4333 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="index" href="./index.html">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>【私的】Linux LiveCD めも＠Palm84 [最終更新は2013年]</title>
+<style type="text/css">
+<!--
+td { 
+	border-right:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+}
+
+table.book2 {
+	border-top:1px solid #ccc;
+	border-left:1px solid #ccc;
+	margin:0 2em;
+	font-size:90%;
+}
+
+h4 {
+	font-size: 1em;
+	font-weight: bold;
+	margin:0.5em;
+	padding-left: 0.5em;
+	border-left: 1em double #ccc;
+}
+
+h5 {
+	color: #fff;
+	background-color: #5e7cb4;
+	font-size: 1em;
+	font-weight: bold;
+	margin:1em;
+	padding-left: 0.5em;
+	border: 1px outset #ccc;
+}
+
+h5 a:link,
+h5 a:visited {
+color: #fff;
+}
+
+span.tokai1 {
+font-style: normal;
+}
+
+/*===== columns =====*/
+
+/*
+.main {
+	border-color: #ccc;
+}
+
+.sidebar {
+	border-color: #ffd;
+}
+*/
+
+dl.small dd pre {
+font-size: 100%;
+}
+
+/*===== media print =====*/
+
+@media print {
+h3 {
+page-break-before: always;
+}
+}
+
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+</head>
+
+
+<body>
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" accesskey="z" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd>
+ | <span class="font_change">* font-change * <a href="javascript:void(document.body.style.fontFamily='inherit')" title="inherit">inherit</a> <a href="javascript:void(document.body.style.fontFamily='sans-serif')" title="Sans-serif">Ss</a> <a href="javascript:void(document.body.style.fontFamily='serif')" title="Serif">Sf</a> <a href="javascript:void(document.body.style.fontFamily='\'メイリオ\'')" title="メイリオ">メ</a> <a href="javascript:void(document.body.style.fontFamily='\'游ゴシック\',\'Yu Gothic\',YuGothic')" title="游ゴシック">游</a> <a href="javascript:void(document.body.style.fontFamily='\'ＭＳ Ｐゴシック\'')" title="ＭＳ Ｐゴシック">MS</a> <a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Regular\',\'源ノ角ゴシック JP Regular\',\'Noto Sans Japanese Regular\',\'Noto Sans CJK JP Regular\',\'源ノ角ゴシック\',\'源ノ角ゴシック JP\',\'Noto Sans Japanese\',\'Noto Sans CJK JP\'')" title="源ノ角ゴシック / Sonrce Han Sans">源</a> <a href="javascript:void(document.body.style.fontSize='12px')" title="12px">12</a>
+ <a href="javascript:void(document.body.style.fontSize='14px')" title="14px">14</a>
+ <a href="javascript:void(document.body.style.fontSize='16px')" title="16px">16</a> <a href="javascript:void(document.body.removeAttribute('style'));" title="body style 削除">戻す</a> *</span>
+</div>
+
+
+<h1><span class="tokai1"><a href="./livecd.html">【私的】Linux LiveCD めも<span class="small"> [最終更新は2013年]</span></a></span></h1>
+
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+
+<ul>
+<li><a href="#about">これって何？</a> <kbd class="ak">3</kbd>
+	<ul class="small">
+	<li><a href="#iroiro">種類とか</a>
+	<li><a href="#memory">必要メモリ</a></li>
+	<li><a href="#checkpoint"><span class="small">私的</span>チェックポイント</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="#fullcd">フルCD系</a> <kbd class="ak">4</kbd>
+	<ul class="small">
+	<li><a href="#knoppix">Knoppix</a></li>
+	<li><a href="#berry">Berry Linux</a></li>
+	<li><a href="#slax">Slax / Porteus</a></li>
+	</ul>
+</li>
+<li><a href="#light_linux">軽量Linux</a> <kbd class="ak">5</kbd>
+	<ul class="small">
+	<li><a href="#puppy">Puppy Linux</a></li>
+	<li><a href="#windos">WindOS</a></li>
+	<li><a href="#kona">Kona Linux</a></li>
+	<li><a href="#xubuntu">Xubuntu Desktop</a></li>
+	<li><a href="#lubuntu">Lubuntu Desktop</a></li>
+	<li><a href="#linuxBean">linuxBean</a></li>
+	</ul>
+</li>
+<li><a href="#mini_rescue">ミニLinux系</a> <kbd class="ak">6</kbd>
+	<ul class="small">
+	<li><a href="#sysrescd">SystemRescueCd</a></li>
+	<li><a href="#pmagic">Parted Magic</a></li>
+	<li><a href="#cdlinux">CDlinux</a></li>
+	<li><a href="#gparted">GParted LiveCD</a></li>
+	<li><a href="#plop">PLoP Linux</a></li>
+	</ul>
+</li>
+<li><a href="#disto">通常ディストリ系</a> <kbd class="ak">7</kbd>
+	<ul class="small">
+	<li><a href="#ubuntu">Ubuntu Desktop</a></li>
+	<li><a href="#kubuntu">Kubuntu desktop</a></li>
+	<li><a href="#fedora">FedoraLiveCD </a></li>
+	<li><a href="#centos">CentOS LiveCD</a></li>
+	<li><a href="#debian">Debian LiveDVD</a></li>
+	</ul>
+</li>
+<li><a href="#custom">派生版</a> <kbd class="ak">8</kbd>
+	<ul class="small">
+	<li><a href="#linuxmint">Linux Mint</a></li>
+	<li><a href="#pclinux">PCLinuxOS</a></li>
+	<li><a href="#zorin">Zorin OS</a></li>
+</ul>
+</li>
+<li><a href="#etc">雑記</a> <kbd class="ak">9</kbd>
+	<ul class="small">
+	<li><a href="#root">root 権限</a></li>
+	<li><a href="#keymap">キーボード配列をJP仕様に</a></li>
+	<li><a href="#editor">日本語エディタ</a></li>
+	<li><a href="#textmode">テキストモード時の日本語表示</a></li>
+	<li><a href="#ssh">SSHでの日本語表示</a></li>
+	<li><a href="#error">うまく起動できない時</a></li>
+	<li><a href="#maintenance">メンテナンス向き？</a></li>
+	<li><a href="#network_boot">ネットワークブート</a></li>
+	</ul>
+</li></ul>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+
+
+
+
+
+<div class="hateb">
+<script language="javascript" type="text/javascript" src="https://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://www10.plala.or.jp/palm84/";
+Hatena.BookmarkWidget.title = "はてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+
+<script language="javascript" type="text/javascript" src="https://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://d.hatena.ne.jp/palm84/";
+Hatena.BookmarkWidget.title = "某所のはてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+</div>
+
+
+</div>
+</div>
+
+
+<div class="main">
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/livecd.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<dl class="changelog">
+<dt>更新履歴 - 最終更新日 2013.7.19</dt>
+<dd>
+<ul>
+<li>旧ページ :<a href="./livecd_old20111030.html">【私的】Linux LiveCD めも (old 2011.10.30)</a></li>
+</ul>
+
+<p>2013.07.19 <a href="#lubuntu">Lubuntu Desktop</a>, <a href="#xubuntu">Xubuntu Desktop</a>, <a href="#centos">CentOS LiveCD（ライブCDの部屋）</a> 追記
+<br>2013.07.16 全面的に書き直し。<a href="#kona">Kona Linux</a>, <a href="#linuxBean">linuxBean</a>, <a href="#centos">CentOS LiveCD</a>, <a href="#zorin">Zorin OS</a> 追加、他バージョン更新。
+</p>
+</dd>
+</dl>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+<a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/livecd.html"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/livecd.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a>
+
+</p>
+
+<p>当方は<em>Linuxド初心者</em>の若輩者であるのであまりあてにはならないかもしれない覚書です。</p>
+
+<dl>
+<dt><a href="http://simosnet.com/livecdroom/">ライブCDの部屋</a></dt>
+<dd>
+<p>数多くの LiveCD の日本語ローカライズ版を公開されてます。日本におけるLiveCDの普及にかなり貢献されているのではないかと思います。</p>
+<p class="pink">※ ライブCDの部屋さん版は<a href="http://ftp.riken.go.jp/Linux/simosnet-livecd/">理研ミラー</a>からダウンロードが速いです。</p>
+</dd>
+</dl>
+
+<p>う～ん、早く自分で日本語化ぐらいできる様になりたい...（ムリとかいうな！そこｗ）</p>
+<p>ってか、Windows と違って Linux の進化は早いので楽しみも大きいけれども、追っかけるのはタイヘンなのであった。orz</p>
+<h2><a href="#about" accesskey="3" name="about">これって何？</a> <kbd class="ak">3</kbd></h2>
+
+
+
+<h3><a href="#iroiro" name="iroiro">種類とか</a></h3>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/Live_CD">Live CD - Wikipedia</a></li>
+<li><a href="http://ja.wikipedia.org/wiki/Linux%E3%83%A9%E3%82%A4%E3%83%96%E3%83%87%E3%82%A3%E3%82%B9%E3%83%88%E3%83%AA%E3%83%93%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%AF%94%E8%BC%83">Linuxライブディストリビューションの比較 - Wikipedia</a></li>
+</ul>
+
+<dl>
+<dt>Live って何？</dt>
+<dd>
+<p>基本的にはこんな意味...</p>
+<ul>
+<li>HDを使わずにCD内のファイルで起動
+	<ul>
+	<li>一時ファイルなどはメモリ上に</li>
+	</ul>
+</li>
+<li>基本イメージは変更されないので、再起動すると元通り</li>
+<li>※ オンメモリ起動ではすべてメモリ上にコピーされるので、起動後はCDさえも不要</li>
+</ul>
+
+<p>使い勝手はいまいちかもしれませんが、変更差分をHD上などにファイルで保存し、Live + 変更分追加読み込みで起動できたりもします。</p>
+</dd>
+</dl>
+
+<p>おおまかですが、種類を下記の通り分類してみますた。</p>
+
+<ul>
+<li>フルCD系 - Live で普通に Windows 風味で使う LiveCD (LiveDVD)</li>
+<li>軽量Linux - 古いPCなどでの常用向き</li>
+<li>ミニLinux - レスキューやメンテナンス用途、Linux経験者向け</li>
+<li>通常ディストリ・派生版 - 通常版のお試し Live</li>
+</ul>
+
+<p>通常ディストリ系の最新版では、旧型PCへの対応を打ち切りしてる場合があるので注意。</p>
+
+
+<h3><a href="#memory" name="memory">必要メモリ</a></h3>
+
+<dl>
+<dt>1GB以上</dt>
+<dd>
+<p>デスクトップ環境が <a href="http://ja.wikipedia.org/wiki/GNOME">GNOME</a> や <a href="http://ja.wikipedia.org/wiki/KDE">KDE</a> の場合は、512MBでは重いので最低 <del>1GB</del> <ins>2GB</ins> 程必要になるかと。</p>
+<p>Ubuntu や Fedora の最新版の場合は、 <del>1GB</del> <ins>2GB</ins> でも苦しいかも。</p>
+<p>Ubuntu 最新版などはRAM（メモリ）が必要十分であっても、PAE非対応の旧型CPUでは起動しないので注意。（【追記】<ins>Ubuntu 14.04 では PentiumM/CeleronM に <code>forcepae</code> オプションで対応</ins>。）</p>
+</dd>
+
+<dt>256MB - 512MB</dt>
+<dd>
+<p>デスクトップ環境 <a href="http://ja.wikipedia.org/wiki/LXDE">LXDE</a> や <a href="http://ja.wikipedia.org/wiki/Fluxbox">Fluxbox</a> などではかなり軽くなります。</p>
+<p>256MBでそこそこ動くのは現時点でこんなかんじかな</p>
+<ul>
+<li>KNOPPIX (LXDE) （※ <ins>ブラウザ起動は重いです</ins>）</li>
+<li>Slax (LXDE) - やや重い</li>
+<li><del>Puppy Linux</del>, WindOS</li>
+<li>レスキュー用ミニ Linux</li>
+</ul>
+<p>但し、オンメモリ起動させるには512MBから1GB程必要になるかと。</p>
+
+<p>512MBだと軽量系Linuxの殆どが使えそう</p>
+<ul>
+<li>Kona Linux</li>
+<li>Xubuntu, Lubuntu</li>
+<li>linuxBean</li>
+<li><ins>Puppy Linux</ins></li>
+</ul>
+</dd>
+
+<dt>オンメモリで起動</dt>
+<dd>
+<p>起動後はCDなど外せます。古いマシンでもサクサク動きます。必要なメモリ(RAM)の量は？</p>
+<ul>
+<li>Puppy Linux
+	<ul>
+	<li>デフォルトがオンメモリ起動。ギリギリですが <strong class="ms"><del>256 MB</del> <ins>512MB</ins></strong> 以上で。</li>
+	</ul>
+</li>
+<li>SystemRescueCd (<code>rescuecd docache</code>)
+	<ul>
+	<li><strong class="ms"><del>256</del> <ins>512</ins> MB</strong> 以上</li>
+	</ul>
+</li>
+<li>Parted Magic
+	<ul>
+	<li>デフォルトがオンメモリ起動。<del>320 MB</del> <strong class="ms"><ins>1GB</ins></strong> 以上</li>
+	</ul>
+</li>
+<li>Porteus (<code>slax copy2ram</code>)
+	<ul>
+	<li>LXDE では <strong class="ms">768 MB</strong> 以上</li>
+	</ul>
+</li>
+<li>Knoppix CD版 (<code>knoppix toram</code>)
+	<ul>
+	<li><strong class="ms">1 GB</strong> 以上</li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#checkpoint" name="checkpoint">私的チェックポイント</a></h3>
+
+<p>使用目的によって変わってくるので、あくまで「私的」ですが。</p>
+
+<dl>
+<dt>更新頻度はどない？</dt>
+<dd>
+<p>これ、いわゆる<strong class="pink">諸刃の剣</strong>だったりします。</p>
+<p>と言いますのは、更新が頻繁だと新しい規格への対応がかなり期待できますよね。でも、安定度などは更新頻度が高いとは言えない <strong class="ms">KNOPPIX</strong> 日本語版などの評判が良かったりします。</p>
+<p>無論これらはケースバイケースというやつで一概には言えませんが...</p>
+<p>現状で更新が割と頻繁なものはというと...</p>
+<ul>
+<li>SystemRescueCd（※ レスキュー向け、旧PC向け設定切替あり、日本語版なし）</li>
+<li>Parted Magic（※ レスキュー向け、旧PC対応版もあり）</li>
+<li>Berry Linux</li>
+<li>Puppy Linux（※ 旧PC対応版もいろいろあり）</li>
+<li>Ubuntu Desktop （※ 旧PCでは起動しないことがある）</li>
+<li>Lubuntu Desktop （※ Ubuntu の軽量版）</li>
+</ul>
+
+<p>（あくまで私見どえす！）更新頻度は高くないけどかなり安定してるかなと思うのは...</p>
+<ul>
+<li>KNOPPIX</li>
+<li>SLAX 日本語版</li>
+<li>CDlinux</li>
+</ul>
+
+<p>レスキュー用途として、<strong class="ms">SystemRescueCd</strong> と <strong class="ms">Parted Magic</strong>, GUI使用では <strong class="ms">KNOPPIX</strong>、及び <strong class="ms">Ubuntu</strong> (<strong class="ms">Lubuntu</strong>) 最新版を常備しておきたいかなと愚考してたりします。</p>
+</dd>
+
+<dt>デスクトップ環境</dt>
+<dd>
+<p>最近では <a href="http://ja.wikipedia.org/wiki/LXDE" title="LXDE - ウィキペディア (Wikipedia): フリー百科事典">LXDE</a> が軽量系の主流ですな。</p>
+
+<p>WindowsライクにGUI上でマウス操作なら、<strong class="ms">KDE</strong> か <strong class="ms">GNOME</strong>。Xfceがまぁまぁ。Fluxbox は軽いけどLinux経験者向けかな。</p>
+</dd>
+
+<dt>日本語ロケール - UTF-8</dt>
+<dd>
+<p>euc-jp だと機種依存文字を含むファイル名が扱えなかったり。最近のは殆ど UTF-8 になっとりますが。</p>
+</dd>
+
+<dt>日本語「表示可能」なブラウザ</dt>
+<dd>
+<p>メニューは英語でもいいけど。</p>
+</dd>
+
+<dt>ファイルマネージャ</dt>
+<dd>
+<p><strong class="ms">PCMan File Manager</strong> (PCManFM), <strong class="ms">Thunar</strong> や <strong class="ms">Konqueror</strong>, <strong class="ms">Nautilus</strong> ならWindowsライクに使える。</p>
+<p class="small">※ 慣れたらコマンド打つ方が早かったり...</p>
+</dd>
+
+<dt>自動 fstab 編集</dt>
+<dd>
+<p class="pink">※ 最近はアプリケーション側で設定されるんであんまり問題なさそう。</p>
+<p>デスクトップのアイコンや Konqueror の「記憶メディア」アイコンをクリックで日本語ファイル名を正しく表示するためのマウントオプションが自動設定される。また、コマンドでもオプションなしでマウントできる。</p>
+<p class="small">※ 慣れたらいらないけど...</p>
+</dd>
+
+<dt>smbfs(smbmount), cifs</dt>
+<dd>
+<p class="pink">※ 最近の LiveCD ではコマンド打たなくてもファイルマネージャからアクセスできる場合がほとんどなので不要かも。</p>
+<p>ネットワーク上の Windows マシンなどの共有フォルダ（ネットワークドライブ）をマウント。</p>
+<ul>
+<li>メニューの【移動】【ネットワーク】から</li>
+<li>or アドレス <code>smb://hostname/sharename</code> とか指定で</li>
+</ul>
+</dd>
+
+<dt>Sambaサーバ</dt>
+<dd>
+<p>Windows マシンからアクセスする。ファイル救出時など Windows エクスプローラで操作できるので楽。</p>
+<p class="small">※ やっぱり楽したい、ってか...</p>
+</dd>
+
+<dt>NTFS書き込み</dt>
+<dd>
+<p>完全サポートというわけではないと思うので若干不安もあるけど、NTFSフォーマットの外付けHDなどをどうしても使いたい時など。</p>
+<p class="small">※ PC2台あるなら、別PCに繋いで smbmount する方がいいけど...</p>
+</dd>
+
+<dt><a href="http://www.partimage.org/Main_Page">Partimage</a></dt>
+<dd>
+<p class="pink">※ 開発が 2010-07 で止まってるので最近のPCでは使えないかも？</p>
+<p>リカバリーイメージの作成と復元。</p>
+<p class="small">※ NTFSは実験的サポート（？）なので、デフラグしてないとだめだったりするけど...</p>
+<p>Linux 系では <a href="http://clonezilla.org/">Clonezilla</a> の方が断然おススメだったりします。でも入ってるのは Parted Magic だけ...</p>
+</dd>
+
+<dt><a href="http://gparted.sourceforge.net/">GParted</a></dt>
+<dd>
+<p>データを保持したままパーティションのリサイズが可能なパーティショニング・ツール。FDISKの代用とかにも。（※ 取り扱い注意、バックアップは必須。）</p>
+<p class="small">※ GUIでの操作は楽ですよねー。これだけでもLiveCDを持っておく価値があるのだ...と言えるかも？</p>
+</dd>
+
+<dt><a href="http://www.stud.uni-hannover.de/user/76201/gpart/">gpart</a> / <a href="http://www.cgsecurity.org/wiki/TestDisk">TestDisk</a></dt>
+<dd>
+<p>パーティション・テーブル復旧用の検査ツール。これで助かったことが何度か...（汗）</p>
+<p class="small">※ これ一発で簡単に治るわけではなくて、情報を元に自分で切り直したり試行錯誤が必要ですが...</p>
+</dd>
+
+<dt>SSHサーバ</dt>
+<dd>
+<p>別マシンのコンソールから操作したい時とか。</p>
+</dd>
+</dl>
+
+<h2><a href="#fullcd" accesskey="4" name="fullcd">フルCD系</a> <kbd class="ak">4</kbd></h2>
+
+<dl>
+<dt>緊急時の使用、ファイル・レスキュー用とか</dt>
+<dd>
+<p>（※ 物理的な故障だとだめですが）</p>
+<p>Windowsが起動できない際のファイルの救出バックアップ用とかによく使われてる模様です。Windows風味でGUIでマウントやファイルのコピーが可能。</p>
+
+<p>KNOPPIX, SLAX は非常に安定してる感じですが更新頻度は高くないので新しい規格では使えないこともあります。</p>
+
+<p class="small pink">※ 新しめのPCでは、S-ATA の内蔵DVDドライブより USB CD/DVD ドライブやUSBメモリの方がブートが確実なこともあります。まぁブートしてもHDを認識できないこともあったりしますが...</p>
+
+<p>Berry Linux は更新頻度が高いのですが、多少コマンドの知識が必要かも。</p>
+
+<p>別の項に書いている <a href="#ubuntu">Ubuntu Desktop CD</a>, <a href="#lubuntu">Lubuntu Desktop</a>、なども候補に入れませう。</p>
+</dd>
+</dl>
+
+<h3><a href="#knoppix" name="knoppix"><span class="tokai1">Knoppix 日本語版</span></a></h3>
+
+<ul>
+<li><a href="http://www.risec.aist.go.jp/project/knoppix/">KNOPPIX Japanese edition</a></li>
+<li>旧サイト : 
+	<ul>
+	<li><a href="http://www.rcis.aist.go.jp/project/knoppix/">KNOPPIX Japanese edition</a></li>
+	<li><a href="http://unit.aist.go.jp/itri/knoppix/">KNOPPIX Japanese edition</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/KNOPPIX">KNOPPIX - Wikipedia</a></li>
+<li><a href="http://distrowatch.com/table.php?distribution=knoppix">DistroWatch.com: KNOPPIX</a></li>
+<li><a href="http://www.freeml.com/knoppix">KNOPPIXメーリングリスト｜freeml</a></li>
+</ul>
+
+<ul>
+<li>本家：<a href="http://www.knopper.net/knoppix/index-en.html">KNOPPIX - Live Linux Filesystem On CD</a></li>
+<li><a href="http://www.knoppix.net/">Knoppix Linux Boot CD, Download Disk and Documents, Discuss, Get Help</a>
+	<ul>
+	<li><a href="http://www.knoppix.net/wiki/Main_Page">Main Page - Knoppix Documentation Wiki</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>産総研版ダウンロード（Ring には最新版しかないようです）
+	<ul>
+	<li><a href="http://www.ring.gr.jp/pub/linux/knoppix/iso/">Index of /pub/linux/knoppix/iso</a>（Ringサーバ）</li>
+	<li><a href="http://ftp.riken.jp/Linux/knoppix/iso/">Index of /Linux/knoppix/iso</a>（理研サーバ）</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://simosnet.com/livecdroom/index.html#knoppix">Knoppix 日本語版(LCR版) - ライブCDの部屋</a>
+	<ul class="small">
+	<li>理研ミラー：<a href="http://ftp.riken.go.jp/Linux/simosnet-livecd/knoppix/">Index of /Linux/simosnet-livecd/knoppix</a></li>
+	</ul>
+</li>
+</ul>
+
+<ol>
+<li><a href="#knoppix703cd">KNOPPIX日本語版7.0.3CD ライブCDの部屋</a> （2012/7 リリース）</li>
+<li><a href="#knoppix702dvd">KNOPPIX日本語版7.0.2DVD 産総研</a> （2012/6 リリース）</li>
+<li><a href="#knoppix671cd">KNOPPIX日本語版6.7.1CD/DVD</a> （2011/10 リリース）</li>
+<li><a href="#knoppix531cd">KNOPPIX日本語版5.3.1CD</a>（2008/3 リリース）</li>
+</ol>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20130801/1375363285">KNOPPIX 7.2.0 CD（ライブCDの部屋）</a> （2013/7 リリース）</li>
+</ul>
+
+<p class="pink">※ メモリ(RAM) は 256 MB あればまぁまぁ使えます。</p>
+
+<h4><a href="#knoppix703cd" name="knoppix703cd">KNOPPIX日本語版7.0.3CD ライブCDの部屋</a></h4>
+
+<ul>
+<li><a href="http://simosnet.com/livecdroom/index.html#knoppix">Knoppix 日本語版(LCR版) - ライブCDの部屋</a></li>
+</ul>
+
+<p class="overflow2"><img src="./images/livecd/knoppix703cd.png" width="563" height="422" alt="KNOPPIX_V7.0.3CD-2012-06-25-JA-LCR のスクリーンショット"></p>
+<p><strong class="ms">KNOPPIX_V7.0.3CD-2012-06-25-JA-LCR.iso</strong> (600MB) （ライブCDの部屋）で確認。リリースは 2012/7。</p>
+
+
+<ul>
+<li>※ 日本語入力可</li>
+</ul>
+
+<ul class="small">
+<li>Debian6.0/squeeze ベース</li>
+<li>デスクトップ環境 - LXDE</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ -  Iceweasel(Firefox)</li>
+<li>ファイルマネージャ - PCMan File Manager
+	<ul>
+	<li>NTFS / FAT32 日本語ファイル名もおｋ</li>
+	<li>Windows ネットワーク、アクセス可</li>
+	</ul>
+</li>
+<li>自動fstab編集</li>
+<li>smbfs(smbmount) - cifs</li>
+<li>NTFS書き込み - ntfs-3g（通常のマウントでOK）</li>
+<li>GParted 0.7.0</li>
+<li>Partimage 0.6.8</li>
+<li>TestDisk 6.13</li>
+<li>ms-sys-2.1.0</li>
+<li>chntpw 0.99.6</li>
+<li>Sambaサーバ （自動起動）</li>
+<li>SSHサーバ (KNOPPIX SSH Server)</li>
+</ul>
+
+<ul class="small">
+<li><strong class="ms">Knoppix Terminal Server</strong>（※ PXEブート用サーバ）</li>
+<li>memdisk + balder.img (FreeDOS)</li>
+<li>Memtest</li>
+<li>GRUB for DOS 0.4.4 (grub.exe)</li>
+</ul>
+
+<p>RAM 256MBでも軽快に起動します。ツール類は少し古めですが、GUIで使いやすいLiveCDの代表格でありませうか。</p>
+
+<p>Sambaサーバも自動起動なのでめちゃ便利です。</p>
+<div class="quote small pink">
+<blockquote cite="http://simosnet.com/livecdroom/pastnews.html" title="past news" class="pink">
+<p>日本語版ではsambaサーバーを追加してあります.
+<br><strong>MS-Windowsから接続の仕方</strong>
+<br>コンピュータ名"microknoppix"で検索をかけます.<br>
+見つかったら、開くとユーザー名とパスワードを要求されるので
+<br>ユーザー名：knoppix
+<br>パスワード：knoppix
+<br>と入力します.
+<br>共有フォルダは、knoppix,tmp,knoppix-root,mediaですが、
+<br>knoppix ... ホームフォルダ
+<br>tmp .... tempフォルダ
+<br>knoppix-root .... knoppixの/(root)
+<br>media .... 外部ドライブのマウントされているフォルダ
+<br>例えばsda1,sda2...,sdb1,sdc1,...などとあります.
+<br>ファイルマネージャでマウント、アンマウントができます.
+<br>knoppix,tmp,mediaは書き込み可能です.
+<br>ただしroot所有のファイルは変更、削除ができないときがあります.</p>
+</blockquote>
+<cite><a href="http://simosnet.com/livecdroom/pastnews.html">past news</a></cite>
+</div>
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<ul>
+<li>ライブCDの部屋
+	<ul>
+	<li><a href="http://ftp.riken.go.jp/Linux/simosnet-livecd/knoppix/">Index of /Linux/simosnet-livecd/knoppix</a></li>
+	<li>ファイル名（CD版 600MB）: <code>KNOPPIX_V7.0.3CD-2012-06-25-JA-LCR.iso</code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+
+<dt>めも</dt>
+<dd>
+<ul>
+<li>Sambaサーバの再起動</li>
+</ul>
+<pre>
+$ sudo service samba restart
+</pre>
+</dd>
+
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://engawa.2ch.net/test/read.cgi/linux/1339751114/">KNOPPIX 24</a> (2ch)</li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h4><a href="#knoppix702dvd" name="knoppix702dvd">KNOPPIX日本語版7.0.2DVD 産総研</a></h4>
+
+<ul>
+<li><a href="http://www.risec.aist.go.jp/project/knoppix/">KNOPPIX Japanese edition</a></li>
+</ul>
+
+<p class="overflow2"><img src="./images/livecd/knoppix702dvd.png" width="563" height="422" alt="knoppix_v7.0.2DVD_20120530-20120615 のスクリーンショット"></p>
+<p><strong class="ms">knoppix_v7.0.2DVD_20120530-20120615.iso</strong> (4.0GB) で確認。リリースは 2012/6。</p>
+
+
+<ul>
+<li>※ 日本語入力可</li>
+</ul>
+
+<ul class="small">
+<li>Debian6.0/squeeze ベース</li>
+<li>デスクトップ環境 - LXDE (GNOME, KDE)</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Chromium / Iceweasel(Firefox)</li>
+<li>ファイルマネージャ - PCMan File Manager 他
+	<ul>
+	<li>NTFS おｋ、FAT32 日本語ファイル名が文字化け</li>
+	<li>Windows ネットワーク、アクセス可</li>
+	</ul>
+</li>
+<li>自動fstab編集</li>
+<li>smbfs(smbmount) - cifs</li>
+<li>NTFS書き込み - ntfs-3g（通常のマウントでOK）</li>
+<li>GParted 0.7.0</li>
+<li>Partimage 0.6.8</li>
+<li>TestDisk 6.13</li>
+<li>ms-sys-2.1.0</li>
+<li>Sambaサーバ（※ コマンドで実行）</li>
+<li>SSHサーバ (KNOPPIX SSH Server)</li>
+</ul>
+
+<ul class="small">
+<li><strong class="ms">Knoppix Terminal Server</strong>（※ PXEブート用サーバ）</li>
+<li>memdisk + balder.img (FreeDOS)</li>
+<li>Memtest</li>
+<li>GRUB for DOS 0.4.4 (grub.exe)</li>
+</ul>
+
+<ul class="small">
+<li>chntpw - なし</li>
+</ul>
+
+<p>DVD版にはデスクトップ環境 GNOME, KDE なども入ってます。起動には RAM が 1GB 程必要かと。</p>
+<p>Sambaサーバが入ってますが、コマンド入力及び <code>smb.conf</code> の編集が必要でした。</p>
+
+<p>FAT32のマウントは日本語ファイル名が文字化けします。UTF-8指定のリマウントでおｋ。</p>
+<ul>
+<li>拙作めも :
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20110817/1313575927">KNOPPIX でファイル名が文字化けしたでござるの巻（FAT編）</a></li>
+	</ul>
+</li>
+</ul>
+
+
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<ul>
+<li>産総研版
+	<ul>
+	<li><a href="http://www.ring.gr.jp/pub/linux/knoppix/iso/">Index of /pub/linux/knoppix/iso</a></li>
+	<li>ファイル名（DVD版）: <code>knoppix_v7.0.2DVD_20120530-20120615.iso</code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>Sambaサーバの起動</dt>
+<dd>
+<p>あくまで一例ですが、マウントした <code>/media</code> を共有する例。</p>
+<pre>
+knoppix@Microknoppix:~$ su -
+root@Microknoppix:~# smbpasswd -a knoppix
+New SMB password:
+Retype new SMB password:
+Added user knoppix.
+root@Microknoppix:~# cat &#060;&#060;END&#062;&#062; /etc/samba/smb.conf 
+&#062; [media]
+&#062; path = /media
+&#062; valid users = knoppix
+&#062; writable = yes
+&#062; create mask = 0755
+&#062; directory mask = 0755
+&#062; END
+root@Microknoppix:~# service samba start
+[ ok ] Stopping Samba daemons: nmbd smbd.
+[ ok ] Starting Samba daemons: nmbd smbd.
+root@Microknoppix:~# exit
+ログアウト
+knoppix@Microknoppix:~$ 
+</pre>
+<p><code>\\microknoppix</code> or <code>\\IPアドレス</code> でアクセス可になるはず。</p>
+</dd>
+
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://itpro.nikkeibp.co.jp/article/NEWS/20120620/404094/">ニュース - KNOPPIX日本語新版7.0.2リリース、メモリーを有効利用：ITpro</a></li>
+<li><a href="http://engawa.2ch.net/test/read.cgi/linux/1339751114/">KNOPPIX 24</a> (2ch)</li>
+</ul>
+</dd>
+</dl>
+
+
+
+<div class="small">
+
+<h4><a href="#knoppix671cd" name="knoppix671cd">KNOPPIX日本語版6.7.1CD/DVD</a></h4>
+
+<p class="overflow2"><img src="./images/livecd/knoppix671cdssk.png" width="560" height="420" alt="Knoppix 日本語版 6.7.1のスクリーンショット"></p>
+
+<dl>
+<dt>産総研</dt>
+<dd>
+<ul>
+<li><a href="http://www.rcis.aist.go.jp/project/knoppix/knoppix671.html">リリースノート</a></li>
+</ul>
+
+<p>2011/10リリース</p>
+<ul>
+<li>isoファイル名
+	<ul>
+	<li>CD版  : <code>knoppix_v6.7.1CD_20110914-20111018.iso</code> (693MB)</li>
+	<li>DVD版 : <code>knoppix_v6.7.1DVD_20110914-20111018.iso</code> (3.74GB)</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>※ 日本語入力可</li>
+</ul>
+
+<ul>
+<li>Debian6.0/squeeze ベース</li>
+<li>デスクトップ環境 - LXDE (DVD : GNOME, KDE)</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Iceweasel(Firefox)</li>
+<li>ファイルマネージャ - PCMan File Manager 他
+	<ul>
+	<li>NTFS おｋ、FAT32 日本語ファイル名が文字化け</li>
+	<li>Windows ネットワーク、アクセス可</li>
+	</ul>
+</li>
+<li>自動fstab編集</li>
+<li>smbfs(smbmount) - cifs</li>
+<li>NTFS書き込み - ntfs-3g（通常のマウントでOK）</li>
+<li>GParted 0.7.0</li>
+<li>Partimage</li>
+<li>TestDisk 6.11</li>
+<li>ms-sys-2.1.0</li>
+<li>Sambaサーバ（※ DVD版のみ、コマンドで実行）</li>
+<li>SSHサーバ (KNOPPIX SSH Server)</li>
+</ul>
+
+<ul>
+<li><strong class="ms">Knoppix Terminal Server</strong>（※ PXEブート用サーバ）</li>
+<li>memdisk + balder.img (FreeDOS)</li>
+<li>Memtest</li>
+<li>GRUB for DOS 0.4.4 (grub.exe)</li>
+</ul>
+
+<ul>
+<li>chntpw なし</li>
+</ul>
+
+<p>DVD版にはデスクトップ環境 GNOME, KDE なども入ってます。起動には RAM がそれぞれ 512MB, 1GB 程必要かと。</p>
+<p>DVD版はSambaサーバが入ってますが、コマンド入力及び <code>smb.conf</code> の編集が必要でした。</p>
+
+<p>FAT32のマウントは日本語ファイル名が文字化けします。UTF-8指定のリマウントでおｋ。</p>
+<ul>
+<li>拙作めも :
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20110817/1313575927">KNOPPIX でファイル名が文字化けしたでござるの巻（FAT編）</a></li>
+	</ul>
+</li>
+</ul>
+
+<dt>ライブCDの部屋</dt>
+<dd>
+<ul>
+<li><a href="http://simosnet.com/livecdroom/index.html#knoppix">Knoppix 日本語版(LCR版) - ライブCDの部屋</a></li>
+</ul>
+
+<p>2011/9リリース</p>
+<ul>
+<li>isoファイル名
+	<ul>
+	<li><code>KNOPPIX_V6.7.1CD-2011-09-14-JP.iso</code> （842MB = CDには入らない）</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>※ 日本語入力可</li>
+</ul>
+
+<ul>
+<li>Debian6.0/squeeze ベース</li>
+<li>デスクトップ環境 - LXDE</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Iceweasel(Firefox)</li>
+<li>ファイルマネージャ - Nautilus 他
+	<ul>
+	<li>NTFS / FAT32 日本語ファイル名もおｋ</li>
+	<li>Windows ネットワーク、アクセス可</li>
+	</ul>
+</li>
+<li>自動fstab編集</li>
+<li>smbfs(smbmount) - cifs</li>
+<li>NTFS書き込み - ntfs-3g（通常のマウントでOK）</li>
+<li>GParted 0.7.0</li>
+<li>Partimage</li>
+<li>TestDisk 6.11</li>
+<li>ms-sys-2.1.0</li>
+<li>Sambaサーバ （自動起動）</li>
+<li>SSHサーバ (KNOPPIX SSH Server)</li>
+</ul>
+<ul>
+<li><strong class="ms">Knoppix Terminal Server</strong>（※ PXEブート用サーバ）</li>
+<li>memdisk + balder.img (FreeDOS)</li>
+<li>Memtest</li>
+<li>GRUB for DOS 0.4.4 (grub.exe)</li>
+</ul>
+
+<ul>
+<li>chntpw なし</li>
+</ul>
+
+<ul>
+<li>Sambaサーバへのアクセス
+	<ol>
+	<li>Knoppix 上でマウントしておく</li>
+	<li>Windows マシンから <code>\\microknoppix</code>（または <code>\\IPアドレス</code>）</li>
+	<li>username : knoppix, pass : knoopix</li>
+	</ol>
+</li>
+</ul>
+
+<p>CDには入りきりませんが、こちらはSambaサーバ入り。FATの文字化けもないので使いやすいかと。</p>
+
+</dd>
+</dl>
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<ul>
+<li>産総研版
+	<ul>
+	<li><a href="http://www.ring.gr.jp/pub/linux/knoppix/iso/">Index of /pub/linux/knoppix/iso</a></li>
+	<li>ファイル名（CD版）: <code>knoppix_v6.7.1CD_20110914-20111018.iso</code></li>
+	<li>ファイル名（DVD版）: <code>knoppix_v6.7.1DVD_20110914-20111018.iso</code></li>
+	</ul>
+</li>
+<li>ライブCDの部屋
+	<ul>
+	<li><a href="http://ftp.riken.go.jp/Linux/simosnet-livecd/knoppix/">Index of /Linux/simosnet-livecd/knoppix</a></li>
+	<li>ファイル名（DVD版 842MB）: <code>KNOPPIX_V6.7.1CD-2011-09-14-JP.iso</code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li>拙作めも :
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20110922/1316688179">Knoppix 日本語版(LCR版) 6.7.1 - ライブCDの部屋</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+
+
+<h4><a href="#knoppix531cd" name="knoppix531cd">KNOPPIX日本語版5.3.1CD</a></h4>
+
+<p class="overflow2"><img src="./images/livecd/knoppix531cd.png" width="480" height="360" alt="KNOPPIX531CD デスクトップ画面"></p>
+
+<p>2008/3リリース</p>
+<ul>
+<li>isoファイル名
+	<ul>
+	<li><code>knoppix_v5.3.1CD_20080326-20080520-AC.iso</code>（LCAT対応 699MB）</li>
+	<li><code>knoppix_v5.3.1CD_20080326-20080520.iso</code>（Remaster版）</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>※ 日本語入力可 - scim-anthy</li>
+</ul>
+
+<ul>
+<li>Debian5.0/lenny ベース</li>
+<li>ウィンドウマネージャ - Kwin(<strong class="ms">KDE</strong>) / fluxbox/ icewm / twm</li>
+<li>日本語ロケール - UTF-8
+	<ul class="nest">
+	<li>（※【注意】5.1.1産総研版はデフォルト euc-jp なのでブート時に <code>knoppix lang=ja.utf8</code> を入力。5.3.1CDはUTF-8なので不要。）</li>
+	</ul>
+</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Iceweasel(Firefox)/Konqueror</li>
+<li>ファイルマネージャ - Konqueror 他</li>
+<li>自動fstab編集</li>
+<li>smbfs(smbmount)</li>
+<li>Sambaサーバ（メニューに設定スクリプトあり）</li>
+<li>NTFS書き込み - ntfs-3g（通常のマウントでOK）</li>
+<li>Partimage</li>
+<li>GParted 0.3.5（※ メニュー<span class="ms">→</span>設定<span class="ms">→</span>Partition Editor）/QTParted</li>
+<li>gpart/TestDisk</li>
+<li>ms-sys-2.1.0</li>
+<li>SSHサーバ（メニューに設定スクリプトあり）</li>
+</ul>
+
+<ul>
+<li><strong class="ms">Knoppix Terminal Server</strong>（※ PXEブート用サーバ）</li>
+</ul>
+
+<p>超定番ですから（何）。オールインワンってやつですか。ただ、この5.3.1は非常に多機能で安定してると思うのですが、リリースが2008年3月とやや古いのでそれ以降の新しい規格に対応していない場合も多いかと。</p>
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<p>※ 5.3.1CDは、<code>knoppix_v5.3.1CD_20080326-20080520-AC.iso</code></p>
+<ul>
+<li>理研ミラー：<a href="http://ftp.riken.jp/Linux/knoppix/iso/">Index of /Linux/knoppix/iso</a></li>
+<li><a href="http://www.rcis.aist.go.jp/project/knoppix/">KNOPPIX Japanese edition</a></li>
+<li><a href="http://simosnet.com/livecdroom/index.html#knoppix">Knoppix 日本語版(LCR版) - ライブCDの部屋</a>
+	<ul>
+	<li class="ms">5.1.1/CD(高速起動版）- <code>KNOPPIX_V5.1.1CD-2007-01-04-LCR-lcat-0220-JP.iso</code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="./knoppix511cd.html">KNOPPIX 5.3.1 CD で Windows XP のファイル救出</a></li>
+<li><a href="./knoppix_boot.html">Knoppixを起動する方法を試しためも</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20080422/1208794026">Knoppix -InetBoot(GRUB+BuildRoot) - 某所の日記</a></li>
+</ul>
+</dd>
+</dl>
+
+</div>
+
+
+
+<h3><a href="#berry" name="berry"><span class="tokai1">Berry Linux</span></a></h3>
+
+<ul>
+<li><a href="http://berry-lab.net/berry.html">Berry Linux - Fast, Simple Linux</a></li>
+<li><a href="http://berry.sourceforge.jp/">Berry Linux Project</a></li>
+<li><a href="http://sourceforge.jp/projects/berry/">Berry Linux プロジェクト日本語トップページ - SourceForge.JP</a></li>
+</ul>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/Berry_Linux">Berry Linux - Wikipedia</a></li>
+</ul>
+
+<p class="overflow2"><img src="./images/livecd/berry117.png" width="747" height="422" alt="berry-1.17 LXDE のスクリーンショット"></p>
+<p class="overflow2"><img src="./images/livecd/berry117kde.png" width="747" height="422" alt="berry-1.17 KDE のスクリーンショット"></p>
+<p><strong class="ms">berry-1.17.iso</strong> (554MB)で確認。2012.12 リリース。</p>
+
+<ul>
+<li>※ 日本語入力可</li>
+</ul>
+
+<ul class="small">
+<li>Fedora 17 ベース</li>
+<li>デスクトップ環境 - LXDE/KDE4</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - SRWare Iron (Chromium)/Frefox/Konqueror</li>
+<li>ファイルマネージャ - PCManFM/Konqueror/Dolphin</li>
+<li>smbfs(smbmount) - cifs</li>
+<li>NTFS書き込み - ntfs-3g</li>
+</ul>
+
+<ul class="small">
+<li>Sambaサーバ なし</li>
+<li>SSHサーバ なし</li>
+<li>GParted なし</li>
+<li>Partimage なし</li>
+<li>TestDisk  なし</li>
+<li>ms-sys なし</li>
+<li>chntpw なし</li>
+</ul>
+
+<p>純国産（？）Live CD ですね。Fedora ベースということで、CUIに関しては Fedora や Vine など Red Hat 系を知ってる人には扱いやすいかも。</p>
+
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<ul>
+<li><a href="http://berry-lab.net/download.html">Berry Linux - Fast, Simple Linux</a></li>
+<li><a href="http://sourceforge.jp/projects/berry/releases/">ダウンロード - Berry Linux - SourceForge.JP</a></li>
+</ul>
+</dd>
+
+<dt>マウント</dt>
+<dd>
+<p>root でコマンド打ちます</p>
+<ul>
+<li>NTFS</li>
+</ul>
+<pre>
+$ sudo mkdir /media/sda1
+$ sudo ntfs-3g /dev/sda1 /media/sda1 -o umask=0,fmask=0111
+</pre>
+<ul>
+<li>FAT</li>
+</ul>
+<pre>
+$ sudo mkdir /media/sdb1
+$ sudo mount -t vfat -o utf8,uid=berry
+</pre>
+<ul>
+<li>ネットワーク</li>
+</ul>
+<pre>
+$ sudo mkdir /media/lan
+$ sudo mount -t cifs -o iocharset=utf8,username=hoge,password=hage,uid=berry //192.168.x.x/share /media/lan
+</pre>
+</dd>
+
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://distrowatch.com/table.php?distribution=berry">DistroWatch.com: Berry Linux</a></li>
+</ul>
+
+<ul>
+<li><a href="http://engawa.2ch.net/test/read.cgi/linux/1083144115/">【1CD】Berry Linux【FC2】</a> (2ch)</li>
+</ul>
+
+<ul class="small">
+<li><a href="http://d.hatena.ne.jp/palm84/20070120/1169289979">某所の日記 - Berry Linux 0.78</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20071109/1194618277">USBメモリでブートいろいろ - Berry Linux 編</a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+
+<dl class="palmst small">
+<dt>berry-1.00</dt>
+<dd>
+<p class="overflow2"><img src="./images/livecd/berry100.png" width="480" height="360" alt="Berry Linux 1.00 デスクトップ画面"></p>
+
+<p><strong class="ms">berry-1.00.iso</strong> (572MB)で確認。2010/1 リリース。</p>
+
+<ul>
+<li>※ 日本語入力可</li>
+</ul>
+
+<ul>
+<li>Fedora 11 ベース</li>
+<li>ウィンドウマネージャ - Kwin(<strong class="ms">KDE4</strong>)</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Firefox / Konqueror</li>
+<li>ファイルマネージャ - Konqueror</li>
+<li>自動fstab編集</li>
+<li>smbfs(smbmount) - cifs</li>
+<li>Sambaサーバ</li>
+<li>NTFS書き込み - ntfs-3g</li>
+<li>QTParted</li>
+</ul>
+
+<ul>
+<li>Partimage - なし</li>
+<li>gpart/TestDisk - なし</li>
+<li>SSHサーバ - なし</li>
+</ul>
+
+<dt>マウント</dt>
+<dd>
+<p><code>/etc/fstab</code> は自動編集されましたが、マウントは root でコマンド打たないとだめみたい？</p>
+<ul>
+<li>※ sda1 の場合（root のパスワードは root）</li>
+</ul>
+<pre>
+$ su
+# mount /mnt/sda1 -o uid=berry
+</pre>
+
+<ul>
+<li>※ ネットワーク <code>\\192.168.0.2\share</code> の場合</li>
+</ul>
+<pre class="scl">
+$ su
+# mkdir /mnt/lan
+# mount -t cifs -o iocharset=utf8,uid=berry,username=<var>yassy</var> //192.168.0.2/sharename /mnt/lan
+</pre>
+</dd>
+
+<dt>0.90 で Samba の設定</dt>
+<dd>
+<p>こんなかんじでできました...</p>
+<ul>
+<li>NTFSパーティションをマウント</li>
+</ul>
+<pre class="scl">
+$ su -
+# ntfs-3g /dev/<var>hda1</var> /mnt/<var>hda1</var> -o locale=ja_JP.UTF-8,umask=0,fmask=0111
+</pre>
+
+<ul>
+<li>Sambaの設定</li>
+</ul>
+<pre>
+# service smb start
+# service nmb start
+# smbpasswd -a berry
+# exit
+$ ln -s /mnt /home/berry
+</pre>
+<p>Windowsマシンから <code>\\berry\home</code> (<code>\\berry\homes</code>, <code>\\berry\berry</code>) でアクセス。ユーザは <strong class="ms">berry</strong>、パスワードは設定したもので</p>
+</dd>
+
+</dl>
+
+
+
+<h3><a href="#slax" name="slax"><span class="tokai1">Slax / Porteus 日本語版</span></a></h3>
+
+<p class="small">サイズから考えると“フルCD”ではないのですけど...</p>
+
+<ul>
+<li><a href="http://sourceforge.jp/projects/slax/">日本発Slaxエンハンスプロジェクト プロジェクト - SourceForge.JP</a>
+	<ul>
+	<li><a href="http://hatochan.dyndns.org/slax-ja/">slax-ja - PukiWiki</a></li>
+	</ul>
+</li>
+<li><a href="http://ja.wikipedia.org/wiki/SLAX">SLAX - Wikipedia</a></li>
+</ul>
+
+<ul>
+<li>本家 : <a href="http://www.slax.org/">Slax: your pocket operating system</a></li>
+</ul>
+
+<p>本家版でも日本語がサポートされた様ですがやや中途半端かも。「Slax Enhanced Project プロジェクト」の <strong class="ms">Porteus</strong> がおすすめかな。</p>
+
+<dl class="palmst pink small">
+<dt>Slax Enhanced Project</dt>
+<dd>
+<ul>
+<li><a href="http://sourceforge.jp/projects/slax/">Slax Enhanced Project プロジェクト日本語トップページ - SourceForge.JP</a></li>
+</ul>
+<p>Porteus が Slax-remix の最新？、showcase が SLAX, Puppy などを含むマルチブート版となってるようです。</p>
+<ul>
+<li>拙作めも :
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20110905/1315229901">Slax Enhanced Project プロジェクトの「showcase」と「porteus」</a></li>
+	<li><a href="http://d.hatena.ne.jp/palm84/20101010/1286685698">multi boot system for lightweight linux - Slaxエンハンスプロジェクト</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p class="overflow2"><img src="./images/livecd/porteus_ja11i486_2.png" width="563" height="422" alt="porteus-ja-v1.1-i486-2 のスクリーンショット"></p>
+
+<p><strong class="ms">porteus-ja-v1.1-i486-2.iso</strong> (347MB) で確認。リリースは 2012.3。LXDE版は RAM 256MBでも起動するが重め。512MB必要かと。</p>
+
+<ul>
+<li>※ 日本語入力可</li>
+</ul>
+
+<ul class="small">
+<li>Slackware ベース</li>
+<li>デスクトップ環境 - LXDE/KDE3</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Konqueror/Midori</li>
+<li>ファイルマネージャ - PCMan/Konqueror ほか</li>
+<li>自動fstab編集（NTFSは自動マウント、FATはroot権限？）</li>
+<li>smbfs(smbmount)</li>
+<li>NTFS書き込み - ntfs-3g</li>
+</ul>
+
+<ul class="small">
+<li>Porteus as PXE server - Terminal サーバーとして起動（クライアントのネットワークブート可）</li>
+</ul>
+
+<ul class="small">
+<li>Sambaサーバ - なし（追加可能？）</li>
+<li>Partimage - なし（追加可能？）</li>
+<li>GParted（追加可能？）</li>
+<li>SSHサーバ - ？</li>
+<li>ms-sys なし</li>
+<li>chntpw なし</li>
+</ul>
+
+<ul class="small">
+<li>PLoP Boot Manager</li>
+</ul>
+
+<p>（※ 最近分は確認してませんが...すみません）。初期サイズは小さいですがモジュールの追加が可能なので簡単にカスタマイズ版作成できるのがイイとこかも</p>
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<ul>
+<li>(Porteus) <a href="http://sourceforge.jp/projects/slax/releases/">ダウンロード - Slax Enhanced Project - SourceForge.JP</a></li>
+<li>Slax (5, 6) <a href="http://hatochan.dyndns.org/slax-ja/index.php?slax-ja%2Fdownload">slax-ja/download - PukiWiki</a></li>
+<li><a href="http://simosnet.com/livecdroom/index.html#slax">Slax (5, 6) - ライブCDの部屋</a>
+	<ul class="small">
+	<li>理研ミラー：<a href="http://ftp.riken.go.jp/Linux/simosnet-livecd/slax/">Index of /Linux/simosnet-livecd/slax</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://distrowatch.com/table.php?distribution=Porteus">DistroWatch.com: Porteus</a></li>
+<li><a href="http://distrowatch.com/table.php?distribution=slax">DistroWatch.com: Slax</a></li>
+</ul>
+
+<ul>
+<li><a href="http://hibari.2ch.net/test/read.cgi/linux/1156462444/">なにはともあれSLAX</a>（2ch）</ul>
+</dd>
+</dl>
+
+
+<dl class="palmst small">
+<dt>SLAX 6</dt>
+<dd>
+<p class="overflow2"><img src="./images/livecd/slax6122.png" width="480" height="360" alt="SLAX 6.1.2-3 デスクトップ画面"></p>
+
+<p><strong class="ms">slax-ja-6.1.2-2.iso</strong> (240MB)で確認。2009/12 リリース</p>
+
+<ul>
+<li>※ 日本語入力可</li>
+</ul>
+
+<ul>
+<li>ウィンドウマネージャ - Kwin(<strong class="ms">KDE3</strong>)</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Konqueror</li>
+<li>ファイルマネージャ - Konqueror ほか</li>
+<li>自動fstab編集（NTFS/FAT32パーティションは自動マウント）</li>
+<li>smbfs(smbmount)</li>
+<li>NTFS書き込み - ntfs-3g</li>
+<li>gpart</li>
+</ul>
+
+<ul>
+<li>Sambaサーバ - なし（追加可能？）</li>
+<li>Partimage - なし（追加可能？）</li>
+<li>GParted（追加可能？）</li>
+<li>SSHサーバ - ？</li>
+</ul>
+
+<p>初期サイズは小さいですがモジュールの追加が可能なので簡単にカスタマイズ版作成できるのがイイとこかも。エンハンスプロジェクトのマルチブート版はメンテ用に便利なので1枚持っとくと役に立つかも。</p>
+
+<dl>
+<dt>NTFSはリマウント</dt>
+<dd>
+<p>NTFS, FAT32 とも自動マウントされましたが、NTFSでは日本語ファイル名がだめみたいです。</p>
+<ul>
+<li>※ sda1 の例</li>
+</ul>
+<pre>
+# umount /mnt/sda1
+# ntfs-3g -o locale=ja_JP.UTF-8 /dev/sda1 /mnt/sda1
+</pre>
+</dd>
+</dl>
+</dd>
+
+<dt>SLAX 5</dt>
+<dd>
+<p class="overflow2"><img src="./images/livecd/slax51813.png" width="480" height="360" alt="SLAX-ja-5.1.8.1-3 デスクトップ画面"></p>
+
+<p><strong class="ms">slax-ja-5.1.8.1-3.iso</strong>で確認。isoファイルサイズは 252MB。</p>
+
+<ul>
+<li>※ 日本語入力可</li>
+</ul>
+
+<ul>
+<li>ウィンドウマネージャ - Kwin(<strong class="ms">KDE</strong>) / fluxbox</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Konqueror</li>
+<li>ファイルマネージャ - Konqueror ほか</li>
+<li>自動fstab編集（NTFS/FAT32パーティションは自動マウント）</li>
+<li>smbfs(smbmount)</li>
+<li>NTFS書き込み - ntfs-3g</li>
+<li>gpart</li>
+</ul>
+
+<ul>
+<li>Sambaサーバ - なし（追加可能）</li>
+<li>Partimage - なし（追加可能）</li>
+<li>GParted - なし（追加可能）</li>
+<li>SSHサーバ - ？</li>
+</ul>
+
+<p>Slackware ベース。デスクトップマネージャは KDE ですが、Knoppix などより動作はかなり軽いかんじ。また、レギュラー版（？）のサイズも約250MBと小さいので、必要なモジュールを追加してマルチブートCDへの組み込み用やUSBメモリブート用にいいかも。モジュールの追加も簡単です。</p>
+
+<div class="quote">
+<blockquote cite="http://hatochan.dyndns.org/slax-ja/index.php?slax-ja%2Ffeatures" title="slax-ja/features - PukiWiki">
+<p>SLAXでは、ファイルシステムの一致したパートはすべて、独立したファイルに圧縮されており、他に何かを含みません。たとえば、Xwindowに属しているすべてのファイルはxwindow.mo、KOfficeに関連したものはkoffice.moなど、すべて属しているところにあります。もし、KOfficeを起動したならば、通常KOfficeからだけで、他の何からもファイルを必要としません。そのため、ファイルシステムのそのパートに関するすべてのファイルは、残りのものから切り離されます。CDドライブはその圧縮ファイルの10MBのエリア内だけでシークすればよいことになります。これは、かなりの速度改善になります。</p>
+</blockquote>
+<div class="rt">
+<cite><a href="http://hatochan.dyndns.org/slax-ja/index.php?slax-ja%2Ffeatures">slax-ja/features - PukiWiki</a></cite>
+</div>
+</div>
+</dd>
+</dl>
+
+<h2><a href="#light_linux" accesskey="5" name="light_linux">軽量Linux</a> <kbd class="ak">5</kbd></h2>
+
+<dl>
+<dt>一般用途（Web・メールとか）古いPCの再利用向き</dt>
+<dd>
+<p><a href="#puppy">Puppy Linux</a> は特殊な軽量Linuxという趣なのでパッケージ数は少ない様ですが、オンメモリなのでビックリするぐらい軽量です。<ins>変更差分をHDなどへ保存して利用できます</ins>。</p>
+<p><a href="#windos">WindOS</a> は更新止まってますが、日本人向け軽量版 Debian Live、もしくは KNOPPIX の縮小版というかんじ。</p>
+<p><a href="#lubuntu">Lubuntu Desktop</a>, <a href="#xubuntu">Xubuntu Desktop</a> は Ubuntu 公式の軽量版、<a href="#kona">Kona Linux</a> は Debian の、<a href="#linuxBean">linuxBean</a> は Ubuntu の軽量カスタマイズ版。<ins>HDへインストールすれば</ins>、apt で最新パッケージへアップデートしたり、通常ディストリと同様な使い方ができます。</p>
+
+</dd>
+</dl>
+
+
+
+<h3><a href="#puppy" name="puppy"><span class="tokai1">Puppy Linux 日本語版</span></a></h3>
+
+<ul>
+<li><a href="http://openlab.jp/puppylinux/">Puppy Linux 日本語版</a>
+	<ul>
+	<li><a href="http://sakurapup.browserloadofcoolness.com/">パピーリナックス日本語フォーラム</a></li>
+	<li><a href="http://puppylinux.jp/w/">FrontPage - Puppy Linux 日本語版</a></li>
+	</ul>
+</li>
+<li><a href="http://www.puppylinux.com/">Puppy Linux</a></li>
+<li><a href="http://ja.wikipedia.org/wiki/Puppy_Linux">Puppy Linux - Wikipedia</a></li>
+</ul>
+
+
+<p class="overflow2"><img src="./images/livecd/precise550jp.png" width="751" height="422" alt="precise-550JP のスクリーンショット"></p>
+<p><strong class="ms">precise-550JP.iso</strong> (172MB) で確認。リリースは 2013.6。RAM 256MBでも起動しますが、PAE対応必須なので注意。（※ <ins><strong class="ms">precise-571JP</strong> は non-PAE です</ins>。）</p>
+<ul>
+<li><a href="http://openlab.jp/puppylinux/download/puppy-5.5.0JP/550JP-READMEJA.HTM">Precise Puppy Linux 550JP</a></li>
+<li><a href="http://sakurapup.browserloadofcoolness.com/viewtopic.php?t=2334">sakurapup.browserloadofcoolness.com . トピック - パピーリナックス Precise-550JP</a></li>
+</ul>
+
+
+<ul>
+<li>※ 日本語入力可</li>
+</ul>
+<ul class="small">
+<li>Ubuntu 12.04.1 (Precise Pangolin) 互換</li>
+<li>ウィンドウマネージャ - JWM</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - SeaMonkey</li>
+<li>ファイルマネージャ - Rox-Filer
+	<ul>
+	<li>アイコンクリックのマウントでNTFS,FAT32とも日本語ファイル名も問題なし</li>
+	</ul>
+</li>
+<li>smbfs(smbmount) - cifs</li>
+<li>WindowsネットワークドライブのマウントはGUIツール Pnethood で可</li>
+<li>NTFS書き込み - ntfs-3g</li>
+<li>GParted 0.11.0</li>
+<li>ms-sys 2.1.2</li>
+<li>gpart</li>
+</ul>
+
+<ul class="small">
+<li>Sambaサーバ - なし</li>
+<li>SSHサーバ - なし</li>
+<li>Partimage - なし</li>
+<li>TestDisk - なし</li>
+<li>chntpw - なし</li>
+</ul>
+
+<p>RAM <del>256</del> <ins>512</ins> MB 以上でオンメモリで起動します。むちゃくちゃ軽いです。この小さなサイズなのに一般的な用途として基本的なソフトはほぼ揃ってます。私はRAM 384 MB の古いPCに入れてます。（※ パッケージを追加して行くと多少重くなったりしますが。）</p>
+
+
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<ul>
+<li><a href="http://openlab.jp/puppylinux/#dl">ダウンロード - Puppy Linux 日本語版</a></li>
+<li><a href="http://www.ring.gr.jp/archives/linux/puppylinux/">Index of /archives/linux/puppylinux</a>
+	<ul>
+	<li><code>precise-550JP.iso</code></li>
+	<li><a href="http://openlab.jp/puppylinux/download/puppy-5.5.0JP/">Index of /puppylinux/download/puppy-5.5.0JP</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://distrowatch.com/table.php?distribution=puppy">DistroWatch.com: Puppy Linux</a></li>
+</ul>
+
+<ul>
+<li><a href="http://sourceforge.jp/magazine/09/02/11/0949245">古いPCでもサクサク動く、Puppy Linux日本語版 - SourceForge.JP Magazine</a></li>
+</ul>
+
+<ul>
+<li><a href="http://openlab.jp/puppylinux/howtofaq.html">Puppy Linux 子犬の飼い方(処方箋)</a></li>
+<li><a href="http://japan.internet.com/linuxtoday/20050311/4.html">Japan.internet.com LinuxToday - Puppy Linux、ブータブル＆データ保存できる「Multi-session live-CD」α</a></li>
+</ul>
+
+<ul>
+<li><a href="http://shino.pos.to/linux/puppy.html">走れパピー - Work around Puppy Linux</a>
+	<ul>
+	<li><a href="http://paper.cup.com/">Shino's Bar Internet</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://engawa.2ch.net/test/read.cgi/linux/1349795992/">【CD/USB】PuppyLinux - 11匹め - 【軽量】</a> (2ch)</li>
+</ul>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20071108/1194453977">USBメモリでブートいろいろ - Puppy Linux 編</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<dl class="palmst small">
+<dt>バージョン 5.1.1</dt>
+<dd>
+<p class="overflow2"><img src="./images/livecd/wary_puppy_511.png" width="480" height="360" alt="wary Puppy 5.1.1 のスクリーンショット"></p>
+
+<p><strong class="ms">wary-511-01j-k2.6.32.28-small.iso</strong> で確認。isoファイルサイズは 114MB。リリースは 2011.4</p>
+<ul>
+<li><a href="http://sakurapup.browserloadofcoolness.com/viewtopic.php?t=2010">sakurapup.browserloadofcoolness.com . トピック - パピーリナックスWary-511-01jをリリースしました。</a></li>
+</ul>
+
+<ul>
+<li>※ 日本語入力可</li>
+</ul>
+<ul>
+<li>ウィンドウマネージャ - JWM</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - SeaMonkey</li>
+<li>ファイルマネージャ - Rox-Filer
+	<ul>
+	<li>アイコンクリックのマウントでNTFS,FAT32とも日本語ファイル名も問題なし</li>
+	</ul>
+</li>
+<li>smbfs(smbmount) - cifs</li>
+<li>NTFS書き込み - ntfs-3g</li>
+<li>GParted 0.7.0</li>
+</ul>
+
+<ul>
+<li>ms-sys 2.1.2</li>
+</ul>
+
+<ul>
+<li>自動fstab編集 - なし
+	<ul>
+	<li>アイコンクリックのマウントでNTFS,FAT32とも日本語ファイル名も問題なし</li>
+	</ul>
+</li>
+<li>Sambaサーバ - なし</li>
+<li>Partimage - なし</li>
+<li>gpart/TestDisk - なし</li>
+<li>SSHサーバ - なし</li>
+</ul>
+
+<p>RAM 256 MB 以上でオンメモリで起動します。むちゃくちゃ軽いです。この小さなサイズなのに一般的な用途として基本的なソフトはほぼ揃ってます。私はRAM 384 MB の古いPCに入れてます。（※ パッケージを追加して行くと多少重くなったりしますが。）</p>
+
+<p>※WindowsネットワークドライブのマウントはGUIツール Pnethood で可能。</p>
+</dd>
+
+<dt>バージョン 4.3.1</dt>
+<dd>
+<p>2009.11 リリース</p>
+<ul>
+<li><a href="http://openlab.jp/puppylinux/release-4.3.1JP.html">Release note 4.3.1JP</a></li>
+<li><a href="http://openlab.jp/puppylinux/download/puppy-4.3.1JP2012/release-431JP2012.html">Puppy Linux 431JP2012</a></li>
+</ul>
+
+
+<p class="overflow2"><img src="./images/livecd/puppy431jp.png" width="480" height="360" alt="hogehoge"></p>
+
+<p><strong class="ms">pup-431JP.iso</strong>で確認。isoファイルサイズは 118MB。</p>
+
+<ul>
+<li>※ 日本語入力可</li>
+</ul>
+<ul>
+<li>ウィンドウマネージャ - JWM</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - SeaMonkey</li>
+<li>ファイルマネージャ - Rox-Filer
+	<ul>
+	<li>アイコンクリックのマウントでNTFS,FAT32とも日本語ファイル名も問題なし</li>
+	</ul>
+</li>
+<li>smbfs(smbmount) - cifs</li>
+<li>NTFS書き込み - ntfs-3g</li>
+<li>GParted</li>
+</ul>
+
+<ul>
+<li>ms-sys 2.1.2</li>
+</ul>
+
+<ul>
+<li>自動fstab編集 - なし
+	<ul>
+	<li>アイコンクリックのマウントでNTFS,FAT32とも日本語ファイル名も問題なし</li>
+	</ul>
+</li>
+<li>Sambaサーバ - なし</li>
+<li>Partimage - なし</li>
+<li>gpart/TestDisk - なし</li>
+<li>SSHサーバ - なし</li>
+</ul>
+
+</dd>
+</dl>
+
+
+<h3><a href="#windos" name="windos"><span class="tokai1">WindOS</span></a></h3>
+
+<p class="pink">※ 開発が止まってるみたいで少し残念...</p>
+
+<ul>
+<li><a href="http://www44.atwiki.jp/windos/">WindOS 公式ホームページ - トップページ</a></li>
+<li><a href="http://sourceforge.jp/projects/windos/">WindOS - based on Debian Squeeze プロジェクト日本語トップページ - SourceForge.JP</a></li>
+</ul>
+
+<p class="overflow2"><img src="./images/livecd/windos_r2_20110213.png" width="480" height="360" alt="hogehogeのスクリーンショット"></p>
+
+<p><strong class="ms">windos_r2_20110213.iso</strong> (426MB)で確認。2011/2 リリース。</p>
+
+<p>「軽量版」に分けましたが、Knoppix の縮小版みたいな。レスキュー用途でも使えるかも。メモリ (RAM) は256MBで十分動きました。128MB でも動くようです。</p>
+
+<ul>
+<li>※ 日本語入力可 - uim-Anthy</li>
+</ul>
+
+<ul class="small">
+<li>Debian Squeeze ベース</li>
+<li>Debian Live 形式</li>
+<li>デスクトップ環境 - LXDE</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Iceweasel(Firefox)</li>
+<li>ファイルマネージャ - PCMan File Manager 他</li>
+<li>自動fstab編集 - なし
+	<ul>
+	<li>ファイル・マネージャから自動マウント可能、日本語ファイル名も問題なし</li>
+	</ul>
+</li>
+<li>smbfs(smbmount) - cifs
+	<ul>
+	<li>ファイル・マネージャからアクセス可能、日本語ファイル名も問題なし</li>
+	</ul>
+</li>
+<li>NTFS書き込み - ntfs-3g（通常のマウントでOK）</li>
+<li>GParted 0.7.0</li>
+<li>Partimage </li>
+<li>TestDisk</li>
+</ul>
+
+<ul class="small">
+<li>Sambaサーバ なし</li>
+<li>SSHサーバ なし</li>
+<li>ms-sys なし</li>
+<li>chntpw なし</li>
+</ul>
+
+<dl>
+<dt>FDイメージなどのツール類</dt>
+<dd>
+<ul class="small">
+<li>BG-Rescue Linux 1.1.1</li>
+<li>FreeDOS Balder</li>
+<li>FreeDOS/V</li>
+<li>HDT (Hardware Detection Tool)</li>
+<li>Memtest86+</li>
+</ul>
+</dd>
+</dl>
+
+<p>Debian Squeeze ベースということで、persistent 機能を使い Debian パッケージの追加でカスタマイズが容易です。</p>
+<p>KNOPPIX や Puppy ではいまいちな人や、USBメモリブートでカスタマイズしたい場合とかはイイかも。</p>
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<ul>
+<li><a href="http://sourceforge.jp/projects/windos/releases/">ダウンロード - WindOS - based on Debian Squeeze - SourceForge.JP</a>
+	<ul>
+	<li><code>windos_r2_20110213.iso</code></li>
+	</ul>
+</li>
+</ul>
+
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://engawa.2ch.net/test/read.cgi/linux/1334391812/">WindOS is light,fast &#038; rich Operating System</a> (2ch)</li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#kona" name="kona"><span class="tokai1">Kona Linux</span></a></h3>
+
+<p>Debian ベース、古めのPCへのHDインストールによさそうな軽量 Linux。</p>
+
+<ul>
+<li><a href="https://docs.google.com/folder/d/0B63KzJgfI7FnRVMwXy1sQXlDdUk/edit?pli=1">konalinux - Google ドライブ</a></li>
+</ul>
+
+<p class="overflow2"><img src="./images/livecd/konalinux21_i386.png" width="751" height="422" alt="konalinux-2.1_i386 のスクリーンショット"></p>
+
+<p><code>konalinux-2.1_i386.iso</code> (1.2GB) で確認。リリースは 2013/6。Live起動は RAM 256MBでは重い、512MB必要かな。</p>
+
+<ul>
+<li>※ 日本語入力可</li>
+</ul>
+
+<ul class="small">
+<li>Debian7.0/wheezy ベース</li>
+<li>デスクトップ環境 - LXDE</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Firefox</li>
+<li>ファイルマネージャ - PCMan File Manager
+	<ul>
+	<li>NTFS / FAT32 日本語ファイル名もおｋ</li>
+	<li>Windows ネットワーク、アクセス可</li>
+	</ul>
+</li>
+<li>smbfs(smbmount) - cifs</li>
+<li>NTFS書き込み - ntfs-3g（通常のマウントでOK）</li>
+<li>GParted 0.12.1</li>
+<li>Partimage 0.6.8</li>
+<li>TestDisk 6.13</li>
+<li>chntpw 0.99.6</li>
+</ul>
+
+<ul class="small">
+<li>ms-sys - なし</li>
+<li>Sambaサーバ - なし</li>
+<li>SSHサーバ - なし</li>
+</ul>
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<ul>
+<li><a href="http://ftp.riken.go.jp/Linux/simosnet-livecd/konalinux/">Index of /Linux/simosnet-livecd/konalinux</a></li>
+</ul>
+</dd>
+
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://engawa.2ch.net/test/read.cgi/linux/1334391812/">WindOS is light,fast &#038; rich Operating System</a> (2ch)</li>
+</ul>
+</dd>
+</dl>
+
+
+
+
+<h3><a href="#xubuntu" name="xubuntu"><span class="tokai1">Xubuntu Desktop 非公式日本語 Remix</span> （ライブCDの部屋）</a></h3>
+
+<p>Xfce デスクトップ採用の軽量版 Ubuntu。GNOME,KDE より圧倒的に軽いけど、LXDE よりはちょっと重いぐらいで中軽量級な趣でせうか。RAM 512MBで起動できました。（256MBでは重い）</p>
+
+<ul>
+<li><a href="http://xubuntu.org/">Xubuntu</a>
+	<ul>
+	<li><a href="https://wiki.ubuntu.com/Xubuntu">Xubuntu - Ubuntu Wiki</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/Xubuntu">Xubuntu - Wikipedia</a></li>
+</ul>
+
+<p class="overflow2"><img src="./images/livecd/xubuntu1204desktopi386jp.png" width="747" height="422" alt="xubuntu-12.04-desktop-i386-jp のスクリーンショット"></p>
+
+<p><strong class="ms">xubuntu-12.04-desktop-i386-jp.iso</strong> (626MB) （ライブCDの部屋） で確認。リリースは 2012.5。</p>
+<ul>
+<li>Xubuntu 12.04 の新機能 - <a href="https://wiki.ubuntu.com/PrecisePangolin/ReleaseNotes/ja/Xubuntu">PrecisePangolin/ReleaseNotes</a></li>
+</ul>
+<p class="small pink">※ 12.10 以降はCPUのPAE対応必須なので注意。（【追記】<ins>Ubuntu 14.04 では PentiumM/CeleronM に <code>forcepae</code> オプションで対応</ins>。）</p>
+
+<ul>
+<li>※ 日本語入力あり</li>
+</ul>
+
+<ul class="small">
+<li>Ubuntu 12.04 ベース</li>
+<li>デスクトップ環境 - Xfce</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Firefox</li>
+<li>ファイルマネージャ - Thunar
+	<ul>
+	<li>NTFS, FAT32 日本語ファイル名もおｋ</li>
+	<li>Windowsネットワーク、おｋ</li>
+	</ul>
+</li>
+<li>smbfs(smbmount) - cifs</li>
+<li>NTFS書き込み - ntfs-3g（通常のマウントでOK）</li>
+<li>GParted 0.11.0</li>
+</ul>
+
+<ul class="small">
+<li>Partimage なし</li>
+<li>gpart/TestDisk なし</li>
+<li>ms-sys なし</li>
+<li>chntpw なし</li>
+<li>Sambaサーバ なし</li>
+<li>SSHサーバ なし</li>
+</ul>
+
+<ul>
+<li><strong class="ms">xubuntu-13.04-desktop-i386-jp.iso</strong> (861MB)（ライブCDの部屋）リリースは 2013.4 （※ CDには入りません）。</li>
+</ul>
+<p class="overflow2"><img src="./images/livecd/xubuntu1304desktopi386jp.png" width="747" height="422" alt="xubuntu-13.04-desktop-i386-jp のスクリーンショット"></p>
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<p>※ 公式版も日本語化されてますが、日本語入力機能はありません。</p>
+<ul>
+<li><a href="http://xubuntu.org/getxubuntu/">Get Xubuntu</a>
+	<ul>
+	<li><a href="http://cdimage.ubuntu.com/xubuntu/releases/">Index of /xubuntu/releases</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://simosnet.com/livecdroom/index.html#ubuntu">[2013.4.29更新] Ubuntu  - ライブCDの部屋</a>
+	<ul>
+	<li>理研ミラー：<a href="http://ftp.riken.go.jp/Linux/simosnet-livecd/ubuntu/">Index of /Linux/simosnet-livecd/ubuntu</a></li>
+	<li><code>xubuntu-12.04-desktop-i386-jp.iso</code> (626MB)</li>
+	<li><code>xubuntu-12.10-desktop-i386-jp.iso</code> (608MB)</li>
+	<li><code>xubuntu-13.04-desktop-i386-jp.iso</code> (861MB)</li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>関連リンク</dt>
+<dd>
+<ul class="small">
+<li>リリースノート
+	<ul>
+	<li><a href="http://xubuntu.org/news/12-04-release/">Xubuntu 12.04 released - Xubuntu</a></li>
+	<li><a href="http://xubuntu.org/news/12-10-release/">Xubuntu 12.10 is out! - Xubuntu</a></li>
+	<li><a href="http://xubuntu.org/news/13-04-release/">Xubuntu 13.04 is here! - Xubuntu</a></li>
+	<li>Xubuntu 12.04 の新機能 - <a href="https://wiki.ubuntu.com/PrecisePangolin/ReleaseNotes/ja/Xubuntu">PrecisePangolin/ReleaseNotes</a></li>
+	<li>Xubuntu 12.10 の新機能 - <a href="https://wiki.ubuntu.com/QuantalQuetzal/ReleaseNotes/ja/Xubuntu">QuantalQuetzal/ReleaseNotes</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://distrowatch.com/table.php?distribution=kubuntu">DistroWatch.com: Kubuntu</a></li>
+</ul>
+
+</dd>
+</dl>
+
+
+
+<h3><a href="#lubuntu" name="lubuntu"><span class="tokai1">Lubuntu Desktop</span></a></h3>
+
+<p>Ubuntu 公式、LXDEデスクトップ採用の軽量版。LiveCD は、機能少な目ですが、RAM 512MBでサクサク起動できました。（256MBでは重いけど... orz）</p>
+
+<ul>
+<li><a href="http://lubuntu.net/">lubuntu | lightweight, fast, easier</a>
+	<ul>
+	<li><a href="https://wiki.ubuntu.com/Lubuntu/">Lubuntu - Ubuntu Wiki</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/Lubuntu">Lubuntu - Wikipedia</a></li>
+</ul>
+
+<p class="small pink">※ HDにインストールする際は 通常の Ubuntu とは違い<strong>サポート期限が短い</strong>ので注意。</p>
+
+<p class="overflow2"><img src="./images/livecd/lubuntu1204desktop.png" width="747" height="422" alt="のスクリーンショット"></p>
+<p><strong class="ms">lubuntu-12.04-desktop-i386.iso</strong> (688MB) で確認。リリースは 2012.4。</p>
+
+<ul>
+<li>Lubuntu 12.04 の新機能 - <a href="https://wiki.ubuntu.com/PrecisePangolin/ReleaseNotes/ja/Lubuntu">PrecisePangolin/ReleaseNotes</a></li>
+</ul>
+<p class="small pink">※ 12.10 以降はCPUのPAE対応必須なので注意。（【追記】<ins>Ubuntu 14.04 では PentiumM/CeleronM に <code>forcepae</code> オプションで対応</ins>。）</p>
+
+<ul>
+<li>※ 日本語入力なし</li>
+</ul>
+
+<ul class="small">
+<li>Ubuntu 12.04 ベース</li>
+<li>デスクトップ環境 - LXDE</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Chromium</li>
+<li>ファイルマネージャ - PCMan File Manager 他
+	<ul>
+	<li>NTFS, FAT32 日本語ファイル名もおｋ</li>
+	<li>Windowsネットワーク、おｋ</li>
+	</ul>
+</li>
+<li>smbfs(smbmount) - cifs</li>
+<li>NTFS書き込み - ntfs-3g（通常のマウントでOK）</li>
+<li>GParted 0.11.0</li>
+</ul>
+
+<ul class="small">
+<li>Partimage なし</li>
+<li>gpart/TestDisk なし</li>
+<li>ms-sys なし</li>
+<li>chntpw なし</li>
+<li>Sambaサーバ なし</li>
+<li>SSHサーバ なし</li>
+</ul>
+
+<ul>
+<li><strong class="ms">lubuntu-13.04-desktop-i386</strong> (687MB) リリースは 2013.4</li>
+</ul>
+<p class="overflow2"><img src="./images/livecd/lubuntu1304desktop.png" width="747" height="422" alt="のスクリーンショット"></p>
+
+<dl>
+<dt>ダウンロード (i386版)</dt>
+<dd>
+<p>※ 公式版は日本語化されてますが、日本語入力機能はありません。</p>
+<p>HDにインストールする場合はサポート期限に注意。</p>
+<ul class="small">
+<li><a href="https://help.ubuntu.com/community/Lubuntu/GetLubuntu">Lubuntu/GetLubuntu - Community Ubuntu Documentation</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://cdimage.ubuntu.com/lubuntu/releases/12.04/release/">Lubuntu 12.04 (Precise Pangolin)</a> （サポートは 2013.10 まで）
+	<ul>
+	<li>ファイル名 : <code>lubuntu-12.04-desktop-i386.iso</code> (688MB)</li>
+	</ul>
+</li>
+<li><a href="http://cdimage.ubuntu.com/lubuntu/releases/12.10/release/">Lubuntu 12.10 (Quantal Quetzal)</a> （サポートは 2014.4 まで）
+	<ul>
+	<li>ファイル名 : <code>lubuntu-12.10-desktop-i386.iso</code> (692MB)</li>
+	</ul>
+</li>
+<li><a href="http://cdimage.ubuntu.com/lubuntu/releases/13.04/release/">Lubuntu 13.04 (Raring Ringtail)</a> （サポートは 2014.1 まで）
+	<ul>
+	<li>ファイル名 : <code>lubuntu-13.04-desktop-i386.iso</code> (687MB)</li>
+	</ul>
+</li>
+</ul>
+<p>※ 12.10 以降はCPUのPAE対応必須なので注意。（【追記】<ins>Ubuntu 14.04 では PentiumM/CeleronM に <code>forcepae</code> オプションで対応</ins>。）</p>
+</dd>
+
+<dt>関連リンク</dt>
+<dd>
+<ul class="small">
+<li>リリースノート
+	<ul>
+	<li>Lubuntu 12.04 の新機能 - <a href="https://wiki.ubuntu.com/PrecisePangolin/ReleaseNotes/ja/Lubuntu">PrecisePangolin/ReleaseNotes</a></li>
+	<li>Lubuntu 12.10 の新機能 -<a href="https://wiki.ubuntu.com/QuantalQuetzal/ReleaseNotes/ja/Lubuntu">QuantalQuetzal/ReleaseNotes</a></li>
+	<li>Lubuntu 13.04 の新機能 -<a href="https://wiki.ubuntu.com/RaringRingtail/ReleaseNotes/Ja/Lubuntu">RaringRingtail/ReleaseNotes</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://distrowatch.com/table.php?distribution=lubuntu">DistroWatch.com: Lubuntu</a></li>
+</ul>
+
+</dd>
+
+</dl>
+
+
+
+<h3><a href="#linuxBean" name="linuxBean"><span class="tokai1">linuxBean</span></a></h3>
+
+<div class="quote small pink">
+<blockquote cite="http://hitaaki.blog47.fc2.com/blog-category-14.html" title="舞台袖 linuxBean" class="pink">
+<p>linuxBeanは、ubuntu 12.04 LTSのminimal install版をベースにした、  無印XP世代向けの軽量・高速ディストリビューションです。</p>
+</blockquote>
+<cite><a href="http://hitaaki.blog47.fc2.com/blog-category-14.html">舞台袖 linuxBean</a></cite>
+</div>
+<p>HDにインストールする場合は、RAM 256MBでも動くようです。Live起動では 512MBないと重かったです。</p>
+
+<ul>
+<li><a href="http://hitaaki.blog47.fc2.com/blog-category-14.html">舞台袖 linuxBean</a></li>
+<li><a href="http://sourceforge.jp/projects/linuxbean/">linuxBean (リナックスビーン) プロジェクト日本語トップページ - SourceForge.JP</a></li>
+</ul>
+
+<p class="overflow2"><img src="./images/livecd/bean12042_130619.png" width="747" height="422" alt="bean12042-130619 のスクリーンショット"></p>
+
+<p><code>bean12042-130619.iso</code> (519MB) で確認。リリースは 2013/6。Live起動では、RAM は 512MB程必要かと。</p>
+
+<ul>
+<li><a href="http://sourceforge.jp/projects/linuxbean/releases/59026">リリース詳細: 12.04.2-130619 (linuxBean) - linuxBean (リナックスビーン) - SourceForge.JP</a></li>
+</ul>
+
+<ul>
+<li>※ 日本語入力可</li>
+</ul>
+
+<ul class="small">
+<li>Ubuntu 12.04 Precise ベース</li>
+<li>デスクトップ環境 - LXDE</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Opera/Dillo</li>
+<li>ファイルマネージャ - PCMan File Manager
+	<ul>
+	<li>NTFS / FAT32 日本語ファイル名もおｋ</li>
+	<li>Windows ネットワーク、アクセス可</li>
+	</ul>
+</li>
+<li>NTFS書き込み - ntfs-3g（通常のマウントでOK）</li>
+<li>GParted 0.16.1</li>
+<li>Partimage 0.6.8</li>
+<li>TestDisk 6.13</li>
+<li>chntpw 0.99.6</li>
+</ul>
+
+<ul class="small">
+<li>smbfs(smbmount) - なし（※ インストール可）</li>
+<li>ms-sys - なし</li>
+<li>Sambaサーバ - なし</li>
+<li>SSHサーバ - なし</li>
+</ul>
+
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<ul>
+<li><a href="http://sourceforge.jp/projects/linuxbean/releases/">ダウンロード - linuxBean (リナックスビーン) - SourceForge.JP</a></li>
+</ul>
+</dd>
+
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://engawa.2ch.net/test/read.cgi/linux/1359901280/">【日本製】linuxBean【最小Ubuntu】</a> (2ch)</li>
+</ul>
+</dd>
+</dl>
+
+
+<h2><a href="#mini_rescue" accesskey="6" name="mini_rescue">ミニLinux系</a> <kbd class="ak">6</kbd></h2>
+
+<p class="small">※ Linux素人の感想注意（笑）</p>
+
+<dl>
+<dt>メンテナンス・レスキュー用途</dt>
+<dd>
+<p>Linux経験者じゃないとキビシイですが、レスキュー用では <a href="#sysrescd">SystemRescueCd</a>, <a href="#pmagic">Parted Magic</a> 2強時代になりつつあるかも？</p>
+
+<p class="small">あまり語られていないような気もしますが、<a href="#knoppix">Knoppix</a>はどちらかと言えばメンテナンスやレスキュー用ツール満載なので（※ 6 以降はちょっと違うけど）、それ向きLinuxかなと思います。</p>
+
+<p>Knoppix などと比較した場合、<a href="#sysrescd">SystemRescueCd</a> は英語版ですが（<del>日本語フォントあり</del>）、サイズが小さい、<strong>更新が頻繁</strong>なので最新パッケージが使えるとこが利点。</p>
+<p>逆に Knoppix と比べた場合の欠点としては、殆どの操作はコマンドラインとなるため Linux に慣れていない場合は使うのが難しいとこかと。</p>
+</dd>
+</dl>
+
+<div class="palmst small pink">
+<p class="pink">※ <a href="http://www.partimage.org/Main_Page">Partimage</a> は開発が 2010-07 で止まってるので最近のPCでは使えないかも？</p>
+<p>Partimage だけ使いたいならこんなのもあります。オンメモリで起動。isoファイルサイズは20MB程。</p>
+<ul>
+<li><a href="http://ping.windowsdream.com/">PING (Partimage Is Not Ghost)</a></li>
+<li><a href="./recovery_software.html#ping">PING (Partimage Is Not Ghost) - バックアップ・リカバリーソフトについてのめも</a></li>
+</ul>
+<p>リカバリー・イメージ作成については、Partimage もいいのですが、下記の Clonezilla Live がもっとおすすめかな。（※ Parted Magic にも入ってます。）</p>
+<ul>
+<li><a href="./recovery_software.html#clonezilla">Clonezilla Live - バックアップ・リカバリーソフトについてのめも</a></li>
+</ul>
+</div>
+
+
+<h3><a href="#sysrescd" name="sysrescd"><span class="tokai1">SystemRescueCd（英語版）</span></a></h3>
+
+<ul>
+<li><a href="http://www.sysresccd.org/Main_Page">Main Page - SystemRescueCd</a></li>
+<li><a href="http://sourceforge.net/projects/systemrescuecd/">SystemRescueCd | Get SystemRescueCd at SourceForge.net</a></li>
+</ul>
+
+<ul>
+<li>拙作めも :
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20130307/1362667528">SystemRescueCd 3.4.2</a> （2013.3 リリース）</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>コンソール</li>
+</ul>
+<p class="overflow2"><img src="./images/livecd/systemrescuecd371console.png" width="504" height="280" alt="systemrescuecd-x86-3.7.1 コンソール画面のスクリーンショット"></p>
+<ul>
+<li>デスクトップ</li>
+</ul>
+<p class="overflow2"><img src="./images/livecd/systemrescuecd371desktop.png" width="747" height="422" alt="systemrescuecd-x86-3.7.1 デスクトップ画面のスクリーンショット"></p>
+
+<p><strong class="ms">systemrescuecd-x86-3.7.1.iso</strong> (406MB) で確認。2013.7 リリース。</p>
+
+<ul class="small">
+<li>デスクトップ環境 - Xfce（※ 英語）</li>
+<li>ネットワーク</li>
+<li>ブラウザ - Midori （※ 英語）</li>
+<li>ファイルマネージャ - emelfm/mc, SpaceFM
+	<ul>
+	<li>日本語フォントを追加すれば SpaceFM で NTFS/FAT32 GUIマウント可、日本語ファイル名おｋ</li>
+	</ul>
+</li>
+<li>smbfs(cifs)</li>
+<li>NTFS書き込み - ntfs-3g</li>
+<li>Partimage 0.6.9</li>
+<li>GParted 0.16.1</li>
+<li>gpart/TestDisk 6.13</li>
+<li>SSHサーバ</li>
+<li>Sambaサーバ</li>
+<li>ms-sys 2.3.0</li>
+<li>chntpw 0.99.6</li>
+</ul>
+
+<p>英語版ですが、ほぼ最新のパッケージが使えることが強みかな。</p>
+<p><ins>起動後に日本語フォントの追加すれば（※ 後述）</ins>、ファイルマネージャで日本語ファイル名など表示可能になりました。</p>
+
+<dl>
+<dt>FDイメージなどのツール類</dt>
+<dd>
+<p>ブートメニューから選択起動</p>
+<p class="overflow2"><img src="./images/livecd/systemrescuecd371systemtools.png" width="512" height="384" alt="systemrescuecd-x86-3.7.1 System tools のスクリーンショット"></p>
+<ul class="small">
+<li>MEMTEST: Memory test using Memtest86+</li>
+<li>NTPASSWD: Reset or edit Windows passwords - NTパスワードのリセット、回復コンソールの設定変更
+	<ul>
+	<li><a href="http://home.eunet.no/~pnordahl/ntpasswd/">Offline NT Password &#038; Registry Editor</a></li>
+	</ul>
+</li>
+<li>SGD: Super Grub2 Disk
+	<ul>
+	<li><a href="http://www.supergrubdisk.org/super-grub2-disk/">Super Grub2 Disk</a></li>
+	</ul>
+</li>
+<li>FREEDOS: Clone of the MSDOS Operating System</li>
+<li>GAG: Graphical Boot Manager - ブートマネージャ？
+	<ul>
+	<li><a href="http://www.linux.or.jp/JF/JFdocs/GAG.html">GAG (GRAPHICAL BOOT MANAGER)</a>
+	</ul>
+</li>
+<li>AIDA: old hardware diagnostics tool - パーティション管理？</li>
+<li>DBAN: erase all data from the disk - HD消去
+	<ul>
+	<li><a href="http://www.dban.org/">Darik's Boot And Nuke | Hard Drive Disk Wipe</a></li>
+	</ul>
+</li>
+<li>MHDD: Low-level Hard Drive diagnostic tool - HD診断
+	<ul>
+	<li><a href="http://hddguru.com/content/en/software/2005.10.02-MHDD/">HDDGURU: MHDD</a></li>
+	</ul>
+</li>
+<li>HDT: recent hardware diagnostics tool
+	<ul>
+	<li><a href="http://syslinux.zytor.com/wiki/index.php/Hdt_(Hardware_Detection_Tool)">Hdt (Hardware Detection Tool) - Syslinux Wiki</a></li>
+	<li><a href="http://hdt-project.org/">HDT</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<ul>
+<li><a href="http://sourceforge.net/projects/systemrescuecd/files/">SourceForge.net: Files</a></li>
+<li><a href="http://sourceforge.jp/projects/sfnet_systemrescuecd/releases/">ダウンロード - SystemRescueCd - SourceForge.JP</a></li>
+</ul>
+</dd>
+
+<dt>めも</dt>
+<dd>
+<p>日本語フォントの追加、Samba サーバの設定については拙作日記をご笑覧あれ。</p>
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20130307/1362667528">SystemRescueCd 3.4.2</a></li>
+</ul>
+
+<ul>
+<li>X(GUI) 起動 - <code>% startx</code> , または、<code>% wizard</code> でメニュー表示</li>
+<li>ネットワーク手動設定 - <code>% net-setup eth0</code></li>
+<li>オンメモリ起動・ネットワークブートは RAM 512 MB 以上必要（※ 1.1 以降では 300 MB 以上、1.0.4 では要RAM 256 MB。）</li>
+</ul>
+
+<ul>
+<li>NTFSをマウント</li>
+</ul>
+<pre>
+# mkdir /mnt/ntfs
+# mount -t ntfs-3g /dev/sda1 /mnt/ntfs
+</pre>
+
+<ul>
+<li>FAT(16/32)をマウント</li>
+</ul>
+<pre class="scl">
+# mkdir /mnt/fat32
+# mount -t vfat -o utf8,shortname=winnt /dev/sda2 /mnt/fat32
+</pre>
+
+<p>追加パラメータの例</p>
+<pre>
+<strong class="ms">rescuecd</strong> setkmap=jp dodhcp forcevesa dostartx
+</pre>
+<ul class="small">
+<li><code><strong class="ms">rescuecd</strong></code> はデフォルトの設定LABEL名</li>
+<li><code>setkmap=jp</code> - キーボードをJP配列</li>
+<li><code>dodhcp</code> - DHCPクライアント</li>
+<li><code>docache</code> - オンメモリ起動（要RAM 256 MB）</li>
+<li><code>forcevesa</code> - グラフィックドライバにvesa指定</li>
+</ul>
+<ul class="small">
+<li><code>subdir=sysres10</code> - sysrcd.datのディレクトリ名を指定</li>
+</ul>
+<ul class="small">
+<li><TFTPサーバからルートイメージをメモリへダウンロード（オンメモリ起動）</li>
+</ul>
+<pre>
+netboot=tftp://192.168.0.2/sysrcd.dat
+</pre>
+<ul class="small">
+<li>HTTPサーバからルートイメージをメモリへダウンロード（オンメモリ起動）</li>
+</ul>
+<pre>
+netboot=http://192.168.0.2/sysrcd.dat
+</pre>
+</dd>
+
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://distrowatch.com/table.php?distribution=systemrescue">DistroWatch.com: SystemRescueCd</a></li>
+</ul>
+
+<ul>
+<li>SystemRescueCd USB installer for Windows （LiveUSB 作成ツール）
+	<ul>
+	<li><a href="http://www.sysresccd.org/Sysresccd-manual-en_How_to_install_SystemRescueCd_on_an_USB-stick#B.29_Recommended_USB_installation_method_from_Windows">Sysresccd-manual-en How to install SystemRescueCd on an USB-stick - SystemRescueCd</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://sourceforge.jp/magazine/09/03/30/0616243">PCトラブル発生時の心強い味方「SystemRescueCd」 - SourceForge.JP Magazine</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20070302/1172852019#systemrescue">SystemRescueCD  - USBメモリでブートいろいろ “ミニ”Linux編</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20080318/1205772647">SystemRescueCd 1.0 - 某所の日記</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<dl class="palmst small">
+<dt>バージョン 1.5.0</dt>
+<dd>
+<p>下記は <strong class="ms">systemrescuecd-x86-1.5.0.iso</strong> (247 MB)での確認。リリースは 2010.3。</p>
+
+<p class="overflow2"><img src="./images/livecd/systemrescuecd150.png" width="480" height="360" alt="SystemRescueCd 1.5.0 デスクトップ画面"></p>
+<ul>
+<li>ウィンドウマネージャ - xfwm4(Xfce)（※英語）</li>
+<li>ネットワーク</li>
+<li>ファイルマネージャ - emelfm/mc
+</li>
+<li>smbfs(smbmount)</li>
+<li>Sambaサーバ</li>
+<li>NTFS書き込み - ntfs-3g（※日本語ファイル名は漢字・ひらがなは文字化け。<ins>起動後に日本語フォントの追加可能（※ 後述）</ins>）</li>
+<li>Partimage</li>
+<li>GParted</li>
+<li>gpart/TestDisk</li>
+<li>SSHサーバ</li>
+</ul>
+
+<ul>
+<li>ms-sys 2.1.3</li>
+<li>chntpw</li>
+</ul>
+
+<ul>
+<li>日本語ロケール - 英語版なのでなし</li>
+<li>日本語ブラウザ - なし</li>
+<li>自動fstab編集 - なし</li>
+</ul>
+
+<p>※ 日本語ファイル名は表示が化けますが、マウント時にUTF-8を指定してディレクトリごとコピー、またはSambaサーバではWindowsで正しく表示されました。</p>
+<p>※ オンメモリ起動・ネットワークブートは RAM 400 MB 以上必要。</p>
+
+<dt>version 1.5.8</dt>
+<dd>
+<ul>
+<li>isoサイズ - 260 MB</li>
+<li>ブートメニューあり (vesamenu.c32)</li>
+<li>日本語フォントあり</li>
+<li>日本語ファイル名表示可</li>
+<li>Firefoxで日本語ページ表示可</li>
+<li>GParted 0.6.1</li>
+</ul>
+</dd>
+
+<dt>Samba サーバの起動</dt>
+<dd>
+<p>とりあえずなやり方</p>
+<pre>
+% smbpasswd -a root
+% cd /etc/samba/
+% cp smb.conf.example smb.conf
+% ln -s /mnt /root
+% /etc/init.d/samba start
+</pre>
+<p><strong class="ms">ifconfig</strong> でIPアドレスを調べておく。Windows マシンから <code>\\IPアドレス\root</code> でアクセス。ユーザー名は root、パスワードは設定したもので。</p>
+</dd>
+
+<dt>日本語フォントの追加</dt>
+<dd>
+<p class="pink">※ 1.5.7 では不要。</p>
+<p>1.5.0 での確認。</p>
+<p>あくまで一時的に追加するだけですが、Terminal・ファイラーで日本語ファイル名表示、Firefoxで日本語ページ表示が可能になります。</p>
+<ul>
+<li><a href="http://dicey.org/vlgothic/">VLゴシックフォントファミリ</a></li>
+</ul>
+<p><code>VLGothic-xxxxxxxx.tar.bz2</code> をダウンロード</p>
+<pre>
+% tar jxvf VLGothic-xxxxxxxx.tar.bz2
+% pushd VLGothic
+% cp VL-* /usr/share/fonts/75dpi/
+</pre>
+</dd>
+</dl>
+
+
+
+<h3><a href="#pmagic" name="pmagic"><span class="tokai1">Parted Magic</span></a></h3>
+
+<p class="white">※ 有償版 <strong class="ms">$4.99</strong> となりました。</p>
+
+<p>SystemRescueCd の対抗馬？、こちらは日本語フォントも入ってます。</p>
+
+<ul>
+<li><a href="http://partedmagic.com/">Parted Magic</a></li>
+<li><a href="http://sourceforge.net/projects/partedmagic/">Parted Magic | Free software downloads at SourceForge.net</a></li>
+</ul>
+
+<ul>
+<li>拙作めも :
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20130221/1361448177">Parted Magic 2013_01_29</a> （2013.1 リリース）</li>
+	</ul>
+</li>
+</ul>
+
+<p>※ 旧PC向け、i586, i686版もあります。</p>
+
+<p class="overflow2"><img src="./images/livecd/pmagic_2013_06_15_desktop.png" width="751" height="422" alt="pmagic_2013_06_15 デスクトップ画面のスクリーンショット"></p>
+
+<p><strong class="ms">pmagic_2013_06_15.iso</strong> (315MB) での確認。リリースは 2013.6。オンメモリ起動は要RAM 1GB以上 (Live = 512MB, low RAM settings = 256MB)。</p>
+
+<ul class="small">
+<li>Slackware ベース</li>
+<li>デスクトップ環境 - LXDE</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>ブラウザ - Firefox英語版（※ 日本語ページ表示可）</li>
+<li>ファイルマネージャ - SpaceFM（※ 日本語ファイル名おｋ）
+	<ul>
+	<li>マウスクリックでのマウントおｋ</li>
+	</ul>
+</li>
+<li>smbfs(smbmount) - mount.cifs</li>
+<li>NTFS書き込み - ntfs-3g（通常のマウントでOK）</li>
+<li>Clonezilla 日本語おｋ</li>
+<li>Gparted 0.16.1</li>
+<li>ms-sys 2.3.0</li>
+<li>Partimage 0.6.9</li>
+<li>chntpw 0.99.6</li>
+<li>Gpart / TestDisk 6.14</li>
+<li>Ghost 4 Linux</li>
+<li>Samba サーバあり</li>
+</ul>
+
+<ul class="small">
+<li>ブートメニューから日本語ロケール選択可（但し、メニュー日本語化は一部のみ）</li>
+<li>デフォルトでは US キーマップで起動するが「Keboard Leyout」で jp106 に変更可</li>
+</ul>
+
+<p>パッケージ数は SystemRescueCd より若干少ない様ですが、こちらは GUIで日本語が使えます。ただ、レスキュー用としてはメモリ大食いですなぁ。</p>
+
+<dl>
+<dt>ツール類</dt>
+<dd>
+<p>ブートメニューから選択起動</p>
+
+<p class="overflow2"><img src="./images/livecd/pmagic_2013_06_15_extratools.png" width="504" height="280" alt="pmagic_2013_06_15 Extras Menuのスクリーンショット"></p>
+
+<ul class="small">
+<li><a href="http://hdt-project.org/">Hardware Detection Tool</a> (HDT)</li>
+<li><a href="http://www.memtest.org/">Memtest86+</a></li>
+<li>Super Grub Disk</li>
+<li><a href="http://www.supergrubdisk.org/super-grub2-disk/">Super Grub2 Disk</a></li>
+<li><a href="http://hddguru.com/content/en/software/2005.10.02-MHDD/">MHDD</a> - HD診断</li>
+<li><a href="http://clonezilla.org/">Clonezilla</a> 32/64</li>
+<li><a href="http://www.andybev.com/index.php/Nwipe">Nwipe</a> 32/64</li>
+<li><a href="http://home.eunet.no/~pnordahl/ntpasswd/">Chntpw</a> - NTパスワードのリセット、回復コンソールの設定変更</li>
+<li><a href="http://www.plop.at/en/bootmanagers.html">Plop Boot Manager</a></li>
+</ul>
+</dd>
+</dl>
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<p>旧PC向け、i586, i686版もあります。</p>
+<ul>
+<li><a href="http://partedmagic.com/download.html">Downloads</a>
+	<ul>
+	<li><a href="http://sourceforge.net/projects/partedmagic/files/">Browse Parted Magic Files on SourceForge.net</a></li>
+	</ul>
+</li>
+<li><a href="http://www.digitalincursion.net/partedmagic/">Index of /partedmagic</a>（ミラー）
+	<ul>
+	<li><a href="http://www.digitalincursion.net/partedmagic/old/">Index of /partedmagic/old</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>めも</dt>
+<dd>
+<p>Sambaサーバの設定について、あくまで一例ですが拙作日記をご笑覧あれ。</p>
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20130221/1361448177">Parted Magic 2013_01_29</a></li>
+</ul>
+
+<ul>
+<li>ネットワークブートは SYSLINUX の memdisk で可</li>
+</ul>
+
+<ul>
+<li>ファイルマネージャでFATの日本語ファイル名が文字化けする場合は</li>
+</ul>
+<pre>
+# umount /media/sd<var>xx</var>
+# mount -o utf8 /media/sd<var>xx</var>
+</pre>
+
+<ul>
+<li>keymap変更 - <code># setxkbmap jp</code></li>
+</ul>
+
+<dl class="palmst">
+<dt>日本語入力機能の追加</dt>
+<dd>
+<p>Slackware 14.x の TXZ packages がそのまま使える模様です。</p>
+<p>下記サイトを参照してください。</p>
+<ul>
+<li><a href="http://ameblo.jp/arachan3/">ゆうすけのブログ</a>
+	<ul>
+	<li><a href="http://ameblo.jp/arachan3/entry-11489453227.html">Parted Magicに日本語入力をインストール LiveCDで起動後にインストール</a></li>
+	<li><a href="http://ameblo.jp/arachan3/entry-11490115546.html">USB起動のPartedMagicに日本語入力をインストール</a></li>
+	<li><a href="http://ameblo.jp/arachan3/entry-11490216492.html">PartedMagic- ISOイメージにプログラムを追加</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</dd>
+
+<dt>参考リンク</dt>
+<dd>
+<ul>
+<li><a href="http://distrowatch.com/table.php?distribution=partedmagic">DistroWatch.com: Parted Magic</a></li>
+</ul>
+
+<ul>
+<li><a href="http://journal.mycom.co.jp/news/2008/02/12/038/index.html">OSマニアの必携ツール? パーティション設定用Linux「Parted Magic 2.0」 | パソコン | マイコミジャーナル</a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+<dl class="palmst small">
+<dt>version 4.4</dt>
+<dd>
+<p>下記は <strong class="ms">pmagic-4.4.iso</strong> (97MB) での確認。リリースは2009.。（画像は 4.5 のもの）</p>
+
+<p class="overflow2"><img src="./images/livecd/pmagic45.png" width="480" height="360" alt="Parted Magic 4.5 デスクトップ画面"></p>
+
+<ul>
+<li>ウィンドウマネージャ - Openbox(LXDE)</li>
+<li>英語版（※ 日本語フォントあり、日本語ロケール - UTF-8）</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Firefox（※ 日本語ページ表示可）</li>
+<li>ファイルマネージャ - PCMan File Manager（※ 日本語ファイル名 ok）</li>
+<li>smbfs(smbmount) - mount.cifs</li>
+<li>NTFS書き込み - ntfs-3g（通常のマウントでOK）</li>
+<li>Partimage</li>
+<li>GParted</li>
+<li>gpart/TestDisk</li>
+<li>SSHサーバ</li>
+</ul>
+
+<ul>
+<li><strong class="ms">Clonezilla</strong></li>
+<li><strong class="ms">Super GRUB Disk</strong></li>
+</ul>
+
+<p class="pink">※ 4.8 では Clonezilla がなくなってました。</p>
+
+<ul>
+<li>chntpw</li>
+<li>ms-sys-2.1.2（※ 4.6 では 2.1.4）</li>
+</ul>
+
+<ul>
+<li>自動fstab編集 - ？（NTFSはオプションなしで日本語表示可、FAT32は要オプション）</li>
+<li>Sambaサーバ - なし</li>
+</ul>
+
+<p>USB,PXE版もあり。機能限定モードなら RAM 64 MB で起動可。オンメモリ及びネットワークブートは RAM 256 MB でギリギリ可（？）</p>
+<p>PXE版（ネットワークブート）は、DHCP/TFTPサーバのみで可。</p>
+</dd>
+
+<dt>version 5.3</dt>
+<dd>
+<ul>
+<li>日本語サポート - ブートメニューで選択</li>
+<li>isoサイズ - 125 MB</li>
+<li>Clonezilla あり（※ <del>日本語モードでは文字化け</del>）</li>
+<li>Webブラウザ - Google Chrome（Firefoxはなし）、日本語ページ表示可</li>
+<li>ms-sys 2.2.0</li>
+<li>NTFS,FAT32ともアイコンクリック (Mount Devices) でのマウントで日本語ファイル名も表示可</li>
+<li>GParted 0.6.2</li>
+<li>MHDD</li>
+<li>PLoP Boot Manager</li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#cdlinux" name="cdlinux"><span class="tokai1">CDlinux</span></a></h3>
+
+<p class="pink">【注意】<ins>バージョン 0.9.7.1 では日本語（ロケール）が入ってません。日本語サポートはなくなっちゃったのかも</ins>。（※ 日本語フォントは入ってますが）</p>
+
+<p>これも SystemRescueCd の対抗馬？、サイズが小さいのに<del><strong>日本語入力も可能</strong></del>です。</p>
+
+<ul>
+<li><a href="http://cdlinux.info/wiki/doku.php">about [CDlinux]</a></li>
+<li><a href="http://sourceforge.net/projects/cd-linux/">CDlinux | Free System Administration software downloads at SourceForge.net</a></li>
+</ul>
+
+<p class="overflow2"><img src="./images/livecd/cdlinux093.png" width="480" height="360" alt="CDlinux 0.9.3 デスクトップ画面"></p>
+
+<p><strong class="ms">CDlinux-0.9.3.iso</strong> (Standard) (70 MB) での確認。リリースは 2009.7。</p>
+<p class="pink">【追記】0.9.5 Standard には、日本語選択がありませんでした。0.9.5 Community (214MB) にはありました。</p>
+
+<ul>
+<li><a href="http://cdlinux.info/wiki/doku.php/releases/0.9.3/packages">releases:0.9.3:packages [CDlinux]</a></li>
+</ul>
+
+<ul>
+<li>日本語入力可 - scim-anthy</li>
+</ul>
+
+<ul class="small">
+<li>ウィンドウマネージャ - xfwm4(Xfce)</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Firefox</li>
+<li>ファイルマネージャ - Thunar</li>
+<li>自動fstab編集</li>
+<li>smbfs(smbmount) - cifs</li>
+<li>NTFS書き込み - ntfs-3g（通常のマウントでOK）</li>
+<li>Partimage</li>
+<li>GParted</li>
+<li>TestDisk</li>
+<li>SSHサーバ</li>
+</ul>
+
+<ul class="small">
+<li>chntpw</li>
+<li>ms-sys-2.1.3（※ 0.9.5 では 2.1.4）</li>
+<li>ddrescue</li>
+</ul>
+
+<ul class="small">
+<li>Sambaサーバ - なし</li>
+</ul>
+
+<p>ブートローダは、 GRUB for DOS。RAM 64 MB 以上で起動可。オンメモリ起動は自動？</p>
+
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<ul>
+<li><a href="http://cdlinux.info/wiki/doku.php/download/latest">download:latest [CDlinux]</a></li>
+</ul>
+</dd>
+
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://sourceforge.net/projects/cd-linux/">CDlinux | Get CDlinux at SourceForge.net</a></li>
+</ul>
+
+<ul>
+<li><a href="http://cdlinux.info/wiki/doku.php/doc/faq/index">doc:faq:index [CDlinux]</a></li>
+</ul>
+
+<ul>
+<li><a href="http://distrowatch.com/table.php?distribution=cdlinux">DistroWatch.com: CDlinux</a></li>
+</ul>
+</dd>
+
+<dt>めも</dt>
+<dd>
+<p>X(GUI) が起動できない時。いわゆる「シェルに落ちる」場合などは...</p>
+<ul>
+<li><a href="http://cdlinux.info/wiki/doku.php/doc/faq/blank_screen">doc:faq:blank_screen [CDlinux]</a></li>
+</ul>
+
+<ul>
+<li><kbd>Alt</kbd>-<kbd>F2</kbd> でコンソール切替</li>
+</ul>
+<pre>
+$ sudo -s
+# killall X
+# cd /etc/X11
+# rm -f xorg.conf
+# cp xorg.conf.vesa xorg.conf
+# exit
+$ export LANG=ja_JP.UTF-8
+$ export LC_ALL=ja_JP.UTF-8
+$ startx
+</pre>
+<p>または kernel オプションに <code>vga=0x318</code> (1024x768 16M) などを追記したらいけるかな。</p>
+</dd>
+</dl>
+
+
+
+<h3><a href="#gparted" name="gparted"><span class="tokai1">GParted LiveCD</span></a></h3>
+
+<ul>
+<li><a href="http://gparted.sourceforge.net/livecd.php">GParted -- LiveCD</a></li>
+<li><a href="http://gparted.org/livecd.php">GParted -- Live CD/USB/PXE/HD</a></li>
+</ul>
+
+<ul>
+<li><a href="http://free.nchc.org.tw/gparted-live/stable/RELEASE-NOTES-GParted-live.txt">RELEASE-NOTES-GParted-live.txt</a></li>
+</ul>
+
+<p class="overflow2"><img src="./images/livecd/gparted_live01611_amd64.png" width="751" height="422" alt="gparted-live-0.16.1-1-amd64 のスクリーンショット"></p>
+
+<p><strong class="ms">gparted-live-0.16.1-1-amd64.iso
+</strong> (135MB) での確認。リリースは 2013.5。（<strong class="ms">i486</strong> 版、<strong class="ms">i686-pae</strong> 版もあります）</p>
+
+<ul class="small">
+<li>Debian Live ベース</li>
+<li>デスクトップ環境 - Fluxbox</li>
+<li>起動時に日本語選択可 - 日本語メニューは一部のみ</li>
+<li>ネットワーク</li>
+<li>ブラウザ - Netsurf 英語版（日本語ページ表示可）</li>
+<li>ファイルマネージャ - PCManFM</li>
+<li>smbfs(smbmount) - cifs</li>
+<li>NTFS書き込み - ntfs-3g（通常のマウントでOK）</li>
+<li>GParted 0.16.1</li>
+<li>Partimage 0.6.8</li>
+<li>Gpart / TestDisk 6.13</li>
+<li>SSHサーバ</li>
+</ul>
+
+<ul class="small">
+<li>Sambaサーバ なし</li>
+<li>ms-sys なし</li>
+<li>chntpw なし</li>
+</ul>
+
+<p>パッケージは少ないですが GParted のみ使いたい場合はこれがいいかな。Fluxbox なので非常に軽いです。RAM 256MB でギリギリですがオンメモリ起動できました。</p>
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<p><strong class="ms">i486</strong> 版、<strong class="ms">i686-pae</strong> 版もありますた。 </p>
+
+<ul>
+<li><a href="http://gparted.sourceforge.net/download.php">GParted -- Download</a></li>
+<li><a href="http://sourceforge.net/projects/gparted/files/gparted-live-stable/">gparted-live-stable - Browse GParted Files on SourceForge.net</a></li>
+</ul>
+</dd>
+
+<dt>mount コマンド</dt>
+<dd>
+<p>オプションなしで NTFS/FAT32とも日本語ファイル名もおｋ。</p>
+<pre>
+# mkdir /mnt/sda1
+# mkdir /mnt/sda2
+# mount -t ntfs-3g /dev/sda1 /mnt/sda1
+# mount -t vfat /dev/sda2 /mnt/sda2
+</pre>
+</dd>
+
+<dt>参考リンク</dt>
+<dd>
+<ul>
+<li><a href="http://distrowatch.com/table.php?distribution=gparted">DistroWatch.com: GParted LiveCD</a></li>
+</ul>
+
+<ul>
+<li>keymap変更 - <code># setxkbmap jp</code></li>
+</ul>
+</dd>
+</dl>
+
+
+<dl class="palmst small">
+<dt>バージョン 0.5.2-1</dt>
+<dd>
+<p class="overflow2"><img src="./images/livecd/gparted-live-0.5.2-1.png" width="480" height="360" alt="gparted-live-0.5.2-1 デスクトップ画面"></p>
+
+<p>Debian Live ベース。日本語選択可。<strong class="ms">gparted-live-0.5.2-1.iso
+</strong> (111 MB) での確認。リリースは 2010.3。</p>
+
+<ul>
+<li>ウィンドウマネージャ - fluxbox（Debian Live ベース）</li>
+<li>日本語ロケール - <code>ja_JP.UTF-8</code> 選択可能
+	<ul class="nest">
+	<li>日本語フォントあり</li>
+	<li>日本語ファイル名表示可能（ドラッグ+中クリックでコピー＆ペースト可）</li>
+	<li>ntfs-3gのマウントでも日本語ファイル名表示おｋ</li>
+	</ul>
+</li>
+<li>ネットワーク</li>
+<li>ファイルマネージャ - mc（CUI版）</li>
+<li>smbfs(smbmount) - cifs</li>
+<li>NTFS書き込み - ntfs-3g（通常のマウントでOK）</li>
+<li>Partimage</li>
+<li>GParted</li>
+<li>gpart/TestDisk</li>
+</ul>
+
+<ul>
+<li>日本語ブラウザ - なし</li>
+<li>SSHサーバ - なし</li>
+<li>Sambaサーバ - なし</li>
+<li>自動fstab編集 - ？（オプションなしのmountコマンドで日本語ファイル名表示可）</li>
+</ul>
+
+<ul>
+<li>RAM256MBでオンメモリ起動可能</li>
+<li>ネットワークの設定 - <code># dhclient eth<var>x</var></code></li>
+</ul>
+
+<dl>
+<dt>Live USB</dt>
+<dd>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/a089gpartedlive.html">GPartedのLive USBを作成するには － ＠IT</a></li>
+<li><a href="http://itpro.nikkeibp.co.jp/article/COLUMN/20070416/268352/">【特選フリーソフト】パーティション操作専用のLinux　GParted LiveCD：ITpro</a></li>
+</ul>
+<ul>
+<li>USBメモリへのインストールは（※0.3.4-8の例）
+	<ul class="nest">
+	<li>syslinuxディレクトリコピー</li>
+	<li>syslinuxディレクトリへ gparted と gparted.igz をコピー</li>
+	<li>SYSLINUXのインストール</li>
+	</ul>
+</li>
+<li>USBメモリへのインストールは（※0.3.7-7の例）
+	<ul class="nest">
+	<li>zip版をダウンロード</li>
+	<li>展開したファイルをすべてコピー</li>
+	<li>SYSLINUXのインストール</li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+
+<h3><a href="#plop" name="plop"><span class="tokai1">PLoP Linux</span></a></h3>
+
+<p>GUIなし（テキストモードのみ）・英語版ですが、サイズが小さく、Sambaサーバが使えるのが利点。</p>
+
+<ul>
+<li><a href="http://www.plop.at/en/ploplinux.html">PLoP Linux - LiveCD, USB boot, PXE network boot, antivirus, rescue, partimage, NTFS, tftp, avast, f-prot</a></li>
+</ul>
+
+<p class="overflow2"><img src="./images/livecd/ploplinux422.png" width="720" height="400" alt="ploplinux-4.2.2 のスクリーンショット"></p>
+
+<p><strong class="ms">ploplinux-4.2.2.iso</strong> (83MB) で確認。リリースは 2012.4。</p>
+
+<ul class="small">
+<li>ネットワーク</li>
+<li>smbfs(smbmount) - cifs</li>
+<li>NTFS書き込み - ntfs-3g</li>
+<li>Partimage 0.6.9</li>
+<li>gpart</li>
+<li>chntpw 0.99.6</li>
+<li>Sambaサーバ</li>
+<li>SSHサーバ</li>
+</ul>
+
+<ul class="small">
+<li>GParted なし</li>
+<li>ms-sys なし</li>
+<li>TestDisk なし</li>
+</ul>
+
+<p>日本語フォントは入ってないので日本語ファイル名は文字化けしますが、Sambaサーバを起動してWindowsマシンからアクセスすると正常に表示されました。</p>
+<p>RAM 128 MB で起動。ネットワークブートは、DHCP/TFTP のみで可。</p>
+
+<p>GNOME版では Nautilus, Firefox, GParted が入ってます。（英語版なのであんまり出番ないかも。）</p>
+<ul>
+<li><strong class="ms">ploplinux-4.2.2-X-gnome-tiny.iso</strong> (481MB)</li>
+</ul>
+<p class="overflow2"><img src="./images/livecd/ploplinux422_xtiny.png" width="704" height="396" alt="ploplinux-4.2.2-X-gnome-tiny のスクリーンショット"></p>
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<ul>
+<li><a href="http://www.plop.at/en/ploplinuxdl.html">Plop Linux - Download</a></li>
+</ul>
+</dd>
+
+<dt>めも</dt>
+<dd>
+<p>Sambaサーバの設定、マウントした NTFS/FAT32(IDE) を共有する一例。</p>
+<pre>
+# 8x16
+# loadkeys jp106
+
+# mkdir /mnt/hda1
+# mkdir /mnt/hda2
+# ntfs-3g /dev/hda1 /mnt/hda1 -o fmask=0,dmask=0
+# mount -t vfat -o utf8,shortname=winnt /dev/hda2 /mnt/hda2
+
+# startsamba
+# smbd
+# nmbd
+</pre>
+<ul>
+<li>ホスト名 <code>\\ploplinux</code></li>
+<li>Sambaサーバの username/pass は <span class="ms">root/ploplinux</span></li>
+</ul>
+
+<p>ネットワークブートいろいろ</p>
+<ul>
+<li><a href="http://www.plop.at/en/ploplinux/networkboot-windows.html">PXE Boot from network (DHCP, TFTP, Network share, FTP, HTTP) - Windows server</a></li>
+</ul>
+</dd>
+
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://distrowatch.com/table.php?distribution=plop">DistroWatch.com: PLoP Linux</a></li>
+</ul>
+</dd>
+</dl>
+
+<dl class="palmst small">
+<dt>ploplinux-v3.8.1</dt>
+<dd>
+<p><strong class="ms">ploplinux-v3.8.1.iso</strong> (56 MB) で確認。リリースは 2009.。</p>
+
+<ul>
+<li>ネットワーク</li>
+<li>smbfs(smbmount)</li>
+<li>Sambaサーバ</li>
+<li>NTFS書き込み - ntfs-3g（※ 日本語名ファイルは非表示になる）</li>
+<li>Partimage</li>
+</ul>
+
+<ul>
+<li>chntpw</li>
+</ul>
+
+<ul>
+<li>ウィンドウマネージャ - なし</li>
+<li>日本語ロケール - なし</li>
+<li>日本語ブラウザ - なし</li>
+<li>ファイルマネージャ - なし</li>
+<li>自動fstab編集 - なし</li>
+<li>GParted - なし（※ parted あり）</li>
+<li>gpart/TestDisk - なし</li>
+<li>SSHサーバ - なし</li>
+</ul>
+
+<p>RAM 128 MB で起動。ネットワークブートは、DHCP/TFTP + ファイルサーバ（Windowsファイル共有、Samba,NFS）で可。</p>
+<p>ネットワークブート用ファイルサーバの設定は、ploplinuxディレクトリを保存した親ディレクトリを共有設定する。</p>
+<ul>
+<li>オプションの設定</li>
+</ul>
+<pre>
+smbmount=//IPAddress/sharename:username:password
+</pre>
+</dd>
+</dl>
+
+
+<h2><a href="#disto" accesskey="7" name="disto">通常ディストリ系</a> <kbd class="ak">7</kbd></h2>
+
+<p>（HDへの）インストール用CD/DVDがそのままお試しLiveCDとして利用できたりするタイプのものです。最新の Linux を体験できるちゅうわけですな。</p>
+<p>基本的に最新PC向けが多いので、古めのPCでは使えなかったりすることもありますねんけど...。</p>
+
+<p>Fedora, Ubuntu のLiveCDブートは、<strong>RAM は最低 512 MB、
+1GB 以上、最新版ではもっと・・・ないと重いかも</strong>しれません。</p>
+
+<h3><a href="#ubuntu" name="ubuntu"><span class="tokai1">Ubuntu Desktop 日本語 Remix</span></a></h3>
+
+<p>インストール用CD/DVDがそのままLiveCDとして利用できます。<span class="small">（※<del> ハードディスクにインストールする場合はインターネット接続環境が必須</del>。インターネット接続なしでもHDへのインストール可。最新状態へのアップデートはインターネット接続環境が必要。）</span></p>
+<p>GUIによるファイル操作は簡単で、デバイスの対応度はピカイチだと思いますが、古いPCでは動作が重いです。最低1GB以上推奨かな。最新版では2GB以上ないと苦しいかも。</p>
+
+<ul>
+<li><a href="http://www.ubuntulinux.jp/">Ubuntu Japanese Team</a></li>
+<li><a href="http://www.ubuntulinux.jp/products/JA-Localized">日本語ローカライズ版 | Ubuntu Japanese Team</a></li>
+</ul>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/Ubuntu">Ubuntu - Wikipedia</a></li>
+</ul>
+
+<p class="overflow2"><img src="./images/livecd/ubuntu_ja_13.04_i386.png" width="747" height="422" alt="ubuntu-ja-13.04-desktop-i386 のスクリーンショット"></p>
+
+<p><strong class="ms">ubuntu-ja-13.04-desktop-i386.iso</strong> (898MB) で確認。リリースは 2013.5。（※ CDには入りません）。</p>
+<ul>
+<li><a href="https://wiki.ubuntu.com/RaringRingtail/ReleaseNotes/Ja">RaringRingtail/ReleaseNotes/Ja - Ubuntu Wiki</a></li>
+</ul>
+
+<ul>
+<li>※ 日本語入力可</li>
+</ul>
+
+<ul class="small">
+<li>デスクトップ環境 - <a href="http://ja.wikipedia.org/wiki/Ubuntu#.E3.83.87.E3.82.B9.E3.82.AF.E3.83.88.E3.83.83.E3.83.97.E7.92.B0.E5.A2.83">Unity</a></li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Firefox</li>
+<li>ファイルマネージャ - Nautilus
+	<ul>
+	<li>NTFS / FAT32 日本語ファイル名もおｋ</li>
+	<li>Windows ネットワーク、アクセス可</li>
+	</ul>
+</li>
+<li>smbfs(smbmount) - cifs</li>
+<li>NTFS書き込み - ntfs-3g（通常のマウントでOK）</li>
+<li>GParted 0.12.1</li>
+</ul>
+
+<ul class="small">
+<li>Partimage なし</li>
+<li>TestDisk なし</li>
+<li>ms-sys なし</li>
+<li>chntpw なし</li>
+<li>Sambaサーバ なし</li>
+<li>SSHサーバ なし</li>
+</ul>
+
+<p>Unity は今風でオサレですが作業効率はいまいちなかんじがします。動作はかなりの重量級です。</p>
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<ul>
+<li><a href="http://www.ubuntulinux.jp/products/JA-Localized/download">日本語ローカライズ版Desktop CDのダウンロード | Ubuntu Japanese Team</a>
+	<ul>
+	<li><code>ubuntu-ja-13.04-desktop-i386.iso</code></li>
+	</ul>
+</li>
+<li><a href="http://cdimage.ubuntulinux.jp/">cdimage.ubuntulinux.jp</a></li>
+</ul>
+
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://distrowatch.com/table.php?distribution=ubuntu">DistroWatch.com: Ubuntu</a></li>
+</ul>
+
+</dd>
+</dl>
+
+
+
+
+<h4><a href="#ubuntu1110" name="ubuntu1110"><span class="tokai1">バージョン 11.10</span></a></h4>
+
+<p class="overflow2"><img src="./images/livecd/ubuntu1110unity.png" width="492" height="369" alt="Ubuntu 11.10 ja デスクトップ画面のスクリーンショット"></p>
+
+<p>Unity はオサレですが慣れないと使いにくいかも？</p>
+
+<p class="pink">※ メモリ(RAM) は 1GB 以上ないとかなり重いかも。</p>
+<p><strong class="ms">ubuntu-ja-11.10-desktop-i386.iso</strong> (691MB) で確認。リリースは 2012.3。</p>
+
+<ul>
+<li>※ 日本語入力可</li>
+</ul>
+
+<ul>
+<li><a href="https://wiki.ubuntulinux.jp/UbuntuTips/Desktop/HowToUseUnity">Unityを使うには - Ubuntu Japanese Wiki</a></li>
+</ul>
+
+<ul class="small">
+<li>デスクトップ環境 - <a href="http://ja.wikipedia.org/wiki/Ubuntu#.E3.83.87.E3.82.B9.E3.82.AF.E3.83.88.E3.83.83.E3.83.97.E7.92.B0.E5.A2.83">Unity</a></li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Firefox,</li>
+<li>ファイルマネージャ - Nautilus 他</li>
+<li>NTFS書き込み - ntfs-3g</li>
+<li>GParted 0.8.1</li>
+</ul>
+
+<ul class="small">
+<li>自動fstab編集 - なし
+	<ul>
+	<li>ファイル・マネージャから自動マウント可能、日本語ファイル名も問題なし</li>
+	</ul>
+</li>
+<li>smbfs(smbmount) - なし（※ aptでインストール可能）
+	<ul>
+	<li>ファイル・マネージャからアクセス可能、日本語ファイル名も問題なし</li>
+	</ul>
+</li>
+<li>Sambaサーバ - なし（※ aptでsambaのインストール可能）</li>
+<li>Partimage - なし</li>
+<li>gpart/TestDisk - なし</li>
+<li>SSHサーバ - なし</li>
+</ul>
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<ul>
+<li><a href="http://www.ubuntulinux.jp/products/JA-Localized/download">日本語ローカライズ版Desktop CDのダウンロード | Ubuntu Japanese Team</a>
+	<ul>
+	<li><code>ubuntu-ja-11.10-desktop-i386.iso</code></li>
+	</ul>
+</li>
+<li><a href="http://cdimage.ubuntulinux.jp/">cdimage.ubuntulinux.jp</a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#kubuntu" name="kubuntu"><span class="tokai1">Kubuntu desktop 非公式日本語 Remix</span> （ライブCDの部屋）</a></h3>
+
+<p>Ubuntu のKDE（デスクトップ環境）版。</p>
+
+<p>インストール用CDがそのままLiveCDとして利用できる。<span class="small">（※<del> ハードディスクにインストールする場合はインターネット接続環境が必須</del>。インターネット接続なしでもHDへのインストール可。最新状態へのアップデートはインターネット接続環境が必要。）</span></p>
+<p class="pink">※ メモリ最低でも <del>1GB</del> <ins>2GB</ins> 以上ないと重いかも。</p>
+
+<ul>
+<li><a href="http://www.kubuntu.org/">Kubuntu - The KDE Desktop</a></li>
+<li><a href="http://simosnet.com/livecdroom/index.html#ubuntu">Ubuntu/Kubuntu - ライブCDの部屋</a>
+	<ul class="small">
+	<li>理研ミラー：<a href="http://ftp.riken.go.jp/Linux/simosnet-livecd/ubuntu/">Index of /Linux/simosnet-livecd/ubuntu</a></li>
+	</ul>
+</li>
+</ul>
+
+<p class="small">※ 公式日本語版の最新は 8.04 の模様。</p>
+
+<p class="overflow2"><img src="./images/livecd/kubuntu1304lcr.png" width="747" height="422" alt="Kubuntu 13.04  - ライブCDの部屋 デスクトップ画面のスクリーンショット"></p>
+
+<p>Kubuntu 13.04 desktop（ライブCDの部屋さん版）- <strong class="ms">kubuntu-13.04-desktop-i386-jp.iso</strong> (1.0GB) で確認。リリースは 2013.4。（※ CDには入りません）。</p>
+
+<ul>
+<li>※ 日本語入力可</li>
+</ul>
+
+<ul class="small">
+<li>デスクトップ環境 - KDE4</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Firefox</li>
+<li>ファイルマネージャ - Dolphin
+	<ul>
+	<li>NTFS / FAT32 日本語ファイル名もおｋ</li>
+	<li>Windows ネットワーク、アクセス可</li>
+	</ul>
+</li>
+<li>smbfs(smbmount) - cifs</li>
+<li>NTFS書き込み - ntfs-3g（通常のマウントでOK）</li>
+<li>KDEパーティションマネージャ 1.0.3</li>
+</ul>
+
+<ul class="small">
+<li>Partimage なし</li>
+<li>TestDisk なし</li>
+<li>ms-sys なし</li>
+<li>chntpw なし</li>
+<li>Sambaサーバ なし</li>
+<li>SSHサーバ なし</li>
+</ul>
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<ul>
+<li><a href="http://simosnet.com/livecdroom/index.html#ubuntu">Ubuntu/Kubuntu - ライブCDの部屋 </a>
+	<ul>
+	<li>理研ミラー：<a href="http://ftp.riken.go.jp/Linux/simosnet-livecd/ubuntu/">Index of /Linux/simosnet-livecd/ubuntu</a></li>
+	<li><code>kubuntu-13.04-desktop-i386-jp.iso</code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://distrowatch.com/table.php?distribution=kubuntu">DistroWatch.com: Kubuntu</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.ubuntulinux.jp/">Ubuntu Japanese Team</a></li>
+<li><a href="http://ikuya.info/wiki/index.php?kubuntu">kubuntu - Ikuya Wiki</a></li>
+</ul>
+
+<ul>
+<li><a href="http://engawa.2ch.net/test/read.cgi/linux/1224906972/">kubuntu</a> (2ch)</li>
+</ul>
+</dd>
+</dl>
+
+
+<dl class="palmst small">
+<dt>Kubuntu 11.04  - ライブCDの部屋</dt>
+<dd>
+<p class="overflow2"><img src="./images/livecd/kubuntu1104lcr.png" width="480" height="360" alt="Kubuntu 11.04  - ライブCDの部屋 デスクトップ画面のスクリーンショット"></p>
+
+<p>Kubuntu 11.04 desktop（ライブCDの部屋さん版）- <strong class="ms">kubuntu-11.04-desktop-i386-jp.iso</strong> (693MB) で確認。リリースは 2012.7。</p>
+
+<ul>
+<li>※ 日本語入力可</li>
+</ul>
+
+<ul>
+<li>ウィンドウマネージャ - Kwin(<strong class="ms">KDE4</strong>)</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Firefox 他</li>
+<li>ファイルマネージャ - Dolphin 他</li>
+<li>NTFS書き込み - ntfs-3g</li>
+</ul>
+
+<ul>
+<li>自動fstab編集 - なし
+	<ul>
+	<li>ファイル・マネージャから自動マウント可能、日本語ファイル名も問題なし</li>
+	</ul>
+</li>
+<li>smbfs(smbmount) - なし（※ aptでインストール可能）
+	<ul>
+	<li>ファイル・マネージャからアクセス可能、日本語ファイル名も問題なし</li>
+	</ul>
+</li>
+<li>Sambaサーバ - なし（※aptでsambaのインストール可能）</li>
+<li>Partimage - なし</li>
+<li>GParted - KDE Partition Manager 1.0.3 あり</li>
+<li>gpart/TestDisk - なし</li>
+<li>SSHサーバ - なし</li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#fedora" name="fedora"><span class="tokai1">FedoraLiveCD</span></a></h3>
+
+<p>ハードディスクへのインストールも可能なLiveCD。<span class="small">（※但し、このCDからインストールした場合はインストールされるパッケージ数が通常より少ない様です。）</span></p>
+<p class="pink">※ メモリ(RAM) は最低 <del>512MB</del> <ins>2GB</ins> は必要かと。</p>
+
+<ul>
+<li><a href="http://fedoraproject.org/">Fedora Project</a></li>
+<li><a href="http://fedoraproject.org/wiki/FedoraLiveCD">FedoraLiveCD - FedoraProject</a></li>
+</ul>
+
+<p class="overflow2"><img src="./images/livecd/fedora12kde.png" width="480" height="360" alt="Fedora 12 LiveCD KDE版 デスクトップ画面"></p>
+
+<p><strong class="ms">Fedora-12-i686-Live-KDE.iso</strong>（<strong>KDE版</strong> 681MB）で確認。リリースは 2009.11。</p>
+
+<ul class="small">
+<li>ウィンドウマネージャ - Kwin(<strong class="ms">KDE4</strong>)(<strong>メニューは英語</strong>)</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Konqueror</li>
+<li>ファイルマネージャ - Dolphin/Konqueror etc</li>
+<li>NTFS書き込み - ntfs-3g</li>
+<li>SSHサーバ</li>
+</ul>
+
+<ul class="small">
+<li>自動fstab編集 - なし
+	<ul>
+	<li>Konqueror からマウント可能（日本語ファイル名OK）</li>
+	</ul>
+</li>
+<li>smbfs(smbmount) - なし
+	<ul class="nest">
+	<li>Dolphin から直接Windowsネットワーク利用可能（日本語ファイル名OK）</li>
+	</ul>
+<li>Sambaサーバ - なし</li>
+<li>Partimage - なし</li>
+<li>GParted - なし</li>
+<li>gpart/TestDisk - なし</li>
+</ul>
+
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<p>GNOME版もありますね。</p>
+<ul>
+<li><a href="http://www.ring.gr.jp/pub/linux/fedora/linux/releases/19/Live/">Index of /pub/linux/fedora/linux/releases/19/Live</a></li>
+</ul>
+</dd>
+
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://distrowatch.com/table.php?distribution=fedora">DistroWatch.com: Fedora</a></li>
+</ul>
+
+<ul>
+<li><a href="http://linux4u.jp/wiki/index.php?Fedora%2F7">Fedora/7 - PukiWiki</a></li>
+<li><a href="http://pocketstudio.jp/linux/?Fedora%2FF8">Fedora/F8 - Pocketstudio.jp Linux Wiki</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h3><a href="#centos" name="centos"><span class="tokai1">CentOS LiveCD</span>（ライブCDの部屋）</a></h3>
+
+<p>管理者ならおなじみ(?) RHEL (Red Hat Enterprise Linux) クローン の定番。</p>
+
+<ul>
+<li><a href="https://projects.centos.org/trac/livecd/">LiveCD - Trac</a></li>
+</ul>
+
+<p class="overflow2"><img src="./images/livecd/centos60i386livecd_jp.png" width="751" height="422" alt="CentOS-6.0-i386-LiveCD-jp のスクリーンショット"></p>
+
+<p><strong class="ms">CentOS-6.0-i386-LiveCD-jp.iso</strong> (620MB) （ライブCDの部屋）で確認。リリースは 2011.7。</p>
+
+<ul>
+<li>※ 日本語入力可</li>
+</ul>
+
+<ul class="small">
+<li>RHEL (Red Hat Enterprise Linux) クローン</li>
+<li>デスクトップ環境 - GNOME</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Firefox</li>
+<li>ファイルマネージャ - Nautilus
+	<ul>
+	<li>FATのマウントおｋ（NTFSだめ）</li>
+	</ul>
+</li>
+<li>smbfs(smbmount) - cifs</li>
+<li>SSHサーバ</li>
+</ul>
+
+<ul class="small">
+<li>NTFS書き込み なし</li>
+<li>GParted なし</li>
+<li>Partimage なし</li>
+<li>TestDisk なし</li>
+<li>ms-sys なし</li>
+<li>chntpw なし</li>
+<li>Sambaサーバ なし</li>
+</ul>
+
+<p><del>英語版しかありません</del>。ツール類はあまり入ってないのでHDインストール用みたいですね。</p>
+
+
+<dl>
+<dt>本家英語版</dt>
+<dd>
+<p class="overflow2"><img src="./images/livecd/centos64i386livedvd.png" width="751" height="422" alt="CentOS-6.4-i386-LiveDVD のスクリーンショット"></p>
+<ul>
+<li><strong class="ms">CentOS-6.4-i386-LiveDVD.iso</strong> (1.66GB)。2013.5 リリース。</li>
+</ul>
+
+<ul>
+<li>isoファイル名
+	<ul>
+	<li>CD版  : <code>CentOS-6.4-i386-LiveCD.iso</code> (697MB)</li>
+	<li>DVD版 : <code>CentOS-6.4-i386-LiveDVD.iso</code> (1.7GB)</li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<ul>
+<li><span class="ms">http://simosnet.com/livecd/centos/</span>（<a href="http://simosnet.com/livecdroom/">ライブCDの部屋</a>）
+	<ul class="small">
+	<li>理研ミラー：<a href="http://ftp.riken.go.jp/Linux/simosnet-livecd/centos/">Index of /Linux/simosnet-livecd/centos</a></li>
+	<li>2013.7.18 現在、最新は <code>CentOS-6.4-i386-LiveDVD-jp.iso</code> (1.71GB)</li>
+</ul>
+</li>
+</ul>
+
+<ul>
+<li>本家英語版 : 
+	<ul>
+	<li><a href="http://ftp.riken.jp/Linux/centos/6/isos/i386/">Index of /Linux/centos/6/isos/i386</a></li>
+	<li><a href="http://ftp.riken.jp/Linux/centos/6/isos/x86_64/">Index of /Linux/centos/6/isos/x86_64</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://distrowatch.com/table.php?distribution=centos">DistroWatch.com: CentOS</a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#debian" name="debian"><span class="tokai1">Debian LiveDVD</span>（ライブCDの部屋）</a></h3>
+
+<p>自分でカスタマイズしたい人向けでしょうか。自分で作る用のLiveCDかな？</p>
+
+<p>【<strong>注意</strong>】<del>ハードディスクへのインストール機能はありません</del>。種類がいろいろあります。最近のバージョンではCUI版を除き、DVDサイズ（CDには入らない）なので注意。</p>
+
+<ul>
+<li><a href="http://debian-live.alioth.debian.org/index.html">Debian Live Project</a>
+	<ul>
+	<li><a href="http://wiki.debian.org/DebianLive/">DebianLive - Debian Wiki</a></li>
+	</ul>
+</li>
+<li><a href="http://www.debian.org/CD/live/index.ja.html">Debian -- Live インストールイメージ</a></li>
+<li><a href="http://ja.wikipedia.org/wiki/Debian_Live">Debian Live - Wikipedia</a></li>
+</ul>
+
+<p>※ ライブCDの部屋さん版以外は英語版となります。</p>
+
+<p class="overflow2"><img src="./images/livecd/debian_live700kdejp.png" width="751" height="422" alt="debian-live-7.0.0-i386-kde-desktop-jp のスクリーンショット"></p>
+
+<p><strong class="ms">debian-live-7.0.0-i386-kde-desktop-jp.iso</strong> (1.31GB) （ライブCDの部屋）で確認。リリースは 2013.5。（※ CDには入りません）。</p>
+<ul>
+<li>※ 日本語入力可</li>
+</ul>
+
+<ul class="small">
+<li>デスクトップ環境 - KDE4</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Iceweasel(Firefox)/Konqueror</li>
+<li>ファイルマネージャ - Dolphin/Konqueror 他
+	<ul>
+	<li>NTFS / FAT32 日本語ファイル名もおｋ</li>
+	<li>Windows ネットワーク、アクセス可</li>
+	</ul>
+</li>
+<li>smbfs(smbmount) - cifs</li>
+<li>NTFS書き込み - ntfs-3g（通常のマウントでOK）</li>
+<li>SSHサーバ</li>
+</ul>
+
+<ul class="small">
+<li>Sambaサーバ なし</li>
+<li>GParted なし</li>
+<li>Partimage なし</li>
+<li>TestDisk なし</li>
+<li>ms-sys なし</li>
+<li>chntpw なし</li>
+</ul>
+
+<div class="quote small pink">
+<blockquote cite="http://simosnet.com/livecdroom/index.html#debian" title="ライブCDの部屋" class="pink">
+<p>Debianの最新版wheezyのライブDVDの日本語版です.</p>  
+<p>デスクトップ用途を考えたライブDVDであり、標準的なアプリをバランスよく含んでいて  ライブ起動するだけ十分使用に耐えます.</p>  
+<p>全体的にシンプルで標準的な作りなので、DebianベースのライブＣＤを作成するときの元とするのに最適です.</p>
+</blockquote>
+<cite><a href="http://simosnet.com/livecdroom/index.html#debian">ライブCDの部屋</a></cite>
+</div>
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<ul>
+<li><a href="http://cdimage.debian.org/cdimage/release/current-live/">Index of /cdimage/release/current-live</a>
+	<ul class="small">
+	<li><a href="http://ftp.riken.jp/Linux/debian/debian-cdimage/release/current-live/">Index of /Linux/debian/debian-cdimage/release/current-live/</a>（理研ミラー）</li>
+	</ul>
+</li>
+<li><a href="http://simosnet.com/livecdroom/index.html#debian">Debian LiveDVD 7.0.0 日本語版 - ライブCDの部屋</a> (wheezy)
+	<ul class="small">
+	<li>理研ミラー：<a href="http://ftp.riken.go.jp/Linux/simosnet-livecd/debian/">Index of /Linux/simosnet-livecd/debian</a></li>
+	<li><code> debian-live-7.0.0-i386-kde-desktop-jp.iso</code> (1.3GB)</li>
+	<li><code>debian-live-7.0.0-i386-gnome-desktop-jp.iso</code> (1.3GB)</li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://distrowatch.com/table.php?distribution=debian">DistroWatch.com: Debian GNU/Linux</a></li>
+</ul>
+
+<ul>
+<li><a href="http://f40.aaa.livedoor.jp/~green/?DebianLinux-FAQ%2FDebianLive">DebianLinux-FAQ/DebianLive - Linux FAQ for Desktop</a></li>
+<li><a href="http://wiki.livedoor.jp/osyo001/">Debian Live マニュアル　日本語版 - livedoor Wiki（ウィキ）</a></li>
+</ul>
+
+<ul>
+<li><a href="http://engawa.2ch.net/test/read.cgi/linux/1237256190/">Debian-Liveに決めました</a> (2ch)</li>
+</ul>
+
+</dd>
+</dl>
+
+
+<dl class="palmst small">
+<dt>etch 0319 KDE版</dt>
+<dd>
+<p><strong class="ms">debian-live-etch-i386-0319-kde-desktop-jp.iso</strong> (658MB) で確認。リリースは 2007.3。</p>
+
+<ul>
+<li>ウィンドウマネージャ - Kwin(<strong class="ms">KDE</strong>)</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Iceweasel(Firefox)/Konqueror</li>
+<li>ファイルマネージャ - Konqueror 他</li>
+</ul>
+
+<ul>
+<li>自動fstab編集 - なし</li>
+<li>smbfs(smbmount) - なし
+	<ul class="nest">
+	<li>Konquerorから直接Windowsネットワーク利用可能（日本語ファイル名OK）</li>
+	</ul>
+</li>
+<li>Sambaサーバ - なし</li>
+<li>NTFS書き込み - なし</li>
+<li>Partimage - なし</li>
+<li>GParted - なし</li>
+<li>gpart/TestDisk - なし</li>
+<li>SSHサーバ - なし</li>
+</ul>
+</dd>
+</dl>
+
+
+<h2><a href="#custom" accesskey="8" name="custom">派生版</a> <kbd class="ak">8</kbd></h2>
+
+<p>通常ハードディスクへインストールするタイプのディストリビューションをカスタマイズしたもの（※ いや、KnoppixやSLAXなどでも通常版ディストリをカスタマイズしてるわけですが、LiveCDとして使うよりハードディスクにインストールして使いたくなるタイプのものです）。Live CD としてもなかなかです。ベースのディストリに比べテーマがお洒落だったり、マルチメディア対応などが強化されている模様。</p>
+
+
+<h3><a href="#linuxmint" name="linuxmint"><span class="tokai1">Linux Mint</span>（ライブCDの部屋）</a></h3>
+
+<ul>
+<li><a href="http://linuxmint-jp.net/index.html">Linux Mint Japan</a></li>
+<li><a href="http://linuxmint.com/">Linux Mint: Linux for the Desktop</a></li>
+</ul>
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/Linux_Mint">Linux Mint - Wikipedia</a></li>
+</ul>
+
+<p>Ubuntu ベースと Debian ベース（こっちは軽め？）の2系統あります。<strong class="ms">MATE</strong> が安定板、<strong class="ms">Cinnamon</strong> は革新的とのこと。</p>
+
+<ul>
+<li><a href="http://blog.linuxmint-jp.net/?p=195">Linux Mint Japanブログ Blog Archive - Linux Mint 15 “Olivia” がリリースされました!</a></li>
+</ul>
+
+<p class="overflow2"><img src="./images/livecd/linuxmint-15-mate-dvd-nocodecs-32bit-jp.png" width="751" height="422" alt="linuxmint-15-mate-dvd-nocodecs-32bit-jp のスクリーンショット"></p>
+
+<p>Ubuntu ベースの &#034;Olivia&#034; <strong class="ms">linuxmint-15-mate-dvd-nocodecs-32bit-jp.iso</strong> (1.0GB)（ライブCDの部屋）で確認。リリースは 2013.5。（※ CDには入りません）。</p>
+<ul>
+<li>※ 日本語入力可</li>
+</ul>
+
+<ul class="small">
+<li>Ubuntu 13.04 ベース</li>
+<li>デスクトップ環境 - MATE(GNOME)</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ -  Firefox</li>
+<li>ファイルマネージャ - Caja(Nautilus)
+	<ul>
+	<li>NTFS / FAT32 日本語ファイル名もおｋ</li>
+	<li>Windows ネットワーク、アクセス可</li>
+	</ul>
+</li>
+<li>smbfs(smbmount) - cifs</li>
+<li>NTFS書き込み - ntfs-3g（通常のマウントでOK）</li>
+<li>GParted 0.12.1</li>
+<li>Sambaサーバ</li>
+</ul>
+
+<ul class="small">
+<li>Partimage なし</li>
+<li>TestDisk なし</li>
+<li>ms-sys なし</li>
+<li>chntpw なし</li>
+<li>SSHサーバ なし</li>
+</ul>
+
+
+<dl class="palmst small">
+<dt>Samba サーバの設定</dt>
+<dd>
+<p>あくまで一例ですが...</p>
+<pre>
+mint ~ # cat &#060;&#060;EOF&#062;&#062; /etc/samba/smb.conf 
+&#062; [media]
+&#062; path = /media
+&#062; valid users = mint
+&#062; writable = yes
+&#062; create mask = 0755
+&#062; directory mask = 0755
+&#062; EOF
+mint ~ # smbpasswd -a mint
+New SMB password:
+Retype new SMB password:
+Added user mint.
+mint ~ # service smbd restart
+smbd stop/waiting
+smbd start/running, process 3339
+mint ~ # service nmbd restart
+nmbd stop/waiting
+nmbd start/running, process 3351
+mint ~ # 
+</pre>
+</dd>
+</dl>
+
+<dl>
+<dt>エディション</dt>
+<dd>
+<ul>
+<li>Ubuntu ベース
+	<ul class="small">
+	<li>MATEデスクトップ</li>
+	<li>Cinnamonデスクトップ</li>
+	<li>KDEデスクトップ</li>
+	<li>Xfceデスクトップ</li>
+	</ul>
+</li>
+<li>LMDE (LinuxMint Debian Edition)
+	<ul class="small">
+	<li>MATEデスクトップ</li>
+	<li>Cinnamonデスクトップ</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://wiki.linuxmint-jp.net/index.php/%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%82%BA%E3%82%AC%E3%82%A4%E3%83%89">ユーザーズガイド - Linux Mint Japan Wiki</a></li>
+</ul>
+<div class="quote small">
+<blockquote cite="http://wiki.linuxmint-jp.net/index.php/%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%82%BA%E3%82%AC%E3%82%A4%E3%83%89#.E3.82.A8.E3.83.87.E3.82.A3.E3.82.B7.E3.83.A7.E3.83.B3" title="ユーザーズガイド - Linux Mint Japan Wiki">
+<dl>
+<dt>エディション</dt>
+<dd>
+<p>エディションとは特定の用途向けにカスタマイズされたLinux Mintのリリースです。このユーザーズガイドはMATEエディションについて書かれたものです。以下に人気のあるエディションを示します:</p>
+
+<ul>
+<li> MATEエディション(MATEデスクトップを利用)</li>
+<li> Cinnamonエディション(Cinnamonデスクトップを利用)</li>
+<li> KDEエディション(KDEデスクトップを利用)</li>
+<li> Xfceエディション(Xfceデスクトップを利用)</li>
+</ul>
+<p>どのエディションを使えば良いかわからない場合は、MATEエディションを使ってください。</p>
+<p>注意: アメリカ合衆国や日本でLinux Mintを再配布または商業利用する予定があり、特許法についてよく知らないのであれば、“No Codecs”インストールイメージを利用してください。
+</p>
+</dd>
+</dl>
+</blockquote>
+<cite><a href="http://wiki.linuxmint-jp.net/index.php/%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%82%BA%E3%82%AC%E3%82%A4%E3%83%89#.E3.82.A8.E3.83.87.E3.82.A3.E3.82.B7.E3.83.A7.E3.83.B3">ユーザーズガイド - Linux Mint Japan Wiki</a></cite>
+</div>
+</dd>
+
+<dt>ダウンロード</dt>
+<dd>
+<ul>
+<li><a href="http://linuxmint-jp.net/download.html">ダウンロード | Linux Mint Japan</a></li>
+</ul>
+
+<ul>
+<li><a href="http://simosnet.com/livecd/mint/">mint - ライブCDの部屋</a>
+	<ul class="small">
+	<li>理研ミラー：<a href="http://ftp.riken.go.jp/Linux/simosnet-livecd/mint/">Index of /Linux/simosnet-livecd/mint</a></li>
+	</ul>
+</li>
+</ul>
+<p>※ Ubuntu 13.04 のサポートは2014年1月までなので、HDにインストールする場合は LTS 12.04 ベース（2017年4月まで）の 13 の方がいいかもしれません。</p>
+</dd>
+
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://distrowatch.com/table.php?distribution=mint">DistroWatch.com: Linux Mint</a></li>
+</ul>
+
+<ul>
+<li><a href="http://sourceforge.jp/magazine/13/05/31/143000">Ubuntu 13.04ベースの「Linux Mint 15」がリリース | SourceForge.JP Magazine</a></li>
+</ul>
+
+<ul>
+<li><a href="http://engawa.2ch.net/test/read.cgi/linux/1371644458/">【Ubuntu派生】Linux Mint 9【Debian版もあるよ】</a> (2ch)</li>
+</ul>
+</dd>
+</dl>
+
+
+
+
+
+<h4><a href="#linuxmint201303mate_jp" name="linuxmint201303mate_jp"><span class="tokai1">LinuxMint Debian Edition 201303 日本語版</span></a> （ライブCDの部屋）</h4>
+
+<p>こちらは、Debian ベースの LinuxMint Debian Edition (LMDE) 201303 のライブCDの部屋・日本語版。見た目はほとんど変わりませんが...</p>
+
+<p class="overflow2"><img src="./images/livecd/linuxmint-201303-mate-dvd-32bit-jp.png" width="751" height="422" alt="linuxmint-201303-mate-dvd-32bit-jp のスクリーンショット"></p>
+
+<p><strong class="ms">linuxmint-201303-mate-dvd-32bit-jp.iso</strong> (1.3GB)（ライブCDの部屋）で確認。リリースは 2013.3。（※ CDには入りません）。</p>
+<ul>
+<li><a href="http://blog.linuxmint-jp.net/?p=174">Linux Mint Japanブログ Blog Archive - Linux Mint Debian 201303 がリリースされました!</a></li>
+</ul>
+
+<ul>
+<li>※ 日本語入力可</li>
+</ul>
+
+<ul class="small">
+<li>Debian Wheezy ベース</li>
+<li>デスクトップ環境 - MATE(GNOME)</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ -  Firefox</li>
+<li>ファイルマネージャ - Caja(Nautilus)
+	<ul>
+	<li>NTFS / FAT32 日本語ファイル名もおｋ</li>
+	<li>Windows ネットワーク、アクセス可</li>
+	</ul>
+</li>
+<li>smbfs(smbmount) - cifs</li>
+<li>NTFS書き込み - ntfs-3g（通常のマウントでOK）</li>
+<li>GParted 0.12.1</li>
+<li>Sambaサーバ</li>
+</ul>
+
+<ul class="small">
+<li>Partimage なし</li>
+<li>TestDisk なし</li>
+<li>ms-sys なし</li>
+<li>chntpw なし</li>
+<li>SSHサーバ なし</li>
+</ul>
+
+
+
+
+<dl class="palmst small">
+<dt>Linux Mint 8</dt>
+<dd>
+<p class="overflow2"><img src="./images/livecd/linuxmint8jp.png" width="480" height="360" alt="Linux Mint 8 デスクトップ画面"></p>
+
+<p><strong class="ms">LinuxMint-8-jp.iso</strong> (858MB)（ライブCDの部屋）で確認。リリースは 2009.11。（※ CDには入りません）。</p>
+
+<p class="pink">※ メモリ(RAM) は最低 1 GB は必要かな？</p>
+
+<ul>
+<li>※ 日本語入力可</li>
+</ul>
+
+<ul>
+<li>ウィンドウマネージャ - Metacity(<strong class="ms">GNOME</strong>)</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Firefox</li>
+<li>ファイルマネージャ - Nautilus ほか</li>
+<li>自動fstab編集 - なし
+	<ul class="nest">
+	<li>※ Nautilusでアイコンをクリックすると自動でオプションが設定されてマウントされる</li>
+	</ul>
+</li>
+<li>NTFS書き込み - ntfs-3g</li>
+<li>GParted</li>
+</ul>
+
+<p>Ubuntu Karmic (9.10) ベース。外観が Ubuntu よりもオサレなかんじ。</p>
+<p>VMware Player での確認ですがメモリ512MBでは重かったです。1 GB 必要かも。</p>
+
+<ul>
+<li>smbfs(smbmount) - なし（※ apt でインストール可能）
+	<ul class="nest">
+	<li>Nautilus から直接Windowsネットワーク利用可能（日本語ファイル名OK）	</ul>
+</li>
+<li>Sambaサーバ - なし</li>
+<li>Partimage - なし</li>
+<li>gpart/TestDisk - なし</li>
+<li>SSHサーバ - なし</li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#pclinux" name="pclinux"><span class="tokai1">PCLinuxOS</span></a></h3>
+
+<ul>
+<li><a href="http://www.pclinuxos.com/">PCLinuxOS</a></li>
+<li><a href="http://pclosusers.com/index.php">Welcome to PCLOSUsers- Dedicated to those who use PCLinuxOS</a></li>
+</ul>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/PCLinuxOS">PCLinuxOS - Wikipedia</a></li>
+</ul>
+
+<p class="pink">※ 本家版は英語版のみとなってます。</p>
+
+<p class="overflow2"><img src="./images/livecd/pclinuxos64mate20130715.png" width="751" height="422" alt="pclinuxos64-mate-2013.0715 のスクリーンショット"></p>
+
+<p>MATE 版 <strong class="ms">pclinuxos64-mate-2013.0715.iso</strong> (664MB) で確認。リリースは 2013.7。他に KDE版、LXDE版もあります。</p>
+
+<ul class="small">
+<li>Mandriva ベース</li>
+<li>デスクトップ環境 - MATE(GNOME)</li>
+<li>英語版（日本語フォントあり）</li>
+<li>ネットワーク</li>
+<li>ブラウザ - Firefox （日本語ページ表示可）</li>
+<li>ファイルマネージャ - Caja(Nautilus)
+	<ul>
+	<li>NTFS/FAT32, Windowsネットワーク - 日本語ファイル名おｋ</li>
+	</ul>
+</li>
+<li>smbfs(smbmount)</li>
+<li>NTFS書き込み - ntfs-3g</li>
+<li>TestDisk 6.13</li>
+<li>SSHサーバ</li>
+</ul>
+
+<ul class="small">
+<li>Sambaサーバ - なし</li>
+<li>Partimage - なし</li>
+<li>GParted - なし</li>
+<li>ms-sys - なし</li>
+<li>chntpw - なし</li>
+</ul>
+
+<p>英語版ですが、Mandriva ベースの美しい外観なのであります。</p>
+
+<ul>
+<li><strong class="ms">pclinuxos64-kde-fullmonty-2013.06.iso</strong> (3.9GB)</li>
+</ul>
+<p class="overflow2"><img src="./images/livecd/pclinuxos64kde_fullmonty201306.png" width="751" height="422" alt="pclinuxos64-kde-fullmonty-2013.06 のスクリーンショット"></p>
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<ul>
+<li><a href="http://ftp.riken.go.jp/Linux/pclinuxos/live-cd/">Index of /Linux/pclinuxos/live-cd</a></li>
+</ul>
+
+<ul>
+<li><a href="http://simosnet.com/livecd/pclinuxos/">pclinuxos - ライブCDの部屋</a>
+	<ul>
+	<li>理研ミラー：<a href="http://ftp.riken.go.jp/Linux/simosnet-livecd/pclinuxos/">Index of /Linux/simosnet-livecd/pclinuxos</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://distrowatch.com/table.php?distribution=pclinuxos">DistroWatch.com: PCLinuxOS</a></li>
+<li><a href="http://www12.atwiki.jp/linux2ch/pages/229.html">2ch-Linux-Beginners - PCLinuxOS</a></li>
+</ul>
+
+<ul>
+<li><a href="http://f40.aaa.livedoor.jp/~green/?PCLinuxOS">PCLinuxOS - Linux FAQ for Desktop</a></li>
+<li><a href="http://opentechpress.jp/developer/07/05/25/0122240.shtml">Open Tech Press | レビュー：PCLinuxOS 2007――美しさと実用性を兼ね備えたライブCD Linux</a></li>
+<li><a href="http://tomcat.nyanta.jp/sb2/sb.cgi?cid=6">Operation Normal ? | PCLinuxOS</a></li>
+</ul>
+
+<ul>
+<li><a href="http://hibari.2ch.net/test/read.cgi/linux/1308139207/">PCLinuxOS Part3</a> (2ch)</li>
+</ul>
+</dd>
+</dl>
+
+<dl class="palmst small">
+<dt>KDE 2011.6 （ライブCDの部屋）</dt>
+<dd>
+<p class="overflow2"><img src="./images/livecd/pclinuxos201106jp.png" width="480" height="360" alt="pclinuxos-kde-2011.6-jpのスクリーンショット"></p>
+
+<p><strong class="ms">pclinuxos-kde-2011.6-jp.iso</strong> (801MB)（ライブCDの部屋）で確認。リリースは 2011.6。（※ CDには入りません）。</p>
+
+<p>RAM 512MBでギリギリ起動できましたが、1GB以上ないと重いかも。</p>
+
+<ul>
+<li>※ 日本語入力可 - scim, uim, ibus</li>
+</ul>
+
+<ul>
+<li>ウィンドウマネージャ - Kwin(<strong class="ms">KDE4</strong>)</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Firefox/Konqueror</li>
+<li>ファイルマネージャ - Dolphin/Konqueror 他</li>
+<li>自動fstab編集 - 自動マウントOK</li>
+<li>smbfs(smbmount)</li>
+<li>Sambaサーバ</li>
+<li>NTFS書き込み - ntfs-3g</li>
+<li>TestDisk - </li>
+<li>SSHサーバ</li>
+</ul>
+
+<p>Mandrivaベースの美しい外観。Mandriva は知らないけど、これはかなり実用性が高そうですね。<span class="small">（※Linux素人の感想であることに注意。）</span></p>
+
+<ul>
+<li>Partimage - なし</li>
+<li>GParted - なし</li>
+<li>ms-sys - なし</li>
+<li>chntpw - なし</li>
+</ul>
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<ul>
+<li><a href="http://simosnet.com/livecd/pclinuxos/">pclinuxos - ライブCDの部屋</a>
+	<ul>
+	<li>理研ミラー：<a href="http://ftp.riken.go.jp/Linux/simosnet-livecd/pclinuxos/">Index of /Linux/simosnet-livecd/pclinuxos</a> - <code>pclinuxos-kde-2011.6-jp.iso</code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+
+<h3><a href="#zorin" name="zorin"><span class="tokai1">Zorin OS</span>（ライブCDの部屋）</a></h3>
+
+<p>Ubuntu ベース、Windows そっくり? なHDインストール向き。</p>
+
+<div class="quote small pink">
+<blockquote cite="http://simosnet.com/livecdroom/" title="ライブCDの部屋" class="pink">
+<p>Zorin OS 7はUbuntu 13.04ベースの新版です.
+<br>水色を基調としたデザインはWindowsユーザーには親しみやすく3Dを使ったなめらかな動作は安定感を感じさせます.
+<br>タッチパッドのスクロールに2本指を使うところはWindowsと操作性を合わせてあり細かい配慮が行き届いています.</p>
+</blockquote>
+<cite><a href="http://simosnet.com/livecdroom/">ライブCDの部屋</a></cite>
+</div>
+
+<ul>
+<li><a href="http://www.zorin-os.com/">Zorin OS - Home</a></li>
+<li><a href="http://sourceforge.net/projects/zorin-os/">Zorin OS | Free System Administration software downloads at SourceForge.net</a></li>
+</ul>
+
+<ul>
+<li>Core 版</li>
+</ul>
+<p class="overflow2"><img src="./images/livecd/zorinos7core32jp.png" width="747" height="422" alt="Zorin OS 7 Core のスクリーンショット"></p>
+<ul>
+<li>Lite 版</li>
+</ul>
+<p class="overflow2"><img src="./images/livecd/zorinos7litejp.png" width="747" height="422" alt="Zorin OS 7 Lite のスクリーンショット"></p>
+
+<p>リリースは 2013.6。（※ CDには入りません）。</p>
+
+<ul>
+<li>isoファイル名 : （ライブＣＤの部版）
+	<ul>
+	<li><strong class="ms">zorin-os-7-core-32-jp.iso</strong> (1.5GB)</li>
+	<li><strong class="ms">zorin-os-7-lite-jp.iso</strong> LXDE版 (805MB)</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>※ 日本語入力可</li>
+</ul>
+
+<ul class="small">
+<li>Ubuntu 13.04 ベース</li>
+<li>デスクトップ環境
+	<ul>
+	<li>Core - GNOME カスタマイズ版 (Avant)</li>
+	<li>Lite - LXDE</li>
+	</ul>
+</li>
+<li>日本語ロケール - UTF-8</li>
+<li>ネットワーク</li>
+<li>日本語ブラウザ - Chrome, Firefox （Core 版のみ）</li>
+<li>ファイルマネージャ - PCMan File Manager
+	<ul>
+	<li>NTFS / FAT32 日本語ファイル名もおｋ</li>
+	<li>Windows ネットワーク、アクセス可</li>
+	</ul>
+</li>
+<li>smbfs(smbmount) - cifs</li>
+<li>NTFS書き込み - ntfs-3g（通常のマウントでOK）</li>
+<li>GParted 0.12.1 （Core 版のみ）</li>
+</ul>
+
+<ul class="small">
+<li>Partimage - なし</li>
+<li>TestDisk - なし</li>
+<li>ms-sys - なし</li>
+<li>chntpw - なし</li>
+<li>Sambaサーバ - なし</li>
+<li>SSHサーバ - なし</li>
+</ul>
+
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<ul>
+<li><a href="http://www.zorin-os.com/free.html">Zorin OS - Free</a></li>
+<li><a href="http://simosnet.com/livecd/zorin/">zorin - ライブCDの部屋</a>
+	<ul class="small">
+	<li>理研ミラー：<a href="http://ftp.riken.go.jp/Linux/simosnet-livecd/zorin/">Index of /Linux/simosnet-livecd/zorin</a></li>
+	</ul>
+</li>
+</ul>
+<p>※ Ubuntu 13.04 のサポートは2014年1月までなので、HDにインストールする場合はLTS 12.04 ベース（2017年4月まで）の 6.2 の方がいいかもしれません。</p>
+</dd>
+
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://distrowatch.com/table.php?distribution=zorin">DistroWatch.com: Zorin OS</a></li>
+</ul>
+
+<ul>
+<li><a href="http://engawa.2ch.net/test/read.cgi/linux/1364124679/">Zorin OS 1スレ目</a> (2ch)</li>
+</ul>
+</dd>
+</dl>
+
+
+<h2><a href="#etc" accesskey="9" name="etc">雑記</a> <kbd class="ak">9</kbd></h2>
+
+<dl>
+<dt>拙作めも</dt>
+<dd>
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20110817/1313575927">KNOPPIX でファイル名が文字化けしたでござるの巻（FAT編）</a></li>
+</ul>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20130720/1374260743">軽量Linuxを独断と偏見で調べてみたでござる</a></li>
+</ul>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20090118/1232208347">【取り扱い注意】Clonezilla Live を試してみるの巻</a></li>
+</ul>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20081216/1229446904">【取り扱い注意】ウイルススキャンLiveCDを試すの巻（書き直したでござる）</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20130721/1374334872">ウイルススキャンLiveCDを試したYO！version 2013</a></li>
+</ul>
+
+<dl>
+<dt>マルチブート</dt>
+<dd>
+<p>XBOOT はヒジョーに簡単ですにゃ。</p>
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20120310/1331307365">XBOOT でウイルススキャンてんこもり LiveDVD (LiveUSB) を作ってみたYO！</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20120307/1331133210">【取扱注意】XBOOT - マルチブート LiveCD/LiveUSB 作成ツール</a></li>
+</ul>
+
+<p>SARDU はややこしそうですが、細かい設定できますで。</p>
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20120304/1330799228">【取扱注意】SARDU の追加設定アレコレ - マルチブート LiveCD/LiveUSB 作成ツール</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20120228/1330434373">【取扱注意】SARDU - マルチブート LiveCD/LiveUSB 作成ツール</a></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+<h3><a href="#root" name="root"><span class="tokai1">root 権限</span></a></h3>
+
+<p>一般ユーザでログインしている時に root 権限が必要なコマンドを実行するには・・・</p>
+<ul>
+<li><code>su</code> または <code>su -</code> で root に“なる”
+	<ul class="nest">
+	<li>root のパスワードは調べておく。Knoppix など、なしの場合もある。</li>
+	</ul>
+</li>
+<li>コマンドの先頭に <code><strong class="ms">sudo </strong></code> を付ける
+	<ul class="nest">
+	<li>例： <code>$ <strong>sudo</strong> mkdir /mnt/hoge</code></li>
+	<li>Ubuntu系はだいだいコレ</li>
+	</ul>
+</li>
+<li><code>sudo</code> でなく、<code>sudo -s</code> で現在のユーザのパスワード入力でも</li>
+<li>「<strong class="ms">Root Shell</strong>」や “<strong class="ms">super user</strong>”用のコンソール（ターミナル・エミュレーター）を使う</li>
+</ul>
+
+
+<h3><a href="#keymap" name="keymap"><span class="tokai1">キーボード配列をJP仕様に</span></a></h3>
+
+<p>（仮想）コンソール、ターミナル・エミュレーターでのキーマップをjpに変更する。</p>
+<p>ブート時に選択できるものも多いですが、ブート後に変更したい場合。</p>
+
+<pre>
+# loadkeys jp106
+</pre>
+<p>または（ターミナル・エミュレーター上で）</p>
+<pre>
+# setxkbmap jp
+</pre>
+<p>などなど。</p>
+
+
+
+<h3><a href="#editor" name="editor"><span class="tokai1">日本語エディタ</span></a></h3>
+
+<ul>
+<li>KDE環境 - マウス操作可能な <strong class="ms">Kwrite</strong> や <strong class="ms">Kate</strong></li>
+<li>GNOME環境 - マウス操作可能な <strong class="ms">gedit</strong></li>
+<li>gedit 風エディタ <strong class="ms">Geany</strong></li>
+<li><strong class="ms">Leafpad</strong>（gedit+アルファ風味）</li>
+</ul>
+
+
+<h3><a href="#textmode" name="textmode"><span class="tokai1">テキストモード時の日本語表示</span></a></h3>
+
+<p>slax-ja 版 (5.x) では、日本語ファイル名の表示・入力とも可能。</p>
+<blockquote class="small" cite="http://hatochan.dyndns.org/slax-ja/index.php?slax-ja%2Fdownload" title="slax-ja/download - PukiWiki">
+<p>jfbterm-0.4.7
+(注)コンソールで <code>jfbterm -q -e uim-fep</code> と入力してください。日本語入力のオン/オフの切替は、[ctrl] + [<span class="ms">\</span>]で行います。</p>
+</blockquote>
+
+<p>産総研版 KNOPPIX 5.0.1 にも <strong class="ms">jfbterm</strong> が入っているので表示のみ可能。（※5.1.1はなし）</p>
+
+
+
+<h3><a href="#ssh" name="ssh"><span class="tokai1">SSHでの日本語表示</span></a></h3>
+
+<p><strong class="ms">PuTTYjp</strong> での確認。（※FileZilla や WinSCP では日本語ファイル名はすべて文字化け...なんか設定が必要なのかな？）</p>
+
+<ul>
+<li><a href="http://hp.vector.co.jp/authors/VA024651/PuTTYkj.html">hdk の自作ソフトの紹介 | PuTTYjp</a></li>
+</ul>
+
+<ul>
+<li>UTF-8なLiveCD、及びDamn Small で PuTTYjp の変換の設定を「UTF-8 (CJK)」などに変更すると機種依存文字なども正しく表示</li>
+<li>他の euc-jp なLiveCDでは機種依存文字以外はOK</li>
+<li>SystemRescueCd では日本語表示だめ</li>
+</ul>
+
+
+<h3><a href="#error" name="error"><span class="tokai1">うまく起動できない時</span></a></h3>
+
+<p>その原因は何？</p>
+
+<ol>
+<li>CDメディアの不良 - 焼きミス？</li>
+<li>CDドライブの不良</li>
+<li>特定デバイスの対応</li>
+</ol>
+
+<dl>
+<dt>CDメディアの不良</dt>
+<dd>
+<ul>
+<li>ダウンロードの失敗？
+	<ul class="nest">
+	<li>ダウンロードした iso ファイルのハッシュ値(MD5 or SHA1)をチェックしましょ</li>
+	<li><a href="http://www.vector.co.jp/vpack/filearea/win/util/bin/by_date.html">バイナリファイル処理 - Vector</a></li>
+	</ul>
+</li>
+<li>データとして焼いていないか？
+	<ul class="nest">
+	<li>最初は誰もがやっちゃうミスかも。<strong>CD内に 拡張子 <em>iso</em> のファイルがある場合はただのデータCDなので失敗</strong>です。7 以降ではファイル右クリックから標準の「Windows ディスク イメージ書き込みツール」で。XPのWindows用ソフトなら「ディスクコピー」「イメージからCD作成」などの機能を使いましょ。</li>
+	</ul>
+</li>
+<li>CDをテストする
+	<ul class="nest">
+	<li>Knoppix なら ブート時に <code>knoppix testcd</code> と入力する</li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+
+<dt>CDドライブの不良</dt>
+<dd>
+<p>CD-RはよくてもCD-RWではだめだったり。起動できても使えるはずのコマンドが使えなかったりエラーになったりするのでちょっと危険かもしれません。</p>
+<p>USBメモリでのブートや、ハードディスクにファイルを保存してGRUB起動ディスク（フロッピー）などからのブートを試した方がいいかも。</p>
+<p>とりあえずブートの流れはおおまかにこんなかんじ</p>
+<ol>
+<li>BIOSがブートデバイスを選択</li>
+<li><strong class="ms">syslinux</strong> や <strong class="ms">GRUB</strong> などのブートローダが起動</li>
+<li>ブートローダが <strong class="ms">kernel</strong> と <strong class="ms">initrd</strong> 読み込み</li>
+<li><strong class="ms">kernel</strong> が起動してルートイメージを探す</li>
+</ol>
+<p>ハードディスクなどにファイルを保存した場合は、2＆3を PXEネットワークブートやUSBメモリ（もちろんUSBメモリだけですべて代用できますが）で代用可能。2だけならGRUB起動ディスクで代用可能。</p>
+<ul>
+<li><a href="./knoppix_boot.html">Knoppixを起動する方法を試しためも</a></li>
+</ul>
+
+</dd>
+
+<dt>特定デバイスの対応</dt>
+<dd>
+<p>起動オプションで特定のデバイスを無効にするか、グラフィック（モニタ）関連のオプションを試してみる。</p>
+</dd>
+
+</dl>
+
+
+
+
+
+<h3><a href="#maintenance" name="maintenance"><span class="tokai1">メンテナンス向き？を考える</span></a></h3>
+
+<p>Windowsが起動しない場合のファイル救出（※もちろんHDが逝っちゃってたらだめですが）、Linuxインストール時のHDへのファイルのコピー、Partimageなどでバックアップイメージの作成など、メンテナンス時の使用にはどれがいいかなぁ？</p>
+
+<dl>
+<dt>メンテナンス向けパッケージの多いのは？</dt>
+<dd>
+<p><strong class="ms">SystemRescueCd</strong>, <strong class="ms">Parted Magic</strong>、次いで <strong class="ms">Knoppix</strong>。</p>
+</dd>
+
+<dt>日本語・GUIでの操作</dt>
+<dd>
+<p>日本語が表示できないと、日本語ファイル名の救出が面倒です。KDE (or GNOME) 環境ならどれも同じだと思いますけど...</p>
+<ul class="small">
+<li>Ubuntu Desktop CD</li>
+<li>Knoppix</li>
+<li>SLAX</li>
+<li>CDlinux</li>
+<li>Parted Magic</li>
+</ul>
+
+<ul class="small">
+<li>Puppy Linux
+	<ul>
+	<li>デスクトップ環境は JWMなので、操作性はKDEより若干落ちるかな？</li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>Sambaサーバ</dt>
+<dd>
+<p>Windowsマシンから、ファイルへアクセス</p>
+<ul class="small">
+<li>Knoppix
+	<ul>
+	<li>設定スクリプトあり</li>
+	</ul>
+</li>
+<li>Berry Linux
+	<ul>
+	<li>コマンド実行</li>
+	</ul>
+</li>
+<li>SystemRescueCd
+	<ul>
+	<li>コマンド実行</li>
+	</ul>
+</li>
+<li>Parted Magic
+	<ul>
+	<li>コマンド実行</li>
+	</ul>
+</li>
+<li>PLoP Linux（GUIはなし）
+	<ul>
+	<li>コマンド実行</li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>Partimage でバックアップイメージ作成</dt>
+<dd>
+<p class="pink">※ <a href="http://www.partimage.org/Main_Page">Partimage</a> は開発が 2010-07 で止まってるので最近のPCでは使えないかも？</p>
+<ul>
+<li><a href="http://ping.windowsdream.com/">PING</a> (Partimage Is Not Ghost)</li>
+</ul>
+
+<ul class="small">
+<li>Knoppix</li>
+<li>SystemRescueCd</li>
+<li>Parted Magic</li>
+<li>PLoP Linux</li>
+</ul>
+</dd>
+
+
+<dt>GParted でパーティション操作</dt>
+<dd>
+<ul>
+<li>GParted LiveCD</li>
+</ul>
+
+<ul class="small">
+<li>Knoppix</li>
+<li>SystemRescueCd</li>
+<li>Puppy Linux</li>
+<li>Parted Magic</li>
+<li>Ubuntu Desktop CD</li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#network_boot" name="network_boot"><span class="tokai1">ネットワークブート</span></a></h3>
+
+<p>ネットワークのみでの起動。いわゆるディスクレスブート（※サーバが必要）。</p>
+<ul class="small">
+<li>Knoppix
+	<ul>
+	<li>サーバ側、LiveCDブート後に、スクリプト実行</li>
+	</ul>
+</li>
+<li>Porteus
+	<ul>
+	<li>サーバ側、[Porteus as PXE server] でブート</li>
+	</ul>
+</li>
+<li>SystemRescueCd
+	<ul>
+	<li>DHCPと、TFTP（またはHTTP）サーバ設定</li>
+	</ul>
+</li>
+<li>Parted Magic
+	<ul>
+	<li>DHCPと、TFTPサーバ設定</li>
+	</ul>
+</li>
+<li>PING (Partimage Is Not Ghost)
+	<ul>
+	<li>DHCPと、TFTPサーバ設定</li>
+	</ul>
+</li>
+<li>PLoP Linux
+	<ul>
+	<li>DHCPと、TFTPサーバ設定 + Windows ファイル共有</li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt>InetBoot</dt>
+<dd>
+<p>DHCP, TFTP, HTTP サーバを設定すれば、Knoppix. Fedora, Ubuntu などのLiveCD iso イメージからブート可能。（但し、バージョンはかなり古い）</p>
+<ul class="small">
+<li><a href="http://d.hatena.ne.jp/palm84/20080818/1218988041">InetBoot (GRUB+BuildRoot) 【0731版】</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20080626/1214415227">InetBoot (GRUB+BuildRoot)【その2】</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20080422/1208794026">Knoppix - InetBoot(GRUB+BuildRoot)</a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+
+</div>
+</div>
+
+
+<div class="navi">
+<a href="./index.html">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd>
+</div>
+
+<hr>
+
+<address>Written by yassy</address>
+
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+</body>
+
+</html>

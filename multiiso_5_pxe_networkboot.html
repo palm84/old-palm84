@@ -1,0 +1,1004 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="START" href="./">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>isoイメージをマルチブートするの巻【その5】PXEネットワークブートでござる＠Palm84</title>
+<style type="text/css">
+<!--
+/*
+a:link,a:visited,
+a:hover,a:active {
+ font-weight: normal;
+}
+*/
+
+h2 a:link,h2 a:visited,
+h2 a:hover,h2 a:active {
+ font-weight: bold;
+}
+
+dl.small dd pre {
+font-size: 100%;
+}
+
+div.ylt table {
+text-align: left;
+margin: 3% 5% 3% 9%;
+width: 81%;
+}
+
+div.ylt td {
+padding: 0.5em;
+}
+
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="./basic_ie5.css">
+<![endif]-->
+</head>
+
+
+<body>
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+
+<script type="text/javascript">
+<!--
+setTimeout("link()", 0);
+function link(){
+location.href='https://www.palm84.com/entry/multiiso_5_pxe_networkboot';
+}
+-->
+</script>
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>移行作業中です...</ins></dt>
+<dd>
+<p>はてなブログの該当ページへ<strong>リダイレクトします</strong>。お手数をおかけします。ご容赦ください。</p>
+</dd>
+</dl>
+
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" accesskey="z" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd>
+ | <span class="font_change">* font-change * <a href="javascript:void(document.body.style.fontFamily='inherit')" title="inherit">inherit</a> <a href="javascript:void(document.body.style.fontFamily='sans-serif')" title="Sans-serif">Ss</a> <a href="javascript:void(document.body.style.fontFamily='serif')" title="Serif">Sf</a> <a href="javascript:void(document.body.style.fontFamily='\'メイリオ\'')" title="メイリオ">メ</a> <a href="javascript:void(document.body.style.fontFamily='\'游ゴシック\',\'Yu Gothic\',YuGothic')" title="游ゴシック">游</a> <a href="javascript:void(document.body.style.fontFamily='\'ＭＳ Ｐゴシック\'')" title="ＭＳ Ｐゴシック">MS</a> <a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Regular\',\'源ノ角ゴシック JP Regular\',\'Noto Sans Japanese Regular\',\'Noto Sans CJK JP Regular\',\'源ノ角ゴシック\',\'源ノ角ゴシック JP\',\'Noto Sans Japanese\',\'Noto Sans CJK JP\'')" title="源ノ角ゴシック / Sonrce Han Sans">源</a> <a href="javascript:void(document.body.style.fontSize='12px')" title="12px">12</a>
+ <a href="javascript:void(document.body.style.fontSize='14px')" title="14px">14</a>
+ <a href="javascript:void(document.body.style.fontSize='16px')" title="16px">16</a> <a href="javascript:void(document.body.removeAttribute('style'));" title="body style 削除">戻す</a> *</span>
+</div>
+
+
+<h1><span class="tokai1"><a href="./multiiso_5_pxe_networkboot.html">isoイメージをマルチブートするの巻【その5】PXEネットワークブートでござる</a></span></h1>
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+<ul>
+<li><a href="#about" accesskey="3">これって何？</a> <kbd class="ak small">3</kbd></li>
+<li><a href="#pxelinux" accesskey="4">PXELINUX MEMDISK</a> <kbd class="ak small">4</kbd></li>
+<li><a href="#download" accesskey="5">ダウンロード</a> <kbd class="ak small">5</kbd></li>
+<li><a href="#iso_sub_directory" accesskey="6">isoをサブディレクトリへ展開</a> <kbd class="ak small">6</kbd></li>
+<li><a href="#tinypxeserver" accesskey="9">Tiny PXE Server  （PXEブートサーバ）</a> <kbd class="ak small">9</kbd></li>
+<li><a href="#nfs">NFSサーバ</a></li>
+<li><a href="#cifs">CIFS（Windows ファイル共有）</a></li>
+<li><a href="#files_copy" accesskey="8">ファイルの配置</a> <kbd class="ak small">8</kbd></li>
+<li><a href="#attention">【注意！】問題点</a></li>
+<li><a href="#ss">スクリーンショット</a></li>
+<li><a href="#etc">いろいろ</a></li>
+</ul>
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+
+
+
+<p class="small">リンク is フリーダム<span class="ms">♪</span></p>
+
+<div class="hateb">
+<script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://www10.plala.or.jp/palm84/";
+Hatena.BookmarkWidget.title = "はてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+
+<script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://d.hatena.ne.jp/palm84/";
+Hatena.BookmarkWidget.title = "某所のはてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+</div>
+
+</div>
+</div>
+
+
+
+<div class="main">
+
+<div class="palmst white">
+<ul>
+<li><a href="./multiiso.html">【その1】準備編</a></li>
+<li>【その2】マルチブートDVD(CD) 作成編 （<strong class="small">※ 改訂中、まだできてません。orz</strong>）</li>
+<li><a href="./multiiso_3_usb.html">【その3】マルチブートUSBメモリ作成編</a></li>
+<li>【その4】HDブート設定編 （<strong class="small">※ まだです。orz</strong>）</li>
+<li>【その5】PXEネットワークブートサーバ構築編 <span class="ms">←</span> <strong class="red">今ココ</strong></li>
+</ul>
+</div>
+
+<p><script src="http://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+
+<a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/multiiso_5_pxe_networkboot.html"><img src="http://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/multiiso_5_pxe_networkboot.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a>
+
+</p>
+
+<p>【注意】EFI(UEFI)ブートには対応しておりません。最近の64bit版LiveCDはEFIブート対応なので、ここのやり方は時代遅れになりつつあるのかもしれません…。orz</p>
+
+<dl class="changelog">
+<dt>更新履歴 - 最終更新日 2014.7.05</dt>
+<dd>
+<ul>
+<li>旧ページ : <a href="./old/multiiso_5_pxe_networkboot_20130306.html">20130306 版</a></li>
+</ul>
+<p>2014.07.05</p>
+<ul>
+<li>変更 : サーバを TFTPD32 から Tiny PXE Server に</li>
+<li>追加 : Lubuntu(i386), Redo Backup, Avira Rescue System, Bitdefender Rescue CD, Comodo Rescue Disk, Panda SafeDisk, linuxBean, KonaLinux</li>
+<li>更新 : Ubuntu, SystemRescueCd, Partition Wizard Home Edition, Clonezilla Live</li>
+<li>削除 : KNOPPIX InetBoot, EASEUS Todo Backup, Parted Magic</li>
+</ul>
+</dd>
+</dl>
+
+<dl class="changelog2">
+<dt>変更内容</dt>
+<dd>
+<dl>
+<dt>2014.07.04</dt>
+<dd>
+<ul>
+<li>SystemRescueCd - 3.4.1 <span class="ms">→</span> 4.2.0 (<code>systemrescuecd-x86-4.2.0.iso</code> )</li>
+<li>Clonezilla Live - 2.1.0-26 <span class="ms">→</span> 2.2.3-10
+	<ul>
+	<li><code>clonezilla-live-2.2.3-10-amd64.iso</code></li>
+	<li><code>clonezilla-live-2.2.3-10-i486.iso</code></li>
+	</ul>
+</li>
+<li>Partition Wizard Home Edition <span class="ms">→</span> ファイル名変更 : <code>pwhe.iso</code></li>
+</ul>
+</dd>
+</dl>
+
+</dd>
+</dl>
+<h2><a href="#about" name="about">これってなに？</a> <kbd class="ak">3</kbd></h2>
+
+<p class="overflow2"><img src="./images/multiiso/pxelinux_bootmenu_s.png" width="576" height="320" alt="PXELINUX ブートメニューのスクリーンショット"></p>
+
+<p><a href="multiiso.html">【その1】準備編</a>の続きであります。ネットワークブートしてサーバ上のisoイメージから起動させる試みでgozaru
+。</p>
+<p>ネットワークブートならCDもUSBメモリも不要ゆえ経済的に（？）オトクであると愚考致す。なれど、基本的にはサーバからダウンロードしての起動となるゆえ、オンメモリ起動のものなどそのままで起動可能なものもあれど、CD/USBメモリと同様とは行かぬことは残念至極なり。</p>
+<p>メモリ (RAM) が少ないと起動失敗することあったり、ほげほげと試行錯誤中.....</p>
+
+<dl>
+<dt>PXEネットワークブートとはなんぞや？</dt>
+<dd>
+<p>さぁ何でしょう？（説明できるほどわかってません...滝汗）。とりあえず、DHCP/TFTPサーバでPXEネットワークブート用サーバを稼動できます。Windows では <a href="http://tftpd32.jounin.net/">TFTPD32</a> を使うと簡単です。</p>
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/Preboot_Execution_Environment">Preboot Execution Environment - Wikipedia</a></li>
+<li><a href="http://www.syslinux.org/wiki/index.php/PXELINUX">PXELINUX - Syslinux Wiki</a></li>
+<li><a href="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/710pxeserver.html">＠IT：PXEネットワークブート用サーバを構築するには</a></li>
+<li>拙作めも : 
+	<ul class="small">
+	<li><a href="http://d.hatena.ne.jp/palm84/20070403/1175609650">WindowsでPXEネットワークブート用サーバの設定 - TFTPD32</a></li>
+	<li><a href="http://d.hatena.ne.jp/palm84/20070422/1177208004">PXEネットワークブートについてのめも</a></li>
+	</ul>
+</li>
+</ul>
+<p>さらにわかってませんが gPXE (iPXE) ではHTTPサーバからのブートが可能になります。</p>
+<ul>
+<li><a href="http://etherboot.org/wiki/index.php">Etherboot/gPXE Wiki</a></li>
+<li><a href="http://ipxe.org/">iPXE - open source boot firmware</a></li>
+</ul>
+</dd>
+</dl>
+
+<p>尚、ココで設定しているモノは下記の通り。必要なものを選択してクダサレ。すべてで 7.65 GB 程でした。</p>
+<p>isoのダウンロード先や、ファイル名、一部のisoの編集方法など <a href="multiiso.html">【その1】準備編</a> をお読み願いたいデス。</p>
+
+<ul>
+<li>Windows PE / RE</li>
+<li>バックアップ・リカバリー
+	<ul>
+	<li><a href="http://support.wdc.com/product/downloaddetail.asp?swid=119&#038;wdc_lang=en">True Image WD Edition</a></li>
+	<li><a href="http://www.seagate.com/jp/ja/support/downloads/discwizard/">DiscWizard | Seagate</a></li>
+	<li><a href="http://www.paragon-software.com/home/db-express/">Paragon Backup &#038; Recovery</a></li>
+	</ul>
+</li>
+<li>ウイルススキャン LiveCD
+	<ul>
+	<li><a href="http://www.avg.com/us-en/avg-rescue-cd">AVG Rescue CD</a></li>
+	<li><a href="http://www.comodo.com/business-security/network-protection/rescue-disk.php">Comodo Rescue Disk</a></li>
+	</ul>
+</li>
+<li>パーティショニング・ツール LiveCD
+	<ul>
+	<li><a href="http://www.partitionwizard.com/partition-wizard-bootable-cd.html">Partition Wizard Bootable CD</a></li>
+	</ul>
+</li>
+</ul>
+
+<p>以上は<span class="white">【その1】【その3】と共通のファイル配置</span>、基本的にisoを丸ごとメモリ (RAM) にロード（ダウンロード）してから起動するので、メニューで選択してブート画面が出るまで多少時間がかかります。</p>
+
+<p>以下はサブディレクトリへisoをそのまま展開、PXEブートサーバーから kernel と initrd をダウンロード後に、Windows共有 or NFSサーバに接続します（※ <span class="white">linuxBean, KonaLinux, Panda SafeDisk は【その1】【その3】と共通</span>のファイル配置）。</p>
+
+<ul>
+<li>Linux LiveCD
+	<ul>
+	<li><a href="http://www.ubuntulinux.jp/">Ubuntu ja Desktop DVD 14.04 (amd64)</a></li>
+	<li><a href="http://lubuntu.net/">Lubuntu Desktop DVD 14.04 (i386)</a></li>
+	<li><a href="http://www.sysresccd.org/">SystemRescueCd 4.2.0</a></li>
+	<li><a href="http://sourceforge.jp/projects/linuxbean/">linuxBean  12.04 / 14.04</a></li>
+	<li><a href="https://docs.google.com/folderview?pli=1&#038;id=0B63KzJgfI7FnRVMwXy1sQXlDdUk#list">KonaLinux 2.3 i386</a> </li>
+	</ul>
+</li>
+<li>ウイルススキャン LiveCD
+	<ul>
+	<li><a href="http://www.avira.com/ja/download?product=avira-rescue-system">Avira Rescue System</a></li>
+	<li><a href="http://www.bitdefender.com/support/How-to-create-a-Bitdefender-Rescue-CD-627.html">Bitdefender Rescue CD</a></li>
+	<li><a href="http://www.pandasecurity.com/usa/homeusers/support/card?id=80152">Panda SafeDisk</a> （ウイルススキャン LiveCD）</li>
+	</ul>
+</li>
+<li>バックアップ・リカバリー
+	<ul>
+	<li><a href="http://www.clonezilla.org/">Clonezilla Live 2.2.3-10-amd64</a></li>
+	<li><a href="http://www.clonezilla.org/">Clonezilla Live 2.2.3-10-i486</a></li>
+	<li><a href="http://redobackup.org/">Redo Backup</a></li>
+	</ul>
+</li>
+</ul>
+
+
+<h2><a href="#pxelinux" name="pxelinux">PXELINUX MEMDISK</a> <kbd class="ak">4</kbd></h2>
+
+<p>GRUB for DOS ではなく、PXELINUX (SYSLINUX) + MEMDISK に変更しましたです。</p>
+
+<p class="pink">※ SYSLINUX の<strong>バージョンは 5.01</strong> での確認です。</p>
+
+<ul>
+<li><a href="http://www.syslinux.org/wiki/index.php/The_Syslinux_Project">Syslinux Wiki</a>
+	<ul>
+	<li><a href="http://www.syslinux.org/wiki/index.php/PXELINUX">PXELINUX - Syslinux Wiki</a></li>
+	<li><a href="http://www.syslinux.org/wiki/index.php/MEMDISK">MEMDISK - Syslinux Wiki</a></li>
+	</ul>
+</li>
+</ul>
+
+<p>GRUB for DOS でもisoブートは可能なのですが、ネットワークブートに関してはこちらの方が利便性が高いかなぁと。</p>
+<ul>
+<li>PXELINUX は http サーバからのダウンロードが可能なので TFTP に比べダウンロードが格段に速くなる</li>
+<li>GRUB for DOS の利点として Direct Mapping 機能があるが、ネットワークブートでは不可</li>
+<li>他のブートストラップのチェインロードが割とカンタン</li>
+</ul>
+
+<p>逆に欠点として、GRUB for DOS の様にisoのマウント後に kernel パラメータなどの個別オプション指定はできません。なので GRUB for DOS のチェインロードも可能に設定しとくであります。</p>
+
+
+
+
+<h2><a href="#download" name="download">ダウンロード</a> <kbd class="ak">5</kbd></h2>
+
+<pre>
+TFTP/HTTPルート
+|   <strong class="ms red">ldlinux.c32</strong>
+|   <strong class="ms red">libcom32.c32</strong> 
+|   <strong class="ms red">libutil.c32</strong> 
+|   <strong class="ms red">menu.lst</strong>
+|   <strong class="ms red">pxelinux.0</strong>
+|
++---<strong>pxelinux.cfg</strong> ディレクトリ
+|       <strong class="ms red">default</strong>
+|       <strong class="ms red">pxe_menu.cfg</strong>
+|      
++---<strong>pxesrv</strong> ディレクトリ
+|       <strong class="red">* pxesrv.zip の内容をここへ展開</strong> 
+|      <strong class="ms red">config.ini</strong>
+|      pxesrv.exe
+|      ＜ 省略 ＞
+
+|
++---<strong>syslinux</strong> ディレクトリ
+|       <strong class="ms red">grub.exe</strong>
+|       <strong class="ms red">memdisk</strong> 
+|       <strong class="ms red">menu.c32</strong> 
+|       <strong class="ms red">pxechn.c32</strong> 
+|       <strong class="ms red">vesamenu.c32</strong> 
+|
+</pre>
+
+<ul>
+<li>SYSLINUX（※ zip版をダウンロード）
+	<ul>
+	<li>バージョン 5.xx: <a href="http://www.ring.gr.jp/pub/linux/kernel.org/utils/boot/syslinux/5.xx/">Index of /pub/linux/kernel.org/utils/boot/syslinux/5.xx</a></li>
+	<li>最新 : <a href="http://www.ring.gr.jp/pub/linux/kernel.org/utils/boot/syslinux/">Index of /pub/linux/kernel.org/utils/boot/syslinux</a></li>
+	</ul>
+</li>
+</ul>
+
+<p class="white">【注意】<strong>バージョン5.01で確認</strong>しています。（※ バージョン 6 以降ではパスは <code>bios</code> 以下となります。）</p>
+
+<ul>
+<li>必要ファイル : 
+	<ul>
+	<li><code>\core\pxelinux.0</code></li>
+	<li><code>\com32\elflink\ldlinux\ldlinux.c32</code><span class="small">（SYSLINUX 5.x 以降では必須）</span></li>
+	<li><code>\com32\lib\libcom32.c32</code><span class="small">（SYSLINUX 5.x 以降で pxechn.c32 使うには必須）</span></li>
+	<li><code>\com32\libutil\libutil.c32</code><span class="small">（SYSLINUX 5.x 以降で menu.c32, pxechn.c32 使うには必須）</span></li>
+	<li><code>\com32\menu\menu.c32</code><span class="small">（メニュー用）</span></li>
+	<li><code>\com32\menu\vesamenu.c32</code><span class="small">（メニュー用）</span></li>
+	<li><code>\com32\modules\pxechn.c32</code><span class="small">（pxelinux.0 チェインロード用）</span></li>
+	<li><code>\memdisk\memdisk</code><span class="small">（ファイル - img, iso 読み込み用）</span></li>
+	</ul>
+</li>
+</ul>
+
+<p class="white">※ バージョン 6 以降では、BIOS (legacy, not EFI) 環境でのブート用ファイルは <code>bios</code> 以下にあります。</p>
+
+<ul>
+<li>参考リンク :
+	<ul>
+	<li><a href="http://www.syslinux.org/wiki/index.php/Library_modules">Library modules - Syslinux Wiki</a></li>
+	</ul>
+</li>
+</ul>
+
+<dl class="palm2 small white">
+<dt>コマンド プロンプト コピペ用</dt>
+<dd>
+<p>わかる人(何)向け</p>
+<pre>
+set SYSL=
+set TFTP=
+pushd %SYSL%
+copy core\pxelinux.0 "%TFTP%\"
+copy com32\elflink\ldlinux\ldlinux.c32 "%TFTP%\"
+copy com32\lib\libcom32.c32 "%TFTP%\"
+copy com32\libutil\libutil.c32 "%TFTP%\"
+copy com32\menu\menu.c32 "%TFTP%\syslinux"
+copy com32\menu\vesamenu.c32 "%TFTP%\syslinux"
+copy com32\modules\pxechn.c32 "%TFTP%\syslinux"
+copy memdisk\memdisk "%TFTP%\syslinux"
+</pre>
+</dd>
+</dl>
+
+<ul>
+<li>GRUB for DOS (<code>grub4dos-0.4.4.zip</code>) をダウンロード
+	<ul>
+	<li><a href="http://sourceforge.net/projects/grub4dos/files/">Browse GRUB4DOS and WINGRUB Files on SourceForge.net</a></li>
+	<li>必要ファイル : <code>grub.exe</code></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>PXELINUX 設定ファイル : <a href="./archives/multiiso/pxelinux.cfg/default">default</a></li>
+<li>PXELINUX 設定ファイル : <a href="./archives/multiiso/pxelinux.cfg/192.168.11.8_pxe_menu.cfg">192.168.11.8_pxe_menu.cfg</a>
+	<ul>
+	<li><code>pxe_menu.cfg</code> にリネーム （<strong class="red">* IPアドレス要修正</strong>）</li>
+	</ul>
+</li>
+<li>GRUB for DOS PXEブート用 : menu.lst <a href="./archives/multiiso/config/menu_pxe.lst">menu_pxe.lst</a>
+	<ul>
+	<li><code>menu.lst</code> にリネーム</li>
+	</ul>
+</li>
+</ul>
+
+<dl class="palmst white">
+<dt>pxe_menu.cfg を環境に合わせて修正</dt>
+<dd>
+<p>下記は自分の環境に合わせて修正してください。</p>
+<ul>
+<li>IPアドレス 192.168.11.8</li>
+<li>CIFS（Windows共有）のユーザー名・パスワード - <code>NFSOPTS=-ouser=<strong>HOGE</strong>,pass=<strong>HAGE</strong></code> </li>
+</ul>
+
+</dd>
+</dl>
+
+<dl>
+<dt>Windows用 DHCP/TFTP/HTTPサーバ - Tiny PXE Server</dt>
+<dd>
+<ul>
+<li><a href="http://reboot.pro/files/file/303-tiny-pxe-server/">Tiny PXE Server - reboot.pro</a></li>
+</ul>
+<p>TFTPルート下の <code>pxesrv</code> ディレクトリへ展開</p>
+<ul>
+<li><code>config.ini</code> サンプル <a href="./archives/multiiso/config/192.168.11.8_config.ini">192.168.11.8_config.ini</a>
+	<ul>
+	<li><code>config.ini</code> にリネーム （<strong class="red">* IPアドレス要修正</strong>）</li>
+	</ul>
+</li>
+</ul>
+
+</dd>
+
+
+<dt>Windows用 NFSサーバ</dt>
+<dd>
+<ul>
+<li><a href="http://freenfs.sourceforge.net/">Free Network File Server (FreeNFS) for Windows</a></li>
+</ul>
+<p>配置はどこでも。</p>
+</dd>
+</dl>
+
+<p>下記isoはそのままルートへ</p>
+
+<ul>
+<li>Windows PE / RE</li>
+<li>True Image WD Edition</li>
+<li>DiscWizard | Seagate</li>
+<li>Paragon Backup &#038; Recovery</li>
+<li>AVG Rescue CD</li>
+<li>Comodo Rescue Disk</li>
+<li>Partition Wizard Bootable CD</li>
+</ul>
+
+
+<pre>
+TFTP/HTTPルート
+|
+|   <strong>AcronisMedia.iso</strong>
+|   <strong>avg.iso</strong>
+|   <strong>bootcd.iso</strong>
+|   <strong>comodo_rescue_disk.iso</strong>
+|   menu.lst
+|   ldlinux.c32
+|   libcom32.c32
+|   libutil.c32
+|   <strong>pwhe.iso</strong>
+|   pxelinux.0
+|   <strong>SeagateMedia.iso</strong>
+|   <strong>WinPEx86.iso</strong>
+|   <strong>WinREamd64.iso</strong>
+|   <strong>WinREx86.iso</strong>
+|   <strong>WinREx86_vista.iso</strong>
+|
++---pxelinux.cfg ディレクトリ
+|       default
+|       pxe_menu.cfg
+|
++---pxesrv ディレクトリ
+|       <strong class="red">* pxesrv.zip の内容をここへ展開</strong> 
+|      config.ini
+|      pxesrv.exe
+|      ＜ 省略 ＞
+
++---syslinux ディレクトリ
+|       grub.exe
+|       memdisk
+|       menu.c32
+|       pxechn.c32
+|       vesamenu.c32
+|
+</pre>
+
+
+<h2><a href="#iso_sub_directory" name="iso_sub_directory">isoをサブディレクトリへ展開</a> <kbd class="ak">6</kbd></h2>
+
+<p class="white">【注意！】<strong>KonaLinux はHDインストールができません</strong>。後述しますが、<strong>Ubuntu, Lubuntu, linuxBean はLive起動時にネットワークの修正、HDインストール後にGRUB2の修正が必要</strong>になります。</p>
+
+<ul>
+<li>cifsroot （Windows共有） - Ubuntu, Lubuntu, linuxBean 14.04</li>
+<li>nfsroot （NFSサーバ） - Ubuntu, Lubuntu, linuxBean 12.04, KonaLinux, </li>
+</ul>
+
+<ul>
+<li>Ubuntu ja Desktop DVD 14.04 (amd64)</li>
+<li>Lubuntu Desktop DVD 14.04 (i386)</li>
+<li>SystemRescueCd 4.2.0</li>
+<li>linuxBean 12.04 / 14.04</li>
+<li>KonaLinux 2.3 i386 </li>
+<li>Avira Rescue System</li>
+<li>Bitdefender Rescue CD</li>
+<li>Panda SafeDisk</li>
+<li>Clonezilla Live 2.2.3-10-amd64</li>
+<li>Clonezilla Live 2.2.3-10-i486</li>
+<li>Redo Backup</li>
+</ul>
+
+<p>TFTPルート下のisoサブディレクトリへisoをそのまま展開、設定ファイルを追加。SystemRescueCd は <code>pxelinux.0</code> を <code>\isolinux</code> から一つ上へコピー、ディレクトリ <code>pxelinux.cfg</code> を作成して設定ファイルをコピー。</p>
+
+<pre>
+TFTP/HTTPルート
+| 
+ ＜省略＞
+| 
++---iso
+|   |   
+|   +---bean1204
+|   |   |   ＜ ここへisoを展開 ＞
+|   |   |   <strong class="red">pxe_bean1204.cfg</strong> 
+|   |   |   <strong class="red">pxe_bean1404cifs.cfg</strong> 
+|   +---bean1404
+|   |   |   ＜ ここへisoを展開 ＞
+|   |   |   <strong class="red">pxe_bean1404.cfg</strong> 
+|   |   |   
+|   +---bitdefender-rescue-cd
+|   |   |   ＜ ここへisoを展開 ＞
+|   |   |   
+|   +---Clonezilla Live 2.2.3-10-amd64
+|   |   |   ＜ ここへisoを展開 ＞
+|   |   |   <strong class="red">pxe_clonezilla-live-2.2.3-10-amd64.cfg</strong> 
+|   |   |   
+|   +---clonezilla-live-2.2.3-10-i486
+|   |   |   ＜ ここへisoを展開 ＞
+|   |   |   <strong class="red">pxe_clonezilla-live-2.2.3-10-i486.cfg</strong> 
+|   |   |   
+|   +---konalinux-2.3_i386
+|   |   |   ＜ ここへisoを展開 ＞
+|   |   |   
+|   +---lubuntu-14.04-desktop-i386
+|   |   |   ＜ ここへisoを展開 ＞
+|   |   |   
+|   +---PandaSafeCD
+|   |   |   ＜ ここへisoを展開 ＞
+|   |   |   
+|   +---redobackup-livecd-1.0.4
+|   |   |   ＜ ここへisoを展開 ＞
+|   |   |   
+|   +---rescue-system
+|   |   |   ＜ ここへisoを展開 ＞
+|   |   |   
+|   +---systemrescuecd-x86-4.2.0
+|   |   |   ＜ ここへisoを展開 ＞
+|   |   |   <strong class="red">pxelinux.0</strong> （<strong class="red">*</strong> 下からコピー）
+|   |   |    
+|   |   --- 省略 ---
+
+|   |   +---isolinux  
+|   |   |   |   pxelinux.0 （<strong class="red">*</strong> これを上へコピー）
+|   |   |   |   
+|   |   --- 省略 ---
+
+|   |   +---<strong class="red">pxelinux.cfg</strong> （<strong class="red">*</strong> ディレクトリ作成）
+|   |   |   |   <strong class="red">default</strong> 
+|   |   |   |   <strong class="red">systemrescuecd-x86-4.2.0_http.cfg</strong> 
+|   |   |   |   <strong class="red">systemrescuecd-x86-4.2.0_nfs.cfg</strong> 
+|   |   |    
+|   +---ubuntu-ja-14.04-desktop-amd64
+|   |   |   ＜ ここへisoを展開 ＞
+|   |   |   
+|   |           
+ ＜省略＞
+</pre>
+
+<p class="white">IPアドレスは 192.168.11.8 になっているので<strong>すべて置換してください</strong>。 <code>pxe_bean1404cifs.cfg</code>  は<strong>ユーザー名/パスワードの修正</strong>も。</p>
+<ul>
+<li>PXELINUX 設定ファイル : 
+	<ul>
+	<li><a href="./archives/multiiso/config/pxe_bean1204.cfg">pxe_bean1204.cfg</a> （<strong class="red">* IPアドレス要修正</strong>）</li>
+	<li><a href="./archives/multiiso/config/pxe_bean1404.cfg">pxe_bean1404.cfg</a> （<strong class="red">* IPアドレス要修正</strong>）</li>
+	<li><a href="./archives/multiiso/config/pxe_bean1404cifs.cfg">pxe_bean1404cifs.cfg</a> （<strong class="red">* IPアドレス・user/pass 要修正</strong>）</li>
+	<li><a href="./archives/multiiso/config/pxe_clonezilla-live-2.2.3-10-amd64.cfg">pxe_clonezilla-live-2.2.3-10-amd64.cfg</a> （<strong class="red">* IPアドレス要修正</strong>）</li>
+	<li><a href="./archives/multiiso/config/pxe_clonezilla-live-2.2.3-10-i486.cfg">pxe_clonezilla-live-2.2.3-10-i486.cfg</a> （<strong class="red">* IPアドレス要修正</strong>）</li>
+	<li>systemrescuecd-x86-4.2.0
+		<ul>
+		<li><a href="./archives/multiiso/config/systemrescuecd-x86-4.2.0_default">systemrescuecd-x86-4.2.0_default</a> （<strong class="red">*</strong> <code>default</code> にリネーム）</li>
+		<li><a href="./archives/multiiso/config/systemrescuecd-x86-4.2.0_http.cfg">systemrescuecd-x86-4.2.0_http.cfg</a> （<strong class="red">* IPアドレス要修正</strong>）</li>
+		<li><a href="./archives/multiiso/config/systemrescuecd-x86-4.2.0_nfs.cfg">systemrescuecd-x86-4.2.0_nfs.cfg</a> （<strong class="red">* IPアドレス要修正</strong>）</li>
+		</ul>
+	</li>
+	</ul>
+</li>
+</ul>
+
+
+<h2><a href="#tinypxeserver" name="tinypxeserver">Tiny PXE Server  （PXEブートサーバ）</a> <kbd class="ak">9</kbd></h2>
+
+<p>Windows版 DHCP/TFTP/HTTP サーバです。ネットワークの基本を理解してれば設定は簡単。</p>
+
+<ul>
+<li><a href="http://reboot.pro/files/file/303-tiny-pxe-server/">Tiny PXE Server - reboot.pro</a>
+	<ul>
+	<li><a href="http://reboot.pro/topic/18488-tiny-pxe-server/">Tiny PXE Server - Boot from USB / Boot anywhere - reboot.pro</a></li>
+	</ul>
+</li>
+</ul>
+<p class="overflow2"><img src="./images/tinypxeserver/tinypxeserver10017.png" width="520" height="551" alt="Tiny PXE Server 1.0.0.17 のスクリーンショット"></p>
+
+
+<pre>
+TFTP/HTTPルート
+
+|
++---<strong>pxelinux.cfg</strong> ディレクトリ
+|       <strong class="ms red">default</strong>
+|       <strong class="ms red">pxe_menu.cfg</strong>
+|      
++---<strong>pxesrv</strong> ディレクトリ
+|       <strong class="red">* pxesrv.zip の内容をここへ展開</strong> 
+|      <strong class="ms red">config.ini</strong>
+|      pxesrv.exe
+|      ＜ 省略 ＞
+
+</pre>
+
+<ul>
+<li><code>config.ini</code></li>
+</ul>
+<pre>
+[dhcp]
+; ===== root path
+root=F:    <strong class="red">--- ルートパスを指定</strong> 
+
+; ===== Option 54 (DHCP Sever)
+opt54=192.168.11.8 <strong class="red">--- 自PCアドレス</strong> 
+
+; ===== IP Pool start
+poolstart=192.168.11.200
+
+; ===== IP Pool Size
+poolsize=20
+
+; ===== Option 1 (Subnet Mask)
+opt1=255.255.255.0
+
+; ===== Option 3 (Router)
+opt3=192.168.11.1
+
+; ===== Option 6 (DNS Server)
+opt6=192.168.11.1
+
+; ===== Option 28 (Broadcast)
+opt28=192.168.11.255
+
+; ===== Option 15 (DNS Domain Name)
+;opt15=
+
+; ===== Boot File - Filename
+filename=/pxesrv/files/ipxe-undionly.kpxe
+
+; ===== Boot File - Filename if user-class=gPXE or iPXE
+altfilename=http://<strong class="red">自PCアドレス</strong>/pxelinux.0
+
+; ===== HTTPd
+httpd=1
+start=1
+</pre>
+
+<p>サンプル <a href="./archives/multiiso/config/192.168.11.8_config.ini">config.ini</a> は 192.168.11.8/24 となってるので環境に合わせて適宜修正してください。</p>
+
+<ul>
+<li>参考リンク :
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20140701/1404199386">【Windowsで】Tiny PXE Server で 「http サーバで PXELINUX」 するだYO！</a></li>
+	</ul>
+</li>
+</ul>
+
+
+<dl>
+<dt>PXELINUX の設定ファイル</dt>
+<dd>
+<p><code><a href="./archives/multiiso/pxelinux.cfg/default">pxelinux.cfg/default</a></code> の内容はこれだけ。別のメニュー用ファイル <code><a href="./archives/multiiso/pxelinux.cfg/192.168.11.8_pxe_menu.cfg">pxe_menu.cfg</a></code> （<strong class="red">* IPアドレス要修正</strong>）をロードさせます。</p>
+<pre class="scl">
+INCLUDE /pxelinux.cfg/pxe_menu.cfg
+</pre>
+</dd>
+</dl>
+
+<dl class="small">
+<dt>IPアドレスなど確認</dt>
+<dd>
+<p>コマンド プロンプトから <code>ipconfig /all</code> で自PCのIPアドレスなどを確認。</p>
+<pre class="scl">
+C:\Users\yassy&#062;ipconfig /all
+
+＜ 途中略 ＞
+
+イーサネット アダプター ローカル エリア接続:
+
+   接続固有の DNS サフィックス . . . :
+   説明. . . . . . . . . . . . . . . : Realtek PCIe GBE Family Controller
+   物理アドレス. . . . . . . . . . . : A0-＜略＞
+   DHCP 有効 . . . . . . . . . . . . : いいえ
+   自動構成有効. . . . . . . . . . . : はい
+   リンクローカル IPv6 アドレス. . . . : ＜略＞(優先)
+   <strong class="ms red">IPv4 アドレス . . . . . . . . . . : 192.168.11.8</strong>(優先)
+   <strong class="ms">サブネット マスク</strong> . . . . . . . . : <strong class="ms">255.255.255.0</strong>
+   <strong class="ms">デフォルト ゲートウェイ</strong> . . . . . : <strong class="ms">192.168.11.1</strong>
+   DHCPv6 IAID . . . . . . . . . . . : 245412812
+   DHCPv6 クライアント DUID. . . . . . . . : 00-01-＜略＞
+   <strong class="ms">DNS サーバー</strong>. . . . . . . . . . . : <strong class="ms">192.168.11.1</strong>
+                                       8.8.8.8
+   NetBIOS over TCP/IP . . . . . . . : 有効
+</pre>
+
+</dd>
+</dl>
+
+
+<h2><a href="#nfs" name="nfs">NFSサーバ</a></h2>
+
+<ul>
+<li><a href="http://freenfs.sourceforge.net/">Free Network File Server (FreeNFS) for Windows</a></li>
+<li><a href="http://sourceforge.net/projects/freenfs/">FreeNFS | Free software downloads at SourceForge.net</a>（※ あやすい広告バナーに注意）</li>
+</ul>
+
+<p>起動したらisoディレクトリを指定するだけ。</p>
+
+<ol>
+<li>FreeNFS.exe 実行</li>
+<li>アイコン右クリ【Settings】で Root Folder を指定</li>
+</ol>
+
+<p class="overflow2"><img src="./images/hatena/freenfs/freenfs_icon.png" width="187" height="104" alt="FreeNFSアイコンのスクリーンショット"> <img src="http://www10.plala.or.jp/palm84/images/hatena/freenfs/freenfs_settings.png" width="321" height="247" alt="FreeNFS - Settings のスクリーンショット"></p>
+
+<p>※ FreeNFS.exe 場所はどこでもいいです。</p>
+
+
+<h2><a href="#cifs" name="cifs">CIFS（Windows ファイル共有）</a></h2>
+
+<p>Ubuntu, Lubuntu, linuxBean で可能ですが、これらはNFSブートも可能なので不要なら設定しなくてよいです。</p>
+
+<ol>
+<li>isoフォルダを共有設定</li>
+<li>Users にアクセス許可（※ パスワードなしだとダメ...多分...）</li>
+</ol>
+
+<p class="overflow2"><img src="./images/multiiso/windows_share.png" width="478" height="575" alt="Windows 共有設定のスクリーンショット"></p>
+
+
+<h2><a href="#files_copy" name="files_copy">ファイルの配置</a> <kbd class="ak">8</kbd></h2>
+
+<pre>
+TFTP/HTTPルート
+|
+|   AcronisMedia.iso
+|   avg.iso
+|   bootcd.iso
+|   comodo_rescue_disk.iso
+|   menu.lst
+|   ldlinux.c32
+|   libcom32.c32
+|   libutil.c32
+|   pwhe.iso
+|   pxelinux.0
+|   SeagateMedia.iso
+|   WinPEx86.iso
+|   WinREamd64.iso
+|   WinREx86.iso
+|   WinREx86_vista.iso
+|
++---iso
+|   |   
+|   +---bean1204
+|   |   |   ＜ ここへisoを展開 ＞
+|   |   |    pxe_bean1204.cfg
+|   |   |   
+|   +---bean1404
+|   |   |   ＜ ここへisoを展開 ＞
+|   |   |   pxe_bean1404.cfg
+|   |   |   pxe_bean1404cifs.cfg
+|   |   |   
+|   +---bitdefender-rescue-cd
+|   |   |   ＜ ここへisoを展開 ＞
+|   |   |   
+|   +---Clonezilla Live 2.2.3-10-amd64
+|   |   |   ＜ ここへisoを展開 ＞
+|   |   |   pxe_clonezilla-live-2.2.3-10-amd64.cfg
+|   |   |   
+|   +---clonezilla-live-2.2.3-10-i486
+|   |   |   ＜ ここへisoを展開 ＞
+|   |   |   pxe_clonezilla-live-2.2.3-10-i486.cfg
+|   |   |   
+|   +---konalinux-2.3_i386
+|   |   |   ＜ ここへisoを展開 ＞
+|   |   |   
+|   +---lubuntu-14.04-desktop-i386
+|   |   |   ＜ ここへisoを展開 ＞
+|   |   |   
+|   +---PandaSafeCD
+|   |   |   ＜ ここへisoを展開 ＞
+|   |   |   
+|   +---redobackup-livecd-1.0.4
+|   |   |   ＜ ここへisoを展開 ＞
+|   |   |   
+|   +---rescue-system
+|   |   |   ＜ ここへisoを展開 ＞
+|   |   |   
+|   +---systemrescuecd-x86-4.2.0
+|   |   |   ＜ ここへisoを展開 ＞
+|   |   |   pxelinux.0
+|   |   |    
+|   |   --- 省略 ---
+
+|   |   +---pxelinux.cfg
+|   |   |   |   default
+|   |   |   |   systemrescuecd-x86-4.2.0_http.cfg
+|   |   |   |   systemrescuecd-x86-4.2.0_nfs.cfg
+|   |   |    
+|   +---ubuntu-ja-14.04-desktop-amd64
+|   |   |   ＜ ここへisoを展開 ＞
+|   |   |   
+
++---pxelinux.cfg ディレクトリ
+|       default
+|       pxe_menu.cfg
+|
++---pxesrv ディレクトリ
+|      （pxesrv.zip の内容をここへ展開）
+|      config.ini
+|      pxesrv.exe
+|      --- 省略 ---
+
+|      
++---syslinux ディレクトリ
+|       grub.exe
+|       memdisk
+|       menu.c32
+|       pxechn.c32
+|       vesamenu.c32
+|
+</pre>
+
+
+<h2><a href="#attention" name="attention">【注意！】問題点</a></h2>
+
+<p>Ubuntu, Lubuntu, linuxBean, KonaLinux では修正が必要な問題が発生しました！</p>
+
+<dl>
+<dt>KonaLinux 2.3 i386</dt>
+<dd>
+<p>内蔵HDが認識されないのでHDインストール不可です。orz</p>
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20140424/1398333437">【FreeNFS】Windows で Debian Live ネットワークブート用サーバの設定【NFS編】</a></li>
+</ul>
+</dd>
+
+<dt>Ubuntu 14.04 amd64, Lubuntu 14.04 i386</dt>
+<dd>
+<ul>
+<li>CIFSブートではインターネット接続が無効となっているので修正作業が必要</li>
+<li>NFS/CIFSともHDインストール時は実行前にネットワーク接続の修正が必要</li>
+<li>NFS/CIFSともHDインストール実行後にGRUB2の修正が必要</li>
+</ul>
+<p>詳細は下記ページにて...</p>
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20131031/1383203306">【FreeNFS】Windows で Ubuntu Live ネットワークブート用サーバの設定【NFS編】</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20131102/1383322202">Windows で Ubuntu Live ネットワークブート用サーバの設定【CIFS編】</a></li>
+</ul>
+</dd>
+
+<dt>linuxBean 12.04, 14.04</dt>
+<dd>
+<p>Ubuntu同様の症状が発生しました。修正作業が必要です。</p>
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20140622/1403438279">linuxBean 14.04 LiveCD のネットワークブート【CIFS編】</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20131103/1383480462">linuxBean 12.04 LiveCD のネットワークブート【NFS編】</a></li>
+</ul>
+</dd>
+
+<dt>SystemRescueCd 4.2.0</dt>
+<dd>
+<ul>
+<li>NFSブートではコンソール表示まで5分から、長い時は20分程かかります。</li>
+</ul>
+<p>http download ではかなり速いですが、オンメモリ起動となるので RAM は 512MB 以上必要となってます。（※ 1GBあった方がいいかも？）</p>
+</dd>
+
+</dl>
+
+
+
+
+
+
+
+
+
+
+<h2><a href="#ss" name="ss">スクリーンショット</a></h2>
+
+<ul>
+<li>メインメニュー</li>
+</ul>
+<p class="overflow2"><img src="./images/multiiso/pxelinux_bootmenu.png" width="720" height="400" alt="PXELINUX ブートメニューのスクリーンショット"></p>
+
+<ul>
+<li>サブメニュー</li>
+</ul>
+<p class="overflow2"><img src="./images/multiiso/pxelinux_submenu_ubuntu.png" width="540" height="236" alt="サブメニュー「Ubuntu Live」のスクリーンショット"></p>
+<p class="overflow2"><img src="./images/multiiso/pxelinux_submenu_debian.png" width="540" height="105" alt="サブメニュー「Debian Live」のスクリーンショット"></p>
+<p class="overflow2"><img src="./images/multiiso/pxelinux_submenu_grub4dos.png" width="540" height="95" alt="サブメニュー「GRUB for DOS」のスクリーンショット"></p>
+<p class="overflow2"><img src="./images/multiiso/pxelinux_submenu_winpe.png" width="539" height="128" alt="サブメニュー「Windows PE」のスクリーンショット"></p>
+<p class="overflow2"><img src="./images/multiiso/pxelinux_submenu_recoverytools.png" width="540" height="216" alt="サブメニュー「Recovery Tools」のスクリーンショット"></p>
+<p class="overflow2"><img src="./images/multiiso/pxelinux_submenu_antivirus.png" width="540" height="185" alt="サブメニュー「AntiVirus」のスクリーンショット"></p>
+<p class="overflow2"><img src="./images/multiiso/pxelinux_submenu_tools.png" width="540" height="238" alt="のサブメニュー「Tools」のスクリーンショット"></p>
+<p class="overflow2"><img src="./images/multiiso/pxelinux_submenu_local.png" width="540" height="144" alt="のサブメニュー「local」のスクリーンショット"></p>
+
+<ul>
+<li>GRUB for DOS</li>
+</ul>
+<p class="overflow2"><img src="./images/multiiso/pxe_grub4dos_bootmenu.png" width="576" height="320" alt="GRUB for DOS のスクリーンショット"></p>
+
+
+
+<h2><a href="#etc" name="etc">いろいろ</a></h2>
+
+<dl>
+<dt>ネットワークブート用起動ディスク</dt>
+<dd>
+<p>ネットワークブートに対応していない古いPCでもNICが内蔵（or 増設PCIカード）なら起動ディスクからのブートが可能と思われます。</p>
+<ul>
+<li><a href="http://www.rom-o-matic.net/">ROM-o-matic.net</a></li>
+<li><a href="https://rom-o-matic.eu/">ROM-o-matic.eu | Generate iPXE images | open source network boot firmware</a></li>
+</ul>
+<p>FD/CDイメージ、Linux kernel などダウンロードできます。</p>
+</dd>
+</dl>
+
+<p>DVDは作成・編集がメンドクサ、USBメモリはブート対応していないこともある。その点ネットワークなら（対応してれば）ケーブル1本接続のみでいいので楽ですけど、基本的にダウンロードしてからの起動となるので大きなサイズのisoでは nfs ルートやHTTPマウントできないと苦しいかも。</p>
+
+<p>ルートイメージのみ（あるいはisoそのまま）USBメモリに保存しておき、「“ミニ” iso」方式でブートするとかでもいいかも。</p>
+
+
+
+
+</div>
+</div>
+
+
+<div class="navi">
+<a href="./index.html">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd>
+</div>
+
+
+<address>Written by yassy</address>
+
+</body>
+
+</html>

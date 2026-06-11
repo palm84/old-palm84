@@ -1,0 +1,659 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="START" href="./">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>Windows 版 LiveUSB 作成ツールいろいろ＠Palm84</title>
+<style type="text/css">
+<!--
+/*
+a:link,a:visited,
+a:hover,a:active {
+ font-weight: normal;
+}
+*/
+
+h2 a:link,h2 a:visited,
+h2 a:hover,h2 a:active {
+ font-weight: bold;
+}
+
+dl.small dd pre,
+dl.small dd preslc {
+font-size: 1.1em;
+}
+
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="./basic_ie5.css">
+<![endif]-->
+</head>
+
+
+<body>
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+
+<script type="text/javascript">
+<!--
+setTimeout("link()", 0);
+function link(){
+location.href='https://www.palm84.com/entry/liveusb_creator';
+}
+-->
+</script>
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>移行作業中です...</ins></dt>
+<dd>
+<p>はてなブログの該当ページへ<strong>リダイレクトします</strong>。お手数をおかけします。ご容赦ください。</p>
+</dd>
+</dl>
+
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" accesskey="z" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd> [<a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,h1,h2,h3,h4,h5,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span,#blog-title,.index,.white,.palmst,pre{color:white!important;background-color:#333!important;text-shadow:none!important;}code{color:#333!important;text-shadow:none!important;}a:link{color:orange!important;text-shadow:none!important;text-decoration:underline!important;}a:visited{color:sienna!important;text-shadow:none!important;text-decoration:underline!important;}a:hover{color:brown!important;background-color:white!important;text-decoration:none!important;}';head[0].appendChild(style);})();">反転</a> <a href="javascript:(function(){var head=document.getElementsByTagName('head');var style=head[0].lastChild;if (style.nodeName.toLowerCase() == 'style'){head[0].removeChild(style);}else{alert('追加したstyle要素はないですYO');}})();">戻す</a>] <span class="font_change">* font-change * <a href="javascript:void(document.body.style.fontFamily='inherit')" title="inherit">inherit</a> <a href="javascript:void(document.body.style.fontFamily='sans-serif')" title="Sans-serif">Ss</a> <a href="javascript:void(document.body.style.fontFamily='serif')" title="Serif">Sf</a> <a href="javascript:void(document.body.style.fontFamily='\'メイリオ\'')" title="メイリオ">メ</a> <a href="javascript:void(document.body.style.fontFamily='\'游ゴシック\',\'Yu Gothic\',YuGothic')" title="游ゴシック">游</a> <a href="javascript:void(document.body.style.fontFamily='\'ＭＳ Ｐゴシック\'')" title="ＭＳ Ｐゴシック">MS</a> <a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Regular\',\'源ノ角ゴシック JP Regular\',\'Noto Sans Japanese Regular\',\'Noto Sans CJK JP Regular\',\'源ノ角ゴシック\',\'源ノ角ゴシック JP\',\'Noto Sans Japanese\',\'Noto Sans CJK JP\'')" title="源ノ角ゴシック / Sonrce Han Sans">源</a> <a href="javascript:void(document.body.style.fontSize='12px')" title="12px">12</a>
+ <a href="javascript:void(document.body.style.fontSize='14px')" title="14px">14</a>
+ <a href="javascript:void(document.body.style.fontSize='16px')" title="16px">16</a> <a href="javascript:void(document.body.removeAttribute('style'));" title="body style 削除">戻す</a> *</span>
+</div>
+
+<h1><span class="tokai1"><a href="./liveusb_creator.html">Windows 版 LiveUSB 作成ツールいろいろ</a></span></h1>
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+<ul>
+<li><a href="#about">これって何？</a></li>
+<li>シングルブート
+	<ul>
+	<li><a href="#unetbootin">UNetbootin</a></li>
+	<li><a href="#tuxboot">Tuxboot</a></li>
+	<li><a href="#lili">LinuxLive USB Creatorr (LiLi)</a></li>
+	<li><a href="#uui">Universal USB Installer</a></li>
+	<li><a href="#lui">LiveUSB Install</a></li>
+	</ul>
+</li>
+<li>マルチブート
+	<ul>
+	<li><a href="#yumi">YUMI</a></li>
+	<li><a href="#xboot">XBOOT</a></li>
+	<li><a href="#sardu">SARDU</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="#memo">めも</a></li>
+</ul>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+
+
+
+<p class="small">リンク is フリーダム<span class="ms">♪</span></p>
+
+
+<div class="hateb">
+<script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://www10.plala.or.jp/palm84/";
+Hatena.BookmarkWidget.title = "はてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+
+<script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://d.hatena.ne.jp/palm84/";
+Hatena.BookmarkWidget.title = "某所のはてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+</div>
+
+<div class="amazon_ad">
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?t=palm84-22&#038;o=9&#038;p=11&#038;l=ur1&#038;category=pc_parts&#038;banner=1M2FZT17WYSMD5QH2X82&#038;f=ifr" width="120" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+</div>
+
+</div>
+</div>
+
+
+
+<div class="main">
+
+<p class="small">2012.3.8 作成</p>
+
+<p><script src="http://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+
+<a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/liveusb_creator.html"><img src="http://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/liveusb_creator.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a>
+
+</p>
+
+<p class="white">※ ちょっと内容古くなってます。。。<span class="aa">(;´･ω･)</span></p>
+
+<p>いっぱいあるんですなぁ。あんまり確認してないので間違いあるかもしれません。あしからず。。。</p>
+<p>何が何だかな方にはとりあえず XBOOT がおすすめですにゃ。</p>
+
+
+<dl class="palmst white">
+<dt>2014.11.18 追記</dt>
+<dd>
+<p>最終兵器…的な。</p>
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20141117/1416219867">【USBメモリ】Easy2Boot【isoマルチブート】</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20141111/1415652199">【Easy2Boot】UEFI USBメモリisoマルチブートできたYO！【ダガ、ムッチャシンドカッタ orz】</a></li>
+</ul>
+<p>高機能すぎて使いこなせてませんが... <span class="aa">｡ﾟ(ﾟ´Д｀ﾟ)ﾟ</span>｡</p>
+</dd>
+</dl>
+<h2><a href="#about" name="about">これって何？</a></h2>
+
+<p>Linux LiveCD やウイルススキャン LiveCD などのisoイメージからブート可能なUSBメモリ (=  <strong class="ms">LiveUSB</strong>) などを作成するソフトであります。マウスで右から左の操作で作成できるので便利であります。</p>
+<p>指定のisoイメージをダウンロードする機能もあったりします。</p>
+
+<p><strong>XBOOT, SARDU では LiveUSB だけでなく、マルチブートCDのisoイメージ作成機能もあります</strong>。</p>
+
+<dl>
+<dt>注意点</dt>
+<dd>
+<p>対応バージョンとかよく確認して使いませう。</p>
+<p>日本語版 Linux LiveCD の場合は英語版で起動してしまったりするんで、<strong>設定ファイルの編集が必要な場合が多い</strong>模様です。</p>
+<p>iso内の設定ファイルの内容が使用される場合は日本語で起動しますが、オリジナル英語版の設定が使われていることがあります。</p>
+<p>Ubuntu 日本語版は gfxboot 使用なのでisoそのままブート以外では英語での起動となることがほとんどかな。設定ファイルの編集が必要です。</p>
+</dd>
+
+<dt>isoイメージの自動検出について</dt>
+<dd>
+<p>特定の規則に基づいて検出（認識）されます。下記の例では  <code>ubuntu-11.10-desktop*.iso</code> となってます。</p>
+<p class="overflow2"><img src="./images/liveusb_creator/filename_wildcard.png" width="483" height="104" alt="isoイメージファイル名のスクリーンショット"></p>
+<p>Ubuntu 11.10 日本語版ではファイル名が <code>ubuntu<strong class="ms red">-ja</strong>-11.10-desktop-i386.iso</code> となってるのでファイル名を変更（<strong class="ms red">-ja</strong>を取り除く）する必要があります。</p>
+</dd>
+</dl>
+
+
+<h2><a href="#unetbootin" name="unetbootin">UNetbootin</a></h2>
+<p class="pink">single ブート LiveUSB 作成。英語版（※ 一部日本語）。Linux 版、Mac 版もあり</p>
+
+<ul>
+<li><a href="http://unetbootin.sourceforge.net/">UNetbootin - Homepage and Downloads</a></li>
+<li>サポートリスト : 
+	<ul class="small">
+	<li><a href="http://unetbootin.sourceforge.net/#features">features</a></li>
+	</ul>
+</li>
+</ul>
+
+<p class="overflow2"><img src="./images/liveusb_creator/unetbootin.png" width="540" height="398" alt="UNetbootin のスクリーンショット"></p>
+
+<p class="pink">※ バージョン 568 での確認です。</p>
+
+<ul>
+<li>起動設定は元の設定ファイルの内容から（日本語版でもほぼ対応かな？）</li>
+<li>Persistent 設定可能
+	<ul>
+	<li><a href="http://www.pendrivelinux.com/what-is-persistent-linux/">What is Persistent Linux | USB Pen Drive Linux</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>Ubuntu 11.10 ブート画面</li>
+</ul>
+<p class="overflow2"><img src="./images/liveusb_creator/unetbootin_boot_ubuntu1110.png" width="576" height="320" alt="UNetbootin - Ubuntu 11.10 ブート画面のスクリーンショット"></p>
+
+<dl>
+<dt>日本語版 Linux LiveCD の対応は？</dt>
+<dd>
+<ul>
+<li>KNOPPIX 6.7.1 - おｋ</li>
+<li>Ubuntu 11.10 - 英語で起動（<code>syslinux.cfg</code> を編集すればおｋ）</li>
+<li>Wary Puppy 5.1.1 - おｋ（ブートメニューの内容は少しおかしい）</li>
+</ul>
+</dd>
+</dl>
+
+<dl>
+<dt>参考リンク</dt>
+<dd>
+<ul>
+<li><a href="http://www.forest.impress.co.jp/docs/review/20090907_312720.html">窓の杜 - 【REVIEW】さまざまなOSのインストール“USBメモリ”を手軽に作成できる「UNetbootin」</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.pendrivelinux.com/using-unetbootin-to-create-a-live-usb-linux/">Using UNetbootin to create a Live Linux USB (Windows) | USB Pen Drive Linux</a></li>
+<li><a href="http://reboot.pro/forum/79/">UNetbootin - reboot.pro</a></li>
+</ul>
+</dd>
+</dl>
+
+<h2><a href="#tuxboot" name="tuxboot">Tuxboot</a></h2>
+<p class="pink">single ブート LiveUSB 作成。英語版。Linux 版もあり</p>
+
+<ul>
+<li><a href="http://tuxboot.org/">Tuxboot</a></li>
+<li>サポートディストリ : 
+	<ul class="small">
+	<li>Clonezilla live, DRBL live, GParted live and Tux2live</li>
+	</ul>
+</li>
+</ul>
+
+<p class="overflow2"><img src="./images/liveusb_creator/tuxboot.png" width="588" height="391" alt="Tuxboot のスクリーンショット"></p>
+
+<p class="pink">※ バージョン 39 での確認です。</p>
+
+<p>UNetbootin のカスタマイズ版。Clonezilla live はテスト版などにも対応。</p>
+
+<h2><a href="#lili" name="lili">LinuxLive USB Creator (LiLi)</a></h2>
+<p class="pink">single ブート LiveUSB 作成。日本語対応</p>
+
+<ul>
+<li><a href="http://www.linuxliveusb.com/">LinuxLive USB Creator (LiLi)</a></li>
+<li>サポートリスト : 
+	<ul class="small">
+	<li><a href="http://www.linuxliveusb.com/en/supported-linuxes">Supported Linux distributions</a></li>
+	</ul>
+</li>
+</ul>
+
+<p class="overflow2"><img src="./images/liveusb_creator/lili_install_ubuntu1110.png" width="338" height="578" alt="LinuxLive USB Creator (LiLi) のスクリーンショット"></p>
+
+<p class="pink">※ バージョン 2.8.10 での確認です。</p>
+
+<ul>
+<li>ソフト上のメニューは唯一の日本語対応なので操作はわかりやすい</li>
+<li>元の設定ファイルがリネームされて使用されるようなので日本語版でも問題なしかな？</li>
+<li>仮想マシンでUSBメモリのブート確認可
+	<ul>
+	<li>USBメモリに <strong class="ms">Portable-VirtualBox</strong> をインストール</li>
+	</ul>
+</li>
+<li>Persistent 設定可能
+	<ul>
+	<li><a href="http://www.pendrivelinux.com/what-is-persistent-linux/">What is Persistent Linux | USB Pen Drive Linux</a></li>
+	</ul>
+</li>
+</ul>
+
+<p class="overflow2"><img src="./images/liveusb_creator/lili_persistent.png" width="361" height="114" alt="LinuxLive USB Creator Persistent 設定のスクリーンショット"></p>
+
+<ul>
+<li>Ubuntu 11.10 ブート画面</li>
+</ul>
+<p class="overflow2"><img src="./images/liveusb_creator/lili_boot_ubuntu1110.png" width="512" height="384" alt="Ubuntu 11.10 ブート画面のスクリーンショット"></p>
+
+<dl>
+<dt>日本語版 Linux LiveCD の対応は？</dt>
+<dd>
+<ul>
+<li>KNOPPIX 6.7.1 - おｋ、問題なし</li>
+<li>Ubuntu 11.10 - 非対応と出るが gfxboot で起動おｋ（※ 但し、ブート画面の一部は英語）</li>
+<li>Wary Puppy 5.1.1 - 非対応と出るが起動おｋ</li>
+</ul>
+</dd>
+</dl>
+
+<dl>
+<dt>参考リンク</dt>
+<dd>
+<ul>
+<li><a href="http://www.pendrivelinux.com/linux-live-usb-creator/">Linux Live USB Creator (LiLi) from Windows | USB Pen Drive Linux</a></li>
+<li><a href="http://reboot.pro/forum/127/">LinuxLive USB Creator (a.k.a "LiLi") - reboot.pro</a></li>
+</ul>
+</dd>
+</dl>
+
+<h2><a href="#uui" name="uui">Universal USB Installer</a></h2>
+<p class="pink">single ブート LiveUSB 作成。英語版</p>
+
+<ul>
+<li><a href="http://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3/">Universal USB Installer -- Easy as 1 2 3 | USB Pen Drive Linux</a></li>
+</ul>
+
+<p class="overflow2"><img src="./images/liveusb_creator/universal_usb_installer.png" width="503" height="389" alt="Universal USB Installer のスクリーンショット"></p>
+
+<p class="pink">※ バージョン 1.8.8.5 での確認です。</p>
+
+<ul>
+<li>Persistent 設定可能
+	<ul>
+	<li><a href="http://www.pendrivelinux.com/what-is-persistent-linux/">What is Persistent Linux | USB Pen Drive Linux</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>Ubuntu 11.10 ブート画面</li>
+</ul>
+<p class="overflow2"><img src="./images/liveusb_creator/universal_usb_installer_boot_ubuntu.png" width="512" height="384" alt="Universal USB Installer - Ubuntu 11.10 のスクリーンショット"></p>
+
+<dl>
+<dt>日本語版 Linux LiveCD の対応は？</dt>
+<dd>
+<ul>
+<li>KNOPPIX 6.7.1 - 一応おｋ</li>
+<li>Ubuntu 11.10 - 英語で起動（<code>syslinux\txt.cfg</code> を編集すればおｋ）</li>
+<li>Wary Puppy 5.1.1 - 一応おｋ（4.3.1 ではisoのファイル名を変更）</li>
+</ul>
+</dd>
+</dl>
+
+<dl>
+<dt>参考リンク</dt>
+<dd>
+<ul>
+<li><a href="http://www.lifehacker.jp/2010/07/100701universal_usb_installer.html">『Universal USB Installer』ならどのLinux OSでも持続性のあるサムドライブ版を作成可能！ : ライフハッカー［日本版］</a></li>
+</ul>
+</dd>
+</dl>
+
+<h2><a href="#lui" name="lui">LiveUSB Install</a></h2>
+<p class="pink">single ブート LiveUSB 作成。英語版。Linux 版もあり</p>
+
+<ul>
+<li><a href="http://live.learnfree.eu/">LiveUSB Install | Linux on a stick!</a></li>
+<li>サポートリスト : 
+	<ul class="small">
+	<li><a href="http://live.learnfree.eu/support">Support | LiveUSB Install</a></li>
+	</ul>
+</li>
+</ul>
+
+<p class="overflow2"><img src="./images/liveusb_creator/live_usb_install_install_ubuntu.png" width="451" height="453" alt="LiveUSB Install のスクリーンショット"></p>
+
+<p class="pink">※ バージョン 2.3.2 での確認です。</p>
+
+<ul>
+<li>起動が重いかも（1,2分かかったり、起動失敗したり）</li>
+<li>Persistent 設定可能
+	<ul>
+	<li><a href="http://www.pendrivelinux.com/what-is-persistent-linux/">What is Persistent Linux | USB Pen Drive Linux</a></li>
+	</ul>
+</li>
+<li>iso指定時に設定のカスタマイズ可</li>
+</ul>
+
+<ul>
+<li>WinGrub ISO Chainloader</li>
+</ul>
+<p class="overflow2"><img src="./images/liveusb_creator/live_usb_install_iso_chain.png" width="445" height="342" alt="LiveUSB Install WinGrub ISO Chainloader のスクリーンショット"></p>
+<ul>
+<li>IMG Write - イメージ書き込み機能あり
+	<ul>
+	<li>isohybrid を直接書き込みできました（※ Ubuntu 11.10 では起動だめだったorz）</li>
+	</ul>
+</li>
+</ul>
+
+<p class="overflow2"><img src="./images/liveusb_creator/live_usb_install_img_write.png" width="445" height="249" alt="LiveUSB Install - IMG Write のスクリーンショット"></p>
+
+<ul>
+<li>Ubuntu 11.10 ブート画面</li>
+</ul>
+<p class="overflow2"><img src="./images/liveusb_creator/live_usb_install_boot_ubuntu.png" width="512" height="384" alt="LiveUSB Install - Ubuntu 11.10 のスクリーンショット"></p>
+
+<dl>
+<dt>日本語版 Linux LiveCD の対応は？</dt>
+<dd>
+<ul>
+<li>KNOPPIX 6.7.1 - <code>syslinux.cfg</code> の修正が必要（起動パラメータが英語版のもの？）</li>
+<li>Ubuntu 11.10 - 日本語で起動するがキーボードはUS設定</li>
+<li>Wary Puppy 5.1.1 - 起動おｋ（ブートエントリは1個だけ）</li>
+</ul>
+<p><code>%Temp%\live-usb-install\presets</code> 以下にディストリ別の <code>syslinux.cfg</code> があるのでこれを事前に修正しておけばいいのかもしれない。</p>
+</dd>
+</dl>
+
+<dl>
+<dt>参考リンク</dt>
+<dd>
+<ul>
+<li><a href="http://www.pendrivelinux.com/liveusb-install-live-usb-creator/">LiveUSB Install - Live USB Creator - (Windows or linux) | USB Pen Drive Linux</a></li>
+</ul>
+</dd>
+</dl>
+
+<h2><a href="#yumi" name="yumi">YUMI</a></h2>
+<p class="pink">マルチ ブート LiveUSB 作成。英語版</p>
+
+<ul>
+<li><a href="http://www.pendrivelinux.com/yumi-multiboot-usb-creator/">YUMI -- Multiboot USB Creator</a></li>
+</ul>
+
+<p class="overflow2"><img src="./images/liveusb_creator/yumi.png" width="503" height="389" alt="YUMI のスクリーンショット"></p>
+
+<p class="pink">※ バージョン 0.0.4.9 での確認です。</p>
+
+<ul>
+<li>指定できるisoは一つだけ、1個ずつ追加</li>
+<li>対応ディストリはかなりたくさん</li>
+</ul>
+
+<ul>
+<li>ブート画面</li>
+</ul>
+<p class="overflow2"><img src="./images/liveusb_creator/yumi_boot.png" width="512" height="384" alt="YUMI ブート画面のスクリーンショット"></p>
+
+<dl>
+<dt>日本語版 Linux LiveCD の対応は？</dt>
+<dd>
+<ul>
+<li>KNOPPIX 6.7.1 - <code>knoppix.cfg</code> の修正が必要（起動パラメータが英語版のもの？）</li><li>Ubuntu 11.10 - 英語で起動（※ <code>ubuntu1110.cfg</code> を修正すればおｋ）</li>
+<li>Wary Puppy 5.1.1 - 一応おｋ（ブートエントリは一つだけ）</li>
+</ul>
+</dd>
+</dl>
+
+<h2><a href="#sardu" name="sardu">SARDU</a></h2>
+<p class="pink">マルチ ブート LiveUSB / LiveCD(iso)作成。英語版</p>
+<p class="pink small">※ <strong>サイトにダマしっぽいあやすいツールのバナー広告が多いので注意</strong>。</p>
+
+<ul>
+<li><a href="http://www.sarducd.it/">SARDU - Multi Boot USB pendrive and CD or DVD Builder</a></li>
+</ul>
+
+<p class="overflow2"><img src="./images/liveusb_creator/sardu_main.png" width="545" height="493" alt="SARDU のスクリーンショット"></p>
+
+<p class="pink">※ バージョン 2.0.4.3 での確認です。</p>
+
+<ul>
+<li>isoフォルダを指定し対応ディストリをチェックボタンで選択</li>
+<li>カスタマイズの為の追加機能がいっぱいあり</li>
+</ul>
+
+<ul>
+<li>ブート画面</li>
+</ul>
+<p class="overflow2"><img src="./images/liveusb_creator/sardu_boot_menu.png" width="512" height="384" alt="SARDU ブート画面のスクリーンショット"></p>
+
+<dl>
+<dt>日本語版 Linux LiveCD の対応は？</dt>
+<dd>
+<ul>
+<li>KNOPPIX 6.7.1 - 非対応</li>
+<li>Ubuntu 11.10 - 英語で起動（<code>/ubuntu/casper/isolinux/text.cfg</code> を編集すればおｋ）</li>
+<li>Wary Puppy 5.1.1 - 設定ファイルが作成されないのでブートできない（<code>syslinux.cfg</code> を自作すればおｋ）</li>
+</ul>
+</dd>
+</dl>
+
+<dl>
+<dt>参考リンク</dt>
+<dd>
+<ul>
+<li><a href="http://reboot.pro/forum/100/">SARDU - Multi Boot Builder USB/DVD - reboot.pro</a></li>
+</ul>
+
+<ul>
+<li>拙作めも :
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20120228/1330434373">【取扱注意】SARDU - マルチブート LiveCD/LiveUSB 作成ツール</a></li>
+	<li><a href="http://d.hatena.ne.jp/palm84/20120304/1330799228">【取扱注意】SARDU の追加設定アレコレ - マルチブート LiveCD/LiveUSB 作成ツール</a></li>
+	</ul>
+</li>
+</ul>
+
+</dd>
+</dl>
+
+<h2><a href="#xboot" name="xboot">XBOOT</a></h2>
+<p class="pink">マルチ ブート LiveUSB / LiveCD(iso)作成。英語版</p>
+
+<ul>
+<li><a href="http://sites.google.com/site/shamurxboot/">XBOOT</a></li>
+</ul>
+
+<p class="overflow2"><img src="./images/liveusb_creator/xboot.png" width="598" height="469" alt="XBOOT のスクリーンショット"></p>
+
+<p class="pink">※ バージョン 1.0beta14 での確認です。</p>
+
+<ul>
+<li>基本は<del>isoそのままブート</del> <ins>grub4dos の ISO Emulation or ミニiso方式</ins>（日本語版でもほぼ対応可能かな）</li>
+<li>Ubuntu 系ではisoそのままブート（<code>iso-scan/filename</code> オプション）</li>
+<li>isoそのままブート非対応ディストリではミニiso方式でブート</li>
+<li>仮想マシンで起動確認
+	<ul>
+	<li>便利ですが <strong class="ms">QEMU</strong> なのでかなり重いかも？</li>
+	</ul>
+</li>
+</ul>
+
+<p>他のツールと大きく違い、展開されるファイルは<del>一部な</del><ins>少ない</ins>のでUSBメモリ内が<ins>割と</ins>すっきり(笑)。</p>
+
+<ul>
+<li>ブート画面</li>
+</ul>
+<p class="overflow2"><img src="./images/liveusb_creator/xboot_qemu_boot2.png" width="512" height="384" alt="XBOOT ブート画面のスクリーンショット"></p>
+
+<dl>
+<dt>日本語版 Linux LiveCD の対応は？</dt>
+<dd>
+<ul>
+<li>KNOPPIX 6.7.1 - おｋ、ミニiso形式</li>
+<li>Ubuntu 11.10 - おｋ、isoそのままブート、しかしisoが2重保存されてorz</li>
+<li>Wary Puppy 5.1.1 - おｋ、ミニiso形式</li>
+</ul>
+</dd>
+</dl>
+
+<dl>
+<dt>参考リンク</dt>
+<dd>
+<ul>
+<li><a href="http://www.lifehacker.jp/2011/01/1101111xbootlive_cd.html">『XBoot』は複数のlive CDやブータブルメディアをひとまとめにしてくれる救世主！ : ライフハッカー［日本版］</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.pendrivelinux.com/xboot-multiboot-iso-usb-creator/">XBOOT -- Multiboot ISO USB Creator (Windows) | USB Pen Drive Linux</a></li>
+<li><a href="http://reboot.pro/forum/126/">XBOOT - reboot.pro</a></li>
+</ul>
+
+<ul>
+<li>拙作めも :
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20120307/1331133210">【取扱注意】XBOOT - マルチブート LiveCD/LiveUSB 作成ツール</a></li>
+	<li><a href="http://d.hatena.ne.jp/palm84/20120310/1331307365">XBOOT でウイルススキャンてんこもり LiveCD (LiveUSB) を作ってみたYO！</a></li>
+	<li><a href="http://d.hatena.ne.jp/palm84/20130725/1374747033">XBOOTで Ubuntu Live（マルチブート）の作成</a></li>
+	<li><a href="http://d.hatena.ne.jp/palm84/20130725/1374747034">XBOOTで Slax Live（マルチブート）の作成</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<h2><a href="#memo" name="memo">めも</a></h2>
+
+<dl>
+<dt>日本語版 Linux LiveCD のデフォルト起動オプションについて</dt>
+<dd>
+<p>起動したけど英語になってるとかな場合には <code>syslinux.cfg</code> などの修正が必要になるんで参考に。</p>
+
+<ul>
+<li>Ubuntu 11.10 / 11.04 (<span class="small"><code>ubuntu-ja-11.04-desktop-i386.iso</code></span>, <span class="small"><code>ubuntu-ja-11.10-desktop-i386.iso</code></span>)</li>
+</ul>
+<p class="small pink"><code>txt.cfg</code> を確認しませう。</p>
+<pre class="scl">
+file=/cdrom/preseed/ubuntu.seed boot=casper quiet splash -- debian-installer/language=ja keyboard-configuration/layoutcode?=jp keyboard-configuration/modelcode?=jp106 maybe-ubiquity
+</pre>
+
+<ul>
+<li>Knoppix 6.7.1 CD 産総研版 (<span class="small"><code>knoppix_v6.7.1CD_20110914-20111018.iso</code></span>)</li>
+</ul>
+<pre class="scl">
+ramdisk_size=100000 lang=ja vt.default_utf8=0 apm=power-off nomce libata.force=noncq hpsa.hpsa_allow_any=1 loglevel=1 tz=Asia/Tokyo
+</pre>
+
+<ul>
+<li>Knoppix 6.7.1 ライブＣＤの部屋版 (<span class="small"><code>KNOPPIX_V6.7.1CD-2011-09-14-JP.iso</code></span>)</li>
+</ul>
+<pre class="scl">
+ramdisk_size=100000 lang=ja vt.default_utf8=0 apm=power-off nomce libata.force=noncq hpsa.hpsa_allow_any=1 loglevel=1 tz=localtime
+</pre>
+
+</dd>
+</dl>
+
+
+</div>
+</div>
+
+
+
+<div class="navi">
+<a href="./index.html">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd>
+</div>
+
+<script type="text/javascript">
+function smoothScroll(o){var e=window.pageYOffset,l=o>e;setTimeout(function(){l&&o>=e?(e=e+(o-e)/20+1,window.scrollTo(0,e),setTimeout(arguments.callee,10)):!l&&e>=o?(e=e-(e-o)/20-1,window.scrollTo(0,e),setTimeout(arguments.callee,10)):window.scrollTo(0,o)},10)}
+</script>
+<ul class="toTop-nav">
+<li><a href="javascript:void(0);" onclick="smoothScroll(0);return false;">↑</a></li>
+</ul>
+
+<address>Written by yassy</address>
+
+</body>
+
+</html>

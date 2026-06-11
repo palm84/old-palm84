@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="GENERATOR" content="EdLeaf Version 1.02">
+<link rel="START" href="./">
+<title>セーフモードでウイルススキャン</title>
+<link rel="stylesheet" type="text/css" href="basic.css">
+</head>
+
+<body>
+
+
+<div class="navi">
+<a href="index.html" name="top" accesskey="z">HOME(Z)</a> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="d" title="はてなダイアリー">Diary(<span class="ak">D</span>)</a> | 
+</div>
+
+
+<h1>セーフモードでウイルススキャン</h1>
+
+
+<ul class="index">
+<li><span class="verdana"><strong>INDEX</strong></span>
+<ul class="nest">
+<li><a href="#safemode">セーフモードの起動方法</a></li>
+<li><a href="#">Norton AntiVirus 2005</a></li>
+<li><a href="#">Norton Internet Security 2005</a></li>
+<li><a href="#">McAfee ウイルススキャン 2005 (ver 9.0)</a></li>
+<li><a href="#">NOD32アンチウイルス</a></li>
+<li><a href="#">EZ Antivirus</a><span class="small">(eTrustアンチウイルス2005英語版)</span></li>
+<li><a href="#">AVG Anti-Virus Free Edition</a></li>
+<li><a href="#">avast!4 Home Edition</a></li>
+</ul></li>
+</ul>
+
+<p>Windows をセーフモードで起動してウイルススキャンする方法について書いてみました。別に難しいというわけではないのですが、通常モードに比べ機能に制限があったりします。かなり細かいんですが参考になればということで・・。</p>
+
+<p>あくまで私の環境での結果ですので、OSの違いなどにより操作方法・機能など若干違う部分があるかもです。ご容赦下さい。</p>
+
+<div class="cl">
+<p>※ウイルスバスター2005 はセーフモードで起動できませんでした。</p>
+</div>
+
+<h2><a href="#safemode"><span class="ms">■</span></a> <a name="safemode">セーフモードの起動方法</a></h2>
+
+<ul>
+<li><a href="http://www.higaitaisaku.com/safemode.html">Windowsをセーフモードで起動する</a>
+	<ul class="nest"><li class="small"><a href="http://www.higaitaisaku.com/index.html">【アダルトサイト被害対策の部屋】</a>さんより</li></ul>
+</li>
+</ul>
+
+<p>Windows 98/Me/XP では【msconfig】を使う方法が簡単だと思います。（ウイルス感染時には使えない場合もある様です。）</p>
+<p>作業終了後は上記で設定したチェックを戻して再起動して下さい。</p>
+
+
+<p>ウイルス感染時など【msconfig】が使えない場合は下記ページの直接起動（起動時にキーボードで指定）する方法を参照して下さい。</p>
+
+<ul class="small">
+<li><a href="http://service1.symantec.com/SUPPORT/INTER/tsgeninfojapanesekb.nsf/jdocid/20040302105202953">コンピュータをセーフモードで起動する方法</a> - シマンテック社サポート情報より
+	<ul class="nest"><li><a href="http://service1.symantec.com/SUPPORT/INTER/tsgeninfojapanesekb.nsf/jdocid/20040302105202953?OpenDocument&ExpandSection=1#_Section1">Windows 95</a></li>
+	<li><a href="http://service1.symantec.com/SUPPORT/INTER/tsgeninfojapanesekb.nsf/jdocid/20040302105202953?OpenDocument&ExpandSection=2#_Section2">Windows 98/Me</a></li>
+	<li><a href="http://service1.symantec.com/SUPPORT/INTER/tsgeninfojapanesekb.nsf/jdocid/20040302105202953?OpenDocument&ExpandSection=3#_Section3">Windows 2000</a></li>
+	<li><a href="http://service1.symantec.com/SUPPORT/INTER/tsgeninfojapanesekb.nsf/jdocid/20040302105202953?OpenDocument&ExpandSection=4#_Section4">Windows XP</a></li>
+	<li><a href="http://service1.symantec.com/SUPPORT/INTER/tsgeninfojapanesekb.nsf/jdocid/20040302105202953?OpenDocument&ExpandSection=5%2C3#_Section5">以上のいずれの方法でもセーフモードで起動できない場合</li></a>
+</ul></li>
+
+</ul>
+
+
+<p>尚、通常モードでの再起動後にこんな画面が出ますが <img src="./images/safemode/msconfig_warn.png" alt="システム構成ユーティリティの警告画面" width="500" height="160">
+<br>チェックを入れて[OK]をクリックすれば以後は出なくなります。
+</p>
+
+
+
+
+
+<h2><a href="#katotyanpe"><span class="ms">■</span></a> <a name="katotyanpe">インターネットワーム防止 オプション画面</a></h2>
+
+<p>メイン画面から、オプション→インターネットワーム防止をクリックするとこの画面が現れます。右上の「詳しい情報」をクリックするとヘルプ画面が出ますので、わからないことがある際にはこれを確認するのがいいでしょう。</p>
+
+<p><img src="./images/worm_blocking.png" alt="オプション画面" width="606" height="466"></p>
+
+<div class="cl">
+</div>
+<h2><a href="#harahetta"><span class="ms">■</span></a> <a name="harahetta">一般ルール</a></h2>
+<p>環境に合わせて自動で基本ルールが作成されるようです。ルールにないものでも「未使用ポート」は遮断されます。ICMPについて私の環境では許可ルールがありました。ICMP関連のコマンド（ping、tracertなど）を使わないならチェックを外しておいた方がいいかもしれません。（必要分だけ通す設定方法がわかりませんでした・・すみません）</p>
+
+<p><img src="./images/ippan.png" alt="一般ルール" width="556" height="476"></p>
+
+<dl>
+<dt>「ヘルプ」より</dt>
+<dd>
+<p>一例です。環境によって違うようです。</p>
+<ul>
+<li>許可ルール
+<ul class="small">
+<li>Default Inbound ICMP</li>
+<li>Default Inbound DNS【UDP - remort:53】</li>
+<li>Default Inbound NetBIOS【UDP - 137,138】</li>
+<li>Default Inbound Bootp【UDP - remort:67,local:68】</li>
+</ul></li>
+</ul>
+
+<ul>
+<li>遮断ルール
+<ul class="small">
+<li>Default Non-Routable IPs【プライベートIP】</li>
+<li>Default Block Microsoft Windows 2000 SMB【TCP/UDP - 445】</li>
+<li>Block Windows File Sharing【TCP/UDP - 139】</li>
+<li>UPNP Port 5000 Block Rule【TCP - 5000】</li>
+<li>UPNP Port 1900 Block Rule【UDP - 1900】</li>
+</ul></li>
+</ul>
+
+</dd>
+</dl>
+
+<p>私の環境では Block Windows File Sharing がなく、以下2つがありました。普段はNetBIOS（Windowsファイル共有）を使っていますので。（もちろんルーター使用です）</p>
+
+<ul class="small">
+<li>Default Windows File Sharing【TCP/UDP - 139】</li>
+<li>Default Block EPMAP【TCP/UDP - 135】</li>
+</ul>
+
+<p>（ルーター or ルーターモデムがない場合）ローカルエリア接続（ネットワークアダプタ）のプロパティも確認しておいた方がいいと思います。ルーターなしでNetBIOS を使ってる人は殆どいないと思うので以下2点のチェックが外れているか確認しておきましょう。</p>
+<ul class="small">
+<li>Microsoft ネットワーク用ファイルとプリンタの共有</li>
+<li>Microsoft ネットワーク用クライアント</li>
+</ul>
+<p><a href="./images/network.png">プロパティ画面の画像</a></p>
+<p>※【ご注意】一部のダイアルアップ接続プログラムで「Microsoft ネットワーク用クライアント」が有効になっているものがあるようです。PHSカード用ダイアラー（b-mobile とか）などをお使いの方は確認して下さい。</p>
+
+<p><span class="red">【追記】</span>以下も<del>念の為に</del><strong>必ず</strong>確認しておいた方がよいと思います。上記のバインドがオフであっても NetBIOS over TCP/IP が有効になっていると UDP port:137,138 TCP/UDP port:139 が開いてしまう様です。</p>
+<ul class="small">
+<li>Windows 2000/XP - インターネットプロトコル(TCP/IP)→プロパティ→詳細設定→WINS→NetBIOS over TCP/IP を無効にする にチェック</li>
+<li>Windows 98/98SE/ME - コントロールパネル→ネットワークTCP/IP -> [LANアダプタ名]→プロパティ→バインドチェックなし→OK→警告画面はいいえを選択（NetBIOSタブのチェックオフも確認）</li>
+</ul>
+
+<p class="small">Windows 2000/XP にはNetBIOSの他に port:445 を使う<a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/088directhostedsmb/088directhostedsmb.html" title="＠IT：Windows TIPS -- Tips：ポート445（ダイレクト・ホスティングSMBサービス）に注意">ダイレクト・ホスティングSMBサービス</a>(CIFS)というものもありますが、こちらはデフォルトでブロックルールが作られる様です。</p>
+
+<div class="cl">
+</div>
+<h2><a href="#yanbou"><span class="ms">■</span></a> <a name="yanbou">除外の設定</a></h2>
+
+<p>3つだけ・・設定は触らなくていいと思います。</p>
+
+<p><img src="./images/jogai.png" alt="除外の設定" width="634" height="351"></p>
+
+<div class="cl">
+</div>
+<h2><a href="#maabou"><span class="ms">■</span></a> <a name="maabou">プログラムの制御</a></h2>
+<p>自動設定を使うとOutboundのルールも作られるのですが、警告とか出ないですね。結局「サーバー動作」許可の際に使う為のようですね。警告時に操作を許可しちゃうと自動でルールが作成されちゃいますので、ここに覚えのないプログラムの着信許可ルールがないか確認しておきましょう。</p>
+
+<p><img src="./images/program.png" alt="プログラムの制御" width="456" height="306"></p>
+
+
+<div class="cl">
+</div>
+<h2><a href="#tenkiyohou"><span class="ms">■</span></a> <a name="tenkiyohou">トロイの木馬ルール</a></h2>
+<p>なんか懐かしい名前ばっかりですが・・（笑）。少し以前は怖いのはスパイじゃなくてこういう「トロイ」とか「Rootkit」だったような・・</p>
+<p><img src="./images/trojan.png" alt="トロイの木馬ルール" width="556" height="476"></p>
+
+<div class="cl">
+</div>
+<h2><a href="#tiisanakotokara"><span class="ms">■</span></a> <a name="tiisanakotokara">AutoBlock ルール</a></h2>
+<p>攻撃のあったコンピュータを自動遮断するようです。個人的には無効でもいいと思いますけど。もし特定のサーバとの通信ができないなどの場合はここに（何かの間違いで）登録されてるかもしれません。</p>
+
+<p><img src="./images/autoblock.png" alt="AutoBlock ルール" width="406" height="306"></p>
+
+
+<h2><a href="#ookinakotomade"><span class="ms">■</span></a> <a name="ookinakotomade">ログ画面</a></h2>
+
+<p>ルールに一致して遮断した場合を除き、警告は出ないんですがログには記録されてます。</p>
+<p>メイン画面→レポート→活動ログを表示 </p>
+<p><img src="./images/log1.png" alt="接続　ログ画面" width="623" height="416"></p>
+
+<ol>
+<li>【接続】ローカルIPとポート番号＋リモート（通信先）のサーバー名とポート番号</li>
+<li>【活動】プログラム毎の通信ログ</li>
+<li>【警告】遮断ログ</li>
+</ol>
+
+<p>XP標準のWindowsファイアウォールでもログは記録されますが、確認はかなり面倒なので、この機能は有用だと思います。
+</p>
+
+<h2><a href="#kowaretemasuka"><span class="ms">■</span></a> <a name="kowaretemasuka">警告画面と遮断の選択</a></h2>
+
+<p class="index"><img src="./images/iwp_warning.png" alt="警告画面（小）" width="191" height="148"></p>
+
+<p>侵入検知時には、タスクトレイ（通知領域）上に警告の小さなウィンドウが現れます。</p>
+
+<p>そのしばらく後、モニター中央に「セキュリティ警告」画面がでました。ルールに一致する検出についてはこのように自動遮断されるようです。</p>
+
+<p class="index"><img src="./images/warning_auto.png" alt="警告画面（大）" width="499" height="273"></p>
+
+<div class="cl">
+<dl>
+<dt>手動による遮断の選択【重要】</dt>
+<dd>
+<p>ルールに一致しない外部からの接続要求があるとこの画面が出ます。、<strong>対処の基本は「遮断を選択」するということです。</strong>わからないものを許可してしまうとファイアウォールの存在意義がなくなってしまいます。</p>
+<p><img src="./images/warning_ask.png" alt="遮断の選択画面" width="499" height="341"></p>
+<p>インターネットゲームやメッセンジャーなどは許可する必要がありますが、その際はマニュアル等を確認して慎重に設定して下さい。（自動設定されるものもあるようですが。）</p>
+</dd>
+</dl>
+</div>
+
+<h3>ちょっと確認</h3>
+<p>オンライン（オフラインじゃ無理だｗ）のポートスキャンで確認してみました。
+</p>
+<ul>
+<li><a href="http://eazyfox.homelinux.org/Security/special/BrowserCheck/Security23.html">ポートスキャンでセキュリティチェック
+(Sygate Online Service編)</a> - <a href="http://eazyfox.homelinux.org/">Firewallと森で遊ぼう</a>さんより
+</li>
+</ul>
+
+
+<p>普段はルーターを使用していますが、ブリッジモードにしてWindowsXP標準のPPPoE
+で接続してチェックしてみました。結果は [Quick Scan] [Stealth Scan] ともICMP以外はすべて【Stealth(Blocked)】となりました。（Windowsファイアウォールは無効で。）</p>
+<p>上記のサイトに丁寧な解説がありますので、できれば確認してみることをお勧めします。</p>
+<p class="small"><span class="red">※確認の際は、【AutoBlock】を無効にして下さい。</span></p>
+<hr>
+
+<h4>最後に・・</h4>
+<p>「おまけ」的機能にしては、必要十分なものになってますね。</p>
+
+<p>発信を制御できないという点では他のパーソナルファイアウォールとは比較できるものではありませんけど、設定が面倒なのはイヤ！とか、他のソフト入れて重くなるのは堪忍やぁ！とか思われてる方は使用を検討してみてもいいかもしれません。</p>
+
+<p>たぶん、ごく一部の人（汗）に向けて、少しでも参考になれば幸いです。</p>
+
+
+<hr>
+
+<div class="navi">
+<a href="index.html" accesskey="z">HOME(Z)</a> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="d" title="はてなダイアリー">Diary(<span class="ak">D</span>)</a> | 
+</div>
+
+<address>Written by yassy</address>
+
+
+</body>
+
+</html>

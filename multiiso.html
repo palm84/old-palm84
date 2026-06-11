@@ -1,0 +1,1835 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="START" href="./">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>isoイメージをマルチブートするの巻【その1】準備編＠Palm84</title>
+<style type="text/css">
+<!--
+/*
+a:link,a:visited,
+a:hover,a:active {
+ font-weight: normal;
+}
+*/
+
+h2 a:link,h2 a:visited,
+h2 a:hover,h2 a:active {
+ font-weight: bold;
+}
+
+dl.small dd pre {
+font-size: 100%;
+}
+
+div.ylt table {
+text-align: left;
+margin: 3% 5% 3% 9%;
+width: 81%;
+}
+
+div.ylt td {
+padding: 0.5em;
+}
+
+img {
+max-width: 100%;
+height: auto;
+}
+
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="./basic_ie5.css">
+<![endif]-->
+</head>
+
+
+<body>
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+
+<script type="text/javascript">
+<!--
+setTimeout("link()", 0);
+function link(){
+location.href='https://www.palm84.com/entry/multiiso';
+}
+-->
+</script>
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>移行作業中です...</ins></dt>
+<dd>
+<p>はてなブログの該当ページへ<strong>リダイレクトします</strong>。お手数をおかけします。ご容赦ください。</p>
+</dd>
+</dl>
+
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" accesskey="z" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd>
+ | <span class="font_change">* font-change * <a href="javascript:void(document.body.style.fontFamily='inherit')" title="inherit">inherit</a> <a href="javascript:void(document.body.style.fontFamily='sans-serif')" title="Sans-serif">Ss</a> <a href="javascript:void(document.body.style.fontFamily='serif')" title="Serif">Sf</a> <a href="javascript:void(document.body.style.fontFamily='\'メイリオ\'')" title="メイリオ">メ</a> <a href="javascript:void(document.body.style.fontFamily='\'游ゴシック\',\'Yu Gothic\',YuGothic')" title="游ゴシック">游</a> <a href="javascript:void(document.body.style.fontFamily='\'ＭＳ Ｐゴシック\'')" title="ＭＳ Ｐゴシック">MS</a> <a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Regular\',\'源ノ角ゴシック JP Regular\',\'Noto Sans Japanese Regular\',\'Noto Sans CJK JP Regular\',\'源ノ角ゴシック\',\'源ノ角ゴシック JP\',\'Noto Sans Japanese\',\'Noto Sans CJK JP\'')" title="源ノ角ゴシック / Sonrce Han Sans">源</a> <a href="javascript:void(document.body.style.fontSize='12px')" title="12px">12</a>
+ <a href="javascript:void(document.body.style.fontSize='14px')" title="14px">14</a>
+ <a href="javascript:void(document.body.style.fontSize='16px')" title="16px">16</a> <a href="javascript:void(document.body.removeAttribute('style'));" title="body style 削除">戻す</a> *</span>
+</div>
+
+
+<h1><span class="tokai1"><a href="./multiiso.html">isoイメージをマルチブートするの巻【その1】準備編</a></span></h1>
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+<ul>
+<li><a href="#about" accesskey="3">これって何？</a> <kbd class="ak small">3</kbd></li>
+<li><a href="#grub4dos" accesskey="4">GRUB for DOS</a> <kbd class="ak small">4</kbd></li>
+<li><a href="#boot_iso" accesskey="5">起動可能なモノは？</a> <kbd class="ak small">5</kbd></li>
+<li><a href="#download" accesskey="6">ダウンロード</a> <kbd class="ak small">6</kbd></li>
+<li><a href="#config" accesskey="7">基本設定</a> <kbd class="ak small">7</kbd></li>
+<li><a href="#ultraiso" accesskey="8">UltraISOでファイル置換</a> <kbd class="ak small">8</kbd></li>
+<li><a href="#mini_iso" accesskey="9">“ミニ” iso 方式</a> <kbd class="ak small">9</kbd></li>
+<li><a href="#sysresccd_installer">SystemRescueCd のリメイク</a></li>
+<li><a href="#iso_sub_directory">サブディレクトリへ展開</a></li>
+<li><a href="#tiny_tools">小さなツール類とか</a></li>
+<li><a href="#memo">めも</a></li>
+<li><a href="#ss">スクリーン・ショット</a></li>
+</ul>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+
+
+
+<p class="small">リンク is フリーダム<span class="ms">♪</span></p>
+
+<div class="hateb">
+<script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://www10.plala.or.jp/palm84/";
+Hatena.BookmarkWidget.title = "はてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+
+<script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://d.hatena.ne.jp/palm84/";
+Hatena.BookmarkWidget.title = "某所のはてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+</div>
+
+
+</div>
+</div>
+
+
+
+<div class="main">
+
+<div class="palmst white">
+<ul>
+<li>【その1】準備編 <span class="ms">←</span> <strong class="red">今ココ</strong></li>
+<li>【その2】マルチブートDVD(CD) 作成編 （<strong class="small">※ 改訂中、まだできてません。orz</strong>）</li>
+<li><a href="./multiiso_3_usb.html">【その3】マルチブートUSBメモリ作成編</a></li>
+<li>【その4】HDブート設定編 （<strong class="small">※ まだです。orz</strong>）</li>
+<li><a href="./multiiso_5_pxe_networkboot.html">【その5】PXEネットワークブートでござる</a></li>
+</ul>
+</div>
+
+<p><script src="http://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+
+<a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/multiiso.html"><img src="http://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/multiiso.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a>
+
+</p>
+
+<p>【注意】EFI(UEFI)ブートには対応しておりません。最近の64bit版LiveCDはEFIブート対応なので、ここのやり方は時代遅れになりつつあるのかもしれません…。orz</p>
+
+<dl class="changelog">
+<dt>更新履歴 - 最終更新日 2014.7.05</dt>
+<dd>
+<ul>
+<li>旧ページ : <a href="./old/multiiso_20130306.html">20130306 版</a></li>
+</ul>
+<p>2014.07.05</p>
+<ul>
+<li>linuxBean の grub4dos ブート設定ファイルを追加</li>
+</ul>
+
+<p>2014.07.04</p>
+<ul>
+<li>追加 : Lubuntu(i386), Redo Backup, Avira Rescue System, Comodo Rescue Disk, linuxBean, KonaLinux</li>
+<li>更新 : Ubuntu, Puppy Linux, SystemRescueCd, Partition Wizard Home Edition, Clonezilla Live</li>
+<li>削除 : KNOPPIX 5.3.1, CDlinux, Porteus, EASEUS Todo Backup, Parted Magic, Norton ブータブルリカバリツール</li>
+</ul>
+</dd>
+</dl>
+
+<dl class="changelog2">
+<dt>変更内容</dt>
+<dd>
+<dl>
+<dt>2014.07.04</dt>
+<dd>
+<ul>
+<li>Knoppix 6.7.1 <span class="ms">→</span> 7.2.0</li>
+<li>SystemRescueCd - 3.4.1 <span class="ms">→</span> 4.2.0 (<code>systemrescuecd-x86-4.2.0.iso</code> )</li>
+<li>Puppy - lupu-528 <span class="ms">→</span> precise-571JP (<code>precise-571JP-mini.iso</code>)</li>
+<li>Clonezilla Live - 2.1.0-26 <span class="ms">→</span> 2.2.3-10
+	<ul>
+	<li><code>clonezilla-live-2.2.3-10-amd64.iso</code></li>
+	<li><code>clonezilla-live-2.2.3-10-i486.iso</code></li>
+	</ul>
+</li>
+<li>Ubuntu - 11.10, 12.10 <span class="ms">→</span> 14.04 (amd64)
+	<ul>
+	<li><code>ubuntu-ja-14.04-desktop-amd64.iso</code></li>
+	</ul>
+</li>
+<li>Partition Wizard Home Edition <span class="ms">→</span> ファイル名変更 : <code>pwhe.iso</code></li>
+</ul>
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+<p>解説は“マルチブート道”総本山（何）の下記ページがとてもわかりやすいのでマジでおすすめ。</p>
+<ul>
+<li><a href="http://uiuicy.cs.land.to/bootcd/bootcd18.html">第18章　大きなイメージファイルをそのまま起動する</a>（<a href="http://uiuicy.cs.land.to/bootcd/index.html">マルチブータブルCD/DVD製作法</a>）</li>
+</ul>
+
+<dl class="palmst small white">
+<dt>マルチブート LiveUSB / LiveCD 作成ツール</dt>
+<dd>
+<p>isoブート専用ではありませぬ、かつ英語版ですがこんなのもありましたん。</p>
+<ul>
+<li>拙作めも :
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20120228/1330434373">【取扱注意】SARDU - マルチブート LiveCD/LiveUSB 作成ツール</a></li>
+	<li><a href="http://d.hatena.ne.jp/palm84/20120304/1330799228">【取扱注意】SARDU の追加設定アレコレ</a></li>
+	<li><a href="http://d.hatena.ne.jp/palm84/20120307/1331133210">【取扱注意】XBOOT - マルチブート LiveCD/LiveUSB 作成ツール</a></li>
+	<li><a href="http://d.hatena.ne.jp/palm84/20120310/1331307365">XBOOT でウイルススキャンてんこもり LiveCD (LiveUSB) を作ってみたYO！</a></li>
+	</ul>
+</li>
+</ul>
+<p>「仕組みなんてどうでもええから、はよ作りたいねん！」な人には <strong>XBOOT</strong> をおすすめするであります。</p>
+</dd>
+
+<dt>ウイルススキャン系はいまいちかも</dt>
+<dd>
+<ul>
+<li>2013.3.4 現在、eScan の現バージョンはアップデートができない様です</li>
+<li>2013.3.4 現在、Kaspersky Rescue Disk 10は、DVDブートだと kernel panic が出ます</li>
+</ul>
+
+<p>XBOOT の方が確実かもしれません。</p>
+</dd>
+</dl>
+<h2><a href="#about" name="about">これって何？</a> <kbd class="ak">3</kbd></h2>
+
+<p class="overflow2"><img src="./images/multiiso/grub4dos_bootmenu_s.png" width="576" height="320" alt="GRUB for DOS ブートメニューのスクリーンショット"></p>
+
+<p>Linux LiveCD なんかのisoイメージをCD/DVDやUSBメモリ、HDに保存して起動させるYO！（そのまんまやんｗ）</p>
+<p>いや、あの、この方法じゃなくても展開したファイルを適切に配置すれば起動できるわけですが、ファイル名が重複するからサブディレクトリに入れてぇ、ブート設定ファイルのパスを書き換えてーと、それからオプションを追記してェとか、かなりメンドイ作業となります。</p>
+<p>isoブートでもチョコマカと作業は必要ですが、「展開ファイルをサブディレクトリへ、そして（以下略）」に比べたらかなり楽チン。</p>
+<p class="pink">※「これがイケてる手段なんだぜ！」と考えてるわけではござらぬ！ あくまで「目的と手段」のバランス考えて候補とする選択肢の一つ、つーことで。</p>
+
+<p>尚、この方法の利点は「楽だ」ということですが、「展開ファイルを（以下略）」方式に比べ「確実性」に関しては若干落ちると思われます。</p>
+
+<p>具体的な作成方法については（あくまでワシ流ですが）、別ページにて書いていく予定。</p>
+
+<dl>
+<dt>XBOOT でいいかも？ orz</dt>
+<dd>
+<p>作ってみてから気づきましたが、これらは今では XBOOT でほぼ作成可能だったりします orz。楽に作りたいお方（誰でもやんｗ）は XBOOT をおススメしときます。</p>
+
+<ul>
+<li><a href="https://sites.google.com/site/shamurxboot/">XBOOT</a></li>
+<li><a href="http://reboot.pro/forum/126-xboot/">XBOOT - reboot.pro</a></li>
+<li><a href="http://www.pendrivelinux.com/xboot-multiboot-iso-usb-creator/">XBOOT -- Multiboot ISO USB Creator (Windows) | USB Pen Drive Linux</a></li>
+</ul>
+
+<p>なんだかなぁ...</p>
+</dd>
+</dl>
+
+
+<h2><a href="#grub4dos" name="grub4dos">GRUB for DOS</a> <kbd class="ak">4</kbd></h2>
+
+<p>ブートローダーには GRUB for DOS を使います。（ネットワークブートは PXELINUX で。）</p>
+
+<p class="small pink">名前からして「イロモノ」臭がプンプンしてたりなんかしますが（Linux用なのかWin用なのかどっちやねん！みたいなｗ）</p>
+<ul>
+<li><a href="http://grub4dos.sourceforge.net/wiki/index.php">Grub4Dos Wiki</a></li>
+<li><a href="http://diddy.boot-land.net/grub4dos/Grub4dos.htm">Grub4dos Guide - Contents</a></li>
+</ul>
+<p>最近ではGRUB2でもisoマウント可能だったり、SYSLINUX の memdisk でもできたりしますが、この GRUB for DOS では <strong class="ms">Direct Mapping</strong> （マウントのみ） 及び <strong class="ms">Indirect Mapping</strong> （メモリへ読み込み）の両方が可能なのです。また、色んな他のブートローダー（NTLDRとかBOOTMGRとかGRUB2とか）をチェインロードできたり、など多機能なのでメンテナンス用としてかなり重宝すると思います。</p>
+
+<ul>
+<li>拙作めも：<a href="./grub4dos.html">GRUB for DOS めも</a></li>
+</ul>
+
+<ul>
+<li><a href="http://diddy.boot-land.net/grub4dos/files/map.htm#hd32">Grub4dos Guide - Map Command</a></li>
+<li><a href="http://www.boot-land.net/forums/index.php?showtopic=5041">grub4dos, .iso images and (hd32) or (0xFF) mapping</a></li>
+<li><a href="http://www.pendrivelinux.com/boot-multiple-iso-from-usb-multiboot-usb/">Boot Multiple ISO from USB (MultiBoot USB) | USB Pen Drive Linux</a></li>
+</ul>
+
+<ul>
+<li>Ubuntu, etc
+	<ul>
+	<li><a href="https://help.ubuntu.com/community/Grub2/ISOBoot/Examples">Grub2/ISOBoot/Examples - Community Help Wiki</a></li>
+	</ul>
+</li>
+<li>Debian Live
+	<ul>
+	<li><a href="http://live.debian.net/manpages/2.x/en/txt/live-boot.7.txt">LIVE-BOOT(7) - Debian Live Project</a></li>
+	</ul>
+</li>
+<li>Knoppix
+	<ul>
+	<li><a href="http://www.knoppix.net/wiki/Cheat_Codes">Cheat Codes - Knoppix Documentation Wiki</a></li>
+	</ul>
+</li>
+<li>SystemRescueCd
+	<ul>
+	<li><a href="http://www.sysresccd.org/Sysresccd-manual-en_Easy_install_SystemRescueCd_on_harddisk#Boot_the_ISO_image_from_the_disk_using_Grub2">Boot the ISO image from the disk using Grub2 - Sysresccd-manual-en Easy install SystemRescueCd on harddisk - SystemRescueCd</a></li>
+	</ul>
+</li>
+<li>Kaspersky Rescue Disk 10
+	<ul>
+	<li>付属ドキュメントに書いてありました</li>
+	</ul>
+</li>
+<li>Clonezilla Live
+	<ul>
+	<li><a href="http://www.linuxquestions.org/questions/linux-newbie-8/clonezilla-and-multiboot-iso-mount-usb-drive-787310/">Clonezilla and Multiboot Iso Mount USB Drive</a></li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt>SYSLINUX の memdisk も併用で</dt>
+<dd>
+<ul>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/MEMDISK">MEMDISK - Syslinux Wiki</a></li>
+</ul>
+
+<p>SYSLINUX の memdisk でもisoブートが可能です。GRUB for DOS でうまく行かない時のために入れときませう。但し、違いが2点...</p>
+<ul>
+<li>オンメモリ (Indirect Mapping 風味) 専用</li>
+<li>kernel, initrd などの個別指定はできない</li>
+</ul>
+<p>ウチトコの環境では Paragon Backup &#038; Recovery などこちらの方が確実でした。小さなisoイメージならこっちが安定してるかもしれません。</p>
+<ul>
+<li><code>menu.lst</code> - Paragon の設定例</li>
+</ul>
+<pre>
+title Paragon Backup &#038; Recovery == /bootcd.iso (syslinux memdisk)
+find --set-root /bootcd.iso
+kernel /syslinux/memdisk iso
+initrd /bootcd.iso
+</pre>
+</dd>
+</dl>
+
+<h2><a href="#boot_iso" name="boot_iso">起動可能なモノは？</a> <kbd class="ak">5</kbd></h2>
+<p>この方法で起動可能なのは主に3タイプのようであります。（※ いや私は詳しいわけではありませんが...エラソーにすみませぬ。）</p>
+<ol>
+<li>Windows PE（2.0以降）などオンメモリ起動のモノ</li>
+<li>kernel, initrd のみで動くLinuxなど</li>
+<li>kernel, initrd ロード（小さなLinux起動）後にisoファイルを検索してマウントしてくれるヤツ</li>
+</ol>
+<p>ネットワークブートでは基本的には【1】【2】のみ（サーバ上のisoファイルを指定できるモノはおｋ）。</p>
+<p>尚【3】についてはさらに2種類</p>
+<ul>
+<li>ドライブのルート (<code>/</code>) など所定の場所に置けばオプション指定不要なモノ</li>
+<li>isoファイル名やパスなど指定が必要なヤツ</li>
+</ul>
+
+<p>以下はあくまで「ワタクシめが簡単かな思てるヤツ」をリストアップしたものであります。全部含むと 2.8 GB 程になるんで取捨選択してクダサイNepia。</p>
+
+<p class="white">※ True Image, Paragon については最近のバージョンを確認しておりませぬ。違いあるかも、ご容赦。</p>
+
+<dl>
+<dt>オプション不要</dt>
+<dd>
+<p>タイプ【1】</p>
+<ul>
+<li><a href="http://technet.microsoft.com/ja-jp/windows/aa905120.aspx">Windows PE/RE</a>（2.0以降）
+	<ul>
+	<li>PE版 True Image</li>
+	</ul>
+</li>
+</ul>
+
+<p>タイプ【2】</p>
+<ul>
+<li>True Image（Linux版）起動CD</li>
+<li><a href="http://www.paragon-software.com/home/db-express/">Paragon Backup &#038; Recovery</a> 起動CD（※【注】Normal Mode のみ！）
+	<ul class="small">
+	<li>止まっちゃう場合はオプション <code>edd=off</code> 追加、あるいは SYSLINUX の memdisk 利用の方が確実かも</li>
+	</ul>
+</li>
+<li><a href="http://www.avg.com/us-en/avg-rescue-cd">AVG Rescue CD</a></li>
+<li><a href="http://www.partitionwizard.com/partition-wizard-bootable-cd.html">Partition Wizard Bootable CD</a></li>
+<li><a href="http://www.comodo.com/business-security/network-protection/rescue-disk.php">Comodo Rescue Disk</a></li>
+</ul>
+
+<p>タイプ【3】</p>
+<ul>
+<li><a href="http://support.kaspersky.com/viruses/rescuedisk?level=2">Kaspersky Rescue Disk 10</a> （※ かなり重いのでいまいちかも？）
+	<ul>
+	<li><code>/rescue/rescue.iso</code> とする（※ ディレクトリ <code>/rescue</code>、ファイル名 <code>rescue.iso</code>）</li>
+	<li>ルート (<code>/</code>) に目印ファイル = <code>liveusb</code> = を置く</li>
+	<li>※ ネットワークブートはだめ</li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>オプション必要</dt>
+<dd>
+<p>※ ネットワークブートはだめ</p>
+<ul>
+<li><a href="http://simosnet.com/livecdroom/index.html#knoppix">Knoppix 日本語版(LCR版) - ライブＣＤの部屋</a> (バージョン 7.2.0)
+	<ul>
+	<li>isoファイル名指定 - <code>bootfrom=/KNOPPIX_V7.2.0CD-2013-06-16-JA-LCR.iso</code></li>
+	</ul>
+</li>
+<li><a href="http://www.ubuntulinux.jp/products/JA-Localized/download">Ubuntu ja Desktop DVD (amd64)</a>  (バージョン 14.04)
+	<ul>
+	<li>isoファイル名指定 - <code>iso-scan/filename=/ubuntu-ja-14.04-desktop-amd64.iso</code></li>
+	</ul>
+</li>
+<li><a href="http://cdimage.ubuntu.com/lubuntu/releases/14.04/release/">Lubuntu Desktop CD (i386)</a>  (バージョン 14.04)
+	<ul>
+	<li>isoファイル名指定 - <code>iso-scan/filename=/lubuntu-14.04-desktop-i386.iso</code></li>
+	</ul>
+</li>
+<li><a href="http://www.sysresccd.org/">SystemRescueCd</a> (バージョン 4.2.0)
+	<ul>
+	<li>isoファイル名指定 - <code>isoloop=systemrescuecd-x86-4.2.0.iso</code></li>
+	</ul>
+</li>
+<li><a href="http://clonezilla.org/">Clonezilla Live</a> (バージョン 2.2.3-10) （Debian Live ベース）
+	<ul>
+	<li>isoファイル名指定 - <code>findiso=clonezilla-live-2.2.3-10-amd64.iso</code></li>
+	<li>isoファイル名指定 - <code>findiso=clonezilla-live-2.2.3-10-i486.iso</code></li>
+	</ul>
+</li>
+<li><a href="http://redobackup.org/">Redo Backup</a> （Ubuntu ベース）
+	<ul>
+	<li>isoファイル名指定 - <code>iso-scan/filename=/redobackup-livecd-1.0.4.iso</code></li>
+	</ul>
+</li>
+<li><a href="http://www.bitdefender.com/support/How-to-create-a-Bitdefender-Rescue-CD-627.html">Bitdefender Rescue CD</a> （Ubuntu ベース）
+	<ul>
+	<li>isoファイル名指定 - <code>iso-scan/filename=/bitdefender-rescue-cd.iso</code></li>
+	</ul>
+</li>
+<li><a href="http://www.avira.com/ja/download?product=avira-rescue-system">Avira Rescue System</a>
+	<ul>
+	<li>isoファイル名指定 - <code>iso-scan/filename=/rescue-system.iso</code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+<h2><a href="#download" name="download">ダウンロード</a> <kbd class="ak">6</kbd></h2>
+
+<dl>
+<dt>isoを直接ダウンロード可能なモノ・ネットワークブートもおｋ</dt>
+<dd>
+<p>すべてフリーで使えます。</p>
+<ul>
+<li>AVG Rescue CD
+	<ul>
+	<li><code>avg_arl_cdi_all_xxx.iso</code> (<span class="small">122MB</span>)</li>
+	<li><a href="http://www.avg.com/us-en/avg-rescue-cd">AVG - AVG Rescue CD</a></li>
+	</ul>
+</li>
+<li>Comodo Rescue Disk
+	<ul>
+	<li><code>comodo_rescue_disk.iso</code> (<span class="small">51MB</span>)</li>
+	<li><a href="http://www.comodo.com/business-security/network-protection/rescue-disk.php">Comodo Rescue Disk for Windows, Download Rescue Disk Software</a></li>
+	</ul>
+</li>
+<li>Partition Wizard Bootable CD
+	<ul>
+	<li><code>pwhe.iso</code> (<span class="small">48MB</span>)</li>
+	<li><a href="http://www.partitionwizard.com/download.html">Free Download Magic Partition Manager Software -- Partition Wizard Online</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>isoを直接ダウンロード可能なモノ・ネットワークブートはだめ</dt>
+<dd>
+<p>すべてフリーで使えます。</p>
+<ul>
+<li><a href="http://simosnet.com/livecdroom/index.html#knoppix">Knoppix 7.2.0CD日本語版（ライブＣＤの部屋版）</a>
+	<ul>
+	<li><code>KNOPPIX_V7.2.0CD-2013-06-16-JA-LCR.iso</code> (<span class="small">699MB</span>)</li>
+	<li>理研ミラー：<a href="http://ftp.riken.go.jp/Linux/simosnet-livecd/knoppix/">Index of /Linux/simosnet-livecd/knoppix</a></li>
+	</ul>
+</li>
+<li>Ubuntu ja Desktop DVD 14.04 (amd64)
+	<ul>
+	<li><code>ubuntu-ja-14.04-desktop-amd64.iso</code> (<span class="small">1.07GB</span>)</li>
+	<li><a href="http://www.ubuntulinux.jp/products/JA-Localized/download">Ubuntu Desktop 日本語 Remix CDのダウンロード | Ubuntu Japanese Team</a></li>
+	<li><a href="http://ftp.jaist.ac.jp/pub/Linux/ubuntu-jp-cdimage/releases/14.04/">Index of /pub/Linux/ubuntu-jp-cdimage/releases/14.04</a></li>
+	</ul>
+</li>
+<li>Lubuntu Desktop CD 14.04 (i386)
+	<ul>
+	<li><code>lubuntu-14.04-desktop-i386.iso</code> (<span class="small">683MB</span>)</li>
+	<li><a href="http://cdimage.ubuntu.com/lubuntu/releases/14.04/release/">Lubuntu 14.04 LTS (Trusty Tahr)</a></li>
+	</ul>
+</li>
+<li>SystemRescueCd 4.2.0
+	<ul>
+	<li><code>systemrescuecd-x86-4.2.0.iso</code> (<span class="small">385MB</span>)</li>
+	<li><a href="http://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/4.2.0/">SystemRescueCd - Browse /sysresccd-x86/4.2.0 at SourceForge.net</a></li>
+	</ul>
+</li>
+<li>Clonezilla Live 2.2.3-10
+	<ul>
+	<li><code>clonezilla-live-2.2.3-10-amd64.iso</code> (<span class="small">145MB</span>)</li>
+	<li><code>clonezilla-live-2.2.3-10-i486.iso</code> (<span class="small">139MB</span>)</li>
+	<li><a href="http://sourceforge.net/projects/clonezilla/files/clonezilla_live_stable/2.2.3-10/">Clonezilla - Browse /clonezilla_live_stable/2.2.3-10 at SourceForge.net</a></li>
+	</ul>
+</li>
+<li>Redo Backup
+	<ul>
+	<li><code>redobackup-livecd-1.0.4.iso</code> (<span class="small">249MB</span>)</li>
+	<li><a href="http://redobackup.org/">Redo Backup Bare Metal Restore Solution GUI Backup Open Source GPL Recovery</a></li>
+	</ul>
+</li>
+<li>Kaspersky Rescue Disk 10 （※ かなり重いのでいまいちかも？）
+	<ul>
+	<li><code>kav_rescue_10.iso</code> (<span class="small">386MB</span>)</li>
+	<li><a href="http://support.kaspersky.com/viruses/rescuedisk?level=2">Kaspersky Rescue Disk 10</a></li>
+	</ul>
+</li>
+<li>Bitdefender Rescue CD
+	<ul>
+	<li><code>bitdefender-rescue-cd.iso</code> (<span class="small">513MB</span>)</li>
+	<li><a href="http://www.bitdefender.com/support/How-to-create-a-Bitdefender-Rescue-CD-627.html">How to create a Bitdefender Rescue CD - Support</a></li>
+	</ul>
+</li>
+<li>Avira Rescue System
+	<ul>
+	<li><code>rescue-system.iso</code> (<span class="small">607MB</span>)</li>
+	<li><a href="http://www.avira.com/ja/download?product=avira-rescue-system">Download Avira Rescue System | Official Website</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+
+<dt>インストール作業後に作成が必要なヤツ・ネットワークブートもおｋ</dt>
+<dd>
+<p>個人使用フリーです。</p>
+<ul>
+<li>Windows 7 では「システム修復ディスク」をiso化すればで Windows RE（Windows PE 3.0 + システム回復オプション）のisoができあがるん。</li>
+</ul>
+
+<ul>
+<li>Windows PE
+	<ul>
+	<li>XP/Vista 向け (PE 2.1) - <a href="http://www.microsoft.com/downloads/details.aspx?displaylang=ja&#038;FamilyID=94bb6e34-d890-4932-81a5-5b50c657de08">Windows Vista SP1 および Windows Server 2008 用の自動インストール キット (AIK)</a></li>
+	<li>7 向け (PE 3.0) - <a href="http://www.microsoft.com/downloads/details.aspx?familyid=696DD665-9F76-4177-A811-39C26D3B3B34&#038;displaylang=ja">Windows 7 用の Windows AIK</a></li>
+	<li>7 SP1 向け (PE 3.1、差分ファイル) - <a href="http://www.microsoft.com/downloads/ja-jp/details.aspx?familyid=0AEE2B4B-494B-4ADC-B174-33BC62F02C5D&#038;displaylang=ja">Windows 7 SP1 用の Windows 自動インストール キット (AIK) 補足プログラム</a></li>
+	</ul>
+</li>
+<li>True Image
+	<ul>
+	<li>WD Edition（日本語版あり）- <a href="http://support.wdc.com/product/downloaddetail.asp?swid=119&#038;wdc_lang=jp">Acronis True Image WD Edition Software - WD サポート</a>（※ Western Digital製HD用フリー版）</li>
+	<li><a href="http://www.seagate.com/jp/ja/support/downloads/item/discwizard-master-dl/">DiscWizard | Seagate</a>（※ Seagate製HD用フリー版）</li>
+	</ul>
+</li>
+<li>Paragon Backup &#038; Recovery
+	<ul>
+	<li><a href="http://www.paragon-software.com/home/br-free/download.html">Paragon Backup &#038; Recovery Free Edition - Download &#038; User Manual</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+<h2><a href="#config" name="config">基本設定</a> <kbd class="ak">7</kbd></h2>
+
+<p>これらすべてで約 <del>2.8</del> <ins>7</ins> GB 程です。</p>
+
+<p class="pink">尚、<strong>これらはワタクシの独断と偏見の集大成であるので、アレンジしまくリングを大推奨奉ります</strong>ぅ！</p>
+
+<dl>
+<dt>サンプル : menu.lst</dt>
+<dd>
+<p>GRUB for DOS 大元のブート設定ファイルでありんす。</p>
+<ul>
+<li>サンプル：menu.lst
+	<ul>
+	<li>DVD(CD)/USBメモリ用 : <a href="./archives/multiiso/config/menu_cd_usb.lst">menu_cd_usb.lst</a></li>
+	</ul>
+</li>
+</ul>
+<p>ファイル名は <code>menu.lst</code> に変更してクレシア</p>
+
+<dl class="palmst small white">
+<dt>サンプル：menu.lst の keymap</dt>
+<dd>
+<ul>
+<li>アンダースコア <kbd>_</kbd> は <kbd>Shift</kbd>-<kbd>0</kbd></li>
+<li>バー <kbd>|</kbd> は <kbd>Shift</kbd>-<kbd>半角</kbd></li>
+<li>バックスラッシュ <kbd lang="en" class="backslash">&#92;</kbd> は <kbd>半角</kbd></li>
+</ul>
+</dd>
+</dl>
+
+<p>サンプル menu.lst ではファイル名は下記のようになっとりますのでバージョンとかも合わしてクリネックス。</p>
+<ul>
+<li>Windows PE/RE - ファイル名 :
+	<ul>
+	<li><code>WinPEx86.iso</code></li>
+	<li><code>WinREx86.iso</code></li>
+	<li><code>WinREamd64.iso</code></li>
+	<li><code>WinREx86_vista.iso</code></li>
+	</ul>
+</li>
+<li>True Image - ファイル名 :
+	<ul>
+	<li><code>AcronisMedia.iso</code> (WD Edition)</li>
+	<li><code>SeagateMedia.iso</code> (Seagate DiscWizard)</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>Bitdefender Rescue CD - ファイル名 : 
+	<ul>
+	<li><code>bitdefender-rescue-cd.iso</code></li>
+	</ul>
+</li>
+<li>Paragon Backup &#038; Recovery - ファイル名 : 
+	<ul>
+	<li><code>bootcd.iso</code></li>
+	</ul>
+</li>
+<li>Clonezilla Live 2.2.3-10 - ファイル名 : 
+	<ul>
+	<li><code>clonezilla-live-2.2.3-10-amd64.iso</code></li>
+	<li><code>clonezilla-live-2.2.3-10-i486.iso</code></li>
+	</ul>
+</li>
+<li>Knoppix 7.2.0 （ライブＣＤの部屋） - ファイル名 : 
+	<ul>
+	<li><code>KNOPPIX_V7.2.0CD-2013-06-16-JA-LCR.iso</code></li>
+	</ul>
+</li>
+<li>Lubuntu Desktop CD 14.04 (i386) - ファイル名 : 
+	<ul>
+	<li><code>lubuntu-14.04-desktop-i386.iso</code></li>
+	</ul>
+</li>
+<li>Redo Backup - ファイル名 : 
+	<ul>
+	<li><code>redobackup-livecd-1.0.4.iso</code></li>
+	</ul>
+</li>
+<li>Avira Rescue System - ファイル名 : 
+	<ul>
+	<li><code>rescue-system.iso</code></li>
+	</ul>
+</li>
+<li>SystemRescueCd 4.2.0 - ファイル名 : 
+	<ul>
+	<li><code>systemrescuecd-x86-4.2.0.iso</code></li>
+	</ul>
+</li>
+<li>Ubuntu ja Desktop DVD 14.04 (amd64) - ファイル名 : 
+	<ul>
+	<li><code>ubuntu-ja-14.04-desktop-amd64.iso</code></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>AVG Rescue CD - ファイル名：
+	<ul>
+	<li><code>avg.iso</code> に<strong>リネーム</strong></li>
+	</ul>
+</li>
+<li>Comodo Rescue Disk - ファイル名 : 
+	<ul>
+	<li><code>comodo_rescue_disk.iso</code> に<strong>リネーム</strong></li>
+	</ul>
+</li>
+<li>Kaspersky Rescue Disk - ファイル名 : 
+	<ul>
+	<li><code>/rescue/rescue.iso</code> に<strong>リネーム</strong></li>
+	</ul>
+</li>
+<li>Partition Wizard Home Edition - ファイル名 : 
+	<ul>
+	<li><code>pwhe.iso</code> に<strong>リネーム</strong></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>Knoppix 7.2.0 ブートメニュー用設定ファイル</dt>
+<dd>
+<p>UltraISO 体験版では 300MB 以上のファイルの作成ができないのでGRUB用メニューを別ファイルで作成。ルートにコピーします。</p>
+<ul>
+<li><a href="./archives/multiiso/config/kx720lcr.lst">kx720lcr.lst</a></li>
+</ul>
+</dd>
+
+<dt>ファイルの置き方</dt>
+<dd>
+<ul>
+<li>AVG Rescue CD は <code>avg.iso</code> にリネーム</li>
+<li>Comodo Rescue Disk は <code>comodo_rescue_disk.iso</code> にリネーム</li>
+<li>Kaspersky Rescue Disk は <code>rescue.iso</code> にリネーム、<code>/rescue</code> ディレクトリへ
+	<ul>
+	<li>ルートに目印ファイル <code>liveusb</code>（空ファイル）を置く</li>
+	</ul>
+</li>
+<li>Partition Wizard Home Edition は <code>pwhe.iso</code> にリネーム</li>
+</ul>
+
+<p>その他はそのままルートへ</p>
+
+<p class="white">※ <strong class="ms red">*</strong> 印はリメイク作業が必要です。（※ ブートメニューの選択肢が多いので元のブート画面を使用）</p>
+
+<ul>
+<li>（基本的な）isoファイルの配置</li>
+</ul>
+<pre>
+作業ディレクトリ
+|
+|   AcronisMedia.iso
+|   avg.iso
+|   bitdefender-rescue-cd.iso
+|   bootcd.iso
+|   clonezilla-live-2.2.3-10-amd64.iso (<strong class="ms red">*</strong>)
+|   clonezilla-live-2.2.3-10-i486.iso (<strong class="ms red">*</strong>)
+|   comodo_rescue_disk.iso
+|   KNOPPIX_V7.2.0CD-2013-06-16-JA-LCR.iso
+|   <strong class="ms red">kx720lcr.lst</strong>
+|   liveusb        <span class="red">--- Kaspersky 用空ファイル</span>)
+|   lubuntu-14.04-desktop-i386.iso
+|   <strong class="red">menu.lst</strong>
+|   pwhe.iso
+|   redobackup-livecd-1.0.4.iso (<strong class="ms red">*</strong>)
+|   rescue-system.iso
+|   SeagateMedia.iso
+|   systemrescuecd-x86-4.2.0.iso (<strong class="ms red">*</strong>)
+|   ubuntu-ja-14.04-desktop-amd64.iso
+|   WinPEx86.iso
+|   WinREamd64.iso
+|   WinREx86.iso
+|   WinREx86_vista.iso
+|
+<span class="backslash">\</span>---<strong>rescue</strong> ディレクトリ
+        rescue.iso
+</pre>
+</dd>
+</dl>
+
+<p>isoをマウントする設定の基本はこんなかんじ。ダイレクトの方が早いのだけどエラー出ることあるのでエラー出たらメモリに全部読み込み。（※ <code>0xff</code> 以外に <code>hd32</code>, <code>0xA0</code> も使えます。）</p>
+
+<pre>
+title iso_file
+find --set-root /iso_file.iso
+map /iso_file.iso (0xff) || map --mem /iso_file.iso (0xff)
+map --hook
+chainloader (0xff)
+</pre>
+
+<p>Clonezilla Live など一部のisoファイルでは <code>--heads=0 --sectors-per-track=0</code> の指定が必要</p>
+
+<p>Ubuntu, Lubuntu, Avira Rescue System, Bitdefender Rescue CD はタイプ【3】ですが、デフォルト設定のみ直接書いちゃりました。（真っ暗画面で止まっちゃう場合は <code>xforcevesa</code> 追記でイケるかも）</p>
+
+<p>Paragon はタイプ【1】なので上記と同じでもいいけど、<code>medialable</code> を空白にしないと起動に時間がかかるので kernel, initrd, オプションを直接指定してます。</p>
+<pre>
+title Paragon Backup &#038; Recovery == /bootcd.iso
+find --set-root /bootcd.iso
+map /bootcd.iso (0xff) || map --mem /bootcd.iso (0xff)
+map --hook
+# chainloader (0xff)
+root (0xff)
+kernel /VMLINUZP vga=0x314 language=en_US.UTF-8 medialable=
+initrd /INITRD.GZ
+</pre>
+<p>止まっちゃう場合は kernel 行に <code>edd=off</code> 追記でイケるかも</p>
+<pre class="scl">
+kernel /VMLINUZP vga=0x314 language=en_US.UTF-8 <strong class="ms red">edd=off</strong> medialable=
+</pre>
+
+<p>下記3点については<ins>isoファイル内の</ins>ブート設定ファイルをオプションを追記したものに置換します。Windowsなら後述のUltraISOで簡単にできます。</p>
+<ul>
+<li><a href="./archives/multiiso/config/clonezilla-live-2.2.3-10-amd64_isolinux.cfg">clonezilla-live-2.2.3-10-amd64_isolinux.cfg</a></li>
+<li><a href="./archives/multiiso/config/clonezilla-live-2.2.3-10-i486_isolinux.cfg">clonezilla-live-2.2.3-10-i486_isolinux.cfg</a></li>
+<li><a href="./archives/multiiso/config/redobackup-livecd-1.0.4_isolinux.cfg">redobackup-livecd-1.0.4_isolinux.cfg</a></li>
+</ul>
+<p>SystemRescueCd については後述。</p>
+
+<h2><a href="#ultraiso" name="ultraiso">UltraISOでファイル置換</a> <kbd class="ak">8</kbd></h2>
+
+<ul>
+<li><a href="http://www.ezbsystems.com/ultraiso/">UltraISO can extract/create/edit/convert CD and DVD image files directly, make bootable CDs and convert ISZ DMG DAA UIF to ISO.</a>
+	<ul>
+	<li><a href="http://www.ezbsystems.com/ultraiso/download.htm">Ultraiso Download Page</a></li>
+	</ul>
+</li>
+<li>拙作めも：<a href="http://d.hatena.ne.jp/palm84/20100730/1280421297">UltraISO - ISOイメージの展開/確認/編集ツール </a></li>
+</ul>
+<p>私は「English」版をダウンロードしましたが、インストール段階から日本語表示になってました。</p>
+
+<p class="white">【注意】体験版としての使用では、起動時にメッセージ画面表示、作成ファイルは 300 MB までとなります。（※ 400MB弱ぐらいまで一応大丈夫な様です。）</p>
+
+<p>isoイメージ内のファイルの置換は UltraISO で簡単にできました。</p>
+<p>下記3点（【注】ネットワークブート不可）、isoブートの為のオプション追記済みのブート設定ファイルを置換します。</p>
+<ul>
+<li><a 
+href="./archives/multiiso/config/clonezilla-live-2.2.3-10-amd64_isolinux.cfg">clonezilla-live-2.2.3-10-amd64_isolinux.cfg</a></li>
+<li><a href="./archives/multiiso/config/clonezilla-live-2.2.3-10-i486_isolinux.cfg">clonezilla-live-2.2.3-10-i486_isolinux.cfg</a>
+	<ul>
+	<li><code><del>/isolinux/isolinux.cfg</del></code>, <code><ins>/syslinux/isolinux.cfg</ins></code> と置換</li>
+	</ul>
+</li>
+<li><a href="./archives/multiiso/config/redobackup-livecd-1.0.4_isolinux.cfg">redobackup-livecd-1.0.4_isolinux.cfg</a>
+	<ul>
+	<li><code>/isolinux/isolinux.cfg</code> と置換</li>
+	</ul>
+</li>
+</ul>
+
+<ol>
+<li>UltraISOで対象のisoを開く</li>
+<li>フォルダ (<code>/isolinux</code>, <code>/syslinux</code>) を表示</li>
+<li>メニュー【動作】<span class="ms">→</span>【新規ファイル】で置換用ファイル指定</li>
+<li>置換ファイルを元の名 (<code>isolinux.cfg</code>) にリネーム</li>
+<li>メニュー【ファイル】<span class="ms">→</span>【上書き保存】</li>
+</ol>
+
+<p class="overflow2"><img src="./images/multiiso/ultraiso.png" width="732" height="586" alt=" UltraISO のスクリーンショット"></p>
+
+<p>※ 元のisoは <code>*.uibak</code> としてバックアップされます。不要なら削除しませう。</p>
+
+<dl class="small">
+<dt>体験版は300MB制限？</dt>
+<dd>
+<p><code>systemrescuecd-x86-4.2.0.iso</code> は 380MB 程あるのですがリメイクできてしまいました。（7 pro x64, XP Home で確認）</p>
+<p>但し、<code>systemrescuecd-x86-4.2.0.iso</code> は何度も失敗して試行錯誤しました。orz</p>
+<p>※ <ins>SystemRescueCd は後述の「SystemRescueCd installer for Windows」使えばカンタンです</ins>。</p>
+<ol>
+<li><code>isolinux.cfg</code> 置換 <span class="ms">→</span> <strong>一旦</strong>上書き保存</li>
+<li><a href="https://www.kernel.org/pub/linux/utils/boot/syslinux/4.xx/">syslinux-4.06.zip</a> をダウンロード <span class="ms">→</span> 必要ファイル <code>\core\isolinux.bin</code></li>
+<li>再度開き【ブート情報のクリア】 <span class="ms">→</span> <code>isolinux.bin</code> 削除 <span class="ms">→</span> <code>4.06 の isolinux.bin</code> 追加 <span class="ms">→</span> <code>isolinux.bin</code> を右クリックして【ブートファイルの設定】<span class="ms">→</span> 上書き保存</li>
+</ol>
+<p>もしもできない場合は、 <code>sysrcd.dat</code>, <code>sysrcd.md5</code> をルートに抜き出してリメイクしてみてください。</p>
+</dd>
+</dl>
+
+<h2><a href="#mini_iso" name="mini_iso">【名付けて】“ミニ” iso 方式</a> <kbd class="ak">9</kbd></h2>
+
+<p class="small">なんじゃらほい（笑）</p>
+
+<p>う～ん、正確にはisoブートちゃうし、CoolじゃないYO！とか思ってあえて避けてましたが、よく考えてみるとこの方式って案外イケるかもしれない（笑）。</p>
+
+<p class="small pink">手段のエレガントさ（何）にこだわって肝心の目的を忘れちょった愚か者でありました（汗）。</p>
+
+
+<dl class="palmst small">
+<dt>Linux の起動の流れ</dt>
+<dd>
+<p>色々ありますんで、あくまで一般的な LiveCD の例で。</p>
+<ol>
+<li>ブートローダー (<strong class="ms">ISOLINUX</strong>) が起動</li>
+<li><strong class="ms">kernel</strong>,  <strong class="ms">initrd</strong> (ミニ・ルート・イメージ) をロードして小さな Linux が起動</li>
+<li>デバイスの初期化等</li>
+<li>大きなルート・イメージをマウントして本体起動</li>
+</ol>
+
+<ul>
+<li>KNOPPIX 5.3.1CD の例</li>
+</ul>
+<pre>
++---boot
+|   \---isolinux
+|           isolinux.bin
+|           isolinux.cfg
+|           linux     <strong class="red">--- kernel</strong> 
+|           minirt.gz <strong class="red">--- ミニ・ルート・イメージ</strong> 
+|
+\---KNOPPIX
+    |   KNOPPIX       <strong class="red">--- 大きなルート・イメージ</strong> 
+</pre>
+</dd>
+</dl>
+
+<p>さて、気になる (?) その手段とは！</p>
+<ol>
+<li>（大きな）ルートイメージファイル（or ディレクトリ）をisoから抜き出す</li>
+<li>抜き出したルートイメージをルートなどに保存する
+	<ul>
+	<li>ドライブ（パーティション）ルートに置けばオプションで指定しなくとも自動検索されることが殆ど</li>
+	</ul>
+</li>
+<li>ルートイメージを削除した “ミニ” iso を作成</li>
+<li>ブートローダーで “ミニ” iso をマウントして起動</li>
+</ol>
+
+<p>この方式の利点は、まずどの Linux LiveCD でもほぼ使えるであろうということ。他にも、</p>
+
+<ul>
+<li>設定ファイルの書き換えが不要</li>
+<li>ルートイメージはディストリ名になってることが多いので重複することはまずない</li>
+<li>カーネルやブート設定ファイルはiso内なので重複しない</li>
+<li>“ミニ” iso は数MB、大きくても数10MBなので Direct マウントで失敗してもさして影響はない（Indirect でも時間的に大した差がない）</li>
+<li>UltraISO 体験版では作成isoサイズが 300MB に制限されますが、“ミニ” iso なら大きくても数十MB なので大きなサイズの LiveCD でもおｋ</li>
+</ul>
+
+<p>というわけで、“完全” isoブートに拘ってたワシはマロングラッセよりも甘かったのぢゃ（YAWARA!風味ｗ）。</p>
+
+<p>下記2点の Linux LiveCD を “ミニ” iso 方式で追加します。</p>
+<p class="white">※【注意】ネットワークブートは基本的には不可（※ TFTPダウンロードオプション等あらば可能ぢゃ）</p>
+
+<dl>
+<dt>UltraISOでの基本操作</dt>
+<dd>
+<ul>
+<li>ファイル抜き出し（抽出） -ファイルを指定して【動作】【取り込む】</li>
+<li>削除 - ファイル右クリックから</li>
+<li>【ファイル】【名前を付けて保存】（元ファイルは変更なし）</li>
+</ul>
+</dd>
+</dl>
+
+
+<dl>
+<dt>Puppy Linux precise-571JP 日本語版</dt>
+<dd>
+<ul>
+<li><code>precise-571JP.iso</code> をダウンロード
+	<ul>
+	<li><a href="http://www.ring.gr.jp/archives/linux/puppylinux/puppy-5.7.1JP/">Index of /archives/linux/puppylinux/puppy-5.7.1JP</a></li>
+	</ul>
+</li>
+</ul>
+<dl class="palmst white">
+<dt>UltraISO で “ミニ” iso 作成</dt>
+<dd>
+<ol>
+<li>作業ディレクトリに <code>puppy</code> ディレクトリ作成</li>
+<li>iso内の <code>puppy_precise_5.7.1JP.sfs</code>, <code>goffice-precise_571.sfs</code> を <code>puppy</code> ディレクトリへ</li>
+<li>iso内から上記3点削除</li>
+<li>【名前を付けて保存】ファイル名は <code>precise-571JP-mini.iso</code> とする</li>
+<li>isoを <code>puppy</code> ディレクトリへ保存</li>
+</ol>
+</dd>
+</dl>
+
+<pre>
+（ルート）
+|
++---puppy ディレクトリ
+|       goffice-precise_571.sfs
+|       precise-571JP-mini.iso
+|       puppy_precise_5.7.1JP.sfs
+|
+</pre>
+</dd>
+</dl>
+
+
+<ul>
+<li>ファイル一覧</li>
+</ul>
+<pre>
+（ルート）
+|
+|   AcronisMedia.iso
+|   avg.iso
+|   bitdefender-rescue-cd.iso
+|   bootcd.iso
+|   clonezilla-live-2.2.3-10-amd64.iso
+|   clonezilla-live-2.2.3-10-i486.iso
+|   comodo_rescue_disk.iso
+|   KNOPPIX_V7.2.0CD-2013-06-16-JA-LCR.iso
+|   <strong class="ms red">kx720lcr.lst</strong>
+|   liveusb        <span class="red">--- Kaspersky 用空ファイル</span>
+|   lubuntu-14.04-desktop-i386.iso
+|   <strong class="red">menu.lst</strong>
+|   pwhe.iso
+|   redobackup-livecd-1.0.4.iso
+|   rescue-system.iso
+|   SeagateMedia.iso
+|   systemrescuecd-x86-4.2.0.iso
+|   ubuntu-ja-14.04-desktop-amd64.iso
+|   WinPEx86.iso
+|   WinREamd64.iso
+|   WinREx86.iso
+|   WinREx86_vista.iso
+|
++---<strong class="ms red">puppy</strong>
+|       <strong class="ms red">goffice-precise_571.sfs</strong>
+|       <strong class="ms red">precise-571JP-mini.iso</strong>
+|       <strong class="ms red">puppy_precise_5.7.1JP.sfs</strong>
+|
+<span class="backslash">\</span>---<strong>rescue</strong>
+|       rescue.iso
+|
+</pre>
+
+
+<h2><a href="#sysresccd_installer" name="sysresccd_installer">SystemRescueCd のリメイク</a></h2>
+
+<p>SystemRescueCd は UltraISO ではなかなかうまくできないので下記ツールを使用します。</p>
+
+<ul>
+<li>SystemRescueCd installer for Windows
+	<ul>
+	<li><a href="http://www.sysresccd.org/Sysresccd-manual-en_How_to_install_SystemRescueCd_on_an_USB-stick#B.29_Recommended_USB_installation_method_from_Windows">Sysresccd-manual-en How to install SystemRescueCd on an USB-stick - SystemRescueCd</a></li>
+	</ul>
+</li>
+</ul>
+
+<p class="overflow2"><img src="./images/multiiso/systemrescuecd_installer.png" width="509" height="398" alt="SystemRescueCd installer for Windows のスクリーンショット"></p>
+
+<ol>
+<li>Work directory:  - 展開先ディレクトリ指定</li>
+<li>Original ISO file: - 元の <code>systemrescuecd-x86-4.2.0.iso</code> を指定</li>
+<li>「Extract」ボタン押しで展開</li>
+<li>作業先ディレクトリのファイルを直接編集
+	<ul>
+	<li><code>isolinux\isolinux.cfg</code> を <code>isolinux2.cfg</code> などにリネーム</li>
+	<li><a href="./archives/multiiso/config/systemrescuecd-x86-4.2.0_isolinux.cfg">systemrescuecd-x86-4.2.0_isolinux.cfg</a> をダウンロード</li>
+	<li><code>isolinux.cfg</code> にリネームして置換</li>
+	</ul>
+</li>
+<li>New ISO File: - <code>リメイクisoの保存先パス\systemrescuecd-x86-4.2.0.iso</code> を指定</li>
+<li>「Rebuild」ボタンで作成</li>
+<li>新しいisoをルートへ</li>
+</ol>
+
+
+<h2><a href="#iso_sub_directory" name="iso_sub_directory">サブディレクトリへ展開</a></h2>
+
+<p>「isoそのままブート」ではなく「isoをサブディレクトリへそのまま展開」ブートであります。個人的趣味（何）のやつを入れてみました。</p>
+
+<p class="white"><strong>ネットワークブートも可能だす</strong>。（※ CIFS/NFS サーバが必要）</p>
+
+<ul>
+<li>linuxBean - Ubuntu ベースだがisoブート非対応？</li>
+<li>KonaLinux - Debian Live ベースなのでisoブート対応だが、PLoP Boot Manager 経由ではだめだったり不安定だったので<li>Panda SafeDisk - Debian Live ベースだがisoブート非対応？</li>
+</ul>
+
+<ul>
+<li><a href="http://sourceforge.jp/projects/linuxbean/">linuxBean (リナックスビーン) プロジェクト日本語トップページ - SourceForge.JP</a>
+	<ul>
+	<li><a href="http://sourceforge.jp/projects/linuxbean/releases/">ダウンロードファイル一覧 - linuxBean - SourceForge.JP</a></li>
+	<li>12.04 <code>bean12044-xxxxxx.iso</code></li>
+	<li>12.04 <code>bean1404-xxxxxx.iso</code></li>
+	</ul>
+</li>
+<li><a href="https://docs.google.com/folderview?pli=1&#038;id=0B63KzJgfI7FnRVMwXy1sQXlDdUk#list">konalinux - Google ドライブ</a>
+	<ul>
+	<li><a href="https://docs.google.com/folderview?pli=1&#038;id=0B63KzJgfI7FnZG9xaWtnRGQyZ1U&#038;tid=0B63KzJgfI7FnRVMwXy1sQXlDdUk#list">ダウンロード - Google ドライブ</a></li>
+	<li><code>konalinux-2.3_i386.iso</code></li>
+	</ul>
+</li>
+<li><a href="http://www.pandasecurity.com/usa/homeusers/support/card?id=80152">How to create a Panda SafeDisk rescue disk-Technical Support-Panda Security</a>
+	<ul>
+	<li><code>PandaSafeCD.iso</code></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>linuxBean ブートメニュー用設定ファイル
+	<ul>
+	<li><a href="./archives/multiiso/config/bean1204.lst">bean1204.lst</a></li>
+	<li><a href="./archives/multiiso/config/bean1404.lst">bean1404.lst</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>isoファイルを展開</li>
+</ul>
+<pre>
+ルート:.
+| 
+|   <strong class="red">bean1204.lst</strong>
+|   <strong class="red">bean1404.lst</strong>
+ ＜省略＞
+| 
++---iso
+|   |   
+|   +---bean1204
+|   |   |   ＜ <strong class="red">ここへisoを展開</strong> ＞
+|   |   |   
+|   +---bean1404
+|   |   |   ＜ <strong class="red">ここへisoを展開</strong> ＞
+|   |   |   
+|   |           
+|   +---konalinux-2.3_i386
+|   |   |   ＜ <strong class="red">ここへisoを展開</strong> ＞
+|   |   |   
+|   |           
+|   +---PandaSafeCD
+|   |   |   ＜ <strong class="red">ここへisoを展開</strong> ＞
+|   |   |   
+|   |           
+ ＜省略＞
+</pre>
+
+<dl>
+<dt>ブートオプション</dt>
+<dd>
+<ul>
+<li>linuxBean （Ubuntu 共通）</li>
+</ul>
+<pre>
+ignore_uuid live-media-path=/iso/bean1204/casper
+ignore_uuid live-media-path=/iso/bean1404/casper
+</pre>
+
+<ul>
+<li>KonaLinux （Debian Live 共通）</li>
+</ul>
+<pre>
+live-media-path=/iso/konalinux-2.3_i386/live
+</pre>
+</dd>
+</dl>
+
+<dl class="palmst small white">
+<dt>HDインストール時の注意点</dt>
+<dd>
+<p><strong>あくまでイレギュラーな手段というか正式な方法ではないので自己責任でやるべしなのであります</strong>。</p>
+<p>KonaLinux は PLoP Boot Manager + USBメモリブートでのHDインストールで問題はありませんでした。</p>
+<ul>
+<li>linuxBean - 一応インストール完了＆起動できました。だがしかし…
+	<ol>
+	<li>Live起動時になぜか「設定ウイザード」が起動する</li>
+	<li>インストーラー実行後に「インストールの準備」画面が出ない</li>
+	<li>GRUB2にLiveブート時のカーネル・パラメータ（コマンドライン・オプション） = <code>ignore_uuid live-media-path=/iso/bean1404</code> が引き継がれてしまう</li>
+	</ol>
+</ul>
+<p>修正方法...</p>
+<ol>
+<li><code>$ sudo nano /etc/default/grub</code></li>
+<li><code>GRUB_CMDLINE_LINUX=&#034;&#034;</code> とする</li>
+<li><code>$ sudo dpkg-reconfigure grub-pc</code> を実行</li>
+</ol>
+</dd>
+</dl>
+
+
+
+
+<h2><a href="#tiny_tools" name="tiny_tools">小さなツール類とか</a></h2>
+
+<p>※ 小さくないやつも混じってますが（ｗ。たまに使うかなな小さなツール類。isoだけでなく、FDイメージやカーネルそのまんまのやつとかもありんす。</p>
+<p class="white"><strong>すべてネットワークブートもおｋだす</strong>。</p>
+
+<ol class="small">
+<li><a href="#super_grub_disk">Super Grub Disk （FDイメージ）</a></li>
+<li><a href="#memtest86+">Memtest86+</a> （isoイメージ）</li>
+<li><a href="#gpxe">gPXE kernel（カーネルそのまま）</a></li>
+<li><a href="#plpbt">PLoP Boot Managerカーネルそのまま）</a></li>
+<li><a href="#kexec_loader">kexec-loader-floppy （FDイメージ）</a></li>
+<li><a href="#balder">FreeDOS Balder （FDイメージ）</a></li>
+<li><a href="#bg_rescue">BG-Rescue Linux （FDイメージ）</a></li>
+<li><a href="#hdt">Hardware Detection Tool （FDイメージ）</a></li>
+<li><a href="#ntpass">Offline NT Password &#038; Registry Editor （isoイメージ）</a></li>
+<li><a href="#easeus_disk_copy">EASEUS Disk Copy （isoイメージ）</a></li>
+</ol>
+
+<ul>
+<li>ファイルの配置</li>
+</ul>
+<pre>
+作業ディレクトリ
+|
+\---tools ディレクトリ
+        balder10.img
+        bgrescue.img
+        Disk_Copy.iso
+        gpxe_all.krn
+        hdt.img
+        kexec-loader-floppy.img
+        mt.iso
+        ntpass.iso
+        plpbt.bin
+        super_grub_disk.img
+        super_grub<ins>2</ins>_disk_hybrid.iso
+</pre>
+
+<p>バージョンが違う場合など、<code>menu.lst</code> のファイル名を確認しませう。</p>
+
+<h3><a href="#super_grub_disk" name="super_grub_disk">Super Grub Disk （FDイメージ）</a></h3>
+
+<p class="small pink">※ Parted Magic (1,2), SystemRescueCd (2) にも入ってますけど。</p>
+<p>単純に GRUB(Legacy), GRUB2起動ディスクとしても使えるので。</p>
+
+<ul>
+<li><a href="http://www.supergrubdisk.org/">Boot Problems Open Source Tools | Super Grub Disk, Super Grub2 Disk and Rescatux</a>
+<li>ダウンロード
+	<ul>
+	<li><a href="http://www.supergrubdisk.org/category/download/supergrubdiskdownload/">Super Grub Disk</a> - <code>Super Grub Disk x.xxxx Floppy EN</code> を選択</li>
+	<li><a href="http://www.supergrubdisk.org/category/download/supergrub2diskdownload/">Super Grub2 Disk</a> - 「Recommended download (Valid for i386, x86_64, and x86_64-efi):」を選択</li>
+	</ul>
+</li>
+<li>Grub(1) を <code>super_grub_disk.img</code> にリネーム、Grub2 は <code>super_grub<ins>2</ins>_disk_hybrid.iso</code> にリネーム</li>
+</ul>
+
+<ul>
+<li><code>menu.lst</code></li>
+</ul>
+<pre>
+title Super Grub Disk == /tools/super_grub_disk.img
+find --set-root /tools/super_grub_disk.img
+map --mem  /tools/super_grub_disk.img (fd0)
+map --hook
+chainloader (fd0)+1
+rootnoverify (fd0)
+
+title Super Grub2 Disk == /tools/super_grub<ins>2</ins>_disk_hybrid.iso
+find --set-root /tools/super_grub<ins>2</ins>_disk_hybrid.iso
+map --mem  /tools/super_grub<ins>2</ins>_disk_hybrid.iso (fd0)
+map --hook
+chainloader (fd0)+1
+rootnoverify (fd0)
+</pre>
+
+<ul>
+<li><code>menu.lst</code> （ネットワークブート）</li>
+</ul>
+<pre>
+title Super Grub Disk == /tools/super_grub_disk.img
+map --mem  (pd)/tools/super_grub_disk.img (fd0)
+map --hook
+chainloader (fd0)+1
+rootnoverify (fd0)
+
+title Super Grub2 Disk == /tools/super_grub<ins>2</ins>_disk_hybrid.iso
+map --mem  (pd)/tools/super_grub<ins>2</ins>_disk_hybrid.iso (fd0)
+map --hook
+chainloader (fd0)+1
+rootnoverify (fd0)
+</pre>
+
+<h3><a href="#memtest86+" name="memtest86+">Memtest86+</a></h3>
+
+<p class="small pink">※ SystemRescueCd とか殆どのLiveCDにも入ってますけど。</p>
+<p>メモリ増設時とかはやっとかないとなので。</p>
+<ul>
+<li><a href="http://www.memtest.org/">Memtest86+ - Advanced Memory Diagnostic Tool</a>
+	<ol>
+	<li>ダウンロード : <a href="http://www.memtest.org/#downiso">-= Download (Pre-built &#038; ISOs) =-</a></li>
+	<li><strong class="ms">Download - Pre-Compiled Bootable ISO (.zip)</strong> をダウンロード</li>
+	<li>展開して <code>mt.iso</code> にリネーム</li>
+	</ol>
+</li>
+</ul>
+
+<ul>
+<li><code>menu.lst</code></li>
+</ul>
+<pre>
+title Memtest86+ == /tools/mt.iso
+find --set-root /tools/mt.iso
+map --mem /tools/mt.iso (0xff)
+map --hook
+chainloader (0xff)
+rootnoverify (0xff)
+</pre>
+
+<ul>
+<li><code>menu.lst</code> （ネットワークブート）</li>
+</ul>
+<pre>
+title Memtest86+ == /tools/mt.iso
+map --mem (pd)/tools/mt.iso (0xff)
+map --hook
+chainloader (0xff)
+rootnoverify (0xff)
+</pre>
+
+<h3><a href="#gpxe" name="gpxe">gPXE kernel（カーネルそのまま）</a></h3>
+
+<p class="small pink">※ Clonezilla Live にも入ってますけど。</p>
+<p>ネットワークブート非対応PC用、また、TFTPの代わりにHTTPサーバを使う場合とか。。（※ CD/USBメモリ/HDブートからチェインロード）</p>
+
+<ul>
+<li><a href="http://rom-o-matic.net/">ROM-o-matic.net</a>
+	<ul>
+	<li>ダウンロード : <a href="http://rom-o-matic.net/gpxe/gpxe-git/gpxe.git/contrib/rom-o-matic/">ROM-o-matic.net for gPXE</a></li>
+	</ul>
+</li>
+</ul>
+
+<ol class="small">
+<li>Choose an output format
+	<ul>
+	<li><code>Linux kernel (SYSLINUX/GRUB/LILO) loadable image (.lkrn)</code> を選択</li>
+	</ul>
+</li>
+<li>Choose a NIC type
+	<ul>
+	<li><code>all-drivers</code> を選択</li>
+	</ul>
+</li>
+<li>[Get Image] をポチっと</li>
+<li>ファイル名は <code>gpxe_all.krn</code> にリネーム</li>
+</ol>
+
+<ul>
+<li><code>menu.lst</code></li>
+</ul>
+<pre>
+title Network Boot  == gPXE kernel
+find --set-root /tools/gpxe_all.krn
+kernel /tools/gpxe_all.krn
+</pre>
+
+<ul>
+<li><code>menu.lst</code> （ネットワークブート）</li>
+</ul>
+<pre>
+title Network Boot  == gPXE kernel
+kernel (pd)/tools/gpxe_all.krn
+</pre>
+
+<h3><a href="#plpbt" name="plpbt">PLoP Boot Manager</a></h3>
+
+<p class="small pink">※ Parted Magic にも入ってますけど。</p>
+<p>USB（メモリ/HD）ブート非対応PC向けに。（CD/HD/ネットワークブートからチェインロード）</p>
+
+<dl class="small">
+<dt>USBメモリブート時のHDモード（HD扱い）への切替用にも</dt>
+<dd>
+<p>USBメモリブートに対応しているがBIOS上で「大容量FD扱い」（FDモード）となることがあります。最近のBIOSでは HD,FD,ZIP の切替（or 自動切替）が可能になっているものもありますが、2002 - 2004 年頃のPCでは「USB LS 120」「USB RMD FDD」など 大容量FD扱い固定のBIOSもありました。</p>
+<p>この「FD扱い」でのisoブートは読み込みがかなり遅くなってしまうことが多いようです。一旦USBメモリブートした後にこの PLoP Boot Manager でUSBメモリを再選択すると<strong>HDモード（HD扱い）に切替えることができます</strong>。isoブートが遅すぎ！な際に試してみませう。（※ Parted Magic にも入ってます。）</p>
+<ul>
+<li>参考リンク :
+	<ul>
+	<li><a href="http://revolver2011.blog96.fc2.com/blog-entry-88.html">Revolver USBメモリからのブートを高速化</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<ul>
+<li><a href="http://www.plop.at/en/bootmanager.html">Plop - Boot Manager - Free Boot Manager, builtin usb driver, native usb, boot different operating systems, cdrom, usb, freeware, option rom bios</a>
+	<ol>
+	<li>ダウンロード : <a href="http://www.plop.at/en/bootmanagerdl.html">Plop - Bootmanager</a> (<strong class="ms">plpbt-x.x.xx.zip</strong>)</li>
+	<li>必要ファイルは <code>plpbt.bin</code></li>
+	</ol>
+</li>
+</ul>
+
+<ul>
+<li><code>menu.lst</code></li>
+</ul>
+<pre>
+title Boot from USB == PLoP Boot Manager
+find --set-root /tools/plpbt.bin
+kernel /tools/plpbt.bin
+</pre>
+
+<ul>
+<li><code>menu.lst</code> （ネットワークブート）</li>
+</ul>
+<pre>
+title Boot from USB == PLoP Boot Manager
+kernel (pd)/tools/plpbt.bin
+</pre>
+
+<h3><a href="#kexec_loader" name="kexec_loader">kexec-loader-floppy （FDイメージ）</a></h3>
+
+<p>上記同様、USB（メモリ/HD）ブート非対応PC向けに。（CD/HD/ネットワークブートからチェインロード）。Linux一応わかりまっせな人向けかな。</p>
+<ul>
+<li><a href="http://www.solemnwarning.net/kexec-loader/">kexec-loader - Home</a>
+	<ol>
+	<li>ダウンロード : <a href="http://www.solemnwarning.net/kexec-loader/download.cgi">kexec-loader - Downloads</a> (<strong class="ms">kexec-loader-x.x.x-floppy.img.gz</strong>)</li>
+	<li>必要ファイルは <code>kexec-loader-x.x.x-floppy.img</code></li>
+	<li><code>kexec-loader-floppy.img</code> にリネーム</li>
+	</ol>
+</li>
+</ul>
+
+<ul>
+<li><code>menu.lst</code></li>
+</ul>
+<pre>
+title Boot from USB == /tools/kexec-loader-floppy
+find --set-root /tools/kexec-loader-floppy.img
+map --mem /tools/kexec-loader-floppy.img (fd0)
+map --hook
+chainloader (fd0)+1
+rootnoverify (fd0)
+</pre>
+
+<ul>
+<li><code>menu.lst</code> （ネットワークブート）</li>
+</ul>
+<pre>
+title Boot from USB == /tools/kexec-loader-floppy
+map --mem (pd)/tools/kexec-loader-floppy.img (fd0)
+map --hook
+chainloader (fd0)+1
+rootnoverify (fd0)
+</pre>
+
+<h3><a href="#balder" name="balder">FreeDOS Balder （FDイメージ）</a></h3>
+
+<p class="small pink">※ SystemRescueCd にも別のFreeDOSが入ってますけど。</p>
+<p>DOSどす。fdisk や format とかコマンド一式入っとるがじゃ。</p>
+<ul>
+<li><a href="http://www.finnix.org/Balder">Balder - Finnix</a>
+	<ol>
+	<li><strong class="ms">balder10.img</strong> をダウンロード</li>
+	</ol>
+</li>
+</ul>
+
+<ul>
+<li><code>menu.lst</code></li>
+</ul>
+<pre>
+title FreeDOS Balder == /tools/balder10.img
+find --set-root /tools/balder10.img
+map --mem /tools/balder10.img (fd0)
+map --hook
+chainloader (fd0)+1
+rootnoverify (fd0)
+</pre>
+
+<ul>
+<li><code>menu.lst</code> （ネットワークブート）</li>
+</ul>
+<pre>
+title FreeDOS Balder == /tools/balder10.img
+map --mem (pd)/tools/balder10.img (fd0)
+map --hook
+chainloader (fd0)+1
+rootnoverify (fd0)
+</pre>
+
+<h3><a href="#bg_rescue" name="bg_rescue">BG-Rescue Linux （FDイメージ）</a></h3>
+
+<p>CDブート可能なら出番ない気もしますが、小さいけど結構使える FD Linux。</p>
+<ul>
+<li><a href="http://www.giannone.ch/rescue/current/">BG-Rescue Linux</a>
+	<ol>
+	<li><strong class="ms">BG-Rescue Linux 2.8 MB ELTORITO-BOOT-Image</strong> をダウンロード</li>
+	<li><code>bgrescue.img</code> にリネーム</li>
+	</ol>
+</li>
+</ul>
+
+<ul>
+<li><code>menu.lst</code></li>
+</ul>
+<pre>
+title BG-Rescue Linux == /tools/bgrescue.img
+find --set-root /tools/bgrescue.img
+map --mem /tools/bgrescue.img (fd0)
+map --hook
+chainloader (fd0)+1
+rootnoverify (fd0)
+</pre>
+
+<ul>
+<li><code>menu.lst</code> （ネットワークブート）</li>
+</ul>
+<pre>
+title BG-Rescue Linux == /tools/bgrescue.img
+map --mem (pd)/tools/bgrescue.img (fd0)
+map --hook
+chainloader (fd0)+1
+rootnoverify (fd0)
+</pre>
+
+<h3><a href="#hdt" name="hdt">Hardware Detection Tool （FDイメージ）</a></h3>
+
+<p class="small pink">※ Parted Magic にも入ってますけど。</p>
+<p>ハードウェア情報を表示できまするん。でもFDイメージは内容古いかもしれない...</p>
+<ul>
+<li><a href="http://hdt-project.org/">HDT</a>
+	<ol>
+	<li>「<strong class="ms">1.44MB floppy image </strong>」をダウンロード</li>
+	<li><code>hdt.img</code> にリネーム</li>
+	</ol>
+</li>
+</ul>
+
+<ul>
+<li><code>menu.lst</code></li>
+</ul>
+<pre>
+title Hardware Detection Tool == /tools/hdt.img
+find --set-root /tools/hdt.img
+map --mem /tools/hdt.img (fd0)
+map --hook
+chainloader (fd0)+1
+rootnoverify (fd0)
+</pre>
+
+<ul>
+<li><code>menu.lst</code> （ネットワークブート）</li>
+</ul>
+<pre>
+title Hardware Detection Tool == /tools/hdt.img
+map --mem (pd)/tools/hdt.img (fd0)
+map --hook
+chainloader (fd0)+1
+rootnoverify (fd0)
+</pre>
+
+<h3><a href="#ntpass" name="ntpass">Offline NT Password &#038; Registry Editor （isoイメージ）</a></h3>
+
+<p class="small pink">※ SystemRescueCd にも入ってますけど。</p>
+<p>Windows XP のパスワード・リセット（※ NTFSへ書き込みするので使用時は注意！）</p>
+<ul>
+<li><a href="http://pogostick.net/~pnh/ntpasswd/">Offline NT Password &#038; Registry Editor</a>
+	<ol>
+	<li>ダウンロード : <a href="http://pogostick.net/~pnh/ntpasswd/bootdisk.html">Offline NT pw &#038; reg-editor, bootdisk</a></li>
+	<li><strong class="ms">cdxxxxxx.zip</strong> をダウンロード</li>
+	<li>展開して <code>ntpass.iso</code> にリネーム</li>
+	</ol>
+</li>
+</ul>
+<p>※ 未確認ですが Vista / 7 にも対応してるようですな。</p>
+
+<ul>
+<li><code>menu.lst</code></li>
+</ul>
+<pre>
+title Offline NT Password &#038; Registry Editor == /tools/ntpass.iso
+find --set-root /tools/ntpass.iso
+map --mem /tools/ntpass.iso (0xff)
+map --hook
+chainloader (0xff)
+rootnoverify (0xff)
+</pre>
+
+<ul>
+<li><code>menu.lst</code> （ネットワークブート）</li>
+</ul>
+<pre>
+title Offline NT Password &#038; Registry Editor == /tools/ntpass.iso
+map --mem (pd)/tools/ntpass.iso (0xff)
+map --hook
+chainloader (0xff)
+rootnoverify (0xff)
+</pre>
+
+<h3><a href="#easeus_disk_copy" name="easeus_disk_copy">EASEUS Disk Copy （isoイメージ）</a></h3>
+
+<ul>
+<li><a href="http://www.easeus.com/disk-copy/feature.htm">Free Disk Copy, Partition Copy Software, Sector by Sector hard drive backup tool - EASEUS Disk Copy</a>
+	<ol>
+	<li>ダウンロード : <a href="http://www.easeus.com/disk-copy/download.htm">FREE download disk copy</a></li>
+	<li><strong class="ms">EaseUS Disk Copy Home Edition</strong> をダウンロードして実行</li>
+	<li>ExportISOでiso作成、ファイル名は <code>Disk_Copy.iso</code> にする</li>
+	<li>必要ファイル : <code>Disk_Copy.iso</code></li>
+	</ol>
+</li>
+</ul>
+<p>HD to HD、partition to partition な所謂 Disk Copy ツール。対応は 1.0TBまで（Todo Backup は 2.0TB まで対応）。</p>
+
+<ul>
+<li><code>menu.lst</code></li>
+</ul>
+<pre>
+title EASEUS Disk Copy == /tools/Disk_Copy.iso
+find --set-root /tools/Disk_Copy.iso
+map --mem /tools/Disk_Copy.iso (0xff)
+map --hook
+chainloader (0xff)
+rootnoverify (0xff)
+</pre>
+
+<ul>
+<li><code>menu.lst</code> （ネットワークブート）</li>
+</ul>
+<pre>
+title EASEUS Disk Copy == /tools/Disk_Copy.iso
+map --mem (pd)/tools/ == /tools/Disk_Copy.iso (0xff)
+map --hook
+chainloader (0xff)
+rootnoverify (0xff)
+</pre>
+
+
+<h2><a href="#memo" name="memo">めも</a></h2>
+
+<dl>
+<dt>「Press any key to boot from CD or DVD...」</dt>
+<dd>
+<p class="overflow2"><img width="600" alt="「CDからブートするなら何かキー押せ！」画面" src="./images/pe_re_pxe/press_any_key_to_boot.png" height="165"></p><p>Windows PE 系ではisoイメージ内の <code>boot\bootfix.bin</code> を削除していない場合は、上記のメッセージが出てるうちに何かキーを押さないと起動がスルーされてしまいます。</p>
+<p>上記の UltraISO で削除してしまいませう。</p>
+</dd>
+
+<dt>Linux LiveCD のキーボード配列</dt>
+<dd>
+<p>一部の Linux LiveCD ではキーボード配列のデフォルト設定が US仕様になってることがあるので覚えておいた方がいいかも</p>
+<ul>
+<li><a href="./dosdisk.html#keyboard">キーボード配列について - 私的「DOS起動ディスク」めも（未整理）</a></li>
+</ul>
+<p>コマンドで修正する場合は下記のどれかでいけるかも</p>
+<ul>
+<li><code>setxkbmap jp</code> (Parted Magic)</li>
+<li><code>loadkeys jp106</code></li>
+</ul>
+
+<p>尚、ISOLINUX(SYSLINUX) のブートメニュー上ではUS配列となってます。日本語配列にするには後述のファイルの追加が必要。</p>
+</dd>
+
+<dt>Linux LiveCD ブートメニューのキーボード配列を日本語 jp106 に</dt>
+<dd>
+<p>※ <ins>SYSLINUX 5.01 ではバグなのか無視されます</ins>。orz</p>
+<p>Linux LiveCD にファイルを追加して <code>isolinux.cfg</code>（or <code>syslinux.cfg</code>）を編集</p>
+<ul>
+<li>ダウンロード
+	<ul>
+	<li><a href="./archives/multiiso/config/jp106.kbd">jp106.kbd</a></li>
+	</ul>
+</li>
+</ul>
+
+<p><code>/isolinux/isolinux.cfg</code>, <code>/boot/isolinux/isolinux.cfg</code>, <br><code>/boot/syslinux/syslinux.cfg</code> などに下記を追記。2,3行目あたりでいいかと。</p>
+<pre>
+KBDMAP /jp106.kbd
+</pre>
+<p>※ 但し、アンダースコア (<kbd>_</kbd>) は<kbd>Shift</kbd>-<kbd>0</kbd>となってます。</p>
+
+<dl class="palmst pink small">
+<dt>UltraISOでファイルの追加と編集</dt>
+<dd>
+<ol>
+<li>UltraISOで対象のisoを開く</li>
+<li>【動作】<span class="ms">→</span>【新規ファイル】でルートへファイル追加
+	<ul>
+	<li><code>jp106.kbd</code></li>
+	</ul>
+</li>
+<li><code>/isolinux/isolinux.cfg</code>, <code>/boot/isolinux/isolinux.cfg</code>, <br><code>/boot/syslinux/syslinux.cfg</code> などを一旦下窓へドラッグして編集・保存</li>
+<li>上窓へドラッグして上書き</li>
+<li>isoを上書き保存</li>
+</ol>
+</dd>
+</dl>
+</dd>
+
+<dt>X 起動時にエラー</dt>
+<dd>
+<p>X（デスクトップ画面）起動時にエラーが出て表示がおかしい場合などは <kbd>Ctrl</kbd>-<kbd>Alt</kbd>-<kbd>BackSpace</kbd> を押して X を再起動させると直るかも。</p>
+</dd>
+
+<dt>Paragon Backup &#038; Recovery のisoブートは不安定？</dt>
+<dd>
+<p>起動しない場合は、kernel のオプションに <code>edd=off</code> を追加するか、memdisk を使うかどちらかで起動は可能だと思いますが、CDを探しに行ってしまうようで、メニュー画面表示まで時間がかかってしまうことが多いようです。</p>
+<p>下記の方法にて「展開ファイルを（以下略）」方式も設定したおいた方がいいかもしれません。（※ ウチの環境では明らかに起動が早いです。）</p>
+<p class="small pink">※ isoブート同様、Normal Mode のみです。</p>
+
+<ol class="small">
+<li><code>paragon</code> ディレクトリ作成</li>
+<li><strong class="ms">bootcd.iso</strong> をファイルに展開（<a href="http://sevenzip.sourceforge.jp/">7-Zip</a>, <a href="http://legroom.net/software/uniextract">Universal Extractor</a> などで可）
+	<ul>
+	<li>※ この際ファイル名が小文字になっているか注意（dosディレクトリ内除く）</li>
+	</ul>
+</li>
+<li>展開したファイルを <code>paragon</code> ディレクトリへすべてコピー</li>
+</ol>
+<pre>
+（ルート）
++---paragon ディレクトリ
+|   |   ＜中略＞
+|   |   initrd.gz
+|   |   vmlinuzp
+|   |   ＜中略＞
+</pre>
+
+<p><del>下記設定は サンプル menu.lst に 追記してあります</del>。</p>
+
+<ul>
+<li>USB/CD/HD 用 menu.lst</li>
+</ul>
+<pre>
+title Paragon Backup &#038; Recovery == /paragon/vmlinuzp,initrd.gz
+find --set-root /paragon/vmlinuzp
+kernel /paragon/vmlinuzp vga=0x314 language=en_US.UTF-8 medialable=
+initrd /paragon/initrd.gz
+</pre>
+
+<ul>
+<li>PXE用 menu.lst</li>
+</ul>
+<pre>
+title Paragon Backup &#038; Recovery == /paragon/vmlinuzp,initrd.gz
+kernel (pd)/paragon/vmlinuzp vga=0x314 language=en_US.UTF-8 medialable=
+initrd (pd)/paragon/initrd.gz
+</pre>
+</dd>
+</dl>
+
+
+<h2><a href="#ss" name="ss">スクリーン・ショット</a></h2>
+
+<ul>
+<li>GRUB for DOS ブートメニュー</li>
+</ul>
+<p class="overflow2"><img src="./images/multiiso/grub4dos_menu.png" width="720" height="400" alt="GRUB for DOS ブートメニューのスクリーンショット"></p>
+
+
+<ul>
+<li>Windows PE 2.1</li>
+</ul>
+<p class="overflow2"><img src="./images/multiiso/winpe_21.png" width="560" height="420" alt="Windows PE 2.1のスクリーンショット"></p>
+
+<ul>
+<li>Windows 7 「システム修復ディスク」 - システム回復オプション・メニュー</li>
+</ul>
+<p class="overflow2"><img src="./images/multiiso/winre.png" width="560" height="420" alt="Windows 7「システム修復ディスク」- システム回復オプション・メニューのスクリーンショット"></p>
+
+<ul>
+<li>Knoppix 7.2.0 ライブＣＤの部屋 ブートメニュー</li>
+</ul>
+<p class="overflow2"><img src="./images/multiiso/knoppix720lcr_bootmenu.png" width="576" height="320" alt="Knoppix 7.2.0 ライブＣＤの部屋 ブートメニューのスクリーンショット"></p>
+
+<ul>
+<li>linuxBean 12.04 ブートメニュー</li>
+</ul>
+<p class="overflow2"><img src="./images/multiiso/linuxbean1204_grub4dos_bootmenu.png" width="576" height="320" alt="linuxBean 12.04 ブートメニューのスクリーンショット"></p>
+
+<ul>
+<li>linuxBean 14.04 ブートメニュー</li>
+</ul>
+<p class="overflow2"><img src="./images/multiiso/linuxbean1404_grub4dos_bootmenu.png" width="576" height="320" alt="linuxBean 14.04 ブートメニューのスクリーンショット"></p>
+<ul>
+<li>Puppy Linux precise-571JP ブートメニュー</li>
+</ul>
+<p class="overflow2"><img src="./images/multiiso/puppy_precise571jp.png" width="512" height="384" alt="Puppy Linux precise-571JP のスクリーンショット"></p>
+
+<ul>
+<li>SystemRescueCd 4.2.0 ブートメニュー</li>
+</ul>
+<p class="overflow2"><img src="./images/multiiso/systemrescuecd420_bootmenu.png" width="512" height="384" alt="SystemRescueCd 4.2.0 ブートメニューのスクリーンショット"></p>
+
+
+<ul>
+<li>True Image WD Edition ブートメニュー （※ 古いです）</li>
+</ul>
+<p class="overflow2"><img src="./images/multiiso/trueimage_wd_edition.png" width="512" height="384" alt="True Image WD Edition ブートメニューのスクリーンショット"></p>
+
+<ul>
+<li>Seagate DiscWizard ブートメニュー （※ 古いです）</li>
+</ul>
+<p class="overflow2"><img src="./images/multiiso/seagate_discwizard.png" width="512" height="384" alt="Seagate DiscWizard ブートメニューのスクリーンショット"></p>
+
+<ul>
+<li>Paragon Backup &#038; Recovery （※ 古いです）</li>
+</ul>
+<p class="overflow2"><img src="./images/multiiso/paragon_backup_recovery2012.png" width="560" height="420" alt="Paragon Backup &#038; Recovery ブートメニューのスクリーンショット"></p>
+
+<ul>
+<li>Clonezilla-live 2.2.3-10-amd64 ブートメニュー</li>
+</ul>
+<p class="overflow2"><img src="./images/multiiso/clonezilla_live22310amd64.png" width="512" height="384" alt="Clonezilla-live 2.2.3-1-amd64 のスクリーンショット"></p>
+
+<ul>
+<li>Redo Backup ブート画面</li>
+</ul>
+<p class="overflow2"><img src="./images/multiiso/redo_backup.png" width="512" height="384" alt="Redo Backup ブート画面のスクリーンショット"></p>
+
+<ul>
+<li>AVG Rescue CD ブート画面</li>
+</ul>
+<p class="overflow2"><img src="./images/multiiso/avg_rescue_disk.png" width="576" height="320" alt="AVG Rescue CD ブート画面のスクリーンショット"></p>
+
+<ul>
+<li>Comodo Rescue Disk ブート画面</li>
+</ul>
+<p class="overflow2"><img src="./images/multiiso/comodo_rescue_disk.png" width="512" height="384" alt="Comodo Rescue Disk ブート画面のスクリーンショット"></p>
+
+<ul>
+<li>Kaspersky Rescue Disk 10 ブートメニュー</li>
+</ul>
+<p class="overflow2"><img src="./images/multiiso/kaspersky_rescue_disk.png" width="560" height="420" alt="Kaspersky Rescue Disk ブートメニューのスクリーンショット"></p>
+
+<ul>
+<li>Partition Wizard Bootable CD ブートメニュー</li>
+</ul>
+<p class="overflow2"><img src="./images/multiiso/partition_wizard_home_edition.png" width="512" height="384" alt="Partition Wizard Bootable CD ブートメニューのスクリーンショット"></p>
+
+
+
+
+
+</div>
+</div>
+
+
+<div class="navi">
+<a href="./index.html">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd>
+</div>
+
+
+<address>Written by yassy</address>
+
+</body>
+
+</html>
+

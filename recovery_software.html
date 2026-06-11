@@ -1,0 +1,1364 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="start" href="./index.html">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>バックアップ・リカバリーソフトについてのめも＠Palm84 [最終更新は2012年]</title>
+<style type="text/css">
+<!--
+td { 
+	border-right:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+}
+
+table.book2 {
+	border-top:1px solid #ccc;
+	border-left:1px solid #ccc;
+	margin:0 2em;
+	font-size:90%;
+}
+
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+</head>
+
+
+<body>
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" accesskey="z" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd>
+ | <span class="font_change">* font-change * <a href="javascript:void(document.body.style.fontFamily='inherit')" title="inherit">inherit</a> <a href="javascript:void(document.body.style.fontFamily='sans-serif')" title="Sans-serif">Ss</a> <a href="javascript:void(document.body.style.fontFamily='serif')" title="Serif">Sf</a> <a href="javascript:void(document.body.style.fontFamily='\'メイリオ\'')" title="メイリオ">メ</a> <a href="javascript:void(document.body.style.fontFamily='\'游ゴシック\',\'Yu Gothic\',YuGothic')" title="游ゴシック">游</a> <a href="javascript:void(document.body.style.fontFamily='\'ＭＳ Ｐゴシック\'')" title="ＭＳ Ｐゴシック">MS</a> <a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Regular\',\'源ノ角ゴシック JP Regular\',\'Noto Sans Japanese Regular\',\'Noto Sans CJK JP Regular\',\'源ノ角ゴシック\',\'源ノ角ゴシック JP\',\'Noto Sans Japanese\',\'Noto Sans CJK JP\'')" title="源ノ角ゴシック / Sonrce Han Sans">源</a> <a href="javascript:void(document.body.style.fontSize='12px')" title="12px">12</a>
+ <a href="javascript:void(document.body.style.fontSize='14px')" title="14px">14</a>
+ <a href="javascript:void(document.body.style.fontSize='16px')" title="16px">16</a> <a href="javascript:void(document.body.removeAttribute('style'));" title="body style 削除">戻す</a> *</span>
+</div>
+
+
+<h1><a href="./recovery_software.html"><span class="tokai1">バックアップ・リカバリーソフトについてのめも <span class="small">[最終更新は2012年]</span></span></a></h1>
+
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+
+<ul>
+<li><a href="#about">これってなに？</a></li>
+<li><a href="#retail_package">有償版</a>
+	<ul class="small">
+	<li><a href="#true_image">True Image</a></li>
+	<li><a href="#norton_ghost">Norton Ghost</a></li>
+	<li><a href="#sonota">その他</a></li>
+	</ul>
+</li>
+<li><a href="#yesterday">機能について</a></li>
+<li><a href="#siteki">【私的】リカバリー方法</a></li>
+<li><a href="#paragon_drive_backup">Paragon Backup &#038; Recovery</a></li>
+<li><a href="#easeus_todo_backup">EASEUS Todo Backup</a></li>
+<li><a href="#clonezilla">Clonezilla Live</a></li>
+<li><a href="#partimage">Partimage</a>
+	<ul class="small">
+	<li><a href="#ping">PING (Partimage Is Not Ghost)</a></li>
+	</ul>
+</li>
+<li><a href="#winpe">Windows PE 2.0</a>
+	<ul class="small">
+	<li><a href="#imagex">ImageX</a></li>
+	<li><a href="#driveimage_xml">DriveImage XML</a></li>
+	</ul>
+</li>
+<li><a href="#system_image">システム イメージ <span class="small">(Windows 7)</span></a></li>
+<li><a href="#etc">いろいろ</a></li>
+</ul>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+
+
+
+<p class="small">リンクはご自由に。</p>
+
+
+<div class="hateb">
+<script language="javascript" type="text/javascript" src="https://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://www10.plala.or.jp/palm84/";
+Hatena.BookmarkWidget.title = "はてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+
+<script language="javascript" type="text/javascript" src="https://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://d.hatena.ne.jp/palm84/";
+Hatena.BookmarkWidget.title = "某所のはてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+</div>
+
+
+
+</div>
+</div>
+
+
+<div class="main">
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/recovery_software.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p class="small">2009.1.7 作成
+<br><a href="#paragon_drive_backup">Paragon Drive Backup</a> がバージョンアップで高機能化しました。
+<br>2010.03.06 <a href="#system_image">システム イメージ (Windows 7)</a> 追記
+<br>2011.07.11 <a href="#easeus_todo_backup">EASEUS Todo Backup</a> について追記改訂
+<br>最終更新日は 2012.6.8</p>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+
+<a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/recovery_software.html"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/recovery_software.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a>
+
+</p>
+
+<p>実際に試していない、確認してない点が多いので、あしからずなとりあえずなめも。どしどし追記していく予定（未定？）</p>
+
+<dl class="small">
+<dt>2chスレ</dt>
+<dd>
+<ul>
+<li><a href="http://pc12.2ch.net/test/read.cgi/software/1259813244/l50">▲▽システムバックアップソフト徹底比較△▼ No.14</a></li>
+<li><a href="http://www.unkar.org/read/pc12.2ch.net/software/1259813244">▲▽システムバックアップソフト徹底比較△▼ No.14</a> (<a href="http://www.unkar.org/">unkar</a>)</li>
+<li><a href="http://www.unkar.org/read/pc12.2ch.net/software/1225206470">▲▽バックアップソフト徹底比較スレ△▼ No.13</a> (<a href="http://www.unkar.org/">unkar</a>)</li>
+<li><a href="http://www.unkar.org/read/pc11.2ch.net/software/1199374474">▲▽バックアップソフト徹底比較スレ△▼ No.12</a> (<a href="http://www.unkar.org/">unkar</a>)</li>
+<li><a href="http://www.unkar.org/read/pc11.2ch.net/software/1173027012">▲▽バックアップソフト徹底比較スレ△▼ No.11</a> (<a href="http://www.unkar.org/">unkar</a>)</li>
+</ul>
+</dd>
+</dl>
+<h2><a href="#about" name="about"><span class="tokai1">【バックアップ・リカバリーソフト】ってなに？</span></a></h2>
+
+<p>パーティション、またはHDドライブ全体のイメージファイル = リカバリーイメージを作成及び復元可能なソフトウェアのことをこのページでは書いています。</p>
+<p>一般的には、【<strong>イメージバックアップ・レストア</strong>】ソフトと言った方がいいのかな？</p>
+
+<p>メーカー製PCの多くは、リカバリープログラムが設定されていますが、保存されているものは購入時（工場出荷時）のものなので、リカバリー自体は短時間で終わっても、その後のアップデートや追加ソフトのインストールなどにかなり時間がかかってしまいます。リカバリーソフトで安定時（または複数の世代別）のバックアップイメージを作っておくと、リカバリーはヒジョーに楽になりまする。（※オリジナルのリカバリーイメージの作成可能なメーカー製PCもあるようです。）</p>
+
+<dl>
+<dt>メーカー製パソコンのリカバリー</dt>
+<dd>
+<ol>
+<li>DVD作成可能なら必ず作っとくぜよ！</li>
+<li>このページ掲載ソフトを使って、HD丸ごとバックアップもやっとくと安心やき！</li>
+</ol>
+
+<p>まず、どんな方法なのか、どんな使い方ができるのか確認しとくべきでんな。</p>
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20061213/1165952800">某所の日記 - リカバリー関係めも</a></li>
+</ul>
+
+<ul>
+<li><a href="https://www.fmworld.net/cs/azbyclub/qanavi/jsp/qacontents.jsp?rid=168&#038;PID=3605-8357">マイリカバリについて教えてください。 - Q&#038;A事例 [3605-8357] - AzbyClub - サポート : 富士通</a></li>
+</ul>
+
+<p>付属のリカバリー・プログラムの起動については、<strong>HDの隠し領域にリカバリー・イメージ</strong>があり、起動時に特定キー押し、或いは Vista以降なら「システム回復オプション」メニューからブートのいずれかかと。</p>
+
+<p>HDの物理的な故障の場合は、イメージも含む<strong>リカバリーDVD</strong>が必要となりますが、購入時に付属していない場合もあるので注意。大抵のメーカーは付属ソフトで作成が可能になってる場合が多いようですな。必ず作っときまひょ！</p>
+
+<p>だいだいは下記のうちのどれかかなと思います。</p>
+<ul>
+<li>HD上にイメージあり、DVDは自分で作成 - 多分これが一番多いかと</li>
+<li>HD上にイメージあり、DVDは別途購入</li>
+<li>海外メーカー製では、Windows インストールDVDやドライバ・アプリケーションDVDなどクリーンインストール用DVDが付属する場合もあり（※ 必ずではないけど Lenovo や DELL など）</li>
+<li>一部のBTOやショッププランドPCでは、リカバリー・イメージではなく、クリーンインストール用DVDのみ付属の場合があったなぁ（最近はどうかな？）</li>
+<li>中古PCではリカバリー・イメージもなんにもなしの場合がある。自分でソフト使って作っておくべし！</li>
+</ul>
+
+</dd>
+
+<dt>リカバリー手段の冗長化 / ファイル単位のバックアップ</dt>
+<dd>
+<ul>
+<li>ソフトを使ったリカバリーは失敗することもある（特に無償版など）。なので複数の手段を準備しておくとかなり安心。CD/DVDライティングソフトや付属ソフトにリカバリーディスク作成機能があればそれらも<strong>併用</strong>しませう</li>
+<li>リカバリーイメージ作成後のデータは保存されないので、<strong>重要データのファイル単位でのバックアップも定期的に実行</strong>しておきませう</li>
+</ul>
+
+<ul>
+<li>拙作めも：<a href="./backup.html">私的バックアップ用リンク集</a></li>
+</ul>
+
+</dd>
+</dl>
+
+<p class="pink">※ DVD/CDライティングソフトにリカバリーディスク作成機能や、（簡易的）パーティションイメージ作成機能があったりしますのでご自分のPC内のソフトも確認するべし。また、外付けHDDを購入すればこれらのソフトも同梱されていることもあるようです。簡易版と有償版との違いは保存先の選択肢（HDDのみ、直接DVD/CDのみとか）や復元方法の種類が少ないことなどだと思います。</p>
+
+
+<h2><a href="#retail_package" name="retail_package"><span class="tokai1">有償版</span></a></h2>
+
+<p>下記2つが最も有名ですかな。最新版を使ってないので、あくまで印象ですが、<strong class="ms">True Image</strong> はわかりやすい、<strong class="ms">Ghost</strong> はややこしそうだけど機能が多そう、ってかんじかなぁ。</p>
+
+<p class="pink">※ 購入の際には Windows 7 (32-bit, 64-bit) に対応しているかなどきっちり確認しませう。</p>
+
+<p>新しい規格への対応などを考えて、<strong>メインPCには有償版をおすすめ</strong>しておきます。と言いつつ、私自身は有償版は Ghost 9.0 しか使ってなかったりしますが・・・（周囲には True Image 多し）</p>
+
+<p>あっと、体験版があるやつはまず試してみてから購入した方がいいですね。</p>
+
+
+<h3><a href="#true_image"><span class="ms">■</span></a> <a name="true_image">Acronis True Image</a></h3>
+
+<ul>
+<li><a href="http://www.acronis.co.jp/homecomputing/products/trueimage/">Acronis True Image Home 2012 Plus - 簡単かつ迅速なデータバックアップおよび復元</a></li>
+</ul>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/Acronis_True_Image">Acronis True Image - Wikipedia</a></li>
+</ul>
+
+
+<dl>
+<dt>Seagate - DiscWizard</dt>
+<dd>
+<p>SeagateおよびMaxtorブランドのHD使用PCでは下記が<strong>無償で</strong>使えるみたいです。<strong class="ms">True Image</strong> の機能限定版。</p>
+<ul>
+<li><a href="http://www.seagate.com/jp/ja/support/downloads/discwizard/">DiscWizard | Seagate</a>
+	<ul>
+	<li><a href="http://www.seagate.com/jp/ja/support/internal-hard-drives/enterprise-hard-drives/savvio-15k/discwizard-master-dl/">ダウンロード</a></li>
+	</ul>
+</li>
+<li>MaxBlast 5
+	<ul>
+	<li><a href="http://www.seagate.com/jp/ja/support/internal-hard-drives/consumer-electronics/ld25-series/maxblast-master-dl/">ダウンロード</a></li>
+	</ul>
+</li>
+<li><del><a href="http://www.seagate.com/www/ja-jp/support/downloads/discwizard/">Seagate Technology - DiscWizard</a></del></li>
+<li><del><a href="http://www.seagate.com/ww/v/index.jsp?locale=ja-JP&#038;name=MaxBlast_5&#038;vgnextoid=5b685897a9d23110VgnVCM100000f5ee0a0aRCRD">Seagate Technology - MaxBlast 5</a></del></li>
+</ul>
+<p class="small pink">※ <del>Windows 7 非対応かな</del>？<ins>未確認ですが、バージョンは 13.x となってるので 7 対応みたい？<del>但し英語版のみかな</del>？</ins></p>
+
+<ul class="small">
+<li>ホットバックアップ</li>
+<li>圧縮レベル指定あり</li>
+<li>分割サイズ指定あり</li>
+<li>バックアップイメージの参照・マウント可能</li>
+<li>Linux LiveCD, LiveUSB 作成機能あり</li>
+<li>復元時、FTPやWindowsネットワーク利用可能？</li>
+<li>差分バックアップ、ファイルバックアップなどの機能なし</li>
+</ul>
+<p class="small">※CDブート時は NDAS(Network Direct Attached Storage)が使えるらしい（※未確認）</p>
+
+<dl>
+<dt>DiscWizard v13</dt>
+<dd>
+<p>未確認ですが、Seagate(Maxtor) では 7 64bit, GPT (3TB) 対応バージョンが出てます。</p>
+<ul>
+<li><del><a href="http://seagate.custkb.com/seagate/crm/selfservice/search.jsp?DocId=218619&#038;NewLang=en">Support for Disk Drives Beyond 2.2 TeraBytes (TB) and 4K Advanced Format Sectors</a></del></li>
+</ul>
+<p>※ 未確認ですが、上記の分がバージョン 13.x となってます。</p>
+</dd>
+</dl>
+</dd>
+
+<dt>True Image WD Edition</dt>
+<dd>
+<p>こっちは Western Digital 製HD用。Windows 7 対応、<strong>GPT対応 2TiB超対応</strong>。日本語版も出てます。2012.2.14現在 WD Edition 2010 ビルド 14,165。</p>
+<ul>
+<li><a href="http://support.wdc.com/product/downloaddetail.asp?swid=119&#038;wdc_lang=jp">Acronis True Image WD Edition Software - WD サポート</a></li>
+<li><a href="http://support.wdc.com/product/downloaddetail.asp?swid=119&#038;wdc_lang=en">Acronis True Image WD Edition Software - WD Support</a></li>
+</ul>
+
+</dd>
+</dl>
+
+<dl>
+<dt>True ImagePersonal</dt>
+<dd>
+<ul>
+<li><a href="http://www.sourcenext.com/titles/sys/72540/">ソースネクスト：Acronis True ImagePersonal2</a></li>
+</ul>
+
+<p>機能限定の廉価版。1,980円はめちゃ安いですよね。 <strong class="ms">Vista非対応</strong> ということで製造中止になったみたいです。</p>
+<p>復元時にネットワークが使えませんが、ホットバックアップ可能なのでXP用としては選択肢にあげていいかな。</p>
+</dd>
+</dl>
+
+<p>以前は、Buffalo社製USB外付けHDDに機能限定版(True Image LE)が付属してましたが最近はどうなのかな。。。</p>
+
+<dl>
+<dt>関連リンク</dt>
+<dd>
+<ul class="small">
+<li><a href="http://wiki.nothing.sh/page/True%20Image">True Image - wiki@nothing</a></li>
+<li><a href="http://www.unkar.org/read/pc12.2ch.net/software/1260199477">【バックアップ】 Acronis True Image part42</a> (<a href="http://www.unkar.org/">unkar</a>)</li>
+<li><a href="http://www.unkar.org/read/pc12.2ch.net/software/1255160113">【バックアップ】 Acronis True Image part41</a> (<a href="http://www.unkar.org/">unkar</a>)</li>
+<li><a href="http://www.unkar.org/read/pc12.2ch.net/software/1111130843">【最強】 Acronis True image LE【最安】</a> (<a href="http://www.unkar.org/">unkar</a>)</li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#norton_ghost"><span class="ms">■</span></a> <a name="norton_ghost">Norton Ghost</a></h3>
+
+<ul>
+<li><a href="http://www.symantec.com/ja/jp/norton/ghost">パワーユーザー向けバックアップ / 復元ソフト : Norton Ghost</a></li>
+<li><a href="http://www.symantecstore.jp/products/package/ghost.asp">ノートンゴースト | バックアップソフトのノートン～シマンテックストア</a></li>
+</ul>
+
+<dl>
+<dt>関連リンク</dt>
+<dd>
+<ul class="small">
+<li><a href="http://pc12.2ch.net/test/read.cgi/software/1199950619/">NortonGhost2003 Ghost 9.0 part6</a> (2ch)</li>
+<li><a href="http://www.unkar.org/read/pc12.2ch.net/software/1199950619">NortonGhost2003 Ghost 9.0 part6</a> (<a href="http://www.unkar.org/">unkar</a>)</li>
+<li><a href="http://www.unkar.org/read/pc11.2ch.net/software/1198556014">NortonGhost2003 Ghost 9.0 part5</a> (<a href="http://www.unkar.org/">unkar</a>)</li>
+<li><a href="http://www.unkar.org/read/pc11.2ch.net/software/1145022417">NortonGhost2003 Ghost 9.0 part4</a> (<a href="http://www.unkar.org/">unkar</a>)</li>
+</ul>
+</dd>
+</dl>
+
+
+<h3><a href="#paragon_pem"><span class="ms">■</span></a> <a name="paragon_pem">Paragon 製品</a></h3>
+
+<p>使ったことないのでめもだけ</p>
+
+<ul>
+<li><a href="http://www.paragon-software.com/jp/home/db-professional/">Paragon Drive Backup Professional - ドライブバックアップツール</a></li>
+<li><a href="http://www.paragon-software.com/jp/home/hdm-professional/">Paragon Hard Disk Manager Professional -　サーバー用ドライブバックアップツール</a></li>
+</ul>
+
+<ul>
+<li>JustSystems
+	<ul>
+	<li><a href="http://www.justsystems.com/jp/products/prg_kantan_backup/?w=plst">バックアップソフト Paragon おまかせ！かんたんバックアップ</a></li>
+	<li><a href="http://www.justsystems.com/jp/products/prg_backup/?w=plst">バックアップソフト Paragon Drive Backup 11</a></li>
+	<li><a href="http://www.justsystems.com/jp/products/prg_harddisk/?w=plst">ハードディスク総合管理ソフト Paragon Hard Disk Manager Suite 11</a></li>
+	</ul>
+</li>
+</ul>
+
+<p>LB イメージ バックアップと PowerX は Paragon OEM ですね。</p>
+<ul>
+<li><a href="http://www.lifeboat.jp/products/ib10/ib10.html">LB イメージ バックアップ10 製品情報</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.powerx.jp/product/catalog/safety/xhm11/">製品情報 / PowerX</a></li>
+</ul>
+
+
+
+<h3><a href="#sonota"><span class="ms">■</span></a> <a name="sonota">その他</a></h3>
+
+<p>使ったことないのでめもだけ</p>
+
+<ul>
+<li><a href="http://www.runexy.co.jp/personal/shadowprotect4/">ShadowProtect4 Personal - 製品概要 | 個人向けソフトウェア | 株式会社ラネクシー</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www1.ark-info-sys.co.jp/products/hdbk11/index.html">HD革命/BackUp Ver.11　製品概要・新機能 | 株式会社アーク情報システム</a></li>
+</ul>
+
+<h2><a href="#yesterday" name="yesterday"><span class="tokai1">機能について</span></a></h2>
+
+<p>有償版にはほぼどれも付いてる機能ですが、無償版にはあったりなかったりするので...</p>
+
+<p>はっきり言って、無償版は有償版に比べ段違いに機能が少ないので無償版使うには多少の工夫が必要かと。</p>
+
+<dl>
+<dt>ホットバックアップ</dt>
+<dd>
+<p>Windows上でバックアップ（リカバリーイメージ）作成。これができるとかなり楽です。無償版で可能なのはParagon, EASEUS Todo Backup, Macrium Reflect の3点かな。</p>
+</dd>
+
+<dt>復元時のネットワーク利用</dt>
+<dd>
+<p>ネットワーク上のバックアップイメージからの復元。無償版では使えないことが<del>多い</del><ins>ある</ins>かな。HDD交換時などはこの機能あると楽かと。</p>
+<p>※ このページに書いてるやつは全部使えます。</p>
+<p>ネットワークが使えない場合は、KnoppixなどのWindowsネットワークが使えるLiveCDでブートしてバックアップをローカルHD上にコピーしておく、なんて手もありますね。</p>
+</dd>
+
+<dt>Windowsから復元設定</dt>
+<dd>
+<p>勿論Windowsが起動しないとだめですが、Windows上で設定すると、再起動時に自動で復元が始まるという便利な機能。無償版では、Paragon, Todo Backup でできました（※ ネットワークはだめ）。デスクトップ表示前のchkdskと同じ画面でした。</p>
+<p class="pink small">※ Paragon, EASEUS で確認 - Windows 上での復元設定で<strong>ネットワークの指定</strong>は、指定じたいはできても再起動後にエラーとなりました。</p>
+</dd>
+
+<dt>バックアップイメージの分割</dt>
+<dd>
+<p>FAT32のUSB接続HDDだと4 GB、ネットワークだと 2 GB 制限があったりしますよね。最悪CDからコピーする場合のことを考えて、650 MBで分割できるといいかと。まぁ後でツールとかで分割してもいいんですけけど、結合がメンドイかな。</p>
+</dd>
+
+<dt>バックアップ作成時間</dt>
+<dd>
+<p>環境次第なので一概に言えませんが、無償版は有償版の2、3倍かかることがあったり。</p>
+<p>確認してみました..</p>
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20090220/1235056811">フリーのバックアップ・リカバリーソフトの保存サイズと所要時間を調べるの巻</a></li>
+</ul>
+</dd>
+
+<dt>バックアップイメージの圧縮</dt>
+<dd>
+<p>圧縮されない場合は、データサイズとなります（パーティションサイズではない）。対象の内容によって変わってきますが、Paragon, Clonezilla, Partimage では、約 40 - 60 % 程に圧縮されてました。</p>
+</dd>
+
+<dt>バックアップ（イメージ）ファイルのマウント</dt>
+<dd>
+<p>イメージファイル内のファイルを参照する機能。無償でできるのは、Windows PE + ImageX ぐらいかなぁ？<ins>Paragon Backup &#038; Recovery</ins>でできるようになりました。あと、<strong class="ms">EASEUS Todo Backup</strong>, <strong class="ms">Macrium Reflect</strong> も。</p>
+</dd>
+
+<dt>オンメモリでのブート</dt>
+<dd>
+<p>リカバリー時、CDやUSBメモリブート時にCD/DVD,USBメモリの入替が可能かどうか。</p>
+<p class="small">※どれもネットワークブートも可。</p>
+<ul>
+<li>Paragon Backup &#038; Recovery - Normal Modeでは、CD/USBメモリ/ネットワークともオンメモリ</li>
+<li>EASEUS Todo Backup - WinPE版、Linux版ともオンメモリ</li>
+<li>Windows PE 2.0 - すべてオンメモリ</li>
+<li>Clonezilla Live - CD/USBメモリ/ネットワーク、<code>toram=filesystem.squashfs</code> オプションで</li>
+<li>Partimage - CD/USBメモリ/ネットワーク、<code>pxe</code> オプション（デフォルト）</li>
+</ul>
+</dd>
+</dl>
+
+<h2><a href="#siteki" name="siteki"><span class="tokai1">【私的】バックアップ・リカバリー方法</span></a></h2>
+
+<p>多分、USB接続HDDが最も便利だと思いますが、大容量なのは持ってないのでこんなかんじでやってます。</p>
+
+<ol>
+<li>まず、Clonezilla でHD丸ごとバックアップ
+	<ul>
+	<li>できれば Paragon など Windows 用ソフトでも同様にHD丸ごとバックアップ</li>
+	</ul>
+</li>
+<li>バックアップは複数の場所
+	<ul>
+	<li>ローカルHDの別パーティション（Dドライブなど）、または USB接続HD</li>
+	<li>Windowsネットワーク（別PC、LAN接続HD）</li>
+	<li>時々 DVD-R</li>
+	</ul>
+</li>
+<li>バックアップは 650 MB、または 2000 MB で分割</li>
+<li>復元は GRUB for DOS を使いHDからブート(<del>Partimage</del> <ins>Paragon, Clonezilla</ins>)、または
+	<ul>
+	<li>CDブート</li>
+	<li>USBメモリブート</li>
+	<li>ネットワークブート</li>
+	</ul>
+</li>
+<li>パーティション変更前後は Clonezilla で丸ごとバックアップ</li>
+</ol>
+
+<p>HDD交換時は、MBRのブートストラップ、PBRのIPLなどがうまくコピーされなかったり、アクティブ設定（bootフラグ）がされないことがあるので下記を準備</p>
+
+<dl>
+<dt>ブートセクタなどをddコマンド（など）でバックアップ</dt>
+<dd>
+<ul>
+<li><strong class="ms">MBR</strong>（S-ATAなどは <code>sda</code>）</li>
+</ul>
+<pre>
+# dd if=/dev/<var>hda</var> of=mbr.bin bs=512 count=1
+</pre>
+
+<ul>
+<li><strong class="ms">MBR</strong> から hda1(sda1)先頭セクタx2（※ Vista 以降では <code>count=2050</code> で）</li>
+</ul>
+<pre>
+# dd if=/dev/<var>hda</var> of=mbr64.bin bs=512 count=<span class="red">65</span>
+</pre>
+
+<ul>
+<li>hda1(sda1)、またはアクティブパーティションの先頭20セクタ</li>
+</ul>
+<pre>
+# dd if=/dev/<var>hda1</var> of=hda1_20.bin bs=512 count=20
+</pre>
+
+<ul>
+<li><strong class="ms">PBR</strong> 及び <strong class="ms">EPBR</strong>
+	<ul>
+	<li>参考：<a href="./harddisk.html#partition_table">パーティションテーブルの確認 - 私的ハードディスク関連めも</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+<ul>
+<li>GRUB for DOS 起動ディスク
+	<ul>
+	<li><strong class="ms">NTLDR</strong>, <strong class="ms">BOOTMGR</strong> などを直接チェインロード可能</li>
+	</ul>
+</li>
+<li><a href="http://www.rcis.aist.go.jp/project/knoppix/">KNOPPIX</a>, <a href="http://www.sysresccd.org/Main_Page">SystemRescueCd</a>, <a href="http://partedmagic.com/doku.php">Parted Magic</a> (Clonezilla 入り), <a href="http://cdlinux.info/wiki/doku.php">CDlinux</a> などの LiveCD、Windows RE を CD, DVD, USBメモリへ
+	<ul>
+	<li><code>dd</code> , <code>fdisk</code> , <code>ms-sys</code> コマンド</li>
+	</ul>
+</li>
+<li>Windows RE を CD, DVD, USBメモリへ
+	<ul>
+	<li>スタートアップ修復、システム イメージの回復、コマンド プロンプト</li>
+	</ul>
+</li>
+</ul>
+
+
+<h2><a href="#paragon_drive_backup" name="paragon_drive_backup"><span class="tokai1">Paragon Backup &#038; Recovery Free Edition</span></a></h2>
+
+<p>有償日本語版がいくつも出てますが、英語版は無償利用可能となってます。</p>
+
+<ul>
+<li><a href="http://www.paragon-software.com/home/db-express/">Free Backup - Backup &#038; Recovery</a>
+	<ul>
+	<li><a href="http://www.paragon-software.com/home/db-express/features.html">Free Hard Drive Backup Software</a></li>
+	</ul>
+</li>
+</ul>
+
+<p class="small pink">※ Windows 7 64-bit、GPT対応</p>
+
+<p class="overflow2"><img src="./images/recovery_software/paragon_backup_recovery_2012_express_mode.png" width="511" height="427" alt="Paragon Backup &#038; Recovery 2012 Express Mode のスクリーンショット"></p>
+<p class="overflow2"><img src="./images/recovery_software/paragon_backup_recovery_2012.png" width="669" height="479" alt="Paragon Backup &#038; Recovery 2012 のスクリーンショット"></p>
+
+<ul>
+<li>ブートCD</li>
+</ul>
+<p class="overflow2"><img src="./images/recovery_software/paragon_backup_recovery_2012_bootcd_bootmenu.bmp" width="512" height="384" alt="Paragon Backup &#038; Recovery 2012 Boot CD ブートメニューのスクリーンショット"></p>
+<p class="overflow2"><img src="./images/recovery_software/paragon_backup_recovery_2012_bootcd_menu.png" width="512" height="383" alt="Paragon Backup &#038; Recovery 2012 Boot CD メニューのスクリーンショット"></p>
+
+
+<p>バージョンアップして機能が増えましたー。</p>
+<p>個人での非商用利用に限りフリーで使用可能。True Image には負けるかもしれませんが、英語版でもよければかなりいいかも。RAM は 256MB以上でインストール可らしいです。</p>
+
+<p class="pink">※ 2012.2.15 現在、最新版は 2012。</p>
+
+<ul>
+<li>Windows上にインストール</li>
+<li>英語版</li>
+<li>ホットバックアップ可能</li>
+<li>Windows上でリカバリ設定可能（HDブート）
+	<ul>
+	<li><ins>2011ではネットワーク指定はだめでした</ins></li>
+	</ul>
+</li>
+<li>バックアップファイルの分割可</li>
+<li>圧縮レベル指定可</li>
+<li>バックアップイメージのマウント可</li>
+<li>Linux/DOS LiveCD,LiveUSB 作成可能</li>
+<li>LiveCD, LiveUSBブート
+	<ul class="small">
+	<li>バックアップ・復元とも可</li>
+	<li>ネットワーク利用可</li>
+	</ul>
+</li>
+<li>ext4, HPFS 対応</li>
+<li>アラインメント指定（Vista or Legacy）</li>
+<li>GPT 対応</li>
+<li><ins>セクタサイズ 512 bytes 以外のHDにも対応</ins>、2012 では 4KiB セクタの USB HD も認識できました。</li>
+</ul>
+
+
+<dl>
+<dt>SYSLINUX / GRUB でのブート</dt>
+<dd>
+<p>これは、<strong class="ms">Normal mode</strong> のみでした。</p>
+<p>LiveCDブート時のパラメータは</p>
+<pre>
+# cat /proc/cmdline
+splash=silent vga=0x314 medialable=PARAGON
+</pre>
+
+<p>SYSLINUX,ISOLINUX,PXELINUX ではこんなかんじで。</p>
+<pre class="scl">
+LABEL paragon
+KERNEL /vmlinuzp
+APPEND initrd=/initrd.gz vga=0x314 splash=silent language=en_US.UTF-8 medialable=
+</pre>
+</dd>
+</dl>
+
+
+<dl>
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://pc12.2ch.net/test/read.cgi/software/1222843945/">Paragon Drive Backup</a> (2ch)</li>
+<li><a href="http://www.unkar.org/read/pc12.2ch.net/software/1222843945">Paragon Drive Backup</a> (<a href="http://www.unkar.org/">unkar</a>)</li>
+</ul>
+
+<ul>
+<li><a href="http://www.forest.impress.co.jp/docs/news/20130307_590725.html">Paragon、バックアップソフトの最新版「Backup &#038; Recovery 2013 Free」を公開 - 窓の杜</a></li>
+<li><a href="http://www.forest.impress.co.jp/docs/news/20111226_501816.html">窓の杜 - 【NEWS】米Paragon、ディスクバックアップソフトの最新版「Backup &#038; Recovery 2012 Free」</a></li>
+<li><a href="http://www.forest.impress.co.jp/docs/news/20110214_426910.html">窓の杜 - 【NEWS】ドライブをイメージバックアップできる「Paragon Backup &#038; Recovery」の最新版</a></li>
+<li><a href="http://www.forest.impress.co.jp/docs/news/20091023_324056.html">窓の杜 - 【NEWS】「Paragon Drive Backup」がメジャーバージョンアップ、「Backup &#038; Recovery」に</a></li>
+<li><a href="http://www.justsystems.com/jp/products/prg_backup/">バックアップソフト Paragon Drive Backup 11</a>（※有償ジャストシステム日本語版）</li>
+<li><a href="http://www.paragon-software.com/jp/home/db10-professional/">Paragon Drive Backup 10 Professional - サーバ用ドライブバックアップツール</a>（※有償日本語版）</li>
+<li><a href="http://www.lifeboat.jp/products/ib10/ib10.html">LB イメージ バックアップ10 製品情報</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.paragon-software.com/jp/businesscustomer/drivebackup_oem/index.html">Paragon Paragon Drive Backup OEM</a></li>
+</ul>
+
+<div class="quote small pink">
+<blockquote class="pink" cite="http://www.paragon-software.com/jp/businesscustomer/drivebackup_oem/index.html" title="Paragon Paragon Drive Backup OEM">
+<p>「 Paragon Drive Backup OEM 」は世界各国で愛用されている Paragon Drive Backup シリーズをベースに開発されています。バックアップはもちろん、コピー、パーティション、P2P、P2V など Paragon Software Group がもつ様々なコンポーネントを利用して製品をカスタマイズすることができます。</p>
+</blockquote>
+<cite><a href="http://www.paragon-software.com/jp/businesscustomer/drivebackup_oem/index.html">Paragon Paragon Drive Backup OEM</a></cite>
+</div>
+</dd>
+</dl>
+
+<div class="palmst small">
+<h3>Drive Backup Express 9.0</h3>
+<p>下記は旧バージョン Drive Backup Express 9.0 について書いていたものです。</p>
+
+<dl>
+<dt>ホットバックアップ（Windows上でバックアップ）可能</dt>
+<dd>
+<p>但し、圧縮や分割サイズの指定（デフォルトで約 2 GBに分割）はできない</p>
+<p>1.91 GB分割、ファイルサイズは<del>データ量とほぼ同じみたい？</del> データ量の80～90%ぐらいみたいです。</p>
+</dd>
+
+<dt>LiveCDでブート</dt>
+<dd>
+<ul>
+<li>（仮想）コンソール使用可能、コマンドを打てばWindowsネットワーク(<code>cifs</code>)の利用可能</li>
+<li>バックアップ時の圧縮レベル・分割サイズ指定可能</li>
+<li>復元時、対象パーティションの縮小が可能</li>
+<li>regedit コマンド？（GUIでRegestry editor なるものが起動しましたけど...）</li>
+</ul>
+
+<ul>
+<li>ブートローダは、Paragon独自の Paragon Boot Manager？</li>
+<li>NTFSなどのファイルシステムは、UFSD (Universal File System Drivers)でマウント</li>
+<li>マルチブートCDやUSBメモリへの追加は、GRUB for DOS 0.4.4（テスト版）の <code>CDROM Emulation</code> でisoイメージからのブートが一応可能でした...</li>
+</ul>
+
+<dl class="palmst">
+<dt>LiveCDブートでWindowsネットワーク(<code>cifs</code>)利用</dt>
+<dd>
+<p>※2chスレで知りました。</p>
+<ul>
+<li><ins><kbd>Ctrl</kbd></ins>-<kbd>Alt</kbd>-<kbd>F2</kbd> で仮想コンソールに切替て<kbd>Enter</kbd></li>
+</ul>
+<pre class="scl">
+# loadkeys jp106   <span class="red">--- JP106キーマップをロード</span>
+# ifconfig -a   <span class="red">--- NICが認識されているか</span>
+# dhcpcd eth0   <span class="red">--- DHCPクライアント実行</span>
+# mkdir /mnt/lan
+# mount -t cifs -o codepage=cp932,iocharset=utf8,username=<var>palm84</var> //<var>192.168.0.100</var>/<var>share</var> /mnt/lan
+# mount
+</pre>
+<p>戻るには<kbd>Alt</kbd>-<kbd>F1</kbd></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>Windows上での機能は低いですが、ホットバックアップ可能なのはイイですね！</p>
+
+<ul>
+<li>NTFS(C:)→NTFS(D:) 11GBデータのバックアップで約50分</li>
+<li>NTFS→100Mbps LANで7 GBデータのバックアップで約25分</li>
+</ul>
+
+<dl>
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://pc12.2ch.net/test/read.cgi/software/1222843945/">Paragon Drive Backup</a>(2ch)</li>
+<li><a href="http://unkar.jp/read/pc12.2ch.net/software/1222843945">Paragon Drive Backup</a></li>
+<li><a href="http://www.forest.impress.co.jp/article/2008/10/01/paragondrivebackup.html">窓の杜 - 【REVIEW】HDD全体をイメージ化してバックアップ・復元できる「Paragon Drive Backup」</a></li>
+<li><a href="http://www.forest.impress.co.jp/lib/sys/file/syncbackup/paragonbakup.html">窓の杜 - Paragon Drive Backup</a></li>
+</ul>
+</dd>
+</dl>
+</div>
+
+
+<h2><a href="#easeus_todo_backup" name="easeus_todo_backup"><span class="tokai1">EASEUS Todo Backup</span></a></h2>
+
+<ul>
+<li><a href="http://todo-backup.com/products/home/free-backup-software.htm">Best free backup software. Hard drive backup and recovery, image and clone freeware - EaseUS Todo Backup Free</a>
+	<ul>
+	<li><a href="http://todo-backup.com/products/home/free-backup-software-features.htm">EASEUS Todo Backup Free full features</a></li>
+	</ul>
+</li>
+</ul>
+
+<p class="small pink">※ Windows 7 64-bit も対応</p>
+
+<p class="overflow2"><img src="./images/recovery_software/easeus_todo_backup_home.png" width="546" height="406" alt="EASEUS Todo Backup のスクリーンショット"></p>
+
+<ul>
+<li><a href="http://todo-backup.com/products/home/screenshots.htm">EASEUS Todo Backup Screen Shots</a></li>
+</ul>
+
+<p>フリーで利用（仕事でも）可能な高機能な Windows 版リカバリー・ソフト。</p>
+<p class="pink"><a href="http://todo-backup.com/support/help/hardware-requirement.htm">Hardware requirements</a>では RAM 1GB以上となってますので注意！。低スペック環境では Paragon と比べ多少動作が重いかも。</p>
+<p>私は Paragon の方が実績で上かなと考えて使ってませんでしたが・・・最近のバージョンでは Paragon よりも使いやすくなってました。</p>
+
+<dl class="palmst pink">
+<dt>【注意】下記はバージョン 2.5.1 での確認</dt>
+<dd>
+<p>※ 最新バージョンではかなり変更があったようです。まだ確認してません、すみませぬ。</p>
+</dd>
+</dl>
+
+<ul>
+<li>Windows 上にインストール</li>
+<li>英語版</li>
+<li>ホットバックアップ可能</li>
+<li>Windows上でリカバリ設定可
+	<ul>
+	<li>ネットワークはだめ？（指定できたけど再起動後にエラーとなりました）</li>
+	</ul>
+</li>
+<li>バックアップファイルの分割可</li>
+<li>圧縮レベル指定可</li>
+<li>バックアップイメージのマウント可</li>
+<li>起動ディスク (Linux LiveCD,LiveUSB) 作成可能
+	<ul>
+	<li>リカバリー（復元）及び Clone のみ、バックアップ不可</li>
+	<li>ネットワーク利用不可</li>
+	</ul>
+</li>
+<li>Vista, 7 では Windows PE 起動ディスクも作成可
+	<ul>
+	<li><del>XPはだめ</del></li>
+	</ul>
+</li>
+<li>ディスク・クローン (Disk Copy) は 2TB まで対応</li>
+<li>FAT/NTFS 対応（※ 非対応フォーマットは「Sector by sector」で可？）</li>
+</ul>
+
+<p>Linux CDでのブート時はリカバリー（復元）及び Clone のみ、バックアップ不可。</p>
+
+<ul>
+<li><a href="http://todo-backup.com/support/help/">About EASEUS Todo Backup</a></li>
+</ul>
+
+
+<dl>
+<dt>Windows PE 起動ディスク</dt>
+<dd>
+<ul>
+<li><a href="http://todo-backup.com/products/features/winpe-bootable-disk.htm">Free to create WinPE rescue CD/DVD of EASEUS Todo Backup Free</a></li>
+</ul>
+
+<p class="pink">※ これは非常に便利！でも、マニュアル・ページには対応にXPもありますが、PE 3.0 は XP 非対応<del>なので XP では原則作成不可なはず</del>。<ins>非対応なはずですが XP Home SP3 へインストールできてしまいました。PE版起動ディスク作成できました。</ins></p>
+<p class="overflow2"><img src="./images/recovery_software/easeus_todo_backup_winpe.png" width="468" height="348" alt="EASEUS Todo Backup Wimdows PE 起動CD のスクリーンショット"></p>
+<ul>
+<li>Windows PE コマンド プロンプト利用可</li>
+<li>復元だけでなくバックアップも可</li>
+<li>ネットワーク利用可（ツール、またはコマンドでネットワークドライブ設定）</li>
+<li>wipe, fix MBR, check partition.. etc</li>
+</ul>
+</dd>
+
+<dt><del>Windows XP ではちと微妙かも</del>...</dt>
+<dd>
+<p><del>WinPE 起動CDがないとネットワークからの復元、CDブート時のバックアップができないのでちと機能的には微妙なかんじ</del>。</p>
+</dd>
+</dl>
+
+<dl>
+<dt>関連リンク</dt>
+<dd>
+<p>有償版も出たようですな。</p>
+<ul>
+<li><a href="http://backup.easeus.jp/">EaseUs | EaseUS - 信頼性の高いバックアップソフトならEaseUs の「Todo Backup」</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.nipponsoft.co.jp/products/drbackup/">Dr.Backup?（EaseUS Todo Backup 3.0 日本語版） | ドクターバックアップ</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.forest.impress.co.jp/lib/sys/file/syncbackup/easeustodobu.html">窓の杜 - EASEUS Todo Backup</a>
+	<ul>
+	<li><a href="http://www.forest.impress.co.jp/docs/news/20130530_601547.html">無償イメージバックアップソフト「EaseUS Todo Backup Free」がv6.0に更新 - 窓の杜</a></li>
+	<li><a href="http://www.forest.impress.co.jp/docs/news/20130109_581079.html">ユーザーインターフェイスが日本語化された「EaseUS Todo Backup Free」v5.5 - 窓の杜</a></li>
+	<li><a href="http://www.forest.impress.co.jp/docs/news/20120110_502735.html">窓の杜 - 【NEWS】GPTで管理されたディスクに対応した「EaseUS Todo Backup Free」v4.0が公開</a></li>
+	<li><a href="http://www.forest.impress.co.jp/docs/news/20110601_449580.html">窓の杜 - 【NEWS】上位版の機能を無料版で利用可能になった「EASEUS Todo Backup Free」v2.5.1</a></li>
+	<li><a href="http://www.forest.impress.co.jp/docs/news/20110106_418250.html">窓の杜 - 【NEWS】フリーのイメージバックアップソフト「EASEUS Todo Backup Home」v2.0が公開</a></li>
+	<li><a href="http://www.forest.impress.co.jp/docs/news/20130109_581079.html">ユーザーインターフェイスが日本語化された「EaseUS Todo Backup Free」v5.5 - 窓の杜</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://hibari.2ch.net/test/read.cgi/software/1297213370/">【Disk Copy】EASEUS その2【Todo Backup】</a> (2ch)</li>
+<li><a href="http://unkar.org/r/software/1297213370">【Disk Copy】EASEUS その2【Todo Backup】</a> (unkar)</li>
+</ul>
+
+
+</dd>
+</dl>
+<h2><a href="#clonezilla" name="clonezilla"><span class="tokai1">Clonezilla Live</span></a></h2>
+
+<p>幾種類かのLiveCDで利用可能な <strong class="ms">GNU General Public License</strong> なソフトウェア。</p>
+
+<p>Linux ということでWindows上では使えないわけですが、逆にそれが利点かな。インストールの必要ないし、ライセンスもフリーなので。他人のPCで作業する場合とか万が一を考えてこれでバックアップ取ってたり。</p>
+
+<ul>
+<li><a href="http://www.clonezilla.org/">Clonezilla</a>
+	<ul>
+	<li><a href="http://www.clonezilla.org/clonezilla-live/">Clonezilla Live - Single machine clone system without installation - Clonezilla</a></li>
+	<li><a href="http://www.clonezilla.org/clonezilla-live/livepxe.php">Clonezilla Live on PXE server</a></li>
+	<li><a href="http://www.clonezilla.org/download/sourceforge/">Clonezilla Live download</a></li>
+	</ul>
+</li>
+</ul>
+
+<p class="overflow2"><img src="./images/recovery_software/clonezilla_live.png" alt="" width="448" height="336"></p>
+
+<p class="overflow2"><img src="./images/recovery_software/clonezilla_live2.png" alt="" width="560" height="224"></p>
+
+<p>えーと、私はずっと上記のPINGを使って来ましたが、<strong>NTFSのバックアップはこっちの方がいいかもしれない</strong>（※ntfscloneが安全？）。今後はこっちを使うことにしようかなぁ・・・</p>
+
+<ul>
+<li>ホットバックアップなし（Linuxツールなので）</li>
+<li>CUI（コマンドライン）操作、日本語表示可</li>
+<li>iso,zip(USB)版あり、サイズは 約 100 MB (ver. 1.2.2-14)</li>
+<li>バックアップファイルの分割サイズ指定可</li>
+<li>バックアップファイルの圧縮可（約2分の1から3分の1になる模様）</li>
+<li>ネットワークは、保存先として cifs（Windowsファイル共有、Samba）, nfs, ssh を利用可能</li>
+<li>ネットワークブートは、DHCP/TFTPサーバ、または、DHCP/TFTP/HTTPサーバで可能（※メモリにダウンロード、要RAM 192MB？）</li>
+<li><a href="http://man.linux-ntfs.org/ntfsclone.8.html">ntfsclone</a>, Partimage, partclone, dd でバックアップ</li>
+<li>AoE(<a href="http://ja.wikipedia.org/wiki/ATA_over_Ethernet">ATA over Ethernet</a>), iSCSI(<a href="http://ja.wikipedia.org/wiki/ISCSI">Internet Small Computer System Interface</a>), DRBL(<a href="http://drbl.sourceforge.net/frontpage.php">Diskless Remote Boot in Linux</a>) など利用可能らしい</li>
+</ul>
+
+
+<ul class="small">
+<li>jfbtermあり、オプションなしのマウントでもコンソールで日本語ファイル名表示可(NTFS,vfat,ntfs-3gとも)</li>
+<li>drbl-partimage, partclone, ntfsclone</li>
+<li>ddrescue</li>
+<li>parted</li>
+<li>ntfs-3g</li>
+<li>smbfs</li>
+<li>syslinux</li>
+<li>drbl-chntpw</li>
+<li>testdisk</li>
+<li>w3m</li>
+<li>wget</li>
+<li>wipe</li>
+</ul>
+
+
+<dl>
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://sourceforge.jp/magazine/09/05/07/0829255">システムをネットワーク経由でバックアップ／複製可能なLinux「Clonezilla」 - SourceForge.JP Magazine</a></li>
+<li><a href="http://www.atmarkit.co.jp/fnetwork/rensai/netool18/clonezilla01.html">PC環境の移行。あなたならどうする？ － ＠IT</a></li>
+<li><a href="http://sourceforge.jp/magazine/07/07/09/0159257">GParted-ClonezillaライブCDでパーティションとディスクを管理する - SourceForge.JP Magazine</a></li>
+<li><a href="http://d.hatena.ne.jp/hykt/20081029/1225272732">Clonezillaでバックアップとリストアをしてみた - hyktの日記</a></li>
+</ul>
+
+<ul>
+<li><a href="http://clonezilla-sysresccd.hellug.gr/">Clonezilla-SysRescCD</a></li>
+<li><a href="http://gpartedclonz.tuxfamily.org/index.php">GParted-Clonezilla -- LiveCD</a></li>
+</ul>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20090118/1232208347">【取り扱い注意】Clonezilla Live を試してみるの巻</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h2><a href="#partimage" name="partimage"><span class="tokai1">Partimage</span></a></h2>
+
+<p class="pink">※ Partimage は開発が 2010-07 で止まってるので最近のPCでは使えないかも？</p>
+<p>Knoppix, SystemRescueCd など多くのLinux LiveCD に含まれている <strong class="ms">GNU General Public License</strong> なソフトウェア。</p>
+
+<ul>
+<li><a href="http://www.partimage.org/Main_Page">Partimage</a>
+	<ul>
+	<li><a href="http://www.partimage.org/Partimage-manual">Partimage-manual</a></li>
+	</ul>
+</li>
+</ul>
+
+<p>ウイザード形式でバックアップ・復元可能な <a href="http://ping.windowsdream.com/">PING (Partimage Is Not Ghost)</a> なんてのもあります。</p>
+
+<p><strong>コマンドライン操作</strong>なのでLinux未経験者にはちょっと辛いかも。あと、MBRなどもバックアップできますが、<ins>基本的にはパーティションのイメージ作成なのでドライブ丸ごとバックアップに使うにはちょっと面倒です</ins>。</p>
+
+<ul>
+<li>ホットバックアップなし（Linuxツールなので）</li>
+<li>Linux LiveCD,LiveUSB,HD,ネットワークからブート可能</li>
+<li>CUI（コマンドライン）操作、英語版</li>
+<li>バックアップ・復元時ともWindowsネットワーク(smbfs)利用可能</li>
+<li>バックアップファイルの分割サイズ指定可能</li>
+<li>バックアップファイルの圧縮可能（gzipで約2分の1）</li>
+</ul>
+
+<ul class="small">
+<li>NTFS→100Mbps LANで15GBデータのバックアップで約1時間</li>
+<li>NTFS→NTFSへの書き込みが遅い（ネットワークの2,3倍）</li>
+</ul>
+<p>NTFSのバックアップはやや不安があるので、simulate実行でエラーが出ないか確認しておくべきかと。simulate含めて所要時間は2時間ほど見ておいた方がいいかな。</p>
+
+<dl>
+<dt>注意点</dt>
+<dd>
+<ul>
+<li>途中モニタ画面が真っ暗になりますが、この際に表示を戻すには<strong>Tabキー</strong>を押しませう（※選択画面で止まっていることがあるため、<strong>Enterとか押しちゃうとスキップされてメッセージ内容がわからなかったりする</strong>ので）</li>
+<li>NTFSは“実験的”サポートとのこと</li>
+<li>NTFSのバックアップは失敗することがある。念のためにバックアップが正常に終了しても restore - simulate（※復元のテスト） で確認しておいた方がいいかも</li>
+<li>simulate でエラーが出る場合は、圧縮なしで作成</li>
+<li>NTFS暗号化ドライブはだめ</li>
+<li>「古いファイルの圧縮」を実行しているとバックアップに失敗することがある</li>
+<li>断片化が激しい場合にバックアップに失敗することがある</li>
+<li>MBR以降のセクタのGRUBの残りかす（fixmbrではMBR以降はクリアされない）が原因で、パーティション1のバックアップが何度やっても成功しないことがありました。</li>
+</ul>
+</dd>
+</dl>
+
+<dl class="palmst small">
+<dt>コマンドラインで実行</dt>
+<dd>
+<ul>
+<li>バックアップ</li>
+</ul>
+<pre class="scl">
+# partimage -M -f0 -z1 -d -V640 save /dev/<var>hda1</var> /mnt/lan/partimage/<var>08xxxx</var>
+</pre>
+<ul>
+<li><code>save</code> - バックアップを作成</li>
+<li><code>-M</code>(<code>--nombr</code>) - MBR は保存しない</li>
+<li><code>-f0</code>(<code>--finish=0</code>) - 終了時は wait</li>
+<li><code>-z1</code>(<code>gzip</code>) - 圧縮は gzip</li>
+<li><code>-d</code>(<code>--nodesc</code>) - 説明文を入力しない</li>
+<li><code>-V640</code>(<code>--volume=640</code>) - 640MBで分割</li>
+</ul>
+<p>バッチモードで実行するには <code>-b</code> を指定</p>
+
+<ul>
+<li>復元テスト</li>
+</ul>
+<pre class="scl">
+# partimage -f0 -S restore /dev/<var>hda1</var> /mnt/lan/partimage/<var>08xxxx</var>.000
+</pre>
+<ul>
+<li><code>restore</code> - 復元を実行</li>
+<li><code>-f0</code>(<code>--finish=0</code>) - 終了時は wait</li>
+<li><code>-S</code>(<code>--simulate</code>) - シミュレート（テストのみ）</li>
+</ul>
+</dd>
+</dl>
+
+
+<dl>
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://buxus.s31.xrea.com/pukiwiki/pukiwiki.php?partimage">partimage - Knoppix Temporary Directory</a></li>
+<li><a href="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/506partitionbackup.html">＠IT：パーティションを丸ごとバックアップするには</a>（※内容古い）</li>
+<li><a href="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/507partitionrestore.html">＠IT：Partition Imageのバックアップファイルをリストアするには</a></li>
+<li><a href="./livecd.html">私的 Linux LiveCDめも</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h3><a href="#ping"><span class="ms">■</span></a> <a name="ping">PING (Partimage Is Not Ghost)</a></h3>
+
+<ul>
+<li><a href="http://ping.windowsdream.com/">PING (Partimage Is Not Ghost)</a>
+	<ul>
+	<li><a href="http://ping.windowsdream.com/ping/howto-2.01.html">HOWTO -- Documentation</a></li>
+	<li><a href="http://ping.windowsdream.com/ping/doc-2.01/prep.html">Configuring a PC to serve as a host for your images</a></li>
+	<li><a href="http://ping.windowsdream.com/ping/doc-2.01/using.html">Using PING</a></li>
+	</ul>
+</li>
+</ul>
+
+<p>ウィザードでバックアップ・復元を実行。ネットワークドライブのマウントも楽。</p>
+
+<p class="overflow2"><img src="./images/recovery_software/ping_3.00.03.png" alt="PING" width="448" height="336"></p>
+
+<p class="overflow2"><img src="./images/recovery_software/ping_3.00.03_2.png" alt="PING【2】" width="504" height="280"></p>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20071123/1195826295#ping">PING (Partimage Is Not Ghost) - 【取り扱い注意】ツールのめも</a></li>
+</ul>
+
+<p>配布されているのはCD版ですが、kernel と initrd のみで起動するのでネットワークブートも簡単に設定可能。RAM 128 MBで動きます。</p>
+<h2><a href="#winpe" name="winpe"><span class="tokai1">Windows PE 2.0</span></a></h2>
+
+<ul>
+<li><a href="./winpe.html">Windows PE 2.0 めも</a></li>
+</ul>
+
+<p>Windows PE の LiveCD にツールを追加。</p>
+
+<p class="small">※<a href="http://www.nu2.nu/pebuilder/">BartPE</a>や<a href="http://vistape.net/">VistaPE</a>なんていう非常に便利な作成ツールがあるのですが、使ってないのでわかりません...</p>
+
+<p>方法が2通り</p>
+<ol>
+<li>PE付属の <strong class="ms">imagex.exe</strong> を使う</li>
+<li>PE CDに <strong class="ms">DriveImage XML</strong> を組み込む</li>
+</ol>
+
+<h3><a href="#imagex"><span class="ms">■</span></a> <a name="imagex">ImageX</a></h3>
+
+<p>※使ってないのでめもだけ...</p>
+
+<p>Windows PEのコマンドラインツール。</p>
+<ul>
+<li><a href="http://technet.microsoft.com/ja-jp/windows/aa905070.aspx">ImageX と Windows イメージング形式 (WIM) を使用した Windows Vista ディスク イメージング</a></li>
+<li><a href="http://technet.microsoft.com/ja-jp/magazine/2006.12.desktopfiles.aspx">デスクトップ ファイル: Windows Imaging 形式について</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.windows-world.jp/special/-/105310.html">Windows Server World Online - WindowsPE 2.0“裏”活用Tips WindowsPE 2.0環境の使いこなし術</a></li>
+</ul>
+<div class="small">
+<blockquote cite="http://www.windows-world.jp/special/-/105310.html" title="Windows Server World Online - WindowsPE 2.0“裏”活用Tips WindowsPE 2.0環境の使いこなし術">
+<p><strong>ディスクの“引っ越しツール”として使う</strong></p>
+<p>　Windows AIKに含まれるIMAGEXツール（%ProgramFiles%\Windows AIK\Tools\x86\ImageX.exe）は、ディスクイメージをキャプチャしてWIM形式で保存する機能と、空のディスクにWIM形式のイメージを展開する機能を持つ。</p>
+<p>　WIM形式はディスクサイズに依存しないため、ハードディスク故障に備えた完全なバックアップとして、あるいはより大容量ディスクへの“環境引っ越し”に活用できる。ディスクのイメージをキャプチャするので、インストールされているWindowsのバージョンには関係なく利用可能だ。IMAGEXツールはWindowsPE 2.0には含まれないため、カスタマイズ時に「MOUNT\Windows\System32」フォルダなどにコピーしておくことをお勧めする。</p>
+<p>　例えば、CドライブのディスクイメージをWIMファイルに保存し、ディスクを交換後にWIMファイルから展開するには次の手順で操作すればよい。</p>
+</blockquote>
+</div>
+
+<p>imagex.exeで作成されるWIMファイルの内容はファイル構造のみ（ブートセクタなどは含まれない）らしいので、復元する際には事前にフォーマットしておく（アクティブ設定なども）必要がある点に注意かな。また、PEはVistaのサブセットなので、PE上でフォーマットした場合はブートセクタなどがXP形式と違う点にも注意。</p>
+
+<ul>
+<li> <code>capture</code>（バックアップ）</li>
+</ul>
+<pre>
+IMAGEX /capture C: ＜WIMイメージのパス＞ &quot;＜イメージ名＞&quot; /compress fast /check /verify
+</pre>
+
+<ul>
+<li> <code>apply</code>（復元）</li>
+</ul>
+<pre>
+IMAGEX /apply ＜WIMイメージのパス＞ 1 C:\ /verify
+</pre>
+
+<dl>
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://yuichi.tea-nifty.com/blog/2006/11/imagex_ee8c.html">な○の 屋: imagexで引越し</a></li>
+<li><a href="http://tech.pnpk.net/archives/324/4">http://tech.pnpk.net- EeePCをWindows PEでバックアップする@DriveImage XML、ImageX、Norton Ghost</a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#driveimage_xml"><span class="ms">■</span></a> <a name="driveimage_xml">DriveImage XML</a></h3>
+
+<p>※使ってないのでめもだけ...</p>
+
+<ul>
+<li><a href="http://www.runtime.org/driveimage-xml.htm">DriveImage XML Backup Software</a></li>
+<li><a href="http://www.runtime.org/peb.htm">Data Recovery Software on a BartPE Boot CD-Rom</a></li>
+</ul>
+
+
+<dl>
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://tech.pnpk.net/archives/324/4">http://tech.pnpk.net- EeePCをWindows PEでバックアップする@DriveImage XML、ImageX、Norton Ghost</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h2><a href="#system_image" name="system_image"><span class="tokai1">システム イメージ (Windows 7)</span></a></h2>
+
+<p>これは使うべきだと思います。但し、短所もあるのでそのカバーには他ソフトとの併用がオススメかな？</p>
+
+<p>複数バージョンの管理とかしないならめっちゃ簡単かもしれません。</p>
+
+<p class="overflow2"><img src="./images/recovery_software/win7_backup_restore.png" width="480" height="360" alt="バックアップと復元"></p>
+
+<ul>
+<li>右ボタン【今すぐバックアップ】ではファイルのバックアックと同時作成可能</li>
+<li>左の【システム イメージの作成】ではシステム イメージのみ作成</li>
+</ul>
+
+<p>とりあえず、リカバリー直後や安定時などに【システム イメージの作成】でDVD-Rなどに作成しとくのがいいかな。最新分はHD上かネットワークとかにして。</p>
+
+<p class="overflow2"><img src="./images/recovery_software/make_system_image.png" alt="システムイメージの作成" width="670" height="362"></p>
+<p class="overflow2"><img src="./images/recovery_software/windows_re_system_image.png" alt="システムイメージの回復" width="480" height="360"></p>
+
+<ul>
+<li><a href="http://windows.microsoft.com/ja-JP/windows7/Back-up-your-programs-system-settings-and-files">プログラム、システム設定、およびファイルをバックアップする</a>
+	<ul>
+	<li><a href="http://windows.microsoft.com/ja-JP/windows7/What-is-a-system-image">システム イメージとは</a></li>
+	</ul>
+</li>
+<li><a href="http://faq.epsondirect.co.jp/faq/edc/app/servlet/qadoc?029059">[029059]「システムイメージの作成」を使ってバックアップを行う方法(Windows 7)</a></li>
+<li><a href="http://windows.microsoft.com/ja-JP/windows7/Restore-your-computer-from-a-system-image-backup">システム イメージ バックアップからコンピューターを復元する</a></li>
+</ul>
+
+<ul>
+<li>Windows 7 に付属</li>
+<li>ホットバックアップ可能
+	<ul>
+	<li>というか、バックアップ実行はWindows上のみ</li>
+	</ul>
+</li>
+<li>Windows上でリカバリ設定可能（HDブート）</li>
+<li>バックアップイメージのマウント可（※ 【ディスクの管理】から「VHD の接続」）
+	<ul class="small">
+	<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/1231vhdmount/vhdmount.html">Windows 7／Windows Server 2008 R2でVHDファイルを直接マウントする － ＠IT</a></li>
+	</ul>
+</li>
+<li>復元は【システム回復オプション】（起動時に <kbd>F8</kbd> or <kbd>F5</kbd>) キー）から可能
+	<ul class="small">
+	<li><a href="http://windows.microsoft.com/ja-JP/windows7/What-are-the-system-recovery-options-in-Windows-7">Windows 7 のシステム回復オプションとは</a></li>
+	</ul>
+</li>
+<li>復元用ブートCD（システム修復ディスク）も作成可
+	<ul class="small">
+	<li><a href="http://windows.microsoft.com/ja-JP/windows7/Create-a-system-repair-disc">システム修復ディスクを作成する</a></li>
+	</ul>
+</li>
+<li>USBメモリ・ネットワークブートも自分で設定すれば可</li>
+</ul>
+
+<ul>
+<li>保存先指定は？
+	<ul>
+	<li>内蔵・USBドライブ（NTFSフォーマット）</li>
+	<li>DVD-R</li>
+	<li>ネットワーク（※ <em>Home Premium では指定不可</em>）</li>
+	</ul>
+</li>
+</ul>
+
+<p>VHDファイルで保存されました。複数回実行してもvhdファイルは一つだけ。差分管理とかしてるのかな。勿論、復元時にはセットは複数表示されました（※ 内蔵HDの D: ドライブに保存してる場合）。</p>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win7/16sysrest/16sysrest_01.html">Windows 7のシステム復元機能 － ＠IT</a></li>
+<li><a href="http://blogs.technet.com/b/yukinork/archive/2009/11/20/windows-7-system-image-backup-detail.aspx">Windows 7 の System Image Backup の Detail - yukinork's blog - Site Home - TechNet Blogs</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win7/15win7backup/15win7backup_01.html">Windows 7のバックアップ機能 － ＠IT</a></li>
+</ul>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/VHD_(%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88)">VHD (ファイル フォーマット) - Wikipedia</a></li>
+</ul>
+
+<dl class="palmst small pink">
+<dt>短所かな？</dt>
+<dd>
+
+<dl>
+<dt>バックアップファイルの分割なし</dt>
+<dd>
+<p>FAT32ドライブには保存できないですねぇ。4 GB は軽く超えるので。</p>
+</dd>
+
+<dt>圧縮レベル指定なし</dt>
+<dd>
+<p>Paragonでは 35% 程に圧縮できた状態のものがこちらでは 58% 程でした。但し、複数バージョン保持した際は差分バックアップとなるようなのであまり支障ないレベルじゃないかなと思ったり。</p>
+</dd>
+
+<dt>複数バージョンの保持もできるが、削除は「最新分以外」のみ</dt>
+<dd>
+<ul>
+<li><a href="http://windows.microsoft.com/ja-JP/windows7/What-backup-settings-should-I-use-to-maximize-my-disk-space">ディスク領域を最大限に活用するためのバックアップ設定</a></li>
+</ul>
+
+<p>つまり、リカバリー直後 + 最新分の保持とかはメニューからはできないということですな。この場合、バックアップファイルを別の場所に移動させておく必要がありますね。リカバリー直後はDVD-Rに焼いとくといいかも。</p>
+</dd>
+
+<dt>ネットワーク上では最新分のみ保存される、既存のものは上書き？</dt>
+<dd>
+<p>これも複数バージョン保持するにはサブディレクトリなどに移動させる必要があるかも。但し、復元時は最新分のみしか表示されませんでした。</p>
+</dd>
+
+<dt>Home Premium ではネットワークへ保存できない</dt>
+<dd>
+<p>でも、復元時にはネットワークの利用も可能なので、HDに保存した <code>WindowsImageBackup</code> フォルダをLAN接続HDにコピーして指定したら復元可能でした。（※ 但し、<em>選択肢には複数出ましたが最新分のみしか成功しないと思われます</em>。）</p>
+<ul>
+<li><a href="http://blogs.technet.com/b/yukinork/archive/2009/11/20/windows-7-system-image-backup-detail.aspx">Windows 7 の System Image Backup の Detail - yukinork's blog - Site Home - TechNet Blogs</a></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+
+<p class="small">「ディスクをフォーマットしてパーティションに再分割する」ってオプションがありますが、これはHDからブートすると選択できないですね（当たり前かな？）。HDのisoイメージブート + ネットワーク指定では可能でした。</p>
+
+<ul>
+<li>拙作めも：<a href="./windows_7.html#windows_re">システム回復オプション（Windows 回復環境） - 私的 Windows 7 めも</a></li>
+</ul>
+
+
+<h2><a href="#etc" name="etc"><span class="tokai1">いろいろ</span></a></h2>
+
+<ul>
+<li><a href="http://man.linux-ntfs.org/ntfsclone.8.html">NTFSCLONE(8) manual page</a></li>
+</ul>
+
+<ul>
+<li><a href="http://sourceforge.net/projects/g4l">SourceForge.net: G4L</a>
+	<ul class="small">
+	<li><a href="http://gigazine.net/index.php?/news/comments/20070213_ghost4linux/">FTP経由でHDDのバックアップとリストアができるフリーソフト「Ghost4Linux」 - GIGAZINE</a></li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt>Macrium Reflect FREE Edition</dt>
+<dd>
+<p class="small pink">※ Windows 7 64-bit も対応</p>
+<p>使ってないですが、ホットバックアップ可能。</p>
+<ul class="small">
+<li><a href="http://www.macrium.com/reflectfree.asp">Macrium Reflect FREE Edition - Information and download</a>
+	<ul>
+	<li><a href="http://gigazine.net/index.php?/news/comments/20090206_macrium_reflect_free_edition/">Windowsが起動したままの状態でハードディスクをまるごとイメージ化できるフリーソフト「Macrium Reflect FREE Edition」 - GIGAZINE</a></li>
+	<li><a href="http://itpro.nikkeibp.co.jp/article/COLUMN/20090716/333982/">ハードディスク全体のイメージをバックアップする「Macrium Reflect」 - 注目のフリーソフト／シェアウエア：ITpro</a></li>
+	</ul>
+</li>
+</ul>
+<p>バックアップイメージをマウントできるのはいいのですが、復元はCDブートのみ、CDブート時はバックアップ不可。</p>
+
+</dd>
+</dl>
+
+
+
+<h3><a href="#patitioning_tool"><span class="ms">■</span></a> <a name="patitioning_tool">パーティション編集ツール</a></h3>
+
+<p>下記パーティショニング・ツールについては便利ですが【取り扱い注意】。間違うとデータがすべてとんじゃったりするので。</p>
+
+<ul>
+<li>拙作めも :
+	<ul>
+	<li><a href="./partition_editor.html">パーティション管理ツールのめも</a></li>
+	</ul>
+</li>
+</ul>
+
+
+
+
+<h3><a href="#diskcopy_tool"><span class="ms">■</span></a> <a name="diskcopy_tool">ディスクコピー・ツール</a></h3>
+
+<dl class="small">
+<dt>EASEUS Disk Copy</dt>
+<dd>
+<p>※ <strong>Todo Backup の方が便利かも</strong>。</p>
+<p>あっと、これは<strong>HDから別HDへコピーする</strong>ソフトです。リカバリー作成・復元ソフトではありません。LiveCDのみ。</p>
+<p>対応は 1.0 TB までの模様。Todo Backup は 2.0 TB 対応。</p>
+
+<ul>
+<li><a href="http://www.easeus.com/disk-copy/feature.htm">Free Disk Copy, Partition Copy Software, Sector by Sector hard drive backup tool - EASEUS Disk Copy</a>
+	<ul>
+	<li><a href="http://www.easeus.com/disk-copy/dc-vs-tdb.htm">Comparison of EASEUS Todo Backup and EASEUS Disk Copy</a></li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://www.forest.impress.co.jp/article/2008/08/26/easeusdiskcopy.html">窓の杜 - 【REVIEW】HDD内のデータを丸ごと別HDDへコピーできるフリーソフト「EASEUS Disk Copy」</a></li>
+<li><a href="http://gigazine.net/index.php?/news/comments/20080821_easeus_disk_copy/">ハードディスクの中身を高速に全セクターコピーしてお引っ越し可能なフリーソフト「EASEUS Disk Copy」 - GIGAZINE</a></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+
+
+
+
+</div>
+</div>
+
+
+<div class="navi">
+<a href="./index.html">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd>
+</div>
+
+
+<address>Written by yassy</address>
+
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+</body>
+
+</html>

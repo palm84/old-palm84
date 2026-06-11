@@ -1,0 +1,569 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="start" href="./index.html">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>パーティション管理ツールのめも＠Palm84 [最終更新は2011年]</title>
+<style type="text/css">
+<!--
+td { 
+	border-right:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+}
+
+table.book2 {
+	border-top:1px solid #ccc;
+	border-left:1px solid #ccc;
+	margin:0 2em;
+	font-size:90%;
+}
+
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+</head>
+
+
+<body>
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+
+<h1><a href="./partition_editor.html"><span class="tokai1">パーティション管理ツールのめも <span class="small">[最終更新は2011年]</span></span></a></h1>
+
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+
+<ul>
+<li><a href="#about">これってなに？</a></li>
+<li><a href="#retail_package">有償版</a></li>
+<li><a href="#paragon_partition_manager">Paragon Partition Manager Free Edition</a></li>
+<li><a href="#easeus_partition_master">EASEUS Partition Master Home Edition</a></li>
+<li><a href="#minitool_partition_wizard">MiniTool Partition Wizard Home Edition</a></li>
+</ul>
+
+<ul>
+<li><a href="#partition_wizard_bootable_cd">Partition Wizard Bootable CD</a></li>
+<li><a href="#gparted">GParted (LiveCD)</a></li>
+</ul>
+
+<ul>
+<li><a href="#etc">いろいろ</a></li>
+</ul>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+
+
+
+<p class="small">リンクはご自由に。</p>
+
+</div>
+</div>
+
+
+<div class="main">
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/partition_editor.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+
+　<a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/partition_editor.html"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/partition_editor.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<p class="small">2011.7.25 作成
+</p>
+
+<p>最近は非常に便利なソフトがフリーで使用できたりしますなぁ。まだまだ使いこなせてませんが今後のためにめもしていきますー。</p>
+
+<p>パーティション操作は失敗するとドツボなので、<strong>必ず事前にバックアップ取っておきませう</strong>。データのバックアップ及び Clonezilla などでHD丸ごとイメージ・バックアップをおすすめしときますー。</p>
+
+<p>さて、フリーの Paragon, EASEUS, MiniTool の3点は機能やら操作性に殆ど差はないですなぁ。私は主に Paragon を使ってるわけですが・・・OEMで実績あるから安心かなぁと（テキトーですｗ）。</p>
+
+<dl>
+<dt>2chスレ</dt>
+<dd>
+<ul>
+<li><a href="http://hibari.2ch.net/test/read.cgi/software/1266435453/">◆パーティション管理ソフト Part3◆</a> (<a href="http://unkar.org/r/software/1297213370">unkar</a>)</li>
+<li><a href="http://hibari.2ch.net/test/read.cgi/software/1297213370/">【Disk Copy】EASEUS その2【Todo Backup】</a> (<a href="http://unkar.org/r/software/1266435453">unkar</a>)</li>
+</ul>
+</dd>
+</dl>
+<h2><a href="#about" name="about"><span class="tokai1">【パーティション管理ツール】ってなに？</span></a></h2>
+
+<ul>
+<li><a href="http://technet.microsoft.com/ja-jp/library/dd799232(WS.10).aspx">ディスク パーティションとは</a></li>
+</ul>
+
+<p>Windows, Linux, または LiveCDブートなどでパーティション作成・削除するソフト。ここでは主にデータを保持したままパーティションの縮小・拡大などの変更が可能なツールについて書いてます。</p>
+<p>正確には「<strong>パーティショニング・ツール</strong>」「<strong>パーティション・エディター</strong>」とか呼ぶことが多いようです。</p>
+
+<p>リサイズなどもマウスで簡単操作でできちゃいます。</p>
+
+<p class="pink">※ あっと何度も書くけど失敗したらドツボなのでHD丸ごとバックアップは必須ですYO！。</p>
+
+<dl>
+<dt>Windows のパーティション変更</dt>
+<dd>
+<p>変更後の Windows 起動時に自動でチェックディスクが実行されることが多いのですが、自動で実行されなかった場合も念のために実行しておいた方がいいかもしれまあせん。</p>
+<p>変更後の起動時に通常では新しいデバイスと認識されるので再起動が必要になります。</p>
+<p>Windows 及び Microsoft Office の再認証が必要になることがあるので注意しときませう。Office ではインストールCDが必要になることもあります。</p>
+</dd>
+</dl>
+
+<h2><a href="#retail_package" name="retail_package"><span class="tokai1">有償版</span></a></h2>
+
+<ul>
+<li><a href="http://www.acronis.co.jp/">Acronis</a>
+	<ul>
+	<li><a href="http://www.acronis.co.jp/homecomputing/products/diskdirector/">Acronis Disk Director Home</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www1.ark-info-sys.co.jp/">株式会社アーク情報システム 革命シリーズ</a>
+	<ul>
+	<li><a href="http://www1.ark-info-sys.co.jp/products/hdpe/index.html">HD革命/Partition EX | 株式会社アーク情報システム</a></li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt>Paragon OEM</dt>
+<dd>
+<ul>
+<li><a href="http://www.paragon-software.com/">PARAGON Software Group</a></li>
+<li><a href="http://www.paragon-software.com/jp/">パラゴン ソフトウェアグループ</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.justsystems.com/jp/">JustSystems - ジャストシステム</a>
+	<ul>
+	<li><a href="http://www.justsystems.com/jp/products/prg_partition/">パーティション管理ソフト Paragon Partition Manager 11</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.netjapan.co.jp/nj/">NetJapan</a>
+	<ul>
+	<li><a href="http://www.powerx.jp/product/catalog/safety/xhm11/">PowerX Hard Disk Manager</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.lifeboat.jp/index.php">LIFEBOAT,INC./Network System Solution with LIFEBOAT</a>
+	<ul>
+	<li><a href="http://www.lifeboat.jp/products/pw14/pw14.html">LB パーティションワークス14 製品情報</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+<h2><a href="#paragon_partition_manager" name="paragon_partition_manager"><span class="tokai1">Paragon Partition Manager Free Edition</span></a></h2>
+
+<p>非商用使用フリー。Windows にインストールして使用。Windows 上で操作可能。</p>
+
+<p class="pink">※ Windows 7 64-bit も対応</p>
+
+<p class="overflow2"><img src="./images/partition_editor/paragon_partition_manager_menu.png" width="594" height="435" alt="Paragon Partition Manager メニューのスクリーンショット"></p>
+<p class="overflow2"><a href="./images/partition_editor/paragon_partition_manager_main.png"><img src="./images/partition_editor/paragon_partition_manager_main_x70.png" width="594" height="466" alt="Paragon Partition Manager メイン画面のスクリーンショット"></a></p>
+<p class="overflow2"><img src="./images/partition_editor/paragon_partition_manager_create_partition.png" width="509" height="399" alt="Paragon Partition Manager 「Create Partition」のスクリーンショット"></p>
+
+<ul>
+<li><a href="http://www.paragon-software.com/home/pm-express/">Paragon Partition Manager Free Edition - Leading partitioning software! | PARAGON Software Group - free partition software, resize partition</a></li>
+</ul>
+
+<ul>
+<li>Partition Manager 11 Free Edition での確認
+	<ul>
+	<li>システム要件 : CPU 300MHz, RAM 256MB</li>
+	<li>対応ファイルシステム : NTFS, FAT, Ext4, Apple HFS+</li>
+	<li>7 64-bit も対応</li>
+	<li>2.2TB+, AFT 対応</li>
+	<li>Alignment 設定あり</li>
+	<li>デフラグ</li>
+	<li>起動CD作成はなし（※ 有償版で可）</li>
+	</ul>
+</li>
+</ul>
+
+
+<dl>
+<dt>参考リンク</dt>
+<dd>
+<ul>
+<li><a href="http://www.paragon-software.com/jp/home/pm10-professional/">Paragon Partition Manager 10 Professional - 機能と特長</a>（※有償日本語版）</li>
+<li><a href="http://www.justsystems.com/jp/products/prg_partition/">パーティション管理ソフト Paragon Partition Manager 11</a>（※有償ジャストシステム日本語版）</li>
+</ul>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/%E3%83%91%E3%83%A9%E3%82%B4%E3%83%B3%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2">パラゴンソフトウェア - Wikipedia</a></li>
+</ul>
+
+</dd>
+</dl>
+
+
+<dl class="palmst pink">
+<dt>【ちょっと危険】強力な（？）デフラグ機能</dt>
+<dd>
+<ul>
+<li>【注意】危険だよ～
+	<ul>
+	<li>Windows が起動しなくなることがあるので、事前にXPなら「回復コンソール」、7/Vista なら「システム回復オプション」がブートできるか確認しておくべし</li>
+	<li>リカバリー用パーティションなどは更に危険なので指定しない</li>
+	<li>データ用ドライブのみにしといた方がいいかも</li>
+</ul>
+</li>
+</ul>
+
+<p>内蔵HDのパーティションをすべて指定したら、Windows起動前にデフラグが実施されました。HD容量は 40GB、所要時間は2時間程で終了。しかし...<strong>Windowsが起動しなくなりました</strong>（XPのロゴ画面でフリーズ、セーフモードもだめ） orz...。とりあえず回復コンソールから <code>chkdsk -r</code> で復活。dfrg.msc で確認するとCドライブがほぼ青一色、それ以外は完全青一色となりました。かなり強力な機能の模様ですが、スゴく危険だと思いました（笑）。</p>
+</dd>
+</dl>
+
+
+<h2><a href="#easeus_partition_master" name="easeus_partition_master"><span class="tokai1">EASEUS Partition Master Home Edition</span></a></h2>
+
+<p>非商用使用フリー。Windows にインストールして使用。Windows 上で操作可能。</p>
+
+<p class="pink">※ Windows 7 64 bit, GPT 対応</p>
+
+<p class="overflow2"><a href="./images/partition_editor/easeus_partition_master.png"><img src="./images/partition_editor/easeus_partition_master_x70.png" width="659" height="489" alt="EASEUS Partition Master Home Edition のスクリーンショット"></a></p>
+<p class="overflow2"><img src="./images/partition_editor/easeus_partition_master_create_partition.png" width="475" height="390" alt="EASEUS Partition Master Home Edition 「Create Partition」のスクリーンショット"></p>
+
+<ul>
+<li><a href="http://www.partition-tool.com/personal.htm">Best FREE Partition Manager Freeware for Windows 2000/XP/Vista/7 32 bit &#038; 64 bit. EASEUS free Partition Manager Software Home Edition.</a></li>
+</ul>
+
+<ul>
+<li>EASEUS Partition Master 8.0.1 Home Edition での確認
+	<ul>
+	<li>システム要件 : CPU 500MHz, RAM 512MB</li>
+	<li>対応ファイルシステム : NTFS, FAT, Ext3</li>
+	<li>7 64-bit も対応</li>
+	<li>GPT 対応</li>
+	<li>Alignment 設定は？</li>
+	<li>デフラグ</li>
+	<li>起動CD作成はなし（※ 有償版で可）</li>
+	</ul>
+</li>
+</ul>
+
+
+<dl>
+<dt>参考リンク</dt>
+<dd>
+<ul>
+<li><a href="http://www.forest.impress.co.jp/lib/sys/hardcust/defrag/easeuspart.html">窓の杜 - EASEUS Partition Master</a>
+	<ul class="small">
+	<li><a href="http://www.forest.impress.co.jp/docs/news/20110331_436332.html">窓の杜 - 【NEWS】デザインを一新したパーティション編集ソフト「EASEUS Partition Master」v8.0.1</a></li>
+	<li><a href="http://www.forest.impress.co.jp/docs/news/20110124_422367.html">窓の杜 - 【NEWS】パーティション編集ソフト「EASEUS Partition Master」無償版v7.0.1が公開</a></li>
+	<li><a href="http://www.forest.impress.co.jp/docs/news/20101115_407052.html">窓の杜 - 【NEWS】パーティション編集ソフト「EASEUS Partition Master」無償版が64bit Windows対応</a></li>
+	<li><a href="http://www.forest.impress.co.jp/docs/news/20101101_404048.html">窓の杜 - 【NEWS】EXT2/EXT3パーティションの編集に対応した「EASEUS Partition Master」v6.5.1</a></li>
+	</ul>
+</li>
+<li><a href="http://gigazine.net/news/20101118_Easeus_Partition_Manager/">Windows上から利用できるフリーのパーティション操作ソフト「EASEUS Partition Master Home Edition」 - GIGAZINE</a></li>
+</ul>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/EASEUS_Partition_Master">EASEUS Partition Master - Wikipedia</a></li>
+</ul>
+
+</dd>
+</dl>
+
+
+<h2><a href="#minitool_partition_wizard" name="minitool_partition_wizard"><span class="tokai1">MiniTool Partition Wizard Home Edition</span></a></h2>
+
+<p>非商用使用フリー。Windows にインストールして使用。Windows 上で操作可能。</p>
+
+<p class="pink">※ Windows 7 64-bit も対応。over 2TiB 対応。</p>
+
+<p class="overflow2"><a href="./images/partition_editor/partition_wizard.png"><img src="./images/partition_editor/partition_wizard_x70.png" width="606" height="443" alt="MiniTool Partition Wizard Home Edition のスクリーンショット"></a></p>
+<p class="overflow2"><img src="./images/partition_editor/partition_wizard_create_partition.png" width="479" height="407" alt="MiniTool Partition Wizard Home Edition 「Create Partition」のスクリーンショット"></p>
+
+
+<ul>
+<li><a href="http://www.partitionwizard.com/free-partition-manager.html">BEST FREE Partition Manager Software for Windows supports all 32-bit &#038; 64 bit Windows No-server OS.</a></li>
+</ul>
+
+<ul>
+<li>MiniTool Partition Wizard Home Edition 6.0 での確認
+	<ul>
+	<li>システム要件 : ?</li>
+	<li>対応ファイルシステム : NTFS, FAT, Ext4</li>
+	<li>7 64-bit も対応</li>
+	<li>2TB 超対応、GPT対応</li>
+	<li>Alignment 設定は？</li>
+	<li>デフラグ</li>
+	<li>起動CD作成はなし - ダウンロード可</li>
+	</ul>
+</li>
+</ul>
+
+
+<dl>
+<dt>参考リンク</dt>
+<dd>
+<ul>
+<li><a href="http://www.vector.co.jp/magazine/softnews/110921/n1109211.html">Vector 新着ソフトレビュー 「Partition Wizard Home Edition」 - 64bit環境や2TB以上のサイズにも対応した高機能パーティション管理ソフト</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.forest.impress.co.jp/lib/sys/hardcust/defrag/partwizhome.html">窓の杜 - Partition Wizard Home Edition</a>
+	<ul>
+	<li><a href="http://www.forest.impress.co.jp/docs/review/20100512_366325.html">窓の杜 - 【REVIEW】64bit環境対応の無償パーティション管理ソフト「Partition Wizard Home Edition」</a></li>
+	</ul>
+</li>
+<li><a href="http://gigazine.net/index.php?/news/comments/20090815_partitionwizard/">パーティションのリサイズ・作成・コピー・変換・完全消去などが簡単にできるフリーソフト「Partition Wizard Home Edition」 - GIGAZINE</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h2><a href="#partition_wizard_bootable_cd" name="partition_wizard_bootable_cd"><span class="tokai1">MiniTool Partition Wizard Bootable CD</span></a></h2>
+
+<p>Windows 上にインストールして使うソフトではありません。</p>
+
+<p>フリー版。CDブートで使用。内容は Tiny Core Linux の Linux LiveCD。USBメモリブートやネットワーク・ブートもおｋ。</p>
+
+<p class="overflow2"><img src="./images/partition_editor/partition_wizard_bootablecd_bootmenu.png" width="512" height="384" alt="Partition Wizard Bootable CD ブートメニューのスクリーンショット"></p>
+<p class="overflow2"><img src="./images/partition_editor/partition_wizard_bootablecd_main.png" width="640" height="480" alt="Partition Wizard Bootable CD Main のスクリーンショット"></p>
+<p class="overflow2"><img src="./images/partition_editor/partition_wizard_bootablecd_create_partition.png" width="473" height="396" alt="Partition Wizard Bootable CD 「Create Partition」のスクリーンショット"></p>
+
+
+<ul>
+<li><a href="http://www.partitionwizard.com/partition-wizard-bootable-cd.html">Partition Wizard Bootable CD allows user to boot computer directly to manage partition.</a>
+	<ul>
+	<li><a href="http://www.partitionwizard.com/download.html">Free Download Magic Partition Manager Software - Partition Wizard Online</a></li>
+	</ul>
+</li>
+</ul>
+
+<p><code>pwhe6.iso</code> での確認。対応は上記の 6.0 と同じなのかな？</p>
+<ul>
+<li>MiniTool Partition Wizard Bootable CD 6.0
+	<ul>
+	<li>LiveCD でブート（または、USBメモリ、ネットワークなど）</li>
+	<li>システム要件 : ?</li>
+	<li>7 64-bit も対応 （Server版非サポート）</li>
+	<li>GPT対応</li>
+	</ul>
+</li>
+</ul>
+
+<p>isoブートも可能なんでUSBメモリなんかにマルチブートで入れとくのもいいかも。</p>
+<ul>
+<li>拙作めも :
+	<ul>
+	<li><a href="./multiiso.html">isoイメージをマルチブートするの巻【その1】準備編</a></li>
+	</ul>
+</li>
+</ul>
+
+
+<h2><a href="#gparted" name="gparted"><span class="tokai1">GParted (LiveCD)</span></a></h2>
+
+<p>Windows 上にインストールして使うソフトではありません。</p>
+
+<p>多くの Linux LiveCD に含まれてます。Windows 向けソフトに比べると機能は落ちます。機能が少ない分逆にわかりやすいような気もします。Linux 用パーティション作成についてはこちらの方が安全かも・・・しれません。</p>
+<p>バージョン 0.9.0-6 では Debian Live ベースになってます。</p>
+
+<p class="overflow2"><img src="./images/partition_editor/gparted_live_0906_bootmenu.png" width="512" height="384" alt="GParted LiveCD ブートメニューのスクリーンショット"></p>
+<p class="overflow2"><img src="./images/partition_editor/gparted_live_0906_desktop.png" width="560" height="420" alt="GParted LiveCD のスクリーンショット"></p>
+
+<p class="overflow2"><img src="./images/partition_editor/gparted.png" width="611" height="350" alt="GParted のスクリーンショット"></p>
+<p class="overflow2"><img src="./images/partition_editor/gparted_create_partition.png" width="556" height="293" alt="GParted 「Create Partition」のスクリーンショット"></p>
+
+<ul>
+<li><a href="http://gparted.sourceforge.net/">GParted -- About</a></li>
+</ul>
+
+<ul>
+<li>GParted Live 0.9.0-6
+	<ul>
+	<li>LiveCD でブート（または、USBメモリ、ネットワークなど）</li>
+	<li>上記ソフト同様にデータを保持したままの変更が可能</li>
+	<li>パーティション作成時に Alignmennt 指定可（※ バージョン 0.6.2 以降）</li>
+	<li>対応ファイルシステム : FAT, NTFS, hfs / hfs+, reiserfs / reiser4, ufs, xfs
+		<ul>
+		<li><a href="http://gparted.sourceforge.net/features.php">GParted -- Features</a></li>
+		</ul>
+	</li>
+	<li>512byte超セクタ対応</li>
+	<li>GPT対応</li>
+</ul>
+</li>
+</ul>
+
+<p>Ubuntu, KNOPPIX などの LiveCD にも含まれていますが新しめのPCでは最新版の使用をオススメ。</p>
+
+<ul>
+<li><a href="http://gparted.sourceforge.net/livecd.php">GParted -- Live CD/USB/PXE/HD</a></li>
+</ul>
+
+<p>下記 LiveCD もほぼ最新版が含まれてるんで GParted Live が使えない場合の選択肢としておすすめ。</p>
+<ul>
+<li><a href="http://partedmagic.com/doku.php">Parted Magic</a></li>
+<li><a href="http://www.sysresccd.org/Main_Page">SystemRescueCd</a></li>
+</ul>
+
+
+<dl>
+<dt>参考リンク</dt>
+<dd>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/825usegparted.html">GPartedでパーティションを操作するには － ＠IT</a></li>
+<li><a href="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/a049copypartition.html">パーティションを丸ごと別のHDDにコピーするには － ＠IT</a></li>
+<li><a href="http://gigazine.net/news/20060529_gparted_live_cd/">パーティションを操作できるフリーソフト「GParted Live CD」 - GIGAZINE</a></li>
+</ul>
+</dd>
+</dl>
+
+<h2><a href="#etc" name="etc"><span class="tokai1">いろいろ</span></a></h2>
+
+<dl>
+<dt>HDについてのいろいろ</dt>
+<dd>
+<ul>
+<li>拙作めも :
+	<ul>
+	<li><a href="./harddisk.html">私的ハードディスク関連めも</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>バックアップ</dt>
+<dd>
+<p>データを含むパーティションの操作については事前のバックアップは必須だと思います。</p>
+<ul>
+<li>拙作めも :
+	<ul>
+	<li><a href="./recovery_software.html">バックアップ・リカバリーソフトについてのめも</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+<h3><a href="#diskcopy_tool"><span class="ms">■</span></a> <a name="diskcopy_tool">ディスクコピー・ツール</a></h3>
+
+<dl>
+<dt>EASEUS Disk Copy</dt>
+<dd>
+<p>※ <strong>Todo Backup の方が便利かも</strong>。</p>
+<p>あっと、これは<strong>HDから別HDへコピーする</strong>ソフトです。リカバリー作成・復元ソフトではありません。LiveCDのみ。</p>
+<p>対応は 1.0 TB までの模様。Todo Backup は 2.0 TB 対応。</p>
+
+<ul>
+<li><a href="http://www.easeus.com/disk-copy/feature.htm">Free Disk Copy, Partition Copy Software, Sector by Sector hard drive backup tool - EASEUS Disk Copy</a>
+	<ul>
+	<li><a href="http://www.easeus.com/disk-copy/dc-vs-tdb.htm">Comparison of EASEUS Todo Backup and EASEUS Disk Copy</a></li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://www.forest.impress.co.jp/article/2008/08/26/easeusdiskcopy.html">窓の杜 - 【REVIEW】HDD内のデータを丸ごと別HDDへコピーできるフリーソフト「EASEUS Disk Copy」</a></li>
+<li><a href="http://gigazine.net/index.php?/news/comments/20080821_easeus_disk_copy/">ハードディスクの中身を高速に全セクターコピーしてお引っ越し可能なフリーソフト「EASEUS Disk Copy」 - GIGAZINE</a></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+
+
+
+
+</div>
+</div>
+
+
+<div class="navi">
+<a href="./index.html">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+
+<address>Written by yassy</address>
+
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+</body>
+
+</html>

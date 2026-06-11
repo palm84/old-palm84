@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Language" content="ja">
+<meta name="GENERATOR" content="EdLeaf Version 1.02">
+<link rel="stylesheet" type="text/css" href="standard_quirks.css">
+<link rel="start" href="./index.html">
+<title>標準モード</title>
+</head>
+
+
+<body>
+
+<div style="text-align:center" id="top">
+<a href="./css_memo.html">index</a> | 
+<a href="./css_memo_mame.html">豆</a>
+</div>
+
+<h1>標準モード</h1>
+
+<ul class="small">
+<li><acronym title="Internet Explorer">IE</acronym> の標準モード = HTML 4.01 Transitional,URLあり</li>
+<li><acronym title="Internet Explorer">IE</acronym> の後方互換モード = HTML 4.01 Transitional,URLなし</li>
+</ul>
+
+<ul class="small">
+<li>【width 指定なし】
+	<ul>
+	<li>標準モード 【pre要素に margin:0 5% 指定】</li>
+	<li><a href="./quirks.html">互換モード</a> 【pre要素に margin:0 5% 指定】</li>
+	</ul>
+</li>
+<li>【width 指定あり】
+	<ul>
+	<li><a href="./standard_width.html">標準モード - width 指定</a> 【pre要素に margin:0 5%;width:90% 指定】</li>
+	<li><a href="./quirks_width.html">互換モード - width 指定</a> 【pre要素に margin:0 5%;width:90% 指定】</li>
+	</ul>
+</li>
+<li><a href="./quirks_width_test.html">互換モード【_width 指定】アンダースコアハック</a></li>
+</ul>
+
+
+<div class="palm-body">
+<div class="sidebar">
+<h2>link</h2>
+
+<p>コンニチハコンニチハ！</p>
+
+<ul class="browser2">
+<li><strong><acronym title="Internet Explorer">IE</acronym>6</strong> - 背景色が文字のある部分のみ、<dfn>overflow</dfn> のない状態でもなぜか背景色はみだし</li>
+<li><strong><acronym title="Internet Explorer">IE</acronym>7</strong> - </li>
+<li><strong>Firefox2</strong> - </li>
+<li><strong>Opera9</strong> - </li>
+</ul>
+
+</div>
+
+
+<div class="main">
+
+<ul>
+<li><dfn>width</dfn> 指定なし(<code>padding:1em 0;</code>)</li>
+</ul>
+<div class="box">
+<pre>
+1あいうえおかきくけこさしすせそあいうえ
+2あいうえおかきくけこさしすせそあいうえ
+3あいうえおかきくけこさしすせそあいうえ
+4あいうえおかきくけこさしすせそあいうえ
+5あいうえおかきくけこさしすせそあいうえ
+</pre>
+</div>
+
+<ul class="browser">
+<li><strong><acronym title="Internet Explorer">IE</acronym>6</strong> -  <dfn>overflow</dfn> 無視（「はみ出し」せずに、親要素を広げてしまう）、<dfn>background-color</dfn> が消える</li>
+<li><strong><acronym title="Internet Explorer">IE</acronym>7</strong> - </li>
+<li><strong>Firefox2</strong> - </li>
+<li><strong>Opera9</strong> - </li>
+</ul>
+
+
+
+
+<ul>
+<li><dfn>width</dfn> 指定なし - <code>overflow:auto;</code>(<code>padding:1em 0;</code>)</li>
+</ul>
+<div class="box">
+<pre>
+1あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+</pre>
+</div>
+
+<ul>
+<li><dfn>width</dfn> 指定なし - <code>overflow:auto;</code>(<code>padding:1em 0;</code>)</li>
+</ul>
+<div class="box">
+<pre>
+1あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+2あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+3あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+4あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+5あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+</pre>
+</div>
+
+<p>Firefox2,Opera9 - 横スクロールバーはboxにプラス、<acronym title="Internet Explorer">IE</acronym>7はautoだと高さに含めてしまう。</p>
+
+<ul>
+<li><dfn>width</dfn> 指定なし - <code>overflow:scroll;</code>(<code>padding:0;</code>)</li>
+</ul>
+<div class="box">
+<pre class="scroll">
+1あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+2あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+3あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+4あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+5あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+</pre>
+</div>
+<p>縦スクロールバーは  <dfn>margin</dfn>, <dfn>width</dfn> にあわせて</p>
+<p>Firefox + VL ゴシック（VL Pゴシック）では、不要な縦スクロールバーが出ることがある（上下 <dfn>padding</dfn> か <dfn>line-height</dfn> 調整で回避）。</p>
+
+
+<ul>
+<li><dfn>width</dfn> 指定なし - <code>overflow:hidden;</code>(<code>padding:0;</code>)</li>
+</ul>
+<div class="box">
+<pre class="hidden">
+1あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+2あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+3あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+4あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+5あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div style="text-align:center">
+<a href="#top">TOP</a> | 
+<a href="./css_memo.html">index</a> | 
+<a href="./css_memo_mame.html">豆</a>
+</div>
+
+<p>最終更新日：2008.5.</p>
+
+<hr>
+<address>Written by yassy</address>
+
+</body>
+</html>
