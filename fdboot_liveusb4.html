@@ -1,0 +1,644 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="START" href="./">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>【私的】USBブート非対応PC用起動フロッピーを作るの巻【GRUB編】＠Palm84</title>
+<style type="text/css">
+<!--
+
+h4 {
+	font-size: 1em;
+	font-weight: bold;
+	margin:0.5em 0.5em 0.5em 1.5em;
+	padding-left: 0.5em;
+	border-left: 1em double #ccc;
+}
+
+pre.scl1 {
+	overflow: scroll;
+	white-space: pre;
+	width:89%;
+	height: 10em;
+}
+
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+</head>
+
+
+<body>
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+<h1><span class="tokai1"><a href="./fdboot_liveusb4.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻【GRUB編】</a></span></h1>
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+<ol>
+<li><a href="#about">これって何？</a></li>
+<li><a href="#download">ダウンロード</a></li>
+<li><a href="#bootdisk">起動ディスク作成</a>
+<li><a href="#tree">ファイル一覧</a></li>
+<li><a href="#screenshot">スクリーンショット</a></li>
+</ol>
+
+<ul>
+<li><a href="#config_files">設定ファイル</a></li>
+<li><a href="#etc">備考</a></li>
+</ul>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+<p><a href="http://getfirefox.jp/" title="Get Firefox - Web を取り戻せ">
+<img src="./images/takebacktheweb_small.png" width="125" height="50" alt="Get Firefox"></a></p>
+
+
+
+
+<p class="small">リンク is フリーダム<span class="ms">♪</span></p>
+</div>
+</div>
+
+
+
+<div class="main">
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/fdboot_liveusb4.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/fdboot_liveusb4.html"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/fdboot_liveusb4.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<p class="small">2009.4.25 作成</p>
+
+<p class="small">2009.7.2 なんか間違い多かったです。。。orz。設定ファイル修正しました。
+<br>2009.7.4 <a href="#etc">備考</a>を整理しました。</p>
+
+<p>「段取り九分九厘主義！」、やっぱ仕事では楽したいという...（準備で疲れてりゃ世話ない、ってか）。</p>
+
+<dl class="pink">
+<dt>ご案内してみたり...</dt>
+<dd>
+<ol>
+<li><a href="./fdboot_liveusb.html">その1</a> === DOS用USBドライバでUSBデバイスを直接認識</li>
+<li><a href="./fdboot_liveusb2.html">その2</a> === 分割ファイルをコピーした複数枚FDからブート</li>
+<li><a href="./fdboot_liveusb3.html">合体編</a> === 【その1】と【その2】を合体</li>
+<li>GRUB編 === 【合体編】をFDイメージへ、PLoP Boot Managerを追加
+	<ul>
+	<li><strong class="ms">↑</strong><strong>今ここ</strong></li>
+	</ul>
+</li>
+</ol>
+<p class="small">内容が<em>重複しまくっとります</em>。恐れ入り奉りまする。Palm84的【設定ファイル詰め合わせ】については甚だ不完全なのでコロコロ修正すると思います。</p>
+</dd>
+</dl>
+
+<dl>
+<dt>作成・使用目的は...</dt>
+<dd>
+<ul>
+<li>CDドライブなし＆USBブート非対応PCでのOSのブート</li>
+<li>CDドライブ故障時などUSB CDでのブート</li>
+<li>ネットワークブート及びメモリテスト</li>
+</ul>
+<p>つまり、色々障害あったりな限定的な条件下でもOSブートを可能にしたい、なんてかんじ？です。</p>
+</dd>
+</dl>
+<h2><a href="#about" name="about">これって何？</a></h2>
+
+<ul>
+<li class="small"><a href="./fdboot_liveusb.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻</a></li>
+<li class="small"><a href="./fdboot_liveusb2.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻【その2】</a></li>
+<li><a href="./fdboot_liveusb3.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻【合体編】</a></li>
+</ul>
+
+<p>上記のページをシコシコ書いたりしてみましたが、実は少し不満があって実際には殆ど使ってなかったりするのでした。</p>
+
+<p>なんとなれば...</p>
+
+<ul>
+<li>USBメモリ・USB HD対応のブートローダ、<a href="http://www.plop.at/en/bootmanager.html">PLoP Boot Manager</a>（約 42 KB）を追加したいけど、ファイルがパンパンで入らない</li>
+<li>USB FDブート + DOSドライバでは <strong class="ms">RAMFD.SYS</strong> が必要になるけど、この RAMFD.SYS は少し不安定。<code>memdisk</code> を使ってオンメモリでブートすればこれが不要になる</li>
+<li>上記FDをイメージ化して圧縮すると、約 900 KBになるので1440 KBのFDへファイルの追加が可能に</li>
+<li>実FDドライブはBドライブとなります</li>
+</ul>
+
+<p>てなかんじで、この【GRUB編】のディスクでは、上記のFreeDOSはオンメモリでブートするのでUSB FDドライブはRAMFD.SYSなしでも外してしまえます。</p>
+<p>PLoPを足してもまだ少し空きがあるので、fdiskやsysなどDOSコマンドなどの追加が可能になるのでありました...</p>
+
+<p>んで、内容はというと、USBブート非対応PCにて、3つの方法でブートを試します...</p>
+<ol>
+<li><strong class="ms"><a href="http://www.plop.at/en/bootmanager.html">PLoP Boot Manager</a></strong>
+	<ul>
+	<li>ブート可能なUSBメモリ・USB HD を直接認識（※ <strong>USB CD非対応</strong>）</li>
+	<li class="small"><a href="http://d.hatena.ne.jp/palm84/20080816/1218896213">PLoP Boot Manager（USBブート非対応PC用起動ディスク）</a></li>
+	</ul>
+</li>
+<li><strong>DOS + USBドライバ</strong>
+	<ul>
+	<li>DOS上でUSBデバイスを認識させて、USBデバイス上のカーネルなどを <strong class="ms">LINLD</strong> でロード</li>
+	</ul>
+</li>
+<li><strong>DOSのRAMドライブ</strong>に分割したカーネルなどをFDからコピー
+	<ul>
+	<li>RAMドライブ上のカーネルなどを <strong class="ms">LINLD</strong> でロード</li>
+	</ul>
+</li>
+</ol>
+
+<p>【1】が使えれば楽なのですが、使えないことも多いので3段構えにて迎え撃つわけであります（織田信長風味ｗ）。【3】が最も面倒ですが認識は結構確実だったりします。</p>
+<p>【1】ではUSBメモリ(USB HD)がブート可能に設定されている必要がありますが、【2】【3】ではその必要はありません。</p>
+<p>【2】【3】は<strong>USB CDドライブ</strong>にも対応しています。</p>
+
+<p>【2】,【3】については上記ページをご参照くだされ。</p>
+
+
+<h2><a href="#download" name="download">ダウンロードしておくもの</a></h2>
+
+<ol>
+<li>GRUB for DOS 起動FDイメージ</li>
+<li>SYSLINUX の <strong class="ms">memdisk</strong></li>
+<li>PLoP Boot Manager</li>
+<li>置換・追加設定ファイル</li>
+</ol>
+
+
+<dl>
+<dt>GRUB for DOS 起動FDイメージ</dt>
+<dd>
+<ul>
+	<li><a href="http://sourceforge.net/projects/grub4dos/files/">GRUB4DOS and WINGRUB | Get GRUB4DOS and WINGRUB at SourceForge.net</a>
+	<ul>
+	<li><a href="http://download.gna.org/grub4dos/">Index of /grub4dos</a></li>
+	</ul>
+</li>
+</ul>
+<p>0.4.3はFDイメージがないので、<strong class="ms">grub_for_dos-0.4.2.zip</strong> をダウンロード。<code>fat12grldr.img</code> がFAT版FDイメージ。</p>
+<p>FD書き込み後に <code>grldr</code> を 0.4.4(grub4dos-0.4.4.zip)の <code>grldr</code> へ置き換えたほうがいいと思います。</p>
+</dd>
+
+<dt>SYSLINUX の <strong class="ms">memdisk</strong></dt>
+<dd>
+<ul>
+<li><a href="http://www.ring.gr.jp/pub/linux/kernel.org/utils/boot/syslinux/">Index of /pub/linux/kernel.org/utils/boot/syslinux</a></li>
+</ul>
+<p><strong class="ms">syslinux-3.xx.zip</strong> をダウンロード。必要なのは、<code>memdisk\memdisk</code> だけ。</p>
+</dd>
+
+<dt>PLoP Boot Manager</dt>
+<dd>
+<ul>
+<li><a href="http://www.plop.at/en/bootmanagerdl.html">PLoP - Bootmanager</a></li>
+</ul>
+<p><strong class="ms">plpbt-5.x.x.zip</strong> をダウンロード。必要なのは、<code>plpbt.bin</code> だけ。</p>
+</dd>
+
+<dt>置換・追加設定ファイル詰め合わせ</dt>
+<dd>
+<ul>
+<li><a href="../archives/fdboot_liveusb4_files.zip">fdboot_liveusb4_files.zip</a></li>
+<li><a href="https://drive.google.com/drive/folders/1ohPcyzBAOeeybD9CFL5B4RbK9TgXiR9h">fdboot_liveusb4_files - Google ドライブ</a></li>
+</ul>
+<p>FreeDOS起動ディスクの置換ファイルと、GRUB起動ディスクへの追加ファイル。</p>
+</dd>
+
+<dt>RawWrite for Windows</dt>
+<dd>
+<ul>
+<li><a href="http://www.chrysocome.net/rawwrite">chrysocome.net - RawWrite for Windows</a></li>
+</ul>
+<p>FDイメージをFDへ書き込み、及び、FDからFDイメージの作成に使う（別にこれじゃなくてもいいけど）。</p>
+<p>イメージ作成については、<strong class="ms">Virtual Floppy Drive</strong> の方が楽かも。</p>
+<ul>
+<li><a href="http://sourceforge.jp/projects/sfnet_vfd/">Virtual Floppy Drive</a></li>
+</ul>
+</dd>
+
+</dl>
+
+<h2><a href="#bootdisk" name="bootdisk">起動ディスク作成</a></h2>
+
+<ol>
+<li><a href="./fdboot_liveusb3.html">【その3】</a>のFDを作成</li>
+<li>【その3FD】から不要ファイル削除</li>
+<li>【その3FD】へ置換ファイルを上書きコピー</li>
+<li>【その3FD】の FDイメージ作成</li>
+<li>FDイメージを <strong class="ms">gzip</strong> で圧縮</li>
+<li>GRUB起動ディスクイメージを【新FD】へ書き込み</li>
+<li>【新FD】へファイルを追加</li>
+</ol>
+
+<dl class="palmst">
+<dt>【その3FD】の削除するファイルと置換ファイル</dt>
+<dd>
+<p class="small">削除しても圧縮したらほとんどサイズ変わらないので、しなくてもいいような気もします。</p>
+<ul class="small">
+<li>削除するファイル</li>
+</ul>
+<pre>
+A:\driver\RAMFD.SYS
+A:\grub.exe
+A:\menu.lst
+</pre>
+
+<p class="small">実FDドライブはBドライブとなるので変更しとかないとだめ。あとは余分なメニューを消しとく。</p>
+<ul class="small">
+<li>置換ファイル（詰め合わせから）</li>
+</ul>
+<pre>
+autoexec.bat
+config.sys
+menu.txt
+menu_usb.txt
+bin\bgrescue.bat
+bin\copyb.bat
+bin\insert.bat
+bin\other.bat
+bin\start.bat
+bin_usb\other.bat
+bin_usb\start.bat
+</pre>
+</dd>
+</dl>
+
+<dl>
+<dt>FreeDOS FDイメージ作成、gzip圧縮</dt>
+<dd>
+<ul>
+<li><a href="./fdboot_liveusb3.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻【合体編】</a></li>
+</ul>
+
+<ol>
+<li>まず、上記のページ内容の FreeDOS 起動FDを作成（※念の為、RawWrite for Windows でバックアップしときませう）</li>
+<li>設定ファイル置換（削除＆コピー）
+	<ul>
+	<li>作成した FreeDOS FD をセットして【設定ファイル詰め合わせ】内の <code> <strong class="ms"><a href="../archives/fdboot_liveusb4_files/Change_SCL/02_Change_SCL.bat.txt">02_Change_SCL.bat</a></strong> </code> を実行</li>
+	</ul>
+</li>
+<li>FDからFDイメージ作成
+	<ul>
+	<li><strong class="ms">RawWrite for Windows</strong> でFDイメージを作成</li>
+	</ul>
+</li>
+<li>gzip圧縮
+	<ul>
+	<li>上記のFDイメージをgzipで圧縮。ファイル名は <code> <strong class="ms">fdos_scl.img.gz</strong> </code> とする</li>
+	</ul>
+</li>
+</ol>
+
+<p>GZIP圧縮について、私は<a href="http://www.chitora.jp/lhaz.html">Lhaz</a>を使ったけど別になんでも。Linuxとかなら下記の風で。</p>
+<pre>
+gzip -fc Fdos_SCL2.img &#062; fdos_scl.img.gz
+</pre>
+
+<dl class="palmst small">
+<dt><code>dd.exe</code> と <code>gzip.exe</code> があれば</dt>
+<dd>
+<p><strong class="ms">02_Change_SCL.bat</strong> と同じディレクトリに <code>dd.exe</code> と <code>gzip.exe</code> を置けばバックアップからgzipイメージ作成まで <strong class="ms">Change_SCL.bat</strong> で一括実行できます。</p>
+<ul>
+<li><a href="http://www.chrysocome.net/dd">chrysocome.net - dd for windows</a></li>
+<li><a href="http://w32tex.org/index-ja.html">W32TeX</a></li>
+</ul>
+</dd>
+</dl>
+</dd>
+
+
+<dt>GRUB起動ディスクイメージをFDへ書き込み</dt>
+<dd>
+<ol>
+<li>別FDをセット</li>
+<li><code>fat12grldr.img</code> を <strong class="ms">RawWrite for Windows</strong> でFDへ書き込み</li>
+</ol>
+</dd>
+
+
+<dt>ファイルを追加</dt>
+<dd>
+<p>FDへコピー</p>
+<ul>
+<li>GRUB for DOS 0.4.4 の <code>grldr</code> を上書きコピー</li>
+<li>【設定ファイル詰め合わせ】の <code>menu.lst</code> を上書きコピー</li>
+<li>上記で作成した <code>fdos_scl.img.gz</code></li>
+<li>SYSLINUXの <code>memdisk</code></li>
+<li>PLoP Boot Managerの <code>plpbt.bin</code></li>
+<li>FD内のファイル <strong class="ms">default</strong> は不要</li>
+</ul>
+
+<ul>
+<li>【設定ファイル詰め合わせ】の <code>grub</code>,<code>get_iso</code> ディレクトリは必要ならコピー</li>
+</ul>
+
+</dd>
+
+</dl>
+
+
+
+<h2><a href="#tree" name="tree">ファイル一覧</a></h2>
+
+<pre>
+A:.
+|   fdos_scl.img.gz
+|   grldr
+|   memdisk
+|   menu.lst
+|   plpbt.bin
+|
++---get_iso
+|       slax-ja-5.1.8.1-3.iso.md5
+|       systemrescuecd-x86-1.0.4.iso.md5
+|       wget_insert1218
+|       wget_knoppix
+|       wget_knoppix531
+|       wget_puppy4003
+|       wget_slax5jp
+|       wget_sysres104
+|
+\---grub
+        berry.conf
+        bgrescue.conf
+        insert.conf
+        knoppix.conf
+        knoppix3.conf
+        puppy.conf
+        slax.conf
+        sysres.conf
+</pre>
+
+
+<h2><a href="#screenshot" name="screenshot">スクリーンショット</a></h2>
+
+<dl>
+<dt>GRUB for DOS - menu.lst</dt>
+<dd>
+<p class="small">起動時の画面。FreeDOS FDイメージのブートは、SYSLINUXの <strong class="ms">memdisk</strong> とGRUBの <strong class="ms">Indirect Mapping</strong> の2種類の方法で。どちらもオンメモリの仮想Aドライブとしてブート。</p>
+<p class="overflow2"><img src="./images/fdboot_liveusb4/menu_lst.png" alt="" width="540" height="340"></p>
+</dd>
+
+
+<dt>PLoP Boot Manager</dt>
+<dd>
+<ul class="small">
+<li>※<strong>USB CD非対応</strong></li>
+</ul>
+<p class="small">ブート可能なUSBメモリ・USB HD からブート。</p>
+<p class="overflow2"><img src="./images/fdboot_liveusb4/plpbt.png" alt="PLoP Boot Manager 起動画面" width="540" height="300"></p>
+<p class="small">※これが使えるとめちゃ楽ですが、少し不安定なのが玉にきず。</p>
+</dd>
+
+
+<dt>FreeDOS 起動ディスク（オンメモリ = 仮想Aドライブ）</dt>
+<dd>
+<p class="small">FreeDOS FDイメージの起動時の画面。</p>
+<ul class="small">
+<li>【Load Ramdisk】- カーネルなどを分割コピーしたFDを読み込んでUSBメモリのLinuxをブート</li>
+<li>【1】から【4】- DOS用USBドライバ組み込み、DOS上でUSBデバイスを認識</li>
+</ul>
+
+<ul class="small">
+<li>※実FDドライブは、Bドライブとなる</li>
+<li>※USBドライバを使う場合は、この画面が出た時点でUSB FDドライブは外してしまっておｋ</li>
+</ul>
+<p class="overflow2"><img src="./images/fdboot_liveusb4/fdos_scl.png" alt="" width="540" height="310"></p>
+</dd>
+
+
+<dt>ネットワークブート（gPXEカーネル）</dt>
+<dd>
+<p class="small">NICが内蔵かPCIカードでメジャーチップならほぼ使えるんじゃないかな。</p>
+<p class="overflow2"><img src="./images/fdboot_liveusb4/gpxe.png" alt="" width="540" height="350"></p>
+</dd>
+
+
+<dt>Memtest86+</dt>
+<dd>
+<p class="small">赤いのが出ないことを祈りつつ...</p>
+<p class="overflow2"><img src="./images/fdboot_liveusb4/memtest.png" alt="" width="540" height="220"></p>
+</dd>
+
+</dl>
+
+
+<h2><a href="#config_files" name="config_files">設定ファイル</a></h2>
+
+
+<p>GRUBの <code>menu.lst</code> の内容。</p>
+
+<ul>
+<li><a href="../archives/fdboot_liveusb4_files/menu.lst">menu.lst</a></li>
+</ul>
+
+
+<dl>
+<dt>PLoP Boot Manager</dt>
+<dd>
+<pre>
+title Boot from USB  === PLoP Boot Manager v 5.0 ===
+kernel /plpbt.bin
+</pre>
+<p><code>kernel</code> に <strong class="ms">plpbt.bin</strong> を指定。</p>
+</dd>
+
+<dt>FreeDOS FDイメージ</dt>
+<dd>
+<pre>
+title ===  FreeDOS   === LiveUSB bootdisk image  (SYSLINUX memdisk)
+kernel /memdisk raw
+initrd /fdos_scl.img.gz
+</pre>
+
+<pre>
+title ===  FreeDOS   === LiveUSB bootdisk image  (Indirect Mapping)
+map (fd0) (fd1)
+map --hook
+map --mem (fd1)/fdos_scl.img.gz (fd0)
+map --hook
+map --floppies=2
+chainloader (fd0)+1
+rootnoverify (fd0)
+</pre>
+<p>前者は <code>kernel</code> に <strong class="ms">memdisk</strong> 指定。FDイメージが仮想Aドライブ、実FDドライブはBドライブとしてブート。</p>
+
+<p>後者はFDイメージを <code>fd0</code>、実FDドライブを <code>fd1</code> にマウント(<code>map</code>)してブート。</p>
+</dd>
+
+<dt>Network Boot</dt>
+<dd>
+<pre>
+title Network Boot ---     gPXE kernel
+map --mem (fd0)/fdos_scl.img.gz (fd1)
+map --hook
+kernel (fd1)/gpxe_all.krn
+</pre>
+<p>FDイメージを <code>fd1</code> にマウント(<code>map</code>)。</p>
+<p><code>kernel</code> にFDイメージ内の <strong class="ms">gpxe_all.krn</strong> を指定。</p>
+</dd>
+
+<dt>Memtest86+</dt>
+<dd>
+<pre>
+title Memtest86+
+map --mem (fd0)/fdos_scl.img.gz (fd1)
+map --hook
+kernel (fd1)/memtest
+</pre>
+<p>FDイメージを <code>fd1</code> にマウント(<code>map</code>)。</p>
+<p><code>kernel</code> にFDイメージ内の <strong class="ms">memtest</strong> を指定。</p>
+</dd>
+
+<dt><a href="http://giannone.eu/rescue/current/">BG-Rescue Linux</a></dt>
+<dd>
+<pre>
+title BG-Rescue Linux  (from FDx2)
+configfile (fd0)/grub/bgrescue.conf
+</pre>
+<ul>
+<li><a href="../archives/fdboot_liveusb4_files/grub/bgrescue.conf">/grub/bgrescue.conf</a></li>
+</ul>
+<pre>
+title BG-Rescue Linux 0.9.1 -- vga=normal
+pause  Insert ' vmlinuz ' Floppy and Press Enter
+kernel (fd0)/vmlinuz 
+pause  Insert ' initrd.img ' Floppy and Press Enter
+initrd (fd0)/initrd.img
+boot
+</pre>
+<p><strong class="ms">vmlinuz</strong> と <strong class="ms">initrd.img</strong> を順番にFDから読み込み</p>
+</dd>
+</dl>
+
+
+<h2><a href="#etc"><span class="ms">■</span></a> <a name="etc">備考</a></h2>
+
+<p>USB FDドライブだとこのGRUBはメチャ起動が遅いです。なんとかしたいです。（汗）</p>
+<p class="small">まぁ毎日とか使うわけじゃないのでこんなものかな、<em>と言うよりは作者の問題ですね。そうですね</em>。</p>
+
+
+<dl>
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="./fdboot_liveusb3.html#link">関連リンク -【合体編】</a></li>
+</ul>
+
+<ul>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/The_Syslinux_Project">The Syslinux Project - Syslinux Wiki</a>
+	<ul>
+	<li><a href="http://syslinux.zytor.com/wiki/index.php/MEMDISK">MEMDISK - Syslinux Wiki</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.plop.at/en/bootmanager.html">PLoP - Bootmanager - Free Boot Manager, builtin usb driver, native usb, boot different operating systems, cdrom, usb, freeware, option rom bios</a>
+	<ul>
+	<li><a href="http://www.plop.at/en/bootmngrusblog.html">PLoP - Bootmanager Status</a></li>
+	</ul>
+</li>
+</ul>
+
+<p class="small">とりあえず、拙作ばかり</p>
+
+<ul class="small">
+<li><a href="http://d.hatena.ne.jp/palm84/20080816/1218896213">PLoP Boot Manager（USBブート非対応PC用起動ディスク）</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="./fdboot_liveusb.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻</a>
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20071007/1191724420">USBブート非対応PCでFDブートからUSBメモリのLiveCD Linuxをブートしてみた</a></li>
+	</ul>
+</li>
+<li><a href="./fdboot_liveusb2.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻【その2】</a>
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20071023/1193151575">USBブート非対応PCでFDブートからUSBメモリのLiveCD Linuxをブートしてみた【その2】</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+
+
+</div>
+</div>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+<address>Written by yassy</address>
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+</body>
+
+</html>
+

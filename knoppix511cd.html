@@ -1,0 +1,1596 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="GENERATOR" content="EdTex Version 3.11">
+<link rel="START" href="./">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>KNOPPIX 5.3.1(5.1.1) CD で Windows XP のファイル救出＠Palm84</title>
+<style type="text/css">
+<!--
+
+h4 {
+	font-size: 1em;
+	font-weight: bold;
+	margin: 0.5em 0.5em 0.5em 1.5em;
+	padding-left: 0.5em;
+	border-left: 1em double #ccc;
+}
+
+-->
+
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+</head>
+
+
+<body class="munyu">
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+
+<h1><a href="knoppix511cd.html"><span class="tokai1">KNOPPIX 5.3.1(5.1.1) CD で Windows XP のファイル救出</span></a></h1>
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+<ul>
+<li><a href="#about">これって何？</a></li>
+<li><a href="#burncd">CDの作成</a></li>
+<li><a href="#utf8">UTF-8オプション</a>
+	<ul>
+	<li><a href="#label">起動LABEL</a></li>
+	</ul>
+</li>
+<li><a href="#mame">Knoppix豆知識</a></li>
+<li><a href="#mount">マウント</a>
+	<ul>
+	<li><a href="#backup">バックアップ対象</a></li>
+	</ul>
+</li>
+<li><a href="#network">ネットワークの設定</a></li>
+<li><a href="#samba">Windows ネットワークから</a></li>
+<li><a href="#text">テキストモード</a></li>
+<li><a href="#test">起動できない時</a></li>
+<li><a href="#memo">memo</a></li>
+</ul>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+<p><a href="http://getfirefox.jp/" title="Get Firefox - Web を取り戻せ">
+<img src="./images/takebacktheweb_small.png" width="125" height="50" alt="Get Firefox"></a></p>
+
+
+
+
+<p class="small">リンク is フリーダム<span class="ms">♪</span></p>
+
+</div>
+</div>
+
+
+
+<div class="main">
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/knoppix511cd.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+<img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/knoppix511cd.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<p class="small">2008.5.5 <a href="http://d.hatena.ne.jp/palm84/20070107/1168170860">KNOPPIX 5.0.1 CD で Windows XP のファイル救出 - Palm84 某所の日記</a>をちょっと改訂
+<br>2008.5.15 <a href="#smbd">テキストモードでのSamba サーバの設定</a> 訂正
+<br>2008.5.17 色々追記したらぐだぐだに...orz
+<br>最終更新日 2010.8.30</p>
+
+<p class="pink">※ KNOPPIX バージョン 5.3.1 (5.1.1) での確認です。6.x 以降ではかなり違うので参考にならないかもしれません。</p>
+
+<dl class="palmst small pink">
+<dt>最近の新しいPCでは...</dt>
+<dd>
+<p>KNOPPIX5.3.1CDのリリースは<strong>2008年3月</strong>です。それ以降に発売された新しい規格には対応していないかもしれませぬ。起動できないとか、起動はしてもHDを認識できないこともあります。</p>
+<p>これが使えない場合は下記のCD(DVD)をオススメしときます。</p>
+
+<ul>
+<li>KNOPPIX6.7.1 日本語版 - ライブＣＤの部屋
+	<ul>
+	<li>2011/9 リリース</li>
+	<li><a href="http://ftp.riken.jp/Linux/simosnet-livecd/knoppix/">Index of /Linux/simosnet-livecd/knoppix</a></li>
+	<li>ファイル名 : <code>KNOPPIX_V6.7.1CD-2011-09-14-JP.iso</code> (DVDサイズ 842MB)</li>
+	</ul>
+</li>
+<li>KNOPPIX6.7.1 CD日本語版 - 産総研
+	<ul>
+	<li>2011/10 リリース</li>
+	<li><a href="http://www.ring.gr.jp/pub/linux/knoppix/iso/">Index of /pub/linux/knoppix/iso</a></li>
+	<li>ファイル名 : <code>knoppix_v6.7.1CD_20110914-20111018.iso</code>（CDサイズ 693MB）</li>
+</ul>
+</li>
+<li>Ubuntu 11.04 Desktop 日本語 Remix CD（※ 11.10 は使いにくいかな？）
+	<ul>
+	<li>2011/4 リリース</li>
+	<li><a href="http://www.ubuntulinux.jp/products/JA-Localized/download">Ubuntu Desktop 日本語 Remix CDのダウンロード | Ubuntu Japanese Team</a> （約 700 MB）</li>
+	</ul>
+</li>
+<li>CDlinux-0.9.5 <em>Community</em>（※ 0.9.5 Standard は日本語なし）
+	<ul>
+	<li>2009/12 リリース</li>
+	<li><a href="http://cdlinux.info/wiki/doku.php/download/20100412">download:20100412 [CDlinux]</a> (214 MB)</li>
+	</ul>
+</li>
+<li>CDlinux-0.9.3 <em>Standard</em>（※ 日本語あり）
+	<ul>
+	<li>2009/7 リリース</li>
+	<li><a href="http://cdlinux.info/wiki/doku.php/download/20090903">download:20090903 [CDlinux]</a> (70 MB)</li>
+	</ul>
+</li>
+</ul>
+
+<p>KNOPPIX5.3.1(5.1.1) に比べツール類は少ないですが、自動マウントなどの機能はあるので単純なファイルコピーには十分使えると思います。</p>
+
+</dd>
+</dl>
+
+<p>Linuxユーザーには言わずもがにゃーなことばかりです。</p>
+
+<dl class="small pink">
+<dt>救出先として新品の、または<em>日本語名ファイルが保存されていない</em>USBメモリやUSB HDなどを使う場合</dt>
+<dd>
+<p>日本語ファイル名を適切に表示するオプションが設定されないことがあります。Knoppix上では正常でもWindowsで文字化けしてしまうことがあります。</p>
+<p>なので...以下を推奨しときます（日本語名ファイルを救出コピーしないなら不要ですが）</p>
+<ol>
+<li>Windows上で日本語名のファイルを保存しておく</li>
+<li>上記の既存ファイルがKnoppix起動後に正常表示されているか確認</li>
+<li>確認できたら救出コピーを開始する</li>
+</ol>
+<p>手動マウントでもいいのですけど...。日本語名ファイルが全く0だと英語モードでマウントされることがあるってことで。</p>
+<ul>
+<li>拙作めも :
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20110817/1313575927">KNOPPIX でファイル名が文字化けしたでござるの巻（FAT編）</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>日本語のファイル名が全然見えないよー（泣）</dt>
+<dd>
+<p>ダウンロードしたisoが違うんじゃない？</p>
+<ul>
+<li><a href="http://www.ring.gr.jp/pub/linux/knoppix/iso/">Index of /pub/linux/knoppix/iso</a> - 最新版のみ、5.x はなし</li>
+<li><a href="http://ftp.riken.jp/Linux/knoppix/iso/">Index of /Linux/knoppix/iso</a> - 5.3.1 あり</li>
+</ul>
+<p>日本語サイトのリンクからダウンロードできるものでも、isoのファイル名に <strong class="ms">xen</strong> が入ってるやつとかはデフォルトが英語設定となってるので日本語名ファイルが全く見えなかったりします。</p>
+</dd>
+
+<dt>NTFSのアクセス権のこと</dt>
+<dd>
+<p>Linuxなので<strong>NTFSのアクセス権などは無視されます</strong>。一部（※ Thumbs.db とか）を除きすべてコピー可能です。更新日時が現在日時になったりしますが、別のWindowsにUSBなどで接続した場合はアクセス権で苦労するので救出は楽かも。</p>
+</dd>
+
+<dt>暗号化してる場合は...</dt>
+<dd>
+<p>ファイル・フォルダを暗号化してる場合は全くだめ。TPMチップなどハードウェアで暗号化してる場合はどうなるのかな？多分だめかと。</p>
+</dd>
+</dl>
+<h2><a href="#about"><span class="ms">■</span></a> <a name="about">これって何？</a></h2>
+
+<dl class="palmst small">
+<dt>CDブートするには？</dt>
+<dd>
+<p>BIOSの設定でCDドライブを最優先にするか、電源オン時に何かのキー（<code>Esc</code> や <code>F8</code> - <code>F12</code> あたりかな？）を押して選択。</p>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/006cdromboot/cdromboot.html">CD-ROMブートを有効にするには － ＠IT</a></li>
+<li><a href="http://aopen.jp/tech/faq/mb/bios/intelich5/">BIOS設定</a></li>
+<li><a href="http://support2.jp.dell.com/jp/jp/mwfaq/faq.asp?faqno=100229">Support.Jp.Dell.Com - Q&#038;A詳細情報</a></li>
+<li><a href="http://mbsupport.dip.jp/biosboot.htm">CD-ROMから起動(BOOT)するBIOSの設定方法 - MB-Support パソコン初心者のサポートページ</a></li>
+<li><a href="http://www.alpha.co.jp/biz/products/knoppix/faq/starting.shtml">FAQ - KNOPPIXカスタマイズサービス</a></li>
+</ul>
+</dd>
+</dl>
+
+<p>とりあえず書いとこー。Windows XP がどうしても起動しない場合のファイル救出手段としての使い方です（※もちろんCDブートが可能でなければだめですけど）。この KNOPPIX CD でブートした場合の利点は下記の通りかな？</p>
+<ul>
+<li>ハードディスク及びUSBメモリなどのマウント（認識させて利用）が簡単</li>
+<li>NTFSパーティションも読み書き可能</li>
+<li>日本語名ファイルもOK（MS-DOSのロングファイルネームなどの制限もなし）</li>
+<li>Windowsネットワークからの操作も簡単</li>
+</ul>
+
+<p>メモリ(RAM)は256MB以上あればなんとか作業用には使えるかと。128MB以下の場合はテキストモードでないと無理かな。（<strong class="ms">fluxbox</strong> や <strong class="ms">twm</strong> を指定して <strong class="ms">Konsole</strong> で操作するという手もあるけど）</p>
+
+<dl class="palmst pink">
+<dt>ファイル救出について</dt>
+<dd>
+<p>Linux LiveCDでは、NTFSアクセス権は無視されますので、基本的にすべてのファイルのコピーが可能です。</p>
+<p>但し、ゾーン情報（インターネットからダウンロードしたファイルの属性情報など）などはエラーとなる、更新日時がコピー時に<del>なったり</del> <ins>なることがあったり</ins>、<span class="ms">Thumbs.db</span> がコピーできなかったりしますがそれほど問題ないかと</p>
+<p>HDを取り外して Windows マシンに繋ぐ場合はNTFSアクセス権がちとややこしいので、単純にファイルコピーするだけなら Linux の方が簡単かもしれませぬ。</p>
+
+<dl class="palmst small pink">
+<dt>コピーしたファイルの【更新日時】について</dt>
+<dd>
+<p>【作成日時】はコピー時となります。環境によって違うかもなので参考程度に。</p>
+
+<div class="ylt">
+<table class="book" summary="コピーしたファイルの更新日時 - USBメモリ" style="font-size:100%;">
+<caption>USBメモリ</caption>
+<tr>
+	<th abbr="USBメモリ">USBメモリ</th><th abbr="ディレクトリ">ディレクトリ</th><th abbr="ファイル">ファイル</th>
+</tr>
+<tr>
+	<td>Konqueror</td><td>元</td><td>元</td>
+</tr>
+<tr>
+	<td>cp -r</td><td>コピー時</td><td>コピー時</td>
+</tr>
+<tr>
+	<td>cp -R</td><td>コピー時</td><td>コピー時</td>
+</tr>
+<tr>
+	<td>cp -a</td><td>元</td><td>元</td>
+</tr>
+<tr>
+	<td>cp -aR</td><td>元</td><td>元</td>
+</tr>
+</table>
+
+<table class="book" summary="コピーしたファイルの更新日時 - ネットワーク" style="font-size:100%;">
+<caption>ネットワーク (Windows)</caption>
+<tr>
+	<th abbr="ネットワーク(Windows)">ネットワーク</th><th abbr="ディレクトリ">ディレクトリ</th><th abbr="ファイル">ファイル</th>
+</tr>
+<tr>
+	<td>Konqueror</td><td>コピー時</td><td>コピー時</td>
+</tr>
+<tr>
+	<td>Konqueror(手動マウント)</td><td>元</td><td>元</td>
+</tr>
+<tr>
+	<td>cp -r</td><td>コピー時</td><td>コピー時</td>
+</tr>
+<tr>
+	<td>cp -R</td><td>コピー時</td><td>コピー時</td>
+</tr>
+<tr>
+	<td>cp -a</td><td>元</td><td>コピー時</td>
+</tr>
+<tr>
+	<td>cp -aR</td><td>元</td><td>コピー時</td>
+</tr>
+</table>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+
+<dl>
+<dt>関連リンク</dt>
+<dd>
+<p>USBメモリ、ネットワークブートとか。</p>
+<ul class="small">
+<li><a href="./knoppix_boot.html">Knoppixを起動する方法を試しためも</a></li>
+<li><a href="./fdboot_liveusb2.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻【その2】</a></li>
+<li><a href="./livecd.html">私的 Linux LiveCDめも</a></li>
+</ul>
+</dd>
+</dl>
+
+<dl class="palmst small">
+<dt>CDドライブが不調、あるいはCDメディアの不良など</dt>
+<dd>
+<p>読み取りエラーなどが発生して、作業中にフリーズしたりするので危険かもしれません。メディアの不良なら信頼できるCD-Rメディアで焼き直したり、雑誌の付録CDなどを使うという手も。ドライブの不調の場合は、USBデバイスやネットワークブートにトライしてみるべきかも。</p>
+<p>ってか、こういう作業に慣れてる方に依頼するのが安心です。経験者にはどうってことないレベルなので...</p>
+</dd>
+</dl>
+
+
+<h2><a href="#burncd"><span class="ms">■</span></a> <a name="burncd">CDの作成</a></h2>
+
+<dl>
+<dt>5.3.1CD のダウンロード</dt>
+<dd>
+<p>5.3.1CDのダウンロードは下記ページより。5.1.1 と使い方はあまり変わらないと思います。</p>
+<ul>
+<li><a href="http://www.rcis.aist.go.jp/project/knoppix/">KNOPPIX Japanese edition（新サイト）</a>
+	<ul>
+	<li><del><a href="http://www.ring.gr.jp/pub/linux/knoppix/iso/knoppix_v5.3.1CD_20080326-20080520-AC.iso">knoppix_v5.3.1CD_20080326-20080520-AC.iso</a></del>（Ring）</li>
+	<li><a href="http://ftp.riken.jp/Linux/knoppix/iso/knoppix_v5.3.1CD_20080326-20080520-AC.iso">knoppix_v5.3.1CD_20080326-20080520-AC.iso</a>（理研）</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>MD5:</li>
+</ul>
+<pre>
+e6dd36e1790ab698be7473dd126e81e2
+</pre>
+
+<p>または、LCATなしのRemastaer版（私はこっち使うとります）</p>
+<ul>
+<li><del><a href="http://www.ring.gr.jp/pub/linux/knoppix/iso/knoppix_v5.3.1CD_20080326-20080520.iso">knoppix_v5.3.1CD_20080326-20080520.iso</a></del>（Ring）</li>
+<li><a href="http://ftp.riken.jp/Linux/knoppix/iso/knoppix_v5.3.1CD_20080326-20080520.iso">knoppix_v5.3.1CD_20080326-20080520.iso</a>（理研）</li>
+</ul>
+
+<ul>
+<li>MD5:</li>
+</ul>
+<pre>
+1b8de822b8296471383feeaac1a64056
+</pre>
+
+<p>※【ご注意】通常版以外はデフォルト設定が英語だったりするので間違えないようにしませう。</p>
+
+</dd>
+
+<dt>ISOイメージファイルの焼き方</dt>
+<dd>
+<ul>
+<li><a href="http://www12.atwiki.jp/linux2ch/pages/22.html">ISOイメージファイルの焼き方  - 2ch-Linux-Beginners</a></li>
+</ul>
+<p>※ 700MB CD-R(RW)に焼くこと。<strong>普通にファイルを焼く場合とは少し手順が違うことに注意</strong>。ドライブ不調の際など、<strong class="ms">CD-RW</strong> ではなく <strong class="ms">CD-R</strong> の方が確実。</p>
+
+<p>※ Windows 7 では標準でiso書き込みに対応してます。</p>
+<p>ライティングソフトがインストールされている場合、isoファイルをWクリックとかでisoイメージ書き込み用ソフトが起動することもあるかと。</p>
+
+<p><a href="http://www.terabyteunlimited.com/downloads-free-software.htm#burncdcc">BurnCDCC</a>とかでも簡単かも。</p>
+</dd>
+</dl>
+
+<dl class="small">
+<dt>旧版など</dt>
+<dd>
+<p class="palmst">Ring サーバには最新版しか置かれなくなりました。5.3.1 を含む旧バージョンは理研サーバにしかないようです。</p>
+<ul>
+<li><a href="http://www.rcis.aist.go.jp/project/knoppix/">KNOPPIX Japanese edition</a></li>
+<li><a href="http://www.ring.gr.jp/pub/linux/knoppix/iso/">Index of /pub/linux/knoppix/iso</a></li>
+<li>（理研 FTP）<a href="ftp://ftp.riken.go.jp/Linux/knoppix/iso/">ftp://ftp.riken.go.jp/Linux/knoppix/iso/</a></li>
+<li>（理研 http）<a href="http://ftp.riken.jp/Linux/knoppix/iso/">Index of /Linux/knoppix/iso</a></li>
+</ul>
+
+<ul>
+<li><strong class="ms">5.3.1CD</strong></li>
+</ul>
+<pre>
+knoppix_v5.3.1CD_20080326-20080520-AC.iso
+</pre>
+
+<ul>
+<li><strong class="ms">5.1.1CD</strong></li>
+</ul>
+<pre>
+knoppix_v5.1.1CD_20070104-20070122+IPAFont_AC20070123.iso
+</pre>
+
+<ul>
+<li><strong class="ms">5.0.1CD</strong></li>
+</ul>
+<pre>
+knoppix_v5.0.1CD_20060601-20060614+IPAFont_AC20060623.iso
+</pre>
+</dd>
+</dl>
+
+
+<h2><a href="#utf8"><span class="ms">■</span></a> <a name="utf8">ブート時にUTF-8（ユニコード）オプション指定</a></h2>
+
+<dl class="palmst pink">
+<dt>【追記】KNOPPIX 5.3.1CD</dt>
+<dd>
+<p><a href="http://www.rcis.aist.go.jp/project/knoppix/">KNOPPIX 5.3.1CD</a>では<strong>デフォルトがUTF-8となってるので起動時に入力する必要はありません</strong>。</p>
+</dd>
+</dl>
+
+<p class="pink">※ <strong>5.1.1(5.0.1)CDの場合です</strong>。</p>
+
+<p class="small">thanks to <a href="http://d.hatena.ne.jp/hanazukin/">hanazukin</a> さん</p>
+<p>ファイル名に機種依存文字（丸付き数字。正確にはユニコード文字かな？）を使用したファイル/フォルダを作成して確認してみました。オプションを指定しない場合（デフォルトの日本語ロケールは <code>EUC-JP</code>）は<strong>これらのファイル/フォルダを全く表示できませんでした</strong>（NTFSな場合）。<code>UTF-8</code> を指定するとファイルマネージャ（Konqueror）での表示、USBメモリなどへのコピーも可能となりました。</p>
+
+<p>起動時の画面で <code>boot:</code> に続けて下記のLABELとパラメータ入力</p>
+
+<p><img src="./images/knoppix511/syslinux_prompt.png" alt="ブートプロンプト画像" width="221" height="21"></p>
+
+<pre>
+knoppix lang=ja.utf8
+</pre>
+<p>【ご注意】この時、キーボードがUS配列。<kbd>=</kbd> は 一つ右の <kbd>へ</kbd> です。</p>
+
+<p>他の機種依存文字では確認してないので確実にすべてOKなのかどうかは？ですけど...。Root Shell から <code>cp -r</code>（※サブディレクトリも含め再帰的にコピー） で親ディレクトリをコピーするのが確実かもしれません。</p>
+<p><ins datetime="2007-01-31T20:25:40+09:00">※にょろ（～ 全角チルダ）や半角カタカナを含むファイル名、「年表.xls」などは問題ありませんでした。</ins></p>
+
+<div class="palmst">
+<p>尚、Knoppix 日本語版(LCR版)5.1.1（<a href="http://simosnet.com/livecdroom/index.html#knoppix">ライブＣＤの部屋</a>さん版）では、UTF-8がデフォルト (<code>lang=ja-utf8</code>)、ブート時のキーボード配列もjp106仕様となってます。</p>
+</div>
+
+
+<h3><a href="#label"><span class="ms">■</span></a> <a name="label">起動LABELと追加パラメータについて</a></h3>
+
+<p>ブートローダ <a href="http://syslinux.zytor.com/wiki/index.php/ISOLINUX">ISOLINUX</a>
+ の設定ファイル <strong class="ms">isolinux.cfg</strong> はCD内の <code>/boot/isolinux/isolinux.cfg</code> にあります。うまくブートできない時は参照してみるといいかも。</p>
+
+<p>起動時のプロンプト（入力画面）で何も入力せずにEnterした場合は <strong class="ms">DEFAULT</strong> の設定で起動（カーネルとミニルートイメージをロード）する。</p>
+<pre class="scl">
+DEFAULT linux
+APPEND ramdisk_size=100000 init=/etc/init lang=ja apm=power-off vga=791 initrd=minirt.gz nomce loglevel=0 quiet BOOT_IMAGE=knoppix
+</pre>
+
+<p><code>knoppix lang=ja.utf8</code> などと入力した場合、【LABEL knoppix】の設定に引数（パラメータ）【lang=ja.utf8】が追加されて起動します。</p>
+
+<pre class="scl">
+LABEL knoppix
+KERNEL linux
+APPEND ramdisk_size=100000 init=/etc/init lang=ja apm=power-off vga=791 initrd=minirt.gz nomce loglevel=0 quiet BOOT_IMAGE=knoppix
+</pre>
+
+<dl>
+<dt>その他の設定LABEL</dt>
+<dd>
+<p>起動時のプロンプト画面で<code>F2</code>キーを押すと表示されます。</p>
+<ul>
+<li><code>failsafe</code> - かなり機能を無効化した状態</li>
+<li><code>vaio</code> - VAIO用の特殊な設定かな？（※5.3.1はなし）</li>
+<li><code>dynabook</code> - dynabook用の特殊な設定かな？（※5.3.1はなし）</li>
+<li><code>dos</code> - FreeDOS(Balder)</li>
+<li><code>memtest</code> - Memtest</li>
+</ul>
+</dd>
+
+<dt>追加パラメータ</dt>
+<dd>
+<p>起動時のプロンプト画面で<code>F3</code>キーを押すと表示されます。</p>
+<p>特定の機能を無効にしないと起動できない時があります。</p>
+<ul>
+<li><code>acpi=off</code>, <code>noacpi</code> など - 電源管理関係を無効に</li>
+<li><code>nousb</code>, <code>nopcmcia</code> など - USB,PCMCIA（など）を無効</li>
+<li><code>xmodule=vesa</code> - X(GUI)でグラフィックドライバにvesa（汎用的なの）を使用</li>
+<li><code>desktop=fluxbox</code> - ウィンドウマネージャを fluxbox に変更</li>
+</ul>
+
+<p>詳しくは <code>/KNOPPIX/knoppix-cheatcodes.txt</code> を参照。</p>
+
+<ul>
+<li>うまく起動できない際に試してみる一例</li>
+</ul>
+<pre class="scl">
+boot: knoppix acpi=off noacpi lang=ja.utf8 vga=normal xmodule=vesa nopcmcia
+</pre>
+</dd>
+</dl>
+
+
+<h2><a href="#mame"><span class="ms">■</span></a> <a name="mame">Knoppix豆知識</a></h2>
+
+<ul>
+<li><strong>シャットダウン</strong>・<strong>再起動</strong>は、左下の <strong>Kメニュー</strong><span class="ms">→</span>【ログアウト】から
+	<ul>
+	<li>またはコマンドで、$ <code>sudo poweroff</code> (<code>sudo reboot</code>)</li>
+	</ul>
+</li>
+<li>ホームディレクトリ（デスクトップなど）などにファイルの一時保存が可能。<code>/ramdisk</code> のサイズは搭載メモリ(RAM)で決まるのかな。（※あまり保存しすぎるとアプリケーションが起動できなくなるので注意。）</li>
+<li>一部ファイルは一時書き換え可能</li>
+</ul>
+
+
+<p>Knoppixでは、管理者ユーザ (root)・一般ユーザ (knoppix) ともパスワードは設定されていません。</p>
+
+<dl>
+<dt>コマンドの <code>$</code> とか <code>#</code> って何？</dt>
+<dd>
+<ul class="small">
+<li><a href="http://www12.atwiki.jp/linux2ch/pages/53.html#id_74509b1f">コマンド入力例の $ や % とか # って何ですか? - 2ch-Linux-Beginners - BashIntroduction</a></li>
+</ul>
+
+<p><code><strong class="ms">$</strong></code> が一般ユーザでの操作。<code><strong class="ms">#</strong></code> はrootでの操作。</p>
+
+<p><a href="./konqueror.html#konsole">コンソール (Konsole)</a>画面での例</p>
+
+<p class="overflow3"><img src="./images/knoppix511/shell1.png" alt="コンソール (Konsole)画面1" width="506" height="67"></p>
+</dd>
+
+<dt>rootでコマンドを実行するには</dt>
+<dd>
+<p>root権限での操作方法は主に二通り。</p>
+<ul>
+<li>一般ユーザのまま、コマンドの先頭に <code><strong class="ms">sudo</strong></code> を付ける</li>
+</ul>
+<p><img src="./images/knoppix511/shell3.png" alt="コンソール (Konsole)画面3" width="322" height="27"></p>
+
+
+<ul>
+<li>または、<code>su</code>コマンドで一時的に <strong class="ms">root</strong> 権限を得る</li>
+</ul>
+<p><img src="./images/knoppix511/shell2.png" alt="コンソール (Konsole)画面2" width="394" height="46"></p>
+<p>一般ユーザに戻るには、<code>exit</code> または <kbd>Ctrl</kbd>-<kbd>D</kbd></p>
+</dd>
+</dl>
+
+
+<h2><a href="#mount"><span class="ms">■</span></a> <a name="mount">ハードディスクとUSBメモリのマウント</a></h2>
+
+<dl class="palmst pink">
+<dt>Konqueror と Konsole</dt>
+<dd>
+<ul>
+<li><a href="./konqueror.html">Konqueror と Konsole</a></li>
+</ul>
+<ul>
+<li><img src="./images/knoppix511/konq_icon.png" alt="ホームアイコン" width="42" height="48"> <code><strong class="ms">Konqueror</strong></code> - ファイルマネージャ</li>
+<li><img src="./images/knoppix511/konsole_icon.png" alt="Konsoleアイコン" width="42" height="48"> コンソール (<strong class="ms">Konsole</strong>) - コマンド窓（端末エミュレータ）</li>
+</ul>
+</dd>
+</dl>
+
+<p><img src="./images/knoppix511/hda1_icon.png" alt="ハードディスクのアイコン" width="62" height="75"> <img src="./images/knoppix511/sda1_icon.png" alt="USBメモリのアイコン" width="62" height="75"></p>
+
+<p>記憶デバイスは自動認識されれば、デスクトップにアイコンが浮かんでますので、その<strong>アイコンをクリックすればマウントされます</strong>。同時に <strong class="ms">Konqueror</strong>（Windowsのエクスプローラみたいなの） が起動しますので内容を確認しておきます。</p>
+<dl>
+
+<dt>USBメモリなどはKNOPPIX起動後に接続した方がいいかも？</dt>
+<dd>
+<p>※USBメモリなどはKNOPPIX起動後に接続した方がいいかと。書き込み可能で自動マウントされるはず。</p>
+<p>接続後に自動認識された場合はこんな画面 <a href="./images/knoppix511/knoppix_usbmemory.png"><img src="./images/knoppix511/knoppix_usbmemory_s.png" alt="USBメモリ検出画面" width="81" height="86"></a> が出るので、【新しいウィンドウで開く】を選択すると書き込み可能状態でKonquerorが開きました。</p>
+</dd>
+</dl>
+
+<p class="small">※自動認識されない場合は、コマンド $ <code>sudo rebuildfstab</code> と打ってみるとか。</p>
+<p class="small">※mountコマンドを実行した場合はrootでなくても書き込み可能でマウントされるはずです。</p>
+
+<dl>
+<dt>デバイス（ファイル）名とか</dt>
+<dd>
+<p>Windowsとはかなり違うんですねぇ。<strong>/dev/なんとか</strong> で認識されます。利用するにはマウントポイント（<code>/media/hda1</code>, <code>/mnt/hda1</code> とか）にマウントする必要があるわけなのでした。</p>
+<p>Knoppixではアイコンクリックで自動でやってくれます。</p>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%9A%E3%82%B7%E3%83%A3%E3%83%AB%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB">スペシャルファイル - Wikipedia</a></li>
+</ul>
+<ul>
+<li>ハードディスク・USBメモリなど<strong>パーティションを切ってある場合は末尾に数字が付く</strong>（論理領域は 5 以降となる）</li>
+<li><code>hda</code> - （※IDE接続の）1台目のハードディスクドライブ。通常プライマリマスタ。
+	<ul class="nest">
+	<li>※IDE接続のDVD/CDドライブなどは、<code>hdc</code>, <code>hdd</code> など</li>
+	</ul>
+</li>
+<li><code>hda1</code> - （※IDE接続の）1台目のハードディスクドライブの1番目のパーティション</li>
+<li><code>sda</code> (<code>sdb</code>...) - SCSI、Serial ATA、USB接続のドライブなど</li>
+<li><code>sr0</code> （または、<code>scd0</code> など）- USB-CDドライブなど</li>
+</ul>
+
+<p>※ 通常 Windows上のCドライブは <code>hda1</code>(<code>sda1</code>,<code>sdb1</code>)となる場合が多いと思われますが、メーカー製パソコンなどはリカバリー用隠しパーティションがあったりするので<code>hda2</code>(<code>sda2</code>,<code>sdb2</code>)とかになることもあるかと。とりあえず内容も確認しましょう。USBフロッピーなどを同時接続している場合はUSBメモリが <code>sdb</code> や <code>sdc</code> になったりします。</p>
+
+<p class="pink">※ 1台目の内蔵HDが <code>/dev/<strong class="ms red">h</strong>da</code> となるのは、IDE (<strong>パラレルATA</strong>) 接続のHDの場合です。最近のHDは<strong>シリアルATA</strong>接続なので  <code>/dev/<strong class="ms red">s</strong>da</code> となります。</p>
+
+<div class="palm2 small">
+<p>メーカー製パソコンの例</p>
+<ul>
+<li>VAIOの一例 - 内蔵HDが IDE(P-ATA接続) の場合
+	<ul class="nest">
+	<li><code>hda1</code> - リカバリー領域(NTFS)</li>
+	<li><code>hda2</code> - Windows上のCドライブ(NTFS)</li>
+	<li><code>hda5</code> - Windows上のDドライブ(NTFS)</li>
+	</ul>
+</li>
+<li>DELLの一例 - 内蔵HDが IDE(P-ATA接続) の場合
+	<ul class="nest">
+	<li><code>hda1</code> - リカバリープログラム(FAT)</li>
+	<li><code>hda2</code> - Windows上 の Cドライブ(NTFS)</li>
+	<li><code>hda3</code> - リカバリーイメージ(FAT32)</li>
+	<li>（ないかも？）<code>hda5</code> - Windows上のDドライブ(NTFS)</li>
+	</ul>
+</li>
+</ul>
+</div>
+</dd>
+
+<dt>書き込み可能でマウント</dt>
+<dd>
+<p>このままですと、<strong>読み取り専用マウントとなってるので、書き込みが必要な場合はUSBメモリ（など）を設定変更</strong>します。</p>
+
+<p><img src="./images/knoppix511/context_menu.png" alt="コンテキストメニュー" width="224" height="210"></p>
+
+<p><img src="./images/knoppix511/change_writable.png" alt="確認画面" width="413" height="153"></p>
+<p class="small">※「<code>to be read-only?</code>」と出る場合は既に書き込み可能になってます。</p>
+
+<ol>
+<li>「<code>sda</code>」（など）のアイコンを右クリック</li>
+<li>「<code>Change read/write mode</code>」をクリック</li>
+<li>「<code>to be writable?</code>」を確認してYesをクリック</li>
+</ol>
+<p>これでUSBメモリへのファイルのコピーが可能になります（KNOPPIX起動後に接続した場合は既に書き込み可能になってるかも）。</p>
+</dd>
+</dl>
+
+<p>USBメモリがない場合はデジカメ用などのフラッシュメモリ使ってもいいかも。USB接続カードリーダ（またはカードリーダ付プリンタ等）はおそらく sd<var>x</var> で認識されると思います。(容量を考えると一番いいのは<strong>USB接続ハードディスク</strong>ですけどね...)</p>
+<p>デジカメ（リムーバブルデバイスとして使えるもの）とかをUSBで直接繋ぐって手もありますね。これも sd<var>n</var>で認識されるはずです。（※容量が小さいとアレですが...）</p>
+
+
+<dl>
+<dt>SDメモリ/メモリースティック用PCカード型アダプタ</dt>
+<dd>
+<p>SDメモリ/メモリースティック用PCカード型アダプタは <code>hde1</code>(マウントポイントは <code>/mnt/hde1</code>)で認識されました。</p>
+</dd>
+
+<dt>ネットワークドライブ / LAN接続ハードディスク</dt>
+<dd>
+<p><strong>LAN接続ハードディスク</strong>などへコピーする場合は、Konquerorのメニューの「移動」（「進む」）から「ネットワークフォルダ」<span class="ms">→</span>「Samba共有」</p>
+</dd>
+</dl>
+
+<dl class="palmst">
+<dt>アイコンクリックでマウントできない</dt>
+<dd>
+<div class="small">
+<ul>
+<li>参考：
+	<ul class="nest">
+	<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/795chkdskf/chkdskf.html">ファイル・システムが「ダーティ」とは？ - システム起動時に強制的にchkdskを実行させる － ＠IT</a></li>
+	</ul>
+</li>
+</ul>
+<p>Windowsが正常にシャットダウンされなかった場合、「ダーティ・フラグ」が付くようです。Linuxでマウントしようとすると <code>ERROR: Volume is dirty</code> などと警告が出てマウントできないことがあります。回復コンソールからchkdskで治るかもしれませんが、余計におかしくなったり、トドメさしちゃう可能性もあるので判断難しいけど、安全のために読み取り専用でマウント試すべきかなぁと。（一概に言えませんけど。）</p>
+</div>
+<p>「カシャーン」とか音がしてマウントできないとか。Windowsがエラーで起動できない時などはマウントできないかもしれません。以下のコマンドを試して見てください。</p>
+<p class="small">※デスクトップのアイコンが【Hard Disk [<strong class="ms">hda1</strong>]の場合】</p>
+<pre class="scl">
+$ cat /etc/fstab      <span class="red">&#045;&#045;&#045;&#045;&#045;&#045;&#045;&#045;&#045;【/dev/hda1】の列があるか確認</span>
+$ sudo umount /dev/hda1 <span class="red">&#045;&#045;&#045;&#045;&#045;&#045;&#045; 念の為にアンマウント</span>
+$ sudo mount &#045;o ro /dev/hda1 &#045;&#045; <span class="red">読み取り専用でマウント試す</span>
+</pre>
+<p class="small">fstab に記述がないとかだとHDに異常あるかも？また、デスクトップにアイコンが無い場合は認識されてないかも？再起動して再度試すか、別のLiveCDを使うか？ <code><strong>force</strong></code> を付けて強制マウントするか？この手の情報に精通してる人に相談した方がいいかもしれません。壊れかけの場合は下手にいじるとトドメを挿しちゃう場合があるので（まぁ一概にいえませんけど）。</p>
+</dd>
+</dl>
+
+<dl>
+<dt>マウントのオプション確認</dt>
+<dd>
+<p>ハードディスク及びUSBメモリでは問題ないようですが、メモリカード用PCカードアダプタではKNOPPIX上で保存した日本語名ファイルが Windows 上では文字化けしたりしました。コードページ・文字セットオプションが指定されていないことが原因のようです。</p>
+<ul>
+<li>mount コマンドで確認</li>
+</ul>
+<pre class="scl">
+$ mount
+＜省略＞
+/dev/hda1 on /media/hda1 type fuse (ro,nosuid,nodev,default_permissions,allow_other,user=knoppix)
+/dev/hda2 on /media/hda2 type vfat (rw,nosuid,nodev,umask=000,shortname=winnt,uid=1000,gid=1000,iocharset=utf8,codepage=932)
+/dev/hde1 on /mnt/hde1 type vfat (rw,nosuid,nodev)
+/dev/sda on /media/sda type vfat (rw,nosuid,nodev,umask=000,shortname=winnt,uid=1000,gid=1000,iocharset=utf8,codepage=932)
+</pre>
+<p>（※<code>type vfat</code>のうち）<code>/dev/hde1</code>のオプションが指定されていないのでマウントし直します。</p>
+<pre class="scl">
+$ sudo umount /dev/hde1
+$ sudo mount -t vfat -o rw,uid=1000,gid=1000,iocharset=utf8,codepage=932,shortname=winnt /dev/hde1 /mnt/hde1
+</pre>
+<p class="small">※FAT(16/32)パーティションのファイル名のアルファベット大文字をそのままコピーするには、オプション<code>shortname=winnt</code>が必要でした。</p>
+<ul>
+<li>mount コマンドで確認</li>
+</ul>
+<pre class="scl">
+$ mount
+＜省略＞
+/dev/hda1 on /media/hda1 type fuse (ro,nosuid,nodev,default_permissions,allow_other,user=knoppix)
+/dev/hda2 on /media/hda2 type vfat (rw,nosuid,nodev,umask=000,shortname=winnt,uid=1000,gid=1000,iocharset=utf8,codepage=932)
+/dev/sda on /media/sda type vfat (rw,nosuid,nodev,umask=000,shortname=winnt,uid=1000,gid=1000,iocharset=utf8,codepage=932)
+/dev/hde1 on /mnt/hde1 type vfat (rw,uid=1000,gid=1000,iocharset=utf8,codepage=932,shortname=winnt)
+</pre>
+<p class="small">※オプションの <code>rw</code> は書き込み可能。<code>ro</code> は読み取り専用となります。</p>
+</dd>
+</dl>
+
+
+
+<h3><a href="#backup"><span class="ms">■</span></a> <a name="backup">バックアップ対象はどこ？</a></h3>
+
+<p>主なとこだけですが...面倒なら <code><strong>Documents and Settings</strong></code> を丸ごとコピーするってのもありかなぁ？容量が足りればですけど。</p>
+
+<dl class="palmst">
+<dt>ウイルス感染時などは...</dt>
+<dd>
+<p class="small"><strong class="red">バックアップファイルを書き戻す際</strong>には注意すること。不正な設定ファイルなどを書き戻さないように。リカバリー直後などセキュリティホールのある状態では、画像ファイルなど開いただけでウイルス感染してしまうこともありうるので、<strong>Windows Update や Office Update、ウイルス対策ソフトの導入及びプラグインなども最新版にアップデート後に処置すべき</strong>です。
+
+<p class="small">【スタートアップ】フォルダに不正な <strong class="ms">reg</strong>, <strong class="ms">bat</strong>, <strong class="ms">exe</strong>ファイルなんかが置かれてる場合があります。<strong>必要最小限、再設定・再入手不可能なもののみ</strong>を、複数の手段（オンラインスキャンなどを併用）でウイルススキャンを掛けて、細心の注意を持って戻すようにしませう。</p>
+
+<p class="small">とは言え、どこまでやったら安全なのかは一概に言えないんで不安なら「<strong>泣いて馬謖を斬る</strong>」べし（ちょっと意味違ｗ）</p>
+<p class="small">※まぁ、信頼できる詳しい方に相談してみるのがいいかと。（ビールとか「飲みねぇ飲みねぇ」しつつとかｗ）</p>
+</dd>
+</dl>
+
+
+<ul>
+<li>参考（拙作）
+	<ul>
+	<li><a href="http://www10.plala.or.jp/palm84/backup.html">私的バックアップ用リンク集</a></li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt>Windows XPの【マイ ドキュメント】フォルダ</dt>
+<dd>
+<ul>
+<li>マウント先の <code>Documents and Settings/ユーザ名/My Documents</code></li>
+</ul>
+</dd>
+
+<dt>【デスクトップ】</dt>
+<dd>
+<ul>
+<li><code>Documents and Settings/ユーザ名/デスクトップ</code></li>
+</ul>
+</dd>
+
+
+<dt>お気に入り</dt>
+<dd>
+<ul>
+<li><code>Documents and Settings/ユーザ名/Favorites</code></li>
+</ul>
+</dd>
+
+<dt>Outlook Express メールデータ</dt>
+<dd>
+<ul>
+<li><code>Documents and Settings/ユーザ名/Local Settings/Application Data/Identities/{長い数字の羅列}/Microsoft/Outlook Express</code></li>
+</ul>
+</dd>
+
+<dt>アドレス帳</dt>
+<dd>
+<ul>
+<li><code>Documents and Settings/ユーザ名/Application Data/Microsoft/Address Book</code></li>
+</ul>
+</dd>
+
+<dt>Microsoft Outlook 全データ</dt>
+<dd>
+<p>Outlook（Outlook Express ではない）の場合は、予定表や仕事とかも一つのファイルだったりしますねぇ（Outlook.pstとか）</p>
+<ul>
+<li><code>Documents and Settings/ユーザ名/Local Settings/Application Data/Microsoft/Outlook</code></li>
+</ul>
+</dd>
+
+<dt>個人用設定など</dt>
+<dd>
+<p>Microsoft Office, Firefox, Opera ..など丸ごと</p>
+<ul>
+<li><code>Documents and Settings/ユーザ名/Application Data</code></li>
+</ul>
+
+<dl>
+<dt>IME辞書データなど</dt>
+<dd>
+<ul>
+<li><code>Documents and Settings/ユーザ名/Application Data/Microsoft/IMJPなんとか</code></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+<h2><a href="#network"><span class="ms">■</span></a> <a name="network">ネットワークの設定</a></h2>
+
+
+<p>ルータのDHCPサーバ機能が有効ならTCP/IPの設定は自動設定されます。通常は有効になっているはずです。
+
+<p>よってルータ（DHCPサーバ）のある環境で、NIC（LANアダプタ）が正常に認識されれば手動設定する必要は通常ありません。</p>
+
+
+
+<h3><a href="#nodhcp"><span class="ms">■</span></a> <a name="nodhcp">ルータがない環境での手動設定</a></h3>
+
+
+<p><strong>ルータがない環境で</strong>ハブ経由で別マシンへの接続、あるいはクロスケーブルで2台を直接繋ぐ場合など、手動設定方法。</p>
+
+<dl class="palmst">
+<dt>別のWindowsマシンの設定</dt>
+<dd>
+<p><strong>ルータがない環境で</strong>別のWindowsマシンとハブ経由、またはクロスケーブルで直接接続する場合</p>
+<ol class="small">
+<li>【ローカル エリア接続】のプロパティ <span class="ms">→</span> インターネット プロトコル(TCP/IP)</li>
+<li>【IPアドレス】を <code><strong class="ms">192  168  0  10</strong></code> （など）にする</li>
+<li>【サブネット マスク】を <code><strong class="ms">255  255  255  0</strong></code> にする</li>
+</ol>
+
+<ul class="small">
+<li><a href="http://support.microsoft.com/kb/883006/ja#1">ネットワーク コンポーネントを設定するには - ネットワーク上でフォルダやファイルを共有するには</a></li>
+</ul>
+
+<p class="small">※ファイアウォールなどは一時的に無効にする</p>
+<p class="small">※クロスケーブルより、ストレート/クロス変換セットを持っておくと結構便利です。</p>
+</dd>
+</dl>
+
+
+<dl>
+<dt>デバイス（ファイル）名の確認</dt>
+<dd>
+<p>NIC（LANアダプタ）が一つしかない場合は普通<code>eth0</code>ですが、IEEE1394も検出される場合があるので一応確認しておく。</p>
+<pre>
+$ dmesg | grep eth
+</pre>
+<pre class="scl">
+eth1394: eth0: IEEE-1394 IPv4 over 1394 Ethernet (fw-host0)
+eth1: VIA Rhine II at 0xdffffe00, 00:40:45:**:**:**, IRQ 11.
+eth1: MII PHY found at address 1, status 0x7869 advertising 05e1 Link 45e1.
+eth1: link up, 100Mbps, full-duplex, lpa 0x45E1
+eth1: no IPv6 routers present
+</pre>
+<p class="small">この場合は、IEEE-1394 が eth0 となってるので、<code>eth1</code> であることがわかります。</p>
+</dd>
+
+<dt>IPアドレスの設定</dt>
+<dd>
+<ul class="small">
+<li>【ペンギンアイコン】<span class="ms">→</span>【Network/Internet】<strong class="ms">→</strong>【ネットワークカードの設定】</li>
+<li>または、コマンド <code>netcardconfig &#038;</code></li>
+</ul>
+<p>上記のツール（スクリプト）でもいいのですが、直結してる場合など（※インターネットは使えない）はゲートウェイ・DNSサーバの設定は不要なので、コマンド打った方が早いかも。</p>
+<pre>
+$ sudo ifconfig <var>eth1</var> inet <var>192.168.0.20</var>
+</pre>
+
+<ul>
+<li>確認</li>
+</ul>
+<pre class="scl">
+$ ifconfig
+eth1      Link encap:Ethernet  HWaddr 00:40:45:**:**:**  
+          inet addr:<var>192.168.0.20</var>  Bcast:192.168.0.255  Mask:255.255.255.0
+＜あとは略＞
+</pre>
+
+<ul>
+<li>参考：
+	<ul>
+	<li><a href="http://www.atmarkit.co.jp/fnetwork/netcom/ifconfig/ifconfig.html">ifconfig - （IP）ネットワーク環境の確認／設定を行う</a></li>
+	</ul>
+</li>
+</ul>
+
+</dd>
+
+</dl>
+
+
+
+
+
+
+
+
+<h2><a href="#samba"><span class="ms">■</span></a> <a name="samba">Windows ネットワークからアクセス</a></h2>
+
+<p>別のWindowsマシンがあるなら割と簡単。</p>
+
+<dl>
+<dt>事前にマウントしておく</dt>
+<dd>
+<p>Windowsマシンなどからアクセスさせたいパーティション（ドライブ）を上記の方法でマウントしておく。</p>
+</dd>
+
+<dt>Samba サーバの起動</dt>
+<dd>
+<dl class="palmst">
+<dt>【追記】5.3.1CDでは・・・</dt>
+<dd>
+<p>パスワード入力画面が何度も出てくることがあるようです。2回ほど入力後にcancelすればいいみたいです？</p>
+</dd>
+</dl>
+
+<p><img src="./images/knoppix511/start_samba.png" alt="Start Samba server メニュー" width="319" height="156"></p>
+
+<ol>
+<li>KNOPPIXメニュー（ペンギンアイコン）<span class="ms">→</span>【<strong class="ms">Services</strong>】<span class="ms">→</span>【<strong class="ms">Start Samba Server</strong>】</li>
+<li>任意のパスワードを入力</li>
+<li>次の画面でYesで書き込み可能に（マウントの設定次第です）</li>
+</ol>
+
+
+<p class="lt"><img src="./images/knoppix511/sambastart1.png" alt="sambastartダイアログ画面1" width="283" height="150"></p>
+<p>任意のパスワードを入力してOK</p>
+
+<div class="cl">
+<p class="lt"><img src="./images/knoppix511/sambastart2.png" alt="sambastartダイアログ画面2" width="283" height="150"></p>
+<p>もう一度入力してOK</p>
+</div>
+
+<div class="cl">
+<p class="overflow3"><img src="./images/knoppix511/sambastart3.png" alt="sambastartダイアログ画面3" width="543" height="103"></p>
+<p>【マウントされたドライブ（パーティション）を共有させるか？】でYes</p>
+</div>
+
+<ul>
+<li>Sambaサーバの設定ファイルに [hda1] [hda2]（など）が追記されているか確認</li>
+</ul>
+<pre class="scl2">
+$ tail -n 20 /etc/samba/smb.conf
+    comment = /media/hdc
+    browseable = yes
+    path = /media/hdc
+    writeable = yes
+    preexec = /bin/mount /media/hdc
+    postexec = /bin/umount /media/hdc
+[hda1]
+    comment = /media/hda1
+    browseable = yes
+    path = /media/hda1
+    writeable = yes
+    preexec = /bin/mount /media/hda1
+    postexec = /bin/umount /media/hda1
+[hda2]
+    comment = /media/hda2
+    browseable = yes
+    path = /media/hda2
+    writeable = yes
+    preexec = /bin/mount /media/hda2
+    postexec = /bin/umount /media/hda2
+</pre>
+
+<ul>
+<li>Samba (NetBIOS) サーバの起動確認</li>
+</ul>
+<pre class="scl">
+$ netstat -tua | grep netbios
+tcp        0      0 *:<strong class="red">netbios</strong>-ssn           *:*                     LISTEN
+udp        0      0 192.168.0.12:<strong class="red">netbios</strong>-ns *:*
+udp        0      0 *:<strong class="red">netbios</strong>-ns            *:*
+udp        0      0 192.168.0.1:<strong class="red">netbios</strong>-dgm *:*
+udp        0      0 *:<strong class="red">netbios</strong>-dgm           *:* 
+</pre>
+</dd>
+
+
+<dt>KNOPPIXのIPアドレスを確認</dt>
+<dd>
+<p>KNOPPIXのIPアドレスを確認。「eth0」または「eth1」。（※IEEE1394端子がある場合は「eth1」になったりします。）</p>
+<pre class="scl">
+$ ifconfig
+＜省略＞
+eth1      Link encap:Ethernet  HWaddr 00:40:45:**:**:**
+          <strong>inet addr:192.168.0.12</strong>  Bcast:192.168.0.255  Mask:255.255.255.0
+＜省略＞
+</pre>
+<p class="small">※この例ではIPアドレスは、<code><strong class="ms">192.168.0.12</strong></code></p>
+</dd>
+
+<dt>Windowsマシンからアクセス</dt>
+<dd>
+<ol>
+<li>「Microsoft ネットワーク用クライアント」（Workstationサービスも）を有効に
+	<ul class="small">
+	<li><a href="http://www.sophos.co.jp/support/knowledgebase/article/12591.html">Windows コンピュータで Microsoft ネットワーク用クライアントを有効にする</a></li>
+	</ul>
+</li>
+<li>ファイル名を指定して実行 - <code>\\IPアドレス</code>（または <code>\\knoppix</code>）</li>
+</ol>
+<p>※ユーザ名は「knoppix」パスワードは設定したもので</p>
+</dd>
+
+</dl>
+
+<p>※読み取り専用でマウントした場合、ネットワーク上では一旦削除されるように見える場合がありますが実際には削除されません。</p>
+
+<div class="palmst">
+<p><strong>KNOPPIX 5.1.1, 5.3.1 CD</strong> では、起動させるとマウントされたすべてのドライブのパスが<code>smb.conf</code> に自動的に追記されてたので、事前にマウントしておけば<code>smb.conf</code> の編集作業は必要ないと思われます。確認は、<code>cat /etc/samba/smb.conf</code> で。</p>
+<dl>
+<dt class="small">smb.conf を編集</dt>
+<dd>
+<p><em>5.0.1</em>CDでは下記のいずれかの作業が必要でした。</p>
+<dl>
+<dt class="small">ホームディレクトリにリンク張る</dt>
+<dd>
+<pre>
+$ ln -s /media /home/knoppix
+</pre>
+<pre>
+$ ln -s /mnt /home/knoppix
+</pre>
+</dd>
+
+<dt class="small">smb.conf に直接追記</dt>
+<dd>
+<p class="small">hda1 と hda2 にアクセスさせたい場合</p>
+<ol class="small">
+<li>コンソール (Konsole)を起動</li>
+<li><code>sudo kwrite /etc/samba/smb.conf</code> と入力</li>
+<li>smb.conf が開くので 文末に以下を追記</li>
+</ol>
+<pre>
+[hda1]
+    path = /media/hda1
+[hda2]
+    path = /media/hda2
+</pre>
+<p class="small">保存して終了。Sambaサービスを再起動。コ</p>
+<pre>
+sudo /etc/init.d/samba restart
+</pre>
+</dd>
+</dl>
+</dd>
+</dl>
+
+</div>
+
+
+<h3><a href="#samba_rw"><span class="ms">■</span></a> <a name="samba_rw">ネットワークから書き込み（削除）可能でマウント</a></h3>
+
+<p>※<strong>KNOPPIX 5.1.1, 5.3.1 CD では smb.conf の編集は不要でした</strong>。</p>
+<p class="small">LinuxのNTFS書き込み対応はまだまだ不安な面もあるので(?)あくまで自己責任にて...</p>
+
+<p>KNOPPIX上で書き込み可能でマウント。smb.conf を編集して、Sambaサービスを再起動。</p>
+<p>smb.conf を編集</p>
+<pre>
+$ sudo kwrite /etc/samba/smb.conf
+</pre>
+<pre>
+[hda1]
+    path = /media/hda1
+    read only = no
+    create mask = 0775
+    directory mask = 0775
+    writable = yes
+
+[hda2]
+    path = /media/hda2
+    read only = no
+    create mask = 0775
+    directory mask = 0775
+    writable = yes
+</pre>
+
+
+<h2><a href="#text"><span class="ms">■</span></a> <a name="text">テキストモードで起動</a></h2>
+
+<dl class="palmst">
+<dt class="small">軽いウィンドウマネージャでの起動</dt>
+<dd>
+<p class="small">メモリ128MBのマシンではデフォルトのKDE環境では無理だと思われますが、<strong class="ms">fluxbox</strong> や <strong class="ms">twm</strong> などの軽めのウィンドウマネージャを指定するという手もありかなぁと。操作はコンソール (Konsole) でのコマンドで、動作もかな～り重い、というかスローモーですが、日本語ファイル名の表示も可能なので。</p>
+<pre>
+boot: knoppix desktop=<var>fluxbox</var> lang=ja.utf8
+</pre>
+</dd>
+</dl>
+
+<p>メモリが少ないマシン（128MBとか）や、X(GUI)が起動できない時とか。慣れてる人は案外こっちの方が簡単だったりするかも。</p>
+
+<ul>
+<li>シャットダウンは - # <code>poweroff</code></li>
+<li>再起動は - # <code>reboot</code></li>
+<li>コマンドの中断は - <strong class="ms"><kbd>Ctrl</kbd>-<kbd>C</kbd></strong></li>
+</ul>
+
+<dl>
+<dt>ブートオプション</dt>
+<dd>
+<pre>
+boot: knoppix lang=ja.utf8 keyboard=jp106 2
+</pre>
+<p>コマンドの英語メッセージは多分文字化けするので、コマンドの先に<code>LANG=C</code>を付けて実行（ <code># export LANGUAGE=en</code> の実行でいいかもしれない）。親ディレクトリを指定して日本語名ファイル（機種依存文字など含む）のコピーが可能です。</p>
+<p class="small">※<strong class="ms">5.0.1</strong>では<strong class="ms">jfbterm</strong>の実行で（全画面）コンソールで日本語ファイル名表示が可能。</p>
+<p>※日本語名ファイルの救出が不要なら、<code>lang=us</code>を指定すれば英語メッセージは正常に表示可能。但し、日本語名ファイルはすべて非表示となりコピーも不可。（※<code>lang=ja</code>を指定した場合は機種依存文字を含む日本語名ファイルの救出が不可でした。）</p>
+<p class="small">※テキストモードで日本語表示/入力したい場合は<a href="http://hatochan.dyndns.org/slax-ja/">slax-ja</a>を使う方がいいかと。</p>
+</dd>
+
+<dt>マウントポイント/オプションの確認</dt>
+<dd>
+<pre class="scl">
+# cat /etc/fstab
+
+/proc      /proc       proc   defaults            0 0
+/sys       /sys        sysfs  noauto              0 0
+/dev/pts   /dev/pts    devpts mode=0622           0 0
+/dev/fd0   /media/fd0  auto   user,noauto,exec,umask=000    0 0
+/dev/cdrom /media/cdrom  auto   user,noauto,exec,ro 0 0
+# Added by KNOPPIX
+/dev/hda1 <strong>/media/hda1</strong> <strong>ntfs</strong> noauto,users,exec,umask=000,uid=knoppix,gid=knoppix,nls=utf8 0 0
+# Added by KNOPPIX
+/dev/hda2 <strong>/media/hda2</strong> <strong>vfat</strong> noauto,users,exec,umask=000,shortname=winnt,uid=knoppix,gid=knoppix,iocharset=utf8,codepage=932 0 0
+# Added by KNOPPIX
+/dev/hda3 /media/hda3 auto noauto,users,exec 0 0
+# Added by KNOPPIX
+/dev/hda4 /media/hda4 ext3 noauto,users,exec 0 0
+# Added by KNOPPIX
+/dev/sda <strong>/media/sda</strong> <strong>vfat</strong> noauto,users,exec,umask=000,shortname=winnt,uid=knoppix,gid=knoppix,iocharset=utf8,codepage=932 0 0
+</pre>
+</dd>
+
+<dt>マウント実行</dt>
+<dd>
+<ul>
+<li>マウント実行（読み取り専用）</li>
+</ul>
+<pre>
+# mount -r /dev/hda1
+# mount -r /dev/hda2
+</pre>
+
+<div class="palmst">
+<ul>
+<li>※書き込み可能でマウントする場合</li>
+</ul>
+<pre>
+# mount /dev/hda1
+# mount /dev/hda2
+</pre>
+</div>
+</dd>
+
+<dt>マウント状態確認</dt>
+<dd>
+<pre class="scl">
+# mount
+
+/dev/root on / type ext2 (rw)
+/ramdisk on /ramdisk type tmpfs (rw,size=478704k)
+/UNIONFS on /UNIONFS type unionfs (rw,dirs=/ramdisk=rw:/KNOPPIX=ro,delete=whiteout)
+/dev/hdc on /cdrom type iso9660 (ro)
+/dev/cloop on /KNOPPIX type iso9660 (ro)
+/proc on /proc type proc (rw)
+/proc/bus/usb on /proc/bus/usb type usbfs (rw,devmode=0666)
+/dev/pts on /dev/pts type devpts (rw)
+/dev/hda1 on /media/hda1 type fuse (ro,nosuid,nodev,default_permissions,allow_other)
+/dev/hda2 on /media/hda2 type vfat (ro,nosuid,nodev,umask=000,shortname=winnt,uid=1000,gid=1000,iocharset=utf8,codepage=932)
+</pre>
+
+<p>日本語名ファイルは文字化けするので、親ディレクトリをコピーする（※保存は正常）。</p>
+<pre class="scl">
+# cp -r &#034;/media/hda1/Documents and Settings/palm erooyaji/My Documents&#034; /media/sda
+</pre>
+
+<div class="palm2">
+<p><strong class="ms">5.0.1</strong> では日本語表示可能な（全画面）コンソールの起動も可能でした。</p>
+<pre>
+# jfbterm
+</pre>
+</div>
+
+<p>パスにスペースを含む場合は、スペースの直前にバックスラッシュ <kbd lang="en" class="backslash">&#92;</kbd> を打つか、パス全体をダブルクォート<kbd>&#034;</kbd>で囲む。（数文字入力してTABキーの補完機能を使うと楽）</p>
+<p>【<strong>注意</strong>】※Windows上の<kbd><strong class="ms">&#165;</strong></kbd> は Linux 上ではバックスラッシュ<kbd lang="en" class="backslash"><strong>\</strong></kbd></p>
+</dd>
+</dl>
+
+
+<h3><a href="#smbd"><span class="ms">■</span></a> <a name="smbd">テキストモードでのSamba サーバの設定</a></h3>
+
+<p>Windowsマシンが別にあるなら、Samba を起動させてWindows側からアクセスした方がコピー操作は簡単かも。機種依存文字を含む日本語名ファイルも表示可能でした。</p>
+
+<ul>
+<li>NIC（ネットワークカード）の手動設定 - # <code>netcardconfig</code></li>
+</ul>
+
+
+<dl>
+<dt>HDドライブのマウント</dt>
+<dd>
+<p>アクセスさせるドライブ（パーティション）を上記の方法で事前にマウントしておく</p>
+</dd>
+
+<dt>Sambaサーバの設定</dt>
+<dd>
+<ul>
+<li>Sambaサーバの設定スクリプト実行</li>
+</ul>
+<pre>
+# sambastart
+</pre>
+
+<p>UTF-8で起動している場合は文字化けする。左が【OK】(Yes)</p>
+
+<p class="lt"><img src="./images/knoppix511/console_sambastart1.png" alt="sambastartダイアログ画面1" width="272" height="144"></p>
+<p>任意のパスワードを入力してEnter</p>
+
+<div class="cl">
+<p class="lt"><img src="./images/knoppix511/console_sambastart2.png" alt="sambastartダイアログ画面2" width="270" height="129"></p>
+<p>もう一度入力してEnter</p>
+</div>
+
+<div class="cl">
+<p class="lt"><img src="./images/knoppix511/console_sambastart3.png" alt="sambastartダイアログ画面3" width="279" height="128"></p>
+<p>【マウントされたドライブ（パーティション）を共有させるか？】カーソルキーで<strong>左に合わせて</strong>Enter</p>
+</div>
+
+<div class="cl">
+<p><img src="./images/knoppix511/console_sambastart4.png" alt="sambastartダイアログ画面4" width="310" height="39"></p>
+</div>
+
+<ul>
+<li>Sambaサーバの設定ファイルに [hda1] [hda2]（など）が追記されているか確認</li>
+</ul>
+<pre class="scl2">
+# tail -n 20 /etc/samba/smb.conf
+    comment = /media/hdc
+    browseable = yes
+    path = /media/hdc
+    writeable = yes
+    preexec = /bin/mount /media/hdc
+    postexec = /bin/umount /media/hdc
+[hda1]
+    comment = /media/hda1
+    browseable = yes
+    path = /media/hda1
+    writeable = yes
+    preexec = /bin/mount /media/hda1
+    postexec = /bin/umount /media/hda1
+[hda2]
+    comment = /media/hda2
+    browseable = yes
+    path = /media/hda2
+    writeable = yes
+    preexec = /bin/mount /media/hda2
+    postexec = /bin/umount /media/hda2
+</pre>
+
+<ul>
+<li>Samba (NetBIOS) サーバの起動確認</li>
+</ul>
+<pre class="scl">
+$ netstat -tua | grep netbios
+tcp        0      0 *:<strong class="red">netbios</strong>-ssn           *:*                     LISTEN     
+udp        0      0 192.168.0.12:<strong class="red">netbios</strong>-ns *:*
+udp        0      0 *:<strong class="red">netbios</strong>-ns            *:*
+udp        0      0 192.168.0.1:<strong class="red">netbios</strong>-dgm *:*
+udp        0      0 *:<strong class="red">netbios</strong>-dgm           *:*
+</pre>
+
+<div class="palmst">
+<p class="small">マウントをやり直す場合は一旦Sambaサーバを停止させること</p>
+<pre>
+# /etc/init.d/samba stop
+</pre>
+</div>
+</dd>
+
+<dt>IPアドレス確認してWindowsマシンからアクセス</dt>
+<dd>
+<pre class="scl">
+# ifconfig -a
+＜省略＞
+eth1      Link encap:Ethernet  HWaddr 00:40:45:**:**:**
+          inet addr:<var class="red">192.168.0.12</var>  Bcast:192.168.0.255  Mask:255.255.255.0
+＜省略＞
+</pre>
+
+<p>Windows マシンから （ファイル名を指定して実行）<code>\\<var>192.168.0.12</var></code> または、<code>\\knoppix</code> でアクセスする。ユーザ名は「knoppix」、パスワードは設定したもので。</p>
+</dd>
+</dl>
+
+<div class="palmst">
+<h4>設定スクリプトを使わない場合</h4>
+
+<p class="small">※すみません、（全画面）コンソールモードで設定スクリプトが使えるのを知らなかったもので、前に書いてたものです。</p>
+
+<dl>
+<dt class="small">アクセスさせるパーティション（ドライブ）の設定</dt>
+<dd>
+<p class="small">ホームディレクトリにリンクを張る</p>
+
+<pre>
+# ln -s /mnt /home/knoppix
+# ln -s /media /home/knoppix
+</pre>
+
+<p class="small">またはパスを追記</p>
+
+<ul class="small">
+<li><code>smb.conf</code>にパスを追記</li>
+</ul>
+<pre class="scl">
+# cat &#060;&#060;END&#062;&#062; /etc/samba/smb.conf
+&#062; [hda1]
+&#062; path = /media/hda1
+&#062; [hda2]
+&#062; path = /media/hda2
+&#062; [sda]
+&#062; path = /media/sda
+&#062; END
+</pre>
+
+<ul class="small">
+<li>確認</li>
+</ul>
+<pre class="scl">
+# tail /etc/samba/smb.conf
+＜省略＞
+[hda1]
+path = /media/hda1
+[hda2]
+path = /media/hda2
+[sda]
+path = /media/sda
+</pre>
+</dd>
+
+<dt class="small">パスワードの設定</dt>
+<dd>
+<pre>
+# smbpasswd -a knoppix
+</pre>
+<p class="small">パスワードを2回入力</p>
+</dd>
+
+<dt class="small">Samba サーバ 起動</dt>
+<dd>
+<pre class="scl">
+# /etc/init.d/samba start
+</pre>
+</dd>
+
+<dt class="small">IPアドレス確認</dt>
+<dd>
+<pre class="scl">
+# ifconfig -a
+＜省略＞
+eth1      Link encap:Ethernet  HWaddr 00:40:45:**:**:**
+          inet addr:<var class="red">192.168.0.12</var>  Bcast:192.168.0.255  Mask:255.255.255.0
+＜省略＞
+</pre>
+</dd>
+</dl>
+
+<p class="small">Windows マシンから <code>\\<var>192.168.0.12</var></code> でアクセスする。ユーザ名は「knoppix」、パスワードは設定したもので。</p>
+</div>
+
+
+<h2><a href="#test"><span class="ms">■</span></a> <a name="test">起動できない時</a></h2>
+
+<dl>
+<dt>isoイメージの確認</dt>
+<dd>
+<p>MD5の確認</p>
+<ul>
+<li><a href="http://www.vector.co.jp/vpack/filearea/win/util/bin/by_date.html">Download: Windows &#062; ユーティリティ &#062; バイナリファイル処理</a></li>
+</ul>
+</dd>
+
+<dt>CDの確認</dt>
+<dd>
+<p>きっちり焼けているかどうか</p>
+<p>ブート時に <code>boot: </code>に続けて <code>knoppix testcd</code> と入力</p>
+</dd>
+
+<dt>LABEL - failsafe - で起動確認</dt>
+<dd>
+<dl>
+<dt>failsafe</dt>
+<dd>
+<p><img src="./images/knoppix511/syslinux_prompt2.png" alt="ブートプロンプト画像2" width="129" height="18"></p>
+<p>ブート時に <code>boot: </code>に続けて <code>failsafe</code> (or 5.1.1 には <code>vaio</code>, <code>dynabook</code> なんて設定LABELもある)と入力して起動するか確認。</p>
+<pre>
+boot: failsafe
+</pre>
+<p><strong class="ms">LABEL failsafe</strong> では下記のパラメータが指定されている。かなり制限された環境になるが起動できるかもしれない。</p>
+<pre class="scl">
+vga=normal atapicd nosound noapic noacpi pnpbios=off acpi=off nofstab noscsi nodma noapm nousb nopcmcia nofirewire noagp nomce nodhcp xmodule=vesa
+</pre>
+</dd>
+
+<dt>いわゆる「シェルに落ちる～」</dt>
+<dd>
+<p>小さな Linux は起動したけど、KNOPPIX 本体のルートイメージであるCD上の <code>/KNOPPIX/KNOPPIX</code> が見つけられない場合の現象であります。 </p>
+
+<div class="ct">
+<p class="overflow3"><img src="./images/dropping_you_to_busybox_shell.png" alt="ブートメニュー" width="480" height="280"></p>
+</div>
+
+<ul>
+<li>内蔵ドライブでも、新しい規格の Serial ATA ドライブなどは認識できないことがある</li>
+<li>新しい規格のPCでは内蔵ドライブよりUSBドライブの方が認識率は高いかもしれない</li>
+<li>USB（メモリ）ブートが可能ならそちらを試してみるとか</li>
+</ul>
+
+<p>USB CDドライブの場合は、Linux起動直後、または「<strong class="ms">Checkin for USB...</strong>」などのメッセージが表示されている時にUSBポートを挿し直すと認識されることがあります。</p>
+
+<p>尚、新しい規格のPCでは KNOPPIX が起動できても HDドライブを認識できないこともあるのでご注意。その際は別の LiveCD を試しませう。</p>
+</dd>
+
+<dt>パラメータ追加</dt>
+<dd>
+<p class="overflow3"><img src="./images/knoppix511/syslinux_prompt3.png" alt="ブートプロンプト画像3" width="422" height="18"></p>
+<p>ブート時に <code>boot: </code>に続けて <code>knoppix noapic noacpi acpi=off</code> などとと入力して起動確認。どのパラメータ（の組み合わせ）で起動可能になるか何度も試してみる。</p>
+<pre class="scl">
+boot: knoppix lang=ja.utf8 acpi=off noacpi xmodule=vesa nopcmcia
+</pre>
+</dd>
+</dl>
+</dd>
+</dl>
+
+<p>これでも駄目だと、CDドライブが未対応（最新ドライブとかとか相性あるかも）、或いは不良（？）なのかもしれない。<a href="http://hatochan.dyndns.org/slax-ja/">slax-ja</a>
+や<a href="http://yui.mine.nu/berry/berry.php">Berry Linux</a>など他の日本語版LiveCDを試した方がいいかもしれません。</p>
+
+<h2><a href="#memo"><span class="ms">■</span></a> <a name="memo">memo</a></h2>
+
+<ul>
+<li><code>/boot/isolinux/isolinux.cfg</code> - ブート設定ファイル</li>
+<li><code>/KNOPPIX/knoppix-cheatcodes.txt</code> - チートコード（パラメータ）</li>
+<li>CDの内容は <code>/cdrom</code> にマウントされる</li>
+<li>パーティション一覧表示 - $ <code>sudo fdisk -l</code></li>
+<li><code>/etc/fstab</code> の再作成 - $ <code>sudo rebuildfstab</code></li>
+<li>シャットダウン - $ <code>sudo poweroff</code></li>
+<li>再起動 - $ <code>sudo reboot</code></li>
+<li>保存した設定ファイルを読み込んでブート
+	<ul class="nest">
+	<li>boot: <code>knoppix myconf=scan</code> （検索する）</li>
+	<li>boot: <code>knoppix myconf=/dev/hda1</code> （デバイスを指定）</li>
+	</ul>
+</li>
+</ul>
+
+
+<pre class="scl">
+$ mount
+/dev/root on / type ext2 (rw)
+/ramdisk on /ramdisk type tmpfs (rw,size=478720k)
+/UNIONFS on /UNIONFS type unionfs (rw,dirs=/ramdisk=rw:/KNOPPIX=ro,delete=whiteout)
+/dev/hdc on /cdrom type iso9660 (ro)
+/dev/cloop on /KNOPPIX type iso9660 (ro)
+/proc on /proc type proc (rw)
+/proc/bus/usb on /proc/bus/usb type usbfs (rw,devmode=0666)
+/dev/pts on /dev/pts type devpts (rw)
+</pre>
+
+<pre>
+$ ls -l /mnt
+合計 1
+lrwxrwxrwx 1 root root   11 2007-01-11 23:12 hda1 -&#062; /media/hda1
+lrwxrwxrwx 1 root root   11 2007-01-11 23:12 hda2 -&#062; /media/hda2
+lrwxrwxrwx 1 root root   11 2007-01-11 23:12 hda3 -&#062; /media/hda3
+lrwxrwxrwx 1 root root   11 2007-01-11 23:12 hda4 -&#062; /media/hda4
+drwxr-xr-x 2 root root 1024 2007-01-11 23:12 hde1
+lrwxrwxrwx 1 root root   10 2007-01-11 23:12 sda -&#062; /media/sda
+lrwxrwxrwx 1 root root   10 2007-01-11 23:12 sdb -&#062; /media/sdb
+</pre>
+
+<pre>
+$ ls -l /media
+合計 10
+drwxr-xr-x 2 root root 1024 2007-01-11 23:12 cdrom
+drwxr-xr-x 2 root root 1024 2006-02-22 08:07 fd0
+drwxr-xr-x 2 root root 1024 2006-02-22 08:07 hd
+drwxr-xr-x 2 root root 1024 2007-01-11 23:12 hda1
+drwxr-xr-x 2 root root 1024 2007-01-11 23:12 hda2
+drwxr-xr-x 2 root root 1024 2007-01-11 23:12 hda3
+drwxr-xr-x 2 root root 1024 2007-01-11 23:12 hda4
+drwxr-xr-x 2 root root 1024 2007-01-11 23:12 sda
+drwxr-xr-x 2 root root 1024 2007-01-11 23:12 sdb
+drwxr-xr-x 2 root root 1024 2006-02-22 08:07 test
+</pre>
+
+<pre class="scl">
+$ cat /etc/fstab
+/proc      /proc       proc   defaults            0 0
+/sys       /sys        sysfs  noauto              0 0
+/dev/pts   /dev/pts    devpts mode=0622           0 0
+/dev/fd0   /media/fd0  auto   user,noauto,exec,umask=000    0 0
+/dev/cdrom /media/cdrom  auto   user,noauto,exec,ro 0 0
+/dev/hde1 /mnt/hde1 auto user,exec,noauto 0 0
+# Added by KNOPPIX
+/dev/hda1 /media/hda1 ntfs noauto,users,exec,umask=000,uid=knoppix,gid=knoppix,nls=utf8 0 0
+# Added by KNOPPIX
+/dev/hda2 /media/hda2 vfat noauto,users,exec,umask=000,shortname=winnt,uid=knoppix,gid=knoppix,iocharset=utf8,codepage=932 0 0
+# Added by KNOPPIX
+/dev/hda3 /media/hda3 auto noauto,users,exec 0 0
+# Added by KNOPPIX
+/dev/hda4 /media/hda4 ext3 noauto,users,exec 0 0
+# Added by KNOPPIX
+/dev/sda /media/sda vfat noauto,users,exec,umask=000,shortname=winnt,uid=knoppix,gid=knoppix,iocharset=utf8,codepage=932 0 0
+# Added by KNOPPIX
+/dev/sdb /media/sdb ext2 noauto,users,exec 0 0
+</pre>
+
+<ul>
+<li>「KNOPPIXの設定を保存」 - KNOPPIXメニュー→Configure→KNOPPIXの設定を保存
+	<ul class="nest">
+	<li>※スクリプトの保存先パスが <code>/mnt/floppy/</code> となっているのでフロッピーに保存する場合はマウントポイントの変更が必要かも。（※ 5.1.1 CD では <code>/media/fd0</code>）</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>USBフロッピーはHard Disk[sd<var>n</var>]で認識されるのでデスクトップのフロッピーアイコンをクリックしてもマウントされない</li>
+</ul>
+
+<ul>
+<li>dosフロッピー</li>
+</ul>
+<pre class="scl">
+$ grep sdb /etc/fstab
+/dev/sdb /media/sdb vfat noauto,users,exec,umask=000,shortname=winnt,uid=knoppix,gid=knoppix,iocharset=utf8,codepage=932 0 0
+</pre>
+<pre class="scl">
+$ mount | grep sdb
+/dev/sdb on /media/sdb type vfat (ro,nosuid,nodev,umask=000,shortname=winnt,uid=1000,gid=1000,iocharset=utf8,codepage=932)
+</pre>
+
+<ul>
+<li>ext2フロッピー</li>
+</ul>
+<pre>
+$ grep sdb /etc/fstab
+/dev/sdb /media/sdb ext2 noauto,users,exec 0 0
+</pre>
+<pre>
+$ mount | grep sdb
+/dev/sdb on /media/sdb type ext2 (ro,nosuid,nodev)
+</pre>
+
+
+
+
+</div>
+</div>
+
+
+<div class="navi">
+<a href="./index.html">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+<hr>
+
+<address>Written by yassy</address>
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+</body>
+</html>

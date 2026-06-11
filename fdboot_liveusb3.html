@@ -1,0 +1,2079 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="START" href="./">
+<title>【私的】USBブート非対応PC用起動フロッピーを作るの巻【合体編】＠Palm84</title>
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<style type="text/css">
+<!--
+
+h4 {
+	font-size: 1em;
+	font-weight: bold;
+	margin:0.5em 0.5em 0.5em 1.5em;
+	padding-left: 0.5em;
+	border-left: 1em double #ccc;
+}
+
+pre.scl1 {
+	overflow: scroll;
+	white-space: pre;
+	width:89%;
+	height: 10em;
+}
+
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+</head>
+
+
+<body>
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+<h1><span class="tokai1"><a href="./fdboot_liveusb3.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻【合体編】</a></span></h1>
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+<ol>
+<li><a href="#mame">【予備知識？】</a></li>
+<li><a href="#about">これって何？</a>
+	<ul class="small">
+	<li><a href="#tdsk">DOS+RAMドライブ</a></li>
+	<li><a href="#dos_usb_driver">DOS+USBドライバ</a></li>
+	<li><a href="#grub4dos_freedos">GRUB for DOS</a></li>
+	</ul>
+</li>
+<li><a href="#download">ダウンロード</a></li>
+<li><a href="#bootdisk">起動ディスク作成</a>
+<li><a href="#split">分割ファイル作成</a></li>
+<li><a href="#screenshot">スクリーンショット</a></li>
+</ol>
+
+<ul>
+<li><a href="#bussan">起動の流れ</a></li>
+<li><a href="#config_files">設定ファイル</a>
+	<ul class="nest">
+	<li><a href="#choice">choice.exe</a></li>
+	</ul>
+</li>
+<li><a href="#linux_loader">Linuxローダ</a></li>
+<li><a href="#tree">ファイル一覧</a></li>
+<li><a href="#other_linux">別のLinuxを起動</a></li>
+<li><a href="#etc">備考</a>
+	<ul class="nest">
+	<li><a href="#notes">注意点</a></li>
+	<li><a href="#reload">reload.bat</a></li>
+	</ul>
+</li>
+<li><a href="#link">関連リンク</a></li>
+</ul>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+<p><a href="http://getfirefox.jp/" title="Get Firefox - Web を取り戻せ">
+<img src="./images/takebacktheweb_small.png" width="125" height="50" alt="Get Firefox"></a></p>
+
+
+
+
+<p class="small">リンク is フリーダム<span class="ms">♪</span></p>
+</div>
+</div>
+
+
+
+<div class="main">
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/fdboot_liveusb3.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/fdboot_liveusb3.html"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/fdboot_liveusb3.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<p class="small">2008.9.7 作成
+<br>2009.7.2 【その1】【その2】を更新したのでそれに合わせて設定ファイルを修正。（※選択OSとか全然変わっていませんが...）
+<br>2009.7.4 <a href="#reload">reload.bat</a>について追記、<a href="#etc">備考</a>と<a href="#notes">注意点</a>と<a href="#link">関連リンク</a>を整理しました。</p>
+
+
+<dl class="pink">
+<dt>ご案内してみたり...</dt>
+<dd>
+<ol>
+<li><a href="./fdboot_liveusb.html">その1</a> === DOS用USBドライバでUSBデバイスを直接認識</li>
+<li><a href="./fdboot_liveusb2.html">その2</a> === 分割ファイルをコピーした複数枚FDからブート</li>
+<li>合体編 === 【その1】と【その2】を合体
+	<ul>
+	<li><strong class="ms">↑</strong><strong>今ここ</strong></li>
+	</ul>
+</li>
+<li><a href="./fdboot_liveusb4.html">GRUB編</a> === 【合体編】をFDイメージへ、PLoP Boot Managerを追加</li>
+</ol>
+<p class="small">内容が<em>重複しまくっとります</em>。恐れ入り奉りまする。Palm84的【設定ファイル詰め合わせ】については甚だ不完全なのでコロコロ修正すると思います。</p>
+</dd>
+</dl>
+
+<div class="palmst small">
+<p>※あくまで、インストール・ファイル救出時などメンテナンス向けです。通常使用向けでは全くありません。...というか色物ワシ流起動ディスクなのかもしれま...（＞＜）</p>
+</div>
+
+<p>下記ページの続き、かなーり私的な内容です...2つの起動ディスクの機能を合体！（おおげさな...）させてみました。</p>
+
+<ul class="small">
+<li><a href="./fdboot_liveusb.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻</a></li>
+<li><a href="./fdboot_liveusb2.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻【その2】</a></li>
+</ul>
+
+<p>尚、チェックは念入りにしてます（つもり）けど、<strong>DOSについての知識はかなりあやしい</strong>ので、内容は全く未保証だと思われます...ご容赦をば。</p>
+
+<dl class="palmst small">
+<dt>USBブート非対応PC用起動ディスク</dt>
+<dd>
+<p>こんなのありましたー。</p>
+<ul>
+<li><a href="http://www.plop.at/en/bootmanager.html">PLoP - Bootmanager - Free Boot Manager, boot different operating systems, cdrom, usb, freeware</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20080816/1218896213">PLoP Boot Manager（USBブート非対応PC用起動ディスク）</a></li>
+</ul>
+<p>上記のページのやつが使えるなら（※USB CDは非対応）、このページに書いてるやつはいらないです...。orz</p>
+</dd>
+</dl>
+<h2><a href="#mame" name="mame">【予備知識？】Linuxの起動について</a></h2>
+
+<p>おおまかにこんなかんじ</p>
+<ol>
+<li>BIOSがブートデバイスを認識</li>
+<li>ブートデバイスから<strong class="ms">ブートローダ</strong>（<a href="http://ja.wikipedia.org/wiki/GRUB">GRUB</a>,<a href="http://ja.wikipedia.org/wiki/LILO">LILO</a>,<a href="http://syslinux.zytor.com/wiki/index.php/The_SYSLINUX_Project">SYSLINUX</a> など）が起動</li>
+<li>ブートローダ（カーネルローダー）が <strong class="ms">Linuxカーネル</strong> と <strong class="ms">initrd</strong> をロードして“小さな”Linux起動。デバイスの初期化・認識</li>
+<li>“大きな”<strong class="ms">ルートファイルシステム</strong>（イメージ）をマウントして“大きな”Linux起動</li>
+</ol>
+<p>2,3,4 は別の場所でもイイってとこがミソ。<strong class="ms">initrd</strong> にはUSB対応モジュールなどが大抵含まれているので、“小さな”Linux起動後はUSBデバイスのマウントがほぼ可能になります。でも、最近の Linux はカーネルと initrd がFD1枚に収まるものが少ないのでFD1枚ではチョトツライというわけ。</p>
+<dl class="small">
+<dt>initrd とは</dt>
+<dd>
+<p>initial ramdisk のこと。初期RAMディスク（イメージ）とかミニルートなんて言い方も。</p>
+<ul>
+<li><a href="http://www.linux.or.jp/JF/JFdocs/ext-root-mini-HOWTO-2.html">Ext-Rootfs-mini-HOWTO: initrd とは？</a></li>
+<li><a href="http://itpro.nikkeibp.co.jp/article/Keyword/20070207/261182/">initrd とは：ITpro</a></li>
+<li><a href="http://buxus.s31.xrea.com/pukiwiki/pukiwiki.php?initrd">initrd - Knoppix Temporary Directory</a></li>
+</ul>
+
+<div class="quote">
+<blockquote cite="http://www.linux.or.jp/JF/JFdocs/ext-root-mini-HOWTO-2.html" title="Ext-Rootfs-mini-HOWTO: initrd とは？">
+<p>起動時にファ イルとして用意したファイルシステムを ramdisk 上に展開、そこを暫定的な ルートファイルシステムとしてカーネルを立ちあげ、必要な処理をしてから実 際のルートファイルシステムを再マウントする、という 2 段ロケット的なブー トを可能にします。 </p>
+</blockquote>
+<cite><a href="http://www.linux.or.jp/JF/JFdocs/ext-root-mini-HOWTO-2.html">Ext-Rootfs-mini-HOWTO: initrd とは？</a></cite>
+</div>
+</dd>
+</dl>
+
+
+<h2><a href="#about" name="about">これって何？</a></h2>
+
+
+<ol>
+<li><a href="#tdsk">【<strong class="ms">DOS+RAMドライブ</strong>】</a>
+	<ul>
+	<li>DOS上で24MBのRAMドライブ作成。RAMドライブへFDからLinuxブートに必要なファイルをコピー。</li>
+	</ul>
+</li>
+<li><a href="#dos_usb_driver">【<strong class="ms">DOS+USBドライバ</strong>】</a>
+	<ul>
+	<li>USBドライバ組み込み。DOS上でUSBデバイスを直接利用。</li>
+	</ul>
+</li>
+</ol>
+
+
+<div class="lt">
+<p><img src="./images/fdboot_liveusb3/top1.png" alt="" width="400" height="270"></p>
+</div>
+
+<p>USBメモリ、USB CDブートに対応していないPCにて、DOS起動FDからブートして、DOS版Linuxローダー(<strong class="ms">linld.com</strong>) からカーネルをロードさせてUSBデバイス上のルートファイルシステム（イメージ）をマウントさせます。</p>
+
+<p>とりあえず下記のものについて確認。</p>
+<ul class="small">
+<li><a href="http://www.rcis.aist.go.jp/project/knoppix/">KNOPPIX Japanese edition</a>産総研版 5.3.1 CD</li>
+<li><a href="http://simosnet.com/livecdroom/index.html#knoppix">Knoppix 5.1.1/CD(高速起動版）</a>（ライブＣＤの部屋さん版）
+	<ul>
+	<li><a href="http://ftp.riken.go.jp/Linux/simosnet-livecd/knoppix/">Index of /Linux/simosnet-livecd/knoppix</a></li>
+	</ul>
+</li>
+<li><a href="http://hatochan.dyndns.org/slax-ja/index.php?slax-ja%2Fdownload">slax-ja-5.1.8.1-3</a>（<strong class="ms">slax-ja-5.1.8.1-3.iso</strong>）</li>
+<li><a href="http://sourceforge.net/projects/systemrescuecd/files/">systemrescuecd-x86-1.0.4.iso  </a></li>
+<li><a href="http://yui.mine.nu/berry/berry.php">Berry Linux</a>（バージョンは<strong class="ms">0.90</strong>）</li>
+<li><a href="http://openlab.jp/puppylinux/">Puppy Linux 日本語版</a>（バージョンは<strong class="ms">4.1.2.1</strong>）</li>
+<li><a href="http://simosnet.com/livecdroom/index.html#insert">INSERT+ 1.2.18 - ライブＣＤの部屋</a>
+	<ul>
+	<li><a href="http://ftp.riken.go.jp/Linux/simosnet-livecd/insert/">Index of /Linux/simosnet-livecd/insert</a></li>
+	</ul>
+</li>
+</ul>
+
+
+
+<h3 class="cl"><a href="#tdsk"><span class="ms">■</span></a> <a name="tdsk">RAMドライブ</a>【DOS+RAMドライブ】</h3>
+
+
+<p>内容は下記ページと同じものです。というか、このページのやつから【DOS+USBドライバ】を抜いたのがそれだったりします。</p>
+
+<ul>
+<li><a href="./fdboot_liveusb2.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻【その2】</a></li>
+</ul>
+
+<p>RAMディスクドライバで 24 MB のRAMドライブを作成。RAMドライブ上にコピーしたファイルからLinuxをブート</p>
+
+<div class="lt">
+<p><img src="./images/fdboot_liveusb3/top2.png" alt="" width="400" height="250"></p>
+</div>
+
+<ul class="cl">
+<li>メリット
+	<ul>
+	<li>USBデバイスの検出・認識がまぁ確実と言っていいかと。</li>
+	<li>起動失敗があんまりないかな</li>
+	</ul>
+</li>
+<li>デメリット
+	<ul>
+	<li>FDの入替・コピーに時間がかなりかかる</li>
+	<li>分割ファイルの作成が面倒</li>
+	</ul>
+</li>
+</ul>
+
+<p>※DOS起動後に、FDからRAMドライブへ“<strong>分割された</strong>”Linuxカーネル（と initrd）をコピーするので、後述の分割ファイルの作成が必要。</p>
+
+
+
+<h3><a href="#dos_usb_driver"><span class="ms">■</span></a> <a name="dos_usb_driver">DOS用USBドライバ組み込み</a>【DOS+USBドライバ】</h3>
+
+<p>う～ん、こっちは対応ドライバがあれば設定しておくということで...【DOS+RAMドライブ】だけでもいいかも</p>
+
+<p>内容は下記ページと同じものです。というか、このページのやつから【DOS+RAMドライブ】を抜いたのがそれだったりします（こればっかし）。</p>
+
+<ul>
+<li><a href="./fdboot_liveusb.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻【その1】</a></li>
+</ul>
+
+<div class="lt">
+<p><img src="./images/fdboot_liveusb3/top3.png" alt="" width="400" height="250"></p>
+</div>
+<p>設定ファイルは、<strong>NOVAC製USBストレージ用ドライバ</strong>、<strong>Panasonic製USB CDドライブ用ドライバ</strong>、とかで一応書いてみました。</p>
+
+<p>FDは起動ディスク1枚で済むので楽なのですが、きっちり対応してるドライバがなかなかないので難しいところ。あと、ライセンス的に微妙な話もあったり...</p>
+
+
+<ul>
+<li>メリット
+	<ul>
+	<li>FDはこの1枚のみでよし</li>
+	<li>Linux起動前にDOS上で検索できるので設定ファイルを書いておけばかなり楽</li>
+	</ul>
+</li>
+<li>デメリット
+	<ul>
+	<li>USBドライバの入手が困難？</li>
+	<li>対応が不完全</li>
+	<li>延長ケーブルやハブ経由はだめだったり</li>
+	<li>機種によってはエラーでおかしくなったり</li>
+	<li>DOS上でUSBキーボードが使えないかもしれない</li>
+	<li>DOS上では全く認識できないUSBデバイスもあったりするし</li>
+	</ul>
+</li>
+</ul>
+
+<p>Panasonic製USB光学ドライブならドライバ付属なのでかなり便利です。</p>
+
+<dl class="palmst small">
+<dt>RAMFD.SYS 使用時の問題点</dt>
+<dd>
+<p>USB側のディレクトリ構成が元のCDと同じではない場合は、FDにtemp.txtを作成しますが、RAMFD.SYS 使用時は書き込みができません。事前にtemp.txtの作成が必要になります。</p>
+<p>※または、【DOS+RAMドライブ】でブート後に、OS選択メニューを x でキャンセル、<strong class="ms">reload.bat</strong> の実行でいけるかも。</p>
+</dd>
+</dl>
+
+
+<h3><a href="#grub4dos_freedos"><span class="ms">■</span></a> <a name="grub4dos_freedos">GRUB for DOS</a></h3>
+
+
+<p class="small">※DOS上のRAMドライブ、DOSで認識したUSBデバイスはGRUBでは認識しません。</p>
+
+<div class="lt">
+<p><img src="./images/fdboot_liveusb3/top5.png" alt="" width="400" height="220"></p>
+</div>
+<p>ナニゲに便利なブートローダ。<strong class="ms">grub.exe </strong>はDOS上から直接起動できます。</p>
+
+
+<div class="lt">
+<p><img src="./images/fdboot_liveusb3/top6.png" alt="" width="400" height="200"></p>
+</div>
+
+<p>HD上にコピーしたイメージからブートするのにも使えるし。<strong class="ms">Memtest86+</strong> もついでに（GRUBから実行）。</p>
+
+
+<h4 class="cl">ネットワークブート用起動ディスクとして</h4>
+
+
+<div class="lt">
+<p><img src="./images/fdboot_liveusb3/top7.png" alt="" width="400" height="180"></p>
+</div>
+
+<p>gPXE対応汎用カーネルをコピーしておけばいいのです。メジャーどころはほぼ対応してるかと（※Intel e100, Realtek 8139, VIA Rhine, tulip とか一応確認済み）。BIOSで対応していても切替が面倒だったりするのであると便利です。</p>
+
+
+
+
+
+<h2><a href="#download" name="download">ダウンロードしておくもの</a></h2>
+
+<dl>
+<dt>FDへ直接書き込む</dt>
+<dd>
+<ul>
+<li>FreeDOS起動ディスクイメージ
+	<ul class="nest">
+	<li><a href="http://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/distributions/1.0/fdboot.img">fdboot.img</a> - FreeDOSオフィシャルから</li>
+	<li>(<a href="http://www.freedos.org/freedos/files/">FreeDOS | Files</a>)</li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>イメージからファイルを取り出し</dt>
+<dd>
+<dl class="palmst small">
+<dt>FDイメージからファイルを取り出すには（イメージをファイルに展開）</dt>
+<dd>
+<p>下記の <strong class="ms">Universal Extractor</strong> が便利かも。 <strong class="ms">UniExtract Binary Archive</strong> はインストール不要で使えます（日本語表示も可）。</p>
+<ul>
+<li><a href="http://www.legroom.net/software/uniextract">Universal Extractor | LegRoom.net</a></li>
+</ul>
+<p>※注意：対象ファイルのパスに‘デスクトップ’など日本語が含まれるとエラーになるみたいです。</p>
+</dd>
+</dl>
+
+<p>FDに一旦書き込むか、展開する、仮想ドライブでマウントするなどしてファイルを取り出しておく</p>
+<ul>
+<li>RAMディスクドライバなどを含むディスクイメージ
+	<ul class="nest">
+	<li><a href="http://www.thisiscool.com/fcfloppy.htm">Fedora Core Floppy Install</a>（FDイメージなのでFDに書き込むか展開する）</li>
+	</ul>
+</li>
+</ul>
+<p><strong class="ms">fc5fd.tar.bz2</strong>を<em>作者様への感謝の気持ちを込めて</em>ダウンロード。<strong class="ms">FC5-FloppyInstall-1.img</strong>を展開</p>
+
+<ul>
+<li><strong class="ms">xcopy.exe, edit.exe, keyb.exe, keyboard.sys, keybrd2.sys</strong>
+	<ul class="nest">
+	<li><a href="http://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/distributions/unofficial/balder/balder10.img">balder10.img</a>（FDイメージなのでFDに書き込むか展開する）</li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>ファイルのダウンロード</dt>
+<dd>
+<ul>
+<li><strong class="ms">LINLD.COM</strong>
+	<ul class="nest">
+	<li><a href="http://busybox.net/~vda/linld/">Index of /~vda/linld</a></li>
+	</ul>
+</li>
+<li><strong class="ms">grub.exe</strong>
+	<ul class="nest">
+	<li><a href="http://sourceforge.net/projects/grub4dos/files/">GRUB4DOS and WINGRUB | Get GRUB4DOS and WINGRUB at SourceForge.net</a></li>
+	<li><a href="http://download.gna.org/grub4dos/">Index of /grub4dos</a></li>
+	</ul>
+</li>
+</ul>
+<p>0.4.3.zip（または 0.4.4.zip）をダウンロード。0.4.4の方が機能が多いのでおすすめですが、サイズがやや大きいので入り切るかどうか。</p>
+<ul class="small">
+<li>0.4.3 grub.exe - 198 KB</li>
+<li>0.4.4 grub.exe - 230 KB</li>
+</ul>
+
+
+<dl>
+<dt>ネットワークブート用カーネル</dt>
+<dd>
+<ul>
+<li><a href="http://rom-o-matic.net/gpxe/gpxe-git/gpxe.git/contrib/rom-o-matic/">ROM-o-matic.net: for gPXE version git</a></li>
+</ul>
+<ol class="small">
+<li>Choose an output format
+	<ul>
+	<li><code>Linux kernel (SYSLINUX/GRUB/LILO) loadable image (.lkrn)</code> を選択</li>
+	</ul>
+</li>
+<li>Choose a NIC type
+	<ul>
+	<li><code>all-drivers</code> を選択</li>
+	</ul>
+</li>
+<li>[Get Image] をポチっと</li>
+<li><strong class="ms">gpxe-0.9.x+-gpxe.lkrn</strong> は <strong class="ms">gpxe_all.krn</strong> にリネーム</li>
+</ol>
+<p class="small">※ ずっと 0.9.5 使ってたので最新版はどうなのかわかりません。。。<a href="http://rom-o-matic.net/">旧バージョン</a>（0.9.4, 0.9.5）は、185 KBと若干サイズが小さいです。<del>最新</del> 0.9.6 は 204 KB。旧バージョンでは、<code>Choose NIC/ROM type</code> で <code>gpxe:all-drivers</code> を選択、<code>Choose ROM output format</code> で <code>LILO/GRUB/SYSLINUX loadable Linux kernel format (.lkrn)</code> を選択。</p>
+
+<ul>
+<li><a href="http://rom-o-matic.net/gpxe/gpxe-0.9.5/contrib/rom-o-matic/">ROM-o-matic.net: for gPXE version 0.9.5</a></li>
+</ul>
+
+<ul class="small">
+<li>0.9.7+ - 257 KB</li>
+<li>0.9.6  - 204 KB</li>
+<li>0.9.5  - 185 KB</li>
+<li>0.9.3  - 174 KB</li>
+</ul>
+</dd>
+
+<dt>Memtest86+ (<strong class="ms">memtest86+-2.01.bin</strong>)</dt>
+<dd>
+<p>【Pre-Compiled Bootable Binary】をダウンロードして展開。ファイル名を memtest にリネーム。</p>
+<ul>
+<li><a href="http://www.memtest.org/#downiso">Memtest86+ - Advanced Memory Diagnostic Tool</a></li>
+</ul>
+<p class="small">※旧バージョンは若干サイズが小さいです。</p>
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+<dl>
+<dt>設定ファイル詰め合わせ</dt>
+<dd>
+<p>あくまでPalm84的なので内容の保証は全くありません（汗）。というか、大したものではないので改訂をおすすめ...</p>
+<ul>
+<li><a href="../archives/fdboot_liveusb3_files.zip">fdboot_liveusb3_files.zip</a></li>
+</ul>
+<p>展開して内容をそのままFDへコピーするだけ...</p>
+<p class="small">※USBドライバを入れるとFDがパンパンになるかも。不要分を削除するか、memtestなど旧バージョンを使うとかしないといけないかもしれません...orz</p>
+<p>※<code>config_files</code> ディレクトリは見本ファイルなので不要です。</p>
+</dd>
+</dl>
+
+
+<h2><a href="#bootdisk" name="bootdisk">起動ディスク作成</a></h2>
+
+<ol>
+<li>起動ディスクイメージをFDへ書き込み</li>
+<li>コマンドなど必要ファイルを追加</li>
+<li>設定ファイルコピー</li>
+</ol>
+
+<dl>
+<dt>FreeDOS起動ディスクをFDへ書き込み</dt>
+<dd>
+<ol>
+<li>fdboot.imgを<a href="http://www.chrysocome.net/rawwrite">RawWrite for Windows</a>などでFDへ書き込み</li>
+<li>不要ファイル削除 - fdconfig.sys は必ず削除すること</li>
+</ol>
+
+<p>必要ファイルは下記のみ</p>
+<pre>
+A:.
+|   command.com
+|   kernel.sys
+|
++---driver
+|       devload.com
+|       himem.exe
+|       shsucdx.com
+|
+\---freedos
+        choice.exe
+</pre>
+
+<dl class="small">
+<dt>ブートセクタ</dt>
+<dd>
+<p>MS-DOSフロッピーにファイルをコピーしただけでは、FreeDOSは起動しません。ブートセクタにFreeDOSのブートコードが必要なのです。（mkbt.exe や Linuxの ms-sys コマンドなんかでブートコードのみコピーすることもできたりしますけど）</p>
+<p>FDへイメージを直接書き込むか、仮想ドライブなどでイメージファイルとして操作するべし。</p>
+</dd>
+</dl>
+</dd>
+
+<dt><code>FC5-FloppyInstall-1.img</code> からファイルをコピー</dt>
+<dd>
+<p>イメージから展開したファイルをコピーします</p>
+<ul>
+<li>上記の起動ディスクルートへ
+	<ul>
+	<li><code>appld.bat</code></li>
+	<li><code>HOME.DAT</code></li>
+	<li><code>LDFD.ZIP</code></li>
+	<li><code>license.txt</code></li>
+	<li><code>RDRIVE.BAT</code></li>
+	<li><code>ReadMe.txt</code></li>
+	<li><code>TDSK.EXE</code></li>
+	<li><code>TURBO.DAT</code></li>
+	<li><code>TURBODAT.exe</code></li>
+	<li><code>UNZIP.EXE</code></li>
+	<li><code>version.txt</code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+
+
+<dt><code>balder10.img</code> からファイルをコピー</dt>
+<dd>
+<p>イメージから展開したファイルをコピーします</p>
+<ul>
+<li><code>xcopy.exe</code>, <code>edit.exe</code> を <strong class="ms">A:\freedos</strong> へ</li>
+<li><code>keyb.exe</code>, <code>keyboard.sys</code>, <code>keybrd2.sys</code>を<strong class="ms">A:\driver</strong>へ</li>
+</ul>
+</dd>
+
+
+<dt>LINLD.COM, grub.exe, gPXEカーネル, memtest</dt>
+<dd>
+<ul>
+<li>ダウンロードしておいた<code>LINLD.COM</code>を <strong class="ms">A:\freedos</strong> に</li>
+<li><code>grub.exe</code> をルートへ</li>
+<li><code>gpxe-git-gpxe.lkrn</code> を <code>gpxe_all.krn</code> にリネームしてルートへ</li>
+<li><code>memtest</code> をルートへ</li>
+</ul>
+</dd>
+
+<dt>ファイル一覧</dt>
+<dd>
+<pre class="scl2">
+A:.
+|   appld.bat
+|   command.com
+|   gpxe_all.krn
+|   grub.exe
+|   HOME.DAT
+|   kernel.sys
+|   LDFD.ZIP
+|   license.txt
+|   memtest
+|   RDRIVE.BAT
+|   ReadMe.txt
+|   TDSK.EXE
+|   TURBO.DAT
+|   TURBODAT.exe
+|   UNZIP.EXE
+|   version.txt
+|   
++---driver
+|       devload.com
+|       himem.exe
+|       keyb.exe
+|       keyboard.sys
+|       keybrd2.sys
+|       shsucdx.com
+|       
+\---freedos
+        choice.exe
+        edit.exe
+        LINLD.COM
+        xcopy.exe
+</pre>
+</dd>
+
+
+<dt>設定ファイルを詰め合わせをコピー</dt>
+<dd>
+<p><code>fdboot_liveusb3_files</code> ディレクトリ内の内容をFDへすべてコピー</p>
+</dd>
+</dl>
+
+<div class="palmst">
+<dl>
+<dt><a href="#usb_driver"><span class="ms">■</span></a>【DOS+USBドライバ】<a name="usb_driver">USBドライバの組み込み</a></dt>
+<dd>
+
+<p>下記ページは、このページのやつから【DOS+RAMドライブ】がない分だったりします。【DOS+USBドライバ】の内容は同じだったりしますので詳しくはそちらで。</p>
+
+<ul>
+<li><a href="./fdboot_liveusb.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻</a>【その1】</li>
+</ul>
+
+
+
+<p class="small">※【DOS+RAMドライブ】 では不要。</p>
+<p>下記のもので一応(?)設定を書いてみた。</p>
+
+<p><code>A:\driver</code> にコピー</p>
+
+<p>USB CD/DVDドライブ用</p>
+
+<ul class="small">
+<li>Panasonic USB CD/DVDドライブ用
+	<ul>
+	<li><code>RAMFD.SYS</code> - USB FDドライブでのブート時に必要なRAMディスクドライバ</li>
+	<li><code>Usbaspi.sys</code> - ASPIマネージャ？</li>
+	<li><code>USBCD.SYS</code> - USB CDドライバ</li>
+	</ul>
+</li>
+</ul>
+
+<p>USBメモリ用は下記のどちらかで。</p>
+
+<ul class="small">
+<li>Iomega製 - USBメモリ・USB HD用（※Norton Ghost 2003 にも付属）
+	<ul>
+	<li><code>aspiehci.sys</code> - USB 2.0</li>
+	<li><code>aspiuhci.sys</code> - USB 1.1(UHCI)</li>
+	<li><code>aspiohci.sys</code> - USB 1.1(OHCI)</li>
+	<li><code>guest.exe</code> - ディスクドライバ（ドライブレター割当）</li>
+	</ul>
+</li>
+</ul>
+
+
+<ul class="small">
+<li>NOVAC USBメモリ/USB HD用（※NOVAC HDケースに付属）
+	<ul>
+	<li><code>Usbaspi.sys</code> - USB 1.1専用 ASPIマネージャ？</li>
+	<li><code>di1000dd.sys</code> - ディスクドライバ（ドライブレター割当）</li>
+	</ul>
+</li>
+</ul>
+<p class="small">※NOVAC分は <code>A:\driver\novac</code> にコピー。</p>
+
+<p>ドライバが入りきらない場合は、設定ファイル詰め合わせの <code>config_files</code> ディレクトリ（約 66KB）を削除しませう。</p>
+
+
+</dd>
+</dl>
+</div>
+
+
+<h2><a href="#split" name="split">分割ファイル作成【DOS+RAMドライブ】 </a></h2>
+
+<p>※INSERT+ 1.2.18 と BG-Rescue Linux は分割不要</p>
+
+<ol>
+<li>Linuxカーネルと初期RAMディスクイメージをzipで圧縮
+	<ul class="nest">
+	<li>KNOPPIX 5.3.1CD では（FDx4枚）、<code>\boot\isolinux</code>の<strong class="ms">linux</strong>と<strong class="ms">minirt.gz</strong></li>
+	<li>Knoppix 5.1.1 CD では（FDx3枚）、<code>\boot\isolinux</code>の<strong class="ms">linux</strong>と<strong class="ms">minirt.gz</strong></li>
+	<li>slax-ja-5.1.8.1-3 では（FDx3枚）、<code>\boot</code>の<strong class="ms">vmlinuz</strong>と<strong class="ms">initrd.gz</strong></li>
+	<li>systemrescuecd-x86-1.0.4（FDx8枚+） では、<code>\isolinux</code>の<strong class="ms">rescuecd</strong>（※<strong>など</strong>）と<strong class="ms">initram.igz</strong></li>
+	<li>Berry Linux 0.90 では（FDx2枚）、<code>\Setup</code> の <strong class="ms">vmlinuz</strong>と<strong class="ms">initrd.gz</strong></li>
+	<li>Puppy Linux 4.1.2.1 では（FDx2枚）、<strong class="ms">vmlinuz</strong>と<strong class="ms">initrd.gz</strong></li>
+	</ul>
+</li>
+<li>FDサイズに分割</li>
+<li>ファイル名は順番に<strong class="ms">ldfdr<em class="red">aa</em></strong>,<strong class="ms">ldfdr<em class="red">ab</em></strong>,<strong class="ms">ldfdr<em class="red">ac</em></strong>,...にする</li>
+<li>それぞれをFDへそのままコピー</li>
+<li>最終のFDに空ファイル <strong class="ms red">end.txt</strong> 作成</li>
+</ol>
+
+<dl>
+<dt>Linux上で実行</dt>
+<dd>
+<p class="small">※KNOPPIX 5.3.1CD の例</p>
+<pre>
+$ cp /cdrom/boot/isolinux/linux .
+$ cp /cdrom/boot/isolinux/minirt.gz .
+$ zip ldfd.zip linux minirt.gz
+</pre>
+
+<p>ldfd.zipが作成されたのを確認して分割ファイル作成<span class="small">（※531通常版は4個、Remastered CD だと3個のファイル）</span></p>
+
+<pre>
+$ split --verbose -b 1423k ldfd.zip ldfdr
+creating file `ldfdraa'
+creating file `ldfdrab'
+creating file `ldfdrac'
+</pre>
+</dd>
+
+<dt>Windows XP上で実行</dt>
+<dd>
+<p class="small">※KNOPPIX 5.3.1CD の例</p>
+<ol>
+<li>CDの<code>\boot\isolinux</code>フォルダを開く</li>
+<li><ins><strong class="ms">linux</strong>と<strong class="ms">minirt.gz</strong>とHD上にコピー</ins></li>
+<li><strong class="ms">linux</strong>と<strong class="ms">minirt.gz</strong>を選択</li>
+<li>右クリック<span class="ms">→</span>送る<span class="ms">→</span>圧縮（zip 形式）フォルダ</li>
+<li>圧縮・解凍ソフトでzipファイルを開き、1423(1423.5)KBで分割</li>
+<li>ファイル名を順に、<strong class="ms">ldfdr<em class="red">aa</em></strong>,<strong class="ms">ldfdr<em class="red">ab</em></strong>,<strong class="ms">ldfdr<em class="red">ac</em></strong>,...にする</li>
+</ol>
+</dd>
+</dl>
+
+
+
+<h3><a href="#no_split"><span class="ms">■</span></a> <a name="no_split">分割不要な場合</a></h3>
+
+<p>カーネルと初期RAMディスク(initrd)がそれぞれFDに収まるサイズなら分割不要。</p>
+
+
+<dl class="cl">
+<dt>INSERT+ 1.2.18</dt>
+<dd>
+<p>【DOS+RAMドライブ】では、isolinuxディレクトリ内の<strong class="ms">vmlinuz</strong>と<strong class="ms">miniroot.gz</strong>をFDへそれぞれコピー</p>
+<p>【DOS+USBドライバ】ではUSBメモリから直接カーネルをロード</p>
+</dd>
+
+<dt>BG-Rescue Linux 0.9.1</dt>
+<dd>
+<p>【DOS+RAMドライブ】では、<strong class="ms">vmlinuz</strong> と <strong class="ms">initrd.img</strong> をFDへそれぞれコピー</p>
+
+<p>【DOS+USBドライバ】ではUSBメモリから直接カーネルをロード</p>
+</dd>
+</dl>
+
+
+
+<h2><a href="#screenshot" name="screenshot">スクリーンショット</a></h2>
+
+<p>【DOS+RAMドライブ】でのブートの流れ</p>
+<p>※【DOS+USBドライバ】の方は、<a href="./fdboot_liveusb.html#screenshot">スクリーンショット -【その1】</a>とほぼ同じです。</p>
+
+<div class="ct">
+<p class="overflow3"><img src="./images/fdboot_liveusb3/bootmenu.png" alt="" width="700" height="380"></p>
+</div>
+
+<p>※<strong class="ms">0</strong> が【DOS+RAMドライブ】です。</p>
+
+<dl class="palmst small">
+<dt>【DOS+USBドライバ】では...</dt>
+<dd>
+<p>USBドライブが正常に認識（ドライブレター割当）されれば、カーネルとinitrdは自動検索するので、ディレクトリの指定など（※もちろんFDからファイルのコピーも）不要。</p>
+</dd>
+</dl>
+
+
+<p>RAMドライブが <code>D:</code> に作成されました。</p>
+
+<div class="ct">
+<p class="overflow2"><img src="./images/fdboot_liveusb3/turbodsk.png" alt="" width="700" height="200"></p>
+</div>
+
+
+<p><strong>OS選択メニュー</strong>表示。番号を入力<del>してEnter</del>。</p>
+
+<div class="ct">
+<p class="overflow2"><img src="./images/fdboot_liveusb3/livecd_menu_ram.png" alt="" width="700" height="300"></p>
+</div>
+
+
+<p>FD入替指示のメッセージ。順番通りゆっくりと入換えてEnter。</p>
+<div class="ct">
+<p class="overflow3"><img src="./images/fdboot_liveusb3/next_floppy1.png" alt="" width="400" height="30"></p>
+</div>
+
+
+<p><code>end.txt</code> のある最終FDまで繰り返しコピーを実行。</p>
+<div class="ct">
+<p class="overflow3"><img src="./images/fdboot_liveusb3/next_floppy2.png" alt="" width="400" height="60"></p>
+</div>
+
+
+<p>ディレクトリの指定。CDの内容そのままの場合は <strong class="ms">default</strong> の【1】（※10秒放置で1が選択される）</p>
+<div class="ct">
+<p class="overflow2"><img src="./images/fdboot_liveusb3/dir_select.png" alt="" width="700" height="160"></p>
+</div>
+
+
+<p>ブートオプション設定メニュー。USB CDとUSBメモリとでオプション指定がやや違う場合があります。</p>
+<div class="ct">
+<p class="overflow2"><img src="./images/fdboot_liveusb3/slaxmenu_ram.png" alt="" width="700" height="300"></p>
+</div>
+
+<p>SLAXがブートしましたー。</p>
+
+<div class="ct">
+<p class="overflow3"><img src="./images/fdboot_liveusb3/slax_boot.png" alt="" width="640" height="400"></p>
+</div>
+
+<dl class="palmst small">
+<dt>※ルートイメージをサブディレクトリに保存している場合</dt>
+<dd>
+<p>SLAXでは <del>from=/dev/sda1/slaxな形式でデバイス（ファイル）名の指定が必須らしい(?)ので、<code>slax.bat</code> 内の <code>/dev/sda1</code> を環境に合わせて <code>/dev/sda2</code> , <code>/dev/sdb1</code> , <code>dev/sdc1</code> などに修正する必要があるかもしれません</del>。</p>
+<p>※ <code>from=slax/</code> <ins>とサブディレクトリ名の指定だけでいけました...</ins></p>
+</dd>
+</dl>
+
+<h3>GRUB for DOS</h3>
+
+<p>ネットワークブート、Memtestや、イメージをHDに保存して起動する際などに使う。</p>
+
+<div class="ct">
+<p class="overflow3"><img src="images/fdboot_liveusb3/grub4dos.png" alt="GRUB for DOSブートメニュー" width="700" height="350"></p>
+</div>
+
+<h2><a href="#bussan" name="bussan">起動の流れ</a></h2>
+
+
+<dl>
+<dt>【DOS+RAMドライブ】</dt>
+<dd>
+<p class="small">※SLAXの場合</p>
+<ol>
+<li><strong class="ms">A:\autoexec.bat</strong>
+	<ul class="small">
+	<li><code>A:\bin\auto_ram.bat</code>  へ</li>
+	</ul>
+</li>
+<li><strong class="ms">A:\bin\auto_ram.bat</strong>
+	<ul class="small">
+	<li><code>A:\TURBODAT.EXE</code>  - RAMディスクドライバをロード</li>
+	<li><code>A:\RDRIVE.BAT</code>  - RAMドライブへ移動</li>
+	<li>DOSコマンドなどをRAMドライブへコピー</li>
+	<li> <code>set path=%ramdrv%\bin;%ramdrv%\freedos</code> </li>
+	<li> <code>keyb.exe</code>  - キーボード設定</li>
+	<li> <code>start.bat</code> へ</li>
+	</ul>
+</li>
+<li><strong class="ms">%ramdrv%\bin\start.bat</strong> (A:\bin\start.bat)
+	<ul class="small">
+	<li><strong>OS選択メニュー</strong>表示 (<code>%ramdrv%\menu.txt</code>)</li>
+	<li>選択OSのブート設定ファイルをRAMドライブへコピー</li>
+	<li><code>copyb.bat</code> へ</li>
+	</ul>
+</li>
+<li><strong class="ms">%ramdrv%\bin\copyb.bat</strong> (A:\bin\copyb.bat)
+	<ul class="small">
+	<li>FD入替で分割カーネルをRAMドライブへコピー</li>
+	<li><code>appld.bat</code> をコールしてファイル結合</li>
+	<li>結合ZIPファイルを展開</li>
+	<li><code>slax.bat</code> へ</li>
+	</ul>
+</li>
+<li><strong class="ms">%ramdrv%\bin\slax.bat</strong> (A:\bin\slax.bat)
+	<ul class="small">
+	<li>SLAXディレクトリの選択表示
+		<ul>
+		<li>10秒表示で[【default】自動選択（※ここで間違った場合は、xでキャンセルして、slax実行）</li>
+		</ul>
+	</li>
+	<li><strong>SLAXブートオプションメニュー</strong>表示</li>
+	<li>選択のオプションファイルの設定でブート</li>
+	</ul>
+</li>
+</ol>
+
+</dd>
+
+<dt>【DOS+USBドライバ】</dt>
+<dd>
+<p class="small">※SLAXの場合</p>
+<ol>
+<li><strong class="ms">A:\autoexec.bat</strong>
+	<ul class="small">
+	<li><code>set path=a:\bin_usb;a:\freedos</code></li>
+	<li>※<code>RAMFD.SYS</code>  を選択した場合は、差換えのための待機メッセージを表示、ここでASPIマネージャをロード</li>
+	<li>ドライブレター割り当て</li>
+	<li>start.batへ</li>
+	</ul>
+</li>
+<li><strong class="ms">A:\bin_usb\start.bat</strong>
+	<ul class="small">
+	<li><strong>OS選択メニュー</strong>表示(<code>A:\menu_usb.txt</code>)</li>
+	<li><code>A:\bin_usb\slax.bat</code> へ</li>
+	</ul>
+</li>
+<li><strong class="ms">A:\bin_usb\slax.bat</strong>
+	<ul class="small">
+	<li>ルートイメージの場所とカーネルを検索</li>
+	<li>カーネルのディレクトリへ移動</li>
+	<li><strong>SLAXブートオプションメニュー</strong> 表示
+		<ul>
+		<li>キャンセルすると <code>start.bat</code> へ戻る</li>
+		</ul>
+	</li>
+	</ul>
+</li>
+</ol>
+</dd>
+</dl>
+
+<h2><a href="#config_files" name="config_files">設定ファイル【DOS+RAMドライブ】</a></h2>
+
+
+<p>【DOS+USBドライバ】でのDOS用USBドライバについては、Panasonic + NOVAC のものとなってます。</p>
+
+<ul>
+<li><code>A:\config.sys</code></li>
+</ul>
+<pre class="scl2">
+!switches=/f /n
+menucolor=0,3
+REM menudefault=0,10
+menu
+menu  ===========================================
+menu      FreeDOS USB support -- LiveUSB boot
+menu  ===========================================
+menu
+menu     0 - DOS+RAMドライブ TURBO.DAT
+menu     1 - USB-Flash - 2.0 EHCI
+menu     2 - USB-Flash - 1.1
+menu     3 - USB-CD    - 2.0 EHCI
+menu     4 - USB-CD    - 1.1 
+menu     5 - USB-Flash - 2.0 EHCI + RAMFD.SYS
+menu     6 - USB-Flash - 1.1      + RAMFD.SYS
+menu     7 - USB-CD    - 2.0 EHCI + RAMFD.SYS
+menu     8 - USB-CD    - 1.1      + RAMFD.SYS
+menu     9 - == GRUB for DOS  or  FreeDOS  ==
+menu
+menu  ===========================================
+menu
+
+9?shell=command.com command.com /P
+REM 012345678?shell=command.com /e:1024 /p
+012345678?DEVICE=a:\driver\himem.exe
+5678?DEVICE=A:\driver\RAMFD.SYS
+
+REM ################################################################
+REM === USB Flash === Panasonic + novac ===
+REM ################################################################
+REM ===== Panasonic USB ASPI driver ( USB 2.0 EHCI only )
+1?DEVICE=A:\driver\USBASPI.SYS /E
+5?DEVICE=A:\driver\USBASPI.SYS /W /E
+REM ===== Novac USB storage driver  (USB-Flash 2.0)
+15?DEVICE=A:\driver\novac\DI1000DD.SYS
+REM #####################################
+REM ===== Novac USB ASPI driver ( USB 1.1 only )
+2?DEVICE=A:\driver\novac\USBASPI.SYS
+6?DEVICE=A:\driver\novac\USBASPI.SYS /W
+REM ===== Novac USB storage driver  (USB-Flash 1.1)
+26?DEVICE=A:\driver\novac\DI1000DD.SYS
+REM ################################################################
+
+REM ################################################################
+REM === USB CD ===
+REM ################################################################
+REM ===== Panasonic USB ASPI driver ( USB 2.0 EHCI only )
+3?DEVICE=A:\driver\USBASPI.SYS /E
+7?DEVICE=A:\driver\USBASPI.SYS /W /E
+REM ===== Panasonic USB ASPI driver ( USB-CD driver     )
+37?DEVICE=A:\driver\USBCD.SYS /D:USBCD001
+REM #####################################
+REM ===== Panasonic driver          ( USB 1.1 only      )
+4?DEVICE=A:\driver\USBASPI.SYS
+8?DEVICE=A:\driver\USBASPI.SYS /W
+REM ===== Panasonic USB ASPI driver ( USB-CD driver     )
+48?DEVICE=A:\driver\USBCD.SYS /D:USBCD001
+REM ################################################################
+
+012345678?DOSDATA=UMB
+012345678?DOS=HIGH,UMB
+!FILES=20
+!BUFFERS=20
+!LASTDRIVE=Z
+0?stacks=9,256
+0?DEVICE=A:\TDSK.EXE 24576
+</pre>
+
+<ul>
+<li><code>A:\autoexec.bat</code></li>
+</ul>
+<pre class="scl1">
+@ECHO OFF
+if %CONFIG% == 9 goto FREEDOS
+if %CONFIG% == 0 goto load_ram
+set path=a:\bin_usb;a:\freedos
+
+if %CONFIG% == 1 goto usbfm
+if %CONFIG% == 2 goto usbfm
+if %CONFIG% == 5 goto usbfm
+if %CONFIG% == 6 goto usbfm
+
+if %CONFIG% == 3 goto usbcd
+if %CONFIG% == 4 goto usbcd
+if %CONFIG% == 7 goto usbcd
+if %CONFIG% == 8 goto usbcd
+
+REM ################################################################
+REM === USB Flash === Panasonic + novac ===
+REM ################################################################
+:usbfm
+pause
+echo.
+goto menu
+REM ################################################################
+
+REM ################################################################
+REM === USB CD
+REM ################################################################
+:usbcd
+a:\driver\shsucdx /D:USBCD001
+echo.
+pause
+goto menu
+REM ################################################################
+
+:menu
+a:\driver\keyb jp
+start.bat
+goto END
+
+:load_ram
+a:\bin\auto_ram.bat
+goto END
+
+:FREEDOS
+REM ########################      FREEDOS        #########################
+cls
+echo          ============================================================
+echo          ================  FreeDOS  boot options ====================
+echo          ============================================================
+echo.
+echo          ====     1.  GRUB for DOS  -- grub.exe                  ====
+echo.
+echo          ====     2.  FreeDOS       -- load HIMEM,KEYB           ====
+echo.
+echo          ====     3.  FreeDOS       -- clean boot                ====
+echo.
+echo          ============================================================
+echo.
+a:\freedos\choice.exe /C:1234X Type Number:
+
+if ERRORLEVEL 4 GOTO END
+if ERRORLEVEL 3 GOTO END
+if ERRORLEVEL 2 GOTO HIMEM
+if ERRORLEVEL 1 GOTO GRUB
+
+:HIMEM
+a:\driver\devload.com a:\driver\himem.exe
+set path=a:\bin_usb;a:\freedos
+a:\driver\keyb jp
+goto END
+
+:GRUB
+a:\grub.exe
+goto END
+
+:END
+</pre>
+
+<dl class="palmst small">
+<dt>【DOS+USBドライバ】では...</dt>
+<dd>
+<p>【DOS+USBドライバ】では、この後 <code>A:\bin_usb\start.bat</code> で<strong>OS選択メニュー</strong>表示</p>
+</dd>
+
+</dl>
+
+<ul>
+<li>【DOS+RAMドライブ】<code>A:\bin\auto_ram.bat</code></li>
+</ul>
+<pre class="scl1">
+@ECHO OFF
+if %CONFIG% == 9 goto END
+
+A:\TURBODAT.EXE
+copy TURBO.DAT RDRIVE.BAT
+call RDRIVE.BAT
+copy nul ramdrive.txt
+for %%y in ( C D E F G H I J ) do if exist %%y:\ramdrive.txt set ramdrv=%%y:
+copy a:\UNZIP.EXE
+copy a:\APPLD.BAT
+copy a:\LDFD*.*
+copy a:\menu.txt
+copy a:\reload.bat
+a:\freedos\xcopy.exe /i /s a:\bin %ramdrv%\bin
+a:\freedos\xcopy.exe /i /s a:\freedos %ramdrv%\freedos
+if exist a:\options.txt copy a:\options.txt
+set path=%ramdrv%\bin;%ramdrv%\freedos
+a:\driver\keyb jp
+
+:END
+start.bat
+</pre>
+
+
+
+
+
+<h3><a href="#choice"><span class="ms">■</span></a> <a name="choice">choice.exeでメニュー表示</a></h3>
+
+<ul>
+<li>【DOS+USBドライバ】
+	<ul>
+	<li><a href="../archives/fdboot_liveusb3_files/bin_usb/start.bat.txt">A:\bin_usb\start.bat</a>(.txt)</li>
+	<li><a href="../archives/fdboot_liveusb3_files/menu_usb.txt">A:\menu_usb.txt</a></li>
+	<li><a href="../archives/fdboot_liveusb3_files/bin_usb/knoppix3.bat.txt">A:\bin_usb\knoppix3.bat</a>(.txt)</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>【DOS+RAMドライブ】<code>%ramdrv%\bin\start.bat</code> (<code>A:\bin\start.bat</code>)</li>
+</ul>
+<pre class="scl1">
+@echo off
+cls
+type %ramdrive%\menu.txt
+choice /C:123456789X boot:
+IF ERRORLEVEL=10 GOTO END
+GOTO %ERRORLEVEL%
+
+:1
+xcopy /i /s a:\knop53 %ramdrv%\knop53
+set boot=knoppix3
+cls
+copyb.bat
+GOTO END
+
+:2
+xcopy /i /s a:\knop5 %ramdrv%\knop5
+set boot=knoppix
+cls
+copyb.bat
+GOTO END
+
+:3
+xcopy /i /s a:\slax5 %ramdrv%\slax5
+set boot=slax
+cls
+copyb.bat
+GOTO END
+
+:4
+xcopy /i /s a:\sysres1 %ramdrv%\sysres1
+set boot=sysres
+cls
+copyb.bat
+GOTO END
+
+
+:5
+xcopy /i /s a:\berry90 %ramdrv%\berry90
+set boot=berry
+cls
+copyb.bat
+GOTO END
+
+:6
+xcopy /i /s a:\puppy400 %ramdrv%\puppy400
+set boot=puppy
+cls
+copyb.bat
+GOTO END
+
+:7
+xcopy /i /s a:\inse12 %ramdrv%\inse12
+set boot=insert
+cls
+insert.bat
+GOTO END
+
+:8
+xcopy /i /s a:\bgrescue %ramdrv%\bgrescue
+set boot=bgrescue
+cls
+bgrescue.bat
+GOTO END
+
+:9
+if not exist a:\grub.exe goto nogrub
+a:
+a:\grub.exe
+goto END
+
+:nogrub
+echo.
+echo A:\GRUB.EXE not found !!!
+echo Insert boot floppy in drive A: ... and press a key
+pause &#062;nul
+goto 9
+
+:END
+cls
+</pre>
+
+<ul>
+<li>【DOS+RAMドライブ】<code>%ramdrv%\menu.txt</code> (<code>A:\menu.txt</code>)</li>
+</ul>
+<pre class="scl1">
+      ================================================================
+                          Linux LiveCD Boot Menu
+      ================================================================
+
+                     Type one of the following numbers:
+
+               1 :     Knoppix 5.3.1 CD - SSK  --- from Floppy +4
+               2 :     Knoppix 5.1.1 CD - LCR  --- from Floppy +3
+               3 :     SLAX Live CD 5.1.8.1-3  --- from Floppy +3
+               4 :     SystemRescueCd 1.0.4    --- from Floppy +8?
+               5 :     Berry Linux 0.90        --- from Floppy +2
+               6 :     Puppy Linux 4.00 JP     --- from Floppy +3
+               7 :     INSERT+ 1.2.18          --- from Floppy +2
+               8 :     BG-Rescue Linux 0.9.1   --- from Floppy +2
+               9 :     GRUB for DOS
+
+</pre>
+
+
+<ul>
+<li>【DOS+RAMドライブ】<code>%ramdrv%\bin\copyb.bat</code> (<code>A:\bin\copyb.bat</code> - <code>fedora.bat</code> を編集）</li>
+</ul>
+<pre class="scl1">
+@echo off
+REM Copy all files to RAM Drive
+:docopy
+if exist A:\end.txt goto done
+pause Insert next floppy and press a key...
+copy a:\LDFD*.*
+goto docopy
+
+:done
+REM Now reconstruct the zipfile
+for %%f in (LDFDR*.*) do call appld.bat %%f
+del ldfdr*.*
+unzip ldfd
+
+GOTO %boot%
+
+:puppy
+puppy.bat
+GOTO END
+
+:berry
+berry.bat
+GOTO END
+
+:sysres
+sysres.bat
+GOTO END
+
+:slax
+slax.bat
+GOTO END
+
+:knoppix
+knoppix.bat
+GOTO END
+
+:knoppix3
+knoppix3.bat
+GOTO END
+
+:END
+</pre>
+
+<ul>
+<li>【DOS+RAMドライブ】<code>%ramdrv%\appld.bat</code>（<code>A:\appld.bat</code> - 元のまま）</li>
+</ul>
+<pre>
+copy ldfd.zip /b + %1 /b ldfd.tmp
+copy ldfd.tmp ldfd.zip
+del ldfd.tmp
+del %1
+</pre>
+
+
+<ul>
+<li>【DOS+RAMドライブ】<code>%ramdrv%\bin\knoppix3.bat</code> (<code>A:\bin\knoppix3.bat</code>)</li>
+</ul>
+<pre class="scl1">
+@echo off
+echo.
+echo      ===================================================================
+echo                                Type Number
+echo.
+echo              1 : knoppix_dir=/KNOPPIX/KNOPPIX/    *** default ***
+echo.
+echo              2 : knoppix_dir=/knoppix3/KNOPPIX/   *** rename  ***
+echo.
+echo      ===================================================================
+choice /C:12X /T:1,10 Type Number:
+REM choice /C:12X Type Number:
+
+if ERRORLEVEL 3 GOTO END
+if ERRORLEVEL 2 GOTO RENAME
+if ERRORLEVEL 1 GOTO DEFAULT
+
+:DEFAULT
+set param1=
+GOTO MENU
+
+:RENAME
+set param1=knoppix_dir=knoppix3 knoppix_name=KNOPPIX
+GOTO MENU
+
+:MENU
+cls
+set menudir=%ramdrv%\knop53
+type %menudir%\menu.txt
+choice /C:12345678X boot:
+IF ERRORLEVEL=9 GOTO END
+GOTO %ERRORLEVEL%
+
+
+:1
+set opt=default
+set vga=791
+if not "%param1%"=="" GOTO TEMP
+GOTO LINLD
+
+
+:2
+set opt=vesa
+set vga=normal
+if not "%param1%"=="" GOTO TEMP
+GOTO LINLD
+
+
+:3
+set opt=text
+set vga=normal
+if not "%param1%"=="" GOTO TEMP
+GOTO LINLD
+
+
+:4
+set opt=fb800
+set vga=788
+if not "%param1%"=="" GOTO TEMP
+GOTO LINLD
+
+
+:5
+set opt=fb1024
+set vga=791
+if not "%param1%"=="" GOTO TEMP
+GOTO LINLD
+
+
+:6
+set opt=fb1280
+set vga=794
+if not "%param1%"=="" GOTO TEMP
+GOTO LINLD
+
+
+:7
+set opt=failsafe
+set vga=normal
+if not "%param1%"=="" GOTO TEMP
+GOTO LINLD
+
+
+:8
+set opt=test
+set vga=normal
+if not "%param1%"=="" GOTO TEMP
+GOTO LINLD
+
+
+
+:LINLD
+linld image=linux initrd=minirt.gz vga=%vga% cl=@%menudir%\%opt%.txt
+GOTO END
+
+
+:TEMP
+copy %menudir%\%opt%.txt %menudir%\temp.txt
+echo   %param1%&#062;&#062;%menudir%\temp.txt
+linld image=linux initrd=minirt.gz vga=%vga% cl=@%menudir%\temp.txt
+GOTO END
+
+:END
+</pre>
+
+<ul>
+<li><code>%ramdrv%\knop53\menu.txt</code> (<code>A:\knop53\menu.txt</code>)</li>
+</ul>
+<pre class="scl1">
+     ===================================================================
+                    Knoppix Live CD SSK 5.3.1 Boot Menu
+     ===================================================================
+
+                     Type one of the following numbers:
+
+               1 :     default
+               2 :     vesa
+               3 :     text mode
+               4 :     fb 800x600
+               5 :     fb 1024x768
+               6 :     fb 1280x1024
+               7 :     failsafe
+               8 :     test (desktop=fluxbox)
+               X :      * cancel * 
+
+</pre>
+
+
+<ul>
+<li><code>%ramdrv%\knop53\default.txt</code> (<code>A:\knop53\default.txt</code>)</li>
+</ul>
+<pre class="scl">
+ramdisk_size=100000 init=/etc/init lang=ja apm=power-off nomce highres=off loglevel=0 libata.atapi_enabled=1 quiet SELINUX_INIT=NO nmi_watchdog=0 BOOT_IMAGE=knoppix
+</pre>
+
+
+
+<h2><a href="#tree" name="tree">ファイル一覧</a></h2>
+
+<pre class="scl3" style="height=30em">
+A:.
+|   appld.bat          <span class="red">** ファイル結合バッチ **</span>
+|   autoexec.bat
+|   command.com
+|   config.sys
+|   gpxe_all.krn
+|   grub.exe
+|   HOME.DAT
+|   kernel.sys
+|   LDFD.ZIP
+|   license.txt
+|   memtest
+|   menu.lst           <span class="red">** GRUB for DOS ブート設定ファイル **</span>
+|   menu.txt           <span class="red">** OS選択 ブートメニュー (【DOS+RAMドライブ】)**</span>
+|   menu_usb.txt       <span class="red">** OS選択 ブートメニュー (【DOS+USBドライバ】)**</span>
+|   RDRIVE.BAT
+|   ReadMe.txt
+|   reload.bat          ** 【DOS+RAMドライブ】で起動後にUSBドライバをロード **
+|   TDSK.EXE
+|   TURBO.DAT
+|   TURBODAT.exe
+|   UNZIP.EXE
+|   version.txt
+|       
++---berry90            <span class="red">** Berry Linux ブートオプションファイル **</span>
+|       default.txt
+|       default2.txt
+|       dynabook.txt
+|       expert.txt
+|       menu.txt       <span class="red">** Berry Linux ブートメニュー  **</span>
+|       onram.txt
+|       safe.txt
+|       vaio.txt
+|       vesa.txt
+|       vesa2.txt
+|       
++---bgrescue
+|       menu.txt       <span class="red">** BG-Rescue Linux ブートメニュー  **</span>
+|       menu_usb.txt   <span class="red">** BG-Rescue Linux ブートメニュー (【DOS+USBドライバ】)  **</span>
+|       
++---bin                <span class="red">** 【DOS+RAMドライブ】用バッチ **</span>
+|       auto_ram.bat
+|       berry.bat
+|       bgrescue.bat
+|       copyb.bat      <span class="red">** 分割FDコピー バッチ **</span>
+|       insert.bat
+|       knoppix3.bat
+|       knoppix.bat
+|       other.bat
+|       puppy.bat
+|       slax.bat
+|       start.bat
+|       sysres.bat
+|       
++---bin_usb            <span class="red">** 【DOS+USBドライバ】用バッチ **</span>
+|       berry.bat
+|       bgrescue.bat
+|       insert.bat
+|       knoppix3.bat
+|       knoppix.bat
+|       other.bat
+|       puppy.bat
+|       slax.bat
+|       start.bat
+|       sysres.bat
+|       
++---driver
+|   |   devload.com    ** DOSブート後にドライバロード **
+|   |   himem.exe
+|   |   keyb.exe       ** キーボードドライバ **
+|   |   keyboard.sys   ** キーボードドライバ **
+|   |   keybrd2.sys    ** キーボードドライバ **
+|   |   RAMFD.SYS      <em class="red">** DOS USBドライバ **</em>
+|   |   shsucdx.com    ** CD-ROM 用プログラム **
+|   |   Usbaspi.sys    <em class="red">** DOS USBドライバ **</em>
+|   |   USBCD.SYS      <em class="red">** DOS USBドライバ **</em>
+|   |
+|   \---novac
+|           di1000dd.sys   <em class="red">** DOS USBドライバ **</em>
+|           usbaspi.sys    <em class="red">** DOS USBドライバ **</em>
+|       
++---freedos            <span class="red">** FreeDOSコマンド **</span>
+|       choice.exe
+|       edit.exe
+|       LINLD.COM
+|       xcopy.exe
+|
++---get_iso            <span class="red">** isoイメージのダウンロードURL **</span>
+|       download.txt
+|       
++---grub               <span class="red">** HDDブート用GRUB設定ファイル **</span>
+|       berry.conf
+|       insert.conf
+|       insertfd.conf
+|       knoppix.conf
+|       knoppix3.conf
+|       puppy.conf
+|       slax.conf
+|       sysres.conf
+|       
++---inse12             <span class="red">** INSERT ブートオプションファイル **</span>
+|       default.txt
+|       expert.txt
+|       failsafe.txt
+|       fb1024.txt
+|       fb1280.txt
+|       fb800.txt
+|       menu.txt       <span class="red">** INSERT ブートメニュー  **</span>
+|       menu_usb.txt   <span class="red">** INSERT ブートメニュー (【DOS+USBドライバ】)  **</span>
+|       text.txt
+|       vesa.txt
+|       
++---knop5              <span class="red">** KNOPPIX LCR 5.1.1 ブートオプションファイル **</span>
+|       default.txt
+|       failsafe.txt
+|       fb1024.txt
+|       fb1280.txt
+|       fb800.txt
+|       menu.txt       <span class="red">** KNOPPIX LCR 5.1.1ブートメニュー  **</span>
+|       test.txt
+|       text.txt
+|       vesa.txt
+|       
++---knop53             <span class="red">** KNOPPIX 5.3.1 ブートオプションファイル **</span>
+|       default.txt
+|       failsafe.txt
+|       fb1024.txt
+|       fb1280.txt
+|       fb800.txt
+|       menu.txt       <span class="red">** KNOPPIX 5.3.1ブートメニュー  **</span>
+|       test.txt
+|       text.txt
+|       vesa.txt
+|       
++---puppy400
+|       menu.txt       <span class="red">** Puppy ブートメニュー  **</span>
+|       
++---slax5              <span class="red">** SLAX ブートオプションファイル **</span>
+|       default.txt
+|       menu.txt       <span class="red">** SLAXブートメニュー  **</span>
+|       safe.txt
+|       vesa.txt
+|       xconf.txt
+|       
+\---sysres1
+       menu.txt        <span class="red">** SystemRescueCD ブートメニュー **</span>
+       
+</pre>
+
+
+<h2><a href="#linux_loader" name="linux_loader">Linuxローダ</a></h2>
+
+<p><strong class="ms">LINLD.COM</strong> については下記ページにて。</p>
+
+<ul>
+<li><a href="./fdboot_liveusb.html#linux_loader">Linuxローダ - 【私的】USBブート非対応PC用起動フロッピーを作るの巻（その1）</a></li>
+</ul>
+
+
+<h2><a href="#other_linux" name="other_linux">別の Linux を起動</a></h2>
+
+<p>※いまいちかもしれない...</p>
+
+<dl class="palmst">
+<dt>options.txtを作成（※必要な場合）</dt>
+<dd>
+<p>対象アイテムの <code>syslinux.cfg</code> ,  <code>isolinux.cfg</code> ,  <code>menu.lst</code> などを参照してブートオプション（カーネルパラメータ）を書いた <strong class="ms">options.txt</strong> を（※必要なら）作成する。</p>
+
+<p class="small">※Linuxインストーラなど不要な場合もあります。</p>
+
+<ul>
+<li>※<strong class="ms">linld</strong> コマンドの書式</li>
+</ul>
+<pre>
+linld image=<var>filename</var> initrd=<var>filename</var> vga=normal cl=@<var>A:\</var><strong class="ms red">options.txt</strong>
+</pre>
+
+<p>書式はこんなかんじなので、vgaオプションと、initrdファイル名を除いたファイルを作成。</p>
+
+<ul>
+<li>対象アイテムの isolinux.cfg を参照してみる<span class="small">（※これはKNOPPIX 5.3.1の例）</span></li>
+</ul>
+<pre class="scl">
+LABEL knoppix
+KERNEL linux
+APPEND ramdisk_size=100000 init=/etc/init lang=ja apm=power-off vga=791 initrd=minirt.gz nomce highres=off loglevel=0 libata.atapi_enabled=1 quiet SELINUX_INIT=NO nmi_watchdog=0 BOOT_IMAGE=knoppix
+</pre>
+
+<dl>
+<dt>options.txt の一例</dt>
+<dd>
+<p><em>APPEND</em>行の指定をコピー、initrd=xxx と vga=xxx を消すだけ。</p>
+
+<pre class="scl">
+ramdisk_size=100000 init=/etc/init lang=ja apm=power-off nomce highres=off loglevel=0 libata.atapi_enabled=1 quiet SELINUX_INIT=NO nmi_watchdog=0 BOOT_IMAGE=knoppix
+</pre>
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+<h3><a href="#other_linux_from_ramdirive"><span class="ms">■</span></a> <a name="other_linux_from_ramdirive">from 【DOS+RAMドライブ】</a></h3>
+
+<ul>
+<li>分割FD準備</li>
+<li>（※必要なら）<code>options.txt</code> 作成、起動FD（※起動時にRamdriveへコピーされる）、または最終FDへ保存（上記ZIPに入れてもいい）</li>
+</ul>
+
+
+<ol>
+<li>OS選択メニューは x でキャンセル</li>
+<li><strong class="ms">other.bat</strong> 実行</li>
+<li>FDを入換えてコピー</li>
+<li>options.txt の場所を選択</li>
+</ol>
+
+<p>※カーネルと initrd は、ありがちな名前で検索します。ありがちじゃないとエラーになります。</p>
+
+<div class="ct">
+<p class="overflow3"><img src="images/fdboot_liveusb3/other_ram.png" alt="" width="430" height="400"></p>
+</div>
+
+<p>[none]以外を選択すると <code>options.txt</code> の存在確認します。ない場合はエラーを表示してやり直しとなります。</p>
+
+<p>追加したいオプション（パラメータ）があれば入力。なければそのままEnter。</p>
+
+<div class="ct">
+<p class="overflow3"><img src="images/fdboot_liveusb3/other_param1.png" alt="" width="430" height="50"></p>
+</div>
+
+<ul>
+<li><a href="../archives/fdboot_liveusb3_files/bin/other.bat.txt">other.bat</a>(.txt)</li>
+</ul>
+
+
+
+
+<h3><a href="#other_linux_from_dos_driver"><span class="ms">■</span></a> <a name="other_linux_from_dos_driver">from 【DOS+USBドライバ】</a></h3>
+
+<ul>
+<li>（※必要なら）<code>options.txt</code> 作成、USBメモリ上カーネルのあるディレクトリ、またはFDにコピー</li>
+</ul>
+
+<ol>
+<li>OS選択メニューは x でキャンセル</li>
+<li><strong class="ms">other.bat</strong> 実行</li>
+<li>ドライブレターを入力
+	<ul>
+	<li><code>C</code> とか <code>d</code> とか</li>
+	</ul>
+</li>
+<li>ディレクトリ名を入力
+	<ul>
+	<li><code>knoppix</code> とか <code>boot\isolinux</code> とか</li>
+	</ul>
+</li>
+<li>options.txt の場所を選択</li>
+</ol>
+
+
+<p>※カーネルと initrd は、ありがちな名前で検索します。ありがちじゃないとエラーになります。</p>
+
+<div class="ct">
+<p class="overflow3"><img src="images/fdboot_liveusb3/other_usb.png" alt="" width="430" height="380"></p>
+</div>
+
+<p>ディレクトリ・ファイル名など検索して確認するので、ない場合はエラー表示してやり直しとなります。</p>
+
+<p>[none]以外を選択すると <code>options.txt</code> の存在確認します。ない場合はエラーを表示してやり直しとなります。</p>
+
+<p>追加したいオプション（パラメータ）があれば入力。なければそのままEnter。</p>
+
+<div class="ct">
+<p class="overflow3"><img src="images/fdboot_liveusb3/other_param1.png" alt="" width="430" height="50"></p>
+</div>
+<p class="small">【※注意】<ins>options.txt  があり、</ins>かつ追加オプションを指定した場合、 options.txt のコピーに追記されます。この場合の options.txt の場所について、RAMFD.SYS 使用時は <code>Floppy</code> がだめ、USB CDでは  <code>Same ..</code>  がだめ</p>
+<ul>
+<li><a href="../archives/fdboot_liveusb3_files/bin_usb/other.bat.txt">other.bat</a>(.txt)</li>
+</ul>
+
+
+
+
+
+
+<h2><a href="#etc"><span class="ms">■</span></a> <a name="etc">備考</a></h2>
+
+<dl>
+<dt>LiveCDのファイルを変更している場合</dt>
+<dd>
+<p>サブディレクトリにまとめてるとか、マルチブートの為ディレクトリ名を変えてるとか。下記はデフォルト以外の指定対象</p>
+<p><strong>【DOS+USBドライバ】では自動で検索します</strong>。【DOS+RAMドライブ】ではLINLD実行前に選択画面が表示されます。</p>
+
+<ul class="small">
+<li>KNOPPIX 5.3.1
+	<ul>
+	<li><code>knoppix3\KNOPPIX</code></li>
+	</ul>
+</li>
+<li>SLAX 5.1.8.1-3
+	<ul>
+	<li><code>slax\livecd.sgn</code></li>
+	<li><code>myslax\livecd.sgn</code></li>
+	<li><code>slax5\livecd.sgn</code></li>
+	</ul>
+</li>
+<li>SystemRescueCd 1.0.4
+	<ul>
+	<li><code>sysres10\sysrcd.dat</code></li>
+	</ul>
+</li>
+<li>Berry Linux 0.90
+	<ul>
+	<li><code>berry90\BERRY</code></li>
+	</ul>
+</li>
+<li>Puppy Linux 4.1.2.1
+	<ul>
+	<li>元々サブディレクトリも検索してくれるらしい？（/puppyなんとかな名前にしとけばいいのかな？）</li>
+	</ul>
+</li>
+</ul>
+<p>【※注意】【DOS+USBドライバ】では、Aドライブにオプションを追記した <code>temp.txt</code> を書き込みます。KNOPPIX5.3.1なら コピーされたオプションファイル <code>A:\knop53\temp.txt</code> に <code>knoppix_dir=knoppix3</code> を追記します。</p>
+<p>RAMFD.SYS使用時はAドライブは書き込み不可となるので事前に オプションを追記した<code>temp.txt</code> をFDへ作成する必要があります。書き込みエラーとなった場合でも <code>temp.txt</code> があればそのまま使用されます。ややこしいかなぁ。。</p>
+<p>【DOS+RAMドライブ】から <code>reload.bat</code> を実行の方がいいかなぁ。</p>
+<p>【DOS+RAMドライブ】ではRAMドライブ上なので問題ありません（<code>temp.txt</code> は消えちゃうけど）。</p>
+</dd>
+</dl>
+
+
+
+
+<h3><a href="#notes"><span class="ms">■</span></a> <a name="notes">注意点</a></h3>
+
+<p>【DOS+USBドライバ】でのUSBドライバ使用時の注意点などは下記にて。</p>
+
+<ul>
+<li><a href="./fdboot_liveusb.html#notes_usb_driver">USBドライバ使用時の問題？ -【その1】編</a></li>
+</ul>
+
+<dl>
+<dt>故障デバイスがあると...</dt>
+<dd>
+<p>（一概に断言はできませんが）故障あるいは不良デバイスがあるとBIOSで無効にしないと初期化中に止まってしまうことがあります。</p>
+</dd>
+</dl>
+
+<dl>
+<dt>なるべく新しいフロッピーで</dt>
+<dd>
+<p>古いものでは読み込みでエラーが出たり、エラー発生後にファイルが壊れたりすることも。</p>
+
+<dl>
+<dt>フロッピーを確認しませう！</dt>
+<dd>
+<p>いぁ、新品でもおかしい時ありますから。</p>
+<p>Windows上では不良セクタがあっても使えてしまったりしますから、 <code>format</code> コマンド打つべし。</p>
+<pre>
+format a:
+</pre>
+
+<pre>
+    1,457,664 バイト : 全ディスク領域
+        <em class="red">1,024 バイト : 不良セクタ</em>
+    1,456,640 バイト : 使用可能ディスク領域
+</pre>
+<p><strong>不良セクタ</strong>がないか、「パオーパオーン」な雄叫び（笑）が1,2回じゃなく数十回も発生しないかとか確認しませう。</p>
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+
+<dl>
+<dt>Linux LiveCD側の注意点？</dt>
+<dd>
+
+<dl>
+<dt>「Linux起動後に」USBデバイスが認識されない</dt>
+<dd>
+<p>いわゆる「シェルに落ちる～」ってやつですね。「<code>/KNOPPIX/KNOPPIX</code> が見つからないYO!」です。</p>
+
+<div class="ct">
+<p class="overflow3"><img src="./images/dropping_you_to_busybox_shell.png" alt="ブートメニュー" width="480" height="280"></p>
+</div>
+
+<p>Linux起動後の初期化中にUSBデバイスが認識されない場合は、
+Linux起動直後、または「<strong class="ms">Checkin for USB...</strong>」などのメッセージが表示されている時にUSBポートを挿し直すと認識されることがあります。</p>
+<p>USB CDだとあんまり問題ないのになぁ。（あくまでウチでは）</p>
+</dd>
+
+<dt>シャットダウン</dt>
+<dd>
+<ul>
+<li>SLAXでは、<code>acpi=off</code> を指定してるので自動で電源は切れない。「Power Down」などのメッセージで止まったら電源ボタンを押す</li>
+<li>SystemRescueCdでもそうかも。</li>
+<li>他のLinuxでも <code>acpi=off</code> や <code>noacpi</code> “とか”を指定しないと起動できないことがあるかも。</li>
+</ul>
+
+<dt>USB FDドライブ</dt>
+<dd>
+<p>USB FDドライブでブートする際は、カーネルとinitrdロード後にUSBポートを抜いてしまった方がいいかも。デバイスの検出で時間がかかるので。</p>
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+
+
+
+
+<h3><a href="#reload"><span class="ms">■</span></a> <a name="reload">reload.bat</a></h3>
+
+<p>DOS起動時にUSBドライバの読み込みエラーとなる場合などに試してみる価値があるかもしれませぬ（<em>ないかもしれませぬ</em>。）私の環境ではこちらでやっとこさ認識したことがありますです。</p>
+
+<p>FreeDOS起動後にデバイスドライバのロードが可能な <strong class="ms">devload.com</strong> を使いUSBドライバを読み込みます。</p>
+
+<p>起動時に選択した環境によって若干違いがありますです。</p>
+
+<dl>
+<dt>【DOS+USBドライバ】から実行</dt>
+<dd>
+<p>下記【その1】編と同様。</p>
+<ul>
+<li><a href="./fdboot_liveusb.html#reload">reload.bat - 【その1】</a></li>
+</ul>
+</dd>
+
+<dt>【DOS+RAMドライブ】から実行</dt>
+<dd>
+<ul>
+<li>USB FDドライブ使用時でもRAMFD.SYSが不要になり、USBドライバ読み込み前に取り外しが可能に。</li>
+<li>RAMFD.SYS使用時はAドライブが書き込み不可になるけど、これのRAMドライブはおｋ
+	<ul>
+	<li>USB側のディレクトリ変更してる場合とか、Aドライブにtemp.txtの作成が必要になるし</li>
+	</ul>
+</li>
+</ul>
+
+<p>実行時の流れはこんなかんじ。</p>
+<ol class="small">
+<li>【DOS+RAMドライブ】の<a href="./images/fdboot_liveusb3/livecd_menu_ram.png">OS選択メニュー画面</a>を【x】でキャンセル</li>
+<li>コマンドラインからreload.batを実行</li>
+<li>ドライバなど必要なファイルがRAMドライブへコピーされる</li>
+<li>【<strong class="ms">DOS+USBドライバ</strong>】のOS選択メニューに切り替わる（環境がRAMドライブ上の【<strong class="ms">DOS+USBドライバ</strong>】に変更される）</li>
+<li>番号を選択すると選択OSのオプションファイルがRAMドライブへコピーされる</li>
+<li>ドライバを選択</li>
+<li>ドライバの読み込み、USBデバイスの検出とドライブレター割り当て</li>
+<li>選択OSのメニュー画面が表示される</li>
+</ol>
+
+<p><a href="./images/fdboot_liveusb3/ivecd_menu_ram.png">OS選択メニュー画面</a>でキャンセルして、コマンドラインから <strong class="ms">reload.bat</strong> を実行</p>
+
+<div class="ct">
+<p class="overflow2"><img src="./images/fdboot_liveusb3/ram_reload_bat1.png" alt="reload.bat実行画面1" width="350" height="30"></p>
+</div>
+
+<p>【<strong class="ms">DOS+USBドライバ</strong>】の必要ファイルがRAMドライブへコピーされますー</p>
+
+<div class="ct">
+<p class="overflow2"><img src="./images/fdboot_liveusb3/ram_reload_bat2.png" alt="reload.bat実行画面2" width="350" height="100"></p>
+</div>
+
+<p>環境がRAMドライブ上の【<strong class="ms">DOS+USBドライバ</strong>】に変更されて、【<strong class="ms">DOS+USBドライバ</strong>】のメニューになりますた。</p>
+
+<div class="ct">
+<p class="overflow2"><img src="./images/fdboot_liveusb3/ram_reload_bat3.png" alt="reload.bat実行画面3" width="700" height="300"></p>
+</div>
+
+<p>KNOPPIXの【1】を入力すると、オプションファイルがRAMドライブへコピーされますー</p>
+
+<div class="ct">
+<p class="overflow2"><img src="./images/fdboot_liveusb3/ram_reload_bat4.png" alt="reload.bat実行画面4" width="350" height="140"></p>
+</div>
+
+<p>ドライバを選択しませう</p>
+
+<div class="ct">
+<p class="overflow2"><img src="./images/fdboot_liveusb3/ram_reload_bat5.png" alt="reload.bat実行画面5" width="700" height="200"></p>
+</div>
+
+<p>USB FD ドライブは外した方が安全だと思います（？）ので警告画面など出してみたり。ここで外せます。</p>
+
+<div class="ct">
+<p class="overflow2"><img src="./images/fdboot_liveusb3/ram_reload_bat6.png" alt="reload.bat実行画面6" width="700" height="150"></p>
+</div>
+
+<p>ドライブレターが、キター！です。（※これはIomegaドライバの例）</p>
+
+<div class="ct">
+<p class="overflow2"><img src="./images/fdboot_liveusb3/ram_reload_bat7.png" alt="reload.bat実行画面7" width="500" height="120"></p>
+</div>
+
+<p>【<strong class="ms">DOS+USBドライバ</strong>】用 <code>knoppix3.bat</code> が実行されてメニューが出ますた！</p>
+
+<div class="ct">
+<p class="overflow2"><img src="./images/fdboot_liveusb3/ram_reload_bat8.png" alt="reload.bat実行画面8" width="700" height="300"></p>
+</div>
+
+<p>もし、ドライブレター来ないYO!な時は、「同じKNOPPIXなら」ですが、【x】でキャンセルしてもいっかい <code>reload.bat</code> の実行でキター！になることもあるかもしれません（私はあったけど<em>ないかもしれません</em>...）。</p>
+</dd>
+</dl>
+
+
+
+
+<h2><a href="#link"><span class="ms">■</span></a> <a name="link">関連リンク</a></h2>
+
+
+<dl>
+<dt>Linux LiveCD</dt>
+<dd>
+<ul>
+<li><a href="http://www.rcis.aist.go.jp/project/knoppix/">KNOPPIX Japanese edition</a></li>
+<li><a href="http://simosnet.com/livecdroom/index.html">ライブCDの部屋</a></li>
+<li><a href="http://hatochan.dyndns.org/slax-ja/index.php?slax-ja">slax-ja - PukiWiki</a></li>
+<li><a href="http://www.sysresccd.org/Main_Page">Main Page - SystemRescueCd</a></li>
+<li><a href="http://yui.mine.nu/berry/berry.php">Berry Linux - Bootable CD Linux &#060;Yui's Laboratory&#062;</a></li>
+<li><a href="http://openlab.jp/puppylinux/">Puppy Linux 日本語版</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="./livecd.html">私的 Linux LiveCDめも</a></li>
+</ul>
+</dd>
+
+
+<dt>FreeDOS</dt>
+<dd>
+<ul>
+<li><a href="http://www.freedos.org/">FreeDOS | The FreeDOS Project</a>
+	<ul>
+	<li><a href="http://sourceforge.net/apps/mediawiki/freedos/index.php?title=Main_Page">FreeDOS Wiki</a></li>
+	</ul>
+</li>
+<li><a href="http://www.freedos.org/freecom/cmd.html">Internal Commands of FreeCOM</a></li>
+<li><a href="http://www.finnix.org/Balder">Balder - Finnix</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="./dosdisk.html#freedos">FreeDOS 1.0 - 私的「DOS起動ディスク」めも（未整理）</a></li>
+</ul>
+</dd>
+
+
+<dt>LINLD.COM</dt>
+<dd>
+<ul>
+<li><a href="http://busybox.net/">BusyBox</a></li>
+<li><a href="http://groups.google.com/group/linux.kernel/msg/cc93cda626168dfd">Version 0.97 of linld is available - linux.kernel | Google グループ</a></li>
+</ul>
+</dd>
+
+
+<dt>GRUB for DOS</dt>
+<dd>
+<ul>
+<li><a href="http://sourceforge.net/projects/grub4dos/">GRUB4DOS and WINGRUB | Get GRUB4DOS and WINGRUB at SourceForge.net</a></li>
+<li><a href="http://grub4dos.sourceforge.net/wiki/index.php/Main_Page">Main Page - Grub4Dos Wiki</a>
+	<ul>
+	<li><a href="http://grub4dos.sourceforge.net/wiki/index.php/Grub4dos_tutorial">Grub4dos tutorial - Grub4Dos Wiki</a></li>
+	</ul>
+</li>
+<li><a href="http://diddy.boot-land.net/grub4dos/Grub4dos.htm">Grub4dos Guide - Contents</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="./grub4dos.html">GRUB for DOS めも</a></li>
+</ul>
+
+</dd>
+</dl>
+
+<ul class="small">
+<li><a href="./fdboot_liveusb.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻</a>
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20071007/1191724420">USBブート非対応PCでFDブートからUSBメモリのLiveCD Linuxをブートしてみた</a></li>
+	</ul>
+</li>
+<li><a href="./fdboot_liveusb2.html">【私的】USBブート非対応PC用起動フロッピーを作るの巻【その2】</a>
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20071023/1193151575">USBブート非対応PCでFDブートからUSBメモリのLiveCD Linuxをブートしてみた【その2】</a></li>
+	</ul>
+</li>
+</ul>
+
+
+
+
+</div>
+</div>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+<address>Written by yassy</address>
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+</body>
+
+</html>
+

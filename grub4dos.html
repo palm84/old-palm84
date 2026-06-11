@@ -1,0 +1,2489 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="GENERATOR" content="EdTex Version 3.11">
+<link rel="index" href="http://www10.plala.or.jp/palm84/index.html">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>GRUB for DOS めも</title>
+<style type="text/css">
+<!--
+td { 
+border-right:1px solid #ccc;
+border-bottom:1px solid #ccc;
+}
+
+table.book2 {
+border-top:1px solid #ccc;
+border-left:1px solid #ccc;
+margin:0 2em;
+font-size:90%;
+}
+
+dl.small pre {
+font-size: 100%;
+}
+
+/*.main ul,.main ol,pre {
+	font-size: 0.8em;
+}
+
+.main ul ul, .main ul ol {
+	font-size: 1em;
+}
+*/
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+</head>
+
+
+<body>
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+
+<script type="text/javascript">
+<!--
+setTimeout("link()", 0);
+function link(){
+location.href='https://www.palm84.com/entry/grub4dos';
+}
+-->
+</script>
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>移行作業中です...</ins></dt>
+<dd>
+<p>はてなブログの該当ページへ<strong>リダイレクトします</strong>。お手数をおかけします。ご容赦ください。</p>
+</dd>
+</dl>
+
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" accesskey="z" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd> [<a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,h1,h2,h3,h4,h5,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span,#blog-title,.index,.white,.palmst,pre{color:white!important;background-color:#333!important;text-shadow:none!important;}code{color:#333!important;text-shadow:none!important;}a:link{color:orange!important;text-shadow:none!important;text-decoration:underline!important;}a:visited{color:sienna!important;text-shadow:none!important;text-decoration:underline!important;}a:hover{color:brown!important;background-color:white!important;text-decoration:none!important;}';head[0].appendChild(style);})();">反転</a> <a href="javascript:(function(){var head=document.getElementsByTagName('head');var style=head[0].lastChild;if (style.nodeName.toLowerCase() == 'style'){head[0].removeChild(style);}else{alert('追加したstyle要素はないですYO');}})();">戻す</a>] <span class="font_change">* font-change * <a href="javascript:void(document.body.style.fontFamily='inherit')" title="inherit">inherit</a> <a href="javascript:void(document.body.style.fontFamily='sans-serif')" title="Sans-serif">Ss</a> <a href="javascript:void(document.body.style.fontFamily='serif')" title="Serif">Sf</a> <a href="javascript:void(document.body.style.fontFamily='\'メイリオ\'')" title="メイリオ">メ</a> <a href="javascript:void(document.body.style.fontFamily='\'游ゴシック\',\'Yu Gothic\',YuGothic')" title="游ゴシック">游</a> <a href="javascript:void(document.body.style.fontFamily='\'ＭＳ Ｐゴシック\'')" title="ＭＳ Ｐゴシック">MS</a> <a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Regular\',\'源ノ角ゴシック JP Regular\',\'Noto Sans Japanese Regular\',\'Noto Sans CJK JP Regular\',\'源ノ角ゴシック\',\'源ノ角ゴシック JP\',\'Noto Sans Japanese\',\'Noto Sans CJK JP\'')" title="源ノ角ゴシック / Sonrce Han Sans">源</a> <a href="javascript:void(document.body.style.fontSize='12px')" title="12px">12</a>
+ <a href="javascript:void(document.body.style.fontSize='14px')" title="14px">14</a>
+ <a href="javascript:void(document.body.style.fontSize='16px')" title="16px">16</a> <a href="javascript:void(document.body.removeAttribute('style'));" title="body style 削除">戻す</a> *</span>
+</div>
+
+
+
+<h1><span class="tokai1"><a href="./grub4dos.html">GRUB for DOS めも</a></span></h1>
+
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+<ul>
+<li><a href="#tutorial">概要</a></li>
+<li><a href="#menulst">menu.lst</a></li>
+<li><a href="#command">コマンド</a></li>
+<li><a href="#other_bootloader">他のブートローダから</a></li>
+<li><a href="#ntldr">Windows ブートメニューに追加</a></li>
+<li><a href="#bootdisk">ブートFD</a></li>
+<li><a href="#bootablecd">ブートCD</a></li>
+<li><a href="#usbkey">ブートUSBメモリ</a></li>
+<li><a href="#fdimage">FDイメージの起動</a></li>
+<li><a href="#iso_emulation">CDイメージの起動</a></li>
+<li><a href="#hd_emulation">HDイメージの起動</a></li>
+<li><a href="#pxeboot">(PXE)ネットワークブート</a></li>
+<li><a href="#link">参考リンク</a></li>
+</ul>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+
+
+
+
+<div class="hateb">
+<script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://www10.plala.or.jp/palm84/";
+Hatena.BookmarkWidget.title = "はてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+
+<script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://d.hatena.ne.jp/palm84/";
+Hatena.BookmarkWidget.title = "某所のはてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+</div>
+
+</div>
+</div>
+
+
+<div class="main">
+
+<p class="small">2007.8.1 作成
+<br>2007.12.16 <a href="#usbkey">USBメモリでの起動</a>について訂正追記。
+<br>2007.2.10 <a href="#pxeboot">(PXE)ネットワークブート</a>について追記。
+<br>2009.1.22 <a href="#usbkey_pbr">USBメモリのPBRへインストール</a> を追記。
+<br><a href="#iso_emulation">CDイメージの起動</a> を追記。
+<br>2009.1.30 <a href="#hd_emulation">HDイメージの起動</a>を追記。
+<br>2010.3.14 <a href="#linux_live">HDに保存した Linux LiveCD 起動</a>, <a href="#iso_emulation">CDイメージの起動</a> を追記改訂。
+<br>最終更新日 2012.3.4</p>
+
+<p><script src="http://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+
+<a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/grub4dos.html"><img src="http://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/grub4dos.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a>
+
+</p>
+
+<div class="palmst small">
+<p>【ご注意】テスト版（開発版）もダウンロードできますが、固まったり、全く起動しないことがあったりで、結構不具合多いように思います。新機能やbug fixあったりしますが使用の際はご注意。（※0.4.4正式版リリース前に開発版使ってたんですが不具合多かったです。正式版ではキッチリ直ってる模様ですけど。）</p>
+<ul>
+<li><a href="http://code.google.com/p/grub4dos-chenall/">grub4dos-chenall - grub4dos - Google Project Hosting</a></li>
+</ul>
+
+
+<dl>
+<dt>NTFS関連（grub.exe だけ？）のバグ？</dt>
+<dd>
+<p><ins><strong class="ms">0.4.4</strong> では問題なさそうです（今んとこ）。</ins></p>
+<p>※下記の組み合わせでWindows XPを起動させると非常にスローモーになるというバグ(?)がありました。（※環境次第かもしれませんが...）</p>
+<ul>
+<li>（USBメモリ）SYSLINUX <span class="ms">→</span> grub.exe バージョン 0.4.2 と 0.4.3</li>
+<li>（CD）ISOLINUX <span class="ms">→</span> grub.exe バージョン 0.4.2 と 0.4.3</li>
+<li>（ネットワーク）PXELINUX <span class="ms">→</span> grub.exe バージョン 0.4.2 と 0.4.3</li>
+</ul>
+<p>よって、SYSLINUX,PXELINUX からチェインロードする場合は、memdisk + FDイメージ（または grub.exe 0.4.1）を使うのが安全かも。CDなら、BCDW + grldr で。</p>
+</dd>
+</dl>
+</div>
+<h2><a href="#tutorial" name="tutorial">概要</a></h2>
+
+<ul>
+<li><a href="http://grub4dos.sourceforge.net/wiki/index.php/Main_Page">Main Page - Grub4Dos Wiki</a>
+	<ul>
+	<li><a href="http://grub4dos.sourceforge.net/wiki/index.php/Grub4dos_tutorial">Grub4dos tutorial - Grub4Dos Wiki</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>ダウンロード
+	<ul class="nest">
+	<li><a href="http://sourceforge.net/projects/grub4dos/">GRUB4DOS and WINGRUB | Get GRUB4DOS and WINGRUB at SourceForge.net</a></li>
+	<li><a href="http://download.gna.org/grub4dos/">Index of /grub4dos</a></li>
+	<li><a href="http://nufans.net/grub4dos/">nufans.net - /grub4dos/</a></li>
+</ul>
+</li>
+</ul>
+
+<ul>
+<li>インストール
+	<ul>
+	<li><a href="http://grub4dos.sourceforge.net/wiki/index.php/Installation">Installation - Grub4Dos Wiki</a></li>
+	<li><a href="http://diddy.boot-land.net/grub4dos/files/install.htm">Grub4dos Guide - Loading/Installing Grub4dos</a></li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt>ドキュメント</dt>
+<dd>
+<p>htm及びchmファイルがダウンロード可能</p>
+<ul>
+<li><a href="http://diddy.boot-land.net/grub4dos/Grub4dos.htm">Grub4dos Guide - Contents</a></li>
+</ul>
+</dd>
+
+<dt>grubinst.exe</dt>
+<dd>
+<p>Windows上でFDやUSBメモリ、イメージファイルへGRUBブート・コード書き込み。（※ <code>menu.lst</code> , <code>grldr</code> は手動コピー）</p>
+<ul>
+<li>ダウンロード：
+	<ul>
+	<li><a href="http://download.gna.org/grubutil/">Index of /grubutil</a>（※Windows版は <code>grubinst-x.x-bin-w32-xxxx-xx-xx.zip</code> ）</li>
+	</ul>
+</li>
+</ul>
+
+</dd>
+
+<dt>GUIツール</dt>
+<dd>
+<p>「<strong>取り扱い注意</strong>」ですけど。</p>
+<ul>
+<li><a href="http://grub4dostoolbox.sourceforge.net/">Grub4DOS Toolbox for Windows - Project Homepage</a>
+	<ul>
+	<li><a href="http://sourceforge.net/projects/grub4dostoolbox/">Grub4DOS Toolbox for Windows | Get Grub4DOS Toolbox for Windows at SourceForge.net</a></li>
+	<li><a href="http://www.boot-land.net/forums/index.php?showtopic=7328">Grub4DOS Toolbox for Windows</a></li>
+	</ul>
+</li>
+<li>grubinst_gui.exe
+	<ul>
+	<li>※ 上記の grubinst パッケージに含まれる</li>
+	<li><a href="http://www.boot-land.net/forums/index.php?showtopic=6466&#038;st=2">Replacement of GrubInst_gui.exe (VPE c't-Edition)</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+<p>オリジナルの GRUB と違う点はこんなとこかな。</p>
+
+<ul>
+<li>既存のブートローダから GRUB を呼び出す
+	<ul>
+	<li>ntldr や bootmgr - <strong class="ms">grldr</strong></li>
+	<li>GRUB や LILO や SYSLINUX - <strong class="ms">grub.exe</strong></li>
+	</ul>
+</li>
+<li>MBR（ブートストラップローダ）、ブートセクタ（IPL）を書き換えなくて“も”よい（チェインロードすれば）</li>
+<li>DOS上で実行可能 (<strong class="ms">grub.exe</strong>)</li>
+<li>BCDW (Bootable CD Wizard) からチェインロード - <strong class="ms">grldr</strong></li>
+<li><strong>NTFS対応</strong>（※ NTFSパーティション内の kernel, initrd の読み込みが可能）</li>
+<li>menu.lst の検索機能、などなど</li>
+</ul>
+
+<p>かなり「使える」と思いました。</p>
+<ul>
+<li>Windows 2k/XPの ntldr から GRUB をチェインロード
+	<ul>
+	<li>HDに保存したLiveCDの起動</li>
+	<li>HDに保存したFDイメージの起動とか</li>
+	</ul>
+</li>
+<li>ntldr <span class="ms">→</span> GRUB <span class="ms">→</span> ネットワークブート用ROMをチェインロード
+	<ul>
+	<li>ネットブート非対応マシンでも起動ディスクなしでブート可能に</li>
+	</ul>
+</li>
+<li>Windows 2k/XP の緊急起動用ディスク(FD/USBメモリ)
+	<ul>
+	<li>FD/USBメモリに保存した ntldr をチェインロード</li>
+	</ul>
+</li>
+<li>USBメモリ
+	<ul>
+	<li>SYSLINUX から GRUB をチェインロード</li>
+	</ul>
+</li>
+</ul>
+
+
+<h2><a href="#menulst" name="menulst">menu.lst</a></h2>
+
+
+<ol>
+<li><a href="#basic">ファイルの先頭部分</a></li>
+<li><a href="#entry">エントリ（選択項目）を書く</a></li>
+<li><a href="#jp106">JPキーボードに対応</a></li>
+<li><a href="#configfile">設定ファイルの切替</a></li>
+<li><a href="#color">文字色指定</a></li>
+<li><a href="#linux_live">HDに保存した Linux LiveCD 起動</a></li>
+</ol>
+
+<dl class="palmst pink">
+<dt>【超私的】menu.lst</dt>
+<dd>
+<p>ごちゃまぜですが。</p>
+<ul>
+<li>FD/HD用 - <a href="./archives/grub/fd_hd_menu.lst">fd_hd_menu.lst</a></li>
+<li>CD/USB/PXE用 - <a href="./archives/grub/cd_pxe_usb_menu.lst">cd_pxe_usb_menu.lst</a></li>
+</ul>
+<p>ファイル名は <code>menu.lst</code> にリネームしてくだされ。</p>
+</dd>
+
+<dt>【基本ですが】改行コードのこと</dt>
+<dd class="small">
+<p>配布ファイルに付属の menu.lst は改行コードがLinux標準の【LF】（※ Windows 標準は【CR+LF】）となってるので Windows のメモ帳では正しく表示できません。ワードパッドではおｋですが他のLF対応テキストエディタの使用をマジでおすすめします。ワードパッドに比べめちゃ便利なので。</p>
+<p>私は <a href="http://www.edcom.jp/edtexold.html">EdTex 3.11</a>（フリー）と<a href="http://hide.maruo.co.jp/software/hidemaru.html">秀丸エディタ</a>（シェアウェア）ですが、他にフリーなら<a href="http://sakura-editor.sourceforge.net/">サクラエディタ</a>とか<a href="http://www5f.biglobe.ne.jp/~t-susumu/library/tpad.html">TeraPad</a>とかがオススメかなぁ？</p>
+<p>※ <a href="http://www.edcom.jp/edtexold.html">EdTex 3.11</a> は個人的にはサイコーに便利なのですが、ユニコード非対応とか秀丸に比べるとチト欠点があったり。</p>
+<p>尚、改行コードは【CR+LF】でも問題なく使えてます。</p>
+</dd>
+</dl>
+
+<dl class="small pink">
+<dt>【追記】<code>menu.lst</code> の優先順位は？</dt>
+<dd>
+<p>※ <ins>間違ってたので修正しました。</ins></p>
+<p>GRUBがブートしたデバイス上にない場合は、CD,FD以外から（HD, USBメモリなど）</p>
+<ol>
+<li><code>/menu.lst</code></li>
+<li><code>/boot/grub/menu.lst</code></li>
+<li><code>/grub/menu.lst</code></li>
+</ol>
+<div class="quote">
+<blockquote cite="http://diddy.boot-land.net/grub4dos/files/embedded.htm" title="Grub4dos Guide - Embedded Menu">
+<pre class="scl">
+title find /menu.lst, /boot/grub/menu.lst, /grub/menu.lst
+errorcheck off
+configfile /menu.lst
+configfile /boot/grub/menu.lst
+configfile /grub/menu.lst
+find --set-root --ignore-floppies --ignore-cd /menu.lst &#038;&#038; configfile /menu.lst
+find --set-root --ignore-floppies --ignore-cd /boot/grub/menu.lst &#038;&#038; configfile /boot/grub/menu.lst
+find --set-root --ignore-floppies --ignore-cd /grub/menu.lst &#038;&#038; configfile /grub/menu.lst
+errorcheck on
+commandline
+</pre>
+</blockquote>
+<cite><a href="http://diddy.boot-land.net/grub4dos/files/embedded.htm">Grub4dos Guide - Embedded Menu</a></cite>
+</div>
+</dd>
+</dl>
+
+
+<ul>
+<li><a href="http://diddy.boot-land.net/grub4dos/files/menu.htm">Grub4dos Guide - Configuration File Entries</a></li>
+</ul>
+
+<ul>
+<li>ドライブ/パーティションは0から数える
+	<ul class="nest">
+	<li>hda1は<code>(hd0,0)</code> hdb5は<code>(hd1,4)</code></li>
+	</ul>
+</li>
+<li>大文字・小文字は<del>区別される</del>
+	<ul>
+	<li>CD上では区別</li>
+	<li>フォーマット ext4 では区別</li>
+	<li>フォーマット NTFS/FAT32上では区別しない（※ 8.3形式でも検索されることがあるので注意）</li>
+	</ul>
+</li>
+</ul>
+
+
+<h3><a href="#basic" name="basic">ファイルの先頭部分</a></h3>
+
+<pre>
+color white/blue yellow/cyan
+default 0
+timeout 60
+splashimage=(hd0,0)/robin.gz
+&#045;&#045;&#045;&#045;以下略&#045;&#045;&#045;&#045;
+</pre>
+
+<ul>
+<li><code>color</code> - 色指定。なしでもよい。</li>
+<li><code>default</code> - デフォルトの選択を指定。0から数える。</li>
+<li><code>timeout</code> - 自動起動させる秒数指定。なしでもよい</li>
+<li><code>splashimage</code> - 背景画像指定。なしでもよい
+	<ul class="nest">
+	<li>ファイル名 <code>robin.xpm.gz</code> がなぜか <code>robin.gz</code> に変わってしまうので最初から名前変更しておいた方がいいかな</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><code>fallback 1</code> - 起動失敗した場合にエントリ2へ移動。なしでもよい。</li>
+</ul>
+
+<pre>
+color white/blue yellow/cyan
+timeout 30
+splashimage=(hd0,0)/robin.gz
+<strong class="ms red">default /default</strong>
+&#045;&#045;&#045;&#045;以下略&#045;&#045;&#045;&#045;
+</pre>
+<ul>
+<li><code>default</code> - 0.4.2からこのファイルが<del>必要</del>らしい。内容はよくわからない...<ins>設定を保存する為のファイルということでなしでもいいみたい。</ins></li>
+</ul>
+
+
+<h3><a href="#entry" name="entry">エントリ（選択項目）を書く</a></h3>
+
+<p><code>root</code> コマンドで選択パーティションを指定してファイル名を記述するか、<code>(hd0,0)/boot</code> のように直接パーティションを含めたパスで記述する。</p>
+<dl>
+<dt>Linuxなど - kernelとinitrdを指定</dt>
+<dd>
+<pre>
+title Linux
+      root (hd1,1)
+      kernel /vmlinuz ro root=/dev/hdb3 vga=0x318
+      initrd /initrd.img
+</pre>
+</dd>
+
+<dt>ブートセクタへ処理を渡す - Windows or ブートセクタにブートローダがある場合</dt>
+<dd>
+<pre>
+title chainload (hd0,0)
+      chainloader (hd0,0)+1
+      rootnoverify (hd0,0)
+</pre>
+</dd>
+
+<dt>ファイルを検索して設定</dt>
+<dd>
+<ul>
+<li>ntldr (Windows XP/2000) を検索してチェインロード</li>
+</ul>
+<pre>
+title find and load NTLDR of Windows NT/2K/XP
+      find --set-root /ntldr
+      chainloader /ntldr
+</pre>
+
+<ul>
+<li>bootmgr (Windows Vista/7) を検索してチェインロード</li>
+</ul>
+<pre>
+title find and load BOOTMGR of Windows Vista/7
+      find --set-root /bootmgr
+      chainloader /bootmgr
+</pre>
+
+<dl class="palmst small">
+<dt>第2HDから Windows の起動</dt>
+<dd>
+<p>※ USBメモリブートの場合も。</p>
+<p>Windows は第2HDの NTLDR, BOOTMGR  から起動できないので入替指定。</p>
+<ul>
+<li>ntldr (Windows XP/2000) を検索してチェインロード</li>
+</ul>
+<pre>
+title find and load NTLDR of Windows NT/2K/XP
+find --set-root --ignore-floppies --ignore-cd /ntldr
+map () (hd0)
+map (hd0) ()
+map --rehook
+find --set-root --ignore-floppies --ignore-cd /ntldr
+chainloader /ntldr
+</pre>
+
+<ul>
+<li>bootmgr (Windows Vista/7) を検索してチェインロード</li>
+</ul>
+<pre>
+title find and load BOOTMGR of Windows Vista/7
+find --set-root --ignore-floppies --ignore-cd /bootmgr
+map () (hd0)
+map (hd0) ()
+map --rehook
+find --set-root --ignore-floppies --ignore-cd /bootmgr
+chainloader /bootmgr
+</pre>
+</dd>
+</dl>
+
+<ul>
+<li>menu.lst を検索して切替</li>
+</ul>
+<pre>
+title find /menu.lst
+      find --set-root --ignore-floppies /menu.lst
+      configfile /menu.lst
+</pre>
+<pre>
+title find /boot/grub/menu.lst
+      find --set-root /boot/grub/menu.lst
+      configfile /boot/grub/menu.lst
+</pre>
+<pre>
+title find /grub/menu.lst
+      find --set-root /grub/menu.lst
+      configfile /grub/menu.lst
+</pre>
+
+<ul>
+<li>GRUB2 をチェインロード</li>
+</ul>
+<pre>
+title chainload GRUB2
+      find --set-root /boot/grub/core.img
+      kernel /boot/grub/core.img
+</pre>
+
+<ul>
+<li><code>--ignore-floppies</code> - FDを除外</li>
+<li><code>--ignore-cd</code> - CDを除外</li>
+</ul>
+</dd>
+
+
+<dt>2台めのHDドライブからの起動</dt>
+<dd>
+<ul>
+<li><a href="http://diddy.boot-land.net/grub4dos/files/map.htm#swap">Disk Swapping - Grub4dos Guide - Map Command</a></li>
+</ul>
+
+<p>chainloader コマンドだけではだめな場合は、HDの順番を入れ替えてみるとか。</p>
+<pre>
+title chainload hdb(sdb) MBR
+      map (hd0) (hd1)
+      map (hd1) (hd0)
+      map --hook
+      chainloader (hd0)+1
+      rootnoverify (hd0)
+</pre>
+<p>または、<code>chainloader (hd0,0)+1</code> とか。</p>
+</dd>
+
+<dt>halt / reboot</dt>
+<dd>
+<ul>
+<li>再起動</li>
+</ul>
+<pre>
+title reboot
+      reboot
+</pre>
+<ul>
+<li>シャットダウン</li>
+</ul>
+<pre>
+title halt
+      halt
+</pre>
+</dd>
+
+
+<dt>ネットワークブート用イメージでブート</dt>
+<dd>
+<ul>
+<li><a href="http://rom-o-matic.net/">ROM-o-matic.net</a>で対応ROM (<strong class="ms">LILO/GRUB/SYSLINUX loadable kernel format</strong>) をダウンロードしてパーティションのルートにコピー</li>
+</ul>
+<pre>
+title Network Boot from ROM
+      find --set-root /<var>netboot.zli</var>
+      kernel /<var>netboot.zli</var>
+</pre>
+</dd>
+
+<dt>Linux インストーラの起動</dt>
+<dd>
+<ol>
+<li>ネットワークインストール用 <strong class="ms">kernel</strong> と <strong class="ms">initird</strong> をダウンロード
+	<ul class="small">
+	<li>Debian stable <a href="http://www.ring.gr.jp/pub/linux/debian/debian/dists/stable/main/installer-i386/current/images/netboot/debian-installer/i386/">/debian/debian/dists/stable/main/installer-i386/current/images/netboot/debian-installer/i386/</a>（※テキストモード版）</li>
+	<li>Ubuntu lucid (10.04) - <a href="http://ftp.jaist.ac.jp/pub/Linux/ubuntu/dists/lucid/main/installer-i386/current/images/netboot/ubuntu-installer/i386/">/ubuntu/dists/lucid/main/installer-i386/current/images/netboot/ubuntu-installer/i386</a></li>
+	</ul>
+</li>
+<li>パーティションのルートにコピー</li>
+</ol>
+
+<ul>
+<li>Debian stable, Ubuntu lucid の例 (x86)</li>
+</ul>
+<pre>
+title Linux Installer
+find --set-root /linux
+kernel /linux vga=normal locale=ja_JP
+initrd /initrd.gz
+</pre>
+</dd>
+</dl>
+
+
+
+<h3><a href="#jp106" name="jp106">JPキーボードに対応</a></h3>
+
+<p>※ 完全じゃないけど...</p>
+<ul>
+<li>アンダースコア <kbd>_</kbd> は <kbd>Shift</kbd>-<kbd>0</kbd></li>
+<li>バー <kbd>|</kbd> は <kbd>Shift</kbd>-<kbd>半角</kbd></li>
+<li>バックスラッシュ <kbd lang="en" class="backslash">&#92;</kbd> は <kbd>半角</kbd></li>
+</ul>
+<div class="small">
+<pre>
+color white/blue yellow/cyan
+timeout 30
+splashimage=(hd0,0)/robin.gz
+
+# jp106 keypad
+setkey at bracketleft
+setkey doublequote at
+setkey ampersand caret
+setkey quote ampersand
+setkey parenleft asterisk
+setkey parenright parenleft
+setkey underscore parenright
+setkey equal underscore
+setkey plus colon
+setkey colon quote
+setkey asterisk doublequote
+setkey bracketleft bracketright
+setkey braceleft braceright
+setkey bracketright backslash
+setkey braceright bar
+setkey backslash backquote
+setkey tilde plus
+setkey caret equal
+setkey backquote braceleft
+setkey bar tilde
+&#045;&#045;&#045;&#045;以下略&#045;&#045;&#045;&#045;
+</pre>
+</div>
+
+
+<h3><a href="#configfile" name="configfile">設定ファイルの切替</a></h3>
+
+<p>エントリ（起動項目）が多い場合や、HDの menu.lst に切り替えたい場合など。</p>
+
+<ul>
+<li>デバイスを指定して切替（※<del>rootも移動します</del>）</li>
+</ul>
+<pre>
+title configfile (fd0)/menu.lst
+      configfile (fd0)/menu.lst
+</pre>
+
+<ul>
+<li>検索して切替（※rootも移動します）</li>
+</ul>
+<pre>
+title configfile /boot/grub/menu.lst
+      find --set-root /boot/grub/menu.lst
+      configfile /boot/grub/menu.lst
+</pre>
+<pre>
+title configfile /grub/knoppix.conf
+      find --set-root /grub/knoppix.conf
+      configfile /grub/knoppix.conf
+</pre>
+
+
+
+<h3><a href="#color" name="color">文字色指定</a></h3>
+
+<pre>
+color white/blue yellow/cyan
+</pre>
+<ul>
+<li>文字色/背景色 選択中の文字色/選択中の背景色</li>
+</ul>
+
+<p class="overflow3"><img src="./images/grub4dos/grub4dos_color.png" alt="menu.lst画面" width="576" height="272"></p>
+
+
+
+<h3><a href="#linux_live" name="linux_live">HDに保存した Linux LiveCD 起動</a></h3>
+
+<dl>
+<dt>KNOPPIX （※産総研版 5.3.1CD）</dt>
+<dd>
+<ul class="small">
+<li><a href="http://www.rcis.aist.go.jp/project/knoppix/">KNOPPIX Japanese edition</a>
+	<ul>
+	<li><a href="http://www.ring.gr.jp/pub/linux/knoppix/iso/">Index of /pub/linux/knoppix/iso</a> (<code>knoppix_v5.3.1DVD_20080326-20080523-AC.iso</code>)</li>
+	</ul>
+</li>
+</ul>
+
+<ol>
+<li><strong class="ms">KNOPPIX</strong> ディレクトリをドライブのルートにコピー</li>
+<li><strong class="ms">/boot/isolinux</strong> ディレクトリの内容を <strong class="ms">KNOPPIX</strong> ディレクトリへコピー</li>
+</ol>
+<p class="small pink">※ メモリが 1GB 以上でない場合は <strong class="ms red">toram</strong> を外す。</p>
+<pre class="scl">
+title KNOPPIX531CD 
+find --set-root /<strong class="ms red">KNOPPIX</strong>/linux
+kernel /<strong class="ms red">KNOPPIX</strong>/linux ramdisk_size=100000 init=/etc/init lang=ja apm=power-off vga=791 nomce highres=off loglevel=0 libata.atapi_enabled=1 quiet SELINUX_INIT=NO nmi_watchdog=0 <strong class="ms red">toram</strong>
+initrd /<strong class="ms red">KNOPPIX</strong>/minirt.gz
+</pre>
+</dd>
+
+<dt>Berry Linux</dt>
+<dd>
+<ul class="small">
+<li><a href="http://berry-lab.tk/berry.html">Berry Linux - Fast, Simple Linux</a>
+	<ul>
+	<li><a href="http://berry-lab.tk/download.html">Get Berry Linux</a></li>
+	</ul>
+</li>
+</ul>
+
+<p class="small">※ 0.97 の例</p>
+
+<ol>
+<li><strong class="ms">BERRY</strong>ディレクトリをドライブのルートにコピー</li>
+<li><strong class="ms">Setup</strong> ディレクトリの <strong class="ms">vmlinuz</strong> と <strong class="ms">initrd.gz</strong> を <strong class="ms">BERRY</strong> ディレクトリへコピー</li>
+</ol>
+<pre>
+title Berry Linux
+find --set-root /BERRY/BERRY
+map --mem /BERRY/boot.img (fd0)
+map --hook
+chainloader (fd0)+1
+rootnoverify (fd0)
+</pre>
+
+<p>または...</p>
+<pre class="scl">
+title Berry Linux
+find --set-root /BERRY/vmlinuz
+kernel /BERRY/vmlinuz cdrom lang=ja video=vesa:ywrap,mtrr vga=785 splash=silent overlay=/berry/berry.img <strong class="ms red">memboot</strong> 
+initrd /BERRY/initrd.gz
+</pre>
+<p class="small pink">※ メモリが 1GB 以上でない場合は <strong class="ms red">memboot</strong> を外す。</p>
+</dd>
+
+<dt>SLAX （※ slax-ja版 slax-ja-6.1.1-2.iso）</dt>
+<dd>
+<ul class="small">
+<li><a href="http://hatochan.dyndns.org/slax-ja/">slax-ja - PukiWiki</a>
+	<ul>
+	<li><a href="http://hatochan.dyndns.org/slax-ja/index.php?slax-ja%2Fdownload">slax-ja/download - PukiWiki</a> (<code>slax-ja-6.1.1-2.iso</code>)</li>
+	</ul>
+</li>
+</ul>
+
+<ol>
+<li>ドライブのルートに <var>slax6</var> ディレクトリを作成</li>
+<li>CD（isoイメージ）の内容丸ごと <var>slax6</var> ディレクトリにコピー</li>
+<li><strong class="ms">from</strong> オプションでディレクトリを指定</li>
+</ol>
+<p class="small pink">※ メモリが 512MB 以上でない場合は <strong class="ms red">copy2ram</strong> を外す。</p>
+<pre class="scl">
+title slax-ja-6.1.1-2
+find --set-root /<strong class="ms red">slax6</strong>/boot/vmlinuz
+kernel /<strong class="ms red">slax6</strong>/boot/vmlinuz ramdisk_size=6666 root=/dev/ram0 rw autoexec=xconf;telinit~4 changes=/slax/ iocharset=utf8 codepage=932 <strong class="ms red">from=slax6/</strong> <strong class="ms red">copy2ram</strong>
+initrd /<strong class="ms red">slax6</strong>/boot/initrd.gz
+</pre>
+</dd>
+
+<dt>Puppy Linux</dt>
+<dd>
+<ul class="small">
+<li><a href="http://openlab.jp/puppylinux/">Puppy Linux 日本語版</a></li>
+</ul>
+
+<ol>
+<li>ドライブのルートに <var>puppy</var> ディレクトリを作成</li>
+<li>CD（isoイメージ）の内容をすべてそこへコピー</li>
+<li><code>psubdir</code> オプションでディレクトリ指定</li>
+</ol>
+<pre>
+title Puppy Linux
+find --set-root /<strong class="ms red">puppy</strong>/vmlinuz
+kernel /<strong class="ms red">puppy</strong>/vmlinuz <strong class="ms red">psubdir=puppy</strong>
+initrd /<strong class="ms red">puppy</strong>/initrd.gz
+</pre>
+</dd>
+
+<dt>Clonezilla live</dt>
+<dd>
+<ul class="small">
+<li><a href="http://clonezilla.org/">Clonezilla</a>
+	<ul>
+	<li><a href="http://sourceforge.net/projects/clonezilla/files/clonezilla_live_stable/">Browse Clonezilla Files on SourceForge.net</a></li>
+	</ul>
+</li>
+</ul>
+
+<p class="small pink">※ ヴァージョン 1.2.3-27 の例</p>
+<ol>
+<li>ドライブのルートに <var>clonezilla</var> ディレクトリを作成</li>
+<li>CD（isoイメージ）の内容をすべてそこへコピー</li>
+<li><code>live-media-path</code> オプションでディレクトリ指定</li>
+</ol>
+<pre class="scl">
+title Clonezilla live
+find --set-root /<strong class="ms red">clonezilla</strong>/live/vmlinuz
+kernel /<strong class="ms red">clonezilla</strong>/live/vmlinuz boot=live union=aufs noswap nolocales noprompt ocs_live_run=&#034;ocs-live-general&#034; ocs_live_extra_param=&#034;&#034; ocs_live_keymap=&#034;&#034; ocs_live_batch=&#034;no&#034; ocs_lang=&#034;ja_JP.UTF-8&#034; vga=791 ip=frommedia <strong class="ms red">toram=filesystem.squashfs</strong> <strong class="ms red">live-media-path=/clonezilla/live</strong>
+initrd /<strong class="ms red">clonezilla</strong>/live/initrd.img
+</pre>
+</dd>
+
+<dt>CDlinux</dt>
+<dd>
+<ul class="small">
+<li><a href="http://cdlinux.info/wiki/doku.php">about [CDlinux]</a>
+	<ul>
+	<li><a href="http://cdlinux.info/wiki/doku.php/download/latest">download:latest [CDlinux]</a> (<code>CDlinux_CE-0.9.5.iso</code>)</li>
+	</ul>
+</li>
+</ul>
+
+<ol>
+<li>ドライブのルートに <var>CDlinux</var> ディレクトリをコピー</li>
+</ol>
+<pre>
+title CDlinux-0.9.5 Community
+find --set-root /CDlinux/bzImage
+kernel /CDlinux/bzImage CDL_LANG=ja_JP.UTF-8
+initrd /CDlinux/initrd
+</pre>
+</dd>
+
+<dt>SystemRescueCd</dt>
+<dd>
+<ul class="small">
+<li><a href="http://www.sysresccd.org/Main_Page">SystemRescueCd</a>
+	<ul>
+	<li><a href="http://sourceforge.net/projects/systemrescuecd/files/">Browse SystemRescueCd Files on SourceForge.net</a> (<code>systemrescuecd-x86-1.4.0.iso</code>)</li>
+	</ul>
+</li>
+</ul>
+
+<p class="small pink">※ ヴァージョン 1.4.0 の例</p>
+<ol>
+<li>ドライブのルートに <var>sysres14</var> ディレクトリを作成</li>
+<li>CD（isoイメージ）の内容をすべてそこへコピー</li>
+<li><code>subdir</code> オプションでディレクトリ指定</li>
+</ol>
+<pre class="scl">
+title SystemRescueCd 1.4.0
+find --set-root /sysres14/isolinux/rescuecd
+kernel /sysres14/isolinux/rescuecd scandelay=5 setkmap=jp dodhcp docache <strong class="ms red">subdir=sysres14</strong>
+initrd /sysres14/isolinux/initram.igz
+</pre>
+</dd>
+</dl>
+
+
+<h2><a href="#command" name="command">コマンド</a></h2>
+
+
+<div class="ct">
+<p class="overflow2"><img src="./images/grub4dos/grub_commandline.png" alt="GRUB for DOS - commandline" width="720" height="400"></p>
+</div>
+
+<ul>
+<li><a href="http://diddy.boot-land.net/grub4dos/files/commands.htm">Grub4dos Guide - Commands</a></li>
+</ul>
+
+<ul>
+<li>メニュー画面、<kbd>c</kbd> キーでコマンドラインモード
+	<ul>
+	<li><kbd>Tab</kbd> - コマンド表示</li>
+	<li><code>help</code> - コマンドの引数など表示</li>
+	<li><code>help</code> <var>コマンド名</var> - コマンドのヘルプ表示</li>
+	<li><kbd>↑</kbd><kbd>↓</kbd> - 入力履歴</li>
+	<li><kbd>Esc</kbd> - メニュー画面へ戻る</li>
+	</ul>
+</li>
+<li>メニュー画面、<kbd>e</kbd> キーでエントリの編集画面
+	<ul>
+	<li><kbd>e</kbd> - 選択行の編集</li>
+	<li><kbd>d</kbd> - 選択行削除</li>
+	<li><kbd>o</kbd> - 選択行下に行挿入</li>
+	<li><kbd>O</kbd> - 選択行上に行挿入</li>
+	<li>編集後、<kbd>Enter</kbd> で確定したら <kbd>b</kbd> キーでブート</li>
+	<li><kbd>Esc</kbd> - キャンセル</li>
+	</ul>
+</li>
+</ul>
+
+<p><kbd>Tab</kbd> キーでの補完機能あり。何も入力せずに <kbd>Tab</kbd> を押すと使用可能コマンド表示。<code>cha</code> と打った後に <kbd>Tab</kbd> を押せば <strong class="ms">chainloader</strong> と表示。</p>
+
+<p>※注：<code>ls</code> など一部は 0.4.4 以降のみ。</p>
+
+<ul>
+<li><code>ls</code> - 現在位置のファイル・ディレクトリリスト表示</li>
+</ul>
+
+<ul>
+<li><code>root (</code> - ここでTabを打つと利用可能デバイス表示</li>
+<li><code>root (hd0</code> - ここでTabを打つとパーティション一覧表示</li>
+</ul>
+
+
+
+<ul>
+<li><code>root</code> - パーティションの指定</li>
+<li><code>kernel</code> - <strong class="ms">kernel</strong> のパスを指定。<span class="ms">root</span>を使わずに <code>(hd0,0)/vmlinuz</code> な風でも</li>
+<li><code>initrd</code> - <strong class="ms">initrd</strong> のパスを指定。<span class="ms">root</span>を使わずに <code>(hd0,0)/initrd</code> な風でも</li>
+<li><code>chainloader</code> - 他のブートローダをチェインロード
+	<ul>
+	<li><code>chainloader +1</code> - <code>root</code> で指定の現在位置のブートセクタをロード</li>
+	<li><code>chainloader (hd0,0)+1</code> - hda1(sda1)のブートセクタをロード</li>
+	<li><code>chainloader (hd0)+1</code> - hda(sda)のMBRをロード</li>
+	</ul>
+</li>
+<li><code>boot</code> - 指定した設定でブート</li>
+</ul>
+
+<ul>
+<li><code>rootnoverify</code> (x,x) -  <code>root</code> (x,x) でブート・エラーとなる場合はこちらを試してみる</li>
+</ul>
+
+<ul>
+<li><code>configfile (fd0)/menu.lst</code> - <span class="ms">menu.lst</span> を切替（この例ではFD上）</li>
+<li><code>find</code> - フルパスを指定してファイル検索
+	<ul class="nest">
+	<li><code>find --set-root /ntldr</code> - <span class="ms">ntldr</span> を検索して見つかったパーティションに移動（=rootに設定）</li>
+	<li>または、<code>find</code> だけ打つと認識されたパーティション・ドライブ表示</li>
+	</ul>
+</li>
+<li><code>cat</code> - テキストファイルの内容を表示</li>
+<li><code>halt</code> - シャットダウン</li>
+<li><code>reboot</code> - リブート</li>
+</ul>
+<p><code>find (hd0,0)/</code>などと打った後にTabキーを押すとディレクトリ内容一覧表示。</p>
+
+<ul>
+<li><code>geometry</code> - C/H/S や active(boot) パーティションの確認</li>
+</ul>
+<pre class="scl">
+grub&#062; geometry (hd0)
+drive 0x80(LBA): C/H/S=244/255/63, Sector Count/Size=3919860/512
+   Partition num: 0, <em>active</em>,  Filesystem type is fat, partition type 0x0E
+
+grub&#062; geometry (hd1)
+drive 0x81(LBA): C/H/S=1024/15/63, Sector Count/Size=967680/512
+   Partition num: 0, active,  Filesystem type is ntfs, partition type 0x07
+   Partition num: 1,  Filesystem type is fat, partition type 0x0B
+</pre>
+
+<ul>
+<li><code>makeactive</code> - active(boot) パーティションの設定変更</li>
+</ul>
+<pre>
+grub&#062; makeactive (hd1,0)
+Partiton (hd1,0) successfully set active
+</pre>
+<ul>
+<li>CDドライブの利用（※0.4.2以降）</li>
+</ul>
+<pre>
+cdrom --init
+map --hook
+chainloader (<var>cd</var>)
+rootnoverify (<var>cd</var>)
+boot
+</pre>
+<p class="small">※0.4.3以降ではコマンド不要かも。(<var>cd0</var>),(<var>cd1</var>)の場合もあるかも。</p>
+
+<h2><a href="#other_bootloader" name="other_bootloader">他のブートローダからチェインロード</a></h2>
+
+<p>それぞれ、<a href="#usbkey">USBメモリでの起動</a>、<a href="#bootablecd">CDでの起動</a>、<a href="#pxeboot">(PXE)ネットワークブート</a> の項目にも書いとりますが。Windows については次の <a href="#ntldr">Windows ブートメニューに追加</a> にて。
+</p>
+
+<p class="pink">※ <code>grub.exe</code> or <code>grldr</code> をルート (<code>/</code>) に置いた場合です。</p>
+
+<ul>
+<li><strong class="ms">GRUB</strong> - <code>/boot/grub/menu.lst</code></li>
+</ul>
+<pre class="scl">
+title GRUB for DOS
+root (hd<var class="red">x</var>,<var class="red">x</var>)
+kernel /grub.exe --config-file=&#034;find --set-root /menu.lst;configfile /menu.lst&#034;
+</pre>
+
+<ul>
+<li><strong class="ms">GRUB2</strong> （※ Ubuntu 10.04 の例）- <code>/etc/grub.d/40_custom</code>
+	<ul>
+	<li>編集後 <code>update-grub</code> コマンド実行</li>
+	</ul>
+</li>
+</ul>
+<pre>
+menuentry &#034;GRUB for DOS&#034; {
+insmod ext2
+search --file --set=root /grub.exe
+linux /grub.exe
+}
+</pre>
+<p class="small pink">※ GRUB2 ではパーティションは1から数えるので注意！</p>
+
+<ul>
+<li><strong class="ms">SYSLINUX / ISOLINUX</strong> - <code>syslinux.cfg</code> / <code>isolinux.cfg</code>
+	<ul class="small">
+	<li>※ <strong class="ms">grub.exe</strong> の方が <code>menu.lst</code> をきっちり指定できるのでいいかも</li>
+	</ul>
+</li>
+</ul>
+<pre class="scl">
+LABEL grub4dos
+KERNEL /grub.exe
+APPEND --config-file=&#034;find --set-root /menu.lst;configfile /menu.lst&#034;
+</pre>
+<pre>
+LABEL grub4dos
+BOOT /grldr
+</pre>
+<pre>
+LABEL grub4dos
+KERNEL /chain.c32
+APPEND file=/grldr
+</pre>
+
+<ul>
+<li><strong class="ms">PXELINUX</strong> - <code>pxelinux.cfg/&#042;</code></li>
+</ul>
+<pre class="scl">
+LABEL grub4dos.pxe
+KERNEL /grub.exe
+APPEND keeppxe --config-file=&#034;pxe basedir /;configfile (pd)/menu.lst&#034;
+</pre>
+
+<ul>
+<li><strong class="ms">BCDW (Bootable CD Wizard)</strong> - <code>BCDW.INI</code></li>
+</ul>
+<pre>
+\grldr   ; grub4dos
+</pre>
+
+<h2><a href="#ntldr" name="ntldr">Windows ブートメニューに追加</a></h2>
+<h3><a href="#ntldr_xp" name="ntldr_xp">Windows XP / 2000</a></h3>
+
+<p>Windows XP/2000/2003 では <strong class="ms">NTLDR</strong> からチェインロードできます。</p>
+<ol>
+<li>Cドライブのルートなど、<strong class="ms">ntldr</strong> が置かれている場所に <strong class="ms">grldr, menu.lst</strong>（<del>0.4.2以降では <strong class="ms">default</strong> も</del>）を保存する</li>
+<li><strong>boot.ini</strong> にエントリを追記</li>
+<li>OSブート時にメニューから選択起動</li>
+</ol>
+
+<pre class="scl ms">
+[boot loader]
+timeout=10
+default=multi(0)disk(0)rdisk(0)partition(1)\WINDOWS
+[operating systems]
+multi(0)disk(0)rdisk(0)partition(1)\WINDOWS=&#034;Microsoft Windows XP Professional&#034; /fastdetect /NoExecute=OptIn
+<strong class="red">C:\grldr=&#034;GRUB for DOS&#034;</strong>
+</pre>
+<p class="small"><code>boot.ini</code> は「マイ コンピュータ」右クリックでプロパティ、「詳細設定」タブ「起動と回復」の設定ボタン、「編集」ボタンで編集可能です。</p>
+
+<p class="small">コマンド プロンプトだとこんなかんじで。</p>
+<pre class="scl">
+set bootini=C:\boot.ini
+attrib -h -s -r %bootini%
+if not exist %bootini%_default.txt copy %bootini% %bootini%_default.txt
+if exist %bootini%_default.txt copy %bootini% %bootini%_%random%.txt
+echo:&#062;&#062;%bootini%
+echo C:\grldr=&#034;GRUB for DOS&#034;&#062;&#062;%bootini%
+attrib +h +s +r %bootini%
+notepad %bootini%
+</pre>
+
+<h3><a href="#bootmgr" name="bootmgr">Windows 7 / Vista</a></h3>
+
+<p>Vista/7/2008 など <strong class="ms">bootmgr</strong> からチェインロードするには</p>
+<ul>
+<li><a href="http://diddy.boot-land.net/grub4dos/files/install_windows.htm#windows3">Load via bootmgr (Windows Vista/2008/7) - Grub4dos Guide - Loading/Installing Grub4dos From Windows</a></li>
+</ul>
+
+<ol>
+<li>コマンド プロンプトを「管理者として実行」</li>
+<li><strong class="ms">bcdedit </strong> コマンド実行 - 既存設定をエクスポート、起動エントリを追加</li>
+<li><strong class="ms">grldr</strong> , <strong class="ms">grldr.mbr</strong> , <strong class="ms">menu.lst</strong> を <code>C:\</code> にコピー</li>
+</ol>
+
+<dl>
+<dt>【注意】“<code>device</code>”の指定</dt>
+<dd>
+<p>“<code>device</code>”では <strong class="ms">grldr</strong> を置いた場所（パーティション）を指定してます。</p>
+
+<ul>
+<li><em class="ms red">device partition=C:</em> -  <code>C:\Boot</code> なしの場合、現在のOS上のドライブ文字を指定</li>
+<li><em class="ms red">device boot</em> -  <code>C:</code> がアクティブで <code>C:\Boot</code> あり</li>
+</ul>
+</dd>
+
+<dt><code>C:</code> に <code>Boot</code> ディレクトリがない場合</dt>
+<dd>
+<p class="small pink">DELL の Studio 540 で確認しました。隠しパーティションがブート（アクティブ）パーティションとなっているため、C: には Boot ディレクトリや bootmgr がありませんでした。「<strong>システムで予約済み領域」領域がある場合も同様</strong>になります。</p>
+<pre class="scl">
+set back_dir=<var class="red">C:\BCD_backup</var>
+mkdir %back_dir%
+bcdedit /export "%back_dir%\bcd"
+for /f &#034;tokens=2 delims={}&#034; %x in ('bcdedit /create /d &#034;GRUB for DOS&#034; /application bootsector') do set &#034;guid={%x}&#034;
+bcdedit /set %guid% <em class="ms red">device partition=C:</em>
+bcdedit /set %guid% path \grldr.mbr
+bcdedit /displayorder %guid% /addlast
+bcdedit /v
+</pre>
+</dd>
+
+<dt><code>C:</code> に <code>Boot</code> ディレクトリがある場合</dt>
+<dd>
+<p class="small pink">追加で 7 をインストールしてマルチブートしている場合などはアクティブ・パーティション（※ <code>C:</code> とは限らない）に <code>Boot</code> ディレクトリがあるはずです。</p>
+<pre class="scl">
+set back_dir=<var class="red">C:\Boot\BCD_backup</var>
+mkdir %back_dir%
+bcdedit /export &#034;%back_dir%\bcd&#034;
+for /f &#034;tokens=2 delims={}&#034; %x in ('bcdedit /create /d &#034;GRUB for DOS&#034; /application bootsector') do set &#034;guid={%x}&#034;
+bcdedit /set %guid% <em class="ms red">device boot</em>
+bcdedit /set %guid% path \grldr.mbr
+bcdedit /displayorder %guid% /addlast
+bcdedit /v
+</pre>
+</dd>
+</dl>
+
+<p>または、起動領域（<strong>boot ディレクトリや BOOTMGR のあるパーティション）に</strong> <code>boot.ini</code> を置く方法でもいけました。</p>
+
+<dl>
+<dt>「システムで予約済み領域」などに boot.ini を置く</dt>
+<dd>
+<p>通常のインストールの Windows 7 では「システムで予約済み領域」から起動しますが、<strong>Windows 上ではドライブレターが割り当てされていないのでエクスプローラーで表示されません</strong>。また、メーカー製PCでは同様に Windows 上で表示されない「RECOVERY」などリカバリー用領域から起動する場合もあります。</p>
+<p>※ 起動領域は「ディスクの管理」画面で「正常 （<strong>システム, アクティブ</strong>）」と表示されます。</p>
+
+<ul>
+<li><code>boot.ini</code> 作成</li>
+</ul>
+<pre class="scl">
+[boot loader]
+timeout=100
+[operating systems]
+C:\grldr.mbr=&#034;GRUB for DOS&#034;
+</pre>
+
+<ol class="small">
+<li>ディスクの管理 (diskmgmt.msc) 起動</li>
+<li>「システムで予約済み領域」などを右クリックして「ドライブ文字とパスの変更」から「追加」で <strong>X:</strong> などにドライブ文字割り当て</li>
+<li>X: ドライブのルートへ下記をコピー
+	<ul>
+	<li><code>boot.ini</code></li>
+	<li><code>grldr</code></li>
+	<li><code>grldr.mbr</code></li>
+	</ul>
+</li>
+<li>X: ドライブを右クリック「ドライブ文字とパスの変更」から削除</li>
+<li><code>menu.lst</code> は C: のルートへコピー</li>
+</ol>
+</dd>
+</dl>
+
+
+<h2><a href="#bootdisk" name="bootdisk">ブートFD</a></h2>
+
+
+<ol>
+<li><a href="#basic_bootdisk">【基本的】起動FD作成</a></li>
+<li><a href="#fat12grldr">fat12grldr.img</a></li>
+<li><a href="#grubexe">grub.exe</a></li>
+<li><a href="#grubinst">grubinst.exeで作成</a></li>
+</ol>
+
+<ul>
+<li><a href="http://diddy.boot-land.net/grub4dos/files/install_floppy.htm">Grub4dos Guide - Install Grub4dos to Floppy Disk</a></li>
+</ul>
+
+<p>オリジナルのGRUB起動ディスクと違う点は、NTFSを認識可能なこと。<span class="ms">menu.lst</span> や <span class="ms">ntldr</span> を検索してrootとして設定できることやCDドライブの認識（※0.4.2以降）できることとかかな？</p>
+
+<p class="small">DOSイメージではEMM386を使うとだめらしい。</p>
+
+
+<h3><a href="#basic_bootdisk" name="basic_bootdisk">【基本的】起動FD作成</a></h3>
+
+<p>基本的な起動ディスク作成は...</p>
+
+<ol>
+<li>ダウンロード
+	<ul>
+	<li><a href="http://sourceforge.net/projects/grub4dos/files/">Browse GRUB4DOS and WINGRUB Files on SourceForge.net</a></li>
+	<li><strong class="ms">grub_for_dos-0.4.2.zip</strong> と <strong class="ms">grub4dos-0.4.4.zip</strong> をダウンロード</li>
+	</ul>
+</li>
+<li>展開して 0.4.2 の <code>fat12grldr.img</code> を <a href="http://www.chrysocome.net/rawwrite">RawWrite for Windows</a> などでFDへ書き込み</li>
+<li>0.4.4 の <code>grldr</code> と <code>menu.lst</code> をFDへ上書きコピー</li>
+</ol>
+
+<p>他に小さなツール類とか追加するなら（一例ですが...）</p>
+<ul>
+<li>拙作めも : <a href="./grub4dos_bootdisk.html">GRUB起動ディスクを作っておくの巻</a></li>
+</ul>
+
+
+
+<h3><a href="#fat12grldr" name="fat12grldr">fat12grldr.img</a></h3>
+
+<p class="small">※0.4.3, 0.4.4 には入ってません。</p>
+<p>ダウンロードしたファイルに同梱のFDイメージ（FAT版）</p>
+<ul>
+<li><code>fat12grldr.img</code> - <code>grldr</code>の入ったFAT版FDイメージ</li>
+</ul>
+<p>0.4.2の <strong class="ms">default</strong> ファイルって<del>なんなのかな？（汗）</del> <ins>設定を保存するためのファイルの模様</ins>。<code>fallback 1</code>とかのやつは、失敗したら2番目（※0から数える）のエントリへ移動って意味らしい。別になくてもいいかも。</p>
+
+<dl>
+
+<dt><span class="ms">menu.lst</span> - Windows XP 緊急起動ディスク - FDの <span class="ms">ntldr(boot.ini)</span> から起動</dt>
+<dd>
+<ul>
+<li><strong class="ms">ntldr, ntdetect.com, boot.ini, bootfont.bin</strong> をコピー（※大文字・小文字に注意）</li>
+</ul>
+<pre>
+title NTLDR from FD (fw)
+      chainloader (fd0)/ntldr
+</pre>
+</dd>
+
+<dt><span class="ms">menu.lst</span> - ネットワークブート用イメージでブート</dt>
+<dd>
+<ul>
+<li><a href="http://rom-o-matic.net/">ROM-o-matic.net</a> で対応ROM (LILO/GRUB/SYSLINUX loadable kernel format) をダウンロードしてコピー</li>
+</ul>
+<pre>
+title Network Boot from ROM
+      find --set-root /gpxe.krn
+      kernel /gpxe.krn
+</pre>
+</dd>
+</dl>
+
+
+
+<h3><a href="#grubexe" name="grubexe">grub.exe</a></h3>
+
+
+<p>DOS起動ディスクや <a href="http://syslinux.zytor.com/">syslinux</a> 起動ディスク上で実行可能。</p>
+<p><span class="ms">menu.lst</span> の書式は <span class="ms">grldr</span> 版と同じ。</p>
+
+<dl>
+<dt>DOS起動ディスク</dt>
+<dd>
+<p><strong>0.4.1</strong> + DOS起動ディスクでは、MS-DOS(98/XP)、<a href="http://www.freedos.org/">FreeDOS</a>、<a href="http://www.drdos.net/">DR-DOS</a>とも起動できず。<strong>0.4.2</strong>ではXP版MS-DOS以外OK。EMM386を組み込むとだめ。</p>
+<ul>
+<li><strong class="ms">grub.exe , menu.lst</strong> , <del>default（※0.4.2以降）</del>をDOSディスクにコピー</li>
+<li>DOS起動後に入力するか、<span class="ms">AUTOEXEC.BAT</span>に書く。</li>
+</ul>
+</dd>
+</dl>
+
+<dl>
+<dt>SYSLINUX起動ディスク</dt>
+<dd>
+<p><del><a href="http://syslinux.zytor.com/">syslinux</a> で使う場合は、<strong>0.4.2</strong> だと勝手に検索が始まって、HD上の <span class="ms">menu.lst</span> が読み込まれたりしたので <strong>0.4.1</strong> の方を使う方がいいかもしれない</del>（※ <code>configfile (fd0)/menu.lst</code> などと打てば <span class="ms">menu.lst</span> の切替可能ですけど）。</p>
+<ul>
+<li><strong class="ms">grub.exe , menu.lst</strong> ,<del> default（※0.4.2以降）</del>を <span class="ms">syslinux</span> 起動ディスクにコピー</li>
+<li><strong class="ms">syslinux.cfg</strong> にエントリを書く</li>
+</ul>
+
+
+<ul>
+<li>syslinux 起動ディスク作成</li>
+</ul>
+<pre>
+syslinux.exe A:
+</pre>
+<p class="small red">※間違って C: とかやっちゃうとWindowsが起動しなくなるので注意！</p>
+
+<ul>
+<li>syslinux.cfg</li>
+</ul>
+<pre>
+default grub.exe
+append --config-file=&#034;configfile (fd0)/menu.lst&#034;
+prompt 0
+</pre>
+</dd>
+</dl>
+
+
+
+<h3><a href="#grubinst" name="grubinst">grubinst.exeで作成</a></h3>
+
+<ul>
+<li><a href="http://diddy.boot-land.net/grub4dos/files/grubinst.htm">APPENDIX - grubinst commands</a></li>
+</ul>
+
+<ul class="small">
+<li>ダウンロード：
+	<ul>
+	<li><a href="http://download.gna.org/grubutil/">Index of /grubutil</a>（※Windows版は <code>grubinst-x.x-bin-w32-xxxx-xx-xx.zip</code> ）</li>
+	</ul>
+</li>
+</ul>
+
+<p>0.4.3以降にはFDイメージが同梱されてないので（※<a href="http://nufans.net/grub4dos/images/">あったりしますが</a>）、Windows上なら <strong class="ms">grubinst.exe</strong> で作成可能。DOS,SYSLINUX起動ディスクでもいいような気もしますが...</p>
+
+<pre>
+grubinst.exe --pause --verbose --floppy (fd0)
+</pre>
+
+<p>※ <code>menu.lst</code> , <code>grldr</code> は手動コピー</p>
+
+
+<h2><a href="#bootablecd" name="bootablecd">ブートCD</a></h2>
+
+<ol>
+<li><a href="#livecd">GRUB for DOS 入り Linux LiveCD</a></li>
+<li><a href="#make_iso">【私的】isoイメージ作成方法</a></li>
+</ol>
+
+<ul>
+<li><a href="http://diddy.boot-land.net/grub4dos/files/install_cd.htm">Grub4dos Guide - Using grldr as no-emulation bootsector on CD/DVD</a></li>
+</ul>
+
+<p><strong class="ms">BCDW (Bootable CD Wizard)</strong> を使うのが簡単かな。</p>
+
+
+<ul>
+<li><code>BCDW.INI</code></li>
+</ul>
+<pre class="ms">
+\grldr   ; Grub4Dos
+</pre>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20070401/1175363610">マルチブートCDの作成 - 【Bootable CD Wizard】</a>（拙作）</li>
+</ul>
+
+
+<p><strong class="ms">mkisofs</strong> で直接isoイメージ作成する場合は下記の方法でいいようです。</p>
+<ul>
+<li><a href="http://grub4dos.sourceforge.net/wiki/index.php/Grub4dos_tutorial#Create_a_bootable_CDROM">Create a bootable CDROM - Grub4dos tutorial - Grub4Dos Wiki</a></li>
+</ul>
+<pre class="scl">
+mkisofs -R -b grldr -no-emul-boot -boot-load-seg 0x1000 -o bootable.iso <var>iso_root</var>
+</pre>
+<p>または</p>
+<pre class="scl">
+mkisofs -R -b grldr -no-emul-boot -boot-load-size 4 -o grldr.iso <var>iso_root</var>
+</pre>
+
+<dl>
+<dt>ファイル名の大文字・小文字</dt>
+<dd>
+<p>CDブートでは区別されるようです。Windows上のCDではすべて大文字で見えてることもあるのでご注意。</p>
+<p>BCDW や ISOLINUX では問題なくても、この GRUB ではファイルが見つからないなんてことがあります。</p>
+</dd>
+</dl>
+
+
+<h3><a href="#livecd" name="livecd">GRUB for DOS 入り Linux LiveCD</a></h3>
+
+<p>ブートローダが GRUB for DOS 0.4.4 になってました。</p>
+<ul>
+<li><a href="http://openlab.jp/puppylinux/">Puppy Linux 日本語版</a>
+	<ul>
+	<li><code>pup-431JP.iso</code> - <a href="http://openlab.jp/puppylinux/download/">Index of /puppylinux/download</a></li>
+	</ul>
+</li>
+</ul>
+<p>1枚持っときませう。日本語版です。</p>
+
+<ul>
+<li>Parted Magic = <code>pmagic-grub4dos-5.2.iso.zip</code>
+	<ul>
+	<li><a href="http://sourceforge.net/projects/partedmagic/files/partedmagic/Parted%20Magic%205.2/">Browse Parted Magic Files on SourceForge.net</a></li>
+	</ul>
+</li>
+</ul>
+<p>メニューから日本語選択、日本語名ファイルなど表示可、Firefoxで日本語ページ表示可。結構使えるかも。</p>
+
+<p>Windows の再インストールで GRUB 消えちゃったな場合に Linux 起動ディスクとして使えますYO！。</p>
+<p>メニュー画面で <kbd>C</kbd> キー押してコマンドラインから下記を打ちませう。</p>
+<ul>
+<li>GRUB をロード</li>
+</ul>
+<pre>
+find --set-root --ignore-cd /boot/grub/menu.lst
+configfile /boot/grub/menu.lst
+</pre>
+<ul>
+<li>GRUB2 をロード</li>
+</ul>
+<pre>
+find --set-root /boot/grub/core.img
+kernel /boot/grub/core.img
+</pre>
+
+
+
+<h3><a href="#make_iso" name="make_iso">【私的】isoイメージ作成方法</a></h3>
+
+<ul>
+<li>CDRtoolsバイナリ (<code>cdrtools-binary.zip</code>) をダウンロード
+	<ul>
+	<li><a href="http://mouneru.web.fc2.com/cdrecord_fe/cdr_fe.htm">CDRtoolsの フロントエンド</a></li>
+	<li>必要ファイル : <code>cygwin1.dll</code> と <code>mkisofs.exe</code></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>GRUB for DOS (<code>grub4dos-0.4.4.zip</code>) をダウンロード
+	<ul>
+	<li><a href="http://sourceforge.net/projects/grub4dos/files/">Browse GRUB4DOS and WINGRUB Files on SourceForge.net</a></li>
+	<li>必要ファイル : <code>grldr</code></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>【私的】iso作成バッチ : <a href="./archives/misc/grubcd/make_iso_grub4dos.bat">make_iso_grub4dos.bat</a></li>
+<li>【私的】ごちゃまぜ <code>menu.lst</code> : <a href="./archives/grub/cd_pxe_usb_menu.lst">cd_pxe_usb_menu.lst</a>
+	<ul>
+	<li><code>menu.lst</code> にリネーム</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>ファイル構成</li>
+</ul>
+<pre>
+作業ディレクトリ
+|   grldr
+|   menu.lst
+|
+<span class="backslash">\</span>---makeiso
+        cygwin1.dll
+        make_iso_grub4dos.bat
+        mkisofs.exe
+</pre>
+
+<p><code>make_iso_grub4dos.batの</code> 実行で一つ上のディレクトリに <code>grub4dos.iso</code> が作成される。</p>
+
+<p>mkisofs のオプションは下記の通りにしてます。ファイル名について警告が出ることがあるので環境によっては問題が出るかも。</p>
+<pre class="scl">
+mkisofs -R -J -b grldr -V GRUB4DOS -no-emul-boot -boot-load-size 4 -o &#034;%iso%&#034; .
+</pre>
+<h2><a href="#usbkey" name="usbkey">USBメモリでブート</a></h2>
+
+<ol>
+<li><a href="#usbkey_syslinux">SYSLINUX からチェインロード</a></li>
+<li><a href="#usbkey_pbr">USBメモリのPBRへインストール</a></li>
+</ol>
+
+<p>3通りの方法で確認してみましたが、BIOSの対応（USBメモリがHD扱いとなるのか、FD扱いなのかとか）及びUSBメモリの仕様（パーティションの構成が色々あるようです）によってなのか、一部の機能が使えなかったりしたので、<strong class="ms">基本的には対応していないということなのかもしれません</strong>。</p>
+
+<ul>
+<li><a href="http://grub4dos.sourceforge.net/wiki/index.php/USB_booting">USB booting - Grub4Dos Wiki</a></li>
+</ul>
+
+<p>勉強が足りません...（汗）。</p>
+
+<dl class="palmst small pink">
+<dt>USBメモリは第1HDとしてブートする？</dt>
+<dd>
+<p>USBメモリからブートした際は、USBメモリが <code>hd0</code> となる場合が殆どだと思われます。HDを操作するには <code>map</code> コマンドで入替が必要になるかも。入替しないとHDが見えないかも...</p>
+<pre>
+map (hd0) (hd1)
+map (hd1) (hd0)
+map --hook
+root (hd1,0)
+configfile /menu.lst
+</pre>
+<p>HDが2台ある場合は、<code>hd2</code> へ</p>
+<pre>
+map (hd0) (hd2)
+map (hd1) (hd0)
+map (hd2) (hd1)
+map --hook
+root (hd2,0)
+configfile /menu.lst
+</pre>
+</dd>
+</dl>
+
+<dl>
+<dt><strong class="ms">grubinst.exe</strong> でMBRへインストール</dt>
+<dd>
+<ul>
+<li><a href="http://diddy.boot-land.net/grub4dos/files/grubinst.htm">APPENDIX - grubinst commands</a></li>
+</ul>
+
+<p>※ 私自身もよく理解できてませんが、間違うと大変なので実行する際はhelpなどをよく確認した上にて...</p>
+<p>これがごく普通の（？）方法かな。grldr, menu.lst は手動コピーします。</p>
+<p>USBメモリの仕様によるものなのか、機種によってはgrldrが見つからないエラーが出てGRUBが起動しないことがありました。</p>
+</dd>
+</dl>
+
+<dl class="palmst small">
+<dt>USBメモリ内のFDイメージをブート</dt>
+<dd>
+<p>※ SYSLINUX + <strong class="ms">memdisk</strong> の方が簡単な気もしますが。</p>
+<pre>
+title boot on USB-Key fdimage
+      find --set-root /fdimage.img
+      map --mem /fdimage.img (fd0)
+      map --hook
+      chainloader (fd0)+1
+</pre>
+
+<p>Windows XP(2000)緊急起動ディスクやXP版MS-DOS起動ディスクなど、memdisk の raw オプションを指定する必要があるかも？</p>
+<pre>
+title boot on USB-Key fdimage (memdisk raw)
+      find --set-root /memdisk
+      kernel /memdisk raw
+      initrd /winboot.img
+</pre>
+
+<ul>
+<li>0.4.2以降では Indirect mapping で <code>--memdisk-raw=1</code> なオプションも指定可能</li>
+</ul>
+<pre>
+title boot on USB-Key fdimage (Indirect map raw)
+      find --set-root /floppy.img
+      map --memdisk-raw=1
+      map --mem /floppy.img (fd0)
+      map --hook
+      chainloader (fd0)+1
+</pre>
+</dd>
+</dl>
+
+
+<h3><a href="#usbkey_syslinux" name="usbkey_syslinux">SYSLINUX からチェインロード</a></h3>
+
+<p>SYSLINUX から <strong class="ms">grub.exe</strong> をチェインロードできます。</p>
+<p>この方法だと Windows上 で簡単に実行できます。SYSLINUXでマルチブートしてる場合とか楽かも。</p>
+<p class="pink">※ BIOSの認識はHD扱い、FD扱い、どちらでもブート可能です。</p>
+
+<dl class="palmst small pink">
+<dt>0.4.2, 0.4.3 の grub.exe はちょと危険？</dt>
+<dd>
+<p><ins><strong class="ms">0.4.4</strong> では問題なさそうです（今んとこ）。</ins></p>
+<p><strong class="red">バージョン 0.4.2 と 0.4.3 の grub.exe では ntldr などをチェインロードした際、Windows の起動が非常にスローになってしまうというトラブルが発生しました</strong>（※ チェインロードで起動した時のみ）。0.4.1 の grub.exe では、私の環境では問題は出ていませんが少し危険かもしれません。</p>
+</dd>
+</dl>
+
+<ol>
+<li>USBメモリのルートに <span class="ms">grub.exe</span> と <span class="ms">menu.lst</span> をコピー</li>
+<li>USBメモリへ SYSLINUX をインストール</li>
+<li><strong class="ms">syslinux.cfg</strong> 作成</li>
+</ol>
+
+<ul>
+<li><strong class="ms">syslinux.cfg</strong> の一例</li>
+</ul>
+<pre>
+DEFAULT grub
+PROMPT 0
+
+LABEL grub
+LINUX /grub.exe
+APPEND --config-file=&#034;configfile /menu.lst&#034;
+</pre>
+
+<ul>
+<li>拙作めも : <a href="./livecd_usb.html#syslinux">SYSLINUXのインストール - Linux LiveCDをUSBメモリでブートするめも</a></li>
+</ul>
+
+<dl>
+<dt>SYSLINUX + <strong class="ms">memdisk</strong> + FDイメージ</dt>
+<dd>
+<p>これは安全な方法かもしれない（？）。但し、機種により 0.4.1 ではGRUBは起動しても全くブートできなかったり、Windowsの起動のみだめだったりしました。</p>
+<ul>
+<li>SYSLINUXの<code>syslinux.cfg</code>（※ルートにコピーした場合）</li>
+</ul>
+<pre>
+LABEL grub
+LINUX /memdisk
+APPEND initrd=/<var>grub4dos.img</var>
+</pre>
+
+<p>または（※ルートにコピーした場合）</p>
+<pre>
+LABEL grub
+LINUX /memdisk <strong class="ms red">raw</strong>
+APPEND initrd=/<var>grub4dos.img</var>
+</pre>
+
+<p class="small">FDイメージが仮想FDドライブとしてブートするのでWindowsではAドライブが一時的に使えないことがあります。</p>
+</dd>
+</dl>
+
+
+
+<h3><a href="#usbkey_pbr" name="usbkey_pbr">USBメモリのPBRへインストール</a></h3>
+
+<p>USBメモリがUSB HDとしてBIOSで認識されるなら普通にMBRへインストールでいいわけですが、FD扱いの場合はMBRがロードされない（？）ので起動できません。どちらの環境でも使えるようにPBR（ブートセクタ）にインストールしてみました。</p>
+
+<p class="small pink">※ GRUBをインストールするパーティションはアクティブ（bootフラグ付）に設定しておきます。Windows XP などと同様のシンプルな標準的（？）ブートストラップをMBRへ書き込みします。</p>
+
+<ol class="small">
+<li>64 MB SDメモリにて実行</li>
+<li>パーティション作成は、C/H/S無指定でfdisk実行 (2 heads, 60 sectors/track, 1009 cylinders)</li>
+<li>GRUBをインストールするパーティションはアクティブ（bootフラグ付）に設定</li>
+<li>MBRへは、SYSLINUX MBR（ブートストラップ）を書き込み</li>
+</ol>
+
+<p>パーティション作成後は Windows XP 上で実行してます。間違うと怖いのでイメージファイルを操作します。</p>
+
+<ul class="small">
+<li><a href="http://www.si-linux.co.jp/wiki/silinux/index.php?DDforWindows">DDforWindows - Silicon Linux Wiki</a></li>
+<li><a href="http://www.chrysocome.net/dd">chrysocome.net - dd for windows</a></li>
+<li>grubinst.exe (grubinst-1.1-bin-w32-xxx.zip)
+	<ul>
+	<li><a href="http://download.gna.org/grubutil/">Index of /grubutil</a></li>
+	</ul>
+</li>
+<li>SYSLINUX (syslinux-x.xx.zip)
+	<ul>
+	<li><a href="http://www.ring.gr.jp/pub/linux/kernel.org/utils/boot/syslinux/">Index of /pub/linux/kernel.org/boot/syslinux</a></li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt>DDforWindows でバックアップ</dt>
+<dd>
+<p>直接やると失敗が怖いので・・・まず、現状をファイルとしてバックアップしておき、そのコピーでイメージファイルを作成します。</p>
+</dd>
+
+<dt>同じディレクトリにファイルを準備（またはPATHを通す）</dt>
+<dd>
+<ul>
+<li><code>test.ddi</code> - バックアップファイルのコピー</li>
+<li>SYSLINUXの <code>mbr.bin</code></li>
+<li><code>grubinst.exe</code></li>
+<li><code>dd.exe</code></li>
+</ul>
+
+<ul>
+<li>MBRのブートストラップ（NTシグネチャも）をクリア</li>
+</ul>
+<pre>
+dd if=/dev/zero of=test.ddi bs=446 count=1
+</pre>
+
+<p class="small">※bs=<strong class="ms">446</strong> に注意</p>
+
+<ul>
+<li>SYSLINUX MBRブートストラップ書き込み</li>
+</ul>
+<pre>
+dd if=mbr.bin of=test.ddi bs=440 count=1
+</pre>
+
+<ul>
+<li>GRUB for DOS ブートコードをPBRに書き込み</li>
+</ul>
+<pre>
+grubinst.exe --pause --verbose --install-partition=0 test.ddi
+</pre>
+<p class="small">※<code>partition=0</code> は1番目のパーティション（Linuxでは <code>bootlace.com</code> を使う）</p>
+</dd>
+
+<dt>USBメモリへ書き込む</dt>
+<dd>
+<ul>
+<li><code>test.ddi</code> を <strong class="ms">DDforWindows</strong> などでUSBメモリへ書き込む</li>
+<li><code>grldr</code> , <code> menu.lst</code> をUSBメモリへコピー</li>
+</ul>
+</dd>
+</dl>
+
+
+<h2><a href="#fdimage" name="fdimage">FDイメージの起動</a></h2>
+
+<ol>
+<li><a href="#directmap">Direct mapping</a></li>
+<li><a href="#indirectmap">Indirect mapping</a></li>
+</ol>
+
+<p>HDやUSBメモリに保存したFDイメージのブートも可能でした。多少試行錯誤は必要かもですが。</p>
+<p>Direct で可能でも Indirect でだめったりするかも。内蔵FDドライブがある場合もどうなるかな。</p>
+
+
+<h3><a href="#directmap" name="directmap">Direct mapping</a></h3>
+
+<ul>
+<li><a href="http://diddy.boot-land.net/grub4dos/files/map.htm#direct">Direct Mapping - Grub4dos Guide - Map Command</a></li>
+</ul>
+
+<p>直接マウントしてるのかな？イメージへの書き込み可能。変更も保存される。</p>
+
+<pre>
+title Boot from fdimage
+      map (hd1,5)/pxeboot.img (fd0)
+      map --hook
+      chainloader (fd0)+1
+      rootnoverify (fd0)
+      map --floppies=1
+</pre>
+<p class="small">※下から2行は付けない方がいい場合も。</p>
+
+
+
+<h3><a href="#indirectmap" name="indirectmap">Indirect mapping</a></h3>
+
+<ul>
+<li><a href="http://diddy.boot-land.net/grub4dos/files/map.htm#indirect">Memory Mapping - Grub4dos Guide - Map Command</a></li>
+</ul>
+
+
+<p>オンメモリで動くのかな？仮想的に書き込みは可能だが変更は保存されない。<code>mem</code> オプションを指定。</p>
+
+<pre>
+title Boot from floppy image
+      map --mem (hd0,0)/floppy.img (fd0)
+      map --hook
+      chainloader (fd0)+1
+      rootnoverify (fd0)
+      map --floppies=1
+</pre>
+<p class="small">※下から2行は付けない方がいい場合も。</p>
+
+<ul>
+<li>2.88MBイメージ</li>
+</ul>
+<pre>
+title Boot from fdimage 2.88MB
+      map --mem=-2880 (hd0,0)/floppy.img (fd0)
+      map --hook
+      chainloader (fd0)+1
+      rootnoverify (fd0)
+      map --floppies=1
+</pre>
+
+<p>XP版 MS-DOS イメージなどは、<code>map --memdisk-raw=1</code> を指定すればいいらしい。</p>
+
+<ul>
+<li>0.4.2以降では Indirect mapping で <code>--memdisk-raw=1</code> なオプションも指定可能</li>
+</ul>
+
+<pre>
+title Boot from fdimage (Indirect map raw)
+      map --memdisk-raw=1
+      map --mem (hd0,0)/floppy.img (fd0)
+      map --hook
+      chainloader (fd0)+1
+</pre>
+
+<dl>
+<dt>syslinux の memdisk</dt>
+<dd>
+<p>syslinux の memdisk を使う方が簡単かも。</p>
+<ul class="small">
+<li><a href="http://syslinux.zytor.com/memdisk.php">MEMDISK - booting legacy operating systems with SYSLINUX</a>
+	<ul class="nest">
+	<li><a href="http://www.kernel.org/pub/linux/utils/boot/syslinux/">Index of /pub/linux/utils/boot/syslinux</a></li>
+	</ul>
+</li>
+</ul>
+<pre>
+title Boot from memdisk fdimage
+      kernel /memdisk
+      initrd /floppy.img
+</pre>
+<p>2.88MBイメージもOK。XP版MS-DOSイメージなどは<code>kernel /memdisk raw</code> と指定。</p>
+</dd>
+</dl>
+
+<h2><a href="#iso_emulation" name="iso_emulation">CDイメージの起動</a></h2>
+
+<ul>
+<li><a href="http://diddy.boot-land.net/grub4dos/files/map.htm#hd32">Booting from .ISO Images - Grub4dos Guide</a></li>
+</ul>
+
+<p><strong>テスト段階</strong>だと思われますが、0.4.4（<del>開発版</del>）では、一部のisoイメージからのブートが可能でした。</p>
+
+<p>【注意】OS起動後には見えなくなります。あくまでGRUB上でマウントするだけです。</p>
+
+<ul>
+<li>Windows PE 2.0</li>
+<li>True Image</li>
+<li>Paragon Drive Backup 9.0 Express</li>
+<li>Parted Magic
+	<ul>
+	<li><a href="http://partedmagic.com/documentation/124-grub4dos-iso-booting.html">Grub4dos ISO booting</a></li>
+	</ul>
+</li>
+<li>Knoppix や Puppy Linux など kernel, initrd と別にルートイメージがあるものは<ins>基本的には</ins>だめ、<ins>kernel ロード後のisoマウントに対応していれば可能</ins></li>
+</ul>
+<p><ins>Indirect Mapping の場合</ins>は、一旦メモリ(RAM)にロードされる為、isoサイズ + 起動に必要なサイズのRAMが必要になるかと。読み込み時間はかなりかかりますがその後の起動はオンメモリだとかなり速いです...</p>
+
+<p>isoを深い階層に保存しているとマウントできないことがありますね。また、ファイルが断片化しているとエラーが出ることもある模様です。</p>
+
+<ul>
+<li>Indirect mapping（オンメモリ）</li>
+</ul>
+<pre>
+map --mem /bootcd.iso (hd32)
+map --hook
+chainloader (hd32)
+boot
+</pre>
+
+<ul>
+<li>RAM が少ない場合は、Direct mapping を試してみる</li>
+</ul>
+<pre>
+map /bootcd.iso (hd32)
+map --hook
+chainloader (hd32)
+boot
+</pre>
+
+<p>(<code>hd32</code>)で駄目な場合、(<code>0xFF</code>),(<code>0xA0</code>)も試してみる</p>
+
+<dl>
+<dt>isoファイルが断片化していると Direct Mapping に失敗する</dt>
+<dd>
+<p>みたいです。</p>
+<p>下記ソフトでファイルの断片化チェック、及びファイル単体のデフラグできますんで確認してみませう。</p>
+
+<ul>
+<li><a href="http://wincontig.mdtzone.it/en/">WinContig</a>
+	<ul class="small">
+	<li><a href="http://www.forest.impress.co.jp/docs/review/20100531_371172.html">窓の杜 - 【REVIEW】特定のファイル・フォルダだけを定期的にデフラグできる「WinContig」</a></li>
+	</ul>
+</li>
+</ul>
+
+<p class="small pink">※ USBメモリで空き領域が少ない場合などはデフラグができなかったりします。その際は、一旦すべてHDへコピー＆すべて削除後に、一括コピーすると断片化解消できますん。</p>
+</dd>
+</dl>
+
+<dl class="pink">
+<dt>【追記】こっちが推奨かな？</dt>
+<dd>
+<p>Direct でエラーになったらメモリに一旦全部読み込むわけですね。</p>
+<pre>
+title Windows PE (from /WinPEx86.iso)
+find --set-root /WinPEx86.iso
+map /WinPEx86.iso (0xff) || map --mem /WinPEx86.iso (0xff)
+map --hook
+chainloader (0xff)
+</pre>
+<p>※確かに、<ins>HD上のisoファイルなら</ins> Direct の方がかなり速いかも。</p>
+<p>逆にCDやUSBメモリ上では Direct で成功しても激遅だったり、Indirect の方が早くて安定してること“も”あるので悩みどこかも。</p>
+<p>一部の iso （Clonezilla Live や Parted Magic など）では、<code>--heads=0 --sectors-per-track=0</code> の指定が必要なことがありますな。その場合はこんなかんじ。</p>
+<pre>
+title Linux Live == Parted Magic 5.9 (from /pmagic-5.9.iso)
+find --set-root /pmagic-5.9.iso
+map <strong class="ms red">--heads=0 --sectors-per-track=0</strong> /pmagic-5.9.iso (hd32)
+map --hook
+chainloader (hd32)
+rootnoverify (hd32)
+</pre>
+</dd>
+</dl>
+
+<ul>
+<li>参考：
+	<ul>
+	<li><a href="http://www.pendrivelinux.com/boot-multiple-iso-from-usb-multiboot-usb/">Boot Multiple ISO from USB (MultiBoot USB) | USB Pen Drive Linux</a></li>
+	<li><a href="http://www.boot-land.net/forums/index.php?showtopic=5041">grub4dos, .iso images and (hd32) or (0xFF) mapping</a><span class="small">（※ Boot Land フォーラム - あやしい広告が多いので注意）</span></li>
+	</ul>
+</li>
+<li>めちゃわかりやすい解説ページ：
+	<ul>
+	<li><a href="http://uiuicy.cs.land.to/bootcd/bootcd18.html">第18章　大きなイメージファイルをそのまま起動する</a>（<a href="http://uiuicy.cs.land.to/bootcd/index.html">マルチブータブルCD/DVD製作法</a>）</li>
+	</ul>
+</li>
+<li>拙作めも : <a href="./multiiso.html">isoイメージをマルチブートするの巻【その1】準備編</a></li>
+</ul>
+
+<p class="pink">※ 下記サンプルはisoイメージをドライブ（パーティション）のルートに保存した場合です。</p>
+<h3><a href="#isoboot_nooption" name="isoboot_nooption">オプションなしでisoからブート</a></h3>
+
+<p>Windows PE やサイズの小さな Linux LiveCD など。</p>
+
+<dl>
+<dt>Windows PE / RE</dt>
+<dd>
+<pre>
+title Windows PE (from /WinPEx86.iso)
+find --set-root /WinPEx86.iso
+map /WinPEx86.iso (0xff) || map --mem /WinPEx86.iso (0xff)
+map --hook
+chainloader (0xff)
+</pre>
+
+<ul>
+<li>PXEネットワークブートの場合</li>
+</ul>
+<pre>
+title Windows PE (from (Server)/WinPEx86.iso)
+<strong class="ms red">pxe keep</strong>
+<strong class="ms red">pxe basedir /</strong>
+map --mem (pd)/WinPEx86.iso (0xff)
+map --hook
+chainloader (0xff)
+</pre>
+</dd>
+
+<dt>Paragon Backup &#038; Recovery</dt>
+<dd>
+<ul class="small">
+<li><a href="http://www.paragon-software.com/home/db-express/">Free Backup Software: Paragon Backup &#038; Recovery Free Edition - Overview</a></li>
+</ul>
+
+<p class="small pink">※ Normal Mode のみ</p>
+<pre>
+title Paragon Drive Backup (from /bootcd.iso)
+find --set-root /bootcd.iso
+map /bootcd.iso (0xff) || map --mem /bootcd.iso (0xff)
+map --hook
+# chainloader (0xff)
+root (0xff)
+kernel /VMLINUZP vga=0x314 language=en_US.UTF-8 medialable=
+initrd /INITRD.GZ
+</pre>
+
+<ul>
+<li>PXEネットワークブートの場合</li>
+</ul>
+<pre>
+title Paragon Drive Backup (from (Server)/bootcd.iso)
+<strong class="ms red">pxe keep</strong>
+<strong class="ms red">pxe basedir /</strong>
+map --mem (pd)/bootcd.iso (0xff)
+map --hook
+chainloader (0xff)
+</pre>
+</dd>
+
+<dt>True Image (WD Edition)</dt>
+<dd>
+<ul class="small">
+<li><a href="http://support.wdc.com/product/downloaddetail.asp?swid=119&#038;wdc_lang=en">Acronis True Image WD Edition Software - WD Support</a></li>
+</ul>
+
+<pre class="scl">
+title AcronisMedia.iso (from /AcronisMedia.iso)
+find --set-root /AcronisMedia.iso
+map /AcronisMedia.iso (0xff) || map --mem /AcronisMedia.iso (0xff)
+map --hook
+chainloader (0xff)
+</pre>
+
+<ul>
+<li>PXEネットワークブートの場合</li>
+</ul>
+<pre>
+title AcronisMedia.iso (from (Server)/AcronisMedia.iso)
+<strong class="ms red">pxe keep</strong>
+<strong class="ms red">pxe basedir /</strong>
+map --mem (pd)/AcronisMedia.iso (0xff)
+map --hook
+chainloader (0xff)
+</pre>
+</dd>
+
+<dt>Partition Wizard Home Edition</dt>
+<dd>
+<ul class="small">
+<li><a href="http://www.partitionwizard.com/download.html">Free Download Partition Wizard</a></li>
+</ul>
+<p class="small pink">※ 「Bootable CD」版の方です。</p>
+
+<pre>
+title Partition Wizard Home Edition (from pwhe7.iso)
+find --set-root /pwhe7.iso
+map /pwhe7.iso (0xff) || map --mem /pwhe7.iso (0xff)
+map --hook
+chainloader (0xff)
+</pre>
+
+<ul>
+<li>PXEネットワークブートの場合</li>
+</ul>
+<pre>
+title Partition Wizard Home Edition (from (Server)/pwhe6.iso)
+<strong class="ms red">pxe keep</strong>
+<strong class="ms red">pxe basedir /</strong>
+map --mem (pd)/pwhe7.iso (0xff)
+map --hook
+chainloader (0xff)
+</pre>
+</dd>
+
+<dt>AVG Rescue CD</dt>
+<dd>
+<ul class="small">
+<li><a href="http://www.avg.com/us-en/avg-rescue-cd">AVG Antivirus and Security Software - AVG Rescue CD</a></li>
+</ul>
+<p class="small pink">ファイル名は <strong class="ms">avg.iso</strong> にリネーム（※ クライアント側のRAMは要512MB以上）</p>
+<pre>
+title AVG Rescue CD (from /avg.iso)
+find --set-root /avg.iso
+map /avg.iso (0xff) || map --mem /avg.iso (0xff)
+map --hook
+chainloader (0xff)
+</pre>
+
+<ul>
+<li>PXEネットワークブートの場合</li>
+</ul>
+<pre>
+title AVG Rescue CD (from (Server)/avg.iso)
+pxe keep
+pxe basedir /
+map --mem (pd)/avg.iso (0xff)
+map --hook
+chainloader (0xff)
+</pre>
+</dd>
+</dl>
+<h3><a href="#isoboot_add_option" name="isoboot_add_option">オプションでisoをマウント</a></h3>
+
+<p>サイズの大きな Linux LiveCD などではオプション指定でisoをマウントできるものが多いです。</p>
+
+<dl>
+
+<dt>KNOPPIX 6.7.1 CD 産総研版</dt>
+<dd>
+<ul class="small">
+<li><a href="http://www.rcis.aist.go.jp/project/knoppix/">KNOPPIX Japanese edition</a>
+	<ul>
+	<li><a href="http://www.ring.gr.jp/pub/linux/knoppix/iso/">Index of /pub/linux/knoppix/iso</a> (<code>knoppix_v6.7.1CD_20110914-20111018.iso</code>)</li>
+	</ul>
+</li>
+<li>オプション : 
+	<ul>
+	<li><code>bootfrom=/<var>filename</var>.iso</code></li>
+	</ul>
+</li>
+</ul>
+
+<pre class="scl">
+title KNOPPIX 6.7.1CD Sansouken  == knoppix_v6.7.1CD_20110914-20111018.iso
+find --set-root /knoppix_v6.7.1CD_20110914-20111018.iso
+map /knoppix_v6.7.1CD_20110914-20111018.iso (0xff)
+map --hook
+root (0xff)
+kernel /boot/isolinux/linux ramdisk_size=100000 lang=ja vt.default_utf8=0 apm=power-off nomce libata.force=noncq hpsa.hpsa_allow_any=1 loglevel=1 tz=Asia/Tokyo <strong class="ms red">bootfrom=/knoppix_v6.7.1CD_20110914-20111018.iso</strong>
+initrd /boot/isolinux/minirt.gz
+</pre>
+</dd>
+
+<dt>Ubuntu 11.10</dt>
+<dd>
+<ul class="small">
+<li><a href="http://www.ubuntulinux.jp/">Home | Ubuntu Japanese Team</a>
+	<ul>
+	<li><a href="http://www.ubuntulinux.jp/products/JA-Localized/download">Ubuntu Desktop 日本語 Remix CDのダウンロード | Ubuntu Japanese Team</a> (<code>ubuntu-ja-11.10-desktop-i386.iso</code>)</li>
+	</ul>
+</li>
+<li>オプション : 
+	<ul>
+	<li><code>iso-scan/filename=/<var>filename</var>.iso</code></li>
+	</ul>
+</li>
+</ul>
+
+<pre class="scl">
+title Linux Live == ubuntu-ja-11.10-desktop-i386.iso (from iso)
+find --set-root /ubuntu-ja-11.10-desktop-i386.iso
+map <strong class="ms red">--heads=0 --sectors-per-track=0</strong> /ubuntu-ja-11.10-desktop-i386.iso
+map --hook
+root (0xff)
+kernel /casper/vmlinuz file=/cdrom/preseed/ubuntu.seed boot=casper quiet splash -- debian-installer/language=ja keyboard-configuration/layoutcode?=jp keyboard-configuration/modelcode?=jp106 <strong class="ms red">iso-scan/filename=/ubuntu-ja-11.10-desktop-i386.iso</strong>
+initrd /casper/initrd.lz
+</pre>
+<p>isoのあるパーティションは <code>/isodevice</code> にマウントされる。</p>
+</dd>
+
+<dt>Ubuntu 10.04</dt>
+<dd>
+<ul class="small">
+<li><a href="http://www.ubuntulinux.jp/">Home | Ubuntu Japanese Team</a>
+	<ul>
+	<li><a href="http://www.ubuntulinux.jp/products/JA-Localized/download">Ubuntu Desktop 日本語 Remix CDのダウンロード | Ubuntu Japanese Team</a> (<code>ubuntu-ja-10.04-desktop-i386.iso</code>)</li>
+	</ul>
+</li>
+<li>オプション : 
+	<ul>
+	<li><code>iso-scan/filename=/<var>filename</var>.iso</code></li>
+	</ul>
+</li>
+</ul>
+
+<pre class="scl">
+title Linux Live == ubuntu-ja-10.04-desktop-i386.iso (from iso)
+find --set-root /ubuntu-ja-10.04-desktop-i386.iso
+map /ubuntu-ja-10.04-desktop-i386.iso (0xff)
+map --hook
+root (0xff)
+kernel /casper/vmlinuz boot=casper <strong class="ms red">iso-scan/filename=/ubuntu-ja-10.04-desktop-i386.iso</strong> file=/cdrom/preseed/ubuntu.seed quiet splash locale=ja_JP console-setup/layoutcode=jp console-setup/modelcode=jp106 maybe-ubiquity
+initrd /casper/initrd.lz
+</pre>
+<p>isoのあるパーティションは <code>/isodevice</code> にマウントされる。</p>
+</dd>
+
+<dt>LinuxMint-8-jp.iso</dt>
+<dd>
+<ul class="small">
+<li><a href="http://linuxmint.com/">Main Page - Linux Mint</a>
+	<ul>
+	<li><a href="http://ftp.riken.go.jp/Linux/simosnet-livecd/mint/">Index of /Linux/simosnet-livecd/mint</a> (<code>LinuxMint-8-jp.iso</code>)（※「<a href="http://simosnet.com/livecdroom/">ライブCDの部屋</a>」さん版）</li>
+	</ul>
+</li>
+<li>オプション : （Ubuntu と同じ）
+	<ul>
+	<li><code>iso-scan/filename=/<var>filename</var>.iso</code></li>
+	</ul>
+</li>
+</ul>
+
+<pre class="scl">
+title Linux Live == LinuxMint-8-jp.iso (from iso)
+find --set-root /LinuxMint-8-jp.iso
+map /LinuxMint-8-jp.iso (0xff)
+map --hook
+root (0xff)
+kernel /casper/vmlinuz boot=casper file=/cdrom/preseed/mint.seed quiet splash locale=ja_JP console-setup/layoutcode=jp console-setup/modelcode=jp106 <strong class="ms red">iso-scan/filename=/LinuxMint-8-jp.iso</strong>
+initrd /casper/initrd.lz
+</pre>
+<p>isoのあるパーティションは <code>/isodevice</code> にマウントされる。</p>
+</dd>
+
+<dt>Clonezilla Live (1.2.3-27)</dt>
+<dd>
+<ul class="small">
+<li><a href="http://clonezilla.org/">Clonezilla</a>
+	<ul>
+	<li><a href="http://sourceforge.net/projects/clonezilla/files/clonezilla_live_stable/">Browse Clonezilla Files on SourceForge.net</a> (<code>clonezilla-live-1.2.3-27.iso</code>)</li>
+	</ul>
+</li>
+<li>オプション : （Debian Live 共通）
+	<ul>
+	<li><code>findiso=/<var>filename</var>.iso</code></li>
+	</ul>
+</li>
+</ul>
+
+<p>※ バージョンによって微妙にパラメータが違うので注意。</p>
+<pre class="scl">
+title Linux Live == clonezilla-live-1.2.3-27.iso (from iso)
+find --set-root /clonezilla-live-1.2.3-27.iso
+map <strong class="ms red">--heads=0 --sectors-per-track=0</strong> /clonezilla-live-1.2.3-27.iso (0xff)
+map --hook
+root (0xff)
+kernel /live/vmlinuz boot=live union=aufs noswap nolocales noprompt ocs_live_run=&#034;ocs-live-general&#034; ocs_live_extra_param=&#034;&#034; ocs_live_keymap=&#034;&#034; ocs_live_batch=&#034;no&#034; ocs_lang=&#034;ja_JP.UTF-8&#034; vga=791 ip=frommedia toram=filesystem.squashfs <strong class="ms red">findiso=/clonezilla-live-1.2.3-27.iso</strong>
+initrd /live/initrd.img
+</pre>
+<p class="small pink">※ map コマンドでエラーが出るとこれで指定している <code>--heads=0 --sectors-per-track=0</code> を指定せよ！なんてメッセージが出ることありますね。</p>
+</dd>
+
+<dt>SystemRescueCd</dt>
+<dd>
+<ul class="small">
+<li><a href="http://www.sysresccd.org/Main_Page">SystemRescueCd</a>
+	<ul>
+	<li><a href="http://sourceforge.net/projects/systemrescuecd/files/">Browse SystemRescueCd Files on SourceForge.net</a> (<code>systemrescuecd-x86-1.5.0.iso</code>)</li>
+	<li><a href="http://www.sysresccd.org/Sysresccd-manual-en_Easy_install_SystemRescueCd_on_harddisk">Sysresccd-manual-en Easy install SystemRescueCd on harddisk - SystemRescueCd</a></li>
+	</ul>
+</li>
+<li>オプション : 
+	<ul>
+	<li><code>isoloop=<var>filename</var>.iso</code></li>
+	</ul>
+</li>
+</ul>
+<pre class="scl">
+title Linux Live == systemrescuecd-x86-1.5.0.iso (from iso)
+find --set-root /systemrescuecd-x86-1.5.0.iso
+map /systemrescuecd-x86-1.5.0.iso (0xff) || map --mem /systemrescuecd-x86-1.5.0.iso (0xff)
+map --hook
+root (0xff)
+kernel /ISOLINUX/RESCUECD scandelay=5 setkmap=jp dodhcp <strong class="ms red">isoloop=systemrescuecd-x86-1.5.0.iso</strong> docache
+initrd /ISOLINUX/INITRAM.IGZ
+</pre>
+<p class="small pink">isoイメージはRAM上の <code>/livemnt/boot</code> にマウント</p>
+<p class="small pink">※ RAM 400MB 未満の場合はdocacheを外す。isoのあるパーティションは、<code>/livemnt/isostore</code> にマウント、アンマウント不可、日本語ファイル名は見えない。<del>docache オプションは効かない？</del></p>
+</dd>
+
+<dt>Parted Magic 5.9</dt>
+<dd>
+<ul class="small">
+<li><a href="http://partedmagic.com/">News - Parted Magic</a>
+	<ul>
+	<li><a href="http://partedmagic.com/download.html">Downloads</a> (<code>pmagic-5.9.iso</code>)</li>
+	</ul>
+</li>
+</ul>
+
+<p>※ バージョンによって微妙にパラメータが違うので注意。</p>
+<p class="small"><code>/</code> に置けばオプション不要</p>
+<pre>
+title Linux Live == Parted Magic 5.9 (from /pmagic-5.9.iso)
+find --set-root /pmagic-5.9.iso
+map <strong class="ms red">--heads=0 --sectors-per-track=0</strong> /pmagic-5.9.iso (hd32)
+map --hook
+chainloader (hd32)
+rootnoverify (hd32)
+</pre>
+
+<p class="small pink">※ サブディレクトリに置く場合は <ins><code>/pmagic</code>, <code>/images</code> に置けばオプション不要</ins>。それ以外は <code>iso_filename=/iso/pmagic-5.9.iso</code> などとパラメータ追加が必要。</p>
+<ul class="small">
+<li>オプション : 
+	<ul>
+	<li><code>iso_filename=/<var>hoge</var>/<var>filename</var>.iso</code></li>
+	</ul>
+</li>
+</ul>
+<pre class="scl">
+title Linux Live == Parted Magic 5.9 (from /syslinux_multi/pmagic-5.9.iso)
+find --set-root /syslinux_multi/pmagic-5.9.iso
+map <strong class="ms red">--heads=0 --sectors-per-track=0</strong> /syslinux_multi/pmagic-5.9.iso (hd32)
+map --hook
+root (hd32)
+kernel /pmagic/bzImage edd=off noapic load_ramdisk=1 prompt_ramdisk=0 rw vga=788 loglevel=0 max_loop=256 vmalloc=256MiB keymap=us ja_JP <strong class="ms red">iso_filename=/syslinux_multi/pmagic-5.9.iso</strong>
+initrd /pmagic/initramfs
+</pre>
+<p class="small pink">※ バージョン 5.5 以降では <code>--heads=0 --sectors-per-track=0</code> の指定が必須となったみたいです。</p>
+
+<ul>
+<li>PXEネットワークブートの場合 （※ 5.8 以降）</li>
+</ul>
+<p class="small pink">※ <a href="http://syslinux.zytor.com/wiki/index.php/The_Syslinux_Project">Syslinux</a>の <strong class="ms">memdisk</strong> を使います。</p>
+<pre class="scl">
+title Linux Live == Parted Magic 5.9 (from (Server)/pmagic-5.9.iso)
+pxe keep
+pxe basedir /
+kernel (pd)/syslinux/memdisk iso vmalloc=256M
+initrd (pd)/pmagic-5.9.iso
+</pre>
+</dd>
+
+<dt>CDlinux</dt>
+<dd>
+<ul class="small">
+<li><a href="http://cdlinux.info/wiki/doku.php">about [CDlinux]</a>
+	<ul>
+	<li><a href="http://cdlinux.info/wiki/doku.php/doc/faq/bootiso">doc:faq:bootiso [CDlinux]</a></li>
+	</ul>
+</li>
+<li>オプション : 
+	<ul>
+	<li><code>CDL_DIR=<var>hoge</var> CDL_IMG=<var>filename</var>.iso</code></li>
+	</ul>
+</li>
+</ul>
+
+<p class="small pink">※ バージョン 0.9.3 Standard の例。syslinux_multi ディレクトリに保存した場合。</p>
+<pre class="scl">
+title Linux Live == CDlinux-0.9.3 Standard (from /syslinux_multi/&#x2a;.iso)
+find --set-root /syslinux_multi/CDlinux-0.9.3.iso
+map --mem /syslinux_multi/CDlinux-0.9.3.iso (hd32)
+map --hook
+map --status
+kernel (hd32)/CDlinux/bzImage quiet CDL_LANG=ja_JP.UTF-8 <strong class="ms red">CDL_DIR=syslinux_multi CDL_IMG=CDlinux-0.9.3.iso</strong>
+initrd (hd32)/CDlinux/initrd
+map --unhook
+boot
+</pre>
+<p class="small">※ boot/CDlinux, CDlinux ディレクトリなら <code>CDL_DIR</code> オプションは不要。Community版のオンメモリブートは要RAM 1GB以上？</p>
+</dd>
+
+
+<dt>slax 6.1.2-2 日本語版 </dt>
+<dd>
+<ul class="small">
+<li><a href="http://hatochan.dyndns.org/slax-ja/">slax-ja - PukiWiki</a>
+	<ul>
+	<li><a href="http://hatochan.dyndns.org/slax-ja/index.php?slax-ja%2Fdownload">slax-ja/download - PukiWiki</a> (<code>slax-ja-6.1.2-2.iso</code>)</li>
+	</ul>
+</li>
+<li>オプション : 
+	<ul>
+	<li><code>from=<var>filename</var>.iso</code></li>
+	</ul>
+</li>
+</ul>
+<pre class="scl">
+title SLAX 6 == /slax-ja-6.1.2-2.iso
+find --set-root /slax-ja-6.1.2-2.iso
+map /slax-ja-6.1.2-2.iso (0xff) || map --mem /slax-ja-6.1.2-2.iso (0xff)
+map --hook
+root (0xff)
+kernel /boot/vmlinuz ramdisk_size=6666 root=/dev/ram0 rw autoexec=xconf;telinit~4 changes=/slax/ locale=ja_JP.UTF-8 iocharset=utf8 codepage=932 <strong class="ms red">from=slax-ja-6.1.2-2.iso</strong>
+initrd /boot/initrd.gz
+</pre>
+</dd>
+</dl>
+
+
+<h2><a href="#hd_emulation" name="hd_emulation">HDイメージの起動</a></h2>
+
+<p>※HDではなく、パーティションを切ってあるフラッシュメモリのイメージで試してみました。Windowsでは、<a href="http://www.si-linux.co.jp/wiki/silinux/index.php?DDforWindows">DDforWindows</a> や <a href="http://www.chrysocome.net/dd">dd for windows</a> で(USB)フラッシュメモリのイメージ作成が可能です。</p>
+
+<p>FreeDOSイメージでブート確認しました。kernel,initrd とは別にルートイメージがあるLinuxイメージなどは、GRUB上ではマウントできますが、kernelロード後にリセットされてしまう様なのでだめです。</p>
+
+<pre>
+find --set-root /hdimage.ddi
+map --mem /hdimage.ddi (hd0)
+map (hd0) (hd1)
+map --hook
+chainloader (hd0)+1
+rootnoverify (hd0)
+</pre>
+<p>HDイメージが１台目の‘仮想’HDとしてブートします。 <code>--mem</code>（オンメモリ）オプションは容量に応じて付けませう。</p>
+
+
+<h2><a href="#pxeboot" name="pxeboot">(PXE)ネットワークブート</a></h2>
+
+<ol>
+<li><a href="#pxelinux">PXELINUX からチェインロード</a></li>
+</ol>
+
+
+<ul>
+<li><a href="http://diddy.boot-land.net/grub4dos/files/pxe.htm">Grub4dos Guide - PXE Booting</a></li>
+</ul>
+
+<p>0.4.3以降では、tftpサーバから<strong class="ms">grldr</strong>を直接指定してネットワークブートが可能になっているようです。但し、私のやり方が拙いのか、<strong class="ms">PXELINUX</strong> に比べるといまいちな感じありです。</p>
+
+<ul>
+<li>dhcp サーバの boot file に <strong class="ms">grldr</strong> を指定</li>
+<li>tftp ディレクトリ内に設定ファイル、<code>menu.lst/default</code> を作成</li>
+</ul>
+
+<p>私の環境では、以下のコマンド実行でサーバ上のファイルのロードが可能になりました。（※<ins>0.4.4 では実行不要でした</ins>。）</p>
+<pre>
+pxe keep
+pxe blksize 512
+configfile (pd)/menu.lst/default
+</pre>
+<p>サーバ上のファイルを指定するには、デバイス名 <code>(pd)</code> を指定する。</p>
+
+<p><strong class="ms">pxelinux.0</strong> と比較しての利点は、サーバ上の2つのFDイメージをマウント、HDイメージ（USBメモリ等でも）のロード（マウント）が可能なところかな。但し、indirect map（オンメモリ）のみ、またHDイメージについてはDOSイメージはOKでしたが、isolinux イメージなどは kernel, initrd はロードされるがルートイメージはマウントできませんでした。</p>
+
+
+<h3><a href="#pxelinux" name="pxelinux">PXELINUX からチェインロード</a></h3>
+
+<ul>
+<li>GRUB for DOS (<code>grub4dos-0.4.4.zip</code>) をダウンロード
+	<ul>
+	<li><a href="http://sourceforge.net/projects/grub4dos/files/">Browse GRUB4DOS and WINGRUB Files on SourceForge.net</a></li>
+	<li>必要ファイル : <code>grub.exe</code></li>
+	</ul>
+</li>
+<li>SYSLINUX (<code>syslinux-x.xx.zip</code>) をダウンロード
+	<ul>
+	<li><a href="http://www.ring.gr.jp/pub/linux/kernel.org/utils/boot/syslinux/">Index of /pub/linux/kernel.org/utils/boot/syslinux</a></li>
+	<li>必要ファイル : <code>\core\pxelinux.0</code></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>ファイル構成</li>
+</ul>
+<pre>
+TFTPルート
+|   grub.exe
+|   menu.lst
+|   pxelinux.0
+|
+<span class="backslash">\</span>---<strong class="ms">pxelinux.cfg</strong> ディレクトリ
+        default
+</pre>
+
+<dl>
+<dt>設定ファイル : pxelinux.cfg/default</dt>
+<dd>
+<pre class="scl">
+DEFAULT grub4dos
+PROMPT 0
+
+LABEL grub4dos
+KERNEL /grub.exe
+APPEND keeppxe --config-file=&#034;pxe basedir /;configfile (pd)/menu.lst&#034;
+</pre>
+</dd>
+
+<dt>Windows用 DHCP/TFTPサーバ (TFTPD32)</dt>
+<dd>
+<ul>
+<li><code>tftpd32 standard edition (zip)</code> をダウンロード
+	<ul>
+	<li><a href="http://tftpd32.jounin.net/tftpd32_download.html">TFTP server</a></li>
+	<li>必要ファイル : <code>tftpd32.chm</code>, <code>tftpd32.exe</code>, <code>tftpd32.ini</code></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>ファイル構成</li>
+</ul>
+<pre>
+TFTPルート
+|   grub.exe
+|   menu.lst
+|   pxelinux.0
+|   tftpd32.chm
+|   tftpd32.exe
+|   tftpd32.ini
+|   
+<span class="backslash">\</span>---<strong class="ms">pxelinux.cfg</strong> ディレクトリ
+        default
+</pre>
+
+<p>設定は下記を参考に。</p>
+<ul>
+<li>拙作めも : <a href="http://d.hatena.ne.jp/palm84/20070403/1175609650">WindowsでPXEネットワークブート用サーバの設定 - TFTPD32</a></li>
+</ul>
+
+</dd>
+</dl>
+
+
+<h2><a href="#link" name="link">参考リンク</a></h2>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/GRUB">GRUB - Wikipedia</a></li>
+<li><a href="http://www.gnu.org/software/grub/manual/html_node/">GNU GRUB Manual 0.97</a></li>
+<li><a href="http://grub.enbug.org/FrontPage">FrontPage - GRUB Wiki</a></li>
+<li><a href="http://www.gnu.org/software/grub/grub-legacy-faq.en.html">GNU GRUB - GRUB Legacy FAQ</a></li>
+<li><a href="http://sourceforge.jp/magazine/07/06/18/0135208">GRUBの使い方入門 - SourceForge.JP Magazine</a></li>
+</ul>
+
+<ul>
+<li><a href="http://suz-aa1.sblo.jp/article/30760549.html">すｚのAspireOne研究: Bootable USB DISKメモ</a></li>
+</ul>
+
+<ul>
+<li><a href="http://shino.pos.to/linux/grub4dos.html">Boot up linux from Windows using Grub4Dos</a>
+	<ul>
+	<li><a href="http://shino.pos.to/linux/">Linux stuff</a></li>
+	</ul>
+</li>
+</ul>
+
+
+
+
+
+
+</div>
+</div>
+
+
+<div class="navi">
+<a href="./index.html">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd>
+</div>
+
+
+
+<script type="text/javascript">
+function smoothScroll(o){var e=window.pageYOffset,l=o>e;setTimeout(function(){l&&o>=e?(e=e+(o-e)/20+1,window.scrollTo(0,e),setTimeout(arguments.callee,10)):!l&&e>=o?(e=e-(e-o)/20-1,window.scrollTo(0,e),setTimeout(arguments.callee,10)):window.scrollTo(0,o)},10)}
+</script>
+<ul class="toTop-nav">
+<li><a href="javascript:void(0);" onclick="smoothScroll(0);return false;">↑</a></li>
+</ul>
+
+<address>Written by yassy</address>
+
+
+</body>
+
+</html>

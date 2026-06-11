@@ -1,0 +1,989 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="GENERATOR" content="EdLeaf Version 1.02">
+<link rel="start" href="./index.html">
+<title>Debian GNU/Linux 3.1(sarge) インストールめも</title>
+<link rel="stylesheet" type="text/css" href="basic.css">
+<style type="text/css">
+<!--
+td { 
+	border-right:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+}
+
+table.book2 {
+	border-top:1px solid #ccc;
+	border-left:1px solid #ccc;
+	margin:0 2em;
+	font-size:90%;
+}
+
+-->
+</style>
+</head>
+
+<body>
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">HOME</a> <span class="ak">0</span> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <span class="ak">1</span> | 
+</div>
+
+<h1>Debian GNU/Linux 3.1(sarge) インストールめも</h1>
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <span class="ak">2</span></h2>
+
+<ul>
+<li><a href="#general">Debian 総合</a></li>
+<li><a href="#document">ドキュメント等</a></li>
+<li><a href="#install">インストール</a></li>
+<li><a href="#firstrun">インストール後</a></li>
+<li><a href="#japanese">日本語入力</a></li>
+<li><a href="#network">ネットワーク</a></li>
+<li><a href="#wirelesslan">無線LAN</a></li>
+<li><a href="#java">Java インストール</a></li>
+<li><a href="#etc">その他</a></li>
+</ul>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <span class="ak">0</span>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <span class="ak">1</span>
+</div>
+
+<hr>
+
+
+
+
+
+<p class="small">リンクはご自由に。</p>
+
+</div>
+
+
+<div class="main">
+
+<p><span class="red">2006.7.17 作成</span></p>
+
+<div class="palmst">
+<p>【ご注意】2007.12現在、Debianの安定版はetch(4.0)となってますので、リンク先などsargeのものと変更されているものが多いのでご注意。etchでは日本語入力環境などデフォルトで整備されてるので設定の必要はないかも。</p>
+<ul>
+<li><a href="http://itpro.nikkeibp.co.jp/article/COLUMN/20070425/269461/">インストール完全ガイド　Debian GNU/Linux 4.0：ITpro</a></li>
+<li><a href="http://www.debian.org/releases/etch/i386/index.html.ja">Debian GNU/Linux インストールガイド</a>（etch版）</li>
+</ul>
+</div>
+
+<p>やったことを忘れないようにめも。大したレベルじゃありません。（汗</p>
+<p>え～、Linux<del>暦</del>歴は半年にも満たないド新米なので内容は保証できません。あしからず。</p>
+<p>現在、kernel 2.6 を使ってますので 2.4 な場合とはかなり違いがあるかもしれません。</p>
+<h2><a href="#general"><span class="ms">■</span></a> <a name="general">Debian 総合</a></h2>
+
+<ul>
+<li><a href="http://www.debian.org/">Debian -- ユニバーサルオペレーティングシステム</a>
+	<ul class="nest"><li><a href="http://www.debian.org/distrib/">Debian -- Debian を入手するには</a></li>
+	<li><a href="http://www.debian.org/security/">Debian -- セキュリティ情報</a></li></ul>
+</li>
+<li><a href="http://www.debian.or.jp/">Debian JP Project</a></li>
+</ul>
+
+<ul>
+<li><a href="http://debian.fam.cx/">Debian GNU/Linux スレッドテンプレ</a></li>
+<li><a href="http://ja.wikipedia.org/wiki/Debian_GNU/Linux">Debian - Wikipedia</a></li>
+</ul>
+
+
+<h2><a href="#document"><span class="ms">■</span></a> <a name="document">ドキュメント等</a></h2>
+
+<ul>
+<li><a href="http://www.debian.org/doc/">Debian -- ユーザ文書</a>
+	<ul class="nest"><li><a href="http://www.debian.org/releases/stable/i386/release-notes/">Debian GNU/Linux 3.1 (`sarge') リリースノート (Intel x86 用)</a></li>
+</ul>
+</li>
+<li><a href="http://www.debian.or.jp/Documents/index.html">Debian JP Project: 文書</a></li>
+<li><a href="http://www.debian.or.jp/MailingList.html">Debian JP Project: メーリングリスト</a></li>
+</ul>
+
+<ul>
+<li><a href="http://qref.sourceforge.net/Debian/reference/reference.ja.html">Debian リファレンス</a>
+	<ul class="nest"><li><a href="http://www.jp.debian.org/doc/manuals/quick-reference/quick-reference.ja.html">Debian クイックリファレンス</a></li></ul>
+</li>
+<li><a href="http://wiki.debian.org/">Debian Wiki</a></li>
+</ul>
+
+<ul>
+<li>/usr/share/doc/</li>
+<li>JF-INDEX: JFのドキュメントリスト
+	<ul class="nest small"><li>/usr/share/doc/HOWTO/ja-html/INDEX-JF.html</li></ul>
+</li>
+<li>The Debian GNU/Linux FAQ
+	<ul class="nest small"><li>/usr/doc/debian-ja/FAQ/index.html</li></ul>
+</li>
+<li>LDP HOWTO-INDEX
+	<ul class="nest small"><li>/usr/share/doc/HOWTO/ja-html/HOWTO-INDEX/index.html</li></ul>
+</li>
+</ul>
+
+<dl>
+
+<dt>おすすめページ</dt>
+<dd>
+<ul>
+<li><a href="http://www.h7.dion.ne.jp/~maruyosi/pasocom/debian_trial.html">Debian初心者の足跡</a></li>
+<li><a href="http://kmuto.jp/debian/debian_sarge/">『Debian GNU/Linux 徹底入門 第3版 ～Sarge対応』情報ページ</a></li>
+</ul>
+</dd>
+
+</dl>
+
+
+<h2><a href="#install"><span class="ms">■</span></a> <a name="install">インストール</a></h2>
+<ul>
+<li>参考
+	<ul class="nest small">
+	<li><a href="http://itpro.nikkeibp.co.jp/article/COLUMN/20060327/233283/?ST=lin-os&#038;P=1">インストール完全ガイド　Debian GNU/Linux 3.1：ITpro</a></li>
+	<li><a href="http://www.debian.org/releases/sarge/i386/index.html.ja">Debian GNU/Linux インストールガイド</a></li>
+	<li><a href="http://debian.fam.cx/index.php?install">インストール前からインストール直後ぐらいまでの FAQ - Debian GNU/Linux スレッドテンプレ</a></li>
+	<li><a href="http://kmuto.jp/debian/debian_sarge/quick/">『Debian GNU/Linux 徹底入門 第3版 ～Sarge対応』クイックセットアップガイド</a></li>
+	<li><a href="http://www.debian.org/releases/stable/i386/apa.html.ja">付録 A. インストール Howto</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>CD + ネットワークからインストール
+	<ul class="nest small">
+	<li><a href="http://www.debian.org/CD/netinst/">Debian -- 最小の CD を使って、ネットワークインストールする</a></li>
+	</ul>
+</li>
+</ul>
+
+<div class="palm2">
+<dl class="small">
+<dt>VMware Player でisoファイルをマウントしてインストール</dt>
+<dd>
+<p>vmxファイル（hddでマウント）</p>
+<pre>
+ide1:0.present = "TRUE"
+ide1:0.fileName = "auto detect"
+ide1:0.deviceType = "cdrom-raw"
+ide1:1.present = "TRUE"
+ide1:1.fileName = "debian-31r2-i386-netinst.iso"
+ide1:1.deviceType = "cdrom-image"
+</pre>
+<ol>
+<li>vmxファイルを実行してVMware Player を起動</li>
+<li>Ctrl+G<span class="ms">→</span>Esc で起動デバイス選択</li>
+</ol>
+</dd>
+
+<dt>フロッピー ＋ ネットワークでインストール</dt>
+<dd>
+<p>フロッピーディスクを2枚用意</p>
+<ol>
+<li><a href="http://ftp.debian.org/debian/dists/sarge/main/installer-i386/current//images/floppy/">Index of /debian/dists/sarge/main/installer-i386/current//images/floppy</a></li>
+<li>上記ページより</li>
+<li><code>boot.img</code>と<code>root.img</code>をダウンロード</li>
+<li><code>rawwrite.exe</code>（またはrawwritewin.exe）でbootディスクとrootディスクの作成</li>
+</ol>
+<pre>
+rawrite.exe -n -f boot.img -d a:
+rawrite.exe -n -f root.img -d a:
+</pre>
+
+<ul>
+<li><a href="ftp://ftp.jaist.ac.jp/pub/Linux/Vine/Vine-3.2/i386/dosutils/">ftp://ftp.jaist.ac.jp/pub/Linux/Vine/Vine-3.2/i386/dosutils の一覧</a></li>
+<li><a href="http://www.debian.org/releases/stable/i386/ch04s03.html.ja">4.3. ディスクイメージからのフロッピーの作成</a></li>
+</ul>
+
+</dd>
+
+</dl>
+
+</div>
+
+
+<h2><a href="#firstrun"><span class="ms">■</span></a> <a name="firstrun">インストール後</a></h2>
+
+
+<ul>
+<li><a href="http://www.linux.or.jp/JF/JFdocs/debiantips.html">Debian 便利ワザ集</a></li>
+<li><a href="http://www.jp.debian.org/doc/manuals/reference/ch-tutorial.ja.html#s-unixcmds">基本的な Unix コマンド<span class="small"> - Debian リファレンス - Debian チュートリアル</span></a></li>
+</ul>
+<h3><a href="#apt"><span class="ms">■</span></a> <a name="apt">APT</a></h3>
+
+
+<ul>
+<li><a href="http://www.jp.debian.org/doc/manuals/apt-howto/index.ja.html">APT HOWTO</a></li>
+<li><a href="http://dolphin.c.u-tokyo.ac.jp/~nori1/aptitude-ja/index.html">aptitude user's manual</a></li>
+<li><a href="http://www.debian.org/doc/manuals/dselect-beginner/index.ja.html">初心者のための dselect 入門</a></li>
+</ul>
+
+
+<ul>
+<li><a href="http://debian.fam.cx/index.php?install#content_1_30">まず最初にやるべき My apt-line の設定<span class="small"> - install - Debian GNU/Linux スレッドテンプレ</span></a>
+</li>
+</ul>
+
+<pre>
+# aptitude install apt-spy
+# apt-spy -d stable -s JP
+</pre>
+
+<div class="small">
+<pre class="scl">
+$ cat /etc/apt/sources.list
+# sources.list generated by apt-spy v3.1
+deb http://dennou-k.gaia.h.kyoto-u.ac.jp/library/Linux/debian/ stable main contrib non-free
+deb-src http://dennou-k.gaia.h.kyoto-u.ac.jp/library/Linux/debian/ stable main contrib non-free
+deb http://security.debian.org/ stable/updates main contrib non-free
+# Opera
+deb http://deb.opera.com/opera sarge non-free
+# clamav
+deb http://ftp2.jp.debian.org/debian-volatile sarge/volatile main
+# Japanese console
+deb http://kmuto.jp/debian/tettei sarge main
+</pre>
+</div>
+
+
+
+<dl>
+<dt>Xの再設定</dt>
+<dd>
+<pre>
+# dpkg-reconfigure xserver-xfree86 
+</pre>
+<p>モニターの再設定など</p>
+
+
+</dd>
+
+
+<dt>パッケージ情報</dt>
+<dd>
+<ul>
+<li>インストールしたパッケージ一覧 - <code>dpkg -l</code></li>
+<li><a href="http://www.jp.debian.org/distrib/packages.ja.html">Debian -- パッケージ</a></li>
+<li><a href="http://www.debian.org/doc/manuals/reference/ch-package.ja.html">Debian リファレンス - Debian パッケージ管理</a>
+	<ul class="nest"><li><a href="http://www.debian.org/doc/manuals/reference/ch-package.ja.html#s-reconfigure">インストール済みパッケージの再設定</a></li></ul>
+</li>
+</ul>
+
+<div class="small">
+
+<blockquote cite="http://www.debian.org/doc/manuals/reference/ch-package.ja.html#s-reconfigure" title="Debian リファレンス - Debian パッケージ管理">
+<pre class="scl">
+次のコマンドを使ってインストール済みパッケージの再設定を行います。
+
+     # dpkg-reconfigure --priority=medium package [...]
+     # dpkg-reconfigure --all   # 全パッケージの再設定
+     # dpkg-reconfigure locales # 特別なロケールの生成
+     # dpkg-reconfigure --p=low xserver-xfree86 # X サーバの再設定
+
+debconf ダイアログモードが永続的に必要な場合は、 debconf を再設定してください。<a href="http://www.debian.org/doc/manuals/reference/ch-package.ja.html#s-reconfigure">※</a>
+</pre>
+</blockquote>
+
+<blockquote cite="http://www.debian.org/doc/manuals/reference/ch-package.ja.html#s-reconfigure" title="Debian リファレンス - Debian パッケージ管理">
+<pre class="scl">apt-setup - /etc/apt/sources.list の生成
+install-mbr - Master Boot Record manager のインストール
+tzconfig - ローカル time zoneゾーンの設定
+gpmconfig - gpm マウスデーモンの設定
+sambaconfig - Potato で Samba の設定を行う (Woody は debconf を使用)
+eximconfig - Exim (MTA) の設定
+texconfig - teTeX の設定
+apacheconfig - Apache (httpd) の設定
+cvsconfig - CVS の設定
+sndconfig - サウンドシステムの設定
+...
+update-alternatives - 標準のコマンドの設定、例えば vim を vi に設定
+update-rc.d - System-V init スクリプトマネージャ
+update-menus - Debian menu システム<a href="http://www.debian.org/doc/manuals/reference/ch-package.ja.html#s-reconfigure">※</a></pre>
+</blockquote>
+
+</div>
+
+</dd>
+
+
+<dt>KDEデスクトップ環境を使う場合</dt>
+<dd>
+<p>ディスプレイマネージャ「KDM」をインストール</p>
+<pre>
+# apt-get install kdm
+</pre>
+<p>デフォルトのセッションを変更</p>
+<pre>
+# update-alternatives --config x-session-manager
+</pre>
+<p><del datetime="2006-07-09T15:45:24+09:00">GDMを起動しない（起動スクリプトのファイル名を一時変更）</del>後述の<code>sysvconfig</code>で可能です。</p>
+<pre>
+# cd /etc/rc2.d
+# mv S99gdm K99gdm
+</pre>
+
+
+</dd>
+
+<dt>サービス（デーモン）のオン/オフ</dt>
+<dd>
+<pre>
+# apt-get install sysvconfig sysv-rc-conf
+# sysvconfig
+</pre>
+<p>ランレベル毎に設定する場合は<code>sysv-rc-conf</code>で。</p>
+
+
+</dd>
+
+
+<dt>サービス（デーモン）の再設定</dt>
+<dd>
+<pre>
+# dpkg-reconfigure [サービス名]
+</pre>
+
+
+</dd>
+
+
+<dt>smbmount</dt>
+<dd>
+<p>Konqueror、または Nautilus でネットワークドライブへのアクセスは可能ですが、ファイルシステムにマウントするには以下をインストール。</p>
+<pre>
+# apt-get install smbclient smbfs
+</pre>
+
+<p>Windowsドライブの日本語が表示できない場合はオプションで下記を指定。</p>
+<ul>
+<li><code>codepage=cp932</code></li>
+<li><code>iocharset=euc-jp</code></li>
+</ul>
+<p><code>user</code>を指定すると以降のオプション指定が無視されちゃう模様。</p>
+
+<ul class="small">
+<li><a href="http://lists.debian.or.jp/debian-users/200212/msg00052.html">[debian-users:35524] Re: smbclient のマウントオプション</a></li>
+</ul>
+
+<pre class="scl">
+//landisk/disk  /mnt/landisk  smbfs  rw,auto,uid=1000,gid=1000,codepage=cp932,iocharset=euc-jp,username=yassy,password="xxxxxxxx"
+</pre>
+
+
+
+</dd>
+
+
+<dt>Samba</dt>
+<dd>
+<p>主な設定（サーバー側）</p>
+<pre>
+# apt-get install samba samba-common samba-doc-ja
+</pre>
+<p><code>/etc/samba/smb.conf</code>を編集</p>
+<pre>
+[global]
+  unix charset = EUCJP-MS (※または UTF-8)
+  dos charset = CP932
+  workgroup = PALM84-NETWORK
+  security = user
+</pre>
+<p>共有するディレクトリの設定</p>
+<pre>
+[palm84]
+    path = /home/palm84/share
+    valid users = palm84
+    read only = no
+</pre>
+<p>※書き込み可能にする場合は以下を追記</p>
+<pre>
+    create mask = 0775
+    directory mask = 0775
+    writable = yes
+</pre>
+
+<p>Sambaユーザの設定</p>
+<pre>
+# smbpasswd -a palm84
+</pre>
+</dd>
+
+
+<dt>NTFSパーティション（Windwos XP/2000）のマウント</dt>
+<dd>
+<p><span class="ms"><strong>ntfsprogs</strong></span> をインストール。書き込みは危険かもしれません？</p>
+<pre class="scl">
+# apt-get install ntfsprogs
+# mount -t ntfs -o uid=1000,nls=euc-jp /dev/hda1 /mnt/winxp
+</pre>
+<p>※NTFS を mount するときのオプション iocharset ではなく nls に</p>
+</dd>
+
+</dl>
+
+
+<h2><a href="#japanese"><span class="ms">■</span></a> <a name="japanese">日本語入力環境</a></h2>
+
+<ul>
+<li>参考
+	<ul class="nest small">
+	<li><a href="http://debian.fam.cx/index.php?Japanese">日本語環境構築の Tips や FAQ だとか - Debian GNU/Linux スレッドテンプレ</a></li>
+	</ul>
+</li>
+</ul>
+<ul class="small">
+<li><a href="#default">デフォルト</a></li>
+<li><a href="#gnome_scim">GNOME に SCIM</a></li>
+<li><a href="#kde_uim">KDE に UIM</a></li>
+<li><a href="#kde_scim">KDEに SCIM</a></li>
+</ul>
+
+<h3><a href="#default"><span class="ms">■</span></a> <a name="default">GNOME(KDE)デフォルト</a></h3>
+
+<p>kinput2-canna が使えます。</p>
+<pre>
+$ set-language-env
+</pre>
+<p>canna が Shift+Space で使用可能</p>
+
+<ul class="small">
+<li><a href="http://debian.fam.cx/index.php?Japanese#content_1_14">半角/全角キーで日本語入力 ON/OFF したい - Debian GNU/Linux スレッドテンプレ</a></li>
+</ul>
+
+
+
+<h3><a href="#gnome_scim"><span class="ms">■</span></a> <a name="gnome_scim">GNOMEに<strong>SCIM(uim-anthy)</strong></a></h3>
+
+<pre class="scl">
+# apt-get install scim-uim uim-anthy scim-gtk2-immodule
+パッケージリストを読みこんでいます... 完了
+依存関係ツリーを作成しています... 完了
+以下の特別パッケージがインストールされます:
+  anthy libuim0 scim scim-config-socket scim-frontend-socket
+  scim-server-socket uim-common uim-utils
+</pre>
+<p><code>~/.xsession</code> を編集。（元の設定は念の為にコメントアウトで）</p>
+
+<div class="small">
+<pre class="scl">
+#=======================================================================
+# 日本語入力 (XIM) の設定
+# XIM サーバーを起動する
+#if type kinput2 &#038;&#062; /dev/null ; then
+#  kinput2 -canna &#038;
+#fi
+#XMODIFIERS=@im=kinput2 ; export XMODIFIERS
+#========SCIMの設定========
+if type scim &#038;&#062; /dev/null ; then
+  scim -d &#038;
+fi
+XMODIFIERS=@im=SCIM ; export XMODIFIERS
+GTK_IM_MODULE=scim ; export GTK_IM_MODULE
+Qt_IM_MODULE=scim ; export Qt_IM_MODULE
+#=======================================================================
+</pre>
+</div>
+
+<p>再ログイン後に、geditで編集領域右クリック<span class="ms">→</span>入力メソッド<span class="ms">→</span>で<code>SCIM Input Method</code>を選択、半角/全角キー（またはCtrl+Space） 押下で日本語入力ができるか確認。</p>
+<ul>
+<li>OpenOffice.org では<code>openoffice.org-gtk-gnome</code>が必要かも</li>
+<li>Operaで日本語入力できない場合は<code>~/.xsession</code> を <code>~/.gnomerc</code> としてコピー
+	<ul class="nest small"><li><a href="http://debian.fam.cx/index.php?Japanese#content_1_19">gdm でログインすると日本語が表示/入力できません - Japanese - Debian GNU/Linux スレッドテンプレ</a></li></ul>
+</li>
+</ul>
+<ul>
+<li>半角/全角キーでSCIMオンにする
+	<ol class="nest small">
+	<li><code>$ scim-setup &#038;</code></li>
+	<li>Xウインドウ<span class="ms">→</span>SCIM開始の右横ボタン<span class="ms">→</span>キーコードの右横ボタン</li>
+	<li>半角/全角キー押下<span class="ms">→</span>追加<span class="ms">→</span>OK</li>
+</ol></li>
+</ul>
+
+
+
+<h3><a href="#kde_uim"><span class="ms">■</span></a> <a name="kde_uim">KDEに<strong>uim-anthy</strong></a></h3>
+
+<pre>
+# apt-get install uim uim-anthy
+</pre>
+<p>geditで編集領域右クリック<span class="ms">→</span>入力メソッド<span class="ms">→</span>で<code>uim</code>を選択、半角/全角キー（またはShift+Space）押下で日本語入力ができるか確認。</p>
+<p>しかし、これだけではQt/KDEアプリで日本語入力ができません。下記のページの「Step.4」を参考に「immodule for Qtパッチ」をapt-getで導入。</p>
+
+<ul class="small">
+<li><a href="http://desktop.good-day.net/blog/index.cgi/im/install-uim.htm">運営スタッフblog :: 最新版uimで日本語入力環境を @Debian GNU/Linux sarge - DESKTOP.Good-Day.net</a></li>
+</ul>
+
+<p>日本語関係の設定</p>
+<pre>
+$ set-language-env
+</pre>
+<p><code>~/.xsession</code>ファイルに追記</p>
+<div class="small">
+<pre class="scl">
+#=======================================================================
+# 日本語入力 (XIM) の設定
+# XIM サーバーを起動する
+if type uim-xim &#038;&#062; /dev/null ; then
+  uim-xim &#038;
+fi
+XMODIFIERS=@im=uim ; export XMODIFIERS
+####=======以下追記=======
+GTK_IM_MODULE=uim ; export GTK_IM_MODULE
+Qt_IM_MODULE=uim ; export Qt_IM_MODULE
+# ツールバー
+uim-toolbar-gtk &#038;
+# システムトレイのアイコン
+uim-toolbar-gtk-systray &#038;
+#=======================================================================
+</pre>
+</div>
+
+<p>※<code>set-language-env</code>を実行すると<code>.xsession</code>ファイルが上書きされるので注意</p>
+<p class="small">※KDMではなくGDMからログインする場合は上記と同じくく<code>~/.gnomerc</code>の作成（または<code>~/.xsession</code>をコピー）が必要かも</p>
+
+
+
+<h3><a href="#kde_scim"><span class="ms">■</span></a> <a name="kde_scim">KDEに<strong>SCIM(uim-anthy)</strong></a></h3>
+
+<pre class="scl">
+# apt-get install scim-uim uim-anthy scim-gtk2-immodule
+</pre>
+<p><code>~/.xsession</code> を修正</p>
+
+<div class="small">
+<pre class="scl">
+#=======================================================================
+# 日本語入力 (XIM) の設定
+# XIM サーバーを起動する
+#
+#
+#　　　　(元の設定はコメントアウトで)
+#
+#
+#==========SCIMの設定を追記==========
+if type scim &#038;&#062; /dev/null ; then
+  scim -d &#038;
+fi
+XMODIFIERS=@im=SCIM ; export XMODIFIERS
+GTK_IM_MODULE=scim ; export GTK_IM_MODULE
+Qt_IM_MODULE=scim ; export Qt_IM_MODULE
+#=======================================================================
+</pre>
+</div>
+
+<p class="small">※上記と同じく「immodule for Qtパッチ」が必要かも（確認してません・・すみません）。</p>
+
+<ul>
+<li>変換候補窓の位置がおかしい場合は下記を参考に
+	<ul class="nest small"><li><a href="http://debian.fam.cx/index.php?Japanese#content_1_30">KDE/Qt で日本語入力がうまくできないんだけど - Debian GNU/Linux スレッドテンプレ</a></li></ul>
+</li>
+</ul>
+
+<p class="small">※KDMではなくGDMからログインする場合は上記と同じく<code>~/.gnomerc</code>の作成（または<code>~/.xsession</code>をコピー）が必要かも</p>
+
+
+<h2><a href="#network"><span class="ms">■</span></a> <a name="network">ネットワーク</a></h2>
+
+
+<p>ネットワークサービスの再起動</p>
+<pre>
+# /etc/init.d/networking restart
+</pre>
+<p><code>/etc/network/interfaces</code>で設定します。</p>
+
+<ul>
+<li><a href="http://www.debian.org/doc/manuals/reference/ch-gateway.ja.html">Debian リファレンス - ネットワークの設定</a></li>
+<li><a href="http://park15.wakwak.com/~unixlife/linux/de-network.html">Debianでのネットワークの設定</a>
+	<ul class="nest"><li><a href="http://park15.wakwak.com/~unixlife/index.html">UNIXな生活</a></li>
+</ul>
+</li>
+</ul>
+
+<p>手動設定</p>
+<pre class="scl">
+# ifconfig eth0 192.168.1.10 netmask 255.255.255.0 broadcast 192.168.1.255
+</pre>
+
+<p>DNS確認</p>
+<pre>
+$ cat /etc/resolv.conf
+search 
+nameserver 192.168.1.1
+</pre>
+
+<ul>
+<li><code># ifconfig -a</code> - すべてのインターフェイスを確認</li>
+</ul>
+
+<dl>
+
+<dt>ホスト名を変更</dt>
+<dd>
+<ul>
+<li><a href="http://debian.fam.cx/index.php?Software%2FOther">ホスト名を変更したい - Software/Other - Debian GNU/Linux スレッドテンプレ</a></li>
+</ul>
+<blockquote cite="http://debian.fam.cx/index.php?Software%2FOther" title="Software/Other - Debian GNU/Linux スレッドテンプレ">
+<pre>
+# hostname (ホスト名)
+</pre>
+<p>を実行すれば変更できますが、これだけでは再起動すると元に戻ってしまいます。 永続的に変更したいなら、更に /etc/hostname と /etc/hosts を手動で書き替えた後に</p>
+<pre>
+# /etc/init.d/hostname.sh
+</pre>
+<p>を実行してください。</p>
+</blockquote>
+</dd>
+
+</dl>
+
+
+<h2><a href="#wirelesslan"><span class="ms">■</span></a> <a name="wirelesslan">無線LAN</a></h2>
+
+<div class="palmst">
+<p>あっと、WEPでの暗号化は現在では簡単に解読されてしまうので、ほんの一時的で限定的な使用を除きやめた方がいいです。WPA(WPA-PSK)を使いましょう。</p>
+<ul>
+<li><a href="http://www.debian.org/releases/stable/i386/release-notes/ch-information.ja.html#s-wpa">WPA による安全なワイヤレスネットワークを使う場合の問題 - Debian GNU/Linux 4.0 ("etch") リリースノート (Intel x86 用) - etch で知っておくべき問題点</a></li>
+<li><a href="http://wiki.debian.org/WPA">WPA - Debian Wiki</a></li>
+</ul>
+</div>
+
+<p>とりあえず、Buffalo WLI-PCM-L11GP で Ad-hoc してみました。WPA-PSK についてはマタ今度（汗）。暗号化はWEPです（さらに汗。</p>
+<pre>
+# modprobe orinoco_cs
+</pre>
+<pre>
+# apt-cache gencaches
+# apt-cache search pcmcia
+# apt-get install pcmcia-cs
+パッケージリストを読みこんでいます... 完了
+依存関係ツリーを作成しています... 完了
+提案パッケージ:
+  pcmcia-modules wireless-tools
+以下のパッケージが新たにインストールされます:
+  pcmcia-cs
+</pre>
+<p>モジュールを探してみましたが、2.4カーネルのものばかりでした。とりあえず<code>pcmcia-cs</code>のみインストール。</p>
+<p>設定ツールをインストール</p>
+<pre>
+# apt-get install wireless-tools
+</pre>
+
+
+<p>IPアドレスは固定にしました。</p>
+<pre class="scl">
+# ifconfig eth2 192.168.10.11 netmask 255.255.255.0 broadcast 192.168.10.255
+</pre>
+<p class="small"><span class="red">注意：通常アクセスポイントでの接続の場合、DHCPを使うかルーターの設定に合わせましょう。</span></p>
+
+<p>無線LANの設定</p>
+<ul>
+<li>参考：
+	<ul class="nest"><li><a href="http://itpro.nikkeibp.co.jp/article/COLUMN/20060227/230803/">【 iwconfig 】 無線LANインタフェースの参照・設定：ITpro</a></li></ul>
+</li>
+<li><a href="http://linux2ch.is.land.to/index.php?NetworksFAQs">NetworksFAQs - 2ch-Linux-Beginners</a></li>
+</ul>
+<pre>
+# iwconfig eth2 essid ToruRikiishi
+# iwconfig eth2 mode Ad-Hoc
+# iwconfig eth2 nickname "Joeoftomorrow"
+# iwconfig eth2 rate auto
+# iwconfig eth2 key s:xxxxxxxxxxxxx
+</pre>
+<p class="small"><span class="red">注意：通常アクセスポイントでの接続の場合、2行目は <code>iwconfig ethx mode Managed</code>です。</span></p>
+
+<p>確認</p>
+<div class="small">
+<pre class="scl">
+# iwconfig
+lo        no wireless extensions.
+
+eth0      no wireless extensions.
+
+eth1      no wireless extensions.
+
+eth2      IEEE 802.11-DS  ESSID:"ToruRikiishi"  Nickname:"Joeoftomorrow"
+          Mode:Ad-Hoc  Frequency:2.457 GHz  Cell: 02:EA:3F:xx:xx:xx
+          Bit Rate:11 Mb/s   Tx-Power=15 dBm   Sensitivity:1/3
+          Retry limit:4   RTS thr:off   Fragment thr:off
+          Encryption key:xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xx
+          Power Management:off
+          Link Quality:0  Signal level:0  Noise level:0
+          Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0
+          Tx excessive retries:8  Invalid misc:0   Missed beacon:0
+
+sit0      no wireless extensions.
+</pre>
+</div>
+<p>状態確認</p>
+<pre>
+# cat /proc/net/wireless
+</pre>
+
+<p>しか～し、この設定は再起動すると消えてしまいます。ということでまたも下記サイト様を参考に（というかほぼそのまま）<code>/etc/network/interfaces</code>を編集しましたところ再起動しても有効となりました。</p>
+<ul>
+<li><a href="http://www.h7.dion.ne.jp/~maruyosi/pasocom/debian_trial.html#wireless">無線LAN - Debian初心者の足跡</a></li>
+</ul>
+<div class="small">
+<pre class="scl">
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# Hotpluggable network interfaces
+mapping hotplug
+script grep
+map eth2
+
+# The primary network interface
+auto eth0
+iface eth0 inet dhcp
+
+# wireless WLI-PCM-L11GP
+auto eth2
+iface eth2 inet static
+address 192.168.10.11
+network 192.168.10.0
+netmask 255.255.255.0
+broadcast 192.168.10.255
+wireless-mode ad-hoc
+wireless-essid ToruRikiishi
+wireless-key s:xxxxxxxxxxxxx
+</pre>
+</div>
+
+
+<h2><a href="#java"><span class="ms">■</span></a> <a name="java">Java インストール</a></h2>
+
+<ul>
+<li><a href="http://debian.fam.cx/index.php?cmd=read&#038;page=Software%2FJava">Software/Java<span class="small"> - Debian GNU/Linux スレッドテンプレ</span></a></li>
+</ul>
+
+
+
+
+<p>JRE（ランタイム = 実行環境）のインストール方法です。下記ページが大変参考になりました。</p>
+<ul>
+<li><a href="http://www.h7.dion.ne.jp/~maruyosi/pasocom/debian_trial.html#java">Java - Debian初心者の足跡</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://java.com/ja/download/help/index_installing.xml">Java テクノロジヘルプ - インストール</a></li>
+<li><a href="http://java.com/ja/download/linux_manual.jsp">Sun Microsystems から Java ソフトウェアをダウンロード</a></li>
+</ul>
+
+<p>ダウンロードページから <strong>bin</strong> ファイル（Linux (自己解凍ファイル)
+）をダウンロード。<code>make-jpkg</code> という package 作成ツールを使います。</p>
+
+
+<pre>
+$ chomod +x jre-1_5_0_07-linux-i586.bin
+$ su
+# apt-get install java-common
+# apt-get install java-package
+# exit
+$ fakeroot make-jpkg jre-1_5_0_07-linux-i586.bin
+</pre>
+<p><code>sun-j2re1.5_1.5.0+update07_i386.deb</code> が作成されます。これをインストール</p>
+<pre>
+# dpkg -i sun-j2re1.5_1.5.0+update07_i386.deb
+</pre>
+<p><code>/usr/lib/j2re1.5-sun</code> にインストールされます。</p>
+
+<p>PATHを設定しておきます。以下を <code>~/.xsession</code> に追記。</p>
+
+<pre>
+export JAVA_HOME=/usr/lib/j2re1.5-sun
+export PATH=${JAVA_HOME}/bin:$PATH
+</pre>
+
+<p>ControlPanel の文字化け対策として、<code>/usr/lib/j2re1.5-sun/lib/fonts/fallback</code>ディレクトリを作成しフォントファイルをコピーしておく。</p>
+
+
+<dl>
+
+<dt>Firefox</dt>
+<dd>
+<p>Firefox にリンクを張ります。（Firefox の plugins ディレクトリはご自身の環境に合わせて）</p>
+
+<pre class="scl">
+ln -s /usr/lib/j2re1.5-sun/plugin/i386/ns7/libjavaplugin_oji.so firefox/plugins/
+</pre>
+</dd>
+
+<dt>Opera</dt>
+<dd>
+<p>Opera はメニューからJavaパスを設定します。</p>
+
+<ol>
+<li>ヘルプ→Operaについて で確認</li>
+<li>ツール→設定→詳細設定→コンテンツ→Javaオプション</li>
+<li><code>/usr/lib/j2re1.5-sun/lib/i386/</code> を指定</li>
+<li>「Javaパスの検証で確認」
+</li>
+</ol>
+</dd>
+
+</dl>
+
+
+<ul>
+<li><a href="http://java.com/ja/download/help/testvm.xml">Java 仮想マシンのテスト</a></li>
+</ul>
+<ul class="small">
+<li><a href="http://www.ceres.dti.ne.jp/~y-endo/developers-reference/ch-tools.ja.html">Debian デベロッパーズリファレンス - Debian 開発者用ツールの概観</a></li>
+</ul>
+
+
+
+<h2><a href="#etc"><span class="ms">■</span></a> <a name="etc">その他</a></h2>
+
+<ul>
+<li>Opera、Firefox はtarボールをダウンロードしてホームディレクトリに展開</li>
+<li>IPAフォント - ttfファイルを<code>/usr/share/fonts/truetype/</code>にコピー</li>
+<li>ベースシステムの再設定 - <code># base-config</code></li>
+<li>インストールしたパッケージ一覧 - <code>$ dpkg -l</code>（詳しくは<code>$ dpkg --help</code>）
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.jp.debian.org/doc/manuals/apt-howto/ch-sourcehandling.ja.html">APT HOWTO - ソースパッケージでの作業</a></li>
+</ul>
+
+<ul>
+<li><a href="http://ikuya.info/wiki/index.php?sargepackages">sargepackages - Ikuya Wiki</a></li>
+<li><a href="http://kmuto.jp/d/index.cgi/debian/jfbterm.htm">KeN's GNU/Linux Diary | Debian Sargeでのコンソールの日本語表示</a></li>
+</ul>
+
+<dl>
+
+<dt>OperaをAPTでインストール</dt>
+<dd>
+<ul>
+<li><a href="http://debian.fam.cx/index.php?stable#content_1_17">stable - Debian GNU/Linux スレッドテンプレ</a></li>
+</ul>
+<p><code>/etc/apt/sources.list</code>に追加</p>
+<pre>
+deb http://deb.opera.com/opera sarge non-free
+</pre>
+<pre>
+# apt-get update
+# apt-get install opera
+</pre>
+<p>言語ファイルは下記でダウンロード</p>
+<ul class="small">
+<li><a href="http://www.opera.com/download/languagefiles/index.dml?platform=linux">Opera's language files</a></li>
+</ul>
+<p>Tools（ツール）→Prefences（設定）→General（一般設定）→Language（言語）→Details（詳細設定）からファイルを指定。</p>
+</dd>
+</dl>
+
+<dl>
+
+<dt>alien</dt>
+<dd>
+<p>RPM パッケージを deb パッケージに変換</p>
+<div class="small">
+<pre class="scl">
+# apt-get install alien
+
+以下の特別パッケージがインストールされます:
+  debconf-utils debhelper html2text intltool-debian librpm4 po-debconf rpm
+提案パッケージ:
+  lsb-rpm lintian dh-make
+推奨パッケージ:
+  libmail-sendmail-perl libcompress-zlib-perl
+以下のパッケージが新たにインストールされます:
+  alien debconf-utils debhelper html2text intltool-debian librpm4 po-debconf
+  rpm
+</pre>
+
+<ul>
+<li>-d, --to-deb
+	<ul class="nest"><li>Make debian packages. This is the default.</li></ul>
+</li>
+<li>-r, --to-rpm
+	<ul class="nest"><li>Make rpm packages.</li></ul>
+</li>
+<li>-i, --install
+	<ul class="nest"><li>Automatically install each generated package, and remove the pack-
+age file after it has been installed.</li></ul>
+</li>
+</ul>
+</div>
+
+</dd>
+
+</dl>
+
+<dl>
+
+<dt>カーネルのアップグレード</dt>
+<dd>
+<p>私の環境（2.6）ではAPTで更新可能でした。2.4では少し違うかもしれません。あしからず...</p>
+<pre>
+# apt-get update
+# apt-get upgrade
+</pre>
+<p>保留されたファイル名を指定して <code># apt-get install</code> する。</p>
+
+<p><code>/boot/grub/menu.lst</code> が更新されるのでご注意。<strong>私の環境ではWindowsの項目が削除されました</strong>。元のファイルはバックアップされてるので(<code>/boot/grub/menu.lst~</code>)からコピーして追記しましょう。（または examples そのままでもいいかも。）
+</p>
+
+<p>CドライブがWindowsの場合はこんなかんじです。</p>
+<pre>
+title         Windows XP Home Edition
+root          (hd0,0)
+makeactive
+chainloader   +1
+</pre>
+
+</dd>
+
+</dl>
+
+<dl class="small">
+
+<dt>Debian はブートプロセスをカスタマイズするの に rc.local を使っていないようですね。どんな手段が使えるのです か?</dt>
+<dd>
+<p>The Debian GNU/Linux FAQ(/usr/doc/debian-ja/FAQ/index.html)によりますと</p>
+<ol>
+<li>スクリプト foo をディレクトリ /etc/init.d/ に 入れる。</li>
+<li>Debian コマンド update-rc.d を適切な引数で実行する。</li>
+<li>システムを再起動する。</li>
+</ol>
+</dd>
+
+</dl>
+
+
+
+
+</div>
+</div>
+
+<div class="navi">
+<a href="./index.html">HOME</a> <span class="ak">0</span> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <span class="ak">1</span> | 
+</div>
+
+
+<address>Written by yassy</address>
+
+
+</body>
+
+</html>

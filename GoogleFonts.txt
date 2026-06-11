@@ -1,0 +1,118 @@
+<style>
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+TC');
+</style> 
+<style>
+@import url('https://fonts.googleapis.com/css?family=Kosugi|Kosugi+Maru|M+PLUS+1p|M+PLUS+Rounded+1c|Noto+Sans+JP|Noto+Sans+SC|Noto+Sans+TC|Noto+Serif+JP|Noto+Serif+SC|Noto+Serif+TC|Sawarabi+Gothic|Sawarabi+Mincho');
+</style> 
+
+font-family: 'Noto Sans JP', sans-serif;
+font-family: 'Noto Sans TC', sans-serif;
+font-family: 'Noto Sans SC', sans-serif;
+
+font-family: 'M PLUS 1p', sans-serif;
+font-family: 'M PLUS Rounded 1c', sans-serif;
+
+font-family: 'Kosugi', sans-serif;
+font-family: 'Kosugi Maru', sans-serif;
+
+font-family: 'Sawarabi Gothic', sans-serif;
+font-family: 'Sawarabi Mincho', sans-serif;
+
+font-family: 'Noto Serif JP', serif;
+font-family: 'Noto Serif SC', serif;
+font-family: 'Noto Serif TC', serif;
+
+
+
+--------------------------
+Noto Sans JP
+
+javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Noto+Sans+JP\');*{ font-family:\'Noto Sans JP\' !important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();
+
+
+--------------------------
+Noto Sans TC
+
+javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Noto+Sans+TC\');*{ font-family:\'Noto Sans TC\' !important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();
+
+
+--------------------------
+Noto Sans SC
+
+javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Noto+Sans+SC\');*{ font-family:\'Noto Sans SC\' !important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();
+
+
+--------------------------
+M PLUS 1p
+
+javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=M+PLUS+1p\');*{ font-family:\'M PLUS 1p\' !important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();
+
+
+--------------------------
+M PLUS Rounded 1c
+
+javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c\');*{ font-family:\'M PLUS Rounded 1c\' !important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();
+
+
+--------------------------
+Kosugi
+
+javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Kosugi\');*{ font-family:Kosugi!important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();
+
+
+--------------------------
+Kosugi Maru
+
+javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Kosugi+Maru\');*{ font-family:\'Kosugi Maru\' !important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();
+
+
+--------------------------
+Sawarabi Gothic
+
+javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Sawarabi+Gothic\');*{ font-family:\'Sawarabi Gothic\' !important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();
+
+
+--------------------------
+Sawarabi Mincho
+
+javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Sawarabi+Mincho\');*{ font-family:\'Sawarabi Mincho\' !important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();
+
+
+--------------------------
+Noto Serif JP
+
+javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Noto+Serif+JP\');*{ font-family:\'Noto Serif JP\' !important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();
+
+
+--------------------------
+Noto Serif SC
+
+javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Noto+Serif+SC\');*{ font-family:\'Noto Serif SC\' !important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();
+
+
+--------------------------
+Noto Serif TC
+
+javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Noto+Serif+TC\');*{ font-family:\'Noto Serif TC\' !important;}pre,code,kbd,var,samp,pre.code,pre span.synComment{font-family:monospace,monospace!important;}.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:inherit!important;}';head[0].appendChild(style);})();
+
+
+--------------------------
+Test1
+javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Noto+Serif+TC\');*{ font-family:\'Noto Serif TC\' !important;}pre,code,kbd,var,samp,.code,.lang-javascript,.lang-css{font-family:monospace,monospace!important;}';head[0].appendChild(style);})();
+
+--------------------------
+Test2
+javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Noto+Serif+TC\');*{ font-family:\'Noto Serif TC\' !important;}pre,code,kbd,var,samp,.code,.lang-javascript,.lang-css,.synComment,.synConstant,.synIdentifier,.synSpecial,.synStatement,.synType{font-family:monospace,monospace!important;}';head[0].appendChild(style);})();
+
+--------------------------
+Test3
+javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Noto+Serif+TC\');*{ font-family:\'Noto Serif TC\' !important;}pre,code,kbd,var,samp,.code,.lang-javascript,.lang-css,pre .synComment,pre .synConstant,pre .synIdentifier,pre .synSpecial,pre .synStatement,pre .synType{font-family:monospace,monospace!important;}';head[0].appendChild(style);})();
+
+--------------------------
+Test4
+javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Noto+Serif+TC\');*{ font-family:\'Noto Serif TC\' !important;}pre,code,kbd,var,samp,.code,.lang-javascript,.lang-css,pre span.synComment,pre span.synConstant,pre span.synIdentifier,pre span.synSpecial,pre span.synStatement,pre span.synType{font-family:monospace,monospace!important;}';head[0].appendChild(style);})();
+
+--------------------------
+Test5 * important ‚È‚µ
+javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type', 'text\/css');style.innerHTML='@import url(\'https://fonts.googleapis.com/css?family=Noto+Serif+TC\');*{ font-family:\'Noto Serif TC\';}pre,code,kbd,var,samp,.code,.lang-javascript,.lang-css,pre span.synComment,pre span.synConstant,pre span.synIdentifier,pre span.synSpecial,pre span.synStatement,pre span.synType{font-family:monospace,monospace!important;}';head[0].appendChild(style);})();
+

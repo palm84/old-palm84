@@ -1,0 +1,1557 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="START" href="./">
+<title>私的 Firefox拡張＆カスタマイズめも＠Palm84</title>
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<style type="text/css">
+<!--
+
+pre.scl2 {
+	overflow: scroll;
+	white-space: pre;
+	width: 85%;
+	height: 12em;
+}
+
+h4 {
+	font-size: 1em;
+	font-weight: bold;
+	margin:0.5em 0.5em 0.5em 1.5em;
+	padding-left: 0.5em;
+	border-left: 1em double #ccc;
+}
+
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+</head>
+
+
+<body>
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+<h1><span class="tokai1"><a href="fx_extension.html">私的 Firefox拡張＆カスタマイズめも</a></span></h1>
+
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+<ul>
+<li><a href="#download">ダウンロード</a> <kbd class="ak">3</kbd></li>
+<li><a href="#tmp">Tab Mix Plus 関連</a> <kbd class="ak">4</kbd></li>
+<li><a href="#customize">カスタマイズ</a> <kbd class="ak">5</kbd></li>
+<li><a href="#my_favorites">必須拡張</a> <kbd class="ak">6</kbd></li>
+<li><a href="#choice">開発停止？</a> <kbd class="ak">7</kbd></li>
+<li><a href="#jiten">その他便利な拡張</a> <kbd class="ak">8</kbd></li>
+<li><a href="#link">参考リンク</a> <kbd class="ak">9</kbd></li>
+<li><a href="#miseiri">未整理</a></li>
+</ul>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+<p><a href="http://getfirefox.jp/" title="Get Firefox - Web を取り戻せ">
+<img src="./images/takebacktheweb_small.png" width="125" height="50" alt="Get Firefox"></a></p>
+
+
+
+
+<p class="small">リンク is フリーダム<span class="ms">♪</span></p>
+</div>
+
+</div>
+
+
+
+<div class="main">
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/fx_extension.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/fx_extension.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a>
+
+<p class="small">
+2011.05.14 <a href="#extensions_compatibility">未対応拡張をムリヤリ使うには</a> 追記
+<br>最終更新日 2012.2.1
+</p>
+
+<p><strong>私的</strong>リンク集です。ちょこちょこ気まぐれに<del>校正</del><ins>更新</ins>。</p>
+
+<dl class="palmst pink">
+<dt>Firefox 最新バージョン未対応拡張について</dt>
+<dd>
+<p>開発版が“一応”使えたり、対応バージョン書き換えの強制インストールで“一応”使えたりする場合も多いですが、“一応”使えるからといってもバグがないわけではないのでご注意。安全を期すには正式対応を待った方がよろしきかと。または代替を探しませう。</p>
+
+<ul>
+<li><a href="http://wikiwiki.jp/firefox/?%B8%DF%B4%B9%C0%AD">互換性について - Firefox更新情報 Wiki*</a></li>
+<li><a href="https://addons.mozilla.org/ja/firefox/compatibility/">アドオン互換性センター :: Add-ons for Firefox</a></li>
+</ul>
+
+<p>また、正式版でない実験版などは自動アップデートチェックがされないので手動で確認する必要があります。</p>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20110512/1305196933">Firefox 4 関連めも</a></li>
+</ul>
+
+</dd>
+</dl>
+
+<p class="small">※()内は安定版の対応Firefoxバージョン</p>
+<h2><a href="#download" name="download" accesskey="3"><span class="tokai1">ダウンロード</span></a> <kbd class="ak">3</kbd></h2>
+
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/">Firefox Add-ons</a></li>
+<li><a href="http://www.mozdev.org/">mozdev.org</a></li>
+</ul>
+
+<ul>
+<li><a href="http://firefox.geckodev.org/index.php?%E7%9B%AE%E7%9A%84%E5%88%A5%E6%8B%A1%E5%BC%B5%E9%81%B8%E3%81%B3">目的別拡張選び - Mozilla Firefox まとめサイト</a></li>
+</ul>
+
+<dl>
+<dt>カスタマイズ版など</dt>
+<dd>
+<ul>
+<li><a href="http://norahmodel.exblog.jp/">norah'#</a></li>
+<li><a href="http://hadakadenkyu.flnet.org/blog/category/firefox/extension.html">四畳半 裸電球 日記帳</a></li>
+<li><a href="http://homepage3.nifty.com/kyoto33/premier/">Premier's Page</a></li>
+</ul>
+
+<ul>
+<li><a href="http://wikiwiki.jp/firefox/">Firefox更新情報 Wiki*</a>
+	<ul class="nest">
+	<li><a href="http://wikiwiki.jp/firefox/?List%2FExt%2FFx">一覧/拡張機能（Firefox対応状況） - Firefox更新情報 Wiki*</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+<h2><a href="#tmp" name="tmp" accesskey="4"><span class="tokai1">Tab Mix Plus 関連</span></a> <kbd class="ak">4</kbd></h2>
+<h3>Tab Mix Plus</h3>
+
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/tab-mix-plus/">Tab Mix Plus :: Add-ons for Firefox</a> (17.*)</li>
+</ul>
+
+<ul>
+<li><a href="http://tmp.garyr.net/">Tab Mix Plus（本家）</a></li>
+<li><a href="http://wikiwiki.jp/firefox/?cmd=read&#038;page=Ext%2Fbars%2FTab%20Mix%20Plus">Tab Mix Plus - Firefox更新情報 Wiki*</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/tab-mix-lite/">Tab Mix Lite :: Add-ons for Firefox</a> (12.0a1)</li>
+<li><a href="http://hemiolapei.free.fr/extensions/index.php/tab-mix-lite">Tab Mix Lite：Hemiola 的 Firefox Extensions</a></li>
+<li><a href="http://hadakadenkyu.flnet.org/blog/category/firefox/extension/TML.html">Tab Mix Lite 3.0 日本語locale追加版 - 四畳半 裸電球 日記帳</a></li>
+</ul>
+
+<dl>
+<dt>Tab Mix Plus でできること</dt>
+<dd>
+<ul>
+<li>新規タブの開き方の制御</li>
+<li>タブの外観のカスタマイズ</li>
+<li>マウス操作のカスタマイズ</li>
+</ul>
+
+<ul>
+<li>タブの保護＆ロック</li>
+<li>タブバーの多段表示</li>
+</ul>
+
+<p>他いろいろ。</p>
+</dd>
+</dl>
+
+
+
+<h3>Tab Mix Plus を使わない場合の代替策</h3>
+
+<dl>
+<dt class="small">タブをロック</dt>
+<dd>
+<ul class="small">
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/tabloc/">Tabloc :: Add-ons for Firefox</a> (10.*)</li>
+</ul>
+
+<ul class="small">
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/2558">PermaTabs :: Firefox Add-ons</a> (2.0)
+	<ul>
+	<li><a href="http://wikiwiki.jp/firefox/?cmd=read&#038;page=Ext%2Fsystem%2FPermaTabs">PermaTabs - Firefox更新情報 Wiki*</a></li>
+	</ul>
+</li>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/7816">PermaTabs Mod :: Add-ons for Firefox</a> (3.6.*)
+	<ul>
+	<li><a href="http://wikiwiki.jp/firefox/?Ext%2Fbars%2FPermaTabs%20Mod">PermaTabs Mod - Firefox更新情報 Wiki*</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt class="small">最後のタブを閉じてもウィンドウは閉じない</dt>
+<dd>
+<p class="small">※ デフォルト = <code>true</code>。ウィンドウを閉じなくするには <code>false</code>。</p>
+<ul>
+<li><strong class="ms">user.js</strong></li>
+</ul>
+<pre>
+// 最後のタブを閉じた時ウィンドウも閉じるか
+user_pref(&#034;browser.tabs.closeWindowWithLastTab&#034;, false);
+</pre>
+</dd>
+
+<dt class="small">タブの閉じるボタンを非表示</dt>
+<dd>
+<ul>
+<li><strong class="ms">user.js</strong></li>
+</ul>
+<pre>
+// tabの閉じるボタンを非表示
+user_pref(&#034;browser.tabs.closeButtons&#034;, 2);
+</pre>
+</dd>
+
+<dt class="small">タブのスクロールを禁止</dt>
+<dd>
+<p class="small pink">※ 4.0 ではだめ？。</p>
+<p class="small">Tab Mix Plus ではタブ・バーの多段表示が可能。</p>
+<ul>
+<li><strong class="ms">user.js</strong></li>
+</ul>
+<pre>
+// タブの横スクロール無効にする
+user_pref(&#034;browser.tabs.tabMinWidth&#034;, 0);
+</pre>
+</dd>
+
+<dt class="small">タブを閉じた時、直前の選択タブへ移動</dt>
+<dd>
+<p class="small">※ 新しいタブを背面で開いた場合は動作しない（初期設定）。</p>
+<ul>
+<li><strong class="ms">user.js</strong></li>
+</ul>
+<pre>
+// タブを閉じた時、直前の選択タブへ移動
+user_pref("browser.tabs.selectOwnerOnClose", true);
+</pre>
+
+<div class="quote small pink">
+<blockquote class="pink" cite="http://piro.sakura.ne.jp/latest/blosxom/mozilla/extension/backtoowner/2011-01-07_release.htm" title="Latest topics - outsider reflex">
+<p>Firefox 3.5以降では browser.tabs.selectOwnerOnClose が true で且つそのタブが「新しいフォアグラウンドのタブ」として開かれた時にだけ「このタブの親はこのタブですよ」という情報が保持される。また、JavaScriptではwindow.openerでオープン元のウィンドウを辿ることができる。このアドオンは、これらの情報を手がかりにして「親のタブ」を検索するようになってる（ツリー型タブがあるならツリーの構造から親のタブを検出する）。</p>
+</blockquote>
+<cite><a href="http://piro.sakura.ne.jp/latest/blosxom/mozilla/extension/backtoowner/2011-01-07_release.htm">Latest topics - outsider reflex</a></cite>
+</div>
+</dd>
+</dl>
+
+<dl>
+<dt>新しいタブの開き方</dt>
+<dd>
+<p>こんなかんじかな？</p>
+<ul class="small">
+<li>「貼り付けて移動」 - 初期設定では現在のタブ、前面で開くかな</li>
+<li>URL入力後に Enter - 現在のタブ、前面で開く</li>
+<li>URL入力後に移動ボタンを左クリック - 現在のタブ、前面で開く</li>
+<li>URL入力後に移動ボタンを中クリック - （設定次第では）背面で開く</li>
+</ul>
+
+<p>はぁー、Tab Mix Plus 入れる方がかなり楽かと。</p>
+
+<dl>
+<dt class="small">リンクを中クリックで新しいタブをバックグラウンドで開く</dt>
+<dd>
+<ul>
+<li><strong class="ms">user.js</strong></li>
+</ul>
+<pre>
+// リンクを中クリックで新しいタブをバックグラウンドで開くか
+user_pref("browser.tabs.loadInBackground", true);
+</pre>
+</dd>
+
+<dt class="small">ブックマークを中クリックで新しいタブをバックグラウンドで開く</dt>
+<dd>
+<ul>
+<li><strong class="ms">user.js</strong></li>
+</ul>
+<pre class="scl">
+// ブックマークを中クリックで新しいタブをバックグラウンドで開くか。 
+user_pref("browser.tabs.loadBookmarksInBackground", true);
+</pre>
+</dd>
+
+<dt class="small">外部アプリから新しいタブをバックグラウンドで開く</dt>
+<dd>
+<ul>
+<li><strong class="ms">user.js</strong></li>
+</ul>
+<pre class="scl">
+// target="_blank" や外部アプリケーションから新しいタブをバックグラウンドで開くか。 
+user_pref("browser.tabs.loadDivertedInBackground", true);
+</pre>
+</dd>
+
+<dt class="small">ロケーションバーでURL入力 Enter で新しいタブを開く</dt>
+<dd>
+<ul>
+<li><strong class="ms">user.js</strong></li>
+</ul>
+<pre>
+// ロケーションバーでURL入力 Enter で新しいタブを開くか
+user_pref("browser.tabs.opentabfor.urlbar", true);
+</pre>
+</dd>
+
+<dt class="small">ロケーションバーから新しいタブを開く</dt>
+<dd>
+<p>Goボタンを中クリック</p>
+</dd>
+
+<dt class="small">新規タブを現在のタブの隣に挿入するか</dt>
+<dd>
+<p class="small">※ デフォルト = <code>true</code>。常に右にするには <code>false</code>。</p>
+<ul>
+<li><strong class="ms">user.js</strong></li>
+</ul>
+<pre>
+// 新規タブを現在のタブの隣に挿入するか
+user_pref(&#034;browser.tabs.insertRelatedAfterCurrent&#034;, false);
+</pre>
+</dd>
+
+<dt class="small">検索バーから新しいタブを開く</dt>
+<dd>
+<p class="small">※ 4.x ではだめ？</p>
+<ul>
+<li><strong class="ms">user.js</strong></li>
+</ul>
+<pre>
+// 検索バーから新しいタブを開く
+user_pref(&#034;browser.search.openintab&#034;, true);
+</pre>
+</dd>
+</dl>
+
+<p>ミニ拡張を使う手もありかな。</p>
+<ul>
+<li><a href="http://piro.sakura.ne.jp/xul/xul.html">XUL Apps - outsider reflex</a>
+	<ul class="small">
+	<li><a href="http://piro.sakura.ne.jp/xul/_newtabfromlocationbar.html">ロケーションバーから新しいタブを開く - New Tab from Location Bar - outsider reflex</a> (11.0a1)</li>
+	<li><a href="http://piro.sakura.ne.jp/xul/_openlinkintab.html">リンクを新しいタブで開く - Open Link in New Tab - outsider reflex</a> (11.0a1)</li>
+	<li><a href="http://piro.sakura.ne.jp/xul/_openbookmarkintab.html">ブックマークを新しいタブで開く - Open Bookmarks in New Tab - outsider reflex</a> (11.0a1)</li>
+	</ul>
+</li>
+</ul>
+
+</dd>
+</dl>
+
+
+<h2><a href="#customize" name="customize" accesskey="5"><span class="tokai1">カスタマイズ</span></a> <kbd class="ak">5</kbd></h2>
+
+<ul>
+<li><a href="http://www.mozilla-japan.org/unix/customizing.html">Mozilla をカスタマイズする</a></li>
+<li><a href="http://support.mozilla.com/ja/kb/Editing+configuration+files">設定ファイルの編集</a></li>
+<li><a href="http://www.mozilla-japan.org/support/firefox/edit">Firefox Help: 設定ファイルの編集</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20061005/1160052062">Firefox カスタマイズめも</a></li>
+<li><a href="http://www.mozilla-japan.org/support/firefox/tips">Firefox Help: 便利な使い方</a></li>
+<li><a href="http://firefox.geckodev.org/index.php?%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BCCSS%E3%81%AE%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA">ユーザーCSSのカスタマイズ - Mozilla Firefox まとめサイト</a></li>
+</ul>
+
+<dl class="palmst small pink">
+<dt>プロファイルフォルダの開き方 (Firefox 4)</dt>
+<dd>
+<p>【ヘルプ】<span class="ms">→</span>【トラブルシューティング情報】<span class="ms">→</span>【アプリケーション基本情報】<span class="ms">→</span>「プロファイルディレクトリ」欄の「フォルダを開く」</p>
+<p>ロケーションバーに <code>about:support</code> 入力でも。</p>
+</dd>
+</dl>
+<h3><a href="#user_js"><span class="ms">■</span></a> <a name="user_js">user.js</a></h3>
+
+<ul>
+<li><a href="http://kb.mozillazine.org/Firefox_:_FAQs_:_About:config_Entries">About:config entries - MozillaZine Knowledge Base</a></li>
+<li><a href="http://null.michikusa.jp/config/">about:config - Firefox - index</a> - <a href="http://null.michikusa.jp/">null.michikusa.jp</a>さん</li>
+<li><a href="http://wiki.imperiala.net/about:config%E8%A8%AD%E5%AE%9A%E9%A0%85%E7%9B%AE%E4%B8%80%E8%A6%A7">about:config設定項目一覧 - &#034;何かしら図書館&#034;</a></li>
+<li><a href="http://firefox.geckodev.org/index.php?user.js">user.js - Mozilla Firefox まとめサイト</a></li>
+</ul>
+
+<p><code>about:config</code> の設定をカスタマイズ</p>
+
+<p><strong class="ms">about:config</strong> での設定は <code>pref.js</code> に保存される。この設定を Firefox 起動時に <code>user.js</code> 上書きすることが可能。注意点は <code>user.js</code> はあくまで「上書き」なので <code>user.js</code> 側で設定消去しても <code>pref.js</code> 側は変更されないということ。設定変更ではなく設定「消去」するには <strong class="ms">about:config</strong> でリセットする（※ または <code>pref.js</code> 内の記述を直接消去）</p>
+
+<p><strong>文字コードは <code>UTF-8N</code> （<code>UTF-8</code> BOM無し）で <strong class="ms">プロファイル</strong> フォルダ直下に保存するべし</strong>。</p>
+
+
+<pre>
+// windows_open でメニューバーを表示
+user_pref(&#034;dom.disable_window_open_feature.menubar&#034;, true);
+// クラッシュ時にセッション Cookie を復元するか
+user_pref(&#034;browser.sessionstore.resume_from_crash&#034;, false);
+// セッション Cookie を復元しない
+user_pref(&#034;<ins>browser.</ins>sessionstore.privacy_level&#034;, 2);
+// ブラウザ終了時に全Cookieを削除する
+user_pref(&#034;network.cookie.enableForCurrentSessionOnly&#034;, true);
+</pre>
+
+
+<h3><a href="#userchrome_css"><span class="ms">■</span></a> <a name="userchrome_css">userChrome.css</a></h3>
+
+<ul>
+<li><a href="http://developer.mozilla.org/ja/docs/DOM_Inspector_FAQ">DOM Inspector FAQ - MDC</a></li>
+<li><a href="http://firefox.geckodev.org/index.php?DOM%20inspector#h33af1da">Firefoxの外観について調べる - DOM inspector - Mozilla Firefox まとめサイト</a></li>
+<li><a href="http://kb.mozillazine.org/UserChrome.css_Element_Names/IDs#Firefox_menus">Chrome element names and IDs - MozillaZine Knowledge Base</a></li>
+<li><a href="http://firefox.geckodev.org/index.php?userchrome.css">userchrome.css - Mozilla Firefox まとめサイト</a></li>
+</ul>
+
+<p>Firefoxの外観を設定</p>
+
+<p><strong>文字コードは <code>UTF-8N</code> （<code>UTF-8</code> BOM無し）で <strong class="ms">プロファイル\chrome</strong> フォルダに保存するべし</strong>。</p>
+
+<ul>
+<li>userChrome.css 先頭部分</li>
+</ul>
+<pre class="scl">
+@charset &#034;utf-8&#034;;
+@namespace url(&#034;http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul&#034;);
+</pre>
+
+<ul>
+<li>検索バーの右側に履歴を出すボタンを表示</li>
+</ul>
+<pre class="scl">
+/* 検索バーの右側に履歴を出すボタンを表示 */
+#searchbar .autocomplete-history-dropmarker {
+    display: -moz-box !important;
+    -moz-binding: url(&#034;chrome://global/content/bindings/autocomplete.xml#history-dropmarker&#034;);}
+</pre>
+
+<ul>
+<li>(Firefox 4) リンクURLプレビューの幅</li>
+</ul>
+<pre>
+/* リンクURL表示幅 */
+statuspanel {
+max-width: 100% !important;
+}
+</pre>
+
+<ul>
+<li>ロケーションバーのフォントを変更</li>
+</ul>
+<pre>
+/* URLバーのフォント */
+#urlbar {
+font-family: 'ＭＳ ゴシック' !important;
+}
+</pre>
+
+<ul>
+<li>ブックマークツールバーのフォントサイズ</li>
+</ul>
+<pre>
+/* ブックマークツールバーのフォントサイズ */
+#personal-bookmarks {
+font-size : 95%;
+} 
+</pre>
+
+<ul>
+<li>ブックマークツールバーにあるブックマークアイコンを消す</li>
+</ul>
+<pre>
+/* ブックマークツールバーにあるブックマークアイコンを消す */
+toolbarbutton.bookmark-item &#062; .toolbarbutton-icon {
+ display: none;
+}
+</pre>
+
+<dl>
+<dt>不要な右クリックメニューを非表示に</dt>
+<dd>
+<p class="pink">※ <a href="https://addons.mozilla.org/ja/firefox/addon/menu-editor/">Menu Editor</a> 使う方が安全かも。</p>
+<ul>
+<li>参考
+	<ul class="nest">
+	<li><a href="http://blogs.dion.ne.jp/k_sn/archives/2476408.html">三軒隣の斜め向かい:不要な右クリックメニューを非表示にする</a></li>
+	</ul>
+</li>
+</ul>
+
+<pre class="scl2">
+/*コンテキストメニューの不要項目を非表示に*/
+#context-back, /* 戻る */
+#context-forward, /* 進む */
+#context-reload, /* 更新 */
+#context-stop, /* 中止 */
+#context-sep-stop,   /* 中止の下の区切り線 */
+#context-bookmarkpage, /* このページをブックマーク */
+#context-savepage, /* 名前を付けてページを保存 */
+#context-sendpage, /* リンクを送信 */
+#context-viewbgimage, /* 背景画像を表示 */
+#context-openlink, /*リンクを新しいウィンドウで開く*/
+#context-openlinkintab, /* リンクを新しいタブで開く */
+#context-sep-open, /* リンクを新しいタブで開くの下の区切り線 */
+#context-sendlink, /*リンクURLをメールで送信*/
+#context-sendpage, /*ページを送信*/
+#context-sendimage, /*画像をメールで送信*/
+#context-bookmarklink, /* このリンクをブックマーク */
+#context-sendlink, /* リンクURLをメールで送信 */
+#context-viewimage, /* 画像を表示 */
+#context-copyimage, /* 画像のURLをコピー */
+#context-copyimage-contents, /* 画像をコピー */
+#context-sep-copyimage, /* 画像のURLをコピーの下の区切り線 */
+#context-sendimage, /* 画像をメールで送信 */
+#context-setWallpaper, /* デスクトップの背景に設定 */
+#context-blockimage, /* ****の画像を表示しない */
+#context-sep-viewbgimage, /* ****の画像を表示しないの下の区切り線 */
+#context-undo, /* 元に戻す */
+#context-sep-undo, /* 元に戻すの下の区切り線 */
+#context-cut, /* 切り取り */
+#context-delete, /* 削除 */
+#context-sep-paste /* 削除の下の区切り線 */
+{
+    display: none !important;
+}
+</pre>
+</dd>
+</dl>
+
+
+
+<h3><a href="#usercontent_css"><span class="ms">■</span></a> <a name="usercontent_css">userContent.css</a></h3>
+
+<ul>
+<li><a href="http://firefox.geckodev.org/index.php?usercontent.css">usercontent.css - Mozilla Firefox まとめサイト</a></li>
+<li><a href="http://firefox.geckodev.org/index.php?usercontent.css#j6c79c80">ドメイン毎に見た目を調整 - usercontent.css - Mozilla Firefox まとめサイト</a></li>
+</ul>
+
+<p>サイト毎のCSS設定</p>
+
+<p><strong>文字コードは <code>UTF-8N</code> （<code>UTF-8</code> BOM無し）で <strong class="ms">プロファイル\chrome</strong> フォルダに保存するべし</strong>。</p>
+
+
+<ul>
+<li>userContent.css 先頭部分</li>
+</ul>
+<pre>
+@charset &#034;utf-8&#034;;
+</pre>
+
+<ul>
+<li><code>@-moz-document domain(hatena.ne.jp)</code> - ドメイン指定</li>
+<li><code>@-moz-document url(http://d.hatena.ne.jp/)</code> - 特定URL指定</li>
+<li><code>@-moz-document url-prefix</code> - 特定のURLで始まるページ</li>
+</ul>
+
+<h4>Google Reader</h4>
+
+<pre class="scl2">
+/* Google Reader に適用 （特定のURLで始まるページ）*/
+@-moz-document url-prefix(https://www.google.com/reader/view/) {
+body {
+    font-size : 0.8em;
+/*    font-family: 'VL Pゴシック','VL PGothic',sans-serif ! important;*/
+}
+
+p {
+/*    font-family: 'VL Pゴシック','VL PGothic',sans-serif ! important;*/
+}
+
+pre {
+    font-size:0.9em;
+    padding:0.5em;
+    background-color:#f1f1f1 !important;
+    margin:1em;
+    font-family:monospace;
+    overflow: auto;
+}
+
+code {
+    font-family:monospace;
+    background-color:#f1f1f1 ! important;
+}
+
+blockquote {
+    padding:0.5em;
+    font-size:0.9em;
+    border:2px ridge #009;
+}
+
+dt {
+    text-decoration: underline ;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+h4 {
+    font-size: 100%;
+    border-bottom: 1px solid #ccc;
+}
+
+h5 {
+    font-size: 100% ! important;
+    border-left: 10px double #ccc;
+    padding: 0 0.5em;
+}
+}
+</pre>
+
+
+<h2><a href="#my_favorites" name="my_favorites" accesskey="6"><span class="tokai1">私的必須拡張</span></a> <kbd class="ak">6</kbd></h2>
+
+<h3><a href="#mouse"><span class="ms">■</span></a> <a name="mouse">マウスジェスチャ</a></h3>
+
+<p>カスタマイズすればタブ動作などいろいろ設定可能。「右側のタブを閉じる」とか「タブの復元」「タブの複製」とかとか。</p>
+<dl>
+<dt>FireGestures</dt>
+<dd>
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/6366">FireGestures :: Firefox Add-ons</a> (10.*)</li>
+</ul>
+<ul class="small">
+<li><a href="http://www.xuldev.org/firegestures/">FIREGESTURES :: Firefox Extension</a></li>
+<li><a href="http://wikiwiki.jp/firefox/?cmd=read&#038;page=Ext%2Finterface%2FFireGestures">FireGestures - Firefox更新情報 Wiki*</a></li>
+</ul>
+<p>設定画面の【スクリプトを入手】<span class="ms">→</span>表示ページのリンクを設定画面へドラッグ＆ドロップでジェスチャの追加可能です。</p>
+
+<ul class="small">
+<li><a href="http://diary.noasobi.net/2007/09/diary_070921a.html">朝顔日記 - マウスジェスチャを実現する FireGestures</a></li>
+</ul>
+</dd>
+
+<dt>All-in-One Gesture</dt>
+<dd>
+<p>以前はこっちが定番だったかな？</p>
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/12">All-in-One Gesture</a> (10.*)</li>
+</ul>
+<ul class="small">
+<li><a href="http://pagesperso-orange.fr/marc.boullet/ext/extensions-en.html">Extensions</a></li>
+<li><a href="http://wikiwiki.jp/firefox/?cmd=read&#038;page=Ext%2Finterface%2FAll%A1%DDin%A1%DDOne%20Gestures">All－in－One Gestures - Firefox更新情報 Wiki*</a></li>
+</ul>
+</dd>
+
+</dl>
+
+
+
+<h3><a href="#toolbar_buttons"><span class="ms">■</span></a> <a name="toolbar_buttons">ツールバーにボタン追加</a></h3>
+
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/toolbar-buttons/">Toolbar Buttons :: Add-ons for Firefox</a> (10.*)</li>
+<li><a href="http://codefisher.org/toolbar_button/">Toolbar Buttons</a>
+	<ul>
+	<li>ツールバーにボタン追加。「フォント縮小」「上のディレクトリへ」「Flash禁止」など</li>
+	</ul>
+</li>
+</ul>
+
+<p>「Flash禁止」は大変便利。禁止にしていても Flash Player の画面をクリックすれば再生可能です。</p>
+
+<h3><a href="#noscript"><span class="ms">■</span></a> <a name="noscript">JavaScript のオン・オフ / 信頼済みサイト設定</a></h3>
+
+<dl>
+<dt>NoScript</dt>
+<dd>
+<ul>
+<li><a href="https://addons.mozilla.org/firefox/722/">NoScript</a> (12.0a1)</li>
+</ul>
+
+<ul class="small">
+<li><a href="http://noscript.net/">NoScript - JavaScript/Java/Flash blocker for a safer Firefox experience! - what is it? - InformAction</a></li>
+<li><a href="http://wikiwiki.jp/firefox/?cmd=read&#038;page=Ext%2Fsecurity%2FNoScript">NoScript - Firefox更新情報 Wiki*</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h3><a href="#2chviewer"><span class="ms">■</span></a> <a name="2chviewer">2chビューア</a></h3>
+
+<dl>
+<dt>Chaika</dt>
+<dd>
+<p><a href="http://bbs2ch.sourceforge.jp/">bbs2chreader</a> の後継版</p>
+<ul>
+<li><a href="http://chaika.xrea.jp/">Chaika</a> (10.*)</li>
+</ul>
+
+<p>bbs2chreader のログの流用は無理みたいですが、URLは同じなのでブックマークについてはそのまま使えました。</p>
+<pre>
+http://127.0.0.1:8823/thread/http://
+</pre>
+
+<ul class="small">
+<li><a href="http://chaika.xrea.jp/index.php/blog/">Blog  Chaika</a></li>
+<li><a href="http://sourceforge.jp/magazine/09/07/30/0912236">Firefoxに2ちゃんねるブラウザ機能を追加する「Chaika」拡張 - SourceForge.JP Magazine : オープンソースの話題満載</a></li>
+<li><a href="http://www.forest.impress.co.jp/docs/review/20090709_300878.html">窓の杜 - 【REVIEW】専用ブラウザーを使わず「Firefox」で２ちゃんねるを快適に閲覧「Chaika」</a></li>
+</ul>
+
+
+</dd>
+</dl>
+
+
+<h3><a href="#html"><span class="ms">■</span></a> <a name="html">html作成支援</a></h3>
+
+<p>title要素とURLのコピー。li,a,blockquote要素作成など。</p>
+
+<dl>
+<dt>Make Link</dt>
+<dd>
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/142?id=142">Make Link :: Firefox Add-ons</a> (10.*)</li>
+</ul>
+
+<ul>
+<li><a href="http://wikiwiki.jp/firefox/?cmd=read&#038;page=Ext%2Finterface%2FMake%20Link">Make Link - Firefox更新情報 Wiki*</a></li>
+<li><a href="http://level.s69.xrea.com/mozilla/index.cgi?id=20080622_MakeLink">新、ブロガー御用達貼り付けツール Make Link - えむもじら</a></li>
+</ul>
+
+<ul>
+<li>拙作めも : 
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20110509/1304941010">今更ながら Make Link</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>私的カスタマイズ - <code>user.js</code></li>
+</ul>
+<pre class="scl2">
+// Make Link format
+user_pref(&#034;net.soylentred.makelink.order&#034;, &#034;0,1,2,3,4,5,6,7,8,9&#034;);
+user_pref(&#034;net.soylentred.makelink.types.0.format&#034;, &#034;%text%\r\n%url%\r\n&#034;);
+user_pref(&#034;net.soylentred.makelink.types.0.title&#034;, &#034;URL + Title&#034;);
+user_pref(&#034;net.soylentred.makelink.types.0.useentities&#034;, false);
+user_pref(&#034;net.soylentred.makelink.types.1.format&#034;, &#034;&#060;li&#062;&#060;a href=\&#034;%url%\&#034;&#062;%text%&#060;/a&#062;&#060;/li&#062;\r\n&#034;);
+user_pref(&#034;net.soylentred.makelink.types.1.title&#034;, &#034;List (a href)&#034;);
+user_pref(&#034;net.soylentred.makelink.types.1.useentities&#034;, false);
+user_pref(&#034;net.soylentred.makelink.types.2.title&#034;, &#034;a href&#034;);
+user_pref(&#034;net.soylentred.makelink.types.2.useentities&#034;, false);
+user_pref(&#034;net.soylentred.makelink.types.3.format&#034;, &#034;&#060;a href=\&#034;%url%\&#034;&#062;%text% - %title%&#060;/a&#062;&#034;);
+user_pref(&#034;net.soylentred.makelink.types.3.title&#034;, &#034;a href (Select - Title)&#034;);
+user_pref(&#034;net.soylentred.makelink.types.3.useentities&#034;, false);
+user_pref(&#034;net.soylentred.makelink.types.4.format&#034;, &#034;%title%\r\n%text%\r\n%url%\r\n&#034;);
+user_pref(&#034;net.soylentred.makelink.types.4.title&#034;, &#034;Title + Select + URL&#034;);
+user_pref(&#034;net.soylentred.makelink.types.4.useentities&#034;, false);
+user_pref(&#034;net.soylentred.makelink.types.5.format&#034;, &#034;&#060;blockquote cite=\&#034;%url%\&#034; title=\&#034;%title%\&#034;&#062;\r\n&#060;p&#062;%text%&#060;/p&#062;\r\n&#060;/blockquote&#062;\r\n&#034;);
+user_pref(&#034;net.soylentred.makelink.types.5.title&#034;, &#034;blockquote (Hetena)&#034;);
+user_pref(&#034;net.soylentred.makelink.types.5.useentities&#034;, false);
+user_pref(&#034;net.soylentred.makelink.types.6.format&#034;, &#034;&#060;div class=\&#034;quote small\&#034;&#062;\r\n&#060;blockquote cite=\&#034;%url%\&#034; title=\&#034;%title%\&#034;&#062;\r\n&#060;p&#062;%text%&#060;/p&#062;\r\n&#060;/blockquote&#062;\r\n&#060;cite&#062;&#060;a href=\&#034;%url%\&#034;&#062;%title%&#060;/a&#062;&#060;/cite&#062;\r\n&#060;/div&#062;\r\n&#034;);
+user_pref(&#034;net.soylentred.makelink.types.6.title&#034;, &#034;div blockquote&#034;);
+user_pref(&#034;net.soylentred.makelink.types.6.useentities&#034;, false);
+user_pref(&#034;net.soylentred.makelink.types.7.format&#034;, &#034;twitter:%url%:detail\r\n&#034;);
+user_pref(&#034;net.soylentred.makelink.types.7.title&#034;, &#034;Twitter hatena diary&#034;);
+user_pref(&#034;net.soylentred.makelink.types.7.useentities&#034;, false);
+user_pref(&#034;net.soylentred.makelink.types.8.format&#034;, &#034;\&#034;%text%\&#034;&#034;);
+user_pref(&#034;net.soylentred.makelink.types.8.title&#034;, &#034;Search&#034;);
+user_pref(&#034;net.soylentred.makelink.types.8.useentities&#034;, false);
+user_pref(&#034;net.soylentred.makelink.types.9.format&#034;, &#034;&#060;blockquote cite=\&#034;%url%\&#034; title=\&#034;%title%\&#034;&#062;\r\n&#060;pre class=\&#034;kuma\&#034;&#062;\r\n%text_n%\r\n&#060;/pre&#062;\r\n&#060;/blockquote&#062;\r\n&#034;);
+user_pref(&#034;net.soylentred.makelink.types.9.title&#034;, &#034;blockquote AA&#034;);
+user_pref(&#034;net.soylentred.makelink.types.9.useentities&#034;, false);
+</pre>
+
+</dd>
+
+<dt>Copy URL +（※ 2.0 以降非対応）</dt>
+<dd>
+<ul>
+<li><a href="https://addons.mozilla.org/firefox/129/">Copy URL +</a>（※ 2.0非対応 開発停止？）</li>
+</ul>
+
+<p>開発停止してますが、バージョンチェックごまかしてごにょごにょすれば使えるみたいです。</p>
+
+<dl class="palmst pink">
+<dt>【追記】リメイク版が出てます</dt>
+<dd>
+<ul>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/copy-plusplus/">Copy PlusPlus :: Add-ons for Firefox</a> (12.0a1)
+	<ul>
+	<li><a href="http://mozilla-remix.seesaa.net/article/240863066.html">Mozilla Re-Mix: ページURLを選択テキストやタイトルと一緒にコピーできるFirefoxアドオン「Copy PlusPlus」</a></li>
+	</ul>
+</li>
+</ul>
+
+</dd>
+</dl>
+
+<ul class="small">
+<li><a href="http://mozilla.seesaa.net/article/92976194.html">電網探題: Copy URL + 1.3.2 日本語版 Fx:[1.0-3.1]</a>（※3.0対応、%RLINK%対応）</li>
+<li><a href="http://pasopia.velvet.jp/sub/Copy_URL+/">Copy URL+ (Firefox3.5に対応）</a> (3.6)</li>
+<li><a href="http://wikiwiki.jp/firefox/?cmd=read&#038;page=Ext%2Finterface%2FCopy%20URL%2B">Copy URL+ - Firefox更新情報 Wiki*</a></li>
+</ul>
+<ul>
+<li>私的 <code>user.js</code></li>
+</ul>
+<pre class="scl2">
+// CopyURL+ a href（タイトル）
+user_pref(&#034;copyurlplus.menus.1.label&#034;, &#034;a href(title)&#034;);
+user_pref(&#034;copyurlplus.menus.1.copy&#034;, '&#060;a href=&#034;%URL%&#034;&#062;%TITLE%&#060;/a&#062;');
+// CopyURL+ a href（選択＋タイトル）
+user_pref(&#034;copyurlplus.menus.2.label&#034;, &#034;a href(Sel+TITLE)&#034;);
+user_pref(&#034;copyurlplus.menus.2.copy&#034;, '&#060;a href=&#034;%URL%&#034;&#062;%SEL% - %TITLE%&#060;/a&#062;');
+// CopyURL+ li a href
+user_pref(&#034;copyurlplus.menus.3.label&#034;, &#034;List (a href)&#034;);
+user_pref(&#034;copyurlplus.menus.3.copy&#034;, '&#060;li&#062;&#060;a href=&#034;%URL%&#034;&#062;%TITLE%&#060;/a&#062;&#060;/li&#062;%EOL%');
+// CopyURL+ blockquote(hatena)
+user_pref(&#034;copyurlplus.menus.4.label&#034;, &#034;blockquote(hatena)&#034;);
+user_pref(&#034;copyurlplus.menus.4.copy&#034;, '&#060;blockquote cite=&#034;%URL%&#034; title=&#034;%TITLE%&#034;&#062;%EOL%&#060;p&#062;%SEL%&#060;/p&#062;%EOL%&#060;/blockquote&#062;%EOL%');
+// CopyURL+ div.quote + blockquote
+user_pref(&#034;copyurlplus.menus.5.label&#034;, &#034;blockquote&#034;);
+user_pref(&#034;copyurlplus.menus.5.copy&#034;, '&#060;div class=&#034;quote&#034;&#062;%EOL%&#060;blockquote cite=&#034;%URL%&#034; title=&#034;%TITLE%&#034;&#062;%EOL%&#060;p&#062;%SEL%&#060;/p&#062;%EOL%&#060;/blockquote&#062;%EOL%&#060;cite&#062;&#060;a href=&#034;%URL%&#034;&#062;%TITLE%&#060;/a&#062;&#060;/cite&#062;%EOL%&#060;/div&#062;%EOL%');
+// CopyURL+ view-source（選択）
+user_pref(&#034;copyurlplus.menus.6.label&#034;, &#034;view-source(SEL)&#034;);
+user_pref(&#034;copyurlplus.menus.6.copy&#034;, 'view-source:%SEL%');
+// CopyURL+ view-source（RLINK）
+user_pref(&#034;copyurlplus.menus.7.label&#034;, &#034;view-source(RLINK)&#034;);
+user_pref(&#034;copyurlplus.menus.7.copy&#034;, 'view-source:%RLINK%');
+// CopyURL+ Search
+user_pref(&#034;copyurlplus.menus.8.label&#034;, &#034;Search&#034;);
+user_pref(&#034;copyurlplus.menus.8.copy&#034;, '&#034;%SEL%&#034;');
+// CopyURL+ Twitter_Hatena_Di
+user_pref(&#034;copyurlplus.menus.9.label&#034;, &#034;Twitter_Hatena_Di&#034;);
+user_pref(&#034;copyurlplus.menus.9.copy&#034;, 'twitter:%URL%:detail%EOL%');
+</pre>
+
+
+<ul class="small">
+<li><a href="http://www.code-404.net/articles/browsers/copy-url-lite">CopyUrlLitePlus.uc.js - Code-404</a></li>
+</ul>
+</dd>
+
+<dt>My CopyFixer</dt>
+<dd>
+<p><kbd>Ctrl</kbd>-<kbd>c</kbd> でURLなどをコピー。設定の書き換えも簡単なので連続コピーしたい場合など便利。</p>
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/my-copyfixer/">My CopyFixer :: Add-ons for Firefox</a> (10.*)</li>
+<li><a href="http://mozilla-remix.seesaa.net/article/188421810.html">Mozilla Re-Mix: Ctrl+CでページタイトルやURLを自在にコピーできるFirefoxアドオン「My CopyFixer」</a></li>
+</ul>
+
+<ul>
+<li>拙作めも : 
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20110510/1305014914">My CopyFixer - Ctrl-c でページ URL,Title を一発コピー</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#launchy"><span class="ms">■</span></a> <a name="launchy">ソースの表示 / 他のブラウザで表示</a></h3>
+
+<dl>
+<dt>Launchy</dt>
+<dd>
+<p>テキストエディタなど複数登録できるので便利</p>
+<ul class="small">
+<li><a href="http://d.hatena.ne.jp/palm84/20061007/1160184133">Launchy - 某所の日記</a></li>
+<li><a href="http://d.hatena.ne.jp/aobanozomi/20070624#1182674342">日曜日だ - きわめて一般的な日常</a></li>
+</ul>
+
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/81">Launchy</a> (11.0a1)</li>
+</ul>
+<ul class="small">
+<li><a href="http://gemal.dk/mozilla/launchy.html">gemal.dk - Mozilla - Launchy</a></li>
+<li><a href="http://wikiwiki.jp/firefox/?cmd=read&#038;page=Ext%2Fview%2FLaunchy">Launchy - Firefox更新情報 Wiki*</a></li>
+</ul>
+
+<p class="pink">※ 文字コードはUTF-8(N)で保存します。</p>
+<ul>
+<li><strong class="ms">launchy.xml</strong> （プロファイル<code>\chrome</code> に保存）</li>
+</ul>
+<pre class="scl2">
+&#060;?xml version=&#034;1.0&#034; encoding=&#034;UTF-8&#034;?&#062;
+&#060;configurations xmlns=&#034;http://launchy.mozdev.org/configurations&#034;&#062;
+	&#060;application&#062;
+		&#060;label&#062;Opera&#060;/label&#062;
+		&#060;type&#062;1&#060;/type&#062;
+		&#060;command&#062;%ProgramFiles%\Opera\Opera.exe&#060;/command&#062;
+		&#060;arguments&#062;&#060;/arguments&#062;
+	&#060;/application&#062;
+	&#060;application&#062;
+		&#060;label&#062;Safari&#060;/label&#062;
+		&#060;type&#062;1&#060;/type&#062;
+		&#060;command&#062;%ProgramFiles%\Safari\Safari.exe&#060;/command&#062;
+		&#060;arguments&#062;&#060;/arguments&#062;
+	&#060;/application&#062;
+	&#060;application&#062;
+		&#060;label&#062;Sleipnir&#060;/label&#062;
+		&#060;type&#062;1&#060;/type&#062;
+		&#060;command&#062;%ProgramFiles%\Fenrir &#038;#038; Co\Sleipnir\bin\Sleipnir.exe&#060;/command&#062;
+		&#060;arguments&#062;&#060;/arguments&#062;
+	&#060;/application&#062;
+	&#060;application&#062;
+		&#060;label&#062;unDonut&#060;/label&#062;
+		&#060;type&#062;1&#060;/type&#062;
+		&#060;command&#062;D:\etc\unDonut\unDonut\unDonut.exe&#060;/command&#062;
+		&#060;arguments&#062;&#060;/arguments&#062;
+	&#060;/application&#062;
+	&#060;application&#062;
+		&#060;label&#062;EdTex&#060;/label&#062;
+		&#060;type&#062;7&#060;/type&#062;
+		&#060;command&#062;%ProgramFiles%\EdTex\edtex.exe&#060;/command&#062;
+		&#060;arguments&#062;&#060;/arguments&#062;
+	&#060;/application&#062;
+	&#060;application&#062;
+		&#060;label&#062;Hidemaru&#060;/label&#062;
+		&#060;type&#062;7&#060;/type&#062;
+		&#060;command&#062;%ProgramFiles%\Hidemaru\Hidemaru.exe&#060;/command&#062;
+		&#060;arguments&#062;&#060;/arguments&#062;
+	&#060;/application&#062;
+&#060;/configurations&#062;
+</pre>
+
+<p>【追記】下記ページにて自動記述してくれますね。</p>
+<ul>
+<li><a href="http://gemal.dk/mozilla/launchy-xmlfile.html">gemal.dk - Mozilla - Launchy - launchy.xml generator</a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#menueditor"><span class="ms">■</span></a> <a name="menueditor">メニューのカスタマイズ</a></h3>
+
+<dl>
+<dt>Menu Editor</dt>
+<dd>
+<p>コンテキストメニューのカスタマイズ。使わないメニュー項目を非表示に</p>
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/710">Menu Editor :: Firefox Add-ons</a> (10.*)</li>
+</ul>
+<ul class="small">
+<li><a href="http://menueditor.mozdev.org/">menueditor</a></li>
+<li><a href="http://wikiwiki.jp/firefox/?Ext%2Fbars%2FMenu%20Editor">Menu Editor - Firefox更新情報 Wiki*</a></li>
+<li><a href="http://wikiwiki.jp/firefox/?Ext%2Fbars%2FMenu%20Editor%20II">Menu Editor II - Firefox更新情報 Wiki*</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h3><a href="#pasteandgo2"><span class="ms">■</span></a> <a name="pasteandgo2">リンク(URL)をコピーしてジャンプ</a></h3>
+
+<dl>
+<dt>pastego</dt>
+<dd>
+<p>貼り付けて新しいタブで開く。検索バー用アイコンもあり。</p>
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/pastego/">pastego :: Add-ons for Firefox</a> (10.*)</li>
+</ul>
+
+<dl class="small">
+<dt>開発停止かな？古いやつ</dt>
+<dd>
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/3035">Paste and Go 2 :: Firefox Add-ons</a> (2.0)</li>
+</ul>
+<ul>
+<li><a href="http://pasteandgo2.mozdev.org/">mozdev.org - pasteandgo2: index</a></li>
+<li><a href="http://wikiwiki.jp/firefox/?cmd=read&#038;page=Ext%2Finterface%2FPaste%20And%20Go%202">Paste And Go 2 - Firefox更新情報 Wiki*</a></li>
+</ul>
+
+<ul>
+<li>実験版？
+	<ul>
+	<li><a href="https://addons.mozilla.org/ja/firefox/addon/9133">Paste and Go 3 :: Add-ons for Firefox</a> (3.6.*)</li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+
+
+<h3><a href="#search_station"><span class="ms">■</span></a> <a name="search_station">サイドバーで翻訳</a></h3>
+
+<dl>
+<dt>Search Station (検索ステーション)</dt>
+<dd>
+<p class="pink">※ なくなったかな？</p>
+<ul>
+<li><a href="http://members.lycos.co.uk/toolbarpalette/searchstation/index.html">Search Station (検索ステーション)</a> (3.5)</li>
+</ul>
+<ul class="small">
+<li><a href="http://wikiwiki.jp/firefox/?cmd=read&#038;page=Ext%2Fservice%2FSearch%20Station">Search Station - Firefox更新情報 Wiki*</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h3><a href="#compact_menu"><span class="ms">■</span></a> <a name="compact_menu">メニューをコンパクト表示</a></h3>
+
+<p>4.0 以降では不要かな？これではなく<a href="https://addons.mozilla.org/ja/firefox/addon/firefox-4-ui-fixer/">Firefox 4 UI Fixer</a>でメニューボタンを移動させる方がいいかも。</p>
+
+<p>メニューバーをコンパクト表示にして検索バーやボタンを配置。</p>
+
+<dl>
+<dt>Compact Menu 2</dt>
+<dd>
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/4550">Compact Menu 2 :: Firefox Add-ons</a> (10.*)</li>
+</ul>
+
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/tiny-menu/">Tiny Menu :: Add-ons for Firefox</a> (10.*)</li>
+</ul>
+
+<ul class="small">
+<li><a href="http://d.hatena.ne.jp/MillyC/searchdiary?word=%2a%5bCompactMenu2%5d">[CompactMenu2] - Milly のメモ</a></li>
+<li><a href="http://wikiwiki.jp/firefox/?Ext%2Fbars%2FCompact%20Menu%202">Compact Menu 2 - Firefox更新情報 Wiki*</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h3><a href="#bookmark"><span class="ms">■</span></a> <a name="bookmark">ブックマークサイドバー</a></h3>
+
+<p>ブックマークサイドバーで選択していないフォルダを自動的に閉じる。</p>
+
+<dl>
+<dt>Autoclose Bookmark &amp; History Folders</dt>
+<dd>
+<ul>
+<li><a href="http://www.sephiroth-j.de/1/mozilla/#ac-btf">Mozilla - Sephiroths Homepage</a> (11.0)</li>
+</ul>
+<ul class="small">
+<li><a href="http://forum.addonsmirror.net/index.php?showtopic=1730">Autoclose Bookmark &#038; History Folders 0.5.5.3 - Add-ons Mirror</a></li>
+<li><a href="http://d.hatena.ne.jp/Marine-Blue/20070721/p2">Autoclose Bookmark &amp; History Folders日本語版 - 蒼い海の中に溺れる</a></li>
+<li><a href="http://wikiwiki.jp/firefox/?cmd=read&#038;page=Ext%2Fbookmark%2FAutoclose%20Bookmark%A1%F5History%20Folders">Autoclose Bookmark＆History Folders - Firefox更新情報 Wiki*</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h3><a href="#ex"><span class="ms">■</span></a> <a name="ex">その他</a></h3>
+
+<dl>
+<dt>McAfee SiteAdvisor</dt>
+<dd>
+<p>危険URLのチェック</p>
+<ul>
+<li><a href="http://www.siteadvisor.com/download/ff.html">McAfee SiteAdvisor － Firefox 拡張機能のダウンロード</a> (3.0 ???)</li>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/siteadvisor-search/">SiteAdvisor Search :: Add-ons for Firefox</a></li>
+</ul>
+</dd>
+
+<dt>Status Buttons</dt>
+<dd>
+<p class="pink">※ 4.0 では不要ですね。</p>
+<p>ステータスバーにボタンを配置。3.0には対応<del>するかな？</del><ins>したみたい？</ins></p>
+<ul>
+<li><a href="https://addons.mozilla.org/firefox/1272/">Status Buttons</a> (3.6.*)</li>
+</ul>
+<ul class="small">
+<li><a href="http://wikiwiki.jp/firefox/?cmd=read&#038;page=Ext%2Fbars%2FStatus%20Buttons">Status Buttons - Firefox更新情報 Wiki*</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h2><a href="#choice" name="choice" accesskey="7"><span class="tokai1">開発停止？</span></a> <kbd class="ak">7</kbd></h2>
+
+<p><del>代替手段を考える</del></p>
+
+<dl>
+<dt>Sage</dt>
+<dd>
+<p>GoogleリーダーなどWebベースのものに変更したので今は使ってませぬが。</p>
+<ul class="small">
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/sage/">Sage :: Add-ons for Firefox</a> (10.*)</li>
+<li><a href="http://himag.blog26.fc2.com/blog-entry-234.html">Sage++ (Higmmer's Edition) 公開！ (ひぐまのひまグ)</a> (10.0)</li>
+</ul>
+</dd>
+
+<dt>ResizeSearchBox（※2.0非対応）</dt>
+<dd>
+<p>3.0では要らないかな。</p>
+<ul class="small">
+<li><a href="http://dragtotab.mozdev.org/resizesearchbox/">ResizeSearchBox</a>（※2.0非対応）
+	<ul class="nest">
+	<li><a href="http://firefox.geckodev.org/index.php?ResizeSearchBox">ResizeSearchBox - Mozilla Firefox まとめサイト</a>（※2.0対応版）</li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+<h2><a href="#jiten" name="jiten" accesskey="8"><span class="tokai1">その他便利な拡張</span></a> <kbd class="ak">8</kbd></h2>
+
+
+<dl>
+<dt>PDF Download</dt>
+<dd>
+<p>Adobe Reader の脆弱性を利用し、いきなりPDFファイルを開かせる受動的攻撃が出回ってるのでこれ入れといた方が安心かも。予期せずに画面が表示された場合はキャンセルしませう。</p>
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/636">PDF Download :: Add-ons for Firefox</a> (10.*)</li>
+<li class="small"><a href="http://www.forest.impress.co.jp/article/2005/05/17/pdfdownload.html">窓の杜 - 【NEWS】PDFリンクのクリック時に4つの処理を選択可能にする「Firefox」プラグイン</a></li>
+</ul>
+</dd>
+
+<dt>All-in-One Sidebar</dt>
+<dd>
+<p>Status ButtonsとBXの代替になる？</p>
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/1027">All-in-One Sidebar :: Firefox Add-ons</a> (10.*)</li>
+</ul>
+<ul class="small">
+<li><a href="http://firefox.exxile.net/aios/index.php">All-in-One Sidebar :: Sidebar Extension for Mozilla Firefox :: firefox.eXXile.net</a></li>
+</ul>
+</dd>
+
+<dt>Live HTTP Headers</dt>
+<dd>
+
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/3829">Live HTTP Headers :: Firefox Add-ons</a> (10.*)</li>
+</ul>
+
+<ul class="small">
+<li><a href="http://livehttpheaders.mozdev.org/installation.html">livehttpheaders</a></li>
+<li><a href="http://wikiwiki.jp/firefox/?cmd=read&#038;page=Ext%2Fsystem%2FLive%20HTTP%20Headers">Live HTTP Headers - Firefox更新情報 Wiki*</a></li>
+</ul>
+</dd>
+
+<dt>ViewSourceWith</dt>
+<dd>
+<p>表示中ページのソース・CSS・jsなどを指定エディタで開く</p>
+
+<ul>
+<li><a href="https://addons.mozilla.org/firefox/394/">ViewSourceWith</a> (12.0a1)</li>
+</ul>
+
+<ul class="small">
+<li><a href="http://dafizilla.sourceforge.net/viewsourcewith/index.php">Dafizilla : ViewSourceWith</a></li>
+<li><a href="http://wikiwiki.jp/firefox/?cmd=read&#038;page=Ext%2Fedit%2FViewSourceWith">ViewSourceWith - Firefox更新情報 Wiki*</a></li>
+</ul>
+</dd>
+
+<dt>prefbar</dt>
+<dd>
+<p>設定ボタンのバーを表示</p>
+
+<ul>
+<li><a href="https://addons.mozilla.org/de/firefox/addon/prefbar/">PrefBar :: Firefox Add-ons</a> (10.*)</li>
+</ul>
+
+<ul class="small">
+<li><a href="http://norahmodel.exblog.jp/634029/">norah'# : PrefBar</a>(3.0)</li>
+<li><a href="http://wikiwiki.jp/firefox/?cmd=read&#038;page=Ext%2Fbars%2FPrefBar">PrefBar - Firefox更新情報 Wiki*</a></li>
+</ul>
+</dd>
+
+<dt>Pref Buttons（※2.0非対応）</dt>
+<dd>
+<p>設定ボタン表示</p>
+
+<ul class="small">
+<li><a href="http://forum.addonsmirror.net/index.php?showtopic=86&#038;hl=PrefButtons">Pref Buttons 0.3.4 - Add-ons Mirror</a>（※2.0非対応？）
+	<ul class="nest">
+	<li><a href="http://mozilla.seesaa.net/article/2085022.html">電網探題: （※2.0対応版）PrefButtons</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>Open Profile Folder</dt>
+<dd>
+<p>Nightly Tester Toolsにもあるけど。</p>
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/open-profile-folder/">Open Profile Folder :: Add-ons for Firefox</a> (10.0a1)</li>
+<li><a href="http://hail2u.net/archives/fxexts.html#open_profile_folder">Open Profile Folder</a>  (10.*)</li>
+</ul>
+
+<ul class="small">
+<li><a href="http://wikiwiki.jp/firefox/?cmd=read&#038;page=Ext%2Fsystem%2FOpen%20Profile%20Folder">Open Profile Folder - Firefox更新情報 Wiki*</a></li>
+</ul>
+</dd>
+
+<dt>IE View</dt>
+<dd>
+<p>表示中ページをIEで開く</p>
+
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/35">IE View :: Firefox Add-ons</a> (12.0a1)</li>
+</ul>
+
+<ul class="small">
+<li><a href="http://ieview.mozdev.org/installation.html">IE View</a>
+<li><a href="http://norahmodel.exblog.jp/1836317/">norah'# : IE View (Lite)</a></li>
+</ul>
+</dd>
+
+<dt>FirefoxView</dt>
+<dd>
+<p>IEからFirefoxを開く</p>
+<ul>
+<li><a href="http://www.iosart.com/firefox/firefoxview/">ViewInFirefox</a>
+	<ul class="nest">
+	<li><a href="https://addons.mozilla.org/ja/firefox/addon/223">ViewInFirefox (formerly FirefoxView) :: Firefox Add-ons</a> (4.0.*)</li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>Dr.Web anti-virus link checker</dt>
+<dd>
+<p>リンク先を右クリックからウイルススキャン</p>
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/938">Dr.Web anti-virus link checker :: Firefox Add-ons</a> (10.*)</li>
+</ul>
+</dd>
+</dl>
+
+
+<h2><a href="#link" name="link" accesskey="9"><span class="tokai1">参考リンク</span></a> <kbd class="ak">9</kbd></h2>
+
+<ul>
+<li><a href="http://mozilla.jp/blog/">Mozilla Japan ブログ</a></li>
+</ul>
+
+<ul>
+<li><a href="http://firefox.geckodev.org/index.php">Mozilla Firefox まとめサイト</a></li>
+</ul>
+
+<ul>
+<li><a href="http://level.s69.xrea.com/mozilla/">えむもじら</a></li>
+</ul>
+
+<ul>
+<li><a href="http://fxwiki.blog63.fc2.com/">Firefox更新情報Wikiブログ</a></li>
+</ul>
+
+<ul>
+<li><a href="http://mozilla-remix.seesaa.net/">Mozilla Re-Mix</a></li>
+</ul>
+
+<h2><a href="#miseiri" name="miseiri"><span class="tokai1">未整理</span></a></h2>
+
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/compatibility/">アドオン互換性センター :: Add-ons for Firefox</a></li>
+</ul>
+
+<ul>
+<li><a href="http://wallpapers.foxkeh.com/ja/index.html">フォクすけの壁紙メーカー</a></li>
+</ul>
+
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/3867">フォクすけといっしょ :: Firefox Add-ons</a> (3.6.*)</li>
+</ul>
+
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/3006">Video DownloadHelper :: Add-ons for Firefox</a> (10.*)</li>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/558">Irvine用コンテキストメニュー拡張 :: Add-ons for Firefox</a> (4.0.*)</li>
+</ul>
+
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/places-maintenance/">Places Maintenance :: Add-ons for Firefox</a> (12.0a1)
+	<ul>
+	<li><a href="http://mozilla-remix.seesaa.net/article/216643491.html">Mozilla Re-Mix: FirefoxのPlacesデータベースを簡単にメンテナンスできるアドオン「Places Maintenance」（Firefox 5.0以降）</a></li>
+	</ul>
+</li>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/extended-link-propertie-124503/">Extended Link Properties + :: Add-ons for Firefox</a> (4.0)
+	<ul>
+	<li><a href="http://mozilla-remix.seesaa.net/article/213094447.html">Mozilla Re-Mix: リンクやダウンロードファイルの詳細情報を確認できるFirefoxアドオン「Extended Link Properties +」</a></li>
+	</ul>
+</li>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/ecleaner/">eCleaner :: Add-ons for Firefox</a> (10.*)
+	<ul>
+	<li><a href="http://mozilla-remix.seesaa.net/article/208776581.html">Mozilla Re-Mix: Firefoxから削除されたアドオンの設定項目をクリアできるアドオン「eCleaner」</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://mozilla-remix.seesaa.net/article/101793054.html">Mozilla Re-Mix: Firefoxの各種設定画面をタブで開く方法。</a></li>
+<li><a href="http://fxwiki.blog63.fc2.com/blog-entry-291.html">Firefoxで困ったときに知っておきたいコト - Firefox更新情報Wikiブログ</a></li>
+</ul>
+
+
+
+<dl>
+<dt>4.0 カスタマイズ</dt>
+<dd>
+<ul>
+<li><a href="http://mozilla-remix.seesaa.net/article/192461091.html">Mozilla Re-Mix: Firefox 4.0独自の機能をカスタマイズできる20個のアドオン。</a></li>
+</ul>
+
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/firefox-4-ui-fixer/">Firefox 4 UI Fixer :: Add-ons for Firefox</a> (11.0a1)
+	<ul>
+	<li><a href="http://mozilla-remix.seesaa.net/article/192603880.html">Mozilla Re-Mix: Firefox 4.0のUIを5か所カスタマイズできるアドオン「Firefox 4 UI Fixer」</a></li>
+	</ul>
+</li>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/stratiform/">Stratiform :: Add-ons for Firefox</a> (12.0a1)
+	<ul>
+	<li><a href="http://mozilla-remix.seesaa.net/article/192802749.html">Mozilla Re-Mix: Firefox 4のツールバーやボタンを簡単にカスタマイズできるアドオン「Stratiform」</a></li>
+	</ul>
+</li>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/personal-titlebar/">Personal Titlebar :: Add-ons for Firefox</a> (11.0a1)
+	<ul>
+	<li><a href="http://mozilla-remix.seesaa.net/article/193862956.html">Mozilla Re-Mix: Firefox 4のタイトルバーにメニューバーやボタンを設置できるアドオン「Personal Titlebar」</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>HTML/CSS関連</dt>
+<dd>
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/6622">DOM Inspector :: Firefox Add-ons</a> (10.*)</li>
+</ul>
+
+<ul>
+<li><a href="http://chrispederick.com/work/web-developer/">Web Developer</a> (4.0)
+	<ul>
+	<li><a href="http://lab.tubonotubo.jp/tools/webdeveloper/index.html">Webdeveloperのダウンロード：ミナトラボ</a> (3.5)</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/2318">Total Validator :: Firefox Add-ons</a> (11.*)</li>
+</ul>
+
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/1843">Firebug :: Firefox Add-ons</a>（12.0a1）
+	<ul>
+	<li><a href="https://addons.mozilla.org/ja/firefox/addon/5165">Firebug Japanese :: Firefox Add-ons</a> (2.0)</li>
+	<li><a href="http://norahmodel.exblog.jp/5298907/">norah'# : Firebug</a>（テスト版？3.0対応版あり）</li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+<h3><a href="#bookmarklet"><span class="ms">■</span></a> <a name="bookmarklet">ブックマークレット</a></h3>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/%E3%83%96%E3%83%83%E3%82%AF%E3%83%9E%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88">ブックマークレット - Wikipedia</a></li>
+<li><a href="http://bookmarklet.daa.jp/">JAVASCRIPT::BOOKMARKLET</a></li>
+</ul>
+
+<p>JavaScriptわかってないので内容未保証です...</p>
+
+<ul class="small">
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='meiryo';">Meiryo</a></li>
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='Meiryo UI';">Meiryo UI</a></li>
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='Windows TV P丸ゴシック';">Windows TV P丸ゴシック</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='MS PGothic';">ＭＳ Ｐゴシック</a></li>
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='MS UI Gothic';">MS UI Gothic</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='VL PGothic';">VL Pゴシック</a></li>
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='IPAMonaPGothic';">IPA モナー Pゴシック</a></li>
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='Migu 1P';">Migu 1P</a></li>
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='07やさしさゴシック';">07やさしさゴシック</a></li>
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='やさしさゴシック';">やさしさゴシック</a></li>
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='Takao Pゴシック';">Takao Pゴシック</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='みかちゃん';">みかちゃん</a></li>
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='みかちゃん-P';">みかちゃん-P</a></li>
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='みかちゃん-PB';">みかちゃん-PB</a></li>
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='みかちゃん-PS';">みかちゃん-PS</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='りいポップ角 R';">りいポップ角 R</a></li>
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='りいてがきN R';">りいてがきN R</a></li>
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='りいてがき筆';">りいてがき筆</a></li>
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='瀬戸フォント';">瀬戸フォント</a></li>
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='あんずもじ';">あんずもじ</a></li>
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='あずきフォント';">あずきフォント</a></li>
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='あくあＰフォント';">あくあＰフォント</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='怨霊';">怨霊</a></li>
+<li><a href="javascript:var%20fontFamily=document.getElementsByTagName('body')[0].style.fontFamily='吐き溜';">吐き溜</a></li>
+</ul>
+
+
+<ul class="small">
+<li><a href="javascript:void(document.body.style.fontSize='80%')">font 80%</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='100%')">font 100%</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='120%')">font 120%</a></li>
+<li><a href="javascript:void(document.body.style.fontSize='150%')">font 150%</a></li>
+</ul>
+
+<p>body要素に適用なのでCSSで指定されてる要素には効きません。</p>
+
+<h3><a href="#extensions_compatibility"><span class="ms">■</span></a> <a name="extensions_compatibility">未対応拡張をムリヤリ使うには</a></h3>
+
+<ul>
+<li>参考ページ : 
+	<ul>
+	<li><a href="http://wikiwiki.jp/firefox/?%B8%DF%B4%B9%C0%AD">互換性について - Firefox更新情報 Wiki*</a></li>
+	</ul>
+</li>
+</ul>
+
+<p class="pink">※ あくまで「ムリヤリ有効化」なのでまともに動作する保証はないので注意して実行するべし。</p>
+
+<p>Firefox 側で対応バージョンを無効にする方法と、拡張自身のファイルの対応バージョンを書き換える方法の2種類があります。</p>
+
+<h4>Firefox 側で対応</h4>
+
+<p>手動設定するか、拡張機能を利用するか？</p>
+
+<dl>
+<dt>拡張を利用する</dt>
+<dd>
+<p>下記拡張にて非対応拡張が使えました。やってることは下記の <code>about:config</code> での設定同様、Firefox 側の設定変更（チェック無効化設定追加）してる様です。</p>
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/add-on-compatibility-reporter/">Add-on Compatibility Reporter :: Add-ons for Firefox</a> (12.0a1)
+	<ul class="small">
+	<li><a href="http://mozilla-remix.seesaa.net/article/131098627.html">Mozilla Re-Mix: アドオンの互換性レポートをMozillaに送信して開発者に対応を促すアドオン「Add-on Compatibility Reporter」</a></li>
+	</ul>
+</li>
+</ul>
+
+<p>下記2点の拡張が有名ですが、前者はウチの環境ではだめ、後者は 4.0 未対応です。</p>
+<ul>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/nightly-tester-tools/">Nightly Tester Tools :: Add-ons for Firefox</a> (12.0a1)</li>
+<li><a href="https://addons.mozilla.org/ja/firefox/addon/mr-tech-toolkit/">MR Tech Toolkit :: Add-ons for Firefox</a> (3.7a5pre)</li>
+</ul>
+</dd>
+
+<dt>about:config (user.js) で設定変更</dt>
+<dd>
+<p>拡張の対応バージョンチェックを無効にします。アドオンマネージャにて警告が常に表示されます。</p>
+<ol>
+<li><code>about:config</code>  画面を開く</li>
+<li>右クリックで新規作成 <span class="ms">→</span> 真偽値 <span class="ms">→</span>下記設定名 <span class="ms">→</span>false</li>
+</ol>
+<pre>
+extensions.checkCompatibility.<strong class="ms red">4.0</strong>
+</pre>
+<p>※ Firefox <strong class="ms">4.0.x</strong> の場合です。</p>
+
+<ul>
+<li><code>user.js</code> なら</li>
+</ul>
+<pre>
+user_pref(&#034;extensions.checkCompatibility.<strong class="ms red">4.0</strong>&#034;, false);
+</pre>
+</dd>
+</dl>
+
+
+<h4>拡張自身のファイルを編集</h4>
+
+<p><code>install.rdf</code> を編集します。</p>
+
+<p>Firefox 4.0.x にインストールする場合は、下記を 4.1 などとします。</p>
+<pre>
+&#060;em:maxVersion&#062;<strong class="ms red">4.1</strong>&#060;/em:maxVersion&#062;
+</pre>
+
+<dl>
+<dt>インストール済でファイルが展開されている場合</dt>
+<dd>
+<p><code>プロファイル\extensions</code> 以下に対象拡張の <code>install.rdf</code> がある場合はそのファイルを直接編集。ない場合・うまく行かない場合は次の手段で。</p>
+</dd>
+
+<dt>xpi ファイルを再作成</dt>
+<dd>
+<ol>
+<li>拡張子を <strong class="ms">zip</strong> に変更（※ 解凍ソフトで直接展開でもおｋ）</li>
+<li>すべて展開</li>
+<li><code>install.rdf</code> を編集</li>
+<li>展開ファイルをすべて選択して【送る】<span class="ms">→</span>【圧縮 (zip 形式) フォルダ】</li>
+<li>作成されたファイルの拡張子を <strong class="ms">xpi</strong> に変更（念の為ファイル名も元に戻した方がいいかな）</li>
+<li>Firefox 画面にドラッグ＆ドロップしてインストール</li>
+</ol>
+</dd>
+</dl>
+
+
+
+
+</div>
+</div>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+<address>Written by yassy</address>
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,2681 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta http-equiv="Content-Language" content="ja">
+<meta name="GENERATOR" content="EdLeaf Version 1.02">
+<link rel="start" href="./index.html">
+<title>Debian GNU/Linux 5.x (lenny) インストールめも＠Palm84</title>
+<link rel="stylesheet" type="text/css" href="basic.css">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<style type="text/css">
+<!--
+
+td { 
+	border-right:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+}
+
+table.book2 {
+	border-top:1px solid #ccc;
+	border-left:1px solid #ccc;
+	margin:0 2em;
+	font-size:90%;
+}
+
+pre.height7 {
+height: 7em;
+overflow:scroll;
+}
+
+pre.height20 {
+height: 20em;
+overflow:scroll;
+}
+
+dl.small pre {
+font-size: 100%;
+}
+
+/*===== columns =====*/
+
+.main {
+	border-color: #ccc;
+}
+
+.sidebar {
+	border-color: #ffd;
+}
+
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+</head>
+
+<body>
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+<h1><span class="tokai1"><a href="./debian_lenny.html">Debian GNU/Linux 5.x (lenny) インストールめも</a></span></h1>
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+<ul>
+<li><a href="#general">Debian 総合</a></li>
+<li><a href="#document">ドキュメント等</a></li>
+<li><a href="#pre_install">インストール準備</a></li>
+<li><a href="#install">インストール実行</a></li>
+<li><a href="#console">コンソールの設定</a></li>
+<li><a href="#gui">X(GUI)の設定</a></li>
+<li><a href="#software">追加パッケージ</a></li>
+<li><a href="#grub">GRUB</a></li>
+<li><a href="#package">パッケージ管理</a></li>
+<li><a href="#server">サービスの設定</a></li>
+<li><a href="#japanese">日本語入力環境</a></li>
+<li><a href="#network">ネットワーク</a></li>
+<li><a href="#virusscan">ウイルススキャン</a></li>
+<li><a href="#apache2">apache2</a></li>
+<li><a href="#pxe_server">PXEネットワークブート用サーバ</a></li>
+<li><a href="#etc">その他</a></li>
+</ul>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<hr>
+
+<div class="ct">
+
+
+
+
+<p class="small">リンクはご自由に。</p>
+
+
+</div>
+</div>
+
+
+<div class="main">
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/debian_lenny.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p class="small">2009.8.8 作成 書きかけ、ごちゃごちゃの私的めも。
+<br>最終更新日 2010.7.24
+</p>
+
+<p><a href="http://d.hatena.ne.jp/palm84/20071218/1197905795">980円PC</a>に入れとります。サーバ及びLinuxの勉強用ということで普段はGUIは使ってません。なのであんまり参考にはならないかと。</p>
+<p>え～、Linux歴は2年とちょっとのド素人なので内容は保証できません。やったことを忘れないように、復習のために、今後のスキルアップを目指し、書き留めておりまする。</p>
+
+<p class="pink">Debianのええとこは、割と枯れ目（安定）でパッケージがぎょうさんありまくり、自分でソースからビルドする必要が殆どないので、私のような初心者でも目的次第で結構使えるとこじゃないかなと思います。まぁ、情報が多すぎて探すのがタイヘンだったりするけど、そこはそれ。</p>
+<h2><a href="#general" name="general"><span class="tokai1">Debian 総合</span></a></h2>
+
+<ul>
+<li><a href="http://www.debian.org/">Debian -- ユニバーサルオペレーティングシステム</a>
+	<ul class="nest"><li><a href="http://www.debian.org/distrib/">Debian -- Debian を入手するには</a></li>
+	<li><a href="http://www.debian.org/security/">Debian -- セキュリティ情報</a></li></ul>
+</li>
+<li><a href="http://www.debian.or.jp/">Debian JP Project</a></li>
+<li><a href="http://wiki.debian.org/">Debian Wiki</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.debian.or.jp/using/release.html">Debian JP Project - リリース情報</a>
+	<ul>
+	<li><a href="http://www.jp.debian.org/releases/">Debian -- Debian のリリース</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://debian.fam.cx/">Debian GNU/Linux スレッドテンプレ</a></li>
+<li><a href="http://ja.wikipedia.org/wiki/Debian_GNU/Linux">Debian - Wikipedia</a></li>
+</ul>
+
+
+<h2><a href="#document" name="document"><span class="tokai1">ドキュメント等</span></a></h2>
+
+<ul>
+<li><a href="http://www.debian.or.jp/using/release.html">Debian JP Project - リリース情報</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.debian.org/releases/lenny/i386/release-notes/">Debian GNU/Linux 5.0 (lenny) リリースノート (Intel x86 用)</a>
+	<ul class="nest">
+	<li><a href="http://www.debian.org/releases/lenny/i386/release-notes/ch-whats-new.ja.html">第2章 Debian GNU/Linux 5.0 の最新情報</a> - <span class="ms">etch</span>からの変更点など</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.debian.org/doc/">Debian -- ユーザ文書</a>
+	<ul class="nest">
+	<li><a href="http://www.debian.org/releases/lenny/">Debian -- Debian 「lenny」 リリース情報</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.debian.org/doc/manuals/reference/index.ja.html">Debian リファレンス</a></li>
+<li><a href="http://www.jp.debian.org/doc/manuals/quick-reference/quick-reference.ja.html">Debian クイックリファレンス</a></li>
+<li><a href="http://wiki.debian.org/">Debian Wiki</a></li>
+</ul>
+
+<ul>
+<li>ローカルのドキュメント
+	<ul class="nest">
+	<li><code>/usr/share/doc/</code></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.debian.or.jp/community/ml/openml.html">Debian JP Project - 公開メーリングリスト</a></li>
+</ul>
+
+<dl>
+<dt>おすすめページ</dt>
+<dd>
+<ul>
+<li><a href="http://www.h7.dion.ne.jp/~maruyosi/pasocom/debian_trial_0.html">Debian初心者のA2Z</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.linux.or.jp/JF/JFdocs/debiantips.html">Debian 便利ワザ集</a></li>
+<li><a href="http://www.jp.debian.org/doc/manuals/reference/ch-tutorial.ja.html#s-unixcmds">基本的な Unix コマンド<span class="small"> - Debian リファレンス - Debian チュートリアル</span></a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h2><a href="#pre_install" name="pre_install"><span class="tokai1">インストール準備</span></a></h2>
+
+<ul>
+<li><a href="http://www.debian.org/releases/lenny/i386/index.html.ja">Debian GNU/Linux インストールガイド</a>
+	<ul>
+	<li><a href="http://www.debian.org/releases/lenny/i386/apa.html.ja">付録 A. インストール Howto</a></li>
+	<li><a href="http://www.debian.org/releases/lenny/i386/ch03s04.html.ja">3.4. 必要な最低限のハードウェア</a></li>
+</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.debian.or.jp/using/">Debian JP Project - 始めの一歩</a></li>
+</ul>
+
+<ul>
+<li><a href="http://itpro.nikkeibp.co.jp/article/COLUMN/20090326/327243/">Debian GNU/Linux 5.0 - インストール完全ガイド：ITpro</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.debian.or.jp/using/quick-etch/">Debian JP Project - Debian GNU/Linux クイックインストール解説 (Etch/Lenny 編)</a></li>
+</ul>
+
+<ul>
+<li><a href="http://debian.fam.cx/index.php?install">インストール前からインストール直後ぐらいまでの FAQ - Debian GNU/Linux スレッドテンプレ</a>
+	<ul class="small">
+	<li><a href="http://debian.fam.cx/index.php?install#ha6474ab">最初から KDE / Xfce4 / LXDE デスクトップ環境をインストールしたい</a></li>
+	</ul>
+</li>
+</ul>
+
+
+<ul>
+<li><a href="http://www.debian.org/releases/lenny/i386/ch06s03.html.ja#pkgsel">ソフトウェアの選択・インストール - 6.3. それぞれのコンポーネントの使用法</a></li>
+</ul>
+<div class="quote small">
+<blockquote cite="http://www.debian.org/releases/lenny/i386/ch06s03.html.ja#pkgsel" title="6.3. それぞれのコンポーネントの使用法">
+<p>いくつかの CD イメージ (businesscard, netinst, DVD) では、グラフィカルブートメニューから希望のデスクトップ環境の選択することもできます。メインメニューの 「Advanced options」 を選択し、「Alternative desktop environments」 を探してください。</p>
+</blockquote>
+<cite><a href="http://www.debian.org/releases/lenny/i386/ch06s03.html.ja#pkgsel">6.3. それぞれのコンポーネントの使用法</a></cite>
+</div>
+
+
+<h3><a href="#netinst"><span class="ms">■</span></a> <a name="netinst">【最小の CD】でインターネット上のサーバから</a></h3>
+
+<p class="small pink">※ これが一番楽かもですね。個人的には「CD焼くのモッタイナイ」貧乏性だったりしますが。（んなもん CD-RW 使えと...恥）</p>
+
+<ul>
+<li><a href="http://www.debian.org/releases/lenny/i386/ch04.html.ja">システムインストールメディアの入手</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.debian.org/CD/netinst/">Debian -- 最小の CD を使って、ネットワークインストールする</a></li>
+</ul>
+<p>【<strong>最小の CD</strong>】&#034;<strong class="ms">netinst</strong>&#034; イメージ、&#034;<strong class="ms">businesscard</strong>&#034; イメージでは、ブート時にインストールする「デスクトップ環境」 (<strong class="ms">KDE</strong>, <strong class="ms">LXDE</strong>, <strong class="ms">Xfce</strong>) の選択が可能。</p>
+
+<dl>
+<dt>CDイメージ</dt>
+<dd>
+<ul>
+<li><a href="http://www.debian.org/CD/">Debian GNU/Linux の CD</a>
+	<ul class="small">
+	<li><a href="http://ftp.riken.jp/Linux/debian/debian-cdimage/release/current/i386/iso-cd/">/debian-cdimage/release/current/i386/iso-cd</a></li>
+	<li><code>debian-5xx-i386-netinst.iso</code></li>
+	<li><code>debian-5xx-i386-businesscard.iso</code> - こっちがホンマの最小</li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<h3><a href="#netinst_pxe"><span class="ms">■</span></a> <a name="netinst_pxe">【netbootイメージ】でインターネット上のサーバから</a></h3>
+
+<ul>
+<li><a href="http://www.debian.org/releases/lenny/i386/ch04s03.html.ja">USB メモリでの起動用ファイルの準備</a></li>
+<li><a href="http://www.debian.org/releases/lenny/i386/ch04s05.html.ja">TFTP ネットブート用ファイルの準備</a></li>
+<li><a href="http://www.debian.org/releases/lenny/i386/ch04s04.html.ja">ハードディスク起動ファイルの準備</a></li>
+</ul>
+
+<p>netboot（PXEブート用）ディレクトリのイメージでは、「デスクトップ環境」を選択した場合、<strong class="ms">GNOME</strong> がインストールされる（RAM が少ない場合は <strong class="ms">twm</strong>？）。</p>
+<p class="small pink">※GNOME以外を入れるにはブート時にパラメータを指定したらいい様なのですが、私の環境ではGNOME以外は入ってくれませんでした。</p>
+
+<dl>
+<dt>CD以外のブート用イメージ</dt>
+<dd>
+<p class="small pink">※ デスクトップ環境については「なんとかしますわ！」とか、PXEブートでチャッチャとやってまお（※大阪弁ｗ）な人にはこっちがバッチグー（死語ｗ）ですか。</p>
+
+<ul class="small">
+<li><a href="http://www.ring.gr.jp/pub/linux/debian/debian/dists/lenny/main/installer-i386/current/images/">/installer-i386/current/images</a>
+	<ul>
+	<li>PXEブート用（USBメモリ,HD + ネットワーク） - 
+		<ul>
+		<li><a href="http://www.ring.gr.jp/pub/linux/debian/debian/dists/lenny/main/installer-i386/current/images/netboot/debian-installer/i386/">/netboot/debian-installer/i386</a></li>
+	<li><a href="http://www.ring.gr.jp/pub/linux/debian/debian/dists/lenny/main/installer-i386/current/images/netboot/gtk/debian-installer/i386/">/netboot/gtk/debian-installer/i386</a>（※グラフィカル版）</li>
+		</ul>
+	</li>
+	</ul>
+</li>
+</ul>
+
+
+<p>netboot（PXEブート用）ディレクトリのイメージはPXEブートでなくても使える。GRUBやSYSLINUX (ISOLINUX,PXELINUX) などからロードするだけ。PXEブートできないなら、GRUB(for DOS)起動ディスクでHD上の保存したイメージをロードさせるのが簡単かも。</p>
+
+<div class="quote small">
+<ul>
+<li>※<code>linux</code> と <code>initrd.gz</code> を <var>debian</var> ディレクトリに置いた場合</li>
+</ul>
+
+<ul>
+<li>GRUB for DOS - <code>menu.lst</code></li>
+</ul>
+<pre class="pink">
+title Debian Installer
+find --set-root /debian/linux
+kernel /debian/linux vga=788 locale=ja_JP
+initrd /debian/initrd.gz
+</pre>
+
+<ul>
+<li>SYSLINUX -  <code>syslinux.cfg</code> ( <code>isolinux.cfg</code> , <code>pxelinuxcfg/default</code>)</li>
+</ul>
+<pre class="pink">
+LABEL debian
+KERNEL /debian/linux
+APPEND  vga=788 initrd=/debian/initrd.gz locale=ja_JP
+</pre>
+</div>
+</dd>
+</dl>
+
+<p><a href="http://www.ring.gr.jp/pub/linux/debian/debian/dists/lenny/main/installer-i386/current/images/hd-media/">hd-media</a>ディレクトリのイメージはインストーラ起動後にHD/USBメモリなどから（【最小のCD】などの）ISOイメージを探します。</p>
+
+<p>ブートFDイメージはなくなりました。ごにょごにょ（何）すればできないこともないのですが、（CDブート以外では）PXEブートか、HDにファイルを置いて起動ディスクでのブートが割かし楽かなと。</p>
+
+<dl>
+<dt>参考リンク</dt>
+<dd>
+<ul>
+<li><a href="http://nyanpokorin.blog55.fc2.com/blog-entry-16.html">FIVA 102 に Debian(lenny)+fluxbox をインストールしてみた にゃんぽこりんのメモ</a></li>
+<li><a href="http://hyamada.ddo.jp/hiki/hiki.cgi?mini-lenny">ひゃまだのテキストで行こう - mini-lenny</a></li>
+</ul>
+</dd>
+</dl>
+
+<dl class="small">
+<dt>拙作めも</dt>
+<dd>
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20070403/1175609650">WindowsでPXEネットワークブート用サーバの設定 - TFTPD32</a></li>
+</ul>
+</dd>
+</dl>
+
+<dl class="small">
+<dt>ブートパラメータ</dt>
+<dd>
+<p class="pink">※GNOME以外を入れるにはブート時にパラメータを指定したらいい様なのですが、私の環境では、netbootイメージ使用でGNOME以外は入ってくれませんでした。</p>
+
+<ul>
+<li><a href="http://www.debian.org/releases/lenny/i386/ch05s03.html.ja">5.3. ブートパラメータ</a>
+	<ul>
+	<li><code>priority=xxx</code> - 詳細な設定を可能に</li>
+	<li><code>tasks=&#034;standard, xxx&#034;</code> - 標準システム + デスクトップ環境の指定</li>
+	</ul>
+</li>
+</ul>
+
+<div class="quote">
+<blockquote cite="http://www.debian.org/releases/lenny/i386/ch05s03.html.ja" title="5.3. ブートパラメータ">
+<p>ブートパラメータに priority=medium を追加すると、インストールメニューが表示され、インストールについて、さらに多くの制御を行うことができます。priority=low を使った場合は、すべてのメッセージを表示します (expert 起動法と等価)。priority=critical の場合は、インストールシステムは重要なメッセージだけを表示し、大騒ぎせずに正しい設定をしようとします。 </p>
+</blockquote>
+<cite><a href="http://www.debian.org/releases/lenny/i386/ch05s03.html.ja">5.3. ブートパラメータ</a></cite>
+</div>
+
+<div class="quote">
+<blockquote cite="http://www.debian.org/releases/lenny/i386/ch06s03.html.ja#pkgsel" title="6.3. それぞれのコンポーネントの使用法">
+<p>インストール中に異なるデスクトップ環境を、インタラクティブに選択することはできません。しかし、preseed (項B.4.11. 「パッケージ選択」 参照) を使用したり、インストーラの起動時にブートプロンプトのパラメータで tasks="standard, kde-desktop" と指定して、debian-installer が GNOME ではなく KDE デスクトップ環境をインストールするようにできます。また、desktop=xfce や desktop=lxde とすると、もっと軽量な Xfce デスクトップ環境や LXDE デスクトップ環境を選択できます。 </p>
+</blockquote>
+<cite><a href="http://www.debian.org/releases/lenny/i386/ch06s03.html.ja#pkgsel">6.3. それぞれのコンポーネントの使用法</a></cite>
+</div>
+
+<ul>
+<li><a href="http://www.debian.org/releases/lenny/i386/apbs04.html.ja#preseed-pkgsel">パッケージ選択 - B.4. 事前設定ファイルの内容 (lenny 用)</a></li>
+</ul>
+</dd>
+</dl>
+
+<h2><a href="#install" name="install"><span class="tokai1">インストール実行</span></a></h2>
+
+<p>かなり古いPCなので、なるべく軽く、容量も節約したい...</p>
+
+<p>この方法では、前回の etch(GNOME) のインストール時と比べかなり軽く動いています。RAM 256 MBでもFirefoxなどが使えるレベルなのでちょっとびっくりしてたり（※ だが使ってるうちにそうでもなくなったりして）。但し、デスクトップ環境を後から追加する場合はどうしても「ありゃりゃ、アレがないYO!」な洩れが出て来ますけど。</p>
+
+<ol>
+<li>PXEサーバ、または起動ディスクなどから、netboot用イメージでブート</li>
+<li>【追加ソフトウェアのインストール】選択は2点のみ
+	<ul>
+	<li>標準システム</li>
+	<li>ファイルサーバ (Samba,NFS)</li>
+	</ul>
+</li>
+<li>コンソールを設定</li>
+<li>テキストモードの追加パッケージをaptでインストール</li>
+<li>KDEインストール</li>
+<li>X用追加パッケージをaptでインストール</li>
+</ol>
+
+<ul>
+<li><a href="http://www.debian.org/releases/lenny/i386/ch05s03.html.ja">5.3. ブートパラメータ</a></li>
+</ul>
+
+<p>ベースシステムとファイルサーバインストールで使用領域 647 MB。</p>
+<p>KDEインストールで使用領域 1.7 GB。</p>
+
+
+<h2><a href="#console" name="console"><span class="tokai1">コンソールの設定</span></a></h2>
+
+<ul>
+<li><a href="http://www.debian.or.jp/using/quick-etch/#setup-console">コンソールでの日本語表示 - Debian JP Project - Debian GNU/Linux クイックインストール解説 (Etch 編)</a></li>
+<li><a href="http://debian.fam.cx/index.php?Japanese#z2729e81">コンソール - Debian GNU/Linux スレッドテンプレ</a>
+</li>
+</ul>
+
+<p>日本語表示の為にフレーム・バッファを有効にする。</p>
+<dl>
+<dt>GRUBでフレーム・バッファを有効に</dt>
+<dd>
+<p><strong class="ms">menu.lst</strong>のkernelのオプションに下記などを追記</p>
+<ul>
+<li><code>vga=788</code> - SVGA(800x600) 16bit</li>
+<li><code>vga=791</code> - XGA(1024x768) 16bit</li>
+</ul>
+<p>カーネルがアップグレードされると、このオプションが消されてしまう様なので、その際は追記し直す。または、下記の方法で手動で組み込む。</p>
+<p class="small">※<code>/etc/modules</code> に追記すればいいのですが、私はカーネルアップグレードがわかる方がいいので追記してません。</p>
+</dd>
+
+<dt>フレーム・バッファモジュールをコマンドで組み込む</dt>
+<dd>
+<pre class="height7">
+$ ls /lib/modules/2.6.26-2-686/kernel/drivers/video/
+arcfb.ko        geode/       pm2fb.ko        sysimgblt.ko
+arkfb.ko        hecubafb.ko  pm3fb.ko        tdfxfb.ko
+aty/            hgafb.ko     s1d13xxxfb.ko   tridentfb.ko
+backlight/      i810/        s3fb.ko         uvesafb.ko
+cirrusfb.ko     intelfb/     savage/         vermilion/
+console/        kyro/        sis/            vfb.ko
+cyber2000fb.ko  macmodes.ko  sm501fb.ko      vga16fb.ko
+cyblafb.ko      matrox/      sstfb.ko        vgastate.ko
+display/        neofb.ko     svgalib.ko      vt8623fb.ko
+fb_ddc.ko       nvidia/      syscopyarea.ko
+fb_sys_fops.ko  output.ko    sysfillrect.ko
+</pre>
+
+<p>「<code>fb</code>」の付くものがフレームバッファ用モジュールらしい？</p>
+<pre>
+# modprobe vga16fb
+</pre>
+</dd>
+
+<dt>jfbterm</dt>
+<dd>
+<p>日本語化フレームバッファターミナルの実行</p>
+<pre>
+$ jfbterm
+</pre>
+<p><code>exit</code>、または <kbd>Ctrl</kbd>-<kbd>D</kbd> で終了。</p>
+<p class="small">※<del>2009.7.31現在、<code>exit</code>すると固まってしまいます。orz</del></p>
+</dd>
+
+<dt>コンソールでの日本語入力 - <strong class="ms">uim-fep</strong></dt>
+<dd>
+<p>※【注意】これは、<strong>KDE・uim-anthy などをインストールした後に行う</strong>のがいいかと。</p>
+<ul>
+<li>参考：
+	<ul>
+	<li><a href="http://kfujio.blog78.fc2.com/blog-entry-11.html">デビアンな生活 uim-fep</a></li>
+	</ul>
+</li>
+</ul>
+
+<p>オン／オフ 両方に <kbd>Ctrl</kbd>-<kbd>\</kbd> を登録。</p>
+
+<pre>
+# apt-get install uim-fep
+</pre>
+
+<pre>
+# vi /usr/share/uim/generic-key-custom.scm
+</pre>
+
+<ul class="small">
+<li>修正前</li>
+</ul>
+<pre>
+(define-custom 'generic-on-key '(&#034;zenkaku-hankaku&#034; &#034;&#060;Shift&#062; &#034;)
+
+(define-custom 'generic-off-key '(&#034;zenkaku-hankaku&#034; &#034;&#060;Shift&#062; &#034;)
+</pre>
+
+<ul class="small">
+<li>修正後</li>
+</ul>
+<pre>
+(define-custom 'generic-on-key '(&#034;zenkaku-hankaku&#034; &#034;&#060;Control&#062;\\&#034;)
+
+(define-custom 'generic-off-key '(&#034;zenkaku-hankaku&#034; &#034;&#060;Control&#062;\\&#034;)
+</pre>
+
+<pre>
+$ uim-fep
+</pre>
+<p><kbd>Ctrl</kbd>-<kbd>\</kbd> で日本語オン・オフ。</p>
+<ul>
+<li><strong class="ms">jfbterm</strong>と同時実行</li>
+</ul>
+<pre>
+$ jfbterm -e uim-fep
+</pre>
+
+<p>※<kbd>Shift</kbd>キーなどの文節調整ができないので注意<kbd>Ctrl</kbd>キー + 英字キーで。<kbd>Fx</kbd>キーは使える。文節伸ばし <kbd>Ctrl</kbd>-<kbd>O</kbd>、文節縮め <kbd>Ctrl</kbd>-<kbd>I</kbd></p>
+</dd>
+
+
+<dt>サービス設定ツール</dt>
+<dd>
+<p>サービスの自動オン・オフを設定。テキストモードでも使えます。</p>
+<pre>
+# apt-get install sysvconfig
+</pre>
+<p>これには <code>service</code> コマンドが含まれてました。Vineとか風味に使えます。</p>
+<pre>
+# service samba restart
+</pre>
+</dd>
+
+
+<dt>起動時にNumLockをオンにする</dt>
+<dd>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/054numlockon.html">起動時にNumLockをオンにするには</a></li>
+</ul>
+
+<ul>
+<li>スクリプト <code>numlocok.sh</code> 作成</li>
+</ul>
+<pre>
+#!/bin/sh
+for tty in /dev/tty[1-9]*; do
+    setleds -D +num &#060; $tty
+done
+</pre>
+
+<ul>
+<li>サービスに登録</li>
+</ul>
+<pre>
+# cp numlock.sh /etc/init.d
+# chmod 755 /etc/init.d/numlock.sh
+# update-rc.d numlock.sh defaults
+</pre>
+</dd>
+
+<dt>時刻合わせ</dt>
+<dd>
+<pre>
+# apt-get install ntpdate
+# ntpdate ntp2.jst.mfeed.ad.jp
+ 2 Aug 05:20:15 ntpdate[15608]: step time server 210.173.160.57 offset 40.217014 sec
+</pre>
+
+<ul class="small ms">
+<li>ntp1.jst.mfeed.ad.jp（インターネットマルチフィード株式会社）</li>
+<li>ntp.ring.gr.jp (Ring)</li>
+<li>time.windows.com (Microsoft)</li>
+<li>ntp2.plala.or.jp (Plala)</li>
+<li>name1.121ware.com (NEC)</li>
+</ul>
+</dd>
+
+<dt><strong class="ms">w3m</strong> で画像表示</dt>
+<dd>
+<p><strong class="ms">w3m-img</strong> をインストール</p>
+<pre>
+# apt-get install w3m-img
+</pre>
+</dd>
+</dl>
+
+
+<h2><a href="#gui" name="gui"><span class="tokai1">X(GUI)の設定</span></a></h2>
+
+<ul>
+<li><a href="http://www.debian.org/doc/manuals/reference/ch07.ja.html">第7章 X Windowシステム</a></li>
+</ul>
+
+<p>デスクトップ環境はKDEが好き好きなので。</p>
+
+<ul>
+<li><a href="http://www.kde.org/">KDE - Be free</a></li>
+<li><a href="http://www.kde.gr.jp/">KDE ホームページ（日本KDEユーザ会）</a></li>
+</ul>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/KDE">KDE - Wikipedia</a>
+	<ul>
+	<li><a href="http://ja.wikipedia.org/wiki/KDE%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E4%B8%80%E8%A6%A7">KDEアプリケーション一覧 - Wikipedia</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>KDEをインストール</li>
+</ul>
+<pre>
+# apt-get install kde kde-i18n-ja
+</pre>
+
+<p>再起動後、KDEの【コントロールセンター】にて、言語追加・キーボード・自動ログインなどを設定。</p>
+
+<p>普段はテキスト（全画面コンソール）モードでXを起動しない。KDM（KDE 用 X ディスプレイマネージャ）を起動しない設定にする。</p>
+
+<ul>
+<li><code>sysvconfig</code> で <strong class="ms">kdm</strong> のチェックを外す。<strong>デフォルトはテキストモードに</strong>する。</li>
+</ul>
+
+<ul>
+<li><a href="http://www.debian.org/doc/manuals/debian-reference/ch03.ja.html#_stage_4_the_normal_debian_system">通常のDebianシステム - 第3章 システムの初期化</a></li>
+</ul>
+
+<ul>
+<li>現在のランレベルを確認</li>
+</ul>
+<pre>
+# runlevel
+N 2
+</pre>
+
+<ul>
+<li>デフォルトのランレベルを確認</li>
+</ul>
+<pre>
+$ grep default /etc/inittab
+# The default runlevel.
+id:2:initdefault:
+</pre>
+
+<p><code>runlevel 3</code> で <strong class="ms">KDM</strong> が起動するように設定</p>
+
+<pre>
+# cd /etc/rc3.d/
+mv K99KDM S99KDM
+</pre>
+
+<p>menu.lst にrunlevel 3 のエントリを追記しておく</p>
+
+<pre class="scl">
+＜ 略 ＞
+### END DEBIAN AUTOMAGIC KERNELS LIST
+
+title GRUB for DOS
+root (hd0,2)
+kernel /grub.exe --config-file=&#034;root (hd0,2);configfile /menu.lst&#034;
+
+title       Debian GNU/Linux, kernel 2.6.26-2-686 runlevel 3
+root        (hd0,0)
+kernel      /boot/vmlinuz-2.6.26-2-686 root=/dev/hda1 ro vga=788 <strong class="ms red">3</strong> 
+initrd      /boot/initrd.img-2.6.26-2-686
+</pre>
+<p class="small">※あっと、カーネルのアップデート後はファイル名を変更しないとだめですね（汗）</p>
+
+<dl>
+<dt>テキストモードからの <strong class="ms">X</strong> の起動</dt>
+<dd>
+<ul>
+<li><strong class="ms">root</strong> でKDM（KDE 用 X ディスプレイマネージャ）を起動</li>
+</ul>
+<pre>
+# /etc/init.d/kdm start
+</pre>
+
+<p>または、一般ユーザで <code>startx</code> コマンド（※ <strong class="ms">xinit</strong> パッケージに含まれる）</p>
+
+<pre>
+# apt-get install xinit
+</pre>
+
+<pre>
+$ startx
+</pre>
+<p>注：<code>jfbterm</code> はexitしておくこと</p>
+</dd>
+</dl>
+
+
+<dl>
+<dt>ウィンドウマネージャを確認</dt>
+<dd>
+<ul>
+<li>デフォルトのウィンドウマネージャを確認する
+	<ul>
+	<li><a href="http://www.debian.org/doc/manuals/debian-reference/ch02.ja.html#_the_update_alternative_command">update-alternativeコマンド - 第2章 Debianパッケージ管理</a></li>
+	</ul>
+</li>
+</ul>
+<pre>
+# update-alternatives --display x-session-manager
+</pre>
+
+<ul>
+<li>デフォルトのウィンドウマネージャを変更する</li>
+</ul>
+<pre>
+# update-alternatives --config x-session-manager
+</pre>
+
+</dd>
+</dl>
+
+
+
+<dl>
+<dt>Xの再設定</dt>
+<dd>
+<p>以前は、xorg.confの直接編集が可能でしたが、lennyでは仕様がかなり変わってる模様。調査中...</p>
+
+
+
+</dd>
+</dl>
+
+
+<h2><a href="#software" name="software"><span class="tokai1">追加パッケージ</span></a></h2>
+
+<ul>
+<li><a href="#iceweasel">Iceweasel(Firefox)</a></li>
+<li><a href="#opera">Opera</a></li>
+<li><a href="#flashplugin">Flash Plugin</a></li>
+<li><a href="#font">フォント</a></li>
+<li><a href="#knemo">ネットワークアイコン</a></li>
+<li><a href="#kcpuload">CPUメータ</a></li>
+<li><a href="#java">Sun Java(JRE)</a></li>
+</ul>
+
+<h3><a href="#iceweasel"><span class="ms">■</span></a> <a name="iceweasel"><span class="tokai1">Iceweasel(Firefox)</span></a></h3>
+
+<pre>
+# apt-get install iceweasel
+# apt-get install iceweasel-l10n-ja
+</pre>
+
+<p>拡張はとりあえず2点のみ</p>
+
+<ul>
+<li>マウスジェスチャ
+	<ul>
+	<li><a href="https://addons.mozilla.org/ja/firefox/addon/6366">FireGestures :: Firefox Add-ons</a></li>
+	</ul>
+</li>
+<li>表示中ページのタイトルとURLをコピー
+	<ul>
+	<li><a href="http://mozilla.seesaa.net/article/92976194.html">電網探題: Copy URL + 1.3.2 日本語版 Fx:[1.0-3.1]</a></li>
+	</ul>
+</li>
+</ul>
+
+
+
+<h3><a href="#opera"><span class="ms">■</span></a> <a name="opera"><span class="tokai1">Opera</span></a></h3>
+
+
+<ul>
+<li><a href="http://deb.opera.com/">The Opera .deb Repository</a></li>
+</ul>
+
+<ul>
+<li><code>/etc/apt/sources.list</code>に追加</li>
+</ul>
+<pre>
+deb http://deb.opera.com/opera/ lenny non-free
+</pre>
+
+<ul>
+<li>公開鍵の入手</li>
+</ul>
+<pre>
+wget -O - http://deb.opera.com/archive.key | apt-key add -
+</pre>
+
+<ul>
+<li>APTでインストール</li>
+</ul>
+<pre>
+# apt-get update
+# apt-get install opera
+</pre>
+
+<p>言語ファイル (<strong class="ms">language file</strong>) は不要。</p>
+
+<p>但し、メニューなど「ー」が「＋」になっているので【詳細設定】→【フォント】で設定変更。</p>
+
+<ul>
+<li><code>opera:config</code> で【<strong class="ms">User Prefs</strong>】の【<strong class="ms">Enable Core X Fonts</strong>】のチェックをオフにした方がいいらしい</li>
+</ul>
+
+<dl>
+<dt>AA表示が?</dt>
+<dd>
+<p>apt で <code>ttf-mona</code> をインストール、<code>font-family</code> に <code>Mona</code> を指定すればok。</p>
+
+<p>CSSでの <code>font-family</code> 指定が、なぜか（ダウンロードしてコピーした）「<code>IPA モナー Pゴシック</code>」(<code>IPAMonaPGothic</code>) などフォント名を認識できない模様。</p>
+
+</dd>
+</dl>
+
+<p>言語ファイルが必要な場合は下記でダウンロード</p>
+<ul class="small">
+<li><a href="http://www.opera.com/download/languagefiles/index.dml?platform=linux">Opera's language files</a></li>
+</ul>
+<p>Tools（ツール）<strong class="ms">→</strong>Prefences（設定）<strong class="ms">→</strong>General（一般設定）<strong class="ms">→</strong>Language（言語）<strong class="ms">→</strong>Details（詳細設定）からファイルを指定。</p>
+
+
+
+<h3><a href="#flashplugin"><span class="ms">■</span></a> <a name="flashplugin"><span class="tokai1">Flash Plugin</span></a></h3>
+
+<p class="small pink">※ 色々方法あるのでこれでいいのかチト微妙。まぁ一応最新版が入りましたが...</p>
+
+<p>注：<strong class="ms">Debian Backports</strong> からインストーラ（ダウンローダかな？）をインストール。</p>
+
+<ul>
+<li><a href="http://www.backports.org/dokuwiki/doku.php?id=instructions">instructions [Debian Backports]</a></li>
+</ul>
+
+<ul>
+<li><code>/etc/apt/sources.list</code> に追記</li>
+</ul>
+<pre>
+deb http://www.backports.org/debian lenny-backports main contrib non-free
+</pre>
+
+<ul>
+<li>公開鍵を入手して設定</li>
+</ul>
+<pre>
+# wget -O - http://backports.org/debian/archive.key | apt-key add -  
+</pre>
+
+<ul>
+<li><code>/etc/apt/preferences</code> 作成</li>
+</ul>
+<pre>
+Package: flashplugin-nonfree
+Pin: release a=lenny-backports
+Pin-Priority: 999
+</pre>
+
+<ul>
+<li><a href="http://wiki.debian.org/Flash">Flash - Debian Wiki</a>
+	<ul>
+	<li><a href="http://wiki.debian.org/FlashPlayer">FlashPlayer - Debian Wiki</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><strong class="ms">flashplugin-nonfree</strong> をインストール</li>
+</ul>
+<pre>
+# apt-get update
+# apt-get install flashplugin-nonfree
+</pre>
+<p>9.0がインストールされました。</p>
+
+
+<ul>
+<li>アップデート</li>
+</ul>
+<pre>
+# apt-get update
+# apt-get upgrade
+</pre>
+
+<ul>
+<li>Flash Plugin 本体のアップデート</li>
+</ul>
+<pre>
+# update-flashplugin-nonfree --install
+</pre>
+<p>10.0 r32 がインストールされました。</p>
+
+<ul>
+<li><a href="http://debian.fam.cx/index.php?cmd=read&#038;page=Software%2FFlash">Flash 関係の FAQ - Debian GNU/Linux スレッドテンプレ</a></li>
+</ul>
+
+
+
+<h3><a href="#font"><span class="ms">■</span></a> <a name="font"><span class="tokai1">フォント</span></a></h3>
+
+<ul>
+<li><a href="http://dicey.org/vlgothic/">VLゴシックフォントファミリ</a>
+	<ul>
+	<li><a href="http://ja.wikipedia.org/wiki/VL%E3%82%B4%E3%82%B7%E3%83%83%E3%82%AF">VLゴシック - Wikipedia</a></li>
+	</ul>
+</li>
+</ul>
+<pre>
+# apt-get install ttf-vlgothic
+</pre>
+
+<ul>
+<li><a href="http://www.geocities.jp/ipa_mona/">モナーフォント</a>
+	<ul>
+	<li><a href="http://ja.wikipedia.org/wiki/IPA%E3%83%A2%E3%83%8A%E3%83%BC%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88">IPAモナーフォント - Wikipedia</a></li>
+	</ul>
+</li>
+</ul>
+<p>aptでインストール(<strong class="ms">xfonts-mona</strong>)してみたけどいまいちおかしかったので、<del>ダウンロードしてコピー...</del>。したけどOperaで表示できなかった。<ins><strong class="ms">Mona</strong> (<code>ttf-mona</code>) でおｋ</ins>。</p>
+
+<p class="small">※ Opera では、<code>font-family:'IPA モナー Pゴシック',IPAMonaPGothic;</code> を認識しない。<code>mona</code> ならおｋ。</p>
+
+
+<pre>
+# apt-get install ttf-mona
+</pre>
+
+<p class="small">しかしながら、私もそうでありましたが（滝汗）、AA表示のために <code>font-family</code> に <code>mona</code> を指定していることは少ないので、Firefox用に（Operaではダメだけど）ダウンロード＆コピーもやっておいた方がいいかも。</p>
+<pre>
+# cp opfc-ModuleHP-1.1.1_withIPAMonaFonts-1.0.8/fonts/ipagp-mona.ttf /usr/share/fonts/truetype/
+</pre>
+
+<p>やっぱし、ドキュメント読んでキッチリ設定した方がいいですね（汗）。</p>
+<ul>
+<li>参考：<a href="http://wiki.fdiary.net/font/?unixuser200403-2">書体関係 Wiki - unixuser200403-2</a></li>
+</ul>
+
+
+
+<h3><a href="#knemo"><span class="ms">■</span></a> <a name="knemo"><span class="tokai1">ネットワークアイコン</span></a></h3>
+
+<ul>
+<li><a href="http://extragear.kde.org/apps/knemo/">The KDE Extragear - KNemo</a></li>
+<li><a href="http://packages.debian.org/ja/lenny/knemo">Debian -- lenny の knemo パッケージに関する詳細</a></li>
+</ul>
+
+<p>Windows風味なシステムトレイに表示するネットワークのアイコン。</p>
+
+<pre>
+# apt-get install knemo
+</pre>
+
+<p>【コントロールセンター】で「ネットワークモニタ」を有効に。</p>
+
+
+
+<h3><a href="#kcpuload"><span class="ms">■</span></a> <a name="kcpuload"><span class="tokai1">CPUメータ</span></a></h3>
+
+<ul>
+<li><a href="http://extragear.kde.org/apps/kcpuload/">The KDE Extragear - KCPULoad</a></li>
+<li><a href="http://packages.debian.org/ja/lenny/kcpuload">Debian -- lenny の kcpuload パッケージに関する詳細</a></li>
+</ul>
+
+<p>システムトレイに表示するCPUメータ</p>
+
+<pre>
+# apt-get install kcpuload
+</pre>
+
+
+<h3><a href="#java"><span class="ms">■</span></a> <a name="java"><span class="tokai1">Sun Java(JRE)</span></a></h3>
+
+<ul>
+<li><a href="http://wiki.debian.org/Java/Sun">Java/Sun - Debian Wiki</a></li>
+<li><a href="http://debian.fam.cx/index.php?cmd=read&#038;page=Software%2FJava">Java の FAQ - D: Software/Java - Debian GNU/Linux スレッドテンプレ</a></li>
+</ul>
+
+<p><code>/etc/apt/sources.list</code> に <strong class="ms">non-free</strong> セクションを追記する</p>
+
+<pre>
+# apt-cache search -n sun-java6
+sun-java6-bin - Sun Java(TM) Runtime Environment (JRE) 6 (architecture dependent files)
+sun-java6-demo - Sun Java(TM) Development Kit (JDK) 6 demos and examples
+sun-java6-doc - Sun JDK(TM) Documention -- integration installer
+sun-java6-fonts - Lucida TrueType fonts (from the Sun JRE)
+sun-java6-javadb - Java(TM) DB, Sun Microsystems' distribution of Apache Derby
+sun-java6-jdk - Sun Java(TM) Development Kit (JDK) 6
+sun-java6-jre - Sun Java(TM) Runtime Environment (JRE) 6 (architecture independent files)
+sun-java6-plugin - The Java(TM) Plug-in, Java SE 6
+sun-java6-source - Sun Java(TM) Development Kit (JDK) 6 source files
+</pre>
+
+<pre>
+# apt-get install sun-java6-plugin
+パッケージリストを読み込んでいます... 完了
+依存関係ツリーを作成しています
+状態情報を読み取っています... 完了
+以下の特別パッケージがインストールされます:
+  gsfonts-x11 java-common odbcinst1debian1 sun-java6-bin sun-java6-jre
+  unixodbc
+提案パッケージ:
+  equivs binfmt-support sun-java6-fonts ttf-baekmuk ttf-unfonts
+  ttf-unfonts-core ttf-arphic-uming libmyodbc odbc-postgresql libct1
+以下のパッケージが新たにインストールされます:
+  gsfonts-x11 java-common odbcinst1debian1 sun-java6-bin sun-java6-jre
+  sun-java6-plugin unixodbc
+アップグレード: 0 個、新規インストール: 7 個、削除: 0 個、保留: 0 個。
+35.1MB のアーカイブを取得する必要があります。
+この操作後に追加で 101MB のディスク容量が消費されます。
+続行しますか [Y/n]?
+</pre>
+
+<pre class="height7">
+# update-java-alternatives -s java-6-sun
+
+'firefox-javaplugin.so' を提供するために '/usr/lib/jvm/java-6-sun/jre/lib/i386/libnpjp2.so' を使います。
+'iceape-javaplugin.so' を提供するために '/usr/lib/jvm/java-6-sun/jre/lib/i386/libnpjp2.so' を使います。
+'iceweasel-javaplugin.so' を提供するために '/usr/lib/jvm/java-6-sun/jre/lib/i386/libnpjp2.so' を使います。
+'midbrowser-javaplugin.so' を提供するために '/usr/lib/jvm/java-6-sun/jre/lib/i386/libnpjp2.so' を使います。
+'mozilla-javaplugin.so' を提供するために '/usr/lib/jvm/java-6-sun/jre/lib/i386/libnpjp2.so' を使います。
+'xulrunner-1.9-javaplugin.so' を提供するために '/usr/lib/jvm/java-6-sun/jre/lib/i386/libnpjp2.so' を使います。
+'xulrunner-javaplugin.so' を提供するために '/usr/lib/jvm/java-6-sun/jre/lib/i386/libnpjp2.so' を使います。
+</pre>
+
+
+<h2><a href="#grub" name="grub"><span class="tokai1">GRUBの設定</span></a></h2>
+
+<p>カーネルアップデート時も自動でmenu.lstが編集されるので別にすることはなし。</p>
+
+<ul>
+<li><a href="http://www.gnu.org/software/grub/manual/html_node/">GNU GRUB Manual 0.97</a></li>
+</ul>
+
+<div class="quote">
+<ul>
+<li><code>/boot/grub/menu.lst</code>（抜粋）</li>
+</ul>
+<pre class="pink">
+title       Debian GNU/Linux, kernel 2.6.26-2-686
+root        (hd0,0)
+kernel      /boot/vmlinuz-2.6.26-2-686 root=/dev/hda1 ro vga=788
+initrd      /boot/initrd.img-2.6.26-2-686
+</pre>
+</div>
+
+<p>追記は「<code>### END DEBIAN AUTOMAGIC KERNELS LIST</code>」の下の行から書く。</p>
+
+<dl>
+<dt>ブートの選択を追加</dt>
+<dd>
+<p class="small">このPCではブートデバイスの選択切替はBIOSで設定しないとできないようなので、ちと面倒。GRUBで選択できるようにmenu.lstに追記する。</p>
+<ul class="small">
+<li>FDブートなどを追記</li>
+</ul>
+<pre class="height20">
+### END DEBIAN AUTOMAGIC KERNELS LIST
+
+title GRUB for DOS
+root (hd0,0)
+kernel /grub.exe --config-file=&#034;root (hd0,2);configfile /menu.lst&#034;
+
+title       Debian GNU/Linux, kernel 2.6.26-2-686 runlevel 3
+root        (hd0,0)
+kernel      /boot/vmlinuz-2.6.26-2-686 root=/dev/hda1 ro vga=788 3
+initrd      /boot/initrd.img-2.6.26-2-686
+
+title Network
+root (hd0,2)
+kernel /eepro100.zli
+
+title gPXE
+root (hd0,2)
+kernel /gpxe_all.krn
+
+title PLoP Boot Manager
+kernel (hd0,2)/plpbt.bin
+
+title Floppy
+chainloader (fd0)+1
+
+title * halt
+halt
+
+title * reboot
+reboot
+</pre>
+
+<ul class="small">
+<li>ネットワークブート
+	<ul class="nest">
+	<li><a href="http://buxus.s31.xrea.com/pukiwiki/pukiwiki.php?knoppix-terminalserver#content_1_3">クライアントPCのNICに適合した.lzdskファイルを探すには - knoppix-terminalserver - Knoppix Temporary Directory</a></li>
+	<li><a href="http://rom-o-matic.net/">ROM-o-matic.net</a></li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt class="small">GRUB for DOS</dt>
+<dd>
+<p class="small">CDブート用に（オリジナルのGRUBでのやり方がわからないので...）。0.4.2以降を<a href="http://sourceforge.net/projects/grub4dos/files/">ダウンロード</a>、<code>/</code> に <code>grub.exe</code>をコピー。<code>/</code>に<code>menu.lst</code>作成。</p>
+
+<ul class="small">
+<li><code>/boot/grub/menu.lst</code>に追記</li>
+</ul>
+<pre>
+title GRUB for DOS
+root (hd0,0)
+kernel /grub.exe --config-file=&#034;root (hd0,2);configfile /menu.lst&#034;
+</pre>
+
+<div class="quote">
+<ul>
+<li><code>/menu.lst</code></li>
+</ul>
+<pre class="height20">
+color white/blue yellow/cyan
+# timeout 30
+# default /default
+
+# jp106 keypad
+setkey at bracketleft
+setkey doublequote at
+setkey ampersand caret
+setkey quote ampersand
+setkey parenleft asterisk
+setkey parenright parenleft
+setkey underscore parenright
+setkey equal underscore
+setkey plus colon
+setkey colon quote
+setkey asterisk doublequote
+setkey bracketleft bracketright
+setkey braceleft braceright
+setkey bracketright backslash
+setkey braceright bar
+setkey backslash backquote
+setkey tilde plus
+setkey caret equal
+setkey backquote braceleft
+setkey bar tilde
+
+
+title *** chainload hda(sda) MBR         ***
+    chainloader (hd0)+1
+
+title *** configfile /boot/grub/menu.lst ***
+find --set-root /boot/grub/menu.lst
+configfile /boot/grub/menu.lst
+
+title chainload CD (cd)
+    cdrom --init
+    map --hook
+    chainloader (cd)
+
+title chainload CD (cd0)
+    cdrom --init
+    map --hook
+    chainloader (cd0)
+
+title Puppy Linux
+find --set-root /puppy4/vmlinuz
+kernel /puppy4/vmlinuz pmedia=idehd subdir=puppy4
+initrd /puppy4/initrd.gz
+
+title Network Boot   === gPXE kernel
+find --set-root /gpxe_all.krn
+kernel /gpxe_all.krn
+
+title Boot from USB  ===  PLoP Boot Manager 5.0 === 
+find --set-root /plpbt.bin
+kernel /plpbt.bin
+
+title ===  Memtest86+
+find --set-root /memtest
+    kernel /memtest
+
+title commandline
+    commandline
+
+title reboot
+    reboot
+
+title halt
+    halt
+</pre>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+
+<dl class="pink">
+<dt>起動ディスクを準備しとこう！</dt>
+<dd>
+<ul class="small">
+<li>起動FDイメージ
+	<ul>
+	<li><a href="http://sourceforge.net/projects/grub4dos/files/">Browse GRUB4DOS and WINGRUB Files on SourceForge.net</a>(<code>grub_for_dos-0.4.2.zip</code> 内の <code>fat12grldr.img</code></li>
+	<li>0.4.4.zipもダウンロードして、 <strong class="ms">grldr</strong> を 0.4.4 のものに置換</li>
+	</ul>
+</li>
+</ul>
+
+<p class="small"><code>menu.lst</code> の一番目に下記を書いとけばいいかと。HD上の <code>/boot/grub/menu.lst</code> を検索してメニューを表示します。</p>
+<pre class="scl">
+title  configfile /boot/grub/menu.lst
+find --set-root --ignore-cd --ignore-floppies /boot/grub/menu.lst
+configfile /boot/grub/menu.lst
+</pre>
+
+<ul class="small">
+<li>CDイメージ
+	<ul>
+	<li><a href="http://sourceforge.net/projects/partedmagic/files/">Browse Parted Magic Files on SourceForge.net</a>(<code>pmagic-grub4dos-4.3.iso.zip</code>)</li>
+	</ul>
+</li>
+</ul>
+
+<p class="small">BCDWなんかでも簡単に作れるし、ISOLINUXなどからチェインロードもできますけど。</p>
+
+<ul>
+<li>拙作めも：
+	<ul>
+	<li><a href="http://www10.plala.or.jp/palm84/grub4dos.html">GRUB for DOS めも</a></li>
+	<li><a href="http://d.hatena.ne.jp/palm84/20060612/1150077689">GRUB 起動ディスクの使い方</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+<h2><a href="#package" name="package"><span class="tokai1">パッケージ管理</span></a></h2>
+
+<ul>
+<li>インストールしたパッケージ一覧 - <code>dpkg -l</code></li>
+<li><a href="http://www.jp.debian.org/distrib/packages.ja.html">Debian -- パッケージ</a></li>
+<li><a href="http://www.debian.org/doc/manuals/reference/ch02.ja.html">第2章 Debianパッケージ管理</a></li>
+</ul>
+
+<ul>
+<li><a href="http://debian.fam.cx/index.php?AptGet">AptGet - Debian GNU/Linux スレッドテンプレ</a></li>
+</ul>
+
+<dl class="pink">
+<dt>パッケージを探す</dt>
+<dd>
+<pre>
+$ apt-cache --help
+コマンド:
+   add - パッケージファイルをソースキャッシュに追加する
+   gencaches - パッケージおよびソースキャッシュを生成する
+   showpkg - 単一パッケージの一般情報を表示する
+   showsrc - ソースレコードを表示する
+   stats - 基本ステータス情報を表示する
+   dump - すべてのファイルを簡単な形式で表示する
+   dumpavail - available ファイルを標準出力に出力する
+   unmet - 未解決の依存関係を表示する
+   search - 正規表現パターンによってパッケージを検索する
+   show - パッケージの情報を表示する
+   depends - パッケージが依存しているパッケージを表示する
+   rdepends - パッケージの逆依存情報を表示する
+   pkgnames - システム内のすべてのパッケージ名を表示する
+   dotty - GraphViz 用のパッケージグラフを生成する
+   xvcg - xvcg 用のパッケージグラフを生成する
+   policy - ポリシー設定情報を表示する
+
+</pre>
+
+<pre>
+$ dpkg --help
+  -s|--status &#060;パッケージ名&#062; ...     パッケージ状態の詳細を表示
+  -p|--print-avail &#060;パッケージ名&#062; ...取得可能なバージョンの詳細を表示
+  -L|--listfiles &#060;パッケージ名&#062; ...  パッケージが「所有する」ファイル一 覧を表示
+  -l|--list [&#060;パターン&#062; ...]         パッケージの一覧を簡潔に表示
+  -S|--search &#060;パターン&#062; ...         ファイルを所有するパッケージを検索
+</pre>
+
+<p>一例として、「CPUメーターがほすい！」</p>
+
+<pre>
+# apt-get update
+# apt-cache search cpu
+</pre>
+<p>いっぱい出て来る。名前のみ対象にするには（<code>-n</code>  = <code>--names-only</code>）</p>
+
+<pre>
+# apt-cache search -n cpu
+</pre>
+
+<pre>
+kcpuload - Kicker 用 CPU メータ
+</pre>
+<p>これっぽい？詳細表示してみる</p>
+
+<pre>
+# apt-cache show kcpuload
+ KCPULoad は、Kicker (KDE パネル) 用の小さなプログラムです。システムトレ
+ イ内の 1 つないし 2 つの設定可能な線図で、最近の CPU 使用量を表示します。
+ これらの線図には、色や様々なスタイルに関する設定項目があります。
+ .
+ KCPULoad は SMP に対応しており、ユーザ・システム毎の負荷表示も可能です 。
+</pre>
+
+<p>既に入ってたりしませんか？</p>
+<pre>
+$ dpkg -s kcpuload
+(または、$ dpkg -l | grep kcpuload など)
+</pre>
+
+<ul>
+<li>インストール済みなら</li>
+</ul>
+<pre>
+Package: kcpuload
+Status: install ok installed
+</pre>
+
+<ul>
+<li>未インストールなら</li>
+</ul>
+<pre>
+パッケージ `kcpuload' はまだインストールされておらず情報の利用は不可能です。
+</pre>
+
+<ul>
+<li>インストール実行</li>
+</ul>
+<pre>
+# apt-get install kcpuload
+</pre>
+
+<ul>
+<li>パッケージに含まれるファイルのリスト表示</li>
+</ul>
+<pre>
+$ dpkg -L packagename
+</pre>
+
+<ul>
+<li>コマンドはどこ？</li>
+</ul>
+<pre>
+$ dpkg -L kcpuload | grep /bin
+/usr/bin
+/usr/bin/kcpuload
+</pre>
+
+<ul>
+<li>実行</li>
+</ul>
+<pre>
+$ kcpuload &#038;
+</pre>
+<p>システムトレイにアイコンが出ますた！</p>
+
+<ul>
+<li>コマンド名／ファイル名からパッケージを検索するには？</li>
+</ul>
+<pre>
+$ dpkg -S filename
+</pre>
+</dd>
+</dl>
+
+<p>※下記はちょっと古い情報なのでlennyでは変更されてるかもしれない。</p>
+
+<blockquote cite="http://www.debian.org/doc/manuals/reference/ch-package.ja.html#s-reconfigure" title="Debian リファレンス - Debian パッケージ管理">
+<pre>
+次のコマンドを使ってインストール済みパッケージの再設定を行います。
+
+     # dpkg-reconfigure --priority=medium package [...]
+     # dpkg-reconfigure --all   # 全パッケージの再設定
+     # dpkg-reconfigure locales # 特別なロケールの生成
+     # dpkg-reconfigure --p=low xserver-xfree86 # X サーバの再設定
+
+debconf ダイアログモードが永続的に必要な場合は、 debconf を再設定してください。 <a href="http://www.debian.org/doc/manuals/reference/ch-package.ja.html#s-reconfigure">※</a>
+</pre>
+</blockquote>
+
+<blockquote cite="http://www.debian.org/doc/manuals/reference/ch-package.ja.html#s-reconfigure" title="Debian リファレンス - Debian パッケージ管理">
+<pre>
+特別な設定スクリプトを持つプログラムがいくつかあります。 [36]
+
+     apt-setup     - /etc/apt/sources.list の生成
+     install-mbr   - Master Boot Record manager のインストール
+     tzconfig      - ローカル time zoneゾーンの設定
+     gpmconfig     - gpm マウスデーモンの設定
+     eximconfig    - Exim (MTA) の設定
+     texconfig     - teTeX の設定
+     apacheconfig  - Apache (httpd) の設定
+     cvsconfig     - CVS の設定
+     sndconfig     - サウンドシステムの設定
+     ...
+     update-alternatives - 標準のコマンドの設定、例えば vim を vi に設定
+     update-rc.d         - System-V init スクリプトマネージャ
+     update-menus        - Debian menu システム
+<a href="http://www.debian.org/doc/manuals/reference/ch-package.ja.html#s-reconfigure">※</a>
+</pre>
+</blockquote>
+
+
+
+<h3><a href="#apt"><span class="ms">■</span></a> <a name="apt"><span class="tokai1">APT</span></a></h3>
+
+
+<ul>
+<li><a href="http://www.jp.debian.org/doc/manuals/apt-howto/index.ja.html">APT HOWTO</a></li>
+<li><a href="http://dolphin.c.u-tokyo.ac.jp/~nori1/aptitude-ja/index.html">aptitude user's manual</a></li>
+<li><a href="http://www.debian.org/doc/manuals/dselect-beginner/index.ja.html">初心者のための dselect 入門</a></li>
+</ul>
+
+
+<ul>
+<li>ダウンロードされたキャッシュ(<code>/var/cache/apt/archives/</code>)を削除</li>
+</ul>
+<pre>
+# apt-get clean
+</pre>
+
+<ul>
+<li>パッケージ検索（インストールされていないものも含む）</li>
+</ul>
+<pre>
+$ apt-cache search ms-sys
+</pre>
+
+<ul>
+<li>説明分は省き、パッケージ名のみを検索</li>
+</ul>
+<pre>
+$ apt-cache search --names-only ms-sys
+</pre>
+
+<ul>
+<li>詳細表示</li>
+</ul>
+<pre>
+$ apt-cache show ms-sys
+</pre>
+
+<ul>
+<li><a href="http://www.jp.debian.org/doc/manuals/apt-howto/ch-sourcehandling.ja.html">APT HOWTO - ソースパッケージでの作業</a></li>
+</ul>
+
+
+
+<h3><a href="#dpkg"><span class="ms">■</span></a> <a name="dpkg"><span class="tokai1">dpkg</span></a></h3>
+
+
+<p>debパッケージのイントール、インストール済パッケージの情報表示など。</p>
+
+<ul>
+<li>パッケージの詳しい情報</li>
+</ul>
+<pre>
+$ dpkg -s syslinux
+</pre>
+
+<ul>
+<li>パッケージに含まれるファイル表示</li>
+</ul>
+<pre>
+# dpkg -L mbr
+</pre>
+
+<ul>
+<li>ファイルを所有するパッケージを検索</li>
+</ul>
+<pre>
+# dpkg -S install-mbr
+</pre>
+
+<dl>
+<dt>dlocate</dt>
+<dd>
+<p>「dpkg -L と dpkg -S の高速な代替品」とのこと</p>
+<pre>
+# apt-get install dlocate  
+# update-dlocatedb
+$ dlocate filename
+</pre>
+</dd>
+</dl>
+
+
+<h2><a href="#server" name="server"><span class="tokai1">サービス（デーモン）の設定</span></a></h2>
+
+<ul>
+<li><a href="http://www.debian.org/doc/manuals/debian-reference/ch03.ja.html#_stage_4_the_normal_debian_system">通常のDebianシステム - 第3章 システムの初期化</a></li>
+</ul>
+
+
+<ul>
+<li>現在のランレベルを確認</li>
+</ul>
+<pre>
+$ /sbin/runlevel
+N 2
+</pre>
+
+<pre>
+$ ls /etc/rc2.d/
+K12acpid@              K89atd@                S20samba@
+K14avahi-daemon@       K91apache2@            S20smartmontools@
+K20clamav-freshclam@   K99kdm@                S20winbind@
+K20lisa@               README                 S21fam@
+K20nfs-common@         S10rsyslog@            S24hal@
+K20nfs-kernel-server@  S12dbus@               S89cron@
+K20openbsd-inetd@      S20console-screen.sh@  S99rc.local@
+K20saned@              S20dirmngr@            S99rmnologin@
+K20tftpd-hpa@          S20exim4@              S99stop-bootlogd@
+K40dhcp3-server@       S20fancontrol@
+K50netatalk@           S20numlock.sh@
+</pre>
+
+<p>停止したいサービスのファイル名を先頭<strong class="ms">K</strong>に変更する</p>
+<ul>
+<li><strong class="ms">anacron</strong> - 定期実行（OS起動時）</li>
+<li><strong class="ms">atd</strong> - 定期実行</li>
+<li><strong class="ms">cron</strong> - 定期実行</li>
+<li><strong class="ms">cupsys</strong> - CUPS（プリント・システム） サーバ</li>
+<li><strong class="ms">netatalk</strong> - AppleTalk（Macと接続）</li>
+</ul>
+
+<ul>
+<li>swat(samba)の停止
+	<ol class="nest">
+	<li><code>/etc/inetd.conf</code> のswatの行をコメントアウト</li>
+	<li><code># /etc/init.d/openbsd-inetd restart</code></li>
+	</ol>
+</li>
+</ul>
+
+
+<dl>
+<dt><code>sysvconfig</code>, <code>sysv-rc-conf</code></dt>
+<dd>
+<p><code>sysvconfig</code> 使う方が簡単かも。runlevel 2から5を一括設定。</p>
+<pre>
+# apt-get install sysvconfig sysv-rc-conf
+# sysvconfig
+</pre>
+<p>ランレベル毎に設定する場合は<code>sysv-rc-conf</code>で。</p>
+</dd>
+
+<dt>サービス（デーモン）の再設定</dt>
+<dd>
+<pre>
+# dpkg-reconfigure サービス名
+</pre>
+</dd>
+</dl>
+
+<h2><a href="#japanese" name="japanese"><span class="tokai1">日本語入力環境</span></a></h2>
+
+<ul>
+<li><a href="http://www.debian.org/doc/manuals/reference/ch08.ja.html">第8章 I18NとL10N</a></li>
+</ul>
+
+<ul>
+<li>参考
+	<ul class="nest small">
+	<li><a href="http://debian.fam.cx/index.php?Japanese">日本語環境構築の Tips や FAQ だとか - Debian GNU/Linux スレッドテンプレ</a></li>
+	</ul>
+</li>
+</ul>
+
+<pre>
+# apt-get install uim
+# apt-get install uim-anthy
+# apt-get install uim-applet-kde
+</pre>
+
+
+
+<h2><a href="#network" name="network"><span class="tokai1">ネットワーク</span></a></h2>
+
+<ul>
+<li><a href="http://www.debian.org/doc/manuals/reference/ch05.ja.html">第5章 ネットワークの設定</a></li>
+</ul>
+
+<ul>
+<li><a href="http://park15.wakwak.com/~unixlife/linux/de-network.html">Debianでのネットワークの設定</a>
+	<ul>
+	<li><a href="http://park15.wakwak.com/~unixlife/index.html">UNIXな生活</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><code># ifconfig -a</code> - すべてのインターフェイスを確認</li>
+</ul>
+
+<pre class="height7">
+# ifconfig -a
+eth0      Link encap:イーサネット  ハードウェアアドレス 00:06:29:1e:da:c1
+          inetアドレス:192.168.0.5 ブロードキャスト:192.168.0.255  マス ク:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  メトリック:1
+          RXパケット:4070 エラー:0 損失:0 オーバラン:0 フレーム:0
+          TXパケット:2655 エラー:0 損失:0 オーバラン:0 キャリア:0
+      衝突(Collisions):0 TXキュー長:1000
+          RXバイト:407025 (397.4 KiB)  TXバイト:1006145 (982.5 KiB)
+
+lo        Link encap:ローカルループバック
+          inetアドレス:127.0.0.1 マスク:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:16436  メトリック:1
+          RXパケット:356 エラー:0 損失:0 オーバラン:0 フレーム:0
+          TXパケット:356 エラー:0 損失:0 オーバラン:0 キャリア:0
+      衝突(Collisions):0 TXキュー長:0
+          RXバイト:20740 (20.2 KiB)  TXバイト:20740 (20.2 KiB)
+</pre>
+
+
+<ul>
+<li><code># /etc/init.d/networking restart</code> - ネットワークサービスの再起動</li>
+</ul>
+
+<p><code>/etc/network/interfaces</code>で設定</p>
+<pre>
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug eth0
+# iface eth0 inet dhcp
+iface eth0 inet static
+address 192.168.0.5
+network 192.168.0.0
+netmask 255.255.255.0
+broadcast 192.168.0.255
+gateway 192.168.0.1
+</pre>
+
+<dl>
+<dt>手動設定</dt>
+<dd>
+<ul>
+<li>IPアドレス、サブネットマスク設定</li>
+</ul>
+<pre>
+# ifconfig eth0 192.168.0.5 netmask 255.255.255.0 broadcast 192.168.0.255
+</pre>
+
+<ul>
+<li><code>route</code> コマンド - gateway（ルーターなど）設定</li>
+</ul>
+<pre>
+# route del default gw 192.168.0.10
+# route add default gw 192.168.0.1
+</pre>
+<pre>
+# route
+カーネルIP経路テーブル
+受信先サイト    ゲートウェイ    ネットマスク   フラグ Metric Ref 使用数 インタフェース
+192.168.0.0     *               255.255.255.0   U     0      0        0 eth0
+default         192.168.0.1     0.0.0.0         UG    0      0        0 eth0
+</pre>
+
+<ul>
+<li>DNSサーバ設定確認</li>
+</ul>
+<pre>
+$ cat /etc/resolv.conf
+search 
+nameserver 192.168.0.1
+</pre>
+</dd>
+</dl>
+
+<dl>
+<dt>ホスト名を変更</dt>
+<dd>
+<ul>
+<li><a href="http://debian.fam.cx/index.php?Software%2FOther">ホスト名を変更したい - Software/Other - Debian GNU/Linux スレッドテンプレ</a></li>
+</ul>
+<blockquote cite="http://debian.fam.cx/index.php?Software%2FOther" title="Software/Other - Debian GNU/Linux スレッドテンプレ">
+<pre>
+# hostname (ホスト名)
+</pre>
+<p>を実行すれば変更できますが、これだけでは再起動すると元に戻ってしまいます。 永続的に変更したいなら、更に /etc/hostname と /etc/hosts を手動で書き替えた後に</p>
+<pre>
+# /etc/init.d/hostname.sh
+</pre>
+<p>を実行してください。</p>
+</blockquote>
+</dd>
+</dl>
+
+<ul>
+<li><a href="http://debian.fam.cx/index.php?install#ua9c19a4">ネットワークアクセス時に名前解決が異常に遅いです - Debian GNU/Linux スレッドテンプレ</a></li>
+</ul>
+<pre>
+# echo &#034;blacklist ipv6&#034; &#062; /etc/modprobe.d/ipv6-off
+</pre>
+
+<h3><a href="#samba"><span class="ms">■</span></a> <a name="samba"><span class="tokai1">Samba</span></a></h3>
+
+<ul>
+<li><a href="http://www.atmarkit.co.jp/flinux/special/samba_n/samba_na.html">Sambaサーバ構築、5つのべからず：2008年版（1/2）</a></li>
+</ul>
+
+<dl class="pink small">
+<dt>Shift_JIS環境のLANDISKへのアクセスでの問題</dt>
+<dd>
+<p>色々試しましたが、だめですねぇ。</p>
+<ul>
+<li>Konqueror で <code>smb://</code> - なぜかファイル名の最後の一文字が表示されない（文字化けはしない）
+	<ul>
+	<li>全く同じ設定のKubuntu 8.04では問題ないんですけど</li>
+	</ul>
+</li>
+<li>mountコマンド - <code>codepage</code> が無視される？日本語ファイル名が文字化け
+	<ul>
+	<li>Kubuntu 8.04でも同様</li>
+	</ul>
+</li>
+<li><code>$ ls /mnt/landisk | nkf -S -w</code> で正しく表示</li>
+</ul>
+<dl>
+<dt>convmvfsで再マウント</dt>
+<dd>
+<ul>
+<li><a href="http://www.k2.dion.ne.jp/~mistle/linux/application/sambaClient.html">samba Client</a></li>
+<li><a href="http://d.hatena.ne.jp/logkeeper/20100601">Landiskの文字化け、ようやく解決 - 砂の小瓶とMythTV</a></li>
+</ul>
+
+<pre>
+# apt-get install fuse-convmvfs
+</pre>
+
+<ul>
+<li>通常マウント</li>
+</ul>
+<pre class="scl">
+# mount -t cifs -o iocharset=utf8,uid=1000,gid=1000 //192.168.0.15/disk /mnt/ladisk_temp
+</pre>
+
+<ul>
+<li>convmvfs実行</li>
+</ul>
+<pre>
+# convmvfs /mnt/landisk -o icharset=cp932,allow_other,srcdir=/mnt/ladisk_temp
+</pre>
+
+<pre>
+# ls /mnt/landisk/test/
+①knoppix2.txt*  年表.xls*
+コピー ～ 年表.xls*  日本語フォルダ①/
+</pre>
+</dd>
+</dl>
+</dd>
+</dl>
+
+<p><strong class="ms">smbfs</strong> ではなく <strong class="ms">cifs</strong> でのマウントに変更された模様。ホスト名でマウントできない。IPアドレスを指定。</p>
+
+<p>XPマシンへのアクセスはほぼ問題なし。mountコマンドでオプション指定なしでも日本語ファイル名は正しく表示されてました。</p>
+
+<ul>
+<li>基本設定 - <code>/etc/samba/smb.conf</code></li>
+</ul>
+<pre>
+[global]
+<strong class="ms">dos charset = CP932</strong> 
+<strong class="ms">unix charset = UTF-8</strong> 
+display charset = UTF-8
+
+workgroup = Palm84net
+security = user
+socket options = TCP_NODELAY
+domain master = no
+map to guest = bad user
+usershare allow guests = no
+</pre>
+
+<p><code>charset</code> を指定しておかないとクライアントでのアクセスで日本語が文字化けすることがあるようです。</p>
+
+<dl>
+<dt>mount.smbfs (mount.cifs)</dt>
+<dd>
+<p>Konqueror、または Nautilus でネットワークドライブへのアクセスは可能ですが、ファイルシステムにマウントするには以下をインストール。（インストール時に「ファイルサーバ」を選択した場合はインストール済み？）</p>
+<pre>
+# apt-get install smbclient smbfs
+</pre>
+
+<p>Windowsドライブの日本語が表示できない場合はオプションで下記を指定。</p>
+<ul>
+<li><code>codepage=cp932</code>（※無視されるみたいですが...）</li>
+<li><code>iocharset=utf8</code></li>
+</ul>
+<p><code>user</code>を指定すると以降のオプション指定が無視されちゃう模様。</p>
+
+<ul class="small">
+<li><a href="http://lists.debian.or.jp/debian-users/200212/msg00052.html">[debian-users:35524] Re: smbclient のマウントオプション</a></li>
+</ul>
+
+<pre>
+# mount -t cifs -o uid=1000,gid=1000,codepage=cp932,iocharset=utf8 //192.168.0.200/share /mnt/winxp
+</pre>
+
+<ul>
+<li><code>/etc/fstab</code></li>
+</ul>
+<pre>
+//192.168.0.200/share /mnt/winxp  smbfs  noauto,uid=1000,gid=1000,codepage=cp932,iocharset=utf8,username=yassy
+</pre>
+</dd>
+
+
+<dt>Samba（サーバー側）</dt>
+<dd>
+<p>主な設定（インストール時に「ファイルサーバ」を選択した場合はインストール済み？）</p>
+<pre>
+# apt-get install samba samba-common samba-doc-ja
+</pre>
+<p><code>/etc/samba/smb.conf</code>を編集</p>
+<pre>
+[global]
+workgroup = Palm84net
+security = user
+socket options = TCP_NODELAY
+domain master = no
+map to guest = bad user
+usershare allow guests = no
+</pre>
+<p>共有するディレクトリの設定</p>
+<pre>
+[homes]
+   comment = Home Directories
+   path = /home/palm84
+   browseable = yes
+   valid users = palm84
+   read only = no
+   create mask = 0775
+   directory mask = 0775
+   writable = yes
+
+[hda3]
+path = /mnt/hda3
+valid users = palm84
+read only = no
+create mask = 0775
+directory mask = 0775
+writable = yes
+</pre>
+
+<p>※書き込み可能にする場合</p>
+<pre>
+    create mask = 0775
+    directory mask = 0775
+    writable = yes
+</pre>
+
+<p>Sambaユーザの設定</p>
+<pre>
+# smbpasswd -a palm84
+</pre>
+</dd>
+</dl>
+
+
+
+<h3><a href="#iptables"><span class="ms">■</span></a> <a name="iptables"><span class="tokai1">iptables</span></a></h3>
+
+<ul>
+<li><a href="http://debian.fam.cx/index.php?cmd=read&#038;page=Software%2Fiptables">iptables の FAQ - Debian GNU/Linux スレッドテンプレ</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.linux.or.jp/JF/JFdocs/Security-Quickstart-HOWTO/index.html">Security Quick-Start HOWTO for Linux</a>
+	<ul class="nest">
+	<li><a href="http://www.linux.or.jp/JF/JFdocs/Security-Quickstart-HOWTO/firewalls.html#IPTABLES">ステップ３：ファイアーウォールとアクセスポリシーの設定</a></li>
+	<li class="small"><code>/usr/share/doc/HOWTO/ja-html/Security-Quickstart-HOWTO/firewalls.html</code></li>
+	</ul>
+</li>
+<li><a href="http://d.hatena.ne.jp/palm84/20060430/1146404873">IPTABLESの設定に挑戦（というほどのものではないけど...汗）。</a>（Vineでの例）</li>
+</ul>
+
+
+<h3><a href="#wirelesslan"><span class="ms">■</span></a> <a name="wirelesslan"><span class="tokai1">無線LAN</span></a></h3>
+
+<p>WEPでの暗号化は現在では簡単に解読されてしまうので、ほんの一時的で限定的な使用を除きやめた方がいい。WPA(WPA-PSK)を使おう。と言いつつ未確認。</p>
+<ul>
+<li><a href="http://www.debian.org/releases/stable/i386/release-notes/ch-information.ja.html#wpa">WPA によるセキュアワイヤレスネットワークを使う場合の問題 - 第5章 lenny で知っておくべき問題点</a></li>
+<li><a href="http://wiki.debian.org/WPA">WPA - Debian Wiki</a></li>
+</ul>
+
+<ul>
+<li><a href="http://kmuto.jp/open.cgi?%cc%b5%c0%feLAN%c6%b0%ba%ee%be%f5%b6%b7&#038;l=jp">無線LAN動作状況</a></li>
+</ul>
+
+
+
+<h2><a href="#virusscan" name="virusscan"><span class="tokai1">ウイルススキャン</span></a></h2>
+
+<ul>
+<li><a href="http://debian.fam.cx/index.php?cmd=read&#038;page=Software%2FAntivirus">アンチウィルスの FAQ - Debian GNU/Linux スレッドテンプレ</a></li>
+</ul>
+
+<p>スキャナーとしてのみ使用。デーモンは起動しない。</p>
+<h3><a href="#clamav"><span class="ms">■</span></a> <a name="clamav"><span class="tokai1">clamav</span></a></h3>
+
+<ul>
+<li><a href="http://www.clamav.net/support/faq">Clam AntiVirus</a></li>
+<li><a href="http://www.debian.org/volatile/">Debian -- debian-volatile プロジェクト</a></li>
+</ul>
+
+<pre>
+# apt-get install clamav
+パッケージリストを読み込んでいます... 完了
+依存関係ツリーを作成しています
+状態情報を読み取っています... 完了
+以下の特別パッケージがインストールされます:
+  clamav-base clamav-freshclam libclamav6 libtommath0
+提案パッケージ:
+  clamav-docs libclamunrar6
+以下のパッケージが新たにインストールされます:
+  clamav clamav-base clamav-freshclam libclamav6 libtommath0
+アップグレード: 0 個、新規インストール: 5 個、削除: 0 個、保留: 0 個。
+23.4MB のアーカイブを取得する必要があります。
+この操作後に追加で 24.9MB のディスク容量が消費されます。
+続行しますか [Y/n]?
+</pre>
+<p>※未確認</p>
+
+<dl class="palmst small">
+<dt>※ etchでの確認（<em>情報古いです</em>）</dt>
+<dd>
+<ul>
+<li>ネットワークのスキャン可</li>
+<li>アップデート - <code>freshclam</code></li>
+<li>ログ - <code>/var/log/clamav/freshclam.log</code></li>
+</ul>
+
+<ul>
+<li><code>sources.list</code>に下記を追記</li>
+</ul>
+<pre>
+# vi /etc/apt/sources.list
+deb http://volatile.debian.org/debian-volatile etch/volatile main contrib non-free
+</pre>
+
+<ul>
+<li><strong class="ms">apt</strong>でインストール</li>
+</ul>
+<pre>
+# apt-get install clamav
+パッケージリストを読み込んでいます... 完了
+依存関係ツリーを作成しています... 完了
+以下の特別パッケージがインストールされます:
+  clamav-base clamav-freshclam libclamav3
+提案パッケージ:
+  unrar lha clamav-docs
+推奨パッケージ:
+  arj unzoo
+以下のパッケージが新たにインストールされます:
+  clamav clamav-base clamav-freshclam libclamav3
+アップグレード: 0 個、新規インストール: 4 個、削除: 0 個、保留: 0 個。
+13.3MB のアーカイブを取得する必要があります。
+展開後に追加で 14.7MB のディスク容量が消費されます。
+続行しますか [Y/n]?
+
+# apt-get install unrar lha
+</pre>
+
+<ul>
+<li><a href="http://www.clamav.org/download/cvd/">Virus Database - Clam AntiVirus</a></li>
+</ul>
+
+<pre>
+# freshclam -v
+Current working dir is /var/lib/clamav/
+Max retries == 5
+ClamAV update process started at Mon Dec 24 21:03:39 2007
+Querying current.cvd.clamav.net
+TTL: 300
+Software version from DNS: 0.92
+main.cvd version from DNS: 45
+main.inc is up to date (version: 45, sigs: 169676, f-level: 21, builder: sven)
+daily.cvd version from DNS: 5235
+daily.cvd is up to date (version: 5235, sigs: 11135, f-level: 21, builder: sven)
+</pre>
+
+<pre>
+# clamscan -ri --log=./clamav.log /mnt/landisk/
+</pre>
+
+<pre>
+--infected            -i             Only print infected files
+-recursive           -r             Scan subdirectories recursively
+--log=FILE            -l FILE        Save scan report to FILE
+</pre>
+</dd>
+</dl>
+
+
+
+
+<h3><a href="#avg"><span class="ms">■</span></a> <a name="avg"><span class="tokai1">AVG Anti-Virus Free Edition</span></a></h3>
+
+<ul>
+<li><a href="http://free.grisoft.com/doc/5390/us/frt/0?prd=afl">AVG Free Advisor - Installation files &#038; documentation</a>
+	<ul class="nest">
+	<li>debパッケージをダウンロード</li>
+	</ul>
+</li>
+</ul>
+
+<p>※未確認</p>
+
+<dl class="palmst small" style="overflow:auto!important">
+<dt>※ etchでの確認（<em>情報古いです</em>）</dt>
+<dd>
+<ul>
+<li>avgdがデーモン常駐？</li>
+<li>ネットワークのスキャン可</li>
+<li>設定 - <code>/etc/avg.conf</code></li>
+<li>アップデートのログ - </li>
+</ul>
+<pre>
+/opt/grisoft/avg7/var/update/log/avg7upd.log
+</pre>
+<ul>
+<li><code>.avg7/testresults/</code></li>
+</ul>
+
+<ul>
+<li>アップデート（かなり時間がかかる）</li>
+</ul>
+<pre>
+# avgupdate -o
+</pre>
+
+<ul>
+<li>スキャン</li>
+</ul>
+<pre>
+# avgscan -report avgscan.log -ext=* -arc -heur -rt /mnt/landisk
+</pre>
+
+<ul class="small">
+<li><code>-arc</code> - test archives</li>
+<li><code>-rt</code> - test run-time compressions</li>
+<li><code>-ext</code> - test these extensions /for example EXT=*/</li>
+<li><code>-report</code> - Report to file /file name/</li>
+</ul>
+</dd>
+</dl>
+
+
+
+
+<h3><a href="#antivir"><span class="ms">■</span></a> <a name="antivir"><span class="tokai1">Avira AntiVir PersonalEdition Classic</span></a></h3>
+
+<ul>
+<li><a href="http://www.free-av.com/en/download/download_servers.php">All language versions from Avira Download Servers</a></li>
+</ul>
+
+<p>※未確認</p>
+
+<dl class="palmst small">
+<dt>※ etchでの確認（<em>情報古いです</em>）</dt>
+<dd>
+<ul>
+<li>フリー版はネットワークのスキャン不可</li>
+<li>インストールは <code>install</code>を実行するだけ</li>
+</ul>
+
+<ul>
+<li>アップデート - <code>antivir --update</code></li>
+<li>ログ - <code>/var/log/avupdater.log</code></li>
+</ul>
+
+<pre>
+# antivir -s -v -z --allfiles -rf=antivir.log --scan-in-archive /mnt/hda3
+</pre>
+<pre>
+-s .............. scan subdirectories
+--allfiles ...... synonymous for --scan-mode=all
+--scan-in-archive files in archives will be extracted and scanned
+--scan-in-mbox .. scan mailbox folders, too (might be time consuming!)
+--heur-level=N .. setup heuristics level: 0=off, 1-3=low-high
+-z .............. synonymous for --scan-in-archive (scan in archives, too)
+-v .............. scan files completely (slower with possible false alerts)
+-rf&#060;filename&#062; ... name of log file
+                   %d = day, %m = month, %y = year (two digits each)
+</pre>
+</dd>
+</dl>
+
+
+
+<h2><a href="#apache2" name="apache2">apache2</a></h2>
+
+<ul>
+<li><a href="http://packages.debian.org/ja/lenny/apache2-mpm-prefork">Debian -- lenny の apache2-mpm-prefork パッケージに関する詳細</a></li>
+</ul>
+
+<ul>
+<li><a href="http://debian.fam.cx/index.php?cmd=read&#038;page=Software%2FApache">Apache の FAQ - Debian GNU/Linux スレッドテンプレ</a></li>
+</ul>
+
+<ul>
+<li>参考：
+	<ul>
+	<li><a href="http://yscjp.com/linux/apache_by_debian.html">Debianでapache2を設定する</a></li>
+	</ul>
+</li>
+</ul>
+
+<p>Shift_JISなどのhtmlファイルでも、meta要素でcharsetをきっちり指定してあればapache側の設定は不要となりました。楽ですね。</p>
+
+<pre>
+# apt-get install apache2-mpm-prefork
+</pre>
+
+<ul>
+<li><code>/etc/apache2/apache2.conf</code>
+	<ul>
+	<li>殆ど触る必要ないかな？</li>
+	<li>Error Documentの指定ぐらい？</li>
+	</ul>
+</li>
+</ul>
+
+<ol>
+<li><code>sites-available/default</code> をコピー</li>
+<li>コピーした <code>newsite</code> を編集</li>
+<li><code>a2dissite</code> コマンドでdefaultを無効に</li>
+<li><code>a2ensite</code> コマンドで <code>newsite</code> を有効に</li>
+</ol>
+
+<pre>
+# ls -l /etc/apache2/
+合計 52
+-rw-r--r-- 1 root root 10155 2009-07-25 09:43 apache2.conf
+-rw-r--r-- 1 root root 10104 2009-07-15 05:00 apache2.conf~
+drwxr-xr-x 2 root root  4096 2009-08-02 09:23 conf.d/
+-rw-r--r-- 1 root root   378 2009-07-15 05:00 envvars
+-rw-r--r-- 1 root root     0 2009-07-25 07:04 httpd.conf
+drwxr-xr-x 2 root root  4096 2009-07-25 08:06 mods-available/
+drwxr-xr-x 2 root root  4096 2009-07-25 08:08 mods-enabled/
+-rw-r--r-- 1 root root   513 2009-07-15 05:00 ports.conf
+drwxr-xr-x 2 root root  4096 2009-07-25 08:36 sites-available/
+drwxr-xr-x 2 root root  4096 2009-08-02 09:39 sites-enabled/
+</pre>
+
+<pre>
+ ls -l /etc/apache2/sites-available/
+合計 20
+-rw-r--r-- 1 root root  950 2009-07-15 05:00 default
+-rw-r--r-- 1 root root 7366 2009-07-15 05:00 default-ssl
+-rw-r--r-- 1 root root 1028 2009-07-25 08:36 newsite
+</pre>
+
+
+
+<ul>
+<li>サイトの編集</li>
+</ul>
+<p>ドキュメントルートなどを設定</p>
+<pre>
+# cd /etc/apache2/site-available
+# cp default newsite
+# vi newsite
+</pre>
+<p>newsite を有効に</p>
+<pre>
+# a2dissite default
+# a2ensite newsite
+</pre>
+
+<p>セキュリティの設定</p>
+<pre>
+# cd /etc/apache2/conf.d
+# vi security
+</pre>
+
+<p>perlのパスを調べる</p>
+<pre class="scl">
+# whereis perl
+perl: /usr/bin/perl /etc/perl /usr/lib/perl /usr/share/perl /usr/share/man/man1/perl.1.gz
+</pre>
+
+<p>モジュールを有効にする</p>
+<pre>
+# vi mods-available/mime.conf
+AddHandler cgi-script .cgi
+</pre>
+<pre>
+# a2enmod
+mime_magic
+</pre>
+
+<ul>
+<li>cgiディレクトリの <code>uid:gid</code> を <strong class="ms">www-data</strong> にする</li>
+<li>cgiファイルに実行属性を付ける</li>
+</ul>
+
+<dl>
+<dt>dwww</dt>
+<dd>
+<ul>
+<li><a href="http://packages.debian.org/ja/lenny/dwww">Debian -- lenny の dwww パッケージに関する詳細</a></li>
+</ul>
+<p>ローカルのドキュメントをブラウザで読めます。CGI利用。</p>
+</dd>
+</dl>
+
+<h2><a href="#pxe_server" name="pxe_server">PXEネットワークブート用サーバ</a></h2>
+
+<ol>
+<li><a href="#debian_installer">Debianインストーラ</a></li>
+<li><a href="#syslinux_multi">マルチブート</a></li>
+</ol>
+<p>まず、Debianインストーラを設定。その他、必要ならKnoppix, FDイメージなどを設定。</p>
+
+<h3><a href="#debian_installer"><span class="ms">■</span></a> <a name="debian_installer">Debianインストーラ</a></h3>
+
+<ul>
+<li><a href="http://www.debian.org/releases/stable/i386/ch04s05.html.ja">4.6. TFTP ネットブート用ファイルの準備</a></li>
+</ul>
+
+<ul>
+<li>lenny用ネットブート・インストーラ一式をダウンロード</li>
+</ul>
+
+<pre>
+$ wget http://www.ring.gr.jp/pub/linux/debian/debian/dists/lenny/main/installer-i386/current/images/netboot/gtk/netboot.tar.gz
+</pre>
+
+<ul>
+<li><strong class="ms">tftpサーバ</strong>、tftpクライアント、<strong class="ms">dhcpサーバ</strong>をインストール</li>
+</ul>
+
+<pre>
+# apt-get install tftpd-hpa tftp-hpa dhcp3-server
+</pre>
+
+
+<dl>
+<dt>tftpサーバの設定</dt>
+<dd>
+<ul>
+<li>tftpディレクトリの確認</li>
+</ul>
+
+<pre>
+$ grep tftp /etc/inetd.conf
+tftp           dgram   udp     wait    root  /usr/sbin/in.tftpd /usr/sbin/in.tftpd <strong class="ms red">-s /var/lib/tftpboot</strong>
+</pre>
+
+
+<ul>
+<li>インストーラ一式をtftpディレクトリに展開</li>
+</ul>
+
+<pre>
+# tar zxvf netboot.tar.gz -C /var/lib/tftpboot/
+</pre>
+
+
+<ul>
+<li>展開されたファイルを確認</li>
+</ul>
+
+<pre class="height20">
+# ls -Rl /var/lib/tftpboot/
+/var/lib/tftpboot/:
+合計 8
+drwxr-xr-x 3 root root 4096 2009-06-26 06:17 debian-installer/
+lrwxrwxrwx 1 root root   32 2009-08-02 10:07 pxelinux.0 -&#062; debian-installer/i386/pxelinux.0*
+lrwxrwxrwx 1 root root   34 2009-08-02 10:07 pxelinux.cfg -&#062; debian-installer/i386/pxelinux.cfg/
+-rw-r--r-- 1 root root   61 2009-06-26 06:17 version.info
+
+/var/lib/tftpboot/debian-installer:
+合計 4
+drwxr-xr-x 4 root root 4096 2009-06-26 06:17 i386/
+
+/var/lib/tftpboot/debian-installer/i386:
+合計 14860
+drwxr-xr-x 2 root root     4096 2009-06-26 06:17 boot-screens/
+-rw-r--r-- 1 root root 13693777 2009-06-26 06:17 initrd.gz
+-rw-r--r-- 1 root root  1468208 2009-06-26 06:17 linux
+-rwxr-xr-x 1 root root    15820 2009-06-26 06:17 pxelinux.0*
+drwxr-xr-x 2 root root     4096 2009-06-26 06:17 pxelinux.cfg/
+
+/var/lib/tftpboot/debian-installer/i386/boot-screens:
+合計 224
+-rw-r--r-- 1 root root    544 2009-06-26 06:17 adtxt.cfg
+-rw-r--r-- 1 root root    123 2009-06-26 06:17 exithelp.cfg
+-rw-r--r-- 1 root root    886 2009-06-26 06:17 f1.txt
+-rw-r--r-- 1 root root    568 2009-06-26 06:17 f10.txt
+-rw-r--r-- 1 root root    665 2009-06-26 06:17 f2.txt
+-rw-r--r-- 1 root root    695 2009-06-26 06:17 f3.txt
+-rw-r--r-- 1 root root    417 2009-06-26 06:17 f4.txt
+-rw-r--r-- 1 root root    806 2009-06-26 06:17 f5.txt
+-rw-r--r-- 1 root root   1220 2009-06-26 06:17 f6.txt
+-rw-r--r-- 1 root root    916 2009-06-26 06:17 f7.txt
+-rw-r--r-- 1 root root   1019 2009-06-26 06:17 f8.txt
+-rw-r--r-- 1 root root    765 2009-06-26 06:17 f9.txt
+-rw-r--r-- 1 root root    890 2009-06-26 06:17 menu.cfg
+-rw-r--r-- 1 root root    629 2009-06-26 06:17 prompt.cfg
+-rw-r--r-- 1 root root   6329 2009-06-26 06:17 splash.png
+-rw-r--r-- 1 root root    543 2009-06-26 06:17 stdmenu.cfg
+-rw-r--r-- 1 root root    152 2009-06-26 06:17 syslinux.cfg
+-rw-r--r-- 1 root root    188 2009-06-26 06:17 txt.cfg
+-rwxr-xr-x 1 root root 145800 2009-06-26 06:17 vesamenu.c32*
+
+/var/lib/tftpboot/debian-installer/i386/pxelinux.cfg:
+合計 0
+lrwxrwxrwx 1 root root 28 2009-08-02 10:07 default -&#062; ../boot-screens/syslinux.cfg
+</pre>
+
+
+<ul>
+<li>PXEブートの設定ファイル - <code>pxelinux.cfg/default</code>の確認</li>
+</ul>
+
+<pre>
+# cat /var/lib/tftpboot/pxelinux.cfg/default
+# D-I config version 1.0
+include debian-installer/i386/boot-screens/menu.cfg
+default debian-installer/i386/boot-screens/vesamenu.c32
+prompt 0
+timeout 0
+</pre>
+
+<pre class="height20">
+# cat /var/lib/tftpboot/debian-installer/i386/boot-screens/menu.cfg
+menu hshift 13
+menu width 49
+
+menu title Installer boot menu
+include debian-installer/i386/boot-screens/stdmenu.cfg
+include debian-installer/i386/boot-screens/txt.cfg
+include debian-installer/i386/boot-screens/amdtxt.cfg
+include debian-installer/i386/boot-screens/gtk.cfg
+include debian-installer/i386/boot-screens/amdgtk.cfg
+menu begin advanced
+        menu title Advanced options
+        include debian-installer/i386/boot-screens/stdmenu.cfg
+        label mainmenu
+                menu label ^Back..
+                menu exit
+        include debian-installer/i386/boot-screens/adtxt.cfg
+        include debian-installer/i386/boot-screens/amdadtxt.cfg
+        include debian-installer/i386/boot-screens/adgtk.cfg
+        include debian-installer/i386/boot-screens/amdadgtk.cfg
+menu end
+label help
+        menu label ^Help
+        text help
+   Display help screens; type 'menu' at boot prompt to return to this menu
+        endtext
+        config debian-installer/i386/boot-screens/prompt.cfg
+</pre>
+</dd>
+
+<dt>dhcpサーバの設定</dt>
+<dd>
+<ul>
+<li>dhcpサーバを起動するため、ネットワークのIPアドレスを固定に</li>
+</ul>
+
+<pre>
+# vi /etc/network/interfaces 
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug eth0
+<span class="ms red"># </span>iface eth0 inet dhcp
+<strong class="ms">iface eth0 inet static
+address 192.168.0.5
+network 192.168.0.0
+netmask 255.255.255.0
+broadcast 192.168.0.255
+gateway 192.168.0.1</strong>
+</pre>
+
+
+<ul>
+<li>dhcpサーバのデフォルトの設定ファイルをバックアップ</li>
+</ul>
+
+<pre>
+# cp /etc/dhcp3/dhcpd.conf /etc/dhcp3/dhcpd.conf.def
+</pre>
+
+
+
+<ul>
+<li>dhcpサーバの設定ファイルを編集</li>
+</ul>
+<p class="small">※IPアドレスを自由割り当てする場合（<code>range</code>は空いてる範囲で）</p>
+
+<pre>
+# vi /etc/dhcp3/dhcpd.conf
+
+option domain-name &#034;<span class="red">workgroup</span>&#034;;
+option domain-name-servers 192.168.0.1;
+option subnet-mask 255.255.255.0;
+option routers 192.168.0.1;
+
+default-lease-time 600;
+max-lease-time 7200;
+allow booting;
+allow bootp;
+
+subnet 192.168.0.0 netmask 255.255.255.0 {
+  range 192.168.0.200 192.168.0.253;
+  option broadcast-address 192.168.0.255;
+  filename "pxelinux.0";
+  next-server 192.168.0.5;
+}
+</pre>
+</dd>
+</dl>
+
+
+<ul>
+<li>inetデーモンを再起動</li>
+</ul>
+
+<pre>
+# /etc/init.d/openbsd-inetd restart
+Restarting internet superserver: inetd.
+</pre>
+
+
+<ul>
+<li>dhcpサーバを再起動</li>
+</ul>
+
+<pre>
+# /etc/init.d/dhcp3-server restart
+Stopping DHCP server: dhcpd3.
+Starting DHCP server: dhcpd3.
+</pre>
+
+
+
+
+<h3><a href="#syslinux_multi"><span class="ms">■</span></a> <a name="syslinux_multi">マルチブート</a></h3>
+
+<p>【メチャ私的】マルチブートにする。</p>
+
+<ol class="small">
+<li><strong class="ms">Debianインストーラの設定ではリンクが張られていたりややこしいので、tftpbootディレクトリを別にする</strong></li>
+<li>tftp設定ファイルのディレクトリ指定を変更</li>
+<li>【私的】設定ファイルをコピー</li>
+</ol>
+
+<ul>
+<li>tftpディレクトリ作成</li>
+</ul>
+
+<pre>
+# mkdir /mnt/hda3/<var>syslinux_multi</var>
+</pre>
+
+
+<ul>
+<li>設定ファイルのディレクトリ指定を変更</li>
+</ul>
+
+<pre>
+# vi /etc/inetd.conf
+tftp           dgram   udp     wait    root  /usr/sbin/in.tftpd /usr/sbin/in.tftpd -s <strong class="ms red">/mnt/hda3/<var>syslinux_multi</var></strong>
+</pre>
+
+<p>後は下記拙作ページの通りで。Windowsからファイルをコピーした場合はファイル・ディレクトリのパーミッションに注意。</p>
+
+
+<ul>
+<li><a href="http://www10.plala.or.jp/palm84/syslinux.html">【私的】SYSLINUXでマルチブート（USBメモリ＆ネットワーク）</a></li>
+</ul>
+
+
+<h2><a href="#etc" name="etc"><span class="tokai1">その他</span></a></h2>
+
+<dl>
+<dt>参考リンク</dt>
+<dd>
+<ul>
+<li><a href="http://park15.wakwak.com/~unixlife/linux/index.html">Linuxな生活</a></li>
+<li><a href="http://yscjp.com/linux/index.html">Debian de Linux (Japanese Version Only.)</a></li>
+</ul>
+</dd>
+</dl>
+
+<dl>
+<dt>update-alternatives</dt>
+<dd>
+<ul>
+<li><a href="http://www.debian.org/doc/manuals/debian-reference/ch02.ja.html#_the_update_alternative_command">update-alternativeコマンド - 第2章 Debianパッケージ管理</a></li>
+</ul>
+
+<p>同種のアプリケーションなど、どれを優先させるかの設定とか。</p>
+<ul>
+<li>状態表示</li>
+</ul>
+<pre>
+# update-alternatives  --display 名前
+</pre>
+
+<ul>
+<li>設定変更</li>
+</ul>
+<pre>
+# update-alternatives  --config 名前
+</pre>
+
+<p>「名前」については、<code>/etc/alternatives/</code> にあるリンク名でわかるかな。</p>
+
+<ul>
+<li><code>x-window-manager</code> - ウィンドウマネージャ</li>
+<li><code>x-terminal-emulator</code> - X用ターミナル・エミュレータ</li>
+<li><code>x-www-browser</code> - X用ブラウザ</li>
+</ul>
+
+<pre>
+# update-alternatives  --display x-www-browser
+x-www-browser -状態は manual。
+ リンクは現在 /usr/bin/iceweasel を指しています
+/usr/bin/konqueror - 優先度 100
+ スレーブ x-www-browser.1.gz: /usr/share/man/man1/konqueror.1.gz
+/usr/bin/iceweasel - 優先度 70
+ スレーブ x-www-browser.1.gz: /usr/share/man/man1/iceweasel.1.gz
+/usr/bin/opera - 優先度 80
+現在の `最適' バージョンは /usr/bin/konqueror です。
+</pre>
+
+<pre>
+# update-alternatives  --config x-www-browser
+
+`x-www-browser' を提供する 3 個の alternatives があります。
+
+  選択肢       alternative
+-----------------------------------------------
+ +        1    /usr/bin/konqueror
+*         2    /usr/bin/iceweasel
+          3    /usr/bin/opera
+
+デフォルト[*] のままにするには Enter、さもなければ選択肢の番号のキーを押してください:
+</pre>
+</dd>
+</dl>
+
+<dl>
+<dt>rootでXアプリケーションを実行</dt>
+<dd>
+<ul>
+<li><a href="http://www.kde.gr.jp/help/doc/kde-i18n/ja/docs/kdebase/kdesu/HTML/using-kdesu.html">KDE su の使い方</a></li>
+</ul>
+
+<pre>
+$ kdesu kate /etc/apache2/apache2.conf &#038;
+</pre>
+<p>パスワード入力画面が出ます。</p>
+</dd>
+</dl>
+
+
+
+<dl>
+<dt>メモリ使用量を表示させたい</dt>
+<dd>
+<p>「アプリケーションメモリ」の使用量で目安になるかなと。下記は <strong>RAM が 256 MB の場合</strong>の例です</p>
+<ol class="small">
+<li>パネルを右クリック</li>
+<li>アプレットをパネルに追加</li>
+<li>システムガードを選択</li>
+<li>アイコンの左線を右クリック</li>
+<li>システムガードの設定</li>
+<li>「センサー表示の数」を1に</li>
+<li>センサー表示を削除</li>
+<li>システムガードを起動</li>
+<li>システムガード画面から「アプリケーションメモリ」をセンサーにD＆Dして「グラフ表示」選択</li>
+<li>センサーを右クリック「プロパティ」
+	<ul>
+	<li>スケールタブ - 「縦のスケール」「自動レンジ検出」のチェック外す</li>
+	<li>スケールタブ - 「最小値：最大値をそれぞれ、0 : <var>250000</var> に設定</li>
+	<li>グリッドタブ - 「ラベル」「ドップバー」のチェック外す</li>
+	<li>グリッドタブ - 「横線」の数を設定（多すぎると横線でセンサーが埋まってしまう）</li>
+	<li>センサータブ - 色を赤などわかりやすい色を指定</li>
+	</ul>
+</li>
+</ol>
+</dd>
+
+<dt>lsコマンドでの表示でディレクトリに <code>/</code> を付けたい</dt>
+<dd>
+<pre>
+$ grep &#034;alias ls&#034; .bashrc
+    alias ls='ls --color=auto'
+</pre>
+<p>ここを変更</p>
+<pre>
+    alias ls='ls -F --color=auto'
+</pre>
+<p>su時も有効にするには <code>/root/.bashrc</code> にも追記</p>
+</dd>
+</dl>
+
+
+
+
+<dl class="small">
+<dt>Debian はブートプロセスをカスタマイズするの に rc.local を使っていないようですね。どんな手段が使えるのです か?</dt>
+<dd>
+<p>The Debian GNU/Linux FAQ(/usr/doc/debian-ja/FAQ/index.html)によりますと</p>
+<ol>
+<li>スクリプト foo をディレクトリ /etc/init.d/ に 入れる。</li>
+<li>Debian コマンド update-rc.d を適切な引数で実行する。</li>
+<li>システムを再起動する。</li>
+</ol>
+</dd>
+</dl>
+
+
+
+
+</div>
+</div>
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+
+<address>Written by yassy</address>
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+</body>
+
+</html>

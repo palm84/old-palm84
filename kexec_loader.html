@@ -1,0 +1,986 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="description" content="旧URL http://www10.plala.or.jp/palm84/ からGoogle ドライブ+DriveToWebに移転しました">
+<link rel="index" href="./index.html">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>【私的】 USBブート非対応PC用起動フロッピー/CDを作るの巻【kexec-loader編】＠Palm84</title>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+</head>
+
+
+<body>
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+
+<h1><span class="tokai1"><a href="./kexec_loader.html">【私的】 USBブート非対応PC用起動フロッピー/CDを作るの巻【kexec-loader編】</a></span></h1>
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+<ul>
+<li><a href="#about">これってナニ？</a></li>
+<li><a href="#make_fd">FD作成</a></li>
+<li><a href="#make_iso">CD（isoイメージ）作成</a></li>
+<li><a href="#otamesi">基本的な使い方</a></li>
+<li><a href="#volume_label">ボリューム ラベル (LABEL) について</a></li>
+<li><a href="#config">設定ファイル - <code>kxloader.cfg</code> - について</a></li>
+<li><a href="#customize">カスタマイズ</a>
+	<ul class="small">
+	<li><a href="#copy_usb">USBメモリ側へ kxloader.cfg をコピー</a></li>
+	<li><a href="#remake_fd">FDのリメイク</a></li>
+	<li><a href="#remake_iso">CD (iso) のリメイク</a></li>
+	<li><a href="#ss">スクリーン・ショット</a></li>
+	</ul>
+</li>
+<li><a href="#boot_other_device">FD/CD以外でブート</a></li>
+<li><a href="#etc">いろいろ</a></li>
+</ul>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+
+
+
+</div>
+</div>
+
+
+<div class="main">
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/kexec_loader.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/kexec_loader.html"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/kexec_loader.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<p class="small">2010.5.30 作成</p>
+
+<p>う～ん、ベストな方法はどんなもんかと試行錯誤中...まだまだ勉強が足りないかも <span class="aa">(´･ω･`) </span>。</p>
+
+<p>CD(iso) 作成についても書いとりますが、主たる目的はCDブートできない旧世代PCでの Linux LiveCD のブートなのです。</p>
+
+<p class="pink">※ USB CDドライブには対応していません。</p>
+<h2><a href="#about" name="about">これってナニ？</a></h2>
+
+<ul>
+<li><a href="http://www.solemnwarning.net/kexec-loader/">kexec-loader - Home</a></li>
+</ul>
+
+<ul>
+<li>参考リンク
+	<ul>
+	<li><a href="http://manpages.ubuntu.com/manpages/dapper/man8/kexec.8.html">Ubuntu Manpage: kexec - Tool to load a kernel for warm reboot and initiate a warm</a></li>
+	<li><a href="http://www.boot-land.net/forums/index.php?showtopic=10499&#038;hl=kexec-loader">kexec-loader 2.2 released</a></li>
+	<li><a href="https://wiki.ubuntulinux.jp/UbuntuTips/UsbInstall/BootUbuntuInUsbWithBiosWithoutSupportForUsb/KexecLoader">kexec-loader を利用する - Ubuntu Japanese Wiki</a></li>
+	</ul>
+</li>
+</ul>
+
+<p><strong class="ms">kexec-loader</strong> は“<strong class="ms">Linux based bootloader</strong>”、つまりLinux上で動くブートローダー。それをFD1枚に入る小さなLinuxに組み込んだのが、<strong class="ms">kexec-loader-floppy</strong> でありんす。</p>
+
+<p>このFDはブートローダーとしてはGRUB起動ディスクなどに比べ機能は低いです。しかしながら、これは<strong class="ms pink">Linux上で動くということで、Linux上で認識したUSBデバイス（※ USBフラッシュメモリ, USB HD）のカーネルをロードできる</strong>という、他のブートローダーにない利点があるのであります。</p>
+
+<p>つまり、BIOSがUSB（フラッシュメモリ、HD）ブート非対応であっても、このFDでブートすれば、USB（フラッシュメモリ、HD）からカーネルなどのロードが可能になるということですな。</p>
+
+<p><strong class="ms">PLoP Boot Manager</strong> が使えるならその方が楽なのですが、使えないこともあるので、そんな場合はこちらを試してみませう。</p>
+<p class="pink">※ USB CDドライブは認識しません。</p>
+
+<p>設定ファイルを書くのが少し手間ですが、PLoP Boot Manager を追加した起動ディスク（イメージ）を作っておけば、古めのPCのメンテ用として、結構重宝するんでないかなと思いますー。</p>
+
+<dl>
+<dt>特徴</dt>
+<dd>
+<ul>
+<li>認識可能なデバイスは、FD + <strong>USBデバイスのFATフォーマットのみ</strong>（内蔵HD用モジュールなど追加可能ですけど）</li>
+<li>カーネル・ロード専用</li>
+<li>GRUBなどの様にPBRのチェインロード機能はなし</li>
+<li>起動させるLinuxの設定（kernel, initrd, オプション）は、自分で書いておくか、コマンドラインから入力する必要がある</li>
+<li>grub.exe (GRUB for DOS) のチェインロードはできるが、GRUB上でUSBデバイスは認識しない</li>
+<li>SYSLINUX, GRUB “から”ロード可能</li>
+</ul>
+
+<p>モジュールを追加すれば、ext3, ext4 なども認識可能になる様ですが、私の環境ではうまくいかないので、未確認です。すみません。</p>
+</dd>
+</dl>
+
+
+<h2><a href="#make_fd" name="make_fd">FD作成</a></h2>
+
+<ul>
+<li><a href="http://www.solemnwarning.net/kexec-loader/download.cgi">kexec-loader - Downloads</a>
+	<ol>
+	<li><strong class="ms">kexec-loader-x.x.x-floppy.img.gz</strong> をダウンロードして展開</li>
+	<li><strong class="ms">floppy.img</strong> を <a href="http://www.chrysocome.net/rawwrite">RawWrite for Windows</a> などでFDへ書き込み</li>
+	</ol>
+</li>
+</ul>
+<p><img src="./images/kxloader/rawritewin.png" width="377" height="387" alt="RawWrite for Windows"></p>
+
+<dl class="palmst pink small">
+<dt>備考</dt>
+<dd>
+<ul>
+<li>ボリューム ラベルは <code>KEXECLOADER</code> </li>
+<li>内蔵FDブートでは、<code>kxloader.cfg</code> などのロードはUSB（HD/フラッシュメモリ）よりも優先となる</li>
+<li>USB-FDブートでは <code>sda</code> で認識した場合は優先</li>
+</ul>
+</dd>
+</dl>
+
+
+<h2><a href="#make_iso" name="make_iso">CD（isoイメージ）作成</a></h2>
+
+<p class="small pink">※ CDブート可能ならUSBメモリを使う必要はないような気がしないでもないですが、そこはそれ...</p>
+
+<ol>
+<li><a href="#linux">Linux上にて</a></li>
+<li><a href="#win_isolinux">Windows上でISOLINUX CD</a></li>
+<li><a href="#win_isolinux_memdisk">Windows上でISOLINUX + memdisk</a></li>
+</ol>
+<h3><a href="#linux" name="linux">Linux上にて</a></h3>
+
+<dl>
+<dt>ダウンロードして展開する</dt>
+<dd>
+<ul>
+<li>kexec-loader-x.x.x-cdrom.tar.gz
+	<ul>
+	<li><a href="http://www.solemnwarning.net/kexec-loader/download.cgi">kexec-loader - Downloads</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>シェル・スクリプト 実行</dt>
+<dd>
+<p>展開したディレクトリに移動し、スクリプト実行</p>
+<pre>
+$ ./mkiso.sh kexec-loader.iso
+</pre>
+</dd>
+</dl>
+
+<dl class="palmst pink small">
+<dt>備考</dt>
+<dd>
+<ul>
+<li>ボリューム・ラベルは <code>kexecloader</code> </li>
+<li>modules を追加しない場合は、kexec-loader 起動後にCDは認識しないのでCD内の設定ファイルはロードされない</li>
+<li>iso-modulesディレクトリに追加モジュールがあれば、initrd(initramfs) に統合される</li>
+<li>kexec-loader 起動時にCDが認識可能な場合、CD内の設定ファイルが優先的にロードされる</li>
+</ul>
+</dd>
+</dl>
+
+<h3><a href="#win_isolinux" name="win_isolinux">Windows上でISOLINUX CD</a></h3>
+
+<p>Windows版 <strong class="ms">mkisofs.exe</strong> でisoを作成してみました。</p>
+
+<dl>
+<dt>ダウンロードして展開する</dt>
+<dd>
+<ul>
+<li>kexec-loader-x.x.x-cdrom.tar.gz
+	<ul>
+	<li><a href="http://www.solemnwarning.net/kexec-loader/download.cgi">kexec-loader - Downloads</a></li>
+	</ul>
+</li>
+<li>CDRtools バイナリ
+	<ul>
+	<li><a href="http://mouneru.web.fc2.com/cdrecord_fe/cdr_fe.htm">CDRtoolsの フロントエンド</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>ファイルの配置</dt>
+<dd>
+<pre>
+kexec-loader - iso-files ディレクトリ
+|   linux.cfg
+|   kexec-loader.conf
+|   <strong class="ms">cygwin1.dll</strong>        <strong class="ms red">--- CDRtools バイナリ</strong>
+|   <strong class="ms">mkisofs.exe</strong>        <strong class="ms red">--- CDRtools バイナリ</strong>
+|
+\---isolinux
+        initrd.img
+        isolinux.bin
+        isolinux.cfg
+        vmlinuz
+</pre>
+</dd>
+
+<dt>mkisofs 実行</dt>
+<dd>
+
+<pre>
+mkisofs -v -R -J -o ../kexec_win_isolinux.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -V "kexecloader" -no-emul-boot -boot-load-size 4 -boot-info-table .
+</pre>
+</dd>
+</dl>
+
+<dl class="palmst pink small">
+<dt>備考</dt>
+<dd>
+<ul>
+<li>ボリューム・ラベルは <code>kexecloader</code> </li>
+<li>modules を追加しない場合は、kexec-loader 起動後にCDは認識しないのでCD内の設定ファイルはロードされない</li>
+<li>CD内に modules を追加するは、initrd(initramfs) に統合する必要がある模様？</li>
+<li>USB側(LABEL = KEXECLOADER) にmodulesを置けば、IDE-CDなど kexec-loader 起動後のファイルの参照は可能</li>
+</ul>
+</dd>
+</dl>
+
+
+<h3><a href="#win_isolinux_memdisk" name="win_isolinux_memdisk">Windows上でISOLINUX + memdisk</a></h3>
+
+<p>FDイメージをSYSLINUXのmemdiskを使いブートさせます。Windows版 <strong class="ms">mkisofs.exe</strong> でisoを作成してみました。</p>
+
+<dl>
+<dt>ダウンロードして展開する</dt>
+<dd>
+<ul>
+<li>kexec-loader FDイメージ - <code>kexec-loader-x.x.x-floppy.img.gz</code>
+	<ul>
+	<li><a href="http://www.solemnwarning.net/kexec-loader/download.cgi">kexec-loader - Downloads</a></li>
+	</ul>
+</li>
+<li>CDRtools バイナリ - <code>cdrtools-binary.zip</code>
+	<ul>
+	<li><a href="http://mouneru.web.fc2.com/cdrecord_fe/cdr_fe.htm">CDRtoolsの フロントエンド</a></li>
+	</ul>
+</li>
+<li>SYSLINUX - <code>syslinux-x.xx.zip</code>
+	<ul>
+	<li><a href="http://www.ring.gr.jp/pub/linux/kernel.org/utils/boot/syslinux/">Index of /pub/linux/kernel.org/utils/boot/syslinux</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>ファイルの配置</dt>
+<dd>
+<ul>
+<li><code>isolinux.cfg </code> 作成</li>
+</ul>
+<pre>
+DEFAULT memdisk
+APPEND initrd=floppy.img
+</pre>
+
+<pre>
+適当な作業ディレクトリ：
+   cygwin1.dll   <strong class="ms red">--- CDRtools バイナリ</strong>
+   floppy.img    <strong class="ms red">--- kexec-loader FDイメージ</strong>
+   isolinux.cfg  <strong class="ms red">--- 作成</strong>
+   isolinux.bin  <strong class="ms red">--- SYSLINUXの core\isolinux.bin</strong>
+   memdisk       <strong class="ms red">--- SYSLINUXの memdisk\memdisk</strong>
+   mkisofs.exe   <strong class="ms red">--- CDRtools バイナリ</strong>
+</pre>
+</dd>
+
+<dt>mkisofs 実行</dt>
+<dd>
+<pre>
+mkisofs -v -R -J -o ../kexec_win_isolinux_memdisk.iso -b isolinux.bin -c boot.cat -V "kexecloader" -no-emul-boot -boot-load-size 4 -boot-info-table .
+</pre>
+</dd>
+</dl>
+
+<dl class="palmst pink small">
+<dt>備考</dt>
+<dd>
+<ul>
+<li>CD,FDイメージともボリューム・ラベルは <code>kexecloader</code></li>
+<li>kexec-loader 起動後、FDイメージは見えない、CD認識しない</li>
+<li>USB側(LABEL = KEXECLOADER) にmodulesを置けば、IDE-CDなど kexec-loader 起動後のファイルの参照は可能</li>
+</ul>
+</dd>
+</dl>
+
+
+<h2><a href="#otamesi" name="otamesi">基本的な使い方</a></h2>
+
+<ul>
+<li><a href="http://www.solemnwarning.net/kexec-loader/readme.html">kexec-loader manual</a></li>
+</ul>
+
+<dl class="palmst pink small">
+<dt>USB（HD/フラッシュメモリ）のフォーマットについて</dt>
+<dd>
+<p>デフォルト状態のイメージで認識するのは、USB上のFATフォーマット (<strong class="ms">FAT16/FAT32</strong>) のみみたいです。他のフォーマットについてはモジュールの追加が可能ですが、確認できてません...すみません。</p>
+</dd>
+</dl>
+
+<p>FDブートするとコマンド入力画面で止まります。（※ <code>kexec-loader.conf</code> or <code>kxloader.cfg</code> に起動設定がないため）</p>
+
+<p class="small pink ">※ <strong class="ms">keymap.txt</strong> がない場合、キーボードはUS配列となってるので注意。</p>
+
+<p class="overflow2"><img src="./images/kxloader/prompt.png" width="720" height="200" alt="コマンドライン画面"></p>
+
+<p><code>help</code> で使用可能コマンド表示</p>
+<p class="overflow2"><img src="./images/kxloader/command_help.png" width="720" height="270" alt="help コマンド"></p>
+
+<p><code>disks</code> コマンドで認識されたデバイス（ファイル）名、ボリューム ラベル (LABEL) など表示</p>
+<p class="overflow2"><img src="./images/kxloader/command_disks.png" width="720" height="145" alt="disks コマンド"></p>
+
+<p><code>root</code> でパーティションを指定。</p>
+<p><code>kernel</code>,  <code>initrd</code>、（※ 必要なら）<code>cmdline</code> でカーネル・コマンドライン・パラメータ（カーネル・オプション）を指定します。</p>
+<p class="overflow2"><img src="./images/kxloader/command_boot.png" width="720" height="80" alt="root,initrd,cmdline コマンド"></p>
+<p>この後、<code>boot</code> コマンドで指定されたLinuxがブートします。</p>
+
+<h2><a href="#volume_label" name="volume_label">ボリューム ラベル (LABEL) について</a></h2>
+
+<dl>
+<dt>ボリューム ラベル (LABEL) の確認</dt>
+<dd>
+<p>【マイコンピュータ】からドライブのアイコンを右クリックでプロパティ画面を開く</p>
+
+<ul>
+<li>XP - FDドライブ</li>
+</ul>
+<p><img src="./images/kxloader/disk_label.png" width="424" height="128" alt="XP - FDドライブのプロパティ"></p>
+
+<p>7 ではFDドライブのLABELが表示されない様です。この場合は【コマンド プロンプト】から <strong class="ms">vol</strong> コマンド</p>
+<pre>
+C:\Users\yassy&#062;vol a:
+ ドライブ A のボリューム ラベルは KEXECLOADER です
+ ボリューム シリアル番号は 5CCE-35B2 です
+</pre>
+
+<ul>
+<li>7 - USBメモリ</li>
+</ul>
+<p><img src="./images/kxloader/disk_label_removable.png" width="434" height="130" alt="7 - USBメモリのプロパティ"></p>
+</dd>
+
+<dt>ボリューム ラベル (LABEL) の変更</dt>
+<dd>
+<p>XP、及び7上のUSBメモリは上記画面より。</p>
+<p>7上のFDドライブでは【コマンド プロンプト】から <strong class="ms">label</strong> コマンド</p>
+<pre>
+C:\Users\yassy&#062;label a:
+ドライブ A: のボリュームは KEXECLOADER です
+ボリューム シリアル番号は 5CCE-35B2 です
+ボリューム ラベルを入力してください。
+(半角で 11 文字、全角で 5 文字以内)
+必要なければ、Enter キーを押してください: KEXECLOADE
+
+C:\Users\yassy&#062;vol a:
+ ドライブ A のボリューム ラベルは KEXECLOADE です
+ ボリューム シリアル番号は 5CCE-35B2 です
+</pre>
+</dd>
+
+<dt>ddコマンドでFDイメージを操作</dt>
+<dd>
+<ul>
+<li>Windows版dd
+	<ul>
+	<li><a href="http://www.chrysocome.net/dd">chrysocome.net - dd for windows</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>LABEL確認</li>
+</ul>
+<pre>
+D:\CommandLine\dd&#062;dd if=floppy.img of=test.bin bs=1 <strong class="ms red">skip=9728 count=11</strong>
+rawwrite dd for windows version 0.5.
+Written by John Newbigin &#060;jn@it.swin.edu.au&#062;
+This program is covered by the GPL.  See copying.txt for details
+11+0 records in
+11+0 records out
+
+D:\CommandLine\dd&#062;more test.bin
+<strong class="ms red">KEXECLOADER</strong>
+</pre>
+
+<pre>
+D:\CommandLine\dd&#062;dd if=floppy.img bs=1 skip=9728 count=11 | more
+rawwrite dd for windows version 0.5.
+Written by John Newbigin &#060;jn@it.swin.edu.au&#062;
+This program is covered by the GPL.  See copying.txt for details
+11+0 records in
+11+0 records out
+<strong class="ms red">KEXECLOADER</strong>
+</pre>
+
+<ul>
+<li>LABEL変更（※ 1文字消し）</li>
+</ul>
+
+<pre>
+D:\CommandLine\dd&#062;dd if=<strong class="ms red">/dev/zero</strong> of=floppy.img <strong class="ms red">bs=1 seek=9738 count=1</strong>
+rawwrite dd for windows version 0.5.
+Written by John Newbigin &#060;jn@it.swin.edu.au&#062;
+This program is covered by the GPL.  See copying.txt for details
+1+0 records in
+1+0 records out
+
+D:\CommandLine\dd&#062;dd if=floppy.img of=test2.bin bs=1 <strong class="ms red">skip=9728 count=11</strong>
+rawwrite dd for windows version 0.5.
+Written by John Newbigin &#060;jn@it.swin.edu.au&#062;
+This program is covered by the GPL.  See copying.txt for details
+11+0 records in
+11+0 records out
+
+D:\CommandLine\dd&#062;more test2.bin
+<strong class="ms red">KEXECLOADE</strong>
+</pre>
+
+<pre>
+D:\CommandLine\dd&#062;dd if=floppy.img bs=1 skip=9728 count=11 | more
+rawwrite dd for windows version 0.5.
+Written by John Newbigin &#060;jn@it.swin.edu.au&#062;
+This program is covered by the GPL.  See copying.txt for details
+11+0 records in
+11+0 records out
+<strong class="ms red">KEXECLOADE</strong>
+</pre>
+</dd>
+</dl>
+
+
+<h2><a href="#config" name="config">設定ファイル - kxloader.cfg - について</a></h2>
+
+<p>選択メニューを表示する設定ファイルは <code>kxloader.cfg</code> (<code>kexec-loader.conf</code>) であります。</p>
+
+<p><strong class="ms">floppy.img</strong> には <code>kexec-loader.conf</code> がありますが、起動エントリは書かれていません。</p>
+
+<p class="pink">※ <code>kexec-loader.conf</code> が優先みたいですが、<code>kxloader.cfg</code> にリネームして使用した方がいいと思います。</p>
+
+<p>デフォルトではキーボード配列がUS仕様なので <strong class="ms">JP106</strong> 仕様にするには下記からダウンロード、<code>keymap.txt</code> にリネームして使用します。</p>
+<ul>
+<li><a href="http://www.solemnwarning.net/kexec-loader/keymaps/qwerty/">Index of /kexec-loader/keymaps/qwerty</a> (<code>jp106.txt</code>)</li>
+</ul>
+
+<dl>
+<dt><code>kxloader.cfg</code> の置き場所</dt>
+<dd>
+<ul>
+<li>設定ファイル - <code>kxloader.cfg</code> (<code>kexec-loader.conf</code>) - は <strong class="ms">ボリューム ラベル</strong> = <strong class="ms">KEXECLOADER</strong> のデバイス（パーティション）から読み込まれる</li>
+<li><code>keymap.txt</code> も同上</li>
+<li><code>modules</code> ディレクトリも同上</li>
+<li><strong class="ms">floppy.img</strong> のデフォルトの ボリューム ラベルは <strong class="ms">KEXECLOADER</strong></li>
+</ul>
+<p>同じ LABEL(= <strong class="ms">KEXECLOADER</strong>) が複数ある場合は <code>fd0</code> が優先の様です。</p>
+<p>※ USB-FDブートの際はUSB-FDが <code>sdb</code>、USBメモリが <code>sda</code> となり <code>sda<var>x</var></code> が優先されることがあるので注意。</p>
+</dd>
+
+<dt>起動エントリの書き方</dt>
+<dd>
+<pre>
+title CDlinux 0.9.3 Standard (vga=0x318)
+root LABEL=KEXECLOADER
+kernel /CDlinux/bzImage
+cmdline CDL_LANG=ja_JP.UTF-8 root=/dev/ram0 vga=0x318
+initrd /CDlinux/initrd
+</pre>
+</dd>
+
+<dt>root（パーティション）の指定</dt>
+<dd>
+<p>root（パーティション）の指定は3通り</p>
+<ul>
+<li><code>sda1</code> などのデバイス（ファイル）名</li>
+</ul>
+<pre>
+root sda1
+</pre>
+
+<ul>
+<li><strong class="ms">ボリューム ラベル (LABEL) </strong>名</li>
+</ul>
+<pre>
+root LABEL=KEXECLOADER
+</pre>
+
+<ul>
+<li><strong class="ms">uuid</strong>
+	<ul>
+	<li>uuid を調べるには、Windows - <code>vol X:</code>、Linux - <code>blkid</code></li>
+	</ul>
+</li>
+</ul>
+<pre>
+root UUID=xxxx-xxxx
+</pre>
+</dd>
+</dl>
+
+<ul>
+<li>注意点
+	<ul>
+	<li>USB FDブートの場合は、USB FDが <code>sda</code> , USBメモリが <code>sdb</code> となることがある</li>
+	<li>kexec-loader から <strong class="ms">grub.exe</strong> のチェインロードはできるが、GRUB上でUSBデバイスは認識しない</li>
+	<li>grub.exe をチェインロードした場合、FD上のファイルは見えないことがある</li>
+	</ul>
+</li>
+</ul>
+
+<p>というわけで...</p>
+<ul>
+<li>内蔵FDのブートでは、USBメモリは <code>sda<var>x</var></code> となるので <code>root sda1</code> などと指定する</li>
+<li>USB FDブートでは USB FD が <code>sda</code> となってしまうこと“も”あるため、USBメモリの <strong class="ms">ボリューム ラベル (LABEL) </strong>を BOOTUSB などとして <code>root LABEL=BOOTUSB</code> などと指定する方が確実</li>
+<li>HDブートやネットワークブートなどでは kexec-loader 起動後はFDは見えない（FDの <strong class="ms">ボリューム ラベル</strong>が無効となる）ため、USBメモリの <strong class="ms">ボリューム ラベル</strong>を <code>KEXECLOADER</code> とし、USBメモリ側に <code>kxloader.cfg</code>, <code>keymap.txt</code> を置いておく、<code>root LABEL=KEXECLOADER</code> を指定するのが確実</li>
+</ul>
+
+<p>下記はあくまでワタシのやりかたですが、ネットワークブートなどでもFDイメージがそのままつかえるようにしてみました。ちょっとややこしいような気もしますが...</p>
+
+<dl>
+<dt>【私的】おすすめ設定</dt>
+<dd>
+<ul>
+<li>FD（イメージ）の ボリューム ラベル (LABEL) を <code>KEXECLOADE</code> に変更する</li>
+<li>USBメモリの ボリューム ラベルを <code>KEXECLOADER</code> に変更する</li>
+<li><code>kxloader.cfg</code>, <code>keymap.txt</code> をUSBメモリ側に保存する</li>
+<li><code>kxloader.cfg</code> では <code>root LABEL=KEXECLOADER</code> を指定する</li>
+</ul>
+</dd>
+</dl>
+
+<h2><a href="#customize" name="customize">カスタマイズ</a></h2>
+
+<ul>
+<li><a href="#copy_usb">USBメモリ側へ kxloader.cfg をコピー</a></li>
+<li><a href="#remake_fd">FDのリメイク</a></li>
+<li><a href="#remake_iso">CD (iso) のリメイク</a></li>
+<li><a href="#ss">スクリーン・ショット</a></li>
+</ul>
+
+<p>あくまで【私的】ですが...</p>
+
+
+
+<h3><a href="#copy_usb" name="copy_usb">USBメモリ側へ kxloader.cfg をコピー</a></h3>
+
+<p>HDブートやネットワークブートでもFDイメージがそのまま使えるようにしてみます。</p>
+<ol>
+<li>FDの ボリューム ラベル (LABEL) を <code>KEXECLOADE</code>（※ 1文字消し）に変更する</li>
+<li>USBメモリの ボリューム ラベル を <code>KEXECLOADER</code> にする</li>
+<li>USBメモリに <code>kxloader.cfg</code>, <code>keymap.txt</code> をコピーする</li>
+</ol>
+
+<ul>
+<li><code>keymap.txt</code>
+	<ul>
+	<li><a href="http://www.solemnwarning.net/kexec-loader/keymaps/qwerty/">Index of /kexec-loader/keymaps/qwerty</a></li>
+	<li><code>jp106.txt</code> を <code>keymap.txt</code> にリネーム</li>
+	</ul>
+</li>
+<li>【私的】<code>kxloader.cfg</code>
+	<ul>
+	<li><a href="../archives/misc/kxloader/kxloader.cfg">kxloader.cfg</a></li>
+	</ul>
+</li>
+</ul>
+
+<p>【私的】<code>kxloader.cfg</code> には下記のデフォルト設定を書いてあります。</p>
+<ul>
+<li>KNOPPIX 5.3.1CD</li>
+<li>CDlinux 0.9.3 Standard</li>
+<li>Puppy Linux</li>
+<li>SystemRescueCd</li>
+<li>SLAX 6 (ja)</li>
+<li>Berry Linux 0.90</li>
+<li>Parted Magic 4.10</li>
+<li>Kaspersky Rescue Disk 10</li>
+</ul>
+
+
+<dl class="small pink">
+<dt>ddコマンドでFDイメージの ボリューム ラベル (LABEL) を変更</dt>
+<dd>
+<pre>
+dd if=/dev/zero of=floppy.img bs=1 seek=9738 count=1
+</pre>
+<p>※ 1文字消して <code>KEXECLOADE</code> にしてるだけですが...</p>
+</dd>
+</dl>
+
+
+
+<h3><a href="#remake_fd" name="remake_fd">FDのリメイク</a></h3>
+
+<p><strong class="ms">PLoP Boot Manager</strong>, SYSLINUX メニュー、GRUB(for DOS) などを追加します。</p>
+
+<p class="small pink">※ GRUB for DOS に関しては、halt(poweroff), reboot, chainloader コマンドを使用することを目的として追加しています。FD内のファイルが読めず menu.lst が表示されないことがあり、GRUB起動ディスクとして使用するにはちょっと不安ありです。また、GRUB上ではUSBデバイスは認識しません。</p>
+
+<p>上記作業3点の実行後に、FDへファイルを追加します。</p>
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<ul>
+<li>SYSLINUX (<code>syslinux-x.xx.zip</code>)
+	<ul>
+	<li><a href="http://www.ring.gr.jp/pub/linux/kernel.org/utils/boot/syslinux/">Index of /pub/linux/kernel.org/utils/boot/syslinux</a></li>
+	</ul>
+</li>
+<li>PLoP Boot Manager (<code>plpbt-x.x.x.zip</code>)
+	<ul>
+	<li><a href="http://www.plop.at/en/bootmanagerdl.html">PLoP - Bootmanager</a></li>
+	</ul>
+</li>
+<li>GRUB for DOS (<code>grub4dos-0.4.4.zip</code>)
+	<ul>
+	<li><a href="http://sourceforge.net/projects/grub4dos/files/">Browse GRUB4DOS and WINGRUB Files on SourceForge.net</a></li>
+	</ul>
+</li>
+<li>【私的】<a href="../archives/misc/kxloader/syslinux/jp106.kbd">jp106.kbd</a></li>
+<li>【私的】<a href="../archives/misc/kxloader/menu.lst">menu.lst</a></li>
+<li>【私的】<a href="../archives/misc/kxloader/syslinux/syslinux.cfg">syslinux.cfg</a></li>
+</ul>
+<p class="small pink">【注意】SYSLINUX上では、アンダースコア【<kbd>_</kbd>】は<kbd>Shift</kbd>-<kbd>0</kbd>となってます。</p>
+</dd>
+
+<dt>ファイルの配置</dt>
+<dd>
+
+<ul>
+<li>ファイル一覧</li>
+</ul>
+<pre>
+A:.
+|   grub.exe       <strong class="ms red ">--- GRUB for DOS</strong>
+|   initrd.img
+|   linux.cfg
+|   menu.lst
+|   README.html
+|   vmlinuz
+|
++---syslinux
+|       jp106.kbd
+|       ldlinux.sys
+|       menu.c32       <strong class="ms red ">--- SYSLINUXの com32\menu\menu.c32</strong>
+|       plpbt.bin      <strong class="ms red ">--- PLoP Boot Manager</strong>
+|       poweroff.com   <strong class="ms red ">--- SYSLINUXの modules\poweroff.com</strong>
+|       reboot.c32     <strong class="ms red ">--- SYSLINUXの com32\modules\reboot.c32</strong>
+|       syslinux.cfg
+|
+\---modules
+</pre>
+</dd>
+
+<dt>SYSLINUX の再インストール</dt>
+<dd>
+<p><strong class="ms">menu.c32</strong> が使えなかったので...</p>
+<p>展開したSYSLINUXのwin32ディレクトリに移動して下記コマンドを（「管理者として」）実行</p>
+<pre>
+syslinux.exe -d syslinux a:
+</pre>
+</dd>
+</dl>
+
+
+
+<h3><a href="#remake_iso" name="remake_iso">CD (iso) のリメイク</a></h3>
+
+<p>FDブート比べるとなんかややこしいです。CD内には追加ファイルは一切置かずに、USB側のボリューム ラベルを <code>KEXECLOADER</code> にして、USB側に <code>kxloader.cfg</code>, <code>keymap.txt</code>, <code>modules</code> ディレクトリなど置くのがわかりやすいかな？</p>
+
+
+
+
+<h4>【その1】</h4>
+
+<dl>
+<dt>ダウンロード</dt>
+<dd>
+<ul>
+<li>CDRtools バイナリ
+	<ul>
+	<li><a href="http://mouneru.web.fc2.com/cdrecord_fe/cdr_fe.htm">CDRtoolsの フロントエンド</a></li>
+	</ul>
+</li>
+<li>SYSLINUX (<code>syslinux-x.xx.zip</code>)
+	<ul>
+	<li><a href="http://www.ring.gr.jp/pub/linux/kernel.org/utils/boot/syslinux/">Index of /pub/linux/kernel.org/utils/boot/syslinux</a></li>
+	</ul>
+</li>
+<li>PLoP Boot Manager (<code>plpbt-x.x.x.zip</code>)
+	<ul>
+	<li><a href="http://www.plop.at/en/bootmanagerdl.html">PLoP - Bootmanager</a></li>
+	</ul>
+</li>
+<li>GRUB for DOS (<code>grub4dos-0.4.4.zip</code>)
+	<ul>
+	<li><a href="http://sourceforge.net/projects/grub4dos/files/">Browse GRUB4DOS and WINGRUB Files on SourceForge.net</a></li>
+	</ul>
+</li>
+<li>【私的】<a href="../archives/misc/kxloader/isolinux/isolinux.cfg">isolinux.cfg</a></li>
+<li>【私的】<a href="../archives/misc/kxloader/isolinux/jp106.kbd">jp106.kbd</a></li>
+<li>【私的】<a href="../archives/misc/kxloader/menu.lst">menu.lst</a></li>
+</ul>
+<p class="small pink">【注意】SYSLINUX上では、アンダースコア【<kbd>_</kbd>】は<kbd>Shift</kbd>-<kbd>0</kbd>となってます。</p>
+</dd>
+
+<dt>ファイルの配置</dt>
+<dd>
+<pre>
+kexec-loader - iso-files ディレクトリ
+|   cygwin1.dll   <strong class="ms red">--- CDRtools バイナリ</strong>
+|   grub.exe      <strong class="ms red ">--- GRUB for DOS</strong>
+|   linux.cfg
+|   menu.lst
+|   mkisofs.exe   <strong class="ms red">--- CDRtools バイナリ</strong>
+|
+\---isolinux
+        initrd.img
+        isolinux.bin
+        isolinux.cfg
+        jp106.kbd
+        menu.c32       <strong class="ms red ">--- SYSLINUXの com32\menu\menu.c32</strong>
+        plpbt.bin      <strong class="ms red ">--- PLoP Boot Manager</strong>
+        poweroff.com   <strong class="ms red ">--- SYSLINUXの modules\poweroff.com</strong>
+        reboot.c32     <strong class="ms red ">--- SYSLINUXの com32\modules\reboot.c32</strong>
+        vmlinuz
+</pre>
+</dd>
+
+<dt>mkisofs 実行</dt>
+<dd>
+<pre>
+mkisofs -v -R -J -o ../kexec_win_isolinux_remake.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -V "kexecloade" -no-emul-boot -boot-load-size 4 -boot-info-table .
+</pre>
+<p>【注意】ボリューム ラベルは <code>kexecload</code> を指定。USB側の modules ディレクトリに <code>ide.tlz</code>, <code>isofs.tlz</code> を置けば kexec-loader 起動後にGRUBの reboot コマンドなどが使えました（IDE-CDドライブの場合ですが）。</p>
+</dd>
+</dl>
+
+
+
+
+<h4>【その2】リメイクしたFDイメージをそのまま使う</h4>
+
+<p>前述の方法と同じで。</p>
+
+<ul>
+<li><a href="#win_isolinux_memdisk">Windows上でISOLINUX + memdisk</a></li>
+</ul>
+
+
+
+<h3><a href="#ss" name="ss">スクリーン・ショット</a></h3>
+
+<ul>
+<li>SYSLINUX メニュー</li>
+</ul>
+<p class="overflow2"><img src="./images/kxloader/syslinux_menu.png" width="576" height="320" alt="SYSLINUX メニュー"></p>
+
+<ul>
+<li>kexec-loader メニュー
+	<ul>
+	<li><kbd>d</kbd>キーでディスク一覧表示</li>
+	<li><kbd>c</kbd>キーでコマンドライン</li>
+	<li>メニューに戻るには <code>exit</code></li>
+	</ul>
+</li>
+</ul>
+<p class="overflow2"><img src="./images/kxloader/kexec_menu.png" width="576" height="320" alt="kexec-loader メニュー"></p>
+
+<ul>
+<li>PLoP Boot Manager メニュー</li>
+</ul>
+<p class="overflow2"><img src="./images/kxloader/plpbt_menu.png" width="512" height="384" alt="PLoP Boot Manager メニュー"></p>
+
+<ul>
+<li>GRUB for DOS メニュー</li>
+</ul>
+<p class="overflow2"><img src="./images/kxloader/grub4dos.png" width="576" height="320" alt="GRUB for DOS メニュー"></p>
+<p>※ 環境によっては、FD内のファイルが見えず、メニューが出ない場合あります（※ コマンド画面となる）。メニューが出なくても <strong class="ms">halt</strong> や <strong class="ms">reboot</strong> コマンド、<strong class="ms">chainloader</strong> コマンド（※ HDのチェインロード）は使えるはずです...</p>
+<p>【注意】このGRUB上ではUSBデバイスは見えません。</p>
+
+
+<h2><a href="#boot_other_device" name="boot_other_device">FD/CD以外でブート</a></h2>
+
+<p>通常のLinuxと同様に普通に <strong class="ms">kernel</strong>,  <strong class="ms">initrd</strong>  をロードしてもいいのですが、下記はFDイメージをそのまま使う方法。</p>
+<p class="small pink">※ 【注意】kexec-loader 起動後はFDは見えなくなります。kexec-loader 起動後はFD内のファイルはロードできません。</p>
+
+<ul>
+<li>USBメモリの ボリューム ラベル を <code>KEXECLOADER</code> にする</li>
+<li>USBメモリに <code>kxloader.cfg</code>, <code>keymap.txt</code> をコピーする</li>
+</ul>
+
+<dl>
+<dt>HDブート</dt>
+<dd>
+<p>GRUB for DOS が楽かな？</p>
+<ul>
+<li><code>menu.lst</code></li>
+</ul>
+<pre>
+title kexec-loader-floppy
+find --set-root /floppy.img
+map --mem /floppy.img (fd0)
+map --hook
+chainloader (fd0)+1
+rootnoverify (fd0)
+</pre>
+
+<p>isoイメージの場合は...</p>
+<pre>
+title kexec-loader.iso
+find --set-root /kexec-loader.iso
+map --mem /kexec-loader.iso (0xff)
+map --hook
+chainloader (0xff)
+rootnoverify (0xff)
+</pre>
+</dd>
+
+<dt>ネットワークブート</dt>
+<dd>
+<p>PXELINUX + memdisk</p>
+<ul>
+<li><code>pxelinux.cfg/default</code>（※ など）</li>
+</ul>
+<pre>
+LABEL kxloader
+KERNEL /memdisk
+INITRD /floppy.img
+</pre>
+<p>isoイメージの場合は...</p>
+<pre>
+LABEL kxloader_iso
+KERNEL /memdisk
+APPEND iso
+INITRD /kexec-loader.iso
+</pre>
+</dd>
+
+
+<dt>kexec-loader 起動後に grub.exe の reboot コマンドなどを使うには</dt>
+<dd>
+<p>USBメモリ側に grub.exe を 置き、USBメモリ側の <code>kxloader.cfg</code> を修正しませう。</p>
+<pre>
+title boot from HD
+root LABEL=KEXECLOADE<strong class="ms red">R</strong> 
+kernel /grub.exe
+cmdline --config-file="chainloader (hd0)+1"
+
+title Reboot
+root LABEL=KEXECLOADE<strong class="ms red">R</strong> 
+kernel /grub.exe
+cmdline --config-file="reboot"
+
+title Poweroff
+root LABEL=KEXECLOADE<strong class="ms red">R</strong> 
+kernel /grub.exe
+cmdline --config-file="halt"
+</pre>
+</dd>
+</dl>
+
+
+<h2><a href="#etc" name="etc">いろいろ</a></h2>
+
+<dl>
+<dt>モジュールの追加</dt>
+<dd>
+<p>※ 未確認ですが...</p>
+<ul>
+<li>ダウンロード
+	<ul>
+	<li><a href="http://www.solemnwarning.net/kexec-loader/download.cgi">kexec-loader - Downloads</a> (modules-xxx.tar.gz)</li>
+	</ul>
+</li>
+</ul>
+<p><del>FD内</del> LABEL = KEXECLOADER の FD or USBメモリの <code>modules</code> ディレクトリに追加すると起動時にFD,USB以外のデバイスも認識可能になるようです。</p>
+<ul>
+<li><code>ide.tlz</code> - IDE(PATA) HD</li>
+<li><code>ext3.tlz</code> - ext3 ファイルシステム</li>
+<li><code>ext4.tlz</code> - ext4 ファイルシステム</li>
+<li><code>isofs.tlz</code> - iso(CD) ファイルシステム</li>
+</ul>
+
+<p class="pink">※ USB HD上の <strong class="ms">ext4</strong> パーティションについては、<code>ide.tlz</code> + <code>ext4.tlz</code> で可能でした。</p>
+
+<p class="small">※ USB CDドライブも認識できたらいいのになぁ...</p>
+
+</dd>
+</dl>
+
+
+
+
+</div>
+</div>
+
+<div class="navi">
+<a href="./index.html">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+
+<address>Written by yassy</address>
+
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+</body>
+
+</html>

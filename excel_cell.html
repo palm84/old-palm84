@@ -1,0 +1,251 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="start" href="http://www10.plala.or.jp/palm84/index.html">
+<link rel="index" href="http://www10.plala.or.jp/palm84/excel_basic.html">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="print.css" media="print">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>Excelなんでやねん！セルの書式設定とは？の巻</title>
+
+<style type="text/css">
+<!--
+
+div.menulist
+ {  float:left; margin: 0; padding: 0; }
+
+ol
+{ margin: 0 1em 1em 1em;   }
+
+img
+  { border-width: 0px; margin: 0.5em 1em 1em 0em; float: left; }
+
+h3 a[name]:hover { color:#000; }
+
+h2,h3 {
+	page-break-before: always;
+}
+
+body {
+border: 1px outset #ccc;
+}
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+</head>
+
+<body>
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+
+<script type="text/javascript">
+<!--
+setTimeout("link()", 0);
+function link(){
+location.href='https://www.palm84.com/entry/excel_cell';
+}
+-->
+</script>
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>移行作業中です...</ins></dt>
+<dd>
+<p>はてなブログの該当ページへ<strong>リダイレクトします</strong>。お手数をおかけします。ご容赦ください。</p>
+</dd>
+</dl>
+
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">HOME</a> <kbd class="ak">0</kbd> | 
+<a href="excel_basic.html" accesskey="3">初級編</a> <kbd class="ak">3</kbd>
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" accesskey="z" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd> [<a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,h1,h2,h3,h4,h5,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span,#blog-title,.index,.white,.palmst,pre{color:white!important;background-color:#333!important;text-shadow:none!important;}code{color:#333!important;text-shadow:none!important;}a:link{color:orange!important;text-shadow:none!important;text-decoration:underline!important;}a:visited{color:sienna!important;text-shadow:none!important;text-decoration:underline!important;}a:hover{color:brown!important;background-color:white!important;text-decoration:none!important;}';head[0].appendChild(style);})();">反転</a> <a href="javascript:(function(){var head=document.getElementsByTagName('head');var style=head[0].lastChild;if (style.nodeName.toLowerCase() == 'style'){head[0].removeChild(style);}else{alert('追加したstyle要素はないですYO');}})();">戻す</a>] <span class="font_change">* font-change * <a href="javascript:void(document.body.style.fontFamily='inherit')" title="inherit">inherit</a> <a href="javascript:void(document.body.style.fontFamily='sans-serif')" title="Sans-serif">Ss</a> <a href="javascript:void(document.body.style.fontFamily='serif')" title="Serif">Sf</a> <a href="javascript:void(document.body.style.fontFamily='\'メイリオ\'')" title="メイリオ">メ</a> <a href="javascript:void(document.body.style.fontFamily='\'游ゴシック\',\'Yu Gothic\',YuGothic')" title="游ゴシック">游</a> <a href="javascript:void(document.body.style.fontFamily='\'ＭＳ Ｐゴシック\'')" title="ＭＳ Ｐゴシック">MS</a> <a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Regular\',\'源ノ角ゴシック JP Regular\',\'Noto Sans Japanese Regular\',\'Noto Sans CJK JP Regular\',\'源ノ角ゴシック\',\'源ノ角ゴシック JP\',\'Noto Sans Japanese\',\'Noto Sans CJK JP\'')" title="源ノ角ゴシック / Sonrce Han Sans">源</a> <a href="javascript:void(document.body.style.fontSize='12px')" title="12px">12</a>
+ <a href="javascript:void(document.body.style.fontSize='14px')" title="14px">14</a>
+ <a href="javascript:void(document.body.style.fontSize='16px')" title="16px">16</a> <a href="javascript:void(document.body.removeAttribute('style'));" title="body style 削除">戻す</a> *</span>
+</div>
+
+
+<h1><span class="tokai1"><a href="./excel_cell.html">Excelなんでやねん！セルの書式設定とは？の巻</a></span></h1>
+
+<p><script src="http://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+
+<a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/excel_cell.html"><img src="http://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/excel_cell.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a>
+
+</p>
+
+<p class="small">ウインドウ画像・メニューなどExcel 2000のものを使用しています。</p>
+<h2 style="page-break-before:auto;">セルの書式設定について理解しておきましょう</h2>
+
+
+<div class="menulist">
+<ol>
+<li><a href="#disp" name="list">表示形式</a></li>
+<li><a href="#arr">配置</a></li>
+<li><a href="#font">フォント</a></li>
+<li><a href="#line">罫線</a></li>
+<li><a href="#pattern">パターン</a></li>
+<li><a href="#prot">保護</a></li>
+</ol>
+</div>
+
+<p>通常、セルのコピーした場合は書式も含めてコピーされます。単に貼付しますと罫線等も含めた書式も同じく貼付されてしまいます。
+<br><span class="adv">アドバイス・・・【形式を選択して貼り付け】では【数式】のみ【値】のみの貼付も可能。</span>
+</p>
+
+<p>設定画面を出すにはセルを選択後、右クリックからまたは【書式】→【セル】をクリックします。
+<br><span class="adv">ショートカットキー・・・<kbd>Ctrl</kbd>＋<kbd>1</kbd></span>
+</p>
+<div class="cl">
+</div>
+<h3><a name="disp">表示形式</a></h3>
+
+<p class="overflow2"><img width="435" height="349" src="./images/excel/cell_disp.png" alt="セルの書式設定「表示形式」画面"></p>
+
+<ul>
+<li>数値</li>
+</ul>
+<p><span class="small">【001】で入力→表示は　【1】になります。先頭の【00】は表示されません。
+<br>小数点・マイナス表示・桁区切りの設定など。右寄せ表示となります。
+<span class="adv"><del>12桁以上の場合<strong>指数表示</strong>となります。</del></span>ミスです。指数表示になるのは【標準】または書式変更直後とかですね。すみません。（ちなみに【指数】とは【4.90123E+12】な表示のことです。）
+</span></p>
+
+<ul>
+<li>通貨</li>
+</ul>
+<p><span class="small">【&yen;】マークの表示など。【円】を表示したい場合は【ユーザー定義】で【######0&quot;円&quot;】の様に記述します。（桁数に注意）
+→【@&quot;円&quot;】でもいいかも。</span></p>
+
+<ul>
+<li>文字列</li>
+</ul>
+<p><span class="small">【001】【12-12】と入力してもそのまま表示されます。（標準では前者が【1】後者は【12月12日】となります。また12桁以上の数字もそのまま表示します。</span><span class="adv"><strong>JANコード</strong>などに使います。</span>
+</p>
+
+<ul>
+<li>日付</li>
+</ul>
+<p><span class="small">【12/12】【12-12】と入力すると【12月12日】と表示。（自動的に書式設定が【日付】に変更されます。）実際にはシリアル値で管理されています。【1】=【1900/1/1】</span>
+<br><span class="adv">曜日も表示したい・・・【ユーザー定義】で【m&quot;月&quot;d&quot;日&quot;(aaa)】を指定</span></p>
+
+<ul>
+<li>ユーザー定義</li>
+</ul>
+<p><span class="small">例として、常に指定桁数で表示したい時など【000000】とします。【12】と入力【000012】と表示されます。（【#】の意味は値が空白または【0】なら表示しません。）</span>
+<br><span class="adv">特定の文字を付加したい場合は【&quot;円&quot;】のように【&quot;】で囲みます。</span>
+</p>
+
+
+<div class="cl">
+</div>
+<h3><a name="arr">配置</a></h3>
+<p class="overflow2"><img width="417" height="348" src="./images/excel/cell_arr.png" alt="セルの書式設定「配置」画面">
+</p>
+
+<p><span class="small">縦横の表示位置・インデント（文字の左側を空ける）の設定等。</span>
+<br><span class="adv">【Access】などからエクスポートしたデータは【折り返して全体を表示する】がチェックされてる事が多いようです。</span>
+</p>
+<p><span class="small">【セルの結合】を解除する際もこの画面から行います。</span>
+</p>
+
+<div class="cl">
+</div>
+
+<h3><a name="font">フォント</a></h3>
+<p class="overflow2"><img width="417" height="348" src="./images/excel/cell_font.png" alt="セルの書式設定「フォント」画面">
+</p>
+<p><span class="small">見ての通りですが・・・
+<br>ツールバーでもできますし・・・</span></p>
+
+
+
+<p><span class="small">
+ごくたまにある事として
+<br>別の環境で作成したデータのフォントが正常に表示されない場合があります。
+（一部が【・・・】などになる）
+<br>【標準フォント】のチェックを外してから再設定すると正常になる場合があります。</span>
+</p>
+<p class="small">通常【標準フォント】は【ＭＳ Ｐゴシック】サイズ【11】かな？
+（【Ｐ】は「propotional」で「文字間のスペーシング」の意味です。） </p>
+
+<p><span class="adv">特殊なフォントは環境によっては表示できない事もあります。
+（はがき作成ソフト独自のフォントなど）</span>
+</p>
+
+
+<div class="cl">
+</div>
+<h3><a name="line">罫線</a></h3>
+<p class="overflow2"><img width="417" height="348" src="./images/excel/cell_line.png" alt="セルの書式設定「罫線」画面">
+</p>
+<p><span class="small">これも見ての通りかも・・・</span>
+</p>
+<p><span class="small">普段はツールバーの【罫線】ボタンを使ってると思います。</span>
+<br><span class="adv">また、複数のセルを設定する際は【書式の貼付】ボタンが便利です。</span></p>
+<p class="small">表枠の太罫線などは表の外側に設定すると貼付時に罫線が崩れなくていいかもしれません。（うまくいかない事もありますが・・）
+</p>
+
+<div class="cl">
+</div>
+<h3><a name="pattern">パターン</a></h3>
+<p class="overflow2"><img width="417" height="348" src="./images/excel/cell_pattern.png" alt="セルの書式設定「パターン」画面">
+</p>
+<p><span class="small">これもツールバーのボタンでできますが、
+【条件付書式】の設定などで出てきます。</span>
+</p>
+
+<p><span class="adv">これも、複数のセルを設定する際は【書式の貼付】ボタンが便利です。</span>
+</p>
+
+<div class="cl">
+</div>
+<h3><a name="prot">保護</a></h3>
+<p class="overflow2"><img width="417" height="348" src="./images/excel/cell_prot.png" alt="セルの書式設定「保護」画面">
+</p>
+<p><span class="small">初期設定で【ロック】（修正不可）にチェックが入っていますが【シートの保護】（メニューの【ツール】&rarr;【保護】をかけないと無効です。</span>
+</p>
+
+<p><span class="adv">入力可能セルを制限したい場合、入力可能セルのこのチェックを外してから【シートの保護】をします。</span>
+</p>
+
+
+
+<div class="cl">
+</div>
+
+<div class="navi">
+<a href="./index.html">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="excel_basic.html">初級編</a> <kbd class="ak">3</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd>
+</div>
+<address>Written by yassy</address>
+
+<ul class="toTop-nav">
+<li><a href="javascript:void(0);" onclick="smoothScroll(0);return false;">↑</a></li>
+</ul>
+<script type="text/javascript">
+function smoothScroll(o){var e=window.pageYOffset,l=o>e;setTimeout(function(){l&&o>=e?(e=e+(o-e)/20+1,window.scrollTo(0,e),setTimeout(arguments.callee,10)):!l&&e>=o?(e=e-(e-o)/20-1,window.scrollTo(0,e),setTimeout(arguments.callee,10)):window.scrollTo(0,o)},10)}
+</script>
+
+</body>
+
+</html>

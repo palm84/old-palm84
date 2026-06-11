@@ -1,0 +1,890 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="START" href="./">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>GRUB起動ディスクを作っておくの巻＠Palm84</title>
+<style type="text/css">
+<!--
+
+h4 {
+	font-size: 1em;
+	font-weight: bold;
+	margin:0.5em 0.5em 0.5em 1.5em;
+	padding-left: 0.5em;
+	border-left: 1em double #ccc;
+}
+
+pre.scl1 {
+	overflow: scroll;
+	white-space: pre;
+	width:89%;
+	height: 10em;
+}
+
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+</head>
+
+
+<body>
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+<h1><span class="tokai1"><a href="./grub4dos_bootdisk.html">GRUB起動ディスクを作っておくの巻</a></span></h1>
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+<ol>
+<li><a href="#about" accesskey="3">これってなに？</a> <kbd class="ak">3</kbd></li>
+<li><a href="#mokuteki" accesskey="4">使用目的</a> <kbd class="ak">4</kbd></li>
+<li><a href="#basic_disk" accesskey="5">起動ディスク作成</a> <kbd class="ak">5</kbd></li>
+<li><a href="#download" accesskey="6">追加ダウンロード</a> <kbd class="ak">6</kbd></li>
+<li><a href="#copy" accesskey="7">追加コピー</a> <kbd class="ak">7</kbd></li>
+<li><a href="#screenshot" accesskey="8">スクリーンショット</a> <kbd class="ak">8</kbd></li>
+</ol>
+
+<ul>
+<li><a href="#config" accesskey="9">設定ファイル</a> <kbd class="ak">9</kbd></li>
+<li><a href="#hd_livecd">HDからLinux LiveCDのブート</a></li>
+<li><a href="#link">参考リンク</a></li>
+</ul>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+
+
+
+<p class="small">リンク is フリーダム<span class="ms">♪</span></p>
+</div>
+</div>
+
+
+
+<div class="main">
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/grub4dos_bootdisk.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p><script src="http://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/grub4dos_bootdisk.html"><img src="http://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/grub4dos_bootdisk.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<p class="small">2009.9.16 作成
+<br>最終更新日 2010.9.7</p>
+
+<div class="clear palm2">
+<p>【ご注意】尚、Palm84レベルということで安全性はこれっぽっちも保障されていないと思われます（信用ない人だからなぁ...ｗ）。緊急時に使う【取り扱い注意】ツールということで。あしからず。</p>
+</div>
+<h2><a href="#about" name="about">これってなに？</a> <kbd class="ak">3</kbd></h2>
+
+<p>GRUB (for DOS) 起動フロッピーです。</p>
+<p>そのまんまでも便利ですが、レスキューやメンテナンス用に便利なツール類など詰め込んでおくのじゃ、ということで。</p>
+
+<p>ハッキリ言って、レトロなPC向けなのでありんす。</p>
+
+
+<h2><a href="#mokuteki" name="mokuteki">使用目的</a> <kbd class="ak">4</kbd></h2>
+
+
+<p>障害時の原因の切り分けにも使えるかもしれない。</p>
+
+<dl>
+<dt>ブートセクタのチェインロード</dt>
+<dd>
+<p>MBR内のブートストラップが飛んじゃった場合に。</p>
+</dd>
+
+<dt>Windows XP/2000 の <strong class="ms">ntldr</strong> のチェインロード</dt>
+<dd>
+<p>ブートセクタ内のIPLとかが飛んじゃった場合に。</p>
+<p>Vista の bootmgr もチェインロードできます。</p>
+</dd>
+
+<dt>FD内の <strong class="ms">ntldr</strong> のチェインロード</dt>
+<dd>
+<p><strong>Windows XP/2000 緊急起動ディスク</strong>として。</p>
+<p><strong class="ms">boot.ini</strong> がおかしいとか、<strong class="ms">ntldr</strong> そのものがおかしいとか。ntfsdos や LiveCD などで直接HD上のファイルを弄るより、とりあえず Windows をブートさせて Windows 上で編集した方がいいかなと。（※回復コンソール使う手もありますけどね）</p>
+<p>また、これでもブートしないとなるとHDの異常なのか、Windows の問題なのか判断が付くかも。</p>
+</dd>
+
+<dt>FreeDOS</dt>
+<dd>
+<p>BIOSアップデートとか、DOSが必要な時に。</p>
+<p>FD内の <strong class="ms">boot.ini</strong> の確認・修正用にテキストファイル編集の edit.exe を入れといてと。FDISKとかも入れといてもいいかも。</p>
+</dd>
+
+<dt>ネットワークブート用起動ディスクとして</dt>
+<dd>
+<p>ネットワークブート非対応PC用。汎用イメージを使います。BIOS対応に比べ若干制限ありますが...</p>
+</dd>
+
+<dt>PLoP Boot Manager</dt>
+<dd>
+<p>人気急上昇中？（ｗ）。USB（フラッシュメモリ・HDD）非対応PC用の起動用イメージ。完璧じゃないけれども。</p>
+</dd>
+
+<dt>Memtest86+</dt>
+<dd>
+<p>メモリーテスト。</p>
+</dd>
+
+<dt>Linuxカーネルのロード</dt>
+<dd>
+<p>これが本業やん（笑）。Knoppix などの LiveCD をCDドライブを使わずHDにコピーして試したい時とかにも使えるし。（結構簡単ｗ）</p>
+<p>Windows の再インストールで MBR の GRUB 消えちゃったな時でも、これがあれば心配ないのです。これで Linux を起動して GRUB を再インストールすればよいのです。</p>
+</dd>
+
+<dt>Windows PE 起動ディスクとして</dt>
+<dd>
+<p>通常の手段（※ CD, USBメモリブート）が使えない時に。HD上にいずれかの方法でPEをコピーしておきます。</p>
+<ul>
+<li>PE の <strong class="ms">isoイメージ</strong> をHD（ドライブ）のルートへ</li>
+<li>PE CD内のファイルをそのままHD（ドライブ）のルートへ  （※ <em>Vista の <strong class="ms">bootmgr</strong> があるドライブにコピーしてはいけない</em>！）</li>
+</ul>
+</dd>
+
+
+<dt>Linux LiveCD 起動ディスクとして</dt>
+<dd>
+<p>通常の手段（※ CD, USBメモリブート）が使えない時に。HD上にファイルをコピーしてGRUBから起動させます。</p>
+</dd>
+</dl>
+
+<p>他には、FDしか使えない場合に BG-Rescue Linux の起動用にするとか（FDが +2枚必要）。</p>
+
+
+<p>【注意】NOD32 など一部のウイルス対策ソフトでFDのブートセクタが「ウイルスの可能性：TSR.BOOT ウイルス」などとして検出されることがあります。面倒ですが除外設定するしかないかなぁ。（※ 何度も提出してますねんけど...）</p>
+
+
+<h2><a href="#basic_disk" name="basic_disk">【基本的】起動ディスク作成</a> <kbd class="ak">5</kbd></h2>
+
+<ul>
+<li><a href="http://sourceforge.net/projects/grub4dos/">GRUB4DOS and WINGRUB | Get GRUB4DOS and WINGRUB at SourceForge.net</a>
+	<ul>
+	<li><a href="http://sourceforge.net/projects/grub4dos/files/">Browse GRUB4DOS and WINGRUB Files on SourceForge.net</a></li>
+	</ul>
+</li>
+</ul>
+
+<p>FD書き込みツールは、<a href="http://www.chrysocome.net/rawwrite">RawWrite for Windows</a> がお手軽かな？</p>
+
+<div class="palmst pink">
+<ol>
+<li><code>grub_for_dos-0.4.2.zip</code> と <code>grub4dos-0.4.4.zip</code> をダウンロード</li>
+<li>0.4.2 の <code>fat12grldr.img</code>をFDへ書き込む</li>
+<li>0.4.4 の <code>grldr</code> を上書きコピー</li>
+<li>ファイル <code>default</code> は削除</li>
+</ol>
+</div>
+
+<p class="pink">基本的なGRUB起動ディスクとしてなら、これだけでおｋ！</p>
+
+
+
+<dl class="palm2 small">
+<dt>grubinst.exe で作成するなら...</dt>
+<dd>
+<ul>
+<li>grubinst.exe(grubinst-1.1-bin-w32-xxx.zip)
+	<ul>
+	<li><a href="http://download.gna.org/grubutil/">Index of /grubutil</a></li>
+	</ul>
+</li>
+</ul>
+<pre>
+grubinst.exe --pause --floppy (fd0)
+</pre>
+<p>この後、0.4.4 の <strong class="ms">grldr</strong> , <strong class="ms">menu.lst</strong> をFDへコピー</p>
+
+<p>FDドライブが無い場合は<a href="http://sourceforge.jp/projects/sfnet_vfd/">Virtual Floppy Drive</a>を使うとか。</p>
+</dd>
+</dl>
+
+
+<h2><a href="#download" name="download">追加ダウンロード</a> <kbd class="ak">6</kbd></h2>
+
+<dl>
+<dt><a href="http://www.freedos.org/">FreeDOS</a>のファイル群</dt>
+<dd>
+<ul>
+<li><a href="http://www.finnix.org/Balder">Balder - Finnix</a>
+	<ul>
+	<li><code>balder10.img</code> をダウンロード</li>
+	</ul>
+</li>
+</ul>
+<p>FDイメージなのでFDへ書き込むかマウントするなどしてファイルを取り出せる状態にしておく。</p>
+</dd>
+
+<dt>ネットワークブート用カーネル</dt>
+<dd>
+<ul>
+<li><a href="http://rom-o-matic.net/gpxe/gpxe-git/gpxe.git/contrib/rom-o-matic/">ROM-o-matic.net: for gPXE version git</a></li>
+</ul>
+<ol class="small">
+<li>Choose an output format
+	<ul>
+	<li><code>Linux kernel (SYSLINUX/GRUB/LILO) loadable image (.lkrn)</code> を選択</li>
+	</ul>
+</li>
+<li>Choose a NIC type
+	<ul>
+	<li><code>all-drivers</code> を選択</li>
+	</ul>
+</li>
+<li>[Get Image] をポチっと</li>
+<li><strong class="ms">gpxe-0.9.x+-gpxe.lkrn</strong> は <strong class="ms">gpxe_all.krn</strong> にリネーム</li>
+</ol>
+<p class="small">※ ずっと 0.9.5 使ってたので最新版はどうなのかわかりません。。。<a href="http://rom-o-matic.net/">旧バージョン</a>（0.9.4, 0.9.5）は、184 KBと若干サイズが小さいです。<del>最新</del> 0.9.6 は 206 KB。旧バージョンでは、<code>Choose NIC/ROM type</code> で <code>gpxe:all-drivers</code> を選択。</p>
+</dd>
+
+<dt>PLoP Boot Manager</dt>
+<dd>
+<ul>
+<li><a href="http://www.plop.at/en/bootmanagerdl.html">PLoP Boot Manager Downloads</a>
+	<ul>
+	<li><strong class="ms">plpbt-x.x.x.zip</strong> をダウンロード</li>
+	</ul>
+</li>
+</ul>
+<p>必要なのは、<code>plpbt.bin</code> だけ。</p>
+</dd>
+
+<dt>Memtest86+</dt>
+<dd>
+<ul>
+<li><a href="http://www.memtest.org/#downiso">Memtest86+ - Advanced Memory Diagnostic Tool</a>
+	<ul>
+	<li>【Pre-Compiled Bootable Binary】をダウンロードして展開、ファイル名を <strong class="ms">memtest</strong> にリネーム。</li>
+	</ul>
+</li>
+</ul>
+<p class="small">※旧バージョンは若干サイズが小さいです。</p>
+</dd>
+</dl>
+
+
+<h2><a href="#copy" name="copy">追加コピー</a> <kbd class="ak">7</kbd></h2>
+
+<p>（GRUB for DOSの）FDへファイルをコピーしませう。</p>
+<pre class="pink">
+A:.
+|   autoexec.bat
+|   boot.ini
+|   bootfont.bin
+|   command.com
+|   config.sys
+|   edit.exe
+|   gpxe_all.krn
+|   grldr
+|   himem.exe
+|   kernel.sys
+|   keyb.exe
+|   keyboard.sys
+|   keybrd2.sys
+|   memtest
+|   menu.lst
+|   more.exe
+|   NTDETECT.COM
+|   ntldr
+|   plpbt.bin
+|
+\---grub ディレクトリ  <em class="red">* 必要ならここから下も *</em>
+        berry.conf
+        bgrescue.conf
+        insert.conf
+        insertfd.conf
+        knoppix.conf
+        knoppix3.conf
+        knoppixs.conf
+        puppy.conf
+        slax.conf
+        sysres.conf
+</pre>
+
+<ul>
+<li>【私的】設定ファイル
+	<ul>
+	<li><a href="../archives/grub/fd_hd_menu.lst">fd_hd_menu.lst</a>
+	<ul>
+	<li>※ <code>menu.lst</code> にリネームする</li>
+	</ul>
+</li>
+	<li><a href="../archives/misc/grubfd/boot.ini">boot.ini</a></li>
+	<li><a href="../archives/misc/grubfd/config.sys">config.sys</a></li>
+	<li><a href="../archives/misc/grubfd/autoexec.bat">autoexec.bat</a></li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt>上記でダウンロードしたファイルをFDへコピー</dt>
+<dd>
+<ul>
+<li>gPXE version git - <code>gpxe_all.krn</code></li>
+<li>PLoP Boot Manager - <code>plpbt.bin</code></li>
+<li>Memtest86+ - <code>memtest</code></li>
+</ul>
+</dd>
+
+<dt>Windows(XP,2000)のブート関連ファイル</dt>
+<dd>
+<p>通常はCドライブのルートにある。XP SP2のntldrで2000のブートも可能。</p>
+<ul>
+<li><strong class="ms">bootfont.bin</strong></li>
+<li><strong class="ms">NTDETECT.COM</strong></li>
+<li><strong class="ms">ntldr</strong></li>
+<li><strong class="ms">boot.ini</strong> のサンプル
+	<ul>
+	<li><a href="../archives/misc/grubfd/boot.ini">boot.ini</a></li>
+	</ul>
+</li>
+</ul>
+
+<pre>
+echo f| xcopy C:\ntldr A:\ntldr /h/r/y
+xcopy C:\NTDETECT.COM A:\ /h/r/y
+xcopy C:\bootfont.bin A:\ /h/r/y
+xcopy C:\boot.ini A:\ /h/r/y
+attrib -s -h -r A:\boot.ini
+</pre>
+<p class="small">※ boot.iniは上記のサンプルの方がオススメ</p>
+
+<dl class="pink small">
+<dt>サービスパックから取り出す場合は？</dt>
+<dd>
+<p><code>ntldr</code>,<code>ntdetect.com</code>は<a href="http://www.microsoft.com/downloads/details.aspx?FamilyId=5B33B5A8-5E76-401F-BE08-1E1555D4F3D4&#038;displaylang=ja">Windows XP Service Pack 3 のアップデートプログラム</a>を展開して取り出すことも可能。<code>bootfont.bin</code>はありませんが（※セットアップ起動ディスクの1枚目に入ってます）選択画面が英語になるだけで使用はできます。</p>
+
+<ul>
+<li>（コマンド プロンプトから）D:\tmp に<em>すべて展開</em>する例（※<code>/x</code>オプション）</li>
+</ul>
+<pre>
+WindowsXP-KB936929-SP3-x86-JPN.exe /x:D:\tmp
+</pre>
+<p>※ <a href="http://sevenzip.sourceforge.jp/">7-Zip</a> をインストールしておく方がいいかも。<a href="http://sevenzip.sourceforge.jp/">7-Zip</a> で開けば<em>必要なファイルのみ抽出</em>できます。</p>
+</dd>
+</dl>
+</dd>
+
+<dt>FreeDOSのファイル</dt>
+<dd>
+<ul>
+<li><strong class="ms">command.com</strong></li>
+<li><strong class="ms">edit.exe</strong></li>
+<li><strong class="ms">himem.exe</strong></li>
+<li><strong class="ms">kernel.sys</strong></li>
+<li><strong class="ms">keyb.exe</strong></li>
+<li><strong class="ms">keyboard.sys</strong></li>
+<li><strong class="ms">keybrd2.sys</strong></li>
+<li><strong class="ms">more.exe</strong></li>
+</ul>
+<p>FDに空きがあるなら、fdisk.exe, xcopy.exe sys.com なんかも。</p>
+</dd>
+</dl>
+
+
+<h2><a href="#screenshot" name="screenshot">スクリーンショット</a> <kbd class="ak">8</kbd></h2>
+
+<p class="pink">※ 画像の内容が古いです。menu.lst の内容と違いがあります。すみません。</p>
+
+<dl class="pink">
+<dt>【注意】【私的】menu.lst使用時のキーマップ</dt>
+<dd>
+<div class="pc">
+<table summary="【私的】menu.lst使用時のキーマップ">
+<caption>【私的】menu.lst のキーマップ</caption>
+<tr>
+<td><strong class="ms"><code><span lang="en" class="backslash">&#92;</span></code></strong></td>
+<td>バックスラッシュ</td>
+<td><kbd>半角</kbd></td>
+</tr>
+<tr>
+<td><strong class="ms"><code>|</code></strong></td>
+<td>バーチカル・バー</td>
+<td><kbd>Shift</kbd>-<kbd>半角</kbd></td>
+</tr>
+<tr>
+<td><strong class="ms"><code>_</code></strong></td>
+<td>アンダースコア</td>
+<td><kbd>Shift</kbd>-<kbd>0</kbd></td>
+</tr>
+</table>
+</div>
+</dd>
+</dl>
+
+<p>※HD上のファイルが読み込まれた場合は、<kbd>c</kbd>キーでコマンドモードから <code>configfile (fd0)/menu.lst</code> と入力。</p>
+
+<p>「私的」なのでごちゃごちゃすぎだったりします。</p>
+
+<p class="overflow2"><img src="./images/grub_fd/grub4dos1.png" alt="GRUBメニュー画面1" width="648" height="360"></p>
+
+<ul>
+<li><code>configfile /boot/grub/menu.lst</code>
+	<ul>
+	<li><strong>インストール済み Linux の GRUB <code>menu.lst</code> を表示</strong></li>
+	</ul>
+</li>
+<li><code>Network Boot   === gPXE kernel</code>
+	<ul>
+	<li>ネットワークブート</li>
+	</ul>
+</li>
+<li><del><code>Windows PE 2.0 (from /recovery.iso)</code></del></li>
+<li><code>tools WinPE == Windows PE                   (from WinPEx86.iso)</code>
+	<ul>
+	<li>HD上の Windows PE isoイメージからブート（※ ファイル名は <strong class="ms">WinPEx86.iso</strong>）</li>
+	</ul>
+</li>
+<li><del><code>Windows PE 2.0 (chainloader /bootmgr)</code></del></li>
+<li><code>tools WinPE == Windows PE / RE              (chainloader /bootmgr)</code>
+	<ul>
+	<li>HD上の Windows PE bootmgr をチェインロード</li>
+	</ul>
+</li>
+<li><code>load FD NTLDR (Windows XP / 2000)</code>
+	<ul>
+	<li>FD内の <strong class="ms">ntldr</strong> をロード</li>
+	</ul>
+</li>
+<li><code>find and load NTLDR of Windows NT/2K/XP</code>
+	<ul>
+	<li>HD上の <strong class="ms">ntldr</strong> を検索してロード</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><code>FreeDOS   ===  from FD</code>
+	<ul>
+	<li>FDからFreeDOSをブート</li>
+	</ul>
+</li>
+</ul>
+
+
+
+<p class="overflow2"><img src="./images/grub_fd/grub4dos2.png" alt="GRUBメニュー画面2" width="648" height="360"></p>
+<ul>
+<li><code>chainload -</code>
+	<ul>
+	<li>（※BIOSで認識している）CD,HD のMBR/ブートセクタをチェインロード</li>
+	</ul>
+</li>
+<li><code>map (hd0) (hd1) -(fd0)/menu.lst</code>
+	<ul>
+	<li>HD順序を入れ替える（※ 第2HDから Windows が起動できない場合とか）</li>
+	</ul>
+</li>
+</ul>
+
+
+
+
+
+<p class="overflow2"><img src="./images/grub_fd/grub4dos3.png" alt="GRUBメニュー画面3" width="648" height="360"></p>
+<ul>
+<li><del><code>boot from HDD  === </code></del></li>
+<li><code>Linux Live ==</code>
+	<ul>
+	<li>HD上にコピーした Linux LiveCD のファイルから起動（※後述）</li>
+	</ul>
+</li>
+</ul>
+
+
+
+
+<dl>
+<dt>load FD NTLDR (Windows XP)</dt>
+<dd>
+<p><strong>Windows XP/2000 緊急起動ディスク</strong>として。</p>
+<p>FD内の <strong class="ms">ntldr</strong> をロードして Windows XP/2000 を起動。<strong class="ms">boot.ini</strong> はFD内のもの。</p>
+
+<p class="overflow2"><img src="./images/grub_fd/boot_ini1.png" alt="Windows ntldr ブート画面1" width="576" height="359"></p>
+
+<p><kbd>F8</kbd>キー押しで「拡張オプションメニュー」表示。「セーフモードとコマンドプロンプト」からタスクバーなどを出すには“explorer”を入力。</p>
+
+
+<p class="overflow2"><img src="./images/grub_fd/boot_ini2.png" alt="Windows ntldr ブート画面1" width="576" height="360"></p>
+
+</dd>
+
+<dt>load FD FreeDOS</dt>
+<dd>
+<p>FD内のファイル (<strong class="ms">kernel.sys</strong>) から FreeDOS 起動。</p>
+<p class="overflow2"><img src="./images/grub_fd/freedos.png" alt="FreeDOS起動画面" width="510" height="190"></p>
+
+</dd>
+
+
+<dt>PLoP Boot Manager</dt>
+<dd>
+<p class="overflow2"><img src="./images/fdboot_liveusb4/plpbt.png" alt="PLoP Boot Manager 起動画面" width="540" height="300"></p>
+
+</dd>
+
+<dt>ネットワークブート</dt>
+<dd>
+<p class="overflow2"><img src="./images/fdboot_liveusb4/gpxe.png" alt="" width="540" height="350"></p>
+
+</dd>
+
+<dt>find and load NTLDR of Windows NT/2K/XP</dt>
+<dd>
+<p>HD上の <strong class="ms">ntldr</strong> を検索してロード。<strong class="ms">boot.ini</strong> はHD上のもの。</p>
+
+</dd>
+
+<dt>find and load CMLDR of Windows NT/2K/XP</dt>
+<dd>
+<p>HD上にインストールされた回復コンソールの起動。</p>
+
+</dd>
+</dl>
+
+<p>などなど...</p>
+
+
+<h2><a href="#config" name="config">設定ファイル</a> <kbd class="ak">9</kbd></h2>
+
+<dl>
+<dt>menu.lst</dt>
+<dd>
+<p>こんなかんじで</p>
+<ul>
+<li>【私的】menu.lst
+	<ul>
+	<li><a href="../archives/grub/fd_hd_menu.lst">fd_hd_menu.lst</a></li>
+	</ul>
+</li>
+</ul>
+<p class="small">FDにコピーする際は、<code>menu.lst</code> にリネームするべし</p>
+</dd>
+
+<dt>boot.ini</dt>
+<dd>
+<p>10行しか書けないようなのでこんなかんじでいいかな。</p>
+<ul>
+<li>【私的】boot.ini
+	<ul>
+	<li><a href="../archives/misc/grubfd/boot.ini">boot.ini</a></li>
+	</ul>
+</li>
+</ul>
+<div class="small">
+<pre class="scl">
+[boot loader]
+timeout=100
+default=multi(0)disk(0)rdisk(0)partition(1)\WINDOWS
+[operating systems]
+multi(0)disk(0)rdisk(0)partition(1)\WINDOWS="XP SP3 from Partition 1" /fastdetect /NoExecute=OptIn
+multi(0)disk(0)rdisk(0)partition(2)\WINDOWS="XP SP3 from Partition 2" /fastdetect /NoExecute=OptIn
+multi(0)disk(0)rdisk(0)partition(3)\WINDOWS="XP SP3 from Partition 3" /fastdetect /NoExecute=OptIn
+multi(0)disk(0)rdisk(1)partition(1)\WINDOWS="XP SP3 from disk2 Partition 1" /fastdetect /NoExecute=OptIn
+multi(0)disk(0)rdisk(0)partition(1)\WINNT="2000 pro from Partition 1" /fastdetect
+multi(0)disk(0)rdisk(0)partition(2)\WINNT="2000 pro from Partition 2" /fastdetect
+multi(0)disk(0)rdisk(0)partition(3)\WINNT="2000 pro from Partition 3" /fastdetect
+multi(0)disk(0)rdisk(1)partition(1)\WINNT="2000 pro from disk2 Partition 1" /fastdetect
+</pre>
+</div>
+</dd>
+
+<dt>FreeDOS</dt>
+<dd>
+<p>こんなかんじでいいかな。</p>
+<ul>
+<li>【私的】config.sys
+	<ul>
+	<li><a href="../archives/misc/grubfd/config.sys">config.sys</a></li>
+	</ul>
+</li>
+</ul>
+<div class="small">
+<pre>
+menucolor=7,0
+menudefault=0,100
+menu
+menu FreeDOS
+menu
+menu 0 - Clean boot
+menu 1 - load HYMEM.EXE
+menu
+
+0?shell=command.com command.com /P
+1?DEVICE=A:\HIMEM.EXE
+1?DOSDATA=UMB
+1?DOS=HIGH,UMB
+1?FILES=20
+1?BUFFERS=20
+1?LASTDRIVE=Z
+</pre>
+</div>
+
+<ul>
+<li>【私的】autoexec.bat
+	<ul>
+	<li><a href="../archives/misc/grubfd/autoexec.bat">autoexec.bat</a></li>
+	</ul>
+</li>
+</ul>
+<div class="small">
+<pre>
+@ECHO OFF
+SET PATH=A:\
+A:\KEYB JP
+</pre>
+</div>
+</dd>
+</dl>
+
+
+<h2><a href="#hd_livecd" name="hd_livecd">HDにコピーしたLinux LiveCDのブート</a></h2>
+
+<p>タイトルそのまんまですが、このGRUB for DOSはNTFSも読めるので使える場面があるかもしれないということで。</p>
+
+<p class="overflow2"><img src="./images/grub_fd/grub4dos4.png" alt="GRUBメニュー画面4" width="648" height="360"></p>
+
+
+<dl>
+<dt>見本（？）ファイル</dt>
+<dd>
+<ul>
+<li><a href="../archives/grub/">Index of /palm84/archives/grub</a></li>
+</ul>
+
+<p>以下はFDに <strong>grub ディレクトリを作成</strong>、コピーして使用</p>
+<ul>
+<li><a href="../archives/grub/berry.conf">berry.conf</a>（Berry Linux 0.90用）</li>
+<li><del><a href="../archives/grub/insert.conf">insert.conf</a>（INSERT+ 1.2.18 用）</del></li>
+<li><a href="../archives/grub/knoppix3.conf">knoppix3.conf</a>（Knoppix 5.3.1CD 産総研版用）</li>
+<li><a href="../archives/grub/knoppixs.conf">knoppixs.conf</a>（Knoppix 5.1.1CD 産総研版用）</li>
+<li><a href="../archives/grub/knoppix.conf">knoppix.conf</a>（Knoppix 5.1.1/CD高速起動版 ライブＣＤの部屋さん版用）</li>
+<li><a href="../archives/grub/puppy.conf">puppy.conf</a>（Puppy Linux 日本語版用）</li>
+<li><a href="../archives/grub/slax.conf">slax.conf</a>（slax-ja-5.1.8.1-3.iso 用）</li>
+<li><a href="../archives/grub/sysres.conf">sysres.conf</a>（systemrescuecd-x86-1.0.4, 1.1.x 用）</li>
+</ul>
+
+<p class="small pink">※ 私が試した限りでは、NTFS上のINSERT+ 1.2.18 は駄目（※所謂「シェルに落ちる」）でした。他はNTFS上のファイルから起動できましたが、FAT32, ext3 の方が確実かもしれません。</p>
+
+<p>※ BG-Rescue Linux 0.9.1 ならHDからではなく、+FD2枚で起動できます。</p>
+<ul>
+<li><a href="../archives/grub/bgrescue.conf">bgrescue.conf</a>
+	<ul>
+	<li><strong class="ms">vmlinuz</strong> , <strong class="ms">initrd.img</strong> をFDへコピー		</ul>
+</li>
+</ul>
+
+</dd>
+</dl>
+
+<p>CD内のファイルをパーティション直下ではなくサブディレクトリに保存する場合は下記のディレクトリ名にしておけばメニューから選択できます。</p>
+<ul>
+<li>Berry Linux 0.90 - <code>/BERRY</code></li>
+<li>Knoppix 5.1.1CD, 5.3.1CD - <code>/KNOPPIX</code></li>
+<li>Puppy Linux 日本語版 - <code>/puppy</code></li>
+<li>slax-ja-5.1.8.1-3 - <code>/slax</code></li>
+<li>systemrescuecd-x86-1.0.4 - <code>/sysres10</code></li>
+</ul>
+
+
+<h2><a href="#link" name="link">参考リンク</a></h2>
+
+<ul>
+<li>イメージ作成・書き込みツール
+	<ul class="nest">
+	<li><a href="http://www.chrysocome.net/rawwrite">RawWrite for Windows - chrysocome.net</a></li>
+	</ul>
+</li>
+<li>仮想FDドライブ - マウント、イメージの展開
+	<ul class="nest">
+	<li><a href="http://sourceforge.jp/projects/sfnet_vfd/">Virtual Floppy Drive</a></li>
+	</ul>
+</li>
+<li>FDイメージの展開
+	<ul>
+	<li><a href="http://www.legroom.net/software/uniextract">Universal Extractor | LegRoom.net</a>(UniExtract Binary Archive)</li>
+	</ul>
+</li>
+</ul>
+
+
+
+<dl>
+<dt>GRUB for DOS</dt>
+<dd>
+<ul>
+<li><a href="http://sourceforge.net/projects/grub4dos/">GRUB4DOS and WINGRUB | Get GRUB4DOS and WINGRUB at SourceForge.net</a></li>
+<li><a href="http://grub4dos.sourceforge.net/wiki/index.php/Main_Page">Main Page - Grub4Dos Wiki</a>
+	<ul>
+	<li><a href="http://grub4dos.sourceforge.net/wiki/index.php/Grub4dos_tutorial">Grub4dos tutorial - Grub4Dos Wiki</a></li>
+	</ul>
+</li>
+<li><a href="http://diddy.boot-land.net/grub4dos/Grub4dos.htm">Grub4dos Guide - Contents</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="./grub4dos.html">GRUB for DOS めも</a></li>
+</ul>
+</dd>
+
+<dt>FreeDOS</dt>
+<dd>
+<ul>
+<li><a href="http://www.freedos.org/">FreeDOS | The FreeDOS Project</a>
+	<ul>
+	<li><a href="http://sourceforge.net/apps/mediawiki/freedos/index.php?title=Main_Page">FreeDOS Wiki</a></li>
+	</ul>
+</li>
+<li><a href="http://www.freedos.org/freecom/cmd.html">Internal Commands of FreeCOM</a></li>
+<li><a href="http://www.finnix.org/Balder">Balder - Finnix</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="./dosdisk.html#freedos">FreeDOS 1.0 - 私的「DOS起動ディスク」めも（未整理）</a></li>
+</ul>
+</dd>
+
+
+<dt>ネットワークブート</dt>
+<dd>
+<ul>
+<li><a href="http://etherboot.org/wiki/index.php">Etherboot/gPXE Wiki</a></li>
+<li><a href="http://rom-o-matic.net/">ROM-o-matic.net</a></li>
+<li class="small"><a href="http://buxus.s31.xrea.com/pukiwiki/pukiwiki.php?knoppix-terminalserver#content_1_3">クライアントPCのNICに適合した.lzdskファイルを探すには - knoppix-terminalserver - Knoppix Temporary Directory</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://d.hatena.ne.jp/palm84/20070422/1177208004">PXEネットワークブートについてのめも</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20070403/1175609650">WindowsでPXEネットワークブート用サーバの設定 - TFTPD32</a></li>
+</ul>
+</dd>
+
+
+<dt>PLoP Boot Manager</dt>
+<dd>
+<ul>
+<li><a href="http://www.plop.at/en/bootmanager.html">PLoP - Bootmanager</a>
+	<ul class="small">
+	<li><a href="http://www.plop.at/en/bootmanagerdl.html">PLoP Boot Manager Downloads</a></li>
+	<li><a href="http://www.plop.at/en/bootmngrusblog.html">PLoP - Bootmanager Status</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul class="small">
+<li><a href="http://d.hatena.ne.jp/palm84/20080816/1218896213">PLoP Boot Manager（USBブート非対応PC用起動ディスク）</a></li>
+</ul>
+</dd>
+
+
+<dt>Windows PE (2.0)</dt>
+<dd>
+<ul>
+<li><a href="http://www.microsoft.com/downloads/details.aspx?displaylang=ja&#038;FamilyID=c7d4bc6d-15f3-4284-9123-679830d629f2">ダウンロードの詳細 : Windows AIK</a> (PE 2.0)</li>
+<li><a href="http://technet.microsoft.com/ja-jp/library/cc748933(WS.10).aspx">Windows Automated Installation Kit (Windows AIK)</a></li>
+<li><a href="http://technet.microsoft.com/ja-jp/windows/aa905120.aspx">Windows PE 2.0 for Windows Vista の概要</a></li>
+</ul>
+
+<ul>
+<li><a href="http://uiuicy.cs.land.to/winpe_index.html">WinPE (Windows Preinstallation Environment) について</a></li>
+</ul>
+
+
+<ul class="small">
+<li><a href="./winpe.html">Windows PE 2.0 めも</a></li>
+</ul>
+</dd>
+
+
+<dt>Linux LiveCD</dt>
+<dd>
+<ul>
+<li><a href="http://www.rcis.aist.go.jp/project/knoppix/">KNOPPIX Japanese edition</a></li>
+<li><a href="http://simosnet.com/livecdroom/index.html">ライブCDの部屋</a></li>
+<li><a href="http://hatochan.dyndns.org/slax-ja/index.php?slax-ja">slax-ja - PukiWiki</a></li>
+<li><a href="http://www.sysresccd.org/Main_Page">Main Page - SystemRescueCd</a></li>
+<li><a href="http://yui.mine.nu/berry/berry.php">Berry Linux - Bootable CD Linux &#060;Yui's Laboratory&#062;</a></li>
+<li><a href="http://openlab.jp/puppylinux/">Puppy Linux 日本語版</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="./livecd.html">私的 Linux LiveCDめも</a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+</div>
+</div>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+<address>Written by yassy</address>
+
+<ul class="toTop-nav">
+<li><a href="javascript:void(0);" onclick="history.back();return false;">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+</body>
+
+</html>

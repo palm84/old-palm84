@@ -1,0 +1,896 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta http-equiv="Content-Language" content="ja">
+<meta name="GENERATOR" content="EdLeaf Version 1.02">
+<link rel="index" href="http://www10.plala.or.jp/palm84/index.html">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>私的 Excel VBAめも＠Palm84</title>
+<style type="text/css">
+<!--
+td { 
+	border-right:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+}
+
+table.book2 {
+	border-top:1px solid #ccc;
+	border-left:1px solid #ccc;
+	margin:0 2em;
+	font-size:90%;
+}
+
+/*.main ul,.main ol,pre {
+	font-size: 0.8em;
+}
+
+.main ul ul, .main ul ol {
+	font-size: 1em;
+}
+*/
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+</head>
+
+
+<body>
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+
+<script type="text/javascript">
+<!--
+setTimeout("link()", 0);
+function link(){
+location.href='https://www.palm84.com/entry/excel_vba';
+}
+-->
+</script>
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>移行作業中です...</ins></dt>
+<dd>
+<p>はてなブログの該当ページへ<strong>リダイレクトします</strong>。お手数をおかけします。ご容赦ください。</p>
+</dd>
+</dl>
+
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" accesskey="z" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd> [<a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,h1,h2,h3,h4,h5,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span,#blog-title,.index,.white,.palmst,pre{color:white!important;background-color:#333!important;text-shadow:none!important;}code{color:#333!important;text-shadow:none!important;}a:link{color:orange!important;text-shadow:none!important;text-decoration:underline!important;}a:visited{color:sienna!important;text-shadow:none!important;text-decoration:underline!important;}a:hover{color:brown!important;background-color:white!important;text-decoration:none!important;}';head[0].appendChild(style);})();">反転</a> <a href="javascript:(function(){var head=document.getElementsByTagName('head');var style=head[0].lastChild;if (style.nodeName.toLowerCase() == 'style'){head[0].removeChild(style);}else{alert('追加したstyle要素はないですYO');}})();">戻す</a>] <span class="font_change">* font-change * <a href="javascript:void(document.body.style.fontFamily='inherit')" title="inherit">inherit</a> <a href="javascript:void(document.body.style.fontFamily='sans-serif')" title="Sans-serif">Ss</a> <a href="javascript:void(document.body.style.fontFamily='serif')" title="Serif">Sf</a> <a href="javascript:void(document.body.style.fontFamily='\'メイリオ\'')" title="メイリオ">メ</a> <a href="javascript:void(document.body.style.fontFamily='\'游ゴシック\',\'Yu Gothic\',YuGothic')" title="游ゴシック">游</a> <a href="javascript:void(document.body.style.fontFamily='\'ＭＳ Ｐゴシック\'')" title="ＭＳ Ｐゴシック">MS</a> <a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Regular\',\'源ノ角ゴシック JP Regular\',\'Noto Sans Japanese Regular\',\'Noto Sans CJK JP Regular\',\'源ノ角ゴシック\',\'源ノ角ゴシック JP\',\'Noto Sans Japanese\',\'Noto Sans CJK JP\'')" title="源ノ角ゴシック / Sonrce Han Sans">源</a> <a href="javascript:void(document.body.style.fontSize='12px')" title="12px">12</a>
+ <a href="javascript:void(document.body.style.fontSize='14px')" title="14px">14</a>
+ <a href="javascript:void(document.body.style.fontSize='16px')" title="16px">16</a> <a href="javascript:void(document.body.removeAttribute('style'));" title="body style 削除">戻す</a> *</span>
+</div>
+
+
+<h1><span class="tokai1"><a href="./excel_vba.html">私的 Excel VBAめも</a></span></h1>
+
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+
+<ul>
+<li><a href="#link">参考リンク</a> <kbd class="ak">3</kbd></li>
+<li><a href="#object">参照（オブジェクト）</a> <kbd class="ak">4</kbd>
+	<ul class="nest small">
+	<li><a href="#workbook">ワークブック</a></li>
+	<li><a href="#worksheet">ワークシート</a></li>
+	<li><a href="#cell">セル</a></li>
+	</ul>
+</li>
+<li><a href="#property">プロパティ</a> <kbd class="ak">5</kbd>
+	<ul class="nest small">
+	<li><a href="#cell_property">セル</a></li>
+	<li><a href="#rc">列 / 行</a></li>
+	<li><a href="#etc">その他</a></li>
+	</ul>
+</li>
+<li><a href="#method">メソッド</a> <kbd class="ak">6</kbd>
+	<ul class="nest small">
+	<li><a href="#pastspecial">形式を選択して貼り付け</a></li>
+	<li><a href="#autofit">列 / 行 の最適化</a></li>
+	<li><a href="#worksheets">ワークシートの扱い</a></li>
+	</ul>
+</li>
+<li><a href="#control">プログラム制御文</a> <kbd class="ak">7</kbd></li>
+<li><a href="#macro">“ミニ”マクロ</a> <kbd class="ak">8</kbd></li>
+<li><a href="#fx">ワークシート関数</a> <kbd class="ak">9</kbd></li>
+</ul>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+
+
+
+
+<div class="hateb">
+<script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://www10.plala.or.jp/palm84/";
+Hatena.BookmarkWidget.title = "はてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+
+<script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://d.hatena.ne.jp/palm84/";
+Hatena.BookmarkWidget.title = "某所のはてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+</div>
+
+</div>
+</div>
+
+
+<div class="main">
+
+<p><script src="http://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+
+<a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/excel_vba.html"><img src="http://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/excel_vba.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a>
+
+</p>
+
+<p class="small">2007.5.30 作成</p>
+
+<p>むちゃくちゃ初歩的なことばっかです。ぼちぽちほちと更新して行きます...。</p>
+<h2><a href="#link" accesskey="3"><span class="ms">■</span></a> <a name="link">参考リンク</a> <kbd class="ak">3</kbd></h2>
+
+<p class="small">いっぱい勉強させて頂きましたー。ありがとうございます。</p>
+<ul>
+<li><a href="http://www.moug.net/tech/exvba/">Excel VBA　モーグ即効テクニック集</a></li>
+<li><a href="http://www.moug.net/skillup/nksw/nksw01-01.htm">VBAestに学べ　ExcelVBA上級テクニック　モーグスキルアップ講座</a></li>
+<li><a href="http://www.relief.jp/itnote/archives/cat_62.php">Excel エクセルの使い方-マクロ/VBA</a><span class="small"> - <a href="http://www.relief.jp/itnote/">インストラクターのネタ帳</a></span></li>
+<li><a href="http://pc.nikkeibp.co.jp/pc/column/vba/index.html">やさしく学ぶExcelVBA：日経パソコン オンライン</a></li>
+</ul>
+
+
+<ul class="small">
+<li><a href="http://www.officetanaka.net/index.stm">Office TANAKA - トップページ</a></li>
+<li><a href="http://t_shun.at.infoseek.co.jp/My_Page/Excel-VBA/vba_menu.htm">ExcelVBAメニュー</a> - <a href="http://t_shun.at.infoseek.co.jp/index.html">Shun's Page</a></li>
+<li><a href="http://www.sigoto.co.jp/excel/">Ｅｘｃｅｌ全開ＶＢＡ</a></li>
+<li><a href="http://www.asahi-net.or.jp/~ef2o-inue/top01.html">☆ Excelでお仕事！(Excel全般の解説サイト) ☆</a></li>
+<li><a href="http://excelvba.pc-users.net/">Excel VBA 入門講座</a></li>
+<li><a href="http://634.ayumu-baby.com/vba/index.html">VBA - エクセルマクロめも。</a> - <a href="http://634.ayumu-baby.com/">634 - めざせへなちょこ</a></li>
+<li><a href="http://www.tsucchy.com/Excel/index_e.html">Excel VBA入門</a></li>
+<li><a href="http://www.sanynet.ne.jp/~awa/excelvba/index.html">★ Let's Excel VBA ★</a></li>
+<li><a href="http://www.eurus.dti.ne.jp/~yoneyama/Excel/vba/index.html">Excel(エクセル)VBAメモ：目次</a> - <a href="http://www.eurus.dti.ne.jp/~yoneyama/">よねさんのWordとExcelの小部屋</a></li>
+<li><a href="http://www.big.or.jp/~seto/vbaref/contents.htm">Excel VBAを使い始めた人から</a> - <a href="http://www.big.or.jp/~seto/index.htm">SETO HOME</a></li>
+<li><a href="http://homepage2.nifty.com/mako-chan/excel/excel0.htm">エクセル講座目次</a> - <a href="http://homepage2.nifty.com/mako-chan/mokuji.htm">ゆうゆうくらぶ</a></li>
+<li><a href="http://excelfactory.net/inu.htm">犬でもわかるExcelVBA講座</a></li>
+</ul>
+
+<ul>
+<li><a href="http://pc.nikkeibp.co.jp/npc/formb/download/backnumber4/vba.html">VBA入門</a></li>
+</ul>
+
+
+<h2><a href="#object" accesskey="4"><span class="ms">■</span></a> <a name="object">参照（オブジェクト）</a> <kbd class="ak">4</kbd></h2>
+
+<h3><a href="#workbook"><span class="ms">■</span></a> <a name="workbook">ワークブック（ファイル）参照</a></h3>
+
+<p>※省略可能</p>
+<p><strong>Workbook</strong> オブジェクトは、<code>Workbooks</code> プロパティ、<code>ActiveWorkbook</code> プロパティ、<code>ThisWorkbook</code> プロパティから取得可能。</p>
+<ul>
+<li><code>Application.Workbooks</code> - Applicationオブジェクトは省略可能</li>
+<li><code>WorkBooks(&#034;Book1&#034;)</code> - ファイル名で指定</li>
+<li><code>Workbooks.Open filename:="abc.xls"</code> - abc.xls を開く</li>
+</ul>
+
+
+
+<h3><a href="#worksheet"><span class="ms">■</span></a> <a name="worksheet">ワークシート参照</a></h3>
+
+
+<p>※省略可能</p>
+<p><strong>Worksheet</strong> オブジェクトは、<code>Worksheets</code> プロパティ、<code>ActiveSheet</code> プロパティから取得可能。</p>
+
+<ul>
+<li><code>ActiveSheet</code>プロパティ - アクティブシート
+	<ul class="nest">
+	<li><code>ActiveSheet.Previous</code> - 前のシート</li>
+	<li><code>ActiveSheet.Next</code> - 後のシート</li>
+	</ul>
+</li>
+<li><code>Worksheets(&#034;Sheet1&#034;)</code> - シート名で指定</li>
+<li><code>Worksheets(1)</code> - 1枚目のワークシート</li>
+<li><code>ActiveCell.Worksheet</code></li>
+</ul>
+
+
+
+<h3><a href="#cell"><span class="ms">■</span></a> <a name="cell">セル参照</a></h3>
+
+
+<ul>
+<li><code>Selection</code>プロパティ - 選択領域（全体）
+	<ul class="nest">
+	<li><code>Selection.EntireRow</code> - 選択セルを含む行</li>
+	<li><code>Selection.EntireColumn</code> - 選択セルを含む列</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><code>ActiveCell</code>プロパティ - アクティブなセル（複数選択の場合など）
+	<ul class="nest">
+	<li><code>ActiveCell.Offset(1,0)</code> - 下</li>
+	<li><code>ActiveCell.Offset(-1,0)</code> - 上</li>
+	<li><code>ActiveCell.Offset(0,1)</code> - 右</li>
+	<li><code>ActiveCell.Offset(0,-1)</code> - 左</li>
+	<li><code>ActiveCell.EntireRow</code> - アクティブセルを含む行</li>
+	<li><code>ActiveCell.EntireColumn</code> - アクティブセルを含む列</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><code>Range</code>プロパティ - セル番地 / 行 / 列 を指定
+	<ul class="nest">
+	<li><code>Range(&#034;A1&#034;)</code> - </li>
+	<li><code>Range(&#034;A1,B5&#034;)</code> - とびとび指定（A1がアクティブ）</li>
+	<li><code>Range(&#034;A1:C5&#034;)</code> - 範囲指定</li>
+	<li><code>Range(&#034;A1&#034;, &#034;C5&#034;)</code> - 範囲指定</li>
+	<li><code>Range(&#034;A:A&#034;)</code> - 列A全体</li>
+	<li><code>Range(&#034;A:A,C:C&#034;)</code> - 列Aと列C</li>
+	<li><code>Range(&#034;20:20&#034;)</code> - 行20全体</li>
+	<li><code>Range(&#034;20:20,25:25&#034;)</code> - 行20と行25</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><code>Cells</code>プロパティ - 行/列を番号で指定
+	<ul class="nest">
+	<li><code>Cells</code> - シート全体</li>
+	<li><code>Cells(2, 1)</code> - 行/列番号を指定</li>
+	<li><code>Range(Cells(1,1),Cells(5,3))</code> - 範囲指定</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><code>Rows</code>プロパティ - 行
+	<ul class="nest">
+	<li><code>Rows(2)</code> - 行2</li>
+	<li><code>Rows(&#034;2:2&#034;)</code> - 行2</li>
+	<li><code>Rows(ActiveCell.Row)</code> - アクティブセルの行</li>
+	<li><code>Rows(&#034;2:4&#034;)</code> - 行2から行4</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><code>Columns</code>プロパティ - 列
+	<ul class="nest">
+	<li><code>Columns(2)</code> - 列B</li>
+	<li><code>Columns(&#034;A:A&#034;)</code> - 列A</li>
+	<li><code>Columns(&#034;A:B&#034;)</code> - 列Aから列B</li>
+	<li><code>Columns(ActiveCell.Column)</code> - アクティブセルの列</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><code>UsedRange</code>プロパティ - 使用済みセル領域選択
+	<ul class="nest">
+	<li><code>ActiveSheet.UsedRange.Select</code></li>
+	<li><a href="http://www.eurus.dti.ne.jp/~yoneyama/Excel/vba/vba_cell.html#usedrange">Excel(エクセル)VBAメモ：セル範囲の指定方法</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><code>CurrentRegion</code> - プロパティアクティブセル領域を選択</li>
+<li>
+	<ul class="nest">
+	<li><code>Range("A1").CurrentRegion.Select</code></li>
+	<li class="small"><a href="http://www.relief.jp/itnote/archives/001720.php">アクティブセル領域を選択する－CurrentRegionプロパティ：Excel エクセルの使い方-マクロ/VBA</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><code>SpecialCells</code>プロパティ
+	<ul class="nest">
+	<li><code>SpecialCells(xlCellTypeBlanks)</code> - 空</li>
+	<li><code>SpecialCells(xlCellTypeConstants)</code> - 定数（値）のあるセル</li>
+	<li><code>SpecialCells(xlCellTypeFormulas)</code> - 数式が含まれるセル</li>
+	<li><code>SpecialCells(xlCellTypeLastCell)</code> - 使われた最後のセル</li>
+	<li><code>SpecialCells(xlCellTypeVisible)</code> - すべての可視セル</li>
+	<li><code>SpecialCells(xlCellTypeNotes)</code> - コメントが含まれるセル</li>
+	<li><code>SpecialCells()</code> - </li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>数式のあるセルを選択</li>
+</ul>
+<pre>
+Cells.SpecialCells(xlCellTypeFormulas).Select
+</pre>
+
+<ul>
+<li>数式の結果がエラーとなっているセルを選択</li>
+</ul>
+<pre>
+Cells.SpecialCells(xlCellTypeFormulas, xlErrors).Select
+</pre>
+
+
+<h2><a href="#property" accesskey="5"><span class="ms">■</span></a> <a name="property">プロパティ / 定数</a> <kbd class="ak">5</kbd></h2>
+
+
+<p>下記のように記述</p>
+<pre>
+<var>対象</var>.<var>プロパティ</var>(.<var>プロパティ</var>) = <var>定数/値/数式</var>など
+</pre>
+<h3><a href="#cell_property"><span class="ms">■</span></a> <a name="cell_property">セルの設定</a></h3>
+
+
+<ul>
+<li><strong>入力</strong>
+	<ul class="nest">
+	<li><code>Value</code> - <strong>値</strong>（文字/数値/定数など）を入力（※省略可能）</li>
+	<li><code>Formula</code> - <strong>数式</strong>を入力</li>
+	<li><code>FormulaR1C1</code> - <strong>R1C1</strong>形式で数式を入力
+	<li><code>R[0]C[-1]</code> は <code>RC[-1]</code> と同じ</li>
+	</ul>
+</li>
+<li class="small"><a href="http://www.moug.net/tech/exvba/0050098.htm">セルに数式を入力/取得する(Formula/FormulaR1C1プロパティ) - Excel VBA モーグ即効テクニック集</a></li>
+</ul>
+
+<ul>
+<li><strong>フォント</strong> - <code>Font</code>
+	<ul class="nest">
+	<li><code>Font.Name = "MS ゴシック"</code> - フォント名</li>
+	<li><code>Font.Size = 14</code> - フォントサイズ</li>
+	<li><code>Font.ColorIndex = 3</code> - フォントカラー（赤）</li>
+	<li><code>Font.Bold = True</code> - 太字</li>
+	<li><code>Font.Italic = True</code> - 斜体</li>
+	<li><code>Font.Underline = True</code> - 下線</li>
+	<li><code>Font.Strikethrough = True</code> - 取り消し線</li>
+	<li class="small"><a href="http://www.eurus.dti.ne.jp/~yoneyama/Excel/vba/vba_font.html">Excel(エクセル)VBAメモ：セルのフォント・塗りつぶし・罫線を設定する</a></li>
+	<li class="small"><a href="http://www.big.or.jp/~seto/vbaref/vbaref4.htm">Excel VBA Reference ★文字色とセルの塗りつぶし設定★</a></li>
+	<li class="small"><a href="http://www.big.or.jp/~seto/vbaref/vbaref3.htm">Excel VBA Reference ★セルのフォント書式設定★</a></li>
+</ul>
+</li>
+</ul>
+
+<ul>
+<li><strong>表示形式</strong> - <code>NumberFormatLocal</code>
+	<ul class="nest">
+	<li><code>NumberFormatLocal = &#034;yyyy/mm/dd&#034;</code> - 日付</li>
+	<li><code>NumberFormatLocal = &#034;@&#034;</code> - 文字列</li>
+	<li><code>NumberFormat = &#034;#,##0.00&#034;</code> - 小数点以下2桁</li>
+	<li class="small"><a href="http://www.eurus.dti.ne.jp/~yoneyama/Excel/vba/vba_numberformatlocal.html#numberformat">Excel(エクセル)VBAメモ：セルの表示形式・表示位置など</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><strong>配置</strong>
+	<ul class="nest">
+	<li><code>HorizontalAlignment = xlHAlignCenter</code> - <strong>横位置</strong>を中央揃え</li>
+	<li><code>VerticalAlignment = xlVAlignTop</code> - <strong>縦位置</strong>を上詰め</li>
+	<li><code>Orientation = xlVertical</code> - <strong>文字方向</strong>を垂直に</li>
+	<li><code>WrapText = True</code> - <strong>折り返して全体を表示</strong>する</li>
+	<li><code>ShrinkToFit = True</code> - <strong>縮小して全体を表示</strong>する</li>
+	<li><code>MergeCells = True</code> - <strong>セルを結合</strong>する</li>
+	<li class="small"><a href="http://www.moug.net/tech/exvba/0110011.htm">文字の配置を設定する - Excel VBA モーグ即効テクニック集</a></li>
+	<li class="small"><a href="http://www.eurus.dti.ne.jp/~yoneyama/Excel/vba/vba_numberformatlocal.html#iti">Excel(エクセル)VBAメモ：セルの表示形式・表示位置など</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><strong>罫線</strong>
+	<ul class="nest">
+	<li><code>Borders.LineStyle = True</code> - セル四方</li>
+	<li><code>Borders.Weight = xlThick</code> - 太線を指定（セル四方）</li>
+	<li><code>Borders(xlEdgeBottom).LineStyle = xlDouble</code> - 選択セル底部に二重線</li>
+	<li class="small"><a href="http://www.eurus.dti.ne.jp/~yoneyama/Excel/vba/vba_font.html#borders">Excel(エクセル)VBAメモ：セルのフォント・塗りつぶし・罫線を設定する</a></li>
+
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><strong>塗りつぶし</strong> / <strong>パターン</strong>
+	<ul class="nest">
+	<li><code>Interior.ColorIndex = 3</code> - 赤色で塗りつぶし</li>
+	<li><code>Interior.Pattern = xlChecker</code> - チェック模様パターン</li>
+	<li class="small"><a href="http://www.eurus.dti.ne.jp/~yoneyama/Excel/vba/vba_font.html#interior">Excel(エクセル)VBAメモ：セルのフォント・塗りつぶし・罫線を設定する</a></li>
+	<li class="small"><a href="http://www.moug.net/tech/exvba/0110013.htm">パターンを設定する - Excel VBA モーグ即効テクニック集</a></li>
+	</ul>
+</li>
+</ul>
+
+
+
+<h3><a href="#rc"><span class="ms">■</span></a> <a name="rc">列 / 行 の調整</a></h3>
+
+
+<ul>
+<li><code>ColumnWidth</code> - <strong>列の幅</strong>を標準フォント文字数で設定
+	<ul class="nest">
+	<li><code>Columns(&#034;A:C&#034;).ColumnWidth = 15</code> - 列Aから列C</li>
+	<li><code>Range(&#034;A2:C5&#034;).ColumnWidth = 10</code> - A2からC5が含まれる列（= 列Aから列C）</li>
+	<li><code>Range(&#034;A2,E5&#034;).ColumnWidth = 10</code> - A2とE5が含まれる列（= 列Aと列E）</li>
+	<li><code>Selection.ColumnWidth = 20</code> - 選択領域が含まれる列</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><code>RowHeight</code> - <strong>行の高さ</strong>をポイント（1p = 0.35mm）で設定
+	<ul class="nest">
+	<li><code>Rows(&#034;3&#034;).RowHeight = 30</code> - 行3</li>
+	<li><code>Range(&#034;A2:C5&#034;).RowHeight = 30</code> - A2からC5が含まれる行（= 行2から行3）</li>
+	<li><code>Range(&#034;A2,E5&#034;).RowHeight = 30</code> - A2とE5が含まれる行（= 行2と行5）</li>
+	<li><code>Selection.RowHeight = 30</code> - 選択領域含まれる行</li>
+	</ul>
+</li>
+</ul>
+
+
+
+<h3><a href="#etc"><span class="ms">■</span></a> <a name="etc">その他</a></h3>
+
+
+<ul>
+<li><strong>カラーパレットで色を設定</strong> - <code>ColorIndex</code>
+	<ul class="nest">
+	<li><code>Interior.ColorIndex = 3</code> - セルを赤で塗りつぶし</li>
+	<li><code>Font.ColorIndex = 5</code> - セルのフォントを青に</li>
+	<li class="small"><a href="http://www.moug.net/tech/exvba/0110010.htm">カラーパレットで色を設定する(ColorIndexプロパティ) - Excel VBA モーグ即効テクニック集</a></li>
+	<li class="small"><a href="http://www.relief.jp/itnote/archives/000482.php">ColorIndexプロパティ値一覧：Excel エクセルの使い方-マクロ/VBA</a></li>
+	</ul>
+</li>
+</ul>
+
+
+<ul>
+<li><code>Name</code> - 対象の名前を指定
+	<ul class="nest">
+	<li><code>対象.name = 値</code> - 領域（テーブル）の名前定義も可能</li>
+	</ul>
+</li>
+<li><code>Count</code> - セル（行/列）を数える
+	<ul class="nest">
+	<li><code>Range(&#034;A1:B5&#034;).Count</code> - 選択セルの数</li>
+	<li><code>Range(&#034;A1:B5&#034;).Rows.Count</code> - 選択行の数</li>
+	<li><code>Range(&#034;A1:B5&#034;).Columns.Count</code> - 選択列の数</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><code>対象.Row</code> - 行番号を取得</li>
+<li><code>対象.Column</code> - 列番号を取得</li>
+</ul>
+
+<ul>
+<li><code>Application.DisplayAlerts = False</code> - 警告画面を出さない</li>
+</ul>
+
+
+
+<h2><a href="#method" accesskey="6"><span class="ms">■</span></a> <a name="method">メソッド</a> <kbd class="ak">6</kbd></h2>
+
+<ul>
+<li><a href="http://634.ayumu-baby.com/vba/vba_menu.html">634 - VBA - 命令一覧（メニュー）</a></li>
+</ul>
+
+<p>下記のように記述</p>
+<pre>
+<var>対象</var>.<var>メソッド</var>（<var>引数</var>:=<code>対象/定数</code>）
+</pre>
+
+
+<ul>
+<li><code>Activate</code> - 対象をアクティブにする</li>
+<li><code>Select</code> - 選択する</li>
+</ul>
+
+<ul>
+<li><strong>消去</strong>
+	<ul class="nest">
+	<li><code>Clear</code> - すべてクリア</li>
+	<li><code>ClearContents</code> - 値 / 数式をクリア</li>
+	<li><code>ClearFormats</code> - 書式をクリア</li>
+	</ul>
+</li>
+</ul>
+
+
+<ul>
+<li><code>Copy</code> - <strong>コピー＆貼り付け</strong>
+	<ul class="nest">
+	<li><code>Selection.Copy Destination:=Range("F10")</code> - 選択セルをF10へコピー＆貼り付け</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><code>Cut</code> - <strong>切り取り＆貼り付け</strong>
+	<ul class="nest">
+	<li><code>Selection.Cut Destination:=Range("F10")</code> - 選択セルをF10へ切り取り＆貼り付け</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><code>Paste</code> - <strong>クリップボードから貼り付け</strong>
+	<ul class="nest">
+	<li><code>ActiveSheet.Paste</code> - 選択領域へ貼り付け</li>
+	<li><code>ActiveSheet.Paste Destination:=Range(&#034;B1&#034;)</code> - 貼り付け先を指定</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><code>Application.CutCopyMode = False</code> - コピー / 切り取りモードをオフにする</li>
+</ul>
+
+<ul>
+<li><code>Insert</code> - <strong>セル（行/列）の挿入</strong>
+	<ul class="nest">
+	<li><a href="http://excelvba.pc-users.net/fol2/2_7.html">Excel VBA 入門講座 セルの挿入</a></li>
+	<li><code>Range(&#034;B2:E3&#034;).Insert</code> - B2:E3に挿入、<strong>下</strong>（行）方向にシフト（範囲は横長）</li>
+	<li><code>Range(&#034;B2:C3&#034;).Insert</code> - B2:C3に挿入、<strong>下</strong>（行）方向にシフト（範囲は正方）</li>
+	<li><code>Range(&#034;B2:C4&#034;).Insert</code> - B2:C4に挿入、<strong>右</strong>（列）方向にシフト（範囲は縦長）</li>
+	<li><code>ActiveCell.EntireRow.Insert</code> - アクティブセルのある行から1行挿入</li>
+	<li><code>Range(&#034;B2:E3&#034;).EntireRow.Insert</code> - 2行目から2行挿入</li>
+	<li><code>ActiveCell.EntireColumn.Insert</code> - アクティブセルのある列から1列挿入</li>
+	<li><code>Range(&#034;B2:E3&#034;).EntireColumn.Insert</code> - 列Bから4列挿入</li>
+	<li><code>Range(&#034;B2&#034;).Insert Shift:=xlShiftToRight</code> - シフト方向を右に指定</li>
+	<li><code>Range(&#034;B2&#034;).Insert Shift:=xlShiftDown </code> - シフト方向を下に指定</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><code>Delete</code> - <strong>セル（行/列）の削除</strong>
+	<ul class="nest">
+	<li><a href="http://excelvba.pc-users.net/fol2/2_5.html">Excel VBA 入門講座 セルの削除</a></li>
+	<li><code>Range(&#034;B1:D4&#034;).Delete</code> - <strong>左</strong>（列）方向にシフト（（範囲横長）</li>
+	<li><code>Range(&#034;C3:D4&#034;).Delete</code> - <strong>上</strong>（行）方向にシフト（範囲は正方）</li>
+	<li><code>Range(&#034;B2:C4&#034;).EntireRow.Delete</code> - <strong>上</strong>（行）方向にシフト（範囲縦長）</li>
+	<li><code>Range(&#034;C3:D5&#034;).EntireRow.Delete</code> - 行3から行5を削除</li>
+	<li><code>Range(&#034;C3:D4&#034;).EntireColumn.Delete</code> - 列Cから列Dを削除</li>
+	<li><code>Range(&#034;B2:C4&#034;).Delete Shift:=xlShiftToLeft</code> - シフト方向を<strong>左</strong>に指定</li>
+	<li><code>Range(&#034;B2&#034;).Delete.Shift:=xlShiftUp</code> - シフト方向を<strong>上</strong>に指定</li>
+	</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+<h3><a href="#pastspecial"><span class="ms">■</span></a> <a name="pastspecial">形式を選択して貼り付け</a></h3>
+
+
+<ul>
+<li><a href="http://www.moug.net/tech/exvba/0050104.htm">形式を選択して貼り付ける(PasteSpecialメソッド) - Excel VBA モーグ即効テクニック集</a></li>
+</ul>
+
+<pre>
+<var>対象</var>.PasteSpecial 引数:=定数, 引数:=真偽値, ...
+</pre>
+
+<p>※引数は省略可能</p>
+<pre class="scl">
+Selection.PasteSpecial Paste:=xlValues, Operation:=xlNone, SkipBlanks:= _
+        False, Transpose:=False
+</pre>
+
+
+<ul>
+<li>引数<code>Paste</code> - <strong>貼り付け内容</strong>
+	<ul class="nest">
+	<li><code>Paste:=xlValues</code> - 値</li>
+	<li><code>Paste:=xlPasteFormulas</code> - 数式</li>
+	<li><code>Paste:=xlPasteFormats</code> - 書式</li>
+	<li><code>Paste:=xlPasteComments</code> - コメント</li>
+	<li><code>Paste:=xlDataValidation</code> - 入力規則</li>
+	<li><code>Paste:=xlPasteAllExceptBorders</code> - 罫線を除く全て</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>引数<code>Operation</code> - <strong>演算</strong>
+	<ul class="nest">
+	<li><code>Operation:=xlNone</code> - 設定しない（既定）</li>
+	<li><code>Operation:=xlAdd</code> - 加算</li>
+	<li><code>Operation:=xlSubtract</code> - 引算</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>引数<code>SkipBlanks</code> - <strong>空白セルの処理</strong>
+	<ul class="nest">
+	<li><code>SkipBlanks:=False</code> - 空白セルとして処理する（既定）</li>
+	<li><code>SkipBlanks:=True</code> - 空白セルを無視する</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>引数<code>Transpose</code> - <strong>行列の入替</strong>
+	<ul class="nest">
+	<li><code>Transpose:=False</code> - しない（既定）</li>
+	<li><code>Transpose:=True</code> - する</li>
+	</ul>
+</li>
+</ul>
+
+
+
+
+<h3><a href="#autofit"><span class="ms">■</span></a> <a name="autofit">列 / 行 の最適化</a></h3>
+
+
+<ul>
+<li><a href="http://www.moug.net/tech/exvba/0050001.htm">セルの内容に合わせて幅/高さを設定する - Excel VBA モーグ即効テクニック集</a></li>
+</ul>
+
+<ul>
+<li><code>AutoFit</code> - 列幅をセルの内容に合わせる
+	<ul class="nest">
+	<li><code>Columns(&#034;B&#034;).AutoFit</code> - 列Bの幅を最適化</li>
+	<li><code>Range(&#034;A1:B4&#034;).Columns.AutoFit</code> - A1からB4の内容に合わせて</li>
+	<li><code>Range(&#034;A1,B4&#034;).Columns.AutoFit</code> - A1とB4の内容に合わせて</li>
+	<li><code>Selection.Columns.AutoFit</code> - 選択領域の内容に合わせて</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><code>AutoFit</code> - 行の高さをセルの内容に合わせる
+	<ul class="nest">
+	<li><code>Rows(1).AutoFit</code> - 行1の高さを最適化</li>
+	<li><code>Range(&#034;A1:B4&#034;).Rows.AutoFit</code> - A1からB4の内容に合わせて</li>
+	<li><code>Range(&#034;A1,B4&#034;).Rows.AutoFit</code> - A1とB4の内容に合わせて</li>
+	<li><code>Selection.Rows.AutoFit</code> - 選択領域の内容に合わせて</li>
+	</ul>
+</li>
+</ul>
+
+
+
+<h3><a href="#worksheets"><span class="ms">■</span></a> <a name="worksheets">ワークシートの扱い</a></h3>
+
+
+
+<ul>
+<li><a href="http://pc.nikkeibp.co.jp/article/NPC/20070222/262799/">WorksheetとWorksheetsの違いを理解する　（第14回）：日経パソコンオンライン</a></li>
+</ul>
+
+<ul>
+<li><code>Move</code> - <strong>移動</strong>
+	<ul class="nest">
+	<li><code>WorkSheets(4).Move Before:=WorkSheets(1)</code> - (4)を(1)の前に</li>
+	<li><code>WorkSheets(4).Move After:=WorkSheets(1)</code> - (4)を(1)の後ろに</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><code>Add</code> - <strong>新規シートを追加</strong>
+	<ul class="nest">
+	<li><code>WorkSheets.Add Before:=WorkSheets(1)</code> - 新規シートを(1)の前に</li>
+	<li><code>WorkSheets.Add After:=WorkSheets(1)</code> - 新規シートを(1)の後に</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><code>Worksheets(&#034;Sheet2&#034;).Copy After:=Worksheets(4)</code> - <strong>シートをコピー</strong></li>
+</ul>
+
+
+<h2><a href="#control" accesskey="7"><span class="ms">■</span></a> <a name="control">プログラム制御文</a> <kbd class="ak">7</kbd></h2>
+
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/141762/ja">[XL] Visual Basic for Applications でのループ構造の使用方法</a></li>
+</ul>
+
+<ul>
+<li><a href="http://excelvba.pc-users.net/fol5/5_1.html">Excel VBA 入門講座 変数</a></li>
+<li><a href="http://excelvba.pc-users.net/fol5/5_2.html">Excel VBA 入門講座 変数のデータ型</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.relief.jp/itnote/archives/001268.php">変数のプレフィックス一覧：Excel エクセルの使い方-マクロ/VBA</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://pc.nikkeibp.co.jp/article/NPC/20070201/260407/">If構文で条件に応じた処理を実行する（第11回）：日経パソコンオンライン</a></li>
+<li><a href="http://pc.nikkeibp.co.jp/article/NPC/20070208/261421/">変数を使ってすっきりとしたマクロを作る　（第12回）：日経パソコンオンライン</a></li>
+<li><a href="http://pc.nikkeibp.co.jp/article/NPC/20070309/264339/">繰り返し処理の基本形を覚える　（第16回）：日経パソコンオンライン</a></li>
+<li><a href="http://pc.nikkeibp.co.jp/article/NPC/20070406/267580/">条件を満たすまで処理を繰り返す　（第20回）：日経パソコンオンライン</a></li>
+</ul>
+
+
+<h2><a href="#macro" accesskey="8"><span class="ms">■</span></a> <a name="macro">“ミニ”マクロ</a> <kbd class="ak">8</kbd></h2>
+
+
+<dl class="small">
+<dt>選択領域を太線で囲む</dt>
+<dd>
+<pre>
+Sub 太線で囲む()
+    With Selection
+      .Borders.Weight = xlThick
+      .Borders(xlInsideVertical).LineStyle = xlNone
+      .Borders(xlInsideHorizontal).LineStyle = xlNone
+    End With
+End Sub
+</pre>
+</dd>
+
+<dt>列Aの一番下のセルを選択</dt>
+<dd>
+<pre>
+Sub 一番下のセルを選択()
+   Range(&#034;A65536&#034;).End(xlUp).Select
+End Sub
+</pre>
+<pre>
+Sub 一番下のセルを選択()
+   Range(&#034;A&#034; &#038; Rows.Count).End(xlUp).Select
+End Sub
+</pre>
+</dd>
+
+<dt>アクティブセルのある列の一番下のセルを選択</dt>
+<dd>
+<pre>
+Sub 一番下のセルを選択EntireColumn()
+   Selection.EntireColumn.Select             '列を選択
+   ActiveCell.Offset(65535).End(xlUp).Select '65536行からCtrl + ↑
+End Sub
+</pre>
+<pre>
+Sub 一番下のセルを選択()
+   Dim i As Long
+   Dim h As Long
+   i = Rows.Count               'シート最終行の番号
+   h = ActiveCell.Column        'アクティブセルの列番号
+   Cells(i, h).End(xlUp).Select '最終行からCtrl + ↑
+End Sub
+</pre>
+</dd>
+
+<dt>フィルハンドルをWクリック</dt>
+<dd>
+<p>例えば、A列にデータ、B1に数式入力してフィルハンドルをWクリックする時の動作風に。</p>
+<pre>
+Sub オートフィルWクリック風()
+   Selection.Copy
+   ActiveCell.Offset(0, -1).Select              '左のセルへ移動
+   Selection.End(xlDown).Select                 'Ctrl +  ↓
+   ActiveCell.Offset(0, 1).Select               '右のセルへ移動
+   Range(Selection, Selection.End(xlUp)).Select 'Ctrl+Shift+↑
+   ActiveSheet.Paste
+   Application.CutCopyMode = False
+End Sub
+</pre>
+</dd>
+
+
+<dt>選択領域内の空白セルを選択</dt>
+<dd>
+<p>値を入れてセンタリング</p>
+<pre>
+Sub 空白セル選択()
+   With Selection.SpecialCells(xlCellTypeBlanks)
+     .Value = &#034;--&#034;
+     .HorizontalAlignment = xlCenter
+   End With
+End Sub
+</pre>
+</dd>
+
+<dt>重複削除</dt>
+<dd>
+<p>キーとなる列のセルを選択して実行。新規シートに重複行を除きコピー。</p>
+<pre class="scl">
+Sub 重複削除()
+    Columns(ActiveCell.Column).AdvancedFilter Action:=xlFilterInPlace, Unique:=True
+    Selection.CurrentRegion.Select
+    Selection.Copy
+    Sheets.Add Before:=ActiveSheet
+    Selection.PasteSpecial Paste:=xlPasteColumnWidths
+    ActiveSheet.Paste
+    Application.CutCopyMode = False
+End Sub
+</pre>
+</dd>
+</dl>
+
+
+<h2><a href="#fx" accesskey="9"><span class="ms">■</span></a> <a name="fx">ワークシート関数</a> <kbd class="ak">9</kbd></h2>
+
+
+<ul>
+<li><a href="http://www.relief.jp/itnote/archives/001834.php">VBAでワークシート関数を利用する：Excel エクセルの使い方-マクロ/VBA</a></li>
+<li><a href="http://www.relief.jp/itnote/archives/001974.php">VBAで使用できるワークシート関数一覧：Excel エクセルの使い方-マクロ/VBA</a></li>
+</ul>
+
+
+
+
+</div>
+</div>
+
+<div class="navi">
+<a href="./index.html">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd>
+</div>
+
+
+<address>Written by yassy</address>
+
+
+<ul class="toTop-nav">
+<li><a href="javascript:void(0);" onclick="smoothScroll(0);return false;">↑</a></li>
+</ul>
+<script type="text/javascript">
+function smoothScroll(o){var e=window.pageYOffset,l=o>e;setTimeout(function(){l&&o>=e?(e=e+(o-e)/20+1,window.scrollTo(0,e),setTimeout(arguments.callee,10)):!l&&e>=o?(e=e-(e-o)/20-1,window.scrollTo(0,e),setTimeout(arguments.callee,10)):window.scrollTo(0,o)},10)}
+</script>
+
+</body>
+
+</html>

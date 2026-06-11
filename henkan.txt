@@ -1,0 +1,77 @@
+------------------------------------------------------------------
+「チルダがアンダーバーに変換されちゃったよ～」な時用
+バッチファイル
+------------------------------------------------------------------
+
+WINNT.EXE で Windows XP/2000 をインストールしよおもて
+Linux（DOSでもあるかな？）で、CDのI386フォルダをコピーしたら
+ファイル名のチルダが[ ~ ]アンダーバー [ _ ]に置換えされよることがあんねんや
+
+そのままセットアップすると「ファイルあれへんでぇ～」てなエラー
+出してけつかんねんでおます
+
+ってことで UTOPIA_1.WA_ とかで検索してみて出てきたら
+セットアップを開始する前に下記を実行しときなはれ
+
+
+1. コマンドをメモ帳なんかに貼り付けて保存
+2. ファイル名を henkan.bat とかに変更
+3. I386フォルダにコピーして実行
+
+-------------------------------------------
+Windows XP Servicepack 2用
+-------------------------------------------
+
+-------この下の行から---------
+copy HEADSP_1.WM_ HEADSP~1.WM_
+copy MINIPL_1.WM_ MINIPL~1.WM_
+copy UTOPIA_1.WA_ UTOPIA~1.WA_
+copy UTOPIA_2.WA_ UTOPIA~2.WA_
+copy UTOPIA_3.WA_ UTOPIA~3.WA_
+copy UTOPIA_4.WA_ UTOPIA~4.WA_
+-------この上の行まで---------
+
+
+-------------------------------------------
+Windows 2000 Servicepack 4
+-------------------------------------------
+
+-------この下の行から---------
+copy APPSER_1.CL_ APPSER~1.CL_
+copy BACHSB_1.RM_ BACHSB~1.RM_
+copy BEETHO_2.RM_ BEETHO~2.RM_
+copy CLAIRE_1.RM_ CLAIRE~1.RM_
+copy DANCEO_2.RM_ DANCEO~2.RM_
+copy FURELI_1.RM_ FURELI~1.RM_
+copy HALLOF_2.RM_ HALLOF~2.RM_
+copy ICONTE_1.CL_ ICONTE~1.CL_
+copy IENUMN_1.CL_ IENUMN~1.CL_
+copy IGETCO_1.CL_ IGETCO~1.CL_
+copy IOBJEC_1.CL_ IOBJEC~1.CL_
+copy IOBJEC_2.CL_ IOBJEC~2.CL_
+copy IOBJEC_3.CL_ IOBJEC~3.CL_
+copy ISECUR_1.CL_ ISECUR~1.CL_
+copy ISECUR_2.CL_ ISECUR~2.CL_
+copy ISECUR_3.CL_ ISECUR~3.CL_
+copy ISHARE_1.CL_ ISHARE~1.CL_
+copy ISHARE_2.CL_ ISHARE~2.CL_
+copy ISHARE_3.CL_ ISHARE~3.CL_
+copy ITRANS_1.CL_ ITRANS~1.CL_
+copy MOZART_2.RM_ MOZART~2.RM_
+copy OBJECT_1.CL_ OBJECT~1.CL_
+copy SECURI_1.CL_ SECURI~1.CL_
+copy SECURI_2.CL_ SECURI~2.CL_
+copy SECURI_3.CL_ SECURI~3.CL_
+copy SHARED_1.CL_ SHARED~1.CL_
+copy TRANSA_1.CL_ TRANSA~1.CL_
+copy UTOPIA_1.WA_ UTOPIA~1.WA_
+copy UTOPIA_2.WA_ UTOPIA~2.WA_
+copy UTOPIA_3.WA_ UTOPIA~3.WA_
+copy UTOPIA_4.WA_ UTOPIA~4.WA_
+-------この上の行まで---------
+
+
+いじょんうぇいん
+あやしい関西弁でおｋ！
+
+ｗりってｎ ｂｙ ぱうむやし

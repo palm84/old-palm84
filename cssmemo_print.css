@@ -1,0 +1,68 @@
+@charset "Shift_JIS";
+
+body {
+margin: 0;
+font-size: 100%;
+}
+
+div.navi,
+div.sidebar img,
+p.rt {
+display:none;
+}
+
+/*===== class navigation =====*/
+
+.navi {
+	display: none;
+}
+
+
+
+/*===== headings =====*/
+
+h2 {
+	page-break-before: always;
+}
+
+
+/*===== pre , blockquote =====*/
+
+pre,pre.palm-bg{
+	overflow: visible;
+}
+
+pre {
+	border: 1px solid #ccc;
+}
+
+.small pre {
+	margin: 0.5em auto;
+	padding: 1.2em 0.5em;
+}
+
+pre.scl {
+	overflow: visible;
+	white-space: pre;
+}
+
+pre.scl2 {
+	overflow: visible;
+	white-space: pre;
+	width:89%;
+	height: auto;
+}
+
+pre.scl3 {
+	overflow: visible;
+	white-space: pre;
+	width:89%;
+	height: auto;
+}
+
+pre.scl10,
+pre.scl15 {
+	overflow: visible;
+	height: auto;
+}
+

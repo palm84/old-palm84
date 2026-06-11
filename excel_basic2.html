@@ -1,0 +1,453 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<META http-equiv="Content-Style-Type" content="text/css">
+<LINK rel="start" href="http://www10.plala.or.jp/palm84/index.html">
+<LINK rel="index" href="http://www10.plala.or.jp/palm84/excel_index.html">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" type="text/css" href="basic.css">
+<link rel="stylesheet" type="text/css" href="sub.css">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="stylesheet" type="text/css" href="print.css" media="print">
+<title>Excelなんでやねん! 初級編の巻でござるよ</title>
+<style type="text/css">
+
+<!--
+h2 {
+	page-break-before: always;
+}
+
+-->
+
+</style></head>
+
+<body>
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" accesskey="z" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd> [<a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,h1,h2,h3,h4,h5,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span,#blog-title,.index,.white,.palmst,pre{color:white!important;background-color:#333!important;text-shadow:none!important;}code{color:#333!important;text-shadow:none!important;}a:link{color:orange!important;text-shadow:none!important;text-decoration:underline!important;}a:visited{color:sienna!important;text-shadow:none!important;text-decoration:underline!important;}a:hover{color:brown!important;background-color:white!important;text-decoration:none!important;}';head[0].appendChild(style);})();">反転</a> <a href="javascript:(function(){var head=document.getElementsByTagName('head');var style=head[0].lastChild;if (style.nodeName.toLowerCase() == 'style'){head[0].removeChild(style);}else{alert('追加したstyle要素はないですYO');}})();">戻す</a>] <span class="font_change">* font-change * <a href="javascript:void(document.body.style.fontFamily='inherit')" title="inherit">inherit</a> <a href="javascript:void(document.body.style.fontFamily='sans-serif')" title="Sans-serif">Ss</a> <a href="javascript:void(document.body.style.fontFamily='serif')" title="Serif">Sf</a> <a href="javascript:void(document.body.style.fontFamily='\'メイリオ\'')" title="メイリオ">メ</a> <a href="javascript:void(document.body.style.fontFamily='\'游ゴシック\',\'Yu Gothic\',YuGothic')" title="游ゴシック">游</a> <a href="javascript:void(document.body.style.fontFamily='\'ＭＳ Ｐゴシック\'')" title="ＭＳ Ｐゴシック">MS</a> <a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Regular\',\'源ノ角ゴシック JP Regular\',\'Noto Sans Japanese Regular\',\'Noto Sans CJK JP Regular\',\'源ノ角ゴシック\',\'源ノ角ゴシック JP\',\'Noto Sans Japanese\',\'Noto Sans CJK JP\'')" title="源ノ角ゴシック / Sonrce Han Sans">源</a> <a href="javascript:void(document.body.style.fontSize='12px')" title="12px">12</a>
+ <a href="javascript:void(document.body.style.fontSize='14px')" title="14px">14</a>
+ <a href="javascript:void(document.body.style.fontSize='16px')" title="16px">16</a> <a href="javascript:void(document.body.removeAttribute('style'));" title="body style 削除">戻す</a> *</span>
+</div>
+
+<h1><a href="excel_basic2.html"><span class="tokai1">Excel なんでやねん! 初級編の巻</span></a></h1>
+
+<p class="small">テクニックとも言えない思いっきり基本的な事ばかりですんであまり役に立たないかも（・・・でも結構とか妄想してみたり・・・）</p>
+
+<p class="small">画面及びメニュー等は<strong><span class="verdana">Excel 2000</span></strong>（<span class="verdana">Version9.0</span>）のものです。</p>
+
+<p class="small"><strong>'97とか2002（XP)</strong>とかですと若干の違いがあります。ご了承ください。2002（<span class="verdana">OfficeXP</span>)では2000よりかなり便利になっています。</p>
+
+<h2 style="page-break-before:auto;"><a href="#indexh2" accesskey="3"><span class="ms">■</span></a> <a name="indexh2">Excel 初級編INDEX</a> <kbd class="ak">3</kbd></h2>
+
+
+<dl>
+<dt>1. <a href="excel_cell.html" accesskey="9">セルの表示について→「セルの書式設定」とは</a> <kbd class="ak">9</kbd></dt>
+<dd>
+<p class="small">※別ページです。</p>
+
+<p>とりあえず、これは理解しておいたほうがよいかと思います。</p>
+<p class="adv">尚、ファイルを開くのにかなり時間がかかる場合などは数多くのセルに標準以外の設定がされている事が原因のことが多いです。（無駄な書式設定はなるべくクリアしておきましょう）</p>
+</dd>
+
+<dt>2. <a href="#toolbar">ツールバーのカスタマイズ</a> <kbd class="ak">4</kbd></dt>
+<dd>
+<p>よく使うコマンドボタンを常に表示させましょう。（標準ではないものも常時表示が可能なんですよね。）</p>
+<p class="adv">何度も使うコマンドなどはフローティングツールバーが便利です。【罫線】【パターン】とか</p>
+</dd>
+
+<dt>3. <a href="#paste">コピー＆貼り付けの注意点</a>【形式を選択して貼り付け】をご存知ですか? <kbd class="ak">5</kbd></dt>
+<dd>
+<p>貼り付けしたら表示が変わってしまうとか。</p>
+</dd>
+
+<dt>4. <a href="#shortcutkey">ショートカットキーで効率アップ</a> <kbd class="ak">6</kbd></dt>
+<dd>
+<p>元に戻す、コピー＆貼り付けとか。</p>
+</dd>
+
+<dt>5. <a href="#cell">セル内の編集 セルの移動</a> <kbd class="ak">7</kbd></dt>
+<dd>
+<p>セル内で改行とかセルの一発選択とか・・・</p>
+</dd>
+
+<dt>6. <a href="#sheets">同じファイルの別シートを交互に編集</a> <kbd class="ak">8</kbd></dt>
+<dd>
+<p>【新しいウィンドウを開く】【整列】を使います。</p>
+</dd>
+
+</dl>
+
+
+<div class="cl">
+</div>
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+<h2><a href="#toolbar" accesskey="4"><span class="ms">■</span></a> <a name="toolbar">ツールバーのカスタマイズ</a> <kbd class="ak">4</kbd></h2>
+<h3><a href="#buttons"><span class="ms">■</span></a> <a name="buttons">便利な（よく使う）ボタンを常に表示させましょう</a></h3>
+
+<p class="lt"><img width="372" height="315" src="./images/excel/toolbar_user.png" alt="ユーザー設定画面"></p>
+
+<p>メニューバーの【ツール】&rarr;【ユーザー設定】&rarr;【コマンド】タブ</p>
+<p>【ツールバー】の任意の位置へドラッグできます。（【メニューバー】上も可能。）</p>
+
+<p class="adv">【<strong>値の貼り付け</strong>】【<strong>書式のクリア</strong>】【<strong>整列</strong>】などの表示がオススメです。
+</p>
+
+<p class="adv">
+【ツールバー】タブでは【ツールバー】の種類の設定が可能。
+</p>
+
+<div class="cl">
+<p class="lt"><img width="509" height="428" src="./images/excel/botan_lightclick.png" alt="ボタンを右クリックした時のメニュー画面"></p>
+</div>
+
+<p>ツールバー上のボタンを右クリックするとスタイルなど設定ができます。</p>
+
+
+<div class="cl">
+</div>
+
+<h3><a href="#floatingtoolbar"><span class="ms">■</span></a> <a name="floatingtoolbar">フローティングツールバー（ツールバーの移動）</a></h3>
+
+<p class="lt"><img width="501" height="116" src="./images/excel/floating_toolbar.png" alt="ツールバーの移動"></p>
+
+<p>棒線部分をドラッグで入替や移動ができます。</p>
+
+
+<div class="cl">
+<p class="lt"><img width="279" height="220" src="./images/excel/floating_toolbar2.png" alt="フローティングツールバー"></p>
+</div>
+
+<p>シート上にドラッグすれば【フローティングツールバー】となります。</p>
+
+<div class="cl">
+<p class="lt"><img width="234" height="246" src="./images/excel/floating_keisen.png" alt="フローティングさせた罫線ボタン"></p>
+</div>
+
+<p>【罫線】【パターン】ボタンも「フローティング」できます。ボタン横の▼マークをクリック&rarr;黒い横線をドラッグ</p>
+
+
+<div class="cl">
+</div>
+<h2><a href="#paste" accesskey="5"><span class="ms">■</span></a> <a name="paste">コピー＆貼り付けの注意点</a>　【形式を選択して貼り付け】を使おう！ <kbd class="ak">5</kbd></h2>
+
+<dl>
+<dt>セルのコピー＆貼り付け</dt>
+<dd>
+<p>普通にセルを【コピー】＆【貼り付け】するとコピー元セルの【書式】（罫線・サイズなど）も含め貼り付けされます。</p>
+<p>【貼り付け】の条件を指定するには【形式を選択して貼り付け】を使います。</p>
+</dd>
+</dl>
+
+
+<div class="cl">
+</div>
+
+<h3><a href="#pastespecial"><span class="ms">■</span></a> <a name="pastespecial">【形式を選択して貼り付け】</a></h3>
+<p>メニューの【編集】から、または貼り付け先で右クリック
+<br><span class="adv">ショートカットキー・・・<kbd>Alt</kbd>＋<kbd>E</kbd>&rarr;<kbd>S</kbd></span>
+</p>
+
+<p class="lt"><img width="323" height="258" src="./images/excel/paste_keisiki.png" alt="形式を選択して貼り付け画面"></p>
+
+<p>【数式】のみ【値】のみ【書式】のみ<span class="adv">
+<br>（【書式の貼り付け】ボタンの方が便利）</span>
+<br>【コメント】のみ【入力規則】【列幅】なども指定可能です。</p>
+<p>【リンク貼り付け】（絶対参照）
+<br>また<span class="red">表の場合【行列を入れ替える】貼り付けもできるんです。</span></p>
+
+<div class="cl">
+<p class="adv">「ツールバーのカスタマイズ」でよく使うコマンドボタンを常に表示させると便利です。【値の貼り付け】など</p>
+</div>
+
+
+<dl>
+<dt>数式を消して計算結果【値】のみを残したい場合</dt>
+<dd>
+<p>該当範囲（シート全体でもいいかな）を【コピー】し、そのまま（範囲選択されたまま）【値の貼り付け】を実行します。</p>
+</dd>
+</dl>
+
+
+<div class="cl">
+</div>
+
+<h3><a href="#paste_formats"><span class="ms">■</span></a> <a name="paste_formats">【書式のコピー/貼り付け】</a>ボタン</h3>
+<p class="small">慣れるとメチャ便利なんですけど結構知らない方も多いようです。</p>
+<p>書式のみ貼り付けの（罫線、セルの色、フォントサイズなど）場合はツールバーの<br><img width="19" height="19" src="./images/excel/syosiki_botan.jpg" alt="書式のコピー/貼り付けボタン">書式のコピー/貼り付けボタンがとっても便利です。</p>
+
+<dl>
+<dt>基本的な使い方</dt>
+<dd>
+<p>元セルを選択&rarr;<img width="19" height="19" src="./images/excel/syosiki_botan.jpg" alt="書式のコピー/貼り付けボタン">ボタンをクリック&rarr;貼り付け先セルをクリック。（ドラッグ選択も可能）</p>
+</dd>
+
+<dt>連続して貼り付けするには</dt>
+<dd>
+<p>元セルを選択&rarr;<img width="19" height="19" src="./images/excel/syosiki_botan.jpg" alt="書式のコピー/貼り付けボタン">ボタンを<strong>Wクリック</strong>します。（キャンセルはボタンをクリックまたは<kbd>ESC</kbd>キーで。）</p>
+</dd>
+</dl>
+
+
+<div class="cl">
+</div>
+<h2><a href="#shortcutkey" accesskey="6"><span class="ms">■</span></a> <a name="shortcutkey">ショートカットキーで効率アップ</a> <kbd class="ak">6</kbd></h2>
+
+<p>たぶん、かなり既知のことかと思いますが・・・キーボードショートカットで「効率アップ」しましょう。</p>
+
+<div class="pc">
+
+<table class="regular" summary="Excel キーボードショートカット編集系">
+<caption>編集系</caption>
+<tr>
+<td><kbd>Ctrl</kbd>＋<kbd>Z</kbd></td>
+<td><strong>元に戻す</strong></td>
+<td>とりあえず間違ったらこれで。
+<br><span class="small">（保存後、マクロ実行などは戻せません。）</span></td>
+</tr>
+
+<tr>
+<td><kbd>Ctrl</kbd>＋<kbd><strong>Y</strong></kbd></td>
+<td><strong>やり直し</strong></td>
+<td>元に戻しすぎたらこれで。また（1回だけなら）繰り返しできます。</td>
+</tr>
+
+<tr>
+<td><kbd>Ctrl</kbd>＋<kbd>A</kbd></td>
+<td><strong>すべて選択</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td><kbd>Ctrl</kbd>＋<kbd>X</kbd></td>
+<td><strong>切り取り</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td><kbd>Ctrl</kbd>＋<kbd>C</kbd></td>
+<td><strong>コピー</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td><kbd>Ctrl</kbd>＋<kbd>V</kbd></td>
+<td><strong>貼り付け</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td><kbd>Ctrl</kbd>＋<kbd>F</kbd></td>
+<td><strong>検索</strong></td>
+<td><kbd>Ctrl</kbd>＋<kbd>C</kbd>&rarr;<kbd>F</kbd>&rarr;<kbd>V</kbd>で早ワザ検索できたりします。</td>
+</tr>
+
+<tr>
+<td><kbd>Ctrl</kbd>＋<kbd>H</kbd></td>
+<td><strong>置換</strong></td>
+<td><span class="small">特定文字の置換だけでなく、置換文字を空白にすれば消去も可能。</span></td>
+</tr>
+
+<tr>
+<td><kbd>Ctrl</kbd>＋<kbd>G</kbd></td>
+<td><strong>ジャンプ</strong></td>
+<td>または<kbd>F5</kbd>キーでも
+<br>この中のセル選択を使えば
+<br>「エラー値」や「オブジェクト」（図形など）の一括選択も可能。</td>
+</tr>
+
+<tr>
+<td><kbd>Delete</kbd></td>
+<td><strong>数式と値のクリア</strong></td>
+<td>右クリックや編集メニューのクリアより簡単</td>
+</tr>
+
+<tr>
+<td><kbd>F2</kbd></td>
+<td><strong>セルを編集状態に</strong></td>
+<td>セルをWクリックと同じ。</td>
+</tr>
+
+<tr>
+<td><kbd>Ctrl</kbd>＋<kbd>Enter</kbd></td>
+<td><strong>選択範囲セルへ一括入力</strong></td>
+<td>範囲選択してから入力します。最後の確定の際に2つのキーを同時に押します。</td>
+</tr>
+
+<tr>
+<td><kbd>Ctrl</kbd>＋<kbd>1</kbd></td>
+<td><strong>セルの書式設定</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td><kbd>Ctrl</kbd>＋<kbd>BS</kbd></td>
+<td><strong>選択セル位置へ戻る</strong></td>
+<td>スクロールしちゃった場合に</td>
+</tr>
+
+<tr>
+<td><kbd>Shift</kbd>＋<kbd>F11</kbd></td>
+<td><strong>シート挿入</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td><kbd>Shift</kbd>＋<kbd>F2</kbd></td>
+<td><strong>コメントの挿入</strong></td>
+<td></td>
+</tr>
+</table>
+
+
+
+
+<table class="regular" cellpadding="7" border="2" summary="Excel キーボードショートカットファイル操作系">
+<caption>ファイル操作系</caption>
+
+<tr>
+<td><kbd>Ctrl</kbd>＋<kbd>O</kbd></td>
+<td><strong>ファイルを開く</strong></td>
+</tr>
+
+<tr>
+<td><kbd>Ctrl</kbd>＋<kbd>N</kbd></td>
+<td><strong>新規作成</strong></td>
+</tr>
+
+<tr>
+<td><kbd>Ctrl</kbd>＋<kbd>W</kbd></td>
+<td><strong>閉じる</strong></td>
+</tr>
+
+<tr>
+<td><kbd>Ctrl</kbd>＋<kbd>S</kbd></td>
+<td><strong>上書き保存</strong></td>
+</tr>
+
+<tr>
+<td><kbd>F12</kbd></td>
+<td><strong>名前をつけて保存</strong></td>
+</tr>
+
+</table>
+
+</div>
+
+
+<div class="cl">
+</div>
+<h2><a href="#cell" accesskey="7"><span class="ms">■</span></a> <a name="cell">セル内の編集・セルの移動</a> <kbd class="ak">7</kbd></h2>
+
+<p class="adv">※注意：ノートPCなど<kbd>Home</kbd>キーなどを使う際に<kbd>Fn</kbd>キー（または<kbd>Shift</kbd>キーなど）を同時に押す必要がある場合があります。キーボードに<kbd>Fn</kbd>キーと同じ色で刻印されてると思います。</p>
+
+<dl>
+<dt>セル内で改行</dt>
+<dd>
+<p><strong><kbd>Alt</kbd>＋<kbd>Enter</kbd></strong></p>
+</dd>
+
+<dt>複数セルの範囲選択</dt>
+<dd>
+<p><strong><kbd>Ctrl</kbd>＋クリック</strong>でとびとびの選択</p>
+<p><strong><kbd>Shift</kbd>＋クリック</strong>で連続選択
+<br><span class="small">マウスドラッグと同じです</span></p>
+</dd>
+
+<dt>先頭セルへ戻る　最終セルへジャンプ</dt>
+
+<dd>
+<p><strong><kbd>Ctrl</kbd>＋<kbd>Home</kbd></strong>で&rarr;先頭セル（A1セル）へ戻る。</p>
+<p><strong><kbd>Ctrl</kbd>＋<kbd>End</kbd></strong>で&rarr;データ最終（入力された）セルへジャンプ。</p>
+</dd>
+
+<dt>行頭セルへ戻る　行末セルへジャンプ（同じく列の場合も）</dt>
+
+<dd>
+<p><strong><kbd>Ctrl</kbd>＋<kbd>&larr;</kbd></strong>で行頭セルへ戻る。</p>
+<p><strong><kbd>Ctrl</kbd>＋<kbd>&rarr;</kbd></strong>で行末セルへジャンプ。
+<p>列（縦方向）の場合は
+<br><strong><kbd>Ctrl</kbd>＋<kbd>↑</kbd></strong>と
+<strong><kbd>Ctrl</kbd>＋<kbd>&darr;</kbd></strong></p>
+</dd>
+</dl>
+
+<p class="small">ここで注意です！・・・<strong>途中に空白セルがあるとその手前で止まってしまう</strong>のであります。
+<br>そんな時は・・・<span class="red">「矢印」キーを連打して一旦最終行【65536】または最終列【IV】まで移動した後、反対の「矢印」キーを1度押します。</span>
+</p>
+
+<dl>
+<dt>表全体を選択（またはデータ入力範囲全体）</dt>
+<dd>
+<p><strong><kbd>Ctrl</kbd>＋<kbd>Shift</kbd>＋<kbd>*</kbd></strong>で表の一発選択（テンキーなら<kbd>Shift</kbd>はいらない）</p>
+</dd>
+
+<dd>
+<p><strong><kbd>Ctrl</kbd>＋<kbd>Shift</kbd>と<kbd>&darr;</kbd>か<kbd>&rarr;</kbd></strong>の組合せで入力したセル全体を選択</p>
+</dd>
+</dl>
+
+
+<p class="adv">これは是非とも一度試して確認してみてください。（ヘタレな私はうまく説明できないです・・・）結構キレイに洗濯、おっと選択されますよ♪。</p>
+
+<p class="small">ここでまたも注意！です・・・空白行（列）があるとその手前で止まります。上の注意を参考にして下さい。
+<br>または<strong><kbd>Ctrl</kbd>＋<kbd>End</kbd></strong>の方がいいかも。</p>
+
+<dl>
+<dt>一度選択した範囲を微調整するには</dt>
+<dd>
+<p><strong><kbd>Shift</kbd>+<kbd>矢印</kbd></strong>キーで。</p>
+</dd>
+</dl>
+
+
+<div class="cl">
+</div>
+<h2><a href="#sheets" accesskey="8"><span class="ms">■</span></a> <a name="sheets">同じファイルの別シートを交互に編集</a> <kbd class="ak">8</kbd></h2>
+<p>同じファイル内のシートどうしで交互に参照・編集する方法です。</p>
+<p>どちらのファイルを編集しても変更は同時に反映されます。</p>
+
+<ol>
+<li>メニューバー【ウインドウ】&rarr;【新しいウインドウを開く】
+<br><span class="small">but　2つ目のウインドウが開きますがこのままでは重なったままですね。</span></li>
+<li>メニューバー【ウインドウ】&rarr;【整列】クリック</li>
+</ol>
+
+<p class="lt"><img width="224" height="180" src="./images/excel/seiretu.png" alt="ウインドウの整列ダイアログ画像">
+<p>並べ方を選択します。</p>
+<p class="adv">同じファイル内のみ整列させるには【作業中のブックのウィンドウを整列する】にチェックを入れましょう</p>
+
+<div class="cl">
+</div>
+
+
+
+
+<p class="small">リンク is フリーダム<span class="ms">♪</span></p>
+
+<div class="navi">
+<a href="./index.html">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd>
+</div>
+
+<script type="text/javascript">
+function smoothScroll(o){var e=window.pageYOffset,l=o>e;setTimeout(function(){l&&o>=e?(e=e+(o-e)/20+1,window.scrollTo(0,e),setTimeout(arguments.callee,10)):!l&&e>=o?(e=e-(e-o)/20-1,window.scrollTo(0,e),setTimeout(arguments.callee,10)):window.scrollTo(0,o)},10)}
+</script>
+<ul class="toTop-nav">
+<li><a href="javascript:void(0);" onclick="smoothScroll(0);return false;">↑</a></li>
+</ul>
+
+<address>Written by yassy</address>
+
+</body>
+
+</html>

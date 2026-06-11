@@ -1,0 +1,1738 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="GENERATOR" content="EdTex Version 3.11">
+<link rel="start" href="./index.html">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>私的ハードディスク関連めも＠Palm84</title>
+<style type="text/css">
+<!--
+table.disk {
+margin: auto;
+padding: 1px;
+background-color: #ffc;
+border: solid 2px #ccc;
+border-collapse:collapse; 
+}
+
+td.diskbs {
+height: 1em;
+text-align: center;
+}
+
+td.diskdata {
+height: 3em;
+}
+
+td.aki{
+font-size: 0.8em;
+text-align: center;
+}
+
+td.kara { 
+border-right:1px solid #ccc;
+border-bottom:1px solid #ccc;
+}
+
+
+td { 
+border-right:1px solid #ccc;
+border-bottom:1px solid #ccc;
+}
+
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+</head>
+
+<body>
+
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+
+<h1><a href="./harddisk.html"><span class="tokai1">私的ハードディスク関連めも</span></a></h1>
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+<ul>
+<li><a href="#knowledge">基本知識</a></li>
+<li><a href="#standard">新規格</a></li>
+<li><a href="#maker">メーカー</a></li>
+<li><a href="#atapi">ATAPI規格</a></li>
+<li><a href="#disk">ディスク構造</a></li>
+<li><a href="#mbr">MBR / ブートセクタ</a></li>
+<li><a href="#windows">Windowsの起動</a>
+	<ul class="nest small">
+	<li><a href="#suntomo">Windowsが起動しない時</a></li>
+	</ul>
+</li>
+<li><a href="#filesystem">ファイルシステム</a></li>
+<li><a href="#partition">パーティション作成</a></li>
+<li><a href="#backup">バックアップツール</a></li>
+<li><a href="#trouble">トラブル/復旧</a></li>
+<li><a href="#boot">ブートいろいろ</a></li>
+<li><a href="#fdboot">FDブートなOS</a></li>
+<li><a href="#etc">etc</a></li>
+</ul>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+
+
+
+</div>
+</div>
+
+
+<div class="main">
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/harddisk.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/harddisk.html"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/harddisk.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<p class="small">2007.2.14 作成
+<br>2007.4.14 <a href="#suntomo">Windowsが起動しない時</a>を改訂
+<br>2010.8.1 <a href="#standard">新規格</a> を追記
+<br>最終更新日 2011.7.25</p>
+
+<p>最近パーツが丈夫になったのかほとんどトラブルとは遭遇せずに過ごせてはおりますが、ハードディスクは消耗品です。寿命を考えるといつ災難に見舞われるとも限らないのであった...</p>
+<p>というわけで、復習用（ちょっと見栄..）勉強めも。</p>
+<h2><a href="#knowledge"><span class="ms">■</span></a> <a name="knowledge">基本知識</a></h2>
+
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/%E3%83%8F%E3%83%BC%E3%83%89%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96">ハードディスクドライブ - Wikipedia</a></li>
+<li><a href="http://ja.wikipedia.org/wiki/%E3%83%96%E3%83%BC%E3%83%88">ブート - Wikipedia</a></li>
+</ul>
+
+<ul>
+<li><a href="http://homepage2.nifty.com/emotom/os/osjx.htm">複数のOS</a> - <span class="small"><a href="http://homepage2.nifty.com/emotom/">EMO</a></span>
+	<ul class="nest">
+	<li><a href="http://homepage2.nifty.com/emotom/os/osjn110.htm">複数のOS | OSの起動×パーティション</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.tadachi-net.com/pc_info/ide.html">IDEディスク容量の壁について</a> - <span class="small"><a href="http://www.tadachi-net.com/">tadachi-net.com</a></span></li>
+</ul>
+
+<ul>
+<li><a href="http://www.linux.or.jp/JF/JFdocs/Multi-Disk-HOWTO.html">HOWTO: Multi Disk System Tuning</a></li>
+</ul>
+
+<ul>
+<li><a href="http://homepage2.nifty.com/winfaq/dualboot.html">Windows.FAQ - Windows デュアルブートの基礎知識</a></li>
+</ul>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/303013/ja">Windows XP で ATAPI ディスク ドライブに対して 48 ビット論理ブロック アドレス サポートを有効にする方法</a>
+	<ul class="nest small">
+	<li><a href="http://support.microsoft.com/kb/305098/ja">Windows 2000 における ATAPI ディスク ドライブへの 48 ビット LBA サポート</a></li>
+	<li><a href="http://support.microsoft.com/kb/882350/ja">大容量ハードディスクの 137 GB を超えた容量が認識されない場合の対処方法</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://ew.hitachi-system.co.jp/p/c-storage-hd.html">ハードディスク | ストレージ用語辞典</a></li>
+</ul>
+
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/418760/ja">W98SE: エクスプローラで 2GB 以上のファイルがコピーできない</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/094filelimitation/094filelimitation.html">Windows TIPS -- Knowledge：ファイル・システムの制限――2G／4GBytes超のファイルに注意――</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.dosv.jp/other/0612/index.htm">キーワードで理解する最新HDD - DOS/V POWER REPORT | Impress Japan</a>
+	<ul class="nest">
+	<li><a href="http://www.dosv.jp/other/0612/06.htm">AHCIの設定を理解する</a></li>
+	</ul>
+<li><a href="http://www.dosv.jp/feature/0802/index.htm">最新自作シーンを総括する - HDD編 - DOS/V POWER REPORT | Impress Japan</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www4.zero.ad.jp/Angel.Omega/nLite.htm">nLite Guide</a></li>
+</ul>
+
+<dl>
+<dt>Windows XP インストール時のSerial ATA 関連</dt>
+<dd>
+<ul>
+<li class="small"><a href="http://www-06.ibm.com/jp/domino04/pc/support/Sylphd03.nsf/jtechinfo/SYJ0-0211AFC">Lenovo 製品版 Windows のセットアップ時、「コンピュータにハードディスクがインストールされていませんでした」とエラーが表示され導入ができない - ノートブック - Japan</a></li>
+<li><a href="http://www.geocities.co.jp/SiliconValley-Cupertino/3686/install_sata_driver.html">Windowsインストール時の「F6」を回避する方法</a></li>
+<li><a href="http://hardware.mine.nu/~sata/">Serial ATA総合テンプレート置き場</a></li>
+<li><a href="http://www.wikihouse.com/integ/?HotfixIntegrationInst">HotfixIntegrationInst - PukiWiki</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h2><a href="#standard"><span class="ms">■</span></a> <a name="standard">新規格</a></h2>
+
+<p>実際にあまりさわってないのでまだまだ理解できていませんが...</p>
+
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/bookpreview/insidewin42/insidewin42_03.html">インサイドMicrosoft Windows 第4版 下　第10章 ストレージ管理 － ＠IT</a></li>
+</ul>
+
+<ul>
+<li><a href="http://wiki.nothing.sh/page/Over2TB">Over2TB - wiki@nothing</a></li>
+</ul>
+
+<p>Windows Vista 以降の違いや 2TiB越HDの注意点については覚えておかないといけないようですね。</p>
+
+<dl>
+<dt>1 MiB アラインメント</dt>
+<dd>
+<p>従来パーティションの区切りは、63セクタ（単位）でしたが、Windows Vista 以降の標準では <del>2048 セクタ</del> <ins>1MiB(1024 KiB)</ins>（512bytes x 2048セクタ, or 4KiB x 256）セクタとなっています。</p>
+<p>第1パーティションの開始位置が従来は LBA63（64番目セクタ）でしたが、Vista 以降では、<ins>セクタサイズが 512バイトの場合</ins> LBA2048（2049番目セクタ）となります。</p>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/929491">Windows Server 2003、Windows XP、および Windows 2000 で複数のディスクを使用するとディスク パフォーマンスが予想より低下することがある</a></li>
+<li><a href="http://support.microsoft.com/kb/931760/ja">Windows Vista または Windows PE 2. 0 を使用して、ハード_ディスク上のパーティションの作成をした後正常に Windows XP をインストールすることはできません。</a>（※ 機械翻訳）</li>
+</ul>
+
+<dl class="palmst pink">
+<dt>GParted 0.6.2</dt>
+<dd>
+<p><strong class="ms">GParted 0.6.2</strong> ではパーティション作成時に、<code>align</code> の選択 (MiB | Cylinder | none ) が可能になっています。512バイト超セクタにも対応してるとのこと。</p>
+<ul>
+<li><a href="http://sourceforge.net/projects/gparted/files/gparted/gparted-0.6.2/gparted-0.6.2-notes.txt/view">GPARTED 0.6.2 RELEASE</a></li>
+</ul>
+</dd>
+</dl>
+</dd>
+
+<dt>2 TiB の壁</dt>
+<dd>
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/%E5%AE%B9%E9%87%8F%E3%81%AE%E5%A3%81#2TiB.E3.81.AE.E5.A3.81">2TiBの壁 - 容量の壁 - Wikipedia</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.hitachigst.com/portal/site/jp/products/above_2TB/">2TBを超える大容量HDDについて</a></li>
+<li><a href="http://www.wdc.com/jp/products/products.aspx?id=120">WD Caviar Green</a></li>
+</ul>
+
+<ul>
+<li><a href="http://hibari.2ch.net/test/read.cgi/jisaku/1273290294/">【AFT】2TBの壁問題その2【EFI】</a> (<a href="http://www.unkar.org/read/pc11.2ch.net/jisaku/1273290294">unkar</a>)</li>
+<li><a href="http://support.microsoft.com/kb/946557/ja">1 ボリュームのサイズが 2 TB 以上のシステム パーティションから Windows Vista を起動できない</a></li>
+</ul>
+
+<ul>
+<li><a href="http://seagate.custkb.com/seagate/crm/selfservice/search.jsp?DocId=218619&#038;NewLang=en">DiscWizard</a> (Seagate)</li>
+</ul>
+
+</dd>
+
+<dt>GPT (GUIDパーティションテーブル)</dt>
+<dd>
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/GUID%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB">GUIDパーティションテーブル - Wikipedia</a>
+	<ul class="small">
+	<li><a href="http://ja.wikipedia.org/wiki/%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%96%E3%83%BC%E3%83%88%E3%83%AC%E3%82%B3%E3%83%BC%E3%83%89">マスターブートレコード - Wikipedia</a></li>
+	</ul>
+</li>
+<li><a href="http://technet.microsoft.com/ja-jp/library/cc773223(WS.10).aspx">GUID パーティション テーブル</a></li>
+</ul>
+
+<ul>
+<li><a href="http://msdn.microsoft.com/ja-jp/windows/hardware/gg463525.aspx">Windows と GPT に関する FAQ</a></li>
+<li><a href="http://www.microsoft.com/japan/whdc/device/storage/GPT-on-x64.mspx">GPT ドライブを使用する</a></li>
+<li><a href="http://technet.microsoft.com/ja-jp/library/cc725671(WS.10).aspx">マスター ブート レコード ディスクを GUID パーティション テーブル ディスクに変更する</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.seagate.com/www/en-us/support/beyond-2tb/">Beyond 2TB | Seagate</a>
+	<ul>
+	<li><a href="http://seagate.custkb.com/seagate/crm/selfservice/search.jsp?DocId=207837&#038;NewLang=ja">トラブルシューティングGPTの問題</a> (Seagate)</li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt>参考ページ</dt>
+<dd>
+<ul>
+<li><a href="http://d.hatena.ne.jp/itiri/20110407/1302171786">Ubuntu 10.10のpartedでGPTったメモ - Sickly Life はてな版</a></li>
+</ul>
+
+</dd>
+</dl>
+</dd>
+
+<dt>BigSector（4 KiB セクタ）</dt>
+<dd>
+<p>2 TiB 以下のHDでも、既にこのフォーマットになってる場合があるようですね。</p>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/%E5%AE%B9%E9%87%8F%E3%81%AE%E5%A3%81#BigSector"> BigSector - 容量の壁 - Wikipedia</a></li>
+<li><a href="http://www.atmarkit.co.jp/flinux/rensai/watch2010/watch03a.html">2TBを超えろ！ ATAディスクの4Kセクタ問題とは？（1/2） － ＠IT</a></li>
+</ul>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/2510009/ja">Windows のドライブのセクター サイズが大きいのマイクロソフトのサポート ポリシーの詳細について</a></li>
+</ul>
+
+<ul>
+<li><a href="http://pc11.2ch.net/test/read.cgi/jisaku/1272182877/">【4KiB】物理セクタ拡大HDDを語るスレ part1【AFT】</a> (<a href="http://www.unkar.org/read/pc11.2ch.net/jisaku/1272182877">unkar</a>)</li>
+</ul>
+
+<dl>
+<dt>Advanced Format Technology (AFT)</dt>
+<dd>
+<ul>
+<li><a href="http://www3.toshiba.co.jp/storage/japanese/innovation/advanced-f/index_j.htm">アドバンスト・フォーマット概要｜ストレージ イノベーション｜ストレージ プロダクツ：東芝</a></li>
+</ul>
+
+<div class="quote small pink">
+<blockquote class="pink" cite="http://support.microsoft.com/kb/982018/ja" title="Windows 7 および Windows Server 2008 R2 と Advanced Format Disk の互換性を向上させる更新プログラムを入手できます">
+<p>注: Advanced Format Disk では、大きな物理セクタ (4 KB) を使用します。ただし、初期のバージョンと現在のコンピューター システムとの互換性を向上させるために、512 バイトの論理アドレス指定インターフェイスを維持しています。そのため、"512 バイト エミュレーション ディスク" または短縮して "512e" と呼ばれます。Advanced Format Disk の詳細については、この資料の最後に記載している IDEMA (International Disk Drive Equipment and Materials Association) の Web サイトを参照してください。</p>
+</blockquote>
+<cite><a href="http://support.microsoft.com/kb/982018/ja">Windows 7 および Windows Server 2008 R2 と Advanced Format Disk の互換性を向上させる更新プログラムを入手できます</a></cite>
+</div>
+<ul>
+<li><a href="http://support.microsoft.com/kb/982018/ja">Windows 7 および Windows Server 2008 R2 と Advanced Format Disk の互換性を向上させる更新プログラムを入手できます</a></li>
+</ul>
+
+</dd>
+</dl>
+
+<dl>
+<dt>参考ページ</dt>
+<dd>
+<ul>
+<li><a href="http://blog.still-laughin.com/archives/2010/05/ata4k.html">4KiBセクタアライメント問題とアライメントオフセット - Still Laughin'</a></li>
+<li><a href="http://d.hatena.ne.jp/dayflower/20100310/1268208064">4096 バイトセクタの HDD と Linux - daily dayflower</a></li>
+<li><a href="http://d.hatena.ne.jp/dayflower/20100330/1269931922">Linux で 4096 バイトセクタ HDD を fdisk - daily dayflower</a></li>
+<li><a href="http://rewse.jp/blog/p/2466">Advanced Format なHDDをLinuxで正しくパーティション | 複眼中心</a></li>
+</ul>
+
+</dd>
+</dl>
+</dd>
+
+<dt>調整用ツールなど</dt>
+<dd>
+<ul>
+<li><a href="http://www.paragon-software.com/jp/businesscustomer/partition-alignment/">Paragon Alignment Tool - Overview</a></li>
+</ul>
+
+<ul>
+<li>Western Digital 社
+	<ul>
+	<li><a href="http://support.wdc.com/product/download.asp?groupid=805&#038;lang=jp">WD サポート / ダウンロード / WD 2go + その他の製品 / Advanced Format Software</a></li>
+	<li><a href="http://www.wdc.com/global/products/features/?id=7&language=1">Product Features</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.hitachigst.com/support/downloads/">日立GST - Downloads</a>
+	<ul class="small">
+	<li>Hitachi XL3000 3TB Drive Format Utility For Windows XP</li>
+	<li>Hitachi Align Tool</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www3.toshiba.co.jp/storage/japanese/hd_in/dl/alignment-tool.htm">パーティション・アライメント・ツール（PAT）のご案内｜内蔵ストレージ｜ストレージ プロダクツ：東芝</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.runexy.co.jp/support/faq/faq_acronis_consumer/detail/faq_0006325">GPT(GUID Partition Table)をサポートしていますか | よくあるご質問 | 株式会社ラネクシー</a></li>
+</ul>
+
+</dd>
+</dl>
+
+
+<h2><a href="#maker"><span class="ms">■</span></a> <a name="maker">メーカー</a></h2>
+
+
+<ul>
+<li><a href="http://www.hitachigst.com/portal/site/jp/">日立グローバルストレージテクノロジーズ</a>
+	<ul>
+	<li><a href="http://www.hitachigst.com/portal/site/jp/support/">サポート</a></li>
+	<li><a href="http://www.hgst.com/hdd/support/download.htm">Support - Downloads and Utilities</a></li>
+	<li><a href="http://www.hitachigst.com/portal/site/jp/support/externals_faqs/">よくある質問</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.seagate.com/www/ja-jp/">ホーム | Seagate</a>
+	<ul>
+	<li><a href="http://www.seagate.com/www/ja-jp/support/">サポート | Seagate</a></li>
+	<li><a href="http://seagate.custkb.com/seagate/crm/selfservice/search.jsp?NewLang=ja">Seagate ナレッジ ベース</a></li>
+	<li><a href="http://www.seagate.com/www/ja-jp/support/downloads/">Seagate Technology - ダウンロード インデックス</a></li>
+	<li class="small"><a href="http://www.seagate.com/ww/v/index.jsp?vgnextoid=399bcac4bdfce010VgnVCM100000dd04090aRCRD&#038;locale=ja-JP">オペレーティング システムのインストール時に、使用中のシリアル ATA ディスク ドライブが Windows 2000/XP で検出されないのはなぜか。</a></li>
+	<li class="small"><a href="http://www.seagate.com/ww/v/index.jsp?vgnextoid=7a85ba87945ce010VgnVCM100000dd04090aRCRD&#038;locale=ja-JP">SATA インターフェイス - よくある質問 (FAQ)</a></li>
+	<li class="small"><a href="http://www.seagate.com/ww/v/index.jsp?vgnextoid=75aacac4bdfce010VgnVCM100000dd04090aRCRD&#038;locale=ja-JP">160 GB 以上のドライブで、127 ～ 137 GB しか表示されないのはなぜか。</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.wdc.com/jp/index.asp?Language=jp">Western　Digital　ハードドライブ</a>
+	<ul>
+	<li><a href="http://support.wdc.com/product/download.asp?lang=jp">ダウンロード</a></li>
+	<li><a href="http://support.wdc.com/product/install.asp?level1=6&#038;lang=jp">インストール</a></li>
+	<li><a href="http://support.wdc.com/product/kb.asp?groupid=0&#038;level1=6&#038;modelno=&#038;lang=jp">知識ベース</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.samsung.com/Products/HardDiskDrive/utilities/index.htm">SAMSUNG’s Digital World - Hard Disk Drive / Utilities</a></li>
+<li><a href="http://www.maxtor.co.jp/">Maxtor.co.jp</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www3.toshiba.co.jp/storage/index_j.htm">ストレージ プロダクツ｜HDD/エンタープライズSSD：東芝</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.logitec.co.jp/products/hd.html">ハードディスク - ロジテック</a></li>
+<li><a href="http://buffalo.jp/products/catalog/storage/index.html">ストレージ ｜BUFFALO バッファロー</a>
+	<ul class="nest">
+	<li><a href="http://buffalo.jp/products/catalog/storage/hd.html">HDD（ハードディスク） ｜BUFFALO バッファロー</a></li>
+	</ul>
+</li>
+<li><a href="http://www.iodata.jp/promo/hdd/">ハードディスク総合サイト ～ アイ・オー・データ機器</a></li>
+</ul>
+
+
+<h2><a href="#atapi"><span class="ms">■</span></a> <a name="atapi">ATAPI規格</a></h2>
+
+
+<ul>
+<li><a href="http://itpro.nikkeibp.co.jp/article/COLUMN/20060210/229027/">【初級】知っておきたいストレージの基礎　第1回（前半）　ハードディスクの動向：ITpro</a>
+	<ul class="nest small">
+	<li><a href="http://itpro.nikkeibp.co.jp/article/COLUMN/20060223/230496/">第2回　HDDの内部構造とスペックの読み方：ITpro</a></li>
+	<li><a href="http://itpro.nikkeibp.co.jp/article/COLUMN/20060313/232347/">第4回（前半）　パラレルATA/SCSIのインタフェース：ITpro</a></li>
+	<li><a href="http://itpro.nikkeibp.co.jp/article/COLUMN/20060322/232988/">第4回（後半）　シリアルATA/SCSIのインターフェース：ITpro</a></li>
+</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://e-words.jp/w/E382B7E383AAE382A2E383ABATA.html">シリアルATAとは 【Serial ATA】 - 意味・解説 ： IT用語辞典 e-Words</a></li>
+<li><a href="http://www.atmarkit.co.jp/fpc/kaisetsu/serialata/serialata01.html">技術解説：次世代の標準ディスク・インターフェイス「シリアルATA」のすべて</a></li>
+</ul>
+
+
+<h2><a href="#disk"><span class="ms">■</span></a> <a name="disk">ディスク構造</a></h2>
+
+<p>あくまでイメージですが...用語の使い方は曖昧だったりします...</p>
+<ul>
+<li>参考：<a href="http://www.linux.or.jp/JF/JFdocs/LILO-README/disk-organization.html">ディスク構造</a></li>
+</ul>
+
+<ul>
+<li><strong class="ms">MBR</strong>（<strong>マスターブートレコード</strong>）
+	<ul>
+	<li>- HDドライブの先頭セクタ</li>
+	</ul>
+</li>
+<li><strong class="ms">PBR</strong>（<strong>パーティションブートレコード</strong>）
+	<ul>
+	<li>- パーティション（区画）の先頭セクタ（一般的には「<strong>ブートセクタ</strong>」かな？）</li>
+	</ul>
+</li>
+<li><strong class="ms">EPBR</strong>（<strong>拡張パーティションブートレコード</strong>）
+	<ul>
+	<li>- 拡張パーティション（区画）の先頭セクタ</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><strong class="ms">MBR</strong> 及び <strong class="ms">EPBR</strong> にはパーティション・テーブルがあります。</li>
+<li>基本区画は最大4個まで作成可能。拡張区画は基本の1つに数える。</li>
+<li>5個以上の区画を作るには拡張区画を作成する（基本1+拡張1、基本3+拡張1とか）</li>
+</ul>
+
+<p>※<strong class="ms">hda</strong> はLinux上でのデバイス（ファイル）名。<strong class="ms">sda</strong> の場合も（2台目なら <strong class="ms">hdb</strong> , <strong class="ms">sdb</strong>）。</p>
+
+<table class="disk" summary="ディスク構造のイメージ図">
+<caption>HD構造</caption>
+<tr>
+<td class="diskbs" colspan="5"><strong class="ms red">MBR</strong><span class="small">（512バイト）</span></td>
+</tr>
+
+<tr>
+<td class="aki" colspan="5">空き</td>
+</tr>
+
+<tr>
+<td rowspan="2"><strong class="ms">hda1</strong><br><em>基本区画</em></td>
+<td class="diskbs" colspan="4"><strong class="ms red">ブートセクタ</strong><span class="small">（512バイト）</span></td>
+</tr>
+
+<tr>
+<td class="diskdata" colspan="4">データ</td>
+</tr>
+
+<tr>
+<td rowspan="2"><strong class="ms">hda2</strong> など<br><em>基本区画</em></td>
+<td class="diskbs" colspan="4"><strong class="ms red">ブートセクタ</strong><span class="small">（512バイト）</span></td>
+</tr>
+
+<tr>
+<td class="diskdata" colspan="4">データ</td>
+</tr>
+
+<tr>
+<td rowspan="12"><strong class="ms">hda3</strong> など<br><em>拡張区画</em></td>
+<td class="diskbs" colspan="4"><strong class="ms red">EPBR(1)</strong><span class="small">（512バイト）</span></td>
+</tr>
+
+<tr>
+<td class="aki" colspan="4">空き</td>
+</tr>
+
+<tr>
+<td rowspan="2"><strong class="ms">hda5</strong><br><em>論理区画</em></td>
+<td class="diskbs" colspan="3"><strong class="ms red">ブートセクタ</strong><span class="small">（512バイト）</span></td>
+</tr>
+
+<tr>
+<td class="diskdata" colspan="3">データ</td>
+</tr>
+
+<tr>
+<td rowspan="8"></td>
+<td class="diskbs" colspan="3"><strong class="ms red">EPBR(2)</strong><span class="small">（512バイト）</span></td>
+</tr>
+
+<tr>
+<td class="aki" colspan="3">空き</td>
+</tr>
+
+<tr>
+<td rowspan="2"><strong class="ms">hda6</strong><br><em>論理区画</em></td>
+<td class="diskbs" colspan="2"><strong class="ms red">ブートセクタ</strong><span class="small">（512バイト）</span></td>
+</tr>
+
+<tr>
+<td class="diskdata" colspan="2">データ</td>
+</tr>
+
+<tr>
+<td rowspan="4"></td>
+<td class="diskbs" colspan="2"><strong class="ms red">EPBR(3)</strong><span class="small">（512バイト）</span></td>
+</tr>
+
+<tr>
+<td class="aki" colspan="2">空き</td>
+</tr>
+
+<tr>
+<td rowspan="2"><strong class="ms">hda7</strong><br><em>論理区画</em></td>
+<td class="diskbs"><strong class="ms red">ブートセクタ</strong><span class="small">（512バイト）</span></td>
+</tr>
+
+<tr>
+<td class="diskdata">データ</td>
+</tr>
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>基本区画（拡張区画含む）のパーティション・テーブル（4エントリ）は <strong class="ms">MBR</strong> にあります。</p>
+
+<p><strong class="ms">EPBR(1)</strong>には、hda5のブートセクタ位置と<strong class="ms">EPBR(2)</strong>の2エントリのパーティション・テーブルがあります。</p>
+
+<p><strong class="ms">EPBR(2)</strong>には、hda6のブートセクタ位置と<strong class="ms">EPBR(3)</strong>の2エントリのパーティション・テーブルがあります。</p>
+
+<p>つまり、<strong class="ms">EPBR(3)</strong>の位置を知るには<strong class="ms">EPBR(2)</strong>と<strong class="ms">EPBR(1)</strong>の情報が必要、<strong class="ms">EPBR(2)</strong>の位置を知るには<strong class="ms">EPBR(1)</strong>が必要という風に数珠繋ぎ的な風（親亀小亀風味？）になってます。</p>
+
+
+
+<h2><a href="#mbr"><span class="ms">■</span></a> <a name="mbr">MBR / ブートセクタ</a></h2>
+
+<dl class="pink">
+<dt>EFI / GPT</dt>
+<dd>
+<p><del>Windows Vista など</del>、そろそろこちらに変わって行くのでしょうか。</p>
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/Extensible_Firmware_Interface">Extensible Firmware Interface - Wikipedia</a>
+	<ul>
+	<li><a href="http://www.microsoft.com/japan/whdc/system/platform/firmware/UEFI_Windows.mspx">UEFI と Windows</a></li>
+	</ul>
+</li>
+<li><a href="http://ja.wikipedia.org/wiki/GUID%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB">GUIDパーティションテーブル - Wikipedia</a>
+	<ul>
+	<li><a href="http://technet.microsoft.com/ja-jp/library/cc773223.aspx">GUID パーティション テーブル</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/0xAA55">マスターブートレコード - Wikipedia</a>(MBR)</li>
+<li><a href="http://ja.wikipedia.org/wiki/%E3%83%96%E3%83%BC%E3%83%88%E3%82%BB%E3%82%AF%E3%82%BF">ブートセクタ - Wikipedia</a></li>
+</ul>
+
+<p>通常HDは<strong>512バイト</strong>の<strong>セクタ</strong>単位に区切られてます。（※NTFSなどファイルシステムでフォーマットすると4KiB（など）単位の<strong>クラスタ</strong>単位でデータが保存されます）。</p>
+<ul>
+<li><strong>MBR（マスターブートレコード）</strong> - HDの先頭セクタ</li>
+<li><strong>PBR（パーティションブートレコード）</strong> - パーティションの先頭セクタ</li>
+<li><strong>ブートセクタ</strong> - 一般的はパーティションの先頭セクタを指す（ことが多い？）</li>
+</ul>
+
+<p class="small">基本パーティションではPBRとブートセクタは同じものと考えてよさそう。</p>
+
+<p class="small">論理パーティションの場合は、PBR(EPBR)とブートコードなどが書かれる一般的なブートセクタは別になってるようです。</p>
+
+<p>Windows XP の <strong class="ms">fixmbr</strong> コマンドは、MBRへ<strong>ブートストラップ</strong>を書き込みます（パーティション・テーブルは変更しない）。</p>
+<p>Windows XP の <strong class="ms">fixboot</strong> コマンドは、ブートセクタへ <strong class="ms">NT-IPL</strong> を書き込みます。</p>
+
+
+<dl>
+<dt>MBRの内容</dt>
+<dd>
+<ul>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/BootsectorIBMPC">Bootsector of the IBM PC - Syslinux Wiki</a></li>
+</ul>
+
+<ol>
+<li><strong>ブートストラップ</strong>（など） - 446 bytes
+	<ul>
+	<li>ブートストラップ - 440 bytes</li>
+	<li>volume information（NTシグネチャとか） - 4 bytes</li>
+	<li>未使用？ - 2 bytes</li>
+	</ul>
+</li>
+<li><strong>パーティションテーブル</strong> - 64 bytes</li>
+<li>ブートシグネチャ <code>0xAA55</code> - 2 bytes</li>
+</ol>
+
+<dt>MBR以降の空き領域</dt>
+<dd>
+<p>（一般的にはかな？）通常の Windows XP マシンでは<strong>第1パーティションのブートセクタは、64番目のセクタから</strong>始まります。つまり、MBR以降に62セクタの空きがあるということです（※USBメモリなどでは一定ではないようです）。</p>
+<p>（【追記】<strong>Windows Vista 以降では<ins>セクタサイズが 512バイトの場合</ins>、セクタ2048</strong>（<strong>2049番目セクタ</strong>）となるなので2047セクタ空き。）</p>
+
+<p>市販のブートローダや、GRUBなどのサードパーティ製ブートローダはこのMBR以降のセクタにも書き込みします。
+またリカバリープログラム用のブートローダなどもこのセクタに書き込まれることも多いようです。</p>
+<p>よって、メーカー製PCでサードパーティ製のブートローダをインストールする場合はリカバリープログラムがブートしなくなる可能性があるので注意が必要です。</p>
+
+<p>私は実際には知らないのですが、もしかすると <strong class="ms">fixmbr</strong> でもリカバリーできなくなることがあるかもしれません。メーカー製PCで <strong class="ms">fixmbr</strong> コマンドを使う場合はマニュアルなどを確認しておくべきだと思います。</p>
+<p class="small">※ThinkPad R40(Windows XP Pro)では、MBRのブートストラップが通常のXP（DSP版）のブートストラップと違っていました。</p>
+</dd>
+
+<dt>MBRのバックアップ</dt>
+<dd>
+<p>MBRをバックアップするには...</p>
+<pre>
+dd if=＜デバイス（ファイル）名＞ of=mbr.bin bs=512 count=1
+</pre>
+<p>MBR以降のセクタも含め第1パーティションの先頭セクタ(x2)までを保存するには（※ Windows XP などの旧PCの場合は <code>count=65</code> の場合があり）...</p>
+<pre>
+dd if=＜デバイス（ファイル）名＞ of=mbr2050.bin bs=512 count=2050
+</pre>
+</dd>
+
+<dt>MBRの修復・初期化</dt>
+<dd>
+<p>※<strong>事前にバックアップを取っておきましょう</strong>！</p>
+<p>一般的には、「MBRの修復」とはブートストラップの書き直しを意味していることが多いと思われます。MBR全体を初期化、つまり消してしまうとパーティションテーブルもなくなりますので一からパーティションを切り直す必要が出て来ます。</p>
+<p class="pink">Windows では「NTシグネチャ」の問題がある為、「スタートアップ修復」や fixmbr などOS標準のツールを使うのが確実だと思われます。</p>
+
+<p>パーティションテーブルを除くブートストラップ部分を消すには...</p>
+<pre>
+dd if=/dev/zero of=＜デバイス（ファイル）名＞ <strong class="ms red">bs=440</strong> count=1
+</pre>
+
+<p>NTシグネチャなども含め、パーティションテーブルを除くブートストラップ部分を消すには...（注意！NTシグネチャを消すと Vista 以降は起動できなくなります）</p>
+<pre>
+dd if=/dev/zero of=＜デバイス（ファイル）名＞ <strong class="ms red">bs=446</strong> count=1
+</pre>
+
+<p>【 <strong class="red">危険</strong> ！】【 <strong class="red">注意</strong> ！】パーティションを一から切り直す場合など、（ほぼ）完全にMBRを初期化したい場合は...</p>
+<pre>
+dd if=/dev/zero of=＜デバイス（ファイル）名＞ <strong class="ms red">bs=512 count=2050</strong>
+</pre>
+</dd>
+</dl>
+
+
+
+<h3><a href="#partition_table"><span class="ms">■</span></a> <a name="partition_table">パーティションテーブルの確認</a></h3>
+
+<ul>
+<li>参考：
+	<ul>
+	<li><a href="http://uiuicy.cs.land.to/bootdisk5.html">Windows XP/2000の起動トラブル</a>
+		<ul>
+		<li><a href="http://uiuicy.cs.land.to/dd.html">ddコマンドを使ってセクタを扱う</a></li>
+		</ul>
+	</li>
+	<li><a href="http://d.hatena.ne.jp/palm84/20071116/1195139861">dd for windowsでMBR/ブートセクタをバックアップ</a></li>
+</ul>
+</li>
+</ul>
+
+<p>ddコマンドなどでファイルとして保存したらWindows 2000/XP では <strong class="ms">debug</strong> コマンドで確認できます。バイナリモード表示可能なテキストエディタ（※秀丸、EdTexなど）があると便利です。Linuxでは、<code>hd file</code> や <code>hexdump -C -o 432 file</code> とか。</p>
+
+<p class="small">※ <strong class="red">赤字</strong> 部分がパーティションテーブル、斜体字がパーティション始点です。</p>
+<pre>
+&#062;debug mbr.bin
+-d 02BE 02FF
+2D81:02B0                                            <span class="red">80 01</span>
+2D81:02C0  <span class="red">01 00 07 FE FF 47 <em>3F 00-00 00</em> 09 E9 CD 00 00 00</span>
+2D81:02D0  <span class="red">C1 48 83 FE FF 54 <em>48 E9-CD 00</em> CD 2F 03 00 00 00</span>
+2D81:02E0  <span class="red">C1 55 83 FE FF FF <em>15 19-D1 00</em> 5A B7 EC 01 00 00</span>
+2D81:02F0  <span class="red">C1 FF 0F FE FF FF <em>6F D0-BD 02</em> 52 14 93 06</span> 55 AA
+</pre>
+
+<ul class="small">
+<li>hda4はタイプ【0F】で拡張パーティション</li>
+<li>hda4の始点は --- 0x02BDD06F = 45994095</li>
+</ul>
+
+<p>尚、拡張パーティション内の論理パーティションのパーティションテーブルは拡張パーティションの先頭セクタ（※<strong>EPBR</strong> = <strong>拡張パーティションブートレコード</strong>）に論理パーティションの始点と次の領域のEPBR（拡張パーティションの先頭から）の相対位置が書かれています。次の領域へ数珠繋ぎ状態でパーティションテーブルが書かれています。所謂ブートセクタが別になったりするのでちょっとややこしいです...</p>
+
+<pre>
+&#062;debug hda4.bin
+-d 02BE 02FF
+2D81:02B0                                            <span class="red">00 01</span>
+2D81:02C0  <span class="red">C1 FF 82 FE FF FF <em>3F 00-00 00</em> D2 DA 13 00 00 00</span>
+2D81:02D0  <span class="red">C1 FF 05 FE FF FF <em>C6 73-C3 02</em> 8C A0 CF 03 00 00</span>
+2D81:02E0  <span class="red">00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00</span>
+2D81:02F0  <span class="red">00 00 00 00 00 00 00 00-00 00 00 00 00 00</span> 55 AA
+</pre>
+
+<ul class="small">
+<li>hda5のブートセクタは --- hda4の始点 + 63(0x3F)</li>
+<li><del>hda6</del><ins>拡張パーティション2</ins>のEPBRは --- hda4の始点 + 46363590(0x02C373C6)</li>
+</ul>
+<p class="small">※hda6のEPBRについて、正確には<strong>第2拡張パーティションの先頭セクタ</strong>(EPBR)と呼ぶべきだと思われます。論理パーティションhda6の先頭（ブートセクタ）とは違うので...</p>
+
+<p>論理パーティションが2つ以上ある場合は、次の領域(<del>hda6,sda6</del>)始点セクタ(<strong>EPBR</strong>)に(hda6,sda6の)ブートセクタ及びそのまた次の領域のEPBR位置（※この場合はhda4の始点 <code>0x02BDD06F</code> に <code>0x02C373C6</code> を足す）が書かれています。</p>
+
+<pre>
+&#062;debug ex2_epbr.bin
+-d 02BE 02FF
+2D81:02B0                                            <span class="red">00 01</span>
+2D81:02C0  <span class="red">C1 FF 0B FE FF FF <em>3F 00 00 00</em> 4D A0 CF 03 00 00</span>
+2D81:02D0  <span class="red">00 00 00 00 00 00 <em>00 00 00 00</em> 00 00 00 00 00 00</span>
+2D81:02E0  <span class="red">00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00</span>
+2D81:02F0  <span class="red">00 00 00 00 00 00 00 00 00 00 00 00 00 00</span> 55 AA
+</pre>
+<p class="small">※この例では第2エントリがないので論理パーティション3はありません。</p>
+
+
+<p class="small">よくわかりませんが...Linux で <code>dd if=/dev/hda6 bs=512 count=1</code> の様に論理パーティションを指定したものにはパーティションテーブルがない（ブートコードなどがある）ので、論理パーティションが複数ある場合は、EPBRとブートコードなどが書かれるブートセクタ（= hda6の先頭セクタ）は別ってことみたいですね。</p>
+
+<dl>
+<dt>パーティションテーブルとブートセクタをすべてバックアップするには...</dt>
+<dd>
+<p>論理パーティションが1つの場合は、ddでhda(sda)、及びhda1(sda1)からhda5(sda5)までを保存すればよいのです。</p>
+<pre>
+# dd if=/dev/hda of=mbr.bin bs=512 count=1
+# dd if=/dev/hda1 of=hda1.bin bs=512 count=1
+....
+</pre>
+
+<p>論理パーティションが2つ以上あると、ちょっとややこしくなります。</p>
+<ul class="small">
+<li>論理パーティションが2つ以上の場合は、論理パーティション2(hda6,sda6)以降のEPBRとブートセクタを別々に保存</li>
+<li>拡張パーティションの(E)PBRには、論理パーティション1(hda5,sda5)のブートセクタと<del>論理パーティション2</del><ins>拡張パーティション2</ins>の始点が書かれる</li>
+<li><del>論理パーティション2</del><ins>拡張パーティション2</ins>のEPBRには、論理パーティション2(hda6,sda6)のブートセクタと<del>論理パーティション3</del><ins>拡張パーティション3</ins>（※があれば）の始点が書かれる</li>
+<li><code>dd if=/dev/hda6 bs=512 count=1</code> とした場合 - 所謂ブートセクタ（EPBRではない）？</li>
+<li>EPBR + 63 がブートセクタ？</li>
+</ul>
+
+<p>論理パーティションが2つ以上ある場合、EPBRをすべて保存するには - 拡張パーティションの始点から順々に次の始点(EPBR)を計算する必要があります。</p>
+
+<p class="small">拡張パーティション（この例ではhda4）からの相対位置を計算します</p>
+<ul class="small">
+<li>一例：
+	<ul>
+	<li>拡張領域hda4の始点 --- 0x02BDD06F = 45994095</li>
+	<li><del>論理領域hda6</del><ins>拡張領域2</ins>の始点(EPBR) --- 45994095 + (0x02C373C6 = 46363590) = 92357685</li>
+	</ul>
+</li>
+</ul>
+<pre>
+dd if=/dev/hda of=ex2_epbr.bin bs=512 skip=92357685 count=1
+dd if=/dev/hda6 of=hda6.bin bs=512 count=1
+</pre>
+<p class="small">※セクタ位置は0から数えるので、セクタ位置が10（11番目）なら <code>skip=10</code> とします。</p>
+
+<ul class="small">
+<li>hda7(sda7)以降がある場合（論理領域が3つ以上）
+	<ul>
+	<li>拡張領域hda4の始点 --- 0x02BDD06F = 45994095</li>
+	<li>これに1つ前のEPBRにある2番目エントリの相対位置を足す</li>
+	</ul>
+</li>
+</ul>
+
+<p>EPBRの第2エントリのセクタ位置は、すべて（第1）拡張パーティション（※この例では <code>hda4</code>）からの相対位置になってることに注意が必要ですね。</p>
+
+</dd>
+</dl>
+
+
+<h2><a href="#windows"><span class="ms">■</span></a> <a name="windows">Windowsの起動</a></h2>
+
+
+<p>Windows XP だとおおまかですがこんなかんじかと。</p>
+<ol>
+<li>M/BのBIOS
+	<ul class="nest">
+	<li>起動可能ドライブの選択</li>
+	</ul>
+</li>
+<li>ハードディスクの<strong>マスターブートレコード(MBR)</strong></li>
+<li><strong>MBR</strong>内の<strong>ブートストラップローダ</strong>
+	<ul class="nest">
+	<li><strong>アクティブなパーティション</strong>（bootフラッグ付）を探す</li>
+	</ul>
+</li>
+<li>アクティブパーティションの<strong>ブートセクタ</strong>(<strong>PBR</strong>)へ</li>
+<li><strong>イニシャルプログラムローダ(IPL)</strong>へ</li>
+<li><strong>IPL</strong> が <code>NTLDR</code> を読み込み</li>
+<li><code>boot.ini</code> を読み込み</li>
+<li><code>NTDETECT.COM</code> を実行</li>
+<li><code>ntoskrnl.exe</code> が実行</li>
+</ol>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/NTLDR">NTLDR - Wikipedia</a></li>
+<li><a href="http://homepage2.nifty.com/winfaq/howtoboot.html">Windows.FAQ - PC の起動する仕組みは？マスターブートレコード (MBR) やブートセクターって何？</a></li>
+</ul>
+
+<ul>
+<li><a href="http://uiuicy.cs.land.to/bootdisk5.html">Windows XP/2000の起動トラブル</a> - <span class="small"><a href="http://uiuicy.cs.land.to/index.html">すっきり!! デフラグ非公式ヘルプのページ</a></span></li>
+<li><a href="http://d.hatena.ne.jp/suzufumi/20060910#p1">電源ボタンを押してからパソコンが使えるようになるまでに行われていること<span class="small"> - ふーみんの徒然日記</span></a></li>
+<li><a href="http://itpro.nikkeibp.co.jp/article/COLUMN/20080929/315572/">Windowsはどうやって起動しているのか？：ITpro</a></li>
+</ul>
+
+
+
+<h3><a href="#suntomo"><span class="ms">■</span></a> <a name="suntomo">Windowsが起動しない時</a></h3>
+
+<p>一概にこうだ、と言うのは難しいと思いますけど...。また一度何らかの方法でWindowsを起動させてしまえば治ってしまうこともありますね。</p>
+
+<div class="palmst pink">
+<p>Windows のロゴが表示、または Windows のメッセージが表示される場合は Windows 自体に異常があるということになるかと。</p>
+<ul class="small">
+<li><a href="http://d.hatena.ne.jp/palm84/20070914/1189708575">某所の日記 - Windows XPが起動しない時のめも</a></li>
+</ul>
+</div>
+
+<p><strong>セーフモード</strong>で起動できる（またはWindows のロゴやメッセージが表示される）場合は、Windows上のシステム設定などの問題だと思われます。。</p>
+
+<p>最悪の状況、HDドライブの物理的な故障の可能性が考えられる時は、まずデータのバックアップを優先すること。</p>
+
+<dl class="palmst pink small">
+<dt>ファイル救出時の注意点</dt>
+<dd>
+<p>別のWindowsマシンに接続する際、すべてのファイルを確実にコピーするにはアクセス権の変更が必要になると思われます。ローカルユーザの「所有権の取得」、Everyoneなどに読み取り・実行などの「アクセス権の付加」。XP Home Edition などではセーフモードで起動する必要があります。</p>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/720chowner/chowner.html">ファイルの所有者を変更する（GUI操作編） － ＠IT</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/700whatisacl/whatisacl.html">アクセス制御リストACLとは？ － ＠IT</a></li>
+</ul>
+<p>Linux LiveCDなどでは、NTFSアクセス権は無視されますので、基本的にすべてのファイルがコピーされます。（但し、ゾーン情報などはエラーとなる、更新日時がコピー時になったりしますがそれほど問題ないかと。）</p>
+</dd>
+</dl>
+
+<p>セーフモードでも起動しない場合はCDブートなど</p>
+<ul class="small">
+<li><a href="./knoppix511cd.html">KNOPPIX 5.1.1 CD で Windows XP のファイル救出</a></li>
+<li><a href="./livecd.html">私的 Linux LiveCDめも</a></li>
+</ul>
+<p>CDブートできない場合は・・・</p>
+<ul>
+<li>取り外して、USB-IDE変換ケーブルなどで別PCに接続
+	<ul class="nest small">
+	<li><a href="http://www.green-house.co.jp/products/storage/adapter/idesa/index.html">GH-USH-IDESAシリーズ</a></li>
+	<li><a href="http://www.green-house.co.jp/products/storage/adapter/ide/index.html">GH-USH-IDEシリーズ</a></li>
+	<li><a href="http://www.sanwa.co.jp/product/syohin.asp?code=TK-KB40NR&#038;cate=1&#038;keyword=TK%2DKB40NR">サンワサプライ：TK-KB40NR【2.5HDD変換ケーブル】ノートHDなどの2.5インチIDEデバイスをデスクトップ内蔵用IDE40pinに接続するための変換ケーブル。</a></li>
+	</ul>
+</li>
+<li>FDブートでコマンド操作
+	<ul class="nest small">
+	<li><a href="http://www003.upp.so-net.ne.jp/tshiono/partboot-usb/index-jp.html">Partboot for USB floppy drives</a> - USBデバイスなどへコピー</li>
+	<li><a href="./bg_rescue_linux.html">BG-Rescue Linuxめも</a>
+ - USBデバイス、ネットワーク上のLinuxマシンなどへコピー</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/308041/ja">Windows XP における起動時の問題のトラブルシューティング</a>
+</ul>
+<ul>
+<li><a href="http://support.microsoft.com/kb/314503/ja">Windows XP の起動時にコンピュータが応答を停止し、黒い画面が表示される</a>
+	<ul class="nest small">
+	<li><a href="http://support.microsoft.com/kb/320397/ja">MFT の断片化が進むと Windows XP または Windows 2000 が起動しない</a></li>
+	<li><a href="http://support.microsoft.com/kb/315261/ja">ディスク管理ツールを使用してアクティブなパーティションを変更すると、コンピュータが起動しなくなる</a></li>
+	<li><a href="http://support.microsoft.com/kb/318728/ja">Windows 2000 での &#034;NTLDR Is Missing&#034; エラー メッセージのトラブルシューティング方法</a></li>
+	</ul>
+</li>
+</ul>
+
+
+<dl>
+<dt>セーフモード</dt>
+<dd>
+<p>起動時に <kbd>F8</kbd>キー（または<kbd>F5</kbd>）を押し続けます（または連打する）。BIOSのブートデバイスの選択画面が出た場合はハードディスクを選択してEnterの後再度素早く <kbd>F8</kbd>キーを押す。</p>
+<ul>
+<li><a href="http://support.microsoft.com/kb/880414/ja">Windows XP を セーフモードで起動する方法</a>
+	<ul class="nest small">
+	<li><a href="http://support.microsoft.com/kb/315222/">Windows XP のセーフ モード ブート オプションについて</a></li>
+	<li><a href="http://support.microsoft.com/kb/833721/ja">Windows XP および Windows Server 2003 の Boot.ini ファイルで使用可能なスイッチ オプション</a>
+	</li>
+	</ul>
+</li>
+<li><a href="http://support.microsoft.com/kb/879994/ja">セーフ モードで起動するには</a>(Windows 2000)
+	<ul class="nest small">
+	<li><a href="http://support.microsoft.com/kb/202485/ja">Windows 2000 のセーフ ブート モードの説明</a></li>
+	<li><a href="http://support.microsoft.com/default.aspx?scid=kb;%5Bln%5D;239780">Windows Boot.ini ファイルで使用するセーフモード ブート スイッチについて</a></li>
+	</ul>
+</li>
+<li><a href="http://support.microsoft.com/kb/310353/">Windows XP でクリーン ブートを実行する方法</a></li>
+</ul>
+
+<p>セーフモードでも起動できない場合は、MBR、ブートセクタなどのブートローダ（OSローダ）部分、の問題なのか切り分ける必要があるかと。</p>
+</dd>
+
+<dt>問題の切り分け</dt>
+<dd>
+<p>まず、問題点はどこなのか？</p>
+<ul>
+<li>周辺機器を取り外して起動してみる</li>
+<li>BIOSの設定を確認する。初期化してみる。（※初期化した際にHDのシリアルATA関連、<strong>キーボードがUS配列になる</strong>、ブートデバイスの優先順序が変わるなど、再設定が必要になることがあるので注意</li>
+</ul>
+
+<p><strong>セーフモードで起動（またはWindows のロゴやメッセージが表示される）できるなら下記の点は問題ありません。</strong></p>
+
+<div class="ylt">
+<table class="disk" summary="ブート時のエラーメッセージ">
+<caption>エラーメッセージ</caption>
+<tr>
+<td>MBRブートストラップローダ</td>
+<td class="reg">
+<ul>
+<li>Invalid partition table</li>
+<li>Error loading operating system</li>
+<li>Missing operating system</li>
+</ul>
+</td>
+</tr>
+
+<tr>
+<td>NT-IPL (FAT32)</td>
+<td class="reg">
+<ul>
+<li>Disk error</li>
+<li>Press any key to restart</li>
+</ul>
+</td>
+</tr>
+
+<tr>
+<td>NT-IPL (NTFS)</td>
+<td class="reg">
+<ul>
+<li>disk read error occurred</li>
+<li>NTLDR is missing</li>
+<li>NTLDR is compressed</li>
+</ul>
+</td>
+</tr>
+
+<tr>
+<td>BOOTMGR-IPL</td>
+<td class="reg">
+<ul>
+<li>disk read error occurred</li>
+<li>BOOTMGR is missing</li>
+<li>BOOTMGR is compressed</li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+
+
+
+<ul>
+<li>MBRの<strong>ブートストラップローダ</strong>の異常
+	<ul class="nest small">
+	<li>「<em>DISK BOOT FAILURE</em>」</li>
+	<li>GRUB/MBMで起動を確認</li>
+	</ul>
+</li>
+<li><strong>アクティブパーティション</strong>の指定ミス
+	<ul class="nest small">
+	<li>「<em>Missing operating system</em>」のメッセージ</li>
+	<li>「<em>NTLDR is Missing</em>」のメッセージ</li>
+	<li>GRUB/MBMで起動を確認</li>
+	<li>Windows上なら「ディスクの管理」で“システム”マークを確認/変更</li>
+	<li>または、FDISKやパーティショニングツールで確認/変更</li>
+	</ul>
+</li>
+<li><strong>ブートセクタのIPL</strong>の異常
+	<ul class="nest small">
+	<li>Windows緊急起動ディスクで起動確認</li>
+	</ul>
+</li>
+<li>NTLDR などの<strong>Windowsブート用ファイル</strong>の異常
+	<ul class="nest small">
+	<li>「<var>NTLDR is Missing</var>」のメッセージ</li>
+	<li>NTLDR,boot.ini,NTDETECT.COM は存在するか壊れていないか</li>
+	<li>Windows緊急起動ディスクで起動確認</li>
+	</ul>
+</li>
+<li><strong>boot.ini</strong> の異常・記述ミス - ファイルの破損・システムのないドライブを指定している
+	<ul class="nest small">
+	<li>「次のファイルが存在しないかまたは壊れているため...」のメッセージ</li>
+	<li><strong>パーティション（ドライブ）の構成を変更</strong>した場合など</li>
+	<li>Windows緊急起動ディスクで起動確認</li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt>物理的な故障？</dt>
+<dd>
+<ul>
+<li>BIOSでハードディスクが認識されているか確認</li>
+<li>BIOSで認識していない場合はケーブルの接続など物理的部分の確認</li>
+<li>異音が発生している場合は物理的な故障の可能性</li>
+</ul>
+</dd>
+</dl>
+<p>あと、あくまで可能性としてですがハードディスク内にファイル（システム）はあるのか、とか。“悪意ある”誰かに消されちゃった、なんてことはないのか、とかとか。</p>
+</dd>
+</dl>
+
+
+
+<dl>
+<dt>GRUB（またはMBM）起動ディスクを使う</dt>
+<dd>
+<p>直接ブートさせるパーティション（ドライブ）を指定します。</p>
+<p>MBRの異常時、正確にはMBR内の<strong>ブートストラップローダ</strong>がおかしい時、及び、<strong>アクティブパーティション</strong>の指定ミスの場合はこれで回避できます。</p>
+
+<p class="small pink">※ 一例ですが、(hd0,0) は第1HDの第1パーティションの場合</p>
+<ul>
+<li><code>makeactive (hd0,0)</code> - アクティブ設定</li>
+<li><code>unhide (hd0,0)</code> - 隠し設定の解除</li>
+<li><code>chainloader (hd0,0)</code> - チェインロード</li>
+</ul>
+
+<ul>
+<li><a href="./grub4dos.html#command">GRUB for DOS めも</a></li>
+<li><a href="./grub4dos_bootdisk.html">GRUB起動ディスクを作っておくの巻</a></li>
+</ul>
+
+<p>MBM（Multiple Boot Manager）の方が簡単かも。こちらはカーソルキーで選択するだけです。</p>
+
+<ul>
+<li><a href="http://elm-chan.org/fsw/mbm/mbm.html">ELM - Multiple Boot Manager</a></li>
+<li><a href="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/827usembm.html">MBM（Multiple Boot Manager）を使うには（フロッピーディスク編） － ＠IT</a></li>
+</ul>
+
+<p>修復は、Windows XP なら 回復コンソールから <code>fixmbr(fdisk /mbr)</code>コマンドを実行、Linux などで GRUB(LILO)などのブートローダをMBRに入れてる場合はそれらを再インストール。</p>
+
+<p>アクティブパーティションの確認・変更は「ディスクの管理」から“システム”マークを確認。またはFDISKなどハードディスク用ツールを使用。</p>
+
+<div class="palmst pink">
+<p>※メーカー製パソコンでは、<code>fixboot</code>/<code>fixmbr(fdisk /mbr)</code>コマンドを実行すると<strong>リカバリープログラムが起動できなくなることがある</strong>ので注意。マニュアル要確認。</p>
+</div>
+</dd>
+
+<dt>緊急起動ディスク</dt>
+<dd>
+<p>直接 <strong>ntoskrnl.exe</strong> を呼び出します</p>
+<ul class="small">
+<li><a href="http://support.microsoft.com/kb/882178/ja">Windows XP にアップグレード後 Hal.dll が存在しないか壊れていると表示されて起動できない場合の対処方法</a></li>
+</ul>
+
+<p><strong>ブートセクタのIPL</strong>の異常、あるいは <code>ntldr</code>の異常 や <code>boot.ini</code> の記述ミスなどの際はこれで代用できます。</p>
+
+<ul>
+<li><a href="http://uiuicy.cs.land.to/bootdisk1.html">XP緊急起動ディスクの作成方法</a> - <span class="small"><a href="http://uiuicy.cs.land.to/index.html">すっきり!! デフラグ非公式ヘルプのページ</a></span>
+	<ul class="nest">
+	<li><a href="http://uiuicy.cs.land.to/bootdisk2.html">CD-R版の作製方法</a></li>
+	</ul>
+</li>
+</ul>
+
+<p><code>boot.ini</code> がない場合は、<code>C:\Windows</code> から起動するようです。</p>
+
+<ul>
+<li><a href="./windows.html#bootdisk">Windows XP 緊急起動ディスクの作成 - <span class="small">私的 Windows めも</span></a></li>
+</ul>
+
+<p>ブートセクタの修復は回復コンソールから <code>fixboot</code> コマンドを実行。boot.ini の再構成は <code>bootcfg</code> コマンド（※Windows 2000 ではセットアップCDからシステム修復処理を実行）。<strong>ntldr</strong> などシステムファイルは復元されませんので起動できたらシステムドライブ（= アクティブパーティション）のルートにコピー。</p>
+
+<div class="palmst small pink">
+<p>※メーカー製パソコンでは、<code>fixboot</code>/<code>fixmbr(fdisk /mbr)</code>コマンドを実行すると<strong>リカバリープログラムが起動できなくなることがある</strong>ので注意。マニュアル要確認。</p>
+</div>
+
+<ul>
+<li><a href="./windows.html#cmdcons">回復コンソール - <span class="small">私的 Windows めも</span></a></li>
+</ul>
+</dd>
+
+<dt>修復インストール</dt>
+<dd>
+<p>クリーンインストール（メーカー製ならリカバリー）の方がいいのですが、時間がない場合やバックアップができない際はこちらを試してみる。原則的にはWindowsのシステムファイルのみ初期化される。データ/プログラム/設定などはそのまま（あくまで原則）。Windows Update はやり直し。</p>
+
+<ul>
+<li><a href="./windows.html#in_place_upgrade">in-place upgrade（修復インストール） -<span class="small">私的 Windows めも</span></a></li>
+</ul>
+</dd>
+</dl>
+
+
+<dl class="palmst">
+<dt>パーティションが見えない</dt>
+<dd>
+<p>バックアップ（リカバリー）ソフトで復元した際に、隠し (<code>hidden</code>) パーティションが設定されてしまう場合があります。GRUB起動ディスクで設定解除できます。（例：<code>unhide (hd0,1)</code>）</p>
+</dd>
+
+<dt>インストールの中断・失敗</dt>
+<dd>
+<p>Linuxなどのインストールを中断した場合など、アクティブ設定が変更されたのそのパーティションにブートローダがインストールされていないため、何もブートできなくなることがあります。GRUB起動ディスクでパーティションを指定してブート。（アクティブ設定の変更はGRUBでもWindows上でも）</p>
+</dd>
+<dt><code>Invalid partition table</code></dt>
+<dd>
+<p>これら以外にハードディスクの「パーティションテーブル」の破損という場合もあります。物理的ではなく「論理的」な破壊ですね。一からパーティションを切り直せばいいわけですが、既存のデータはすべて消えてしまいます。データの救出を試行したい場合はこんな方法があります。</p>
+<ul class="small">
+<li><a href="http://d.hatena.ne.jp/palm84/20070221/1172064105">某所の日記 - DISK BOOT FAILURE</a></li>
+<li><a href="http://journal.mycom.co.jp/news/2003/11/10/16.html">【ハウツー】FD2枚でパーティションを復旧!(1) - BG-Linuxのインストール | ネット | マイコミジャーナル</a></li>
+</ul>
+<p class="small">KNOPPIX や RamFloppy などにも入ってます。</p>
+
+<ul>
+<li><a href="http://www.intel.co.jp/jp/support/motherboards/desktop/sb/CS-010355.htm">ハードディスク・ドライブの問題 -- インテル デスクトップ ボード 製品サポート</a></li>
+</ul>
+
+<p>正確ではないかもしれませんが、起動しない際の状態やメッセージから考えられる原因はこんなかんじでしょうか。</p>
+<ul class="small">
+<li>BIOSが出すメッセージ
+	<ul class="nest">
+	<li>システムディスクが見つからない</li>
+	<li>黒い画面で応答を停止</li>
+	<li>原因はブートストラップがないか、壊れている</li>
+	</ul>
+</li>
+<li>ブートストラップが出すメッセージ
+	<ul class="nest">
+	<li><var>Invalid partition table</var> - 原因はパーティションテーブル</li>
+	<li><var>Error loading operating system</var> - 原因はパーティションテーブル？アクティブパーティション設定のミス？</li>
+	<li><var>Missing operating system</var> - 原因はブートセクタ(NT-IPL)？、アクティブパーティション設定のミス？システムがない？</li>
+	</ul>
+</li>
+<li>NT-IPLが出すメッセージ
+	<ul class="nest">
+	<li><em>NTLDR is missing</em> や <em>NTLDR is compressed</em>（DOS-IPL では「<var>Invalid system disk</var><var>,Disk I/O error</var>」） - 原因はアクティブパーティション設定のミス、またはNTLDRがないか壊れている</li>
+	<li><var>A disk read error occurred</var> - パーティション（情報）の異常かな？故障しかけなのかも？</li>
+	</ul>
+</li>
+<li>BOOT.INIがおかしい
+	<ul class="nest">
+	<li>無効なBOOT.INIファイルです</li>
+	<li>「次のファイルが存在しないかまたは壊れているため...」</li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+
+
+<h2><a href="#filesystem"><span class="ms">■</span></a> <a name="filesystem">ファイルシステム</a></h2>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88">フォーマット - Wikipedia</a></li>
+<li><a href="http://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0">ファイルシステム - Wikipedia</a>
+	<ul class="nest">
+	<li><a href="http://ja.wikipedia.org/wiki/File_Allocation_Table">File Allocation Table - Wikipedia</a></li>
+	<li><a href="http://ja.wikipedia.org/wiki/NT_File_System">NT File System - Wikipedia</a></li>
+	<li><a href="http://ja.wikipedia.org/wiki/Ext3">Ext3 - Wikipedia</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.pc-view.net/word_id-0433.html">PC View: 用語解説 クラスタ,セクタ</a></li>
+</ul>
+
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/314878/ja">NTFS および FAT ファイル システムのデフォルトのクラスタ サイズ</a></li>
+<li><a href="http://support.microsoft.com/kb/140365/ja">FAT および NTFS のデフォルトのクラスタ サイズ</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/experiments/defragment/defragment_1.html">＠IT：検証：ディスク・デフラグメント完全マスター　1．ディスク・フラグメントの基礎知識（1）</a></li>
+</ul>
+
+<h2><a href="#partition"><span class="ms">■</span></a> <a name="partition">パーティション作成</a></h2>
+
+
+<p><strong>リサイズや移動などは失敗を覚悟の上（バックアップを取っておく）で行うべき</strong>でしょうねぇ。私も色々ありました。起動できなくなったり拡張パーティションが先頭になっちゃったり。Windowsは基本パーティションからドライブレターを割り当てるので順番がおかしくなったり。とか。</p>
+
+<p>Windows XP ならインストール時にシステム用に20～30GB（マイ ドキュメントなどデータ関係は別パーティションへ移動、Vista 以降は<del>30～50GBぐらい必要だとか</del>、<ins>最低でも50 GB、できれば 100 GB 程取っておいた方が安心かな？</ins>）だけ作っておいて、後はWindows上でするのが楽かな。</p>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3">パーティション - Wikipedia</a></li>
+<li><a href="http://www.linux.or.jp/JF/JFdocs/archive/Partition.html">Linux Partition HOWTO</a></li>
+<li><a href="http://nobumasa-web.hp.infoseek.co.jp/partition/partition.html">パーティションとその切り方</a></li>
+<li><a href="http://www.atmarkit.co.jp/flinux/rensai/theory01s/theory01sa.html">パーティション分割／非分割のセオリー（1/2）</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.linux.or.jp/JM/html/util-linux/man8/fdisk.8.html">Manpage of FDISK</a>
+	<ul class="nest">
+	<li><a href="http://www.a-yu.com/opt/fdisk.html">FDISK の使い方</a></li>
+	<li><a href="http://itpro.nikkeibp.co.jp/article/COLUMN/20060227/230775/">【 fdisk 】 ハード・ディスクのパーティションを設定する：ITpro</a></li>
+	</ul>
+</li>
+<li><a href="http://www.linux.or.jp/JM/html/util-linux/man8/cfdisk.8.html">Manpage of CFDISK</a></li>
+</ul>
+
+<dl class="palmst">
+<dt>NTFSパーティション編集時の注意点</dt>
+<dd>
+<p>Linux LiveCDの <strong class="ms">GParted</strong> や <strong class="ms">QTParted</strong> でNTFSパーティションの拡大・縮小を行った場合は、Windowsのチェックディスクを実行する必要があります（※<strong>次回Windows起動時に自動で実行されるはずです</strong>）。このチェックディスクを実行せずにNTFSパーティションに対して別の操作をしてしまうとおかしなことになる可能性大なのでご注意。</p>
+</dd>
+</dl>
+<h3>Windows</h3>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/313348/">[HOW TO] Windows XP でのハード ディスクのパーティションとフォーマット</a>
+	<ul class="nest small">
+	<li><a href="http://support.microsoft.com/kb/309000/JA/">Windows XP でディスクの管理を使用してベーシック ディスクを構成する方法</a></li>
+	<li><a href="http://support.microsoft.com/kb/300415/ja">Diskpart コマンドライン ユーティリティについて</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/255867/">Fdisk および Format ツールを使ったハードディスクにおけるパーティションの作成/再作成方法</a>
+	<ul class="nest small">
+	<li><a href="http://support.microsoft.com/default.aspx?scid=kb;ja;263044">Fdisk で 64 GB を超えるハード ディスクのフル サイズが認識されない</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://homepage2.nifty.com/winfaq/fdiskhowto.html">Windows.FAQ - 基礎講座：FDISK コマンドの使い方</a></li>
+</ul>
+
+<dl class="palmst pink">
+<dt>Windows Vista / 7</dt>
+<dd>
+<p>Windows Vista / 7 では【ディスクの管理】からデータを保持したままパーティションの分割が一応可能だったりします。</p>
+
+<ul>
+<li><a href="http://windows.microsoft.com/ja-JP/windows-vista/Can-I-repartition-my-hard-disk">ハード ディスクを再パーティションできますか <span class="small">(Windows Vista)</span></a></li>
+<li><a href="http://windows.microsoft.com/ja-JP/windows7/Can-I-repartition-my-hard-disk">ハード ディスクを再パーティションできますか <span class="small">(Windows 7)</span></a></li>
+</ul>
+
+<p>しかしながら、あんまり融通が利かないみたいで、目一杯圧縮とかはしてくれない場合があります。例えば、データは 20 GB 程しかないのに最大圧縮してもサイズは 200 GB 程だったり。pagefile.sysとかデフラグしても移動できないからとからしいです。自己責任となりますがWindows (Vista/7) 対応ツールを使う方がいいかもしれませぬ。</p>
+</dd>
+</dl>
+
+<p class="pink">※ ソフトを使う場合は、新規格の対応などきっちり確認してから実行しませう。</p>
+
+<dl>
+<dt>Windows上で操作</dt>
+<dd>
+<p>フリーでもかなり使えるものがいくつかあります。</p>
+<ul>
+<li>拙作めも :
+	<ul>
+	<li><a href="./partition_editor.html">パーティション管理ツールのめも</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>市販製品</dt>
+<dd>
+<p>使ったことはありませんが...</p>
+
+<ul>
+<li><a href="http://www.acronis.co.jp/homecomputing/products/diskdirector/">Acronis Disk Director Home</a></li>
+<li><a href="http://www1.ark-info-sys.co.jp/products/hdpe/index.html">HD革命/Partition EX | 株式会社アーク情報システム</a></li>
+<li><a href="http://www.justsystems.com/jp/products/prg_partition/">パーティション管理ソフト Paragon Partition Manager 11</a></li>
+<li><a href="http://www.powerx.jp/product/catalog/safety/xhm11/">PowerX Hard Disk Manager</a></li>
+<li><a href="http://www.lifeboat.jp/products/pw14/pw14.html">LB パーティションワークス14 製品情報</a></li>
+</ul>
+
+<p>私は SystemSelector3 と Partition Magic 7.0 という今ではやや古いソフトを持ってます。機能や使いやすさはフリーのものに比べると段違いにいいと思います。分厚い説明書も付いてました。（このマニュアルがなかなか面白くて勉強になったり。）</p>
+<p>あっと、古いソフトは新しめのHDに使うのは少し危険なのでやめといた方が無難かも。対応をよく確認しませう。</p>
+</dd>
+
+<dt>Partition Wizard Bootable CD</dt>
+<dd>
+<p>ブータブルCD。1枚持っとくべきかも。</p>
+<ul>
+<li><a href="http://www.partitionwizard.com/partition-wizard-bootable-cd.html">Partition Wizard Bootable CD allows user to boot computer directly to manage partition.</a>
+	<ul>
+	<li><a href="http://www.partitionwizard.com/download.html">Free Download Magic Partition Manager Software -- Partition Wizard Online</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<h3>Linux など</h3>
+
+<dl>
+<dt>GNU Parted</dt>
+<dd>
+<p>データを保持したままリサイズ可能なフリーで使えるツール。コマンドラインで操作。</p>
+<ul>
+<li><a href="http://www.gnu.org/software/parted/index.shtml">GNU Parted</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.itmedia.co.jp/help/tips/linux/l0696.html">ITmedia エンタープライズ : Linux Tips「Partedでパーティションサイズを変更する」</a></li>
+<li><a href="http://www.gnu.org/software/parted/USER.jp">GNU Parted 日本語版</a></li>
+<li><a href="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/461useparted.html">＠IT：パーティションのサイズを変更するには</a>
+	<ul class="nest">
+	<li><a href="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/462partedsfd.html">＠IT：GNU Parted専用のブートディスクを作成するには</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www003.upp.so-net.ne.jp/tshiono/partboot-usb/index-jp.html">Partboot for USB floppy drives</a>
+	<ul class="nest">
+	<li>USB-FDドライブでブート可能。PCMCIAやNTFSもサポート。</li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>GParted(GNOME Partition Editor)</dt>
+<dd>
+<p>同じくリサイズ可能なフリーで使えるツール。GUIで操作。<a href="http://www.ubuntulinux.jp/download/">Ubuntu Desktop CD</a>や <a href="http://www.rcis.aist.go.jp/project/knoppix/">KNOPPIX 5.3.1 CD</a> などにも入ってます。</p>
+
+<ul>
+<li><a href="http://gparted.sourceforge.net/">GParted -- Welcome</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/825usegparted.html">GPartedでパーティションを操作するには － ＠IT</a>
+	<ul class="nest">
+	<li><a href="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/824gparted2ntfs.html">GPartedでNTFSパーティションを操作するには － ＠IT</a></li>
+	</ul>
+</li>
+<li><a href="http://gigazine.net/index.php?/news/comments/20060529_gparted_live_cd/">パーティションを操作できるフリーソフト「GParted Live CD」 - GIGAZINE</a></li>
+</ul>
+
+<ul>
+<li><strong class="ms">GParted 0.6.0 </strong></li>
+</ul>
+<div class="quote small">
+<blockquote class="pink" cite="http://gparted.sourceforge.net/news.php" title="GParted -- News">
+<ul>
+<li>Add support for devices with sector sizes &gt; 512 bytes</li>
+<li>Add alignment option to align to MiB</li>
+<li>Set _default_ alignment to align to MiB</li>
+</ul>
+</blockquote>
+<cite><a href="http://gparted.sourceforge.net/news.php">GParted -- News</a></cite>
+</div>
+</dd>
+
+
+<dt>QTParted</dt>
+<dd>
+<p>同じくリサイズ可能なフリーで使えるツール。GUIで操作。<a href="http://www.rcis.aist.go.jp/project/knoppix/">KNOPPIX</a>、<a href="http://yui.mine.nu/berry/berry.php">Berry Linux</a> の LiveCDなどにも入ってます。でも古いかも？</p>
+
+<ul>
+<li><a href="http://qtparted.sourceforge.net/">QtParted homepage</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.thinkpad-lover.org/main5/QTParted.htm">QTParted パーティション設定ツール</a> - <span class="small"><a href="http://www.thinkpad-lover.org/">ThinkPad-Lover.org</a></span></li>
+</ul>
+</dd>
+</dl>
+
+
+<h2><a href="#backup"><span class="ms">■</span></a> <a name="backup">バックアップツール</a></h2>
+
+
+<p>パーティションイメージの保存/復元が可能なソフト。リカバリーが楽になるー<span class="ms">♪</span></p>
+<p>最近のメーカー製パソコンではLiteバージョンがプリインストールされてたりしますね（VAIOの「HD革命Lite」とか）。また、DVD/CDライティングソフトでもリカバリーDVD/CDの作成が可能なことがあるようです。</p>
+
+<p>別ページに書きました。</p>
+
+<ul>
+<li><a href="./recovery_software.html">バックアップ・リカバリーソフトについてのめも</a></li>
+</ul>
+<h2><a href="#trouble"><span class="ms">■</span></a> <a name="trouble">トラブル/復旧</a></h2>
+
+
+<ul>
+<li><a href="http://uiuicy.cs.land.to/bootdisk6.html">起動しないエラーと修復方法</a> - <span class="small"><a href="http://uiuicy.cs.land.to/index.html">すっきり!! デフラグ非公式ヘルプのページ</a></span></li>
+<li><a href="http://www.mrfujii.jp/pc/trouble/startup.htm">起動しない対策</a> - <span class="small"><a href="http://www.mrfujii.jp/history/14hobbynow/pc-home/tips.htm">TIPS for WINDOWS</a></span></li>
+</ul>
+
+<ul>
+<li><a href="http://journal.mycom.co.jp/news/2003/11/10/16.html">【ハウツー】FD2枚でパーティションを復旧!(1) - BG-Linuxのインストール (MYCOMジャーナル)</a>
+	<ul class="nest">
+	<li>Gpart と fdisk でパーティションテーブル復旧</li>
+	<li><a href="http://www.linux.or.jp/JF/JFdocs/Partition-Rescue-8.html">Partition Rescue mini HOWTO : 問題を解決する</a></li>
+</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.itmedia.co.jp/enterprise/articles/0609/13/news011.html">ITmedia エンタープライズ：ハードディスクの中身を誤って消した場合のファイル復旧方法 (1/2)</a></li>
+<li><a href="http://www.atmarkit.co.jp/fpc/pchints/013chkhddquik/check_hdd_quick.html">PC Hints：ハードディスクの故障を手早くチェックする方法</a></li>
+</ul>
+
+<dl class="palmst">
+<dt>Cドライブ以外が見えなくなったー</dt>
+<dd>
+<p>バックアップソフト（リカバリーイメージ復元ソフト）でリカバリーを実行した際に、オプションの「それ以外のパーティションを隠す」設定が有効になっちゃうことがある模様。</p>
+<p>GRUB起動ディスクなどで設定変更できます。</p>
+<pre>
+unhide (hd0,1)
+</pre>
+<p class="small">※<code>(<em>hd0,1</em>)</code> はHDD1台目2番目のパーティションの場合</p>
+</dd>
+</dl>
+
+
+<dl>
+<dt>MBRのバックアップ/リストア</dt>
+<dd>
+<p class="pink">※ MBR ブートストラップ のバックアップ・修復です。</p>
+<p>Windowsなら、<code>fixmbr(fdisk /mbr)</code>、Linux なら<code>Grub(Lilo)</code>の再インストールの方がいいと思いますけど。</p>
+
+<p>MBRの内容は、ブートローダー（※ ブートストラップ）が446バイト、パーティションテーブルが64バイト、2バイト<del>あまり？みたい</del><ins>ブートシグニチャ</ins>ですね。</p>
+
+<ul>
+<li><a href="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/375bkupmbr.html">＠IT：MBR（マスターブートレコード）をバックアップするには</a></li>
+<li><a href="http://www.linux.or.jp/JF/JFdocs/Linux+WinNT-2.html">The Linux+WindowsNT mini-HOWTO: 設定方法</a></li>
+</ul>
+
+<p class="small">バックアップ</p>
+<pre>
+# dd if=/dev/hda of=mbr bs=512 count=1
+</pre>
+<p class="small">リストア（※パーティションテーブル除く）</p>
+<pre>
+# dd if=mbr of=/dev/hda bs=446 count=1
+</pre>
+</dd>
+</dl>
+
+
+<h2><a href="#boot"><span class="ms">■</span></a> <a name="boot">ブートいろいろ</a></h2>
+
+<p>ハードディスクのメンテナンスや緊急時のファイル救出手段として用意しておくと吉。</p>
+
+<dl>
+<dt>Windows PE / RE</dt>
+<dd>
+<ul>
+<li><a href="./windows_7.html#windows_re">システム回復オプション（Windows 回復環境） - 私的 Windows 7 めも</a></li>
+<li><a href="./winpe.html">Windows PE 2.0 めも</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://www.computerworld.jp/topics/mws/164970.html">【解説】Windows PE 完全活用ガイド―［2］PEブータブルメディア作成にチャレンジ！ : Windows Server - Computerworld.jp</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/1175wpe2usb/wpe2usb.html">Windows PE 2.0のブータブルUSBメモリを作成する － ＠IT</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20091024/1256479144">「Windows 回復環境」のisoイメージを作るの巻</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20100727/1280180893">Windows PE/RE のネットワークブート</a></li>
+</ul>
+</dd>
+</dl>
+
+<h3>CDブート</h3>
+
+<dl>
+<dt>Linux LiveCD</dt>
+<dd>
+<ul>
+<li><a href="./knoppix511cd.html">KNOPPIX 5.1.1 CD で Windows XP のファイル救出</a></li>
+</ul>
+
+<ul>
+<li><a href="http://simosnet.com/livecdroom/">ライブCDの部屋</a></li>
+<li><a href="http://hatochan.dyndns.org/slax-ja/">slax-ja - PukiWiki</a></li>
+<li><a href="http://www.sysresccd.org/Main_Page">SystemRescueCd</a>
+	<ul class="nest small">
+	<li>GParted</li>
+	<li>GNU Parted</li>
+	<li>Partimage</li>
+	<li>Test-disk</li>
+	<li>Ntfs3g</li>
+	</ul>
+</li>
+<li><a href="http://www10.plala.or.jp/palm84/livecd.html">私的 Linux LiveCDめも</a></li>
+</ul>
+</dd>
+
+
+<dt>FDイメージをブータブルCDに</dt>
+<dd>
+<p>CD/DVDライティングソフトのブータブル（起動可能）ディスク作成機能を使う。または、下記のツールを使うとisoイメージへ変換できます。</p>
+<ul>
+<li><a href="http://www.geocities.co.jp/SiliconValley-Cupertino/3686/fdtoiso.html">起動FDイメージをISOイメージに変換するプログラム</a></li>
+</ul>
+</dd>
+
+</dl>
+
+<p>CD1枚に焼いちゃうのはもったいないおばけな方は（何）、マルチブートCDを作っちゃえ！ってか。</p>
+
+<ul>
+<li><a href="http://www.cdshell.org/files/contributions/reanimatolog/bcdw.html">Bootable CD Wizard</a>
+	<ul class="nest">
+	<li><a href="http://uiuicy.cs.land.to/bootcd/index.html">マルチブータブルCD/DVD製作法　目次</a> - <span class="small"><a href="http://uiuicy.cs.land.to/index.html">すっきり!! デフラグ非公式ヘルプのページ</a></span></li>
+	</ul>
+</li>
+<li><a href="http://support.microsoft.com/KB/167685/JA/">El Torito 準拠のブータブル CD-ROM を作成する方法</a></li>
+</ul>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20070401/1175363610">マルチブートCDの作成 - 【Bootable CD Wizard】</a></li>
+</ul>
+
+
+<h3>USBメモリでブート</h3>
+
+<ul>
+<li><a href="http://orz.kakiko.com/kaeru/usbboot/">USBブート推進協議会</a></li>
+</ul>
+
+<ul>
+<li><a href="./livecd_usb.html">Linux LiveCDをUSBメモリでブートするめも</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20070304/1173019239">USBメモリでブートいろいろ DOS(Windows)編</a></li>
+<li><a href="./syslinux_basic.html">SYSLINUXでマルチブート【基本編】</a></li>
+</ul>
+
+<p>BIOSの対応次第なんですけど、USBメモリキーだけでなく、カードリーダー、カードリーダー付プリンタ、はたまたデジカメなんかでもブート可能な場合もあります。</p>
+
+
+
+<h3>PXEネットワークブート</h3>
+
+<p>Linuxのインストール、FDイメージからの起動、KNOPPIXなどの起動が可能。</p>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20070422/1177208004">PXEネットワークブートについてのめも</a>
+	<ul class="nest">
+	<li><a href="http://d.hatena.ne.jp/palm84/20070422/1177208004#bootfd">起動フロッピー</a></li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt>PXEネットワークブート用サーバの設定</dt>
+<dd>
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20070403/1175609650">WindowsでPXEネットワークブート用サーバの設定 - TFTPD32</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20070201/1173126958">Vine Linux 4.1 で PXEネットワークブート用サーバの設定</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20061128/1164723223">Vine Linux 4.0 をネットワークブートでインストール</a>（Debian sarge編）</li>
+</ul>
+</dd>
+
+</dl>
+
+<h2><a href="#fdboot"><span class="ms">■</span></a> <a name="fdboot">FDブートなOS</a></h2>
+
+<p>復旧やファイル救出、診断とかに使えるかも？</p>
+<p>※USB-FDドライブでは起動できないことがあります。</p>
+<p class="small">FD版Linuxなどなかなかうまく起動できないことも多いので、PXEネットワークブートでFDイメージからの起動も試してみましょう。</p>
+
+<h3>MS-DOS / FreeDOS</h3>
+
+<p class="small">拙作ですが...</p>
+<ul>
+<li><a href="./dosdisk.html">私的「DOS起動ディスク」めも（未整理）＠Palm84</a></li>
+</ul>
+
+
+<h3>Linux</h3>
+
+<dl class="small">
+
+<dt>Partboot for USB floppy drives</dt>
+<dd>
+<p>いつもお世話になっております。（何</p>
+<p>USB-FDドライブでも起動可能。</p>
+<ul>
+<li><a href="http://www003.upp.so-net.ne.jp/tshiono/partboot-usb/index-jp.html">Partboot for USB floppy drives</a></li>
+</ul>
+<p>本来はとても有用なパーティショニングツールなのですが、NTFSなファイル救出手段としても使えます。というか<strong>FDブートなファイ救出手段としてはこれがもっとも確実だと思ってます</strong>。（※日本語ファイル名は親ディレクトリを指定してコピー）。PCMCIAやUSBデバイスもほぼ自動認識でOKです（※マウント操作は必要です）。</p>
+</dd>
+
+<dt>BG-Rescue Linux</dt>
+<dd>
+<p>パーティション関連だけでなく、ネットワークも利用可能。ftpput smbclient コマンドなどが使えるようです。（※私の環境ではだめでしたが..）</p>
+<ul>
+<li><a href="http://www.giannone.eu/rescue/current/">BG-Rescue Linux</a></li>
+</ul>
+<p>※USB-FDはだめかも？ <code>linld.com</code> または、GRUB for DOS起動ディスクを使ったらUSB-FDでもブートできました。</p>
+<ul>
+<li><a href="./bg_rescue_linux.html">BG-Rescue Linuxめも</a></li>
+</ul>
+</dd>
+</dl>
+
+<p>以下はちょっと枯れ目ですけんど。</p>
+<ul class="small">
+<li><a href="http://chris.silmor.de/hal91/">HAL91</a>
+	<ul class="nest">
+	<li>モジュール追加可能（Gpartとか）。but USB-FDはマウントできない（IDE-FDかHDから追加する）</li>
+	<li>モジュール組み込み・ルーティングテーブル作成、ifconfig 設定でネットワーク接続可能ですた。ftpコマンドなどが使えました。</li>
+	</ul>
+</li>
+<li><a href="http://www.partimage.org/Main_Page">Partimage</a>
+	<ul class="nest">
+	<li><ins>本家版は</ins>ウチでは起動しない...</li>
+	<li>こっちならOK - <a href="http://www1.ocn.ne.jp/~fdlinux/">1fd-partimage</a>（<a href="http://pc11.2ch.net/test/read.cgi/linux/1000487624/">2chスレ</a>より）</li>
+	</ul>
+</li>
+<li><a href="http://www.samba.gr.jp/project/fdsamba/runner/fdsamba-1.2.html">FD-Samba</a>
+	<ul class="nest">
+	<li>FAT32ドライブをでSambaサーバ化。but ネットワークモジュールの組み込みが...難しいかも。</li>
+	</ul>
+</li>
+</ul>
+
+
+<h2><a href="#etc"><span class="ms">■</span></a> <a name="etc">etc</a></h2>
+
+
+<ul>
+<li><a href="http://crystalmark.info/software/CrystalDiskInfo/">Crystal Dew World - ソフトウェア - CrystalDiskInfo</a>
+	<ul>
+	<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/1121smartmon/smartmon.html">ハードディスクの健康状態をモニタする － ＠IT</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://buffalo.jp/download/driver/hd/format.html">ドライバ ダウンロード Disk Formatter</a></li>
+<li><a href="http://uiuicy.cs.land.to/testdisk1.html">【TestDisk】について</a> - <span class="small"><a href="http://uiuicy.cs.land.to/index.html">すっきり!! デフラグ非公式ヘルプのページ</a></span>
+	<ul>
+	<li><a href="http://uiuicy.cs.land.to/testdisk/tdisk01.html">TestDisk非公式ヘルプ</a></li>
+	</ul>
+</li>
+<li><a href="http://openmya.hacker.jp/wiki/wiki.cgi?page=2005%2F05%2F14HDD%B8%A6%B5%E6%B2%F1">2005/05/14HDD研究会 - openmya Wiki</a></li>
+</ul>
+
+<ul>
+<li><a href="http://download.goo.ne.jp/special/disk_tool/">ディスク管理ツール特集 - goo ダウンロード</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.forest.impress.co.jp/lib/sys/file/delundel/datarecovery.html">窓の杜 - DataRecovery</a></li>
+<li><a href="http://www.pcinspector.de/file_recovery/jp/welcome.htm">PC INSPECTOR File Recovery</a></li>
+</ul>
+
+
+
+
+</div>
+</div>
+
+<div class="navi">
+<a href="./index.html">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+
+<address>Written by yassy</address>
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+</html>

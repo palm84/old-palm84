@@ -1,0 +1,502 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="START" href="./">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>GRUB2 めも＠Palm84</title>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="./basic_ie5.css">
+<![endif]-->
+</head>
+
+<body>
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+<h1><span class="tokai1"><a href="./grub2.html">GRUB2 めも</a></span></h1>
+
+<div class="palm-body">
+
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+<ul>
+<li><a href="#document" accesskey="3">ドキュメント</a> <kbd class="ak small">3</kbd></li>
+<li><a href="#grub_cfg" accesskey="4">grub.cfg</a> <kbd class="ak small">4</kbd></li>
+<li><a href="#command" accesskey="5">コマンド</a> <kbd class="ak small">5</kbd></li>
+<li><a href="#install" accesskey="6">インストール</a> <kbd class="ak small">6</kbd></li>
+<li><a href="#bootdisk" accesskey="7">起動ディスク</a> <kbd class="ak small">7</kbd></li>
+<li><a href="#grub_legacy" accesskey="8">GRUB(Legacy) との違い</a> <kbd class="ak small">8</kbd></li>
+<li><a href="#chainload" accesskey="9">チェインロード</a> <kbd class="ak small">9</kbd>
+	<ul>
+	<li><a href="#other_bootloader">GRUB2から</a></li>
+	<li><a href="#from_other">他のブートローダーから</a></li>
+	</ul>
+</li>
+<li><a href="#ss">スクリーン・ショット</a></li>
+</ul>
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+
+
+
+<p class="small">リンク is フリーダム<span class="ms">♪</span></p>
+
+</div>
+</div>
+
+
+<div class="main">
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/grub2.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt><strong style="color:brown;">内容古いです</strong>！</dt>
+<dd style="background-color:#fffaf4;">
+<p>最終更新日は 2011.8.14 です！ご注意。</p>
+<p>パーティション指定は 例 : <code>(hd0,msdos1)</code> 等が正しいです。</p>
+</dd>
+</dl>
+
+<p><script src="http://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+
+　<a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/grub2.html"><img src="http://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/grub2.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<p class="small">2011.06.13 作成中...
+<br>最終更新日 2011.8.14</p>
+
+<p>Linux 初心者の覚書... 間違ってたらすみません。。。</p>
+<h2><a href="#document" name="document">ドキュメント</a> <kbd class="ak">3</kbd></h2>
+
+<ul>
+<li><a href="http://www.gnu.org/software/grub/">GNU GRUB - GNU Project - Free Software Foundation (FSF)</a>
+	<ul>
+	<li><a href="http://www.gnu.org/software/grub/manual/grub.html">GNU GRUB Manual 1.99</a></li>
+	</ul>
+</li>
+<li><a href="http://www.dedoimedo.com/computers/grub-2.html">GRUB 2 bootloader - Full tutorial</a></li>
+</ul>
+
+<ul>
+<li><a href="https://help.ubuntu.com/community/Grub2">Grub2 - Community Ubuntu Documentation</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/GRUB2">GRUB2 - ArchWiki</a></li>
+<li><a href="http://www.ibm.com/developerworks/jp/linux/library/l-grub2/index.html">GRUB 2 への移行</a></li>
+</ul>
+
+
+<dl>
+<dt>参考になるページ</dt>
+<dd>
+<ul>
+<li><a href="http://gihyo.jp/admin/serial/01/ubuntu-recipe/0097">Ubuntu Weekly Recipe：第97回　複数のOSを使う（3）GRUBを使ったデュアルブート，GRUBの設定｜gihyo.jp … 技術評論社</a></li>
+</ul>
+
+<ul>
+<li><a href="http://rionaoki.net/misc/ubuntu/grub-2-basics">経済学101 -- Grub 2 入門</a></li>
+<li><a href="http://www.logos.ic.i.u-tokyo.ac.jp/~kabe/pukiwiki/index.php?Linux%2FGRUB2">Linux/GRUB2 - Tomoya KABE Wiki</a></li>
+</ul>
+
+</dd>
+</dl>
+
+
+<h2><a href="#grub_cfg" name="grub_cfg">grub.cfg</a> <kbd class="ak">4</kbd></h2>
+
+<p>GRUB(Legacy) の <code>menu.lst</code> にあたる設定ファイルは <code>/boot/grub/grub.cfg</code> </p>
+<p>Ubuntu など通常はこのファイルを直接編集せず <code>/etc/grub.d/</code>, <code>/etc/default/grub</code> ディレクトリのファイルを編集、<strong class="ms">update-grub</strong> コマンドの実行により設定を反映させて生成。</p>
+
+<ul>
+<li>menuentry - Kubuntu 10.04 の例</li>
+</ul>
+<pre class="scl">
+menuentry 'Ubuntu, with Linux 2.6.32-22-generic' --class ubuntu --class gnu-linux --class gnu --class os {
+recordfail
+insmod ext2
+set root='(hd1,2)'
+search --no-floppy --fs-uuid --set a84f459b-1367-41c4-8a71-551da566fcb9
+linux /boot/vmlinuz-2.6.32-22-generic root=UUID=a84f459b-1367-41c4-8a71-551da566fcb9 ro   splash quiet
+initrd /boot/initrd.img-2.6.32-22-generic
+}
+</pre>
+
+<p>【注意】GRUB(Legacy) とは違いパーティションNo.は 1 から。</p>
+
+<ul>
+<li>menuentry 一例 - 内蔵HDの Windows XP</li>
+</ul>
+<pre class="scl">
+menuentry &#034;Windows NT/2000/XP (loader) (on /dev/sda1)&#034; {
+insmod ntfs
+set root='(hd0,1)'
+search --no-floppy --fs-uuid --set xxxxxxxxxxxxxxxx
+drivemap -s (hd0) ${root}
+chainloader +1
+}
+</pre>
+<ul>
+<li>menuentry 一例 - 内蔵HDの Windows 7</li>
+</ul>
+<pre class="scl">
+menuentry 'Windows 7 (loader) (on /dev/sda2)' {
+insmod ntfs
+set root='(hd0,2)'
+search --no-floppy --fs-uuid --set xxxxxxxxxxxxxxxx
+chainloader +1
+}
+</pre>
+
+<ul>
+<li>menuentry 一例 - 第2HDの FreeDOS</li>
+</ul>
+<pre class="scl">
+menuentry 'FreeDOS (on /dev/sdf1)' {
+insmod fat
+set root='(hd1,1)'
+search --no-floppy --fs-uuid --set xxxx-xxxx
+drivemap -s (hd0) ${root}
+chainloader +1
+}
+</pre>
+
+<h2><a href="#command" name="command">コマンド</a> <kbd class="ak">5</kbd></h2>
+
+<p>ブートメニュー画面、<kbd>c</kbd>キーでコマンドラインへ、<kbd>Esc</kbd>で戻る</p>
+
+<ul>
+<li><code>halt</code> - シャットダウン</li>
+<li><code>reboot</code> - 再起動</li>
+</ul>
+
+<ul>
+<li><code>insmod</code></li>
+</ul>
+<pre>
+insmod ext2
+</pre>
+<p>ファイルシステムなどのモジュールをロード。ロード済なら不要。<code>lsmod</code> で確認可。モジュールの場所は <code>/boot/grub</code> など。</p>
+
+
+<ul>
+<li><code>root</code> (set root=)</li>
+<li><code>linux</code> (linux16) - GRUB(Legacy) での <strong class="ms">kernel</strong> コマンド</li>
+<li><code>initrd</code> (initrd16)</li>
+</ul>
+<pre>
+root (hd0,1)
+linux /boot/vmlinuz root=UUID=xxxx-xxxx vga=xxx
+initrd /boot/initrd,gz
+</pre>
+
+<ul>
+<li><code>boot</code> - 入力した設定でブート</li>
+</ul>
+
+<ul>
+<li><code>chainloader</code></li>
+</ul>
+<pre>
+root (hd0,0)
+chainloader +1
+</pre>
+
+<ul>
+<li><code>drivemap</code> - HDのスワップ（順番入替）</li>
+</ul>
+<pre>
+drivemap -s (hd0) (hd1)
+</pre>
+<pre>
+drivemap -s (hd0) ${root}
+</pre>
+
+<ul>
+<li><code>ls</code> - パーティション表示
+	<ul>
+	<li><code>ls -l</code> - パーティションの詳細表示</li>
+	<li><code>ls /<var>path</var></code> - ディレクトリ指定でファイル名一覧表示</li>
+	<li><code>ls -l /<var>path</var></code> - ファイル詳細リスト表示</li>
+	</ul>
+</li>
+</ul>
+<pre>
+grub&#062; ls
+(hd0) (hd0,2) (hd0,1) (hd1) (hd1,5) (hd1,1)
+</pre>
+
+<pre>
+grub&#062; ls -l
+Device hd0: Partition table
+        Partition hd0,2: Filesystem type ntfs - Label "data", UUID xxxxxxxxxxxxxxxx
+        Partition hd0,1: Filesystem type ntfs - Label "Windows", UUID xxxxxxxxxxxxxxxx
+</pre>
+<pre>
+ls /boot
+＜ディレクトリ指定でファイル名表示＞
+</pre>
+
+<ul>
+<li><code>search</code>
+	<ul>
+	<li><code>--file</code>, (<code>-f</code>) - ファイル</li>
+	<li><code>--label</code>, (<code>-l</code>) - LABEL</li>
+	<li><code>--fs-uuid</code>, (<code>-u</code>) - UUID</li>
+	<li><code>--no-floppy</code> - FD除外</li>
+	</ul>
+</li>
+</ul>
+<ul>
+<li><code>search --file --set=root <var>path</var></code> - ファイルを検索して set root</li>
+<li><code>search --fs-uuid --set <var>UUID</var></code> - UUIDを set root</li>
+</ul>
+
+<pre>
+insmod ext2
+search --file --set=root /grub.exe
+linux /grub.exe
+</pre>
+
+<ul>
+<li><code>loopback</code> - isoイメージなど loopback マウント</li>
+</ul>
+<pre>
+loopback loop0 /path/to/image
+</pre>
+
+<ul>
+<li> <code>parttool</code> - フラグの設定 
+	<ul>
+	<li><code>boot</code> - bootフラグ（アクティブ設定）</li>
+	<li><code><var>type</var></code> - パーティションタイプ</li>
+	<li><code>hidden</code> - 隠しパーティション</li>
+	</ul>
+</li>
+</ul>
+<pre>
+set root=(hd0,1)
+chainloader +1
+parttool ${root} boot+
+</pre>
+<p class="small">※ うまく行かないことが多い？</p>
+
+<ul>
+<li><code>set</code> - 環境設定・確認
+	<ul>
+	<li><code>set pager=</code> - 画面の一時停止設定（<code>| more</code> みたいに）</li>
+	<li><code>set lang=</code> - 言語設定、日本語= ja、英語 = en</li>
+	</ul>
+</li>
+</ul>
+
+<pre>
+set pager=1
+</pre>
+<p><kbd>Ctrl</kbd>-<kbd>c</kbd>でquit</p>
+<p>※ 1行ごとに停止したりするのでオフにするには</p>
+<pre>
+set pager=
+</pre>
+
+
+<h2><a href="#install" name="install">インストール</a> <kbd class="ak">6</kbd></h2>
+
+<p>Ubuntu 10.04 では</p>
+<ul>
+<li><code>grub-install</code> - GRUB2のインストール</li>
+<li><code>update-grub</code> - 設定変更の反映など</li>
+<li><code>dpkg-reconfigure grub-pc</code> - デフォルトのオプション、インストール先の設定等</li>
+</ul>
+
+<ul>
+<li>Ubuntu のGUIツール？
+	<ul>
+	<li><a href="https://help.ubuntu.com/community/Boot-Repair">Repair your computer boot with Boot-Repair - Community Ubuntu Documentation</a></li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt>インストール先の変更 (Ubuntu 10.04 の例)</dt>
+<dd>
+<p>Kubuntu 10.04 では下記で設定変更するだけでイケました（sdb2 から sdbへ、及び sdb から sdb2 へ変更）。</p>
+<pre>
+$ sudo dpkg-reconfigure grub-pc
+</pre>
+<p>コマンドライン・パラメータ等は何も変更せず <kbd>Enter</kbd> で飛ばす。下記画面で対象を <kbd>Space</kbd> キーでチェックオン・オフする。</p>
+<p class="overflow2"><img src="./images/grub2/dpkg-reconfigure_grub-pc.png" width="561" height="400" alt="dpkg-reconfigure grub-pc のスクリーンショット"></p>
+<p class="small pink">※【注】この例は USB HD (/dev/sdb2) にインストールしてます。</p>
+
+<p>念のために下記コマンド2点の実行もしといた方がいいかな。</p>
+<pre>
+$ sudo grub-install /dev/sd<var>x</var>
+</pre>
+<pre>
+$ sudo update-grub
+</pre>
+
+<ul>
+<li>参考リンク :
+	<ul>
+	<li><a href="https://forums.ubuntulinux.jp/viewtopic.php?id=9593">Ubuntu日本語フォーラム / GRUB2のインストールデバイスを間違ってしまった！「grub-install」で復旧させたが、再び再現されてしまった！の改善方法</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<h2><a href="#bootdisk" name="bootdisk">起動ディスク</a> <kbd class="ak">7</kbd></h2>
+
+<p>Super Grub2 Disk が便利。FD/iso/USB の isohybrid イメージをダウンロード可。</p>
+<ul>
+<li><a href="http://www.supergrubdisk.org/">Boot Problems Open Source Tools | Super Grub Disk, Super Grub2 Disk and Rescatux</a>
+	<ul>
+	<li><a href="http://www.supergrubdisk.org/super-grub2-disk/">Super Grub2 Disk | Boot Problems Open Source Tools</a></li>
+	</ul>
+</li>
+<li><a href="http://www.supergrubdisk.org/wiki/Main_Page">Super Grub Disk Wiki</a></li>
+</ul>
+
+
+
+<h2><a href="#grub_legacy" name="grub_legacy">GRUB(Legacy) との違い</a> <kbd class="ak">8</kbd></h2>
+
+<ul>
+<li>パーティション番号は 1 から数える</li>
+<li><code>kernel</code> コマンドなし <span class="ms">→</span> <code>linux</code></li>
+<li><code>find</code> コマンドなし <span class="ms">→</span> <code>search</code></li>
+<li><code>map</code> コマンドなし <span class="ms">→</span> <code>drivemap</code> </li>
+<li>menuentry の編集画面
+	<ul>
+	<li>そのまま編集、<kbd>Ctrl</kbd>-<kbd>x</kbd> でブート</li>
+	</ul>
+</li>
+</ul>
+
+
+
+<h2><a href="#chainload" name="chainload">チェインロード</a> <kbd class="ak">9</kbd></h2>
+<h3><a href="#other_bootloader" name="other_bootloader">GRUB2から他のブートローダーをチェインロード</a></h3>
+
+<ul>
+<li>Windows はパーティションを指定</li>
+</ul>
+<pre>
+insmod ntfs
+set root=(hd0,1)
+chainloader +1
+</pre>
+
+<ul>
+<li>Windows - ファイルを検索して（※ 大文字小文字は区別するので注意）</li>
+</ul>
+<pre>
+insmod ntfs
+search --file --set=root /bootmgr
+chainloader +1
+</pre>
+
+<pre>
+insmod ntfs
+search --file --set=root /ntldr
+chainloader +1
+</pre>
+
+<ul>
+<li>GRUB for DOS - grub.exe を指定</li>
+</ul>
+<pre>
+insmod ext2
+search --file --set=root /grub.exe
+linux /grub.exe
+</pre>
+
+
+<h3><a href="#from_other" name="from_other">他のブートローダーからGRUB2をチェインロード</a></h3>
+
+<p>Windows ブートメニューに GRUB2 を追加。Windows ブートマネージャー (BOOTMGR, NTLDR) から GRUB2 をチェインロード</p>
+
+<ul>
+<li><a href="http://grub24dos.sourceforge.net/">SourceForge.net: grub24dos - Project Web Hosting - Open Source Software</a></li>
+<li><a href="http://sourceforge.net/dbimage.php?id=296761">GRUB2ブートメニューのスクリーンショット</a></li>
+<li>拙作めも :
+	<ul>
+	<li><a href="http://d.hatena.ne.jp/palm84/20110726/1311681035">grub24dos</a></li>
+	</ul>
+</li>
+</ul>
+
+
+<h2><a href="#ss" name="ss">スクリーン・ショット</a></h2>
+
+
+
+
+
+</div>
+</div>
+
+
+
+
+<div class="navi">
+<a href="./index.html">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+<address>Written by yassy</address>
+
+<ul class="toTop-nav">
+<li><a href="javascript:void(0);" onclick="history.back();return false;">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+</body>
+
+</html>
+

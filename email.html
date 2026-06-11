@@ -1,0 +1,484 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<META http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Language" content="ja">
+<link rel="index" href="./index.html">
+<link rel="stylesheet" type="text/css" href="basic.css">
+<link rel="stylesheet" type="text/css" href="sub.css">
+<title>無料POPメールサービス</title>
+</head>
+
+<body>
+
+<div class="navi">
+<a name="top" href="./index.html" accesskey="0">HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+
+<h1><span class="ms">無料</span>POP<span class="ms">メールサービス比較</span></h1>
+
+<p class="small">2003.12.15更新 内容古いです。すみません。
+<br>2006.9.7 超久々に更新してみました。なんかGmailだけでいいような気も...</p>
+
+<p class="small">プロバイダのメールアドレス長すぎ！とか<br>
+仕事用、プライベート用、メルマガ用、<br>
+当然　愛人用も！　アドレス別にせんとまずいやないけぇ!って人も<br>
+いとしい家族のためにアドレスを取ってアゲタイ<br>
+家族サービス！といいつつ　当然、愛人用も・・・（こればっか！）　なぁぁんちゃって（死語！）</p>
+
+<dl>
+<dt>POPメールっていうのは</dt>
+<dd><p>普段普通に使ってるメールソフトで送受信するメールのことでおま。<br>
+<strong>WEBメール</strong>（下記参照）と区別してこう呼ぶみたいやね。<br>
+最近はプロバイダのメールでも<strong>両方対応</strong>のものも多いですな。</p></dd>
+</dl>
+<p>ってかんじぃで無料メールについて調べてみますた。<br>
+一応、普通のメールソフトで受信できるものをえらんでまし<br>
+（WEBメールのみは除外してまし）あぁぁとぉ</p>
+<h2><a name="mail">基本的なメールサービス用語</a></h2>
+<p>まずは用語などちびっと（手抜きで）説明</p>
+
+<div class="ylt">
+
+<div class="palmst">
+<dl class="small">
+
+<dt>Outbound Port 25 Blocking と サブミッションポート</dt>
+<dd>
+<ul>
+<li><a href="http://support.nifty.com/support/information/op25b/index.htm">会員サポート &#062; Outbound Port25 Blocking　Q&#038;A：@nifty</a></li>
+<li><a href="http://www.nifty.com/antispam/587isp.htm">迷惑メール対策@nifty &#038; サブミッションポート（Port587）によるメール送信に対応している主なプロバイダー</a></li>
+</ul>
+<p>ちょっとややこしいかもですが、<strong>Outbound Port 25 Blocking</strong> を実施しているプロバイダ接続の場合、<strong>サブミッションポート</strong>に対応していないメールサービスでは送信ができません。（※Webメールは関係ないです。）</p>
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20060905/1157437100">Outbound Port 25 Blocking と サブミッションポート</a>（手前味噌）</li>
+</ul>
+</dd>
+</dl>
+</div>
+
+<table cellpadding="3" cellspacing="0" summary="メールサービス用語">
+ <caption>メールサービス基本用語</caption>
+ <colgroup>
+ <col span="3">
+ </colgroup>
+
+  <tr>
+    <td><strong>POP</strong></td>
+    <td>Post Office Protocol</td>
+    <td class="lef">メール受信の為の手順どす
+      <br>受信メールを受け持つのが
+      <br><strong>POP3サーバー</strong>（現在はVersion3なんで）</td>
+  </tr>
+
+  <tr>
+    <td><strong>SMTP</strong></td>
+    <td>Simple Mail Transfer<br>Protocol</td>
+    <td class="lef">送信メールの為の手順でおま
+      <br>送信メールを受け持つのが
+      <br><strong>SMTPサーバー</strong>っていうんやって</td>
+    
+  </tr>
+  <tr>
+    <td><strong>WEBメール</strong>
+      <br>※注</td>
+    <td></td>
+    <td class="lef">ブラウザ（IE、サスケもといネスケとか）上で、つまりは<span class="red"><strong>ホームページ上で送受信できる電子メール</strong></span>の事ですわ。インターネットにつながってたらよそさんのPCでも出来るっちゅうわけやね。
+      <br>両方使えたら便利ちゃいますやろか？
+      <br><a href="http://login.passport.net/uilogin.srf?id=2" target="_blank">Hotmail</a>とか有名やね
+      <br>（熱いの嫌ってなんじゃそら）</td>
+  </tr>
+
+  <tr>
+    <td><strong>POP Before SMTP</strong><br>※注</td>        
+    <td></td>
+    <td class="lef">普通やと送信サーバーはんは認証ってせえへんもんなんやと。
+      <br>ほやさかいに
+      <br><span class="red">送信するにはその前に受信動作をしてくれ</span>っていう事でっか
+      <br>プロバイダのメールやとインターネットつないだ時に認証しとるからいらんわけやね</td>
+  </tr>
+
+  <tr>
+    <td><strong>IMAP</strong></td>
+    <td>Internet Messaging<br>Access Protocol</td>
+    <td class="lef"><strong>メールの一覧とかだけ受信</strong>したりできるんやて。
+     <br>出先とか<strong>必要なメールだけ受信</strong>できるさけごっつう便利なんちゃうん。
+     <br>POP+SMTPの発展規格ですわな。</td>
+  </tr>
+
+  <tr>
+    <td><strong>SMTP-AUTH（認証）</strong></td>          
+    <td></td>
+    <td class="lef"><strong>送信サーバー</strong>もはじめました<br>
+      冷麺やのうて<span class="red"><strong>認証</strong></span>でっせ、
+      <br>ちゅうことは送信する前に受信せんでもええよぉって事かいな
+      <br>なかなかやりおるのぉ。SPAM防止対策でっか。</td>
+  </tr>
+</table>
+
+
+<dl class="small">
+
+<dt>※注<span class="red"><strong>WEBメール</strong></span>使用の際</dt>
+<dd>
+<p><span class="red"><strong>SSL対応</strong></span>であるか確認しときましょう<br>（SSL＝Secure Socket Layer　暗号化通信→ウィンドウ右下のカギマーク表示）</p>
+<p>非対応の場合、ネットカフェ（要するにローカルネットワーク内）などでメールの内容及び<ins>ユーザー名/パスワード</ins>などの盗聴が可能です。（<ins>Yahooなどはログイン時のみSSL対応？</ins>）
+<br>また、対応であったとしても信頼できない場所でのパスワード入力などは極力避けましょう。
+<br>なんとなれば、盗聴不可能っていってもPC自体にハッキング(!)用のソフトが入れられてる場合あるしねぇってことで・・・ 
+<br>（キーの入力を記録するやつとか）</p>
+</dd>
+
+<dt><span class="red"><strong>※POP Before SMTP</strong></span>について</dt>
+<dd>
+<p>対応ソフトなら送信前に受信操作をする必要はありません。（OutlookExpressは非対応）
+<br>フリーウェアでも有名なものは殆ど対応してますんでお試しあれ。</p>
+</dd>
+
+</dl>
+
+
+<hr>
+
+
+<p class="small">まぁこれぐらいはわしでもしっとるくらいやさかいに<br>
+覚えといてもろたほうがよろしおまんな</p>
+<p class="small">あ、それと無料サービスなだけに信頼性とか不安だったりしますが<br>
+プライベートで使う分には問題ないレベルかと。<br>
+障害情報なんかもホームページ上にすぐに上がりますし。<br>
+FAQなんかも最近は充実してますね。<br>
+（一応サポート体制もよさそうな所をピックアップしてるつもり）</p>
+<p><span class="red">短めのアドレスを選びましたんで暇やったら見ておくんなましってことで。</span></p>
+
+<p class="small"><a href="#top" accesskey="u">いちばん上へ</a> <kbd class="ak">U</kbd></p>
+
+<hr>
+<h2>登録に有料プロバイダのアドレスが不要</h2>
+<h3><a href="http://mail.google.com/mail/help/intl/ja/about.html" target="_blank">Gmail</a></h3>
+
+<p class="small"><strong>SMTP over SSL</strong> なので（<code>465/tcp</code> を使えば）Outbound Port 25 Blocking は関係なし。</p>
+
+<table summary="Gmail" cellpadding="5" cellspacing="0">
+ <tr>
+    <td>アドレス</td>
+    <td>容量</td>
+    <td>WEB</td>
+    <td>転送</td>
+    <td>登録制限</td>
+    <td>未使用削除</td>
+  </tr>
+  <tr>
+    <td>@gmail.com</td>
+    <td>約 2.5GB</td>
+    <td>○</td>
+    <td>○</td>
+    <td>?</td>
+    <td>?</td>
+  </tr>
+</table>
+
+<p class="small">検索エンジンでおなじみの<a href="http://www.google.co.jp/">Google</a>提供の無料メールサービス。招待がなくても登録が可能になりました。
+<br>☆<strong class="red">容量はなんと 2.5GB</strong>（どんどん増えます）なので一々削除しなくてもいいかも。</p>
+
+<p class="small">☆送受信とも<strong class="red">ウイルスチェック</strong>あり。</p>
+<p class="small">☆メーラーからの送受信はSSL仕様なので（GmailサーバとPCの間は）暗号化されてます。
+<br>（※EdMaxフリー版など一部のメーラーはSSL非対応なので注意。）</p>
+<p class="small">☆WEBメールは<a href="https://mail.google.com/">https://mail.google.com/</a>からログインするとログイン後もSSLとなります。</p>
+<p class="small">※送受信制限は　1通 10MB まで。</p>
+
+<p class="small">申し込みは<a href="https://mail.google.com/">ログイン画面</a>の<a href="http://mail.google.com/mail/signup">Gmail に申し込む</a>からどうぞ。</p>
+<h3><a href="http://mail.yahoo.co.jp/" target="_blank">Yahoo!メール</a></h3>
+<p class="small"><strong>Submissionポート（587/tcp）対応</strong></p>
+
+<table summary="Yahoo!メール" cellpadding="5" cellspacing="0">
+ <tr>
+    <td>アドレス</td>
+    <td>容量</td>
+    <td>WEB</td>
+    <td>転送</td>
+    <td>登録制限</td>
+    <td>未使用削除</td>
+  </tr>
+  <tr>
+    <td>@yahoo.co.jp</td>
+    <td>1GB</td>
+    <td>○</td>
+    <td>○</td>
+    <td>なし</td>
+    <td></td>
+  </tr>
+</table>
+
+<p class="small">☆<strong>容量はなんと 1GB</strong></p>
+
+<p class="small">☆よくも悪くも<strong>匿名でも登録</strong>できる点が？<br>
+  ☆メルマガ登録なんかに使うのにはピッタシかも<br>
+  ☆<a href="http://help.yahoo.co.jp/guide/jp/bc/" target="_blank">Yahoo!ブリーフケース</a>・<a href="http://photos.yahoo.co.jp/" target="_blank">Yahoo!フォト</a>（WEB上にファイルを保存・共有）など便利なサービスあり</p>
+
+<p class="small">※送受信とも1通　20MBまで<br>
+※メールウイルスチェックサービス￥210<br>
+※メール本文に下記の<ins>様な</ins>文章が付きます<br>
+_________________________________________________<br>
+Do You Yahoo!?<br> 
+Yahoo! BB is Broadband by Yahoo! http://bb.yahoo.co.jp/</p> 
+
+<h3><a href="http://www.inter7.jp/" target="_blank">inter7.jp</a></h3>
+
+<p class="small">SMTPはありません。</p>
+<table cellpadding="5" cellspacing="0" summary="inter7.jp">
+
+  <tr>
+    <td>アドレス</td>
+    <td>容量</td>
+    <td>WEB</td>
+    <td>転送</td>
+    <td>登録制限</td>
+    <td>未使用削除</td>
+    <td>携帯チェック</td>
+
+  </tr>
+
+  <tr>
+     <td>inter7.jp</td>
+     <td>250MB</td>
+     <td>○</td>
+     <td>○</td>
+     <td>2個</td>
+     <td>90日</td>
+     <td>○</td>
+
+  </tr>
+</table>
+
+<p class="small">☆<strong>容量は250MB</strong>です。
+<br>☆WEBメールは<span class="red">SSL対応。IMAPにも対応。</span>
+<br>☆受信制限は1通なんと100MBまで。</p>
+<p class="small">※SMTPサーバーが使えません。WEBメールで送信可能です。</p>
+<p class="small">※登録に個人情報が全く不要です。アカウントとパスワードを入力するだけです。・・・どうなんでしょ？</p>
+<p class="small">POP over SSL / IMAP over SSL 対応。</p>
+
+<h3><a href="http://mail.marine.ne.jp/" target="_blank">愛称メルアド</a></h3>
+
+<p class="small"><strong>Submissionポート<span class="red">非対応</span></strong></p>
+
+<table cellpadding="5" cellspacing="0" summary="愛称メルアド">
+ <colgroup>
+ <col span="7">
+ </colgroup>
+
+  <tr>
+    <td>アドレス</td>
+    <td>容量</td>
+    <td>WEB</td>
+    <td>転送</td>
+    <td>登録制限</td>
+    <td>未使用削除</td>
+  </tr>
+
+  <tr>
+      <td>@desu.ne.jp<br>@chan.ne.jp</td>
+      <td>5MB</td>
+      <td></td>
+      <td>○</td>
+      <td>1個</td>
+      <td>1ヶ月</td>
+   </tr>
+
+</table>
+
+<p class="small">☆他ドメイン色々<br>
+☆結構人気ですね。<span class="red">くんね　ちゃんね　ラブラブね</span>って意味です<br>
+てってやんでぇな人には合わないですけど。</p>
+
+<p class="small"><a href="#top">いちばん上へ</a> <kbd class="ak">U</kbd></p>
+<h2>登録に有料プロバイダのアドレスが必要</h2>
+<h3><a href="http://www.saku2.com/" target="_blank">さくさくドットコム</a></h3>
+
+<p class="small"><strong>Submissionポート<span class="red">非対応</span></strong></p>
+
+<table cellpadding="5" cellspacing="0" summary="さくさくドットコム">
+
+  <tr>
+    <td>アドレス</td>
+    <td>容量</td>
+    <td>WEB</td>
+    <td>転送</td>
+    <td>登録制限</td>
+    <td>未使用削除</td>
+    <td>携帯チェック</td>
+
+   </tr>
+
+   <tr>
+    <td>@saku2.com</td>
+    <td>2MB</td>
+    <td></td>
+    <td></td>
+    <td>1個</td>
+    <td>1ヶ月</td>
+    <td>※</td>
+   </tr>
+
+</table>
+
+<p class="small">※i-mode J-Phone対応</p>
+<p class="small">☆障害（スパムメールのせいで）もあったりしましたが
+<br>☆なかなか毅然と対処されてます。
+<br>わしもプライベート用に使ってまんねん</p>
+<p class="small">※<span class="red">メールマガジン登録不可</span></p>
+<h3><a href="http://zenno.com/" target="_blank">Zenno.com</a></h3>
+
+<p class="small"><strong>Submissionポート（587/tcp）対応</strong></p>
+
+<table cellpadding="5" cellspacing="0" summary="Zenno.com">
+
+  <tr>
+    <td>アドレス</td>
+    <td>容量</td>
+    <td>WEB</td>
+    <td>転送</td>
+    <td>登録制限</td>
+    <td>未使用削除</td>
+   </tr>
+
+   <tr>
+     <td>@hyper.cx<br>@nakayoshi.cc</td>
+     <td>5MB</td>
+     <td></td>
+     <td></td>
+     <td>5個</td>
+     <td>??</td>
+   </tr>
+</table>
+
+<p class="small">☆SOHOで運営されてます。
+<br>☆ココの管理人さんもスパムメールにがんばって対処されてます。
+<br>☆他ドメイン色々</p>
+<p class="small">※月￥100で容量10MB＋WEBメール</p>
+
+<h3><a href="http://pittari-mail.net/" target="_blank">ぴったりメール</a></h3>
+
+<p class="small"><strong>Submissionポート（587/tcp）対応</strong></p>
+
+<table cellpadding="5" cellspacing="0" summary="ぴったりメール">
+
+  <tr>
+    <td>アドレス</td>
+    <td>容量</td>
+    <td>WEB</td>
+    <td>転送</td>
+    <td>登録制限</td>
+    <td>未使用削除</td>
+  </tr>
+
+  <tr>
+     <td>@gambo.net<br>@iiwa.net</td>
+     <td>10MB</td>
+     <td></td>
+     <td></td>
+     <td>1個</td>
+     <td>３ヶ月</td>
+  </tr>
+</table>
+
+<p class="small">☆他ドメイン色々<br>
+☆<span class="red">SMTP AUTH認証対応</span><br></p>
+<p class="small">※月数回アンケート依頼あり
+※時間帯によってはサーバーがチョト重いかなぁ。</p>
+
+<h3><a href="http://comeon.to/freemail/" target="_blank"><del>comeon情報楽園</del></a></h3>
+
+<p class="small"><strong>新規募集停止しました。</strong></p>
+<table cellpadding="5" cellspacing="0" summary="comeon情報楽園">
+
+  <tr>
+    <td>アドレス</td>
+    <td>容量</td>
+    <td>WEB</td>
+    <td>転送</td>
+    <td>登録制限</td>
+    <td>未使用削除</td>
+  </tr>
+
+  <tr>
+     <td>@comeon.cx</td>
+     <td>5MB</td>
+     <td></td>
+     <td>○</td>
+     <td>??</td>
+     <td>1ヶ月</td>
+  </tr>
+
+</table>
+
+<p class="small">使っていないのでコメントはなしですみません。
+<br>でも、よさげかな？</p>
+
+<p class="small"><a href="#top">いちばん上へ</a> <kbd class="ak">U</kbd></p>
+<h2>プロバイダの0円プランを使う</h2>
+<p class="small">ちょっと裏技的になりますが、プロバイダによっては<strong>完全従量制プラン</strong>なんてのがあります。ダイアルアップ接続時間に応じて課金する方式なんですがダイアルアップしなくても他社プロバイダからの接続でも受信が可能な場合が多いようです。登録の際には、クレジットカード・銀行口座等の個人情報の登録が必要ですが、信頼性などやはり高いので選択肢としてはアリかもですね。</p>
+<h3><a href="http://www.plala.or.jp/access/guest/service/index11.html">ぷららライト</a></h3>
+<p class="small"><strong>送信はぷららからの接続時のみ。</strong>WEBメールで可能。</p>
+
+<table cellpadding="5" cellspacing="0" summary="ぷららライト">
+
+  <tr>
+    <td>アドレス</td>
+    <td>容量</td>
+    <td>WEB</td>
+    <td>転送</td>
+    <td>受信制限</td>
+    <td>送信制限</td>
+    <td>携帯チェック</td>
+
+  </tr>
+
+  <tr>
+     <td>@***.plala.or.jp</td>
+     <td>無制限</td>
+     <td>○</td>
+     <td>○</td>
+     <td>なし</td>
+     <td>1通5MB</td>
+     <td>○</td>
+  </tr>
+
+</table>
+
+<p class="small">☆なんか、やっぱりと言うべきか段違いにサービスよかったりして・・。</p>
+<p class="small">Webメール（<a href="https://wm1.plala.or.jp/mailpyon/">メールぴょん</a>/<a href="https://pwm.plala.or.jp/kojin/">メールぴょん Hyper</a>）はSSL対応。</p>
+<p class="small">※但し、<span class="red">送信に関してはぷらら接続の場合のみ</span>なのでWEBメールを<del>使うか、他社サーバー</del>を使いましょうってことで。
+<br>ちなみに私のメイン使用はPlalaなのですが、こんなプランあるなんてしらんかったよぉ。すみません。</p>
+
+</div>
+
+
+<p class="small"><a href="#top">いちばん上へ</a> <kbd class="ak">U</kbd></p>
+<hr>
+<p>他にも色々ありますけど...</p>
+<ul>
+<li><a href="http://www.hi-net.zaq.ne.jp/kobej/free/free.htm" target="_blank" title="最新無料サービスリンク集。無料プロバイダ、無料ホームページ、お得情報などなど…">完全無料お得サイト集</a>
+	<ul class="nest">
+	<li><a href="http://www.kooss.com/freemail/" target="_blank">無料メールアドレス 無料メールアカウント</a></li>
+	</ul>
+</li>
+</ul>
+
+<hr>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+<hr>
+
+<address>Written by yassy</address>
+
+           
+</body>
+</html>
