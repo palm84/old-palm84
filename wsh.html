@@ -1,0 +1,1334 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="GENERATOR" content="EdTex Version 3.11">
+<link rel="START" href="./">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>【私的】WSH / VBScript めも＠Palm84</title>
+<style type="text/css">
+<!--
+h4 {
+	font-size: 1em;
+	font-weight: bold;
+	margin:0.5em 0.5em 0.5em 1em;
+	padding-left: 0.5em;
+	border-left: 1em solid #ccc;
+	border-right: 1em solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+}
+
+dl.small ul,dl.small ul {
+	font-size: 1em;
+}
+
+/*===== columns =====*/
+
+.main {
+	border-color: #ccc;
+}
+
+.sidebar {
+	border-color: #ffd;
+}
+
+div.ylt table {
+	text-align: left;
+}
+
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+</head>
+
+
+<body>
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+<script type="text/javascript">
+<!--
+setTimeout("link()", 0);
+function link(){
+location.href='https://www.palm84.com/entry/wsh';
+}
+-->
+</script>
+
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>移行作業中です...</ins></dt>
+<dd>
+<p>はてなブログの該当ページへ<strong>リダイレクトします</strong>。お手数をおかけします。ご容赦ください。</p>
+<ul>
+<li><a href="https://www.palm84.com/entry/wsh">【私的】WSH / VBScript めも - palm84.com</a> <a href="https://b.hatena.ne.jp/entry/https://www.palm84.com/entry/wsh" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://www.palm84.com/entry/wsh" alt="" class="http-bookmark" /></a></li>
+<li>このページの旧URLは
+	<ul>
+	<li> <code><strong>http://www10.plala.or.jp/palm84/wsh.html</strong></code> </li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+<h1><a href="./wsh.html"><span class="tokai1">【私的】WSH / VBScript めも</span></a></h1>
+
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+<ul>
+<li><a href="#beginner">入門編</a> <kbd class="ak">3</kbd></li>
+<li><a href="#microsoft">Microsoft資料</a> <kbd class="ak">4</kbd></li>
+<li><a href="#kihon">基本</a> <kbd class="ak">5</kbd></li>
+<li><a href="#tips">Tips</a> <kbd class="ak">6</kbd></li>
+<li><a href="#link">リンク</a> <kbd class="ak">7</kbd></li>
+<li><a href="#memo">めも</a> <kbd class="ak">8</kbd></li>
+</ul>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+
+<div class="ct">
+<p><a href="http://getfirefox.jp/" title="Get Firefox - Web を取り戻せ">
+<img src="./images/takebacktheweb_small.png" width="125" height="50" alt="Get Firefox"></a></p>
+
+
+
+
+<p class="small">リンク is フリーダム<span class="ms">♪</span></p>
+</div>
+</div>
+
+
+<div class="main">
+
+<p><script src="http://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/wsh.html"><img src="http://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/wsh.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<p class="small">
+2012.1.14 FileVersion.vbs を修正
+<br>最終更新日 2012.1.14</p>
+
+
+<p>とっても初歩的私的（何）・・・</p>
+
+<p>cmd.exe では限界あるので、ちゃんと覚えないとだめですね...やっぱり？（何）</p>
+<p>尚、陳腐なお約束でありますが、ここのスクリプトについては全くの初心者レベルなので <code>at your own risk</code> ということで。</p>
+<h2><a href="#beginner" name="beginner" accesskey="3"><span class="tokai1">入門編</span></a> <kbd class="ak">3</kbd></h2>
+
+<dl>
+<dt><a href="http://www.atmarkit.co.jp/fwin2k/tutor/cformwsh01/cformwsh01_01.html">WSHを始めよう － ＠IT</a></dt>
+<dd>
+<p>WSHの基本から。めちゃ丁寧な解説。</p>
+
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/tutor/cformwsh01/cformwsh01_02.html">WSHの便利な道具（オブジェクト）たち</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/tutor/cformwsh07/cformwsh07_01.html">Subプロシージャでユーザー独自の処理を定義する</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/tutor/cformwsh08/cformwsh08_01.html">Functionプロシージャでユーザー独自の関数を定義する</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/tutor/cformwsh09/cformwsh09_01.html">VBScriptのオブジェクトを使いこなす</a>
+	<ul>
+	<li><a href="http://www.atmarkit.co.jp/fwin2k/tutor/cformwsh09/cformwsh09_03.html">クラスを自作する</a></li>
+	<li><a href="http://www.atmarkit.co.jp/fwin2k/tutor/cformwsh09/cformwsh09_04.html">メソッドを定義する</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/tutor/cformwsh10/cformwsh10_01.html">WScriptオブジェクトを利用する</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/tutor/cformwsh12/cformwsh12_01.html">WshShellオブジェクトを利用する</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/tutor/cformwsh15/cformwsh15_01.html">WshNetworkオブジェクトを利用する</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/tutor/cformwsh16/cformwsh16_01.html">FileSystemObjectオブジェクトを利用する</a></li>
+</ul>
+</dd>
+
+<dt><a href="http://www.atmarkit.co.jp/fwin2k/operation/wsh01/wsh01_01.html">＠IT：運用　Windows管理者のためのWindows Script Host入門</a></dt>
+<dd>
+<p>オブジェクトの詳細など。</p>
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/wsh02/wsh02_02.html">WSHオブジェクト・モデルと起動オプション</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/wsh03/wsh03_01.html">第3回　WScriptオブジェクトの詳細（1）</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/wsh05/wsh05_01.html">第5回　WshShellオブジェクトの詳細（1）</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/wsh08/wsh08_01.html">第8回　WshNetworkオブジェクトの詳細　1．WshNetworkオブジェクト</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/wsh09/wsh09_01.html">第9回　WshControllerオブジェクトの詳細</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/wsh10/wsh10_01.html">第10回　WSHスクリプトからのファイル操作（1） - FileSystemObjectによるテキスト・ファイルの読み書き</a></li>
+</ul>
+
+</dd>
+</dl>
+
+
+<h2><a href="#microsoft" name="microsoft" accesskey="4"><span class="tokai1">Microsoft資料</span></a> <kbd class="ak">4</kbd></h2>
+
+<dl>
+<dt>WSH(wscript.exe)のバージョン</dt>
+<dd>
+<ul>
+<li>Windows XP SP3 - <strong class="ms">5.7.0.18066</strong></li>
+<li>Windows XP SP2 - <strong class="ms">5.6.0.8820</strong></li>
+<li>Windows 2000 SP4 - <strong class="ms">5.6.0.6626</strong></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=C717D943-7E4B-4622-86EB-95A22B832CAA&#038;displaylang=ja">ダウンロードの詳細 : Windows 2000 および Windows XP 用の Windows Script 5.6</a>（バージョンは <strong class="ms">5.6.0.8831</strong>）</li>
+</ul>
+</dd>
+</dl>
+
+
+
+<ul>
+<li><a href="http://www.microsoft.com/japan/msdn/scripting/">Windows Script</a></li>
+</ul>
+<p>Windows Script 5.6 ドキュメント（chmヘルプファイル）が<a href="http://download.microsoft.com/download/winscript56/Install/5.6/W98NT42KMe/JA/scd56jp.exe">ダウンロード</a>できます。</p>
+
+<h3><a href="#msdn"><span class="ms">■</span></a> <a name="msdn">MSDN ドキュメント</a></h3>
+
+<ul>
+<li><a href="http://social.msdn.microsoft.com/Search/ja-JP/">MSDN Search</a></li>
+</ul>
+
+<ul>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392483.aspx">Microsoft Windows スクリプト テクノロジ</a></li>
+</ul>
+
+<dl>
+<dt><a href="http://msdn.microsoft.com/ja-jp/library/cc364455.aspx">Windows Script Host</a></dt>
+<dd>
+<ul>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364451.aspx">はじめに</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392526.aspx">Windows Script Host の基礎</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364501.aspx">スクリプトを実行する</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392527.aspx">基本的な Windows Script Host タスク</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392520.aspx">セキュリティと Windows Script Host</a></li>
+</ul>
+
+<dl>
+<dt><a href="http://msdn.microsoft.com/ja-jp/library/cc364460.aspx">リファレンス</a></dt>
+<dd>
+<ul>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364472.aspx">XML 要素</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364453.aspx">オブジェクト</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364474.aspx">プロパティ</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364452.aspx">メソッド</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364450.aspx">イベント (Windows Script Host)</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364439.aspx">エラー メッセージ</a></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+
+<dl>
+<dt><a href="http://msdn.microsoft.com/ja-jp/library/cc392489.aspx">VBScript</a></dt>
+<dd>
+<ul>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392209.aspx">VBScript ユーザーズ ガイド</a>
+	<ul class="small">
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392212.aspx">VBScript の概要</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392199.aspx">HTML に VBScript コードを記述する</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392195.aspx">VBScript のデータ型</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392253.aspx">VBScript の変数</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392206.aspx">VBScript の演算子</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392186.aspx">VBScript の条件制御</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392202.aspx">VBScript のループ制御</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392207.aspx">VBScript のプロシージャ</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392255.aspx">VBScript のコード記述規則</a></li>
+	</ul>
+</li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392193.aspx">VBScript ランゲージ リファレンス</a>
+	<ul class="small">
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392247.aspx">VBScript の定数</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392478.aspx">VBScript のエラー</a>
+		<ul>
+		<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392383.aspx">VBScript 実行時エラー</a></li>
+		</ul>
+	</li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392479.aspx">VBScript のイベント</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392480.aspx">VBScript の関数</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392482.aspx">VBScript のメソッド</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392494.aspx">その他</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392484.aspx">VBScript のオブジェクトとコレクション</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392485.aspx">VBScript の演算子</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392486.aspx">VBScript のプロパティ</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392488.aspx">VBScript のステートメント</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h3><a href="#ms_etc"><span class="ms">■</span></a> <a name="ms_etc">Microsoft その他</a></h3>
+
+<ul>
+<li><a href="http://www.microsoft.com/japan/technet/scriptcenter/default.mspx">スクリプト センター</a>
+<ul class="small">
+	<li><a href="http://www.microsoft.com/japan/technet/scriptcenter/scrptfaq.mspx">スクリプト センター : Microsoft Windows スクリプトに関する FAQ</a></li>
+	<li><a href="http://www.microsoft.com/japan/technet/scriptcenter/findit.mspx">スクリプトを探す</a></li>
+	<li><a href="http://www.microsoft.com/japan/technet/scriptcenter/resources/qanda/default.mspx">Hey, Scripting Guy! - アーカイブ</a></li>
+	<li><a href="http://www.microsoft.com/japan/technet/scriptcenter/resources/begin/default.mspx">Sesame Script</a></li>
+	</ul>
+</li>
+</ul>
+
+
+<h2><a href="#kihon" name="kihon" accesskey="5"><span class="tokai1">基本</span></a> <kbd class="ak">5</kbd></h2>
+
+
+<ol>
+<li><a href="#rule">記述規則</a></li>
+<li><a href="#variable">変数</a></li>
+<li><a href="#object">オブジェクト</a></li>
+<li><a href="#method">メソッド</a></li>
+<li><a href="#fc">関数</a></li>
+<li><a href="#statement">ステートメント</a></li>
+</ol>
+
+<ul>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364501.aspx">スクリプトを実行する</a>
+	<ul class="small">
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364500.aspx">コマンド プロンプトからスクリプトを実行する</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392525.aspx">WScript.exe および CScript.exe のオプション</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392530.aspx">WSH におけるドラッグ アンド ドロップのサポート</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.roy.hi-ho.ne.jp/mutaguchi/wsh/refer/lesson2.htm">Lesson2 プロパティ・メソッド・オブジェクトの意味を理解しよう</a>
+	<ul>
+	<li><a href="http://www.roy.hi-ho.ne.jp/mutaguchi/wsh/">Windows Script Host Laboratory</a></li>
+	</ul>
+</li>
+</ul>
+
+
+
+
+<div class="small">
+<ul>
+<li>オブジェクトの作成</li>
+</ul>
+<pre>
+'オブジェクト変数の宣言とFileSystemObjectオブジェクトの作成。
+Dim objFSO
+Set objFSO = WScript.CreateObject(&#034;Scripting.FileSystemObject&#034;)
+</pre>
+<pre>
+'オブジェクト変数の宣言とWshShellオブジェクトの作成。
+Dim objWshShell
+Set objWshShell = WScript.CreateObject(&#034;WScript.Shell&#034;)
+
+'メモ帳を起動。
+objWshShell.Run &#034;C:\Windows\System32\notepad.exe&#034;
+</pre>
+</div>
+
+
+
+<h3><a href="#rule"><span class="ms">■</span></a> <a name="rule">記述規則</a></h3>
+
+<ul class="small">
+<li>リテラル文字列は引用符【 <code>&#034;</code> 】で囲む、変数は囲まない</li>
+<li>リテラル文字連結は【 <code>&#038;</code> 】</li>
+<li>リテラル文字列改行は 【 <code>&#038; vbCrLf &#038;</code> 】</li>
+<li>コードの改行【 <code> _</code> 】</li>
+</ul>
+
+<dl>
+<dt>コード記述規則</dt>
+<dd>
+<p>規則ではないけど、区別するために。下記推奨</p>
+<ul class="small">
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392195.aspx">VBScript のデータ型</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392255.aspx">VBScript のコード記述規則</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/tutor/cformwsh05/cformwsh05_01.html">データ型について理解を深めよう － ＠IT</a></li>
+</ul>
+
+<div class="ylt">
+<table summary="変数の名前付け規則" class="ms">
+<caption>変数の名前付け規則</caption>
+<tr>
+	<th class="ct" abbr="内部処理形式">内部処理形式</th><th class="ct" abbr="プリフィックス">プリフィックス</th><th class="ct" abbr="使用例">使用例</th>
+</tr>
+<tr>
+	<td>ブール型(Boolean)</td><td class="ct">bln, b</td><td>blnFound</td>
+</tr>
+<tr>
+	<td>バイト型</td><td class="ct">byt</td><td>bytRasterData</td>
+</tr>
+<tr>
+	<td>日付型</td><td class="ct">dtm, dt</td><td>dtmStart</td>
+</tr>
+<tr>
+	<td>倍精度浮動小数点数型</td><td class="ct">dbl, d</td><td>dblTolerance</td>
+</tr>
+<tr>
+	<td>エラー型</td><td class="ct">err</td><td>errOrderNum</td>
+</tr>
+<tr>
+	<td>整数型</td><td class="ct">int, i</td><td>intQuantity</td>
+</tr>
+<tr>
+	<td>長整数型</td><td class="ct">lng, l</td><td>lngDistance</td>
+</tr>
+<tr>
+	<td>オブジェクト型</td><td class="ct">obj, o</td><td>objCurrent</td>
+</tr>
+<tr>
+	<td>単精度浮動小数点数型</td><td class="ct">sng</td><td>sngAverage</td>
+</tr>
+<tr>
+	<td>文字列型</td><td class="ct">str, s</td><td>strFirstName</td>
+</tr>
+</table>
+</div>
+</dd>
+</dl>
+
+
+
+
+<h3><a href="#variable"><span class="ms">■</span></a> <a name="variable">変数</a></h3>
+
+<ul>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392253.aspx">VBScript の変数</a></li>
+</ul>
+
+<dl>
+<dt>配列</dt>
+<dd>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/tutor/cformwsh06/cformwsh06_01.html">VBScriptの配列を極める － ＠IT</a></li>
+<li><a href="http://www.roy.hi-ho.ne.jp/mutaguchi/wsh/refer/lesson4.htm">Lesson4 For文と配列について - Windows Script Host Laboratory</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392345.aspx">UBound 関数</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc410255.aspx">LBound 関数</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc410203.aspx">Array 関数</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc410253.aspx">Join 関数</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc410311.aspx">Split 関数</a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+
+<h3><a href="#object"><span class="ms">■</span></a> <a name="object">オブジェクト</a></h3>
+
+
+<ul>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392484.aspx">VBScript のオブジェクトとコレクション</a>
+	<ul class="small">
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392399.aspx">Err オブジェクト</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392477.aspx">Err オブジェクトのプロパティとメソッド</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392398.aspx">Class オブジェクト</a></li>
+	</ul>
+</li>
+</ul>
+
+
+<dl>
+<dt><a href="http://msdn.microsoft.com/ja-jp/library/cc364475.aspx">WScript オブジェクト</a></dt>
+<dd class="small">
+<ul>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364456.aspx">WScript オブジェクトのプロパティとメソッド</a>
+	<ul>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364510.aspx">StdErr プロパティ (WScript)</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364492.aspx">StdIn プロパティ (WScript)</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364493.aspx">StdOut Property (WScript)</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt><a href="http://msdn.microsoft.com/ja-jp/library/cc364436.aspx">WshShell オブジェクト</a></dt>
+<dd class="small">
+<ul>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364466.aspx">WshShell オブジェクトのプロパティとメソッド</a></li>
+</ul>
+</dd>
+
+<dt><a href="http://msdn.microsoft.com/ja-jp/library/cc409798.aspx">FileSystemObject</a></dt>
+<dd class="small">
+<ul>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc427968.aspx">FileSystemObject の概要</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392175.aspx">FileSystemObject のオブジェクト</a>
+	<ul>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc428071.aspx">FileSystemObject オブジェクト</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc428074.aspx">TextStream オブジェクト</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc428082.aspx">FileSystemObject のプロパティ</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+
+<dt><a href="http://msdn.microsoft.com/en-us/library/aa394582.aspx">Windows Management Instrumentation (Windows)</a></dt>
+<dd class="small">
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/Windows_Management_Instrumentation">Windows Management Instrumentation - Wikipedia</a></li>
+</ul>
+
+<ul>
+<li><a href="http://msdn.microsoft.com/en-us/library/aa394582.aspx">Windows Management Instrumentation (Windows)</a>
+	<ul>
+	<li><a href="http://msdn.microsoft.com/en-us/library/aa394572.aspx">WMI Reference (Windows)</a></li>
+	</ul>
+</li>
+<li><a href="http://technet2.microsoft.com/WindowsServer/ja/library/03d4cfdf-bc6b-41cd-8154-462cf51e8c701041.mspx">Windows Management Instrumentation (WMI) の概要</a></li>
+<li><a href="http://www.microsoft.com/japan/technet/scriptcenter/resources/wmifaq.mspx">Windows Management Instrumentation (WMI) : よく寄せられる質問</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.microsoft.com/japan/msdn/columns/scripting/scripting06112002.aspx">WMI スクリプト入門 : 第 1 部</a></li>
+<li><a href="http://www.microsoft.com/japan/msdn/columns/scripting/scripting08132002.aspx">WMI スクリプト入門 : 第 2 部</a></li>
+</ul>
+
+
+<dl>
+<dt>サンプル</dt>
+<dd>
+<ul>
+<li><a href="http://www.microsoft.com/japan/technet/scriptcenter/scripts/misc/wmi/default.mspx">WMI</a>
+	<ul>
+	<li><a href="http://www.microsoft.com/japan/technet/scriptcenter/scripts/srvpacks/spvb01.mspx">インストール済みホット フィックスの列挙</a></li>
+	<li><a href="http://www.microsoft.com/japan/technet/scriptcenter/scripts/srvpacks/spvb02.mspx">インストール済み最新サービス パックの識別</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+
+
+<h3><a href="#method"><span class="ms">■</span></a> <a name="method">メソッド</a></h3>
+
+
+<ul>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392482.aspx">VBScript のメソッド</a>
+	<ul class="small">
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392394.aspx">Replace メソッド</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392389.aspx">Execute メソッド (VBScript)</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392438.aspx">Test メソッド</a></li>
+	</ul>
+</li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364452.aspx">Windows Script Host - メソッド</a>(WScript)
+	<ul class="small">
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364402.aspx">Echo メソッド</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364399.aspx">CreateObject メソッド</a></li>
+	</ul>
+</li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364466.aspx">WshShell オブジェクトのプロパティとメソッド</a>
+	<ul class="small">
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364416.aspx">RegRead メソッド</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364417.aspx">RegWrite メソッド</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364415.aspx">RegDelete メソッド</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364421.aspx">Run メソッド</a></li>
+	</ul>
+</li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc428078.aspx">FileSystemObject のメソッド</a>
+	<ul class="small">
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc428022.aspx">CreateTextFile メソッド</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc428041.aspx">FileExists メソッド</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc428005.aspx">FolderExists メソッド</a></li>
+	</ul>
+</li>
+</ul>
+
+
+
+<h3><a href="#fc"><span class="ms">■</span></a> <a name="fc">関数</a></h3>
+
+<ul class="small">
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392480.aspx">VBScript の関数</a>
+	<ul>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc410311.aspx">Split 関数</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc410284.aspx">Replace 関数</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc410321.aspx">StrReverse 関数</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc410238.aspx">InputBox 関数</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc410277.aspx">MsgBox 関数</a>
+		<ul>
+		<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392239.aspx">MsgBox 関数の定数</a></li>
+		</ul>
+	</li>
+
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt>変換関数</dt>
+<dd class="small">
+<ul>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc392419.aspx">変換関数</a>
+	<ul>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc410203.aspx">Array 関数</a> - 配列を格納</li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc410211.aspx">Chr 関数</a> - ANSI コード（10進数）を文字に</li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc410204.aspx">Asc 関数</a> - 文字をANSI コード（10進数）に</li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc410259.aspx">Hex 関数</a> - 10進数を16進数に</li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc410212.aspx">CInt 関数</a></li>
+	<li><a href="http://msdn.microsoft.com/ja-jp/library/cc410213.aspx">CLng 関数</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>10進数を16進数に
+	<ul>
+	<li>10進数の【10】を16進数に</li>
+	<li><code>Hex(10)</code> - 値は A</li>
+	</ul>
+</li>
+<li>16進数を10進数に
+	<ul>
+	<li>16進数の【10】を10進数に</li>
+	<li><code>CInt(&#038;H10)</code> - 値は 16</li>
+	<li><code>CLng(&#038;H10)</code> - 値は 16</li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+
+
+
+
+
+
+
+<h3><a href="#statement"><span class="ms">■</span></a> <a name="statement">ステートメント</a></h3>
+
+
+<dl>
+<dt><a href="http://msdn.microsoft.com/ja-jp/library/cc392440.aspx">Call ステートメント</a></dt>
+<dd class="small">
+<p>Sub プロシージャおよび Function プロシージャの呼び出し</p>
+</dd>
+
+<dt><a href="http://msdn.microsoft.com/ja-jp/library/cc392441.aspx">Class ステートメント</a></dt>
+<dd class="small">
+<p>Class の定義</p>
+
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/tutor/cformwsh09/cformwsh09_03.html">クラスを自作する - VBScriptのオブジェクトを使いこなす － ＠IT</a></li>
+</ul>
+</dd>
+
+<dt><a href="http://msdn.microsoft.com/ja-jp/library/cc392466.aspx">Sub ステートメント</a></dt>
+<dd class="small">
+<p>Sub プロシージャの定義</p>
+
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/tutor/cformwsh07/cformwsh07_01.html">Subプロシージャでユーザー独自の処理を定義する － ＠IT</a></li>
+</ul>
+</dd>
+
+<dt><a href="http://msdn.microsoft.com/ja-jp/library/cc392452.aspx">Function ステートメント</a></dt>
+<dd class="small">
+<p>Function プロシージャの定義</p>
+
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/tutor/cformwsh08/cformwsh08_01.html">Functionプロシージャでユーザー独自の関数を定義する － ＠IT</a></li>
+<li><a href="http://www.roy.hi-ho.ne.jp/mutaguchi/wsh/refer/lesson6.htm">Lesson6 サブルーチン-SubプロシージャとFunctionプロシージャ- - Windows Script Host Laboratory</a></li>
+</ul>
+</dd>
+
+</dl>
+
+<dl>
+<dt><a href="http://msdn.microsoft.com/ja-jp/library/cc392462.aspx">If...Then...Else ステートメント</a></dt>
+<dd class="small">
+<p>条件分岐</p>
+<pre>
+If condition Then
+   [statements]
+[ElseIf condition-n Then
+   [elseifstatements]] . . .
+[Else
+   [elsestatements]]
+End If
+</pre>
+
+<ul>
+<li><code>If</code> - <code>Then</code> - <code>ElseIF</code> - <code>Then</code> - <code>End IF</code></li>
+</ul>
+<pre>
+If Err.Number = 11 Then
+        '0除算エラー。
+        MsgBox &#034;0で割ることはできません。&#034;
+    ElseIf Err.Number = 13 Then
+        '型不一致エラー。
+        MsgBox &#034;数値を入力してください。&#034;
+    ElseIf Err.Number = 0 Then
+         'エラーが発生していない場合はループを抜ける。
+        Exit Do
+    Else
+        'そのほかのエラーの場合。
+        MsgBox &#034;想定外のエラーです。&#034;
+    End If
+    'エラー情報をクリアする。
+    Err.Clear
+    On Error Goto 0
+</pre>
+
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/tutor/cformwsh03/cformwsh03_02.html">VBScriptの基本を押さえよう（その2）　計算と分岐処理 － ＠IT</a></li>
+<li><a href="http://www.roy.hi-ho.ne.jp/mutaguchi/wsh/refer/lesson3.htm">Lesson3 If文と式の評価について - Windows Script Host Laboratory</a></li>
+<li><a href="http://www.roy.hi-ho.ne.jp/mutaguchi/wsh/refer/lesson7.htm">Lesson7 エラー処理の基礎 - Windows Script Host Laboratory</a>
+</li></ul>
+</dd>
+
+
+<dt><a href="http://msdn.microsoft.com/ja-jp/library/cc392472.aspx">Select Case ステートメント</a></dt>
+<dd class="small">
+<p>条件分岐</p>
+<pre>
+Select Case testexpression
+   [Case expressionlist-n
+      [statements-n]] . . .
+   [Case Else expressionlist-n
+      [elsestatements-n]]
+End Select
+</pre>
+<ul>
+<li><code>Select</code> - <code>Case</code> - <code>Else</code> - <code>End Select</code></li>
+</ul>
+<pre>
+Select Case Err.Number
+        Case 11
+            '0除算エラー。
+            MsgBox &#034;0で割ることはできません。&#034;
+        Case 13
+            '型不一致エラー。
+            MsgBox &#034;数値を入力してください。&#034;
+        Case 0
+            'エラーが発生していない場合はループを抜ける。
+            Exit Do
+        Case Else
+            'そのほかのエラーの場合。
+            MsgBox &#034;想定外のエラーです。&#034;
+End Select
+</pre>
+</dd>
+
+<dt><a href="http://msdn.microsoft.com/ja-jp/library/cc392473.aspx">On Error ステートメント</a></dt>
+<dd class="small">
+<p>実行時エラー発生時の続行処理</p>
+<pre>
+On Error Resume Next
+On Error GoTo 0
+</pre>
+<pre>
+On Error Resume Next
+Err.Raise 6   ' オーバーフロー エラーを発生させます。
+MsgBox (&#034;エラー番号 &#034; &#038; CStr(Err.Number) &#038; &#034; &#034; &#038; Err.Description
+Err.Clear   ' エラーのクリア。
+</pre>
+</dd>
+
+<dt><a href="http://msdn.microsoft.com/ja-jp/library/cc392450.aspx">For...Next ステートメント</a>
+</dt>
+<dd class="small">
+<p>指定した回数で繰り返し</p>
+<pre>
+For counter = start To end [Step step]
+    [statements]
+    [Exit For]
+    [statements]
+Next
+</pre>
+
+<ul>
+<li><a href="http://www.roy.hi-ho.ne.jp/mutaguchi/wsh/refer/lesson4.htm">Lesson4 For文と配列について - Windows Script Host Laboratory</a></li>
+</ul>
+</dd>
+
+<dt><a href="http://msdn.microsoft.com/ja-jp/library/cc392459.aspx">For Each...Next ステートメント</a>
+</dt>
+<dd class="small">
+<p>配列やコレクションを指定して繰り返し</p>
+<pre>
+For Each element In group
+   [statements]
+   [Exit For]
+   [statements]
+Next [element]
+</pre>
+</dd>
+
+<dt><a href="http://msdn.microsoft.com/ja-jp/library/cc392445.aspx">Do...Loop ステートメント</a></dt>
+<dd class="small">
+<p>条件が真である間(While)、条件が真になるまで (Until)、繰り返し</p>
+<pre>
+Do [{While | Until} condition]
+   [statements]
+   [Exit Do]
+   [statements]
+Loop 
+</pre>
+</dd>
+
+<dt><a href="http://msdn.microsoft.com/ja-jp/library/cc392467.aspx">While...Wend ステートメント</a>
+</dt>
+<dd class="small">
+<p>条件が真の間、繰り返し</p>
+<pre>
+While condition
+   Version [statements]
+Wend
+</pre>
+</dd>
+
+<dt><a href="http://msdn.microsoft.com/ja-jp/library/cc392475.aspx">With ステートメント (VBScript)</a></dt>
+<dd class="small">
+<p>まとめて設定</p>
+<pre>
+With object
+   statements
+End With
+</pre>
+</dd>
+</dl>
+
+<ul class="small">
+<li><a href="http://www.roy.hi-ho.ne.jp/mutaguchi/wsh/refer/lesson5.htm">Lesson5 その他のフロー制御構文 - Windows Script Host Laboratory</a></li>
+</ul>
+
+
+
+
+<h2><a href="#tips" name="tips" accesskey="6"><span class="tokai1">Tips</span></a> <kbd class="ak">6</kbd></h2>
+
+
+<ul>
+<li><a href="#tips_etc">いろいろ</a></li>
+<li><a href="#opentextfile">テキストへ書き込み</a></li>
+<li><a href="#regaccess">レジストリ</a></li>
+<li><a href="#koneta">小ネタ</a></li>
+</ul>
+
+<h3><a href="#tips_etc"><span class="ms">■</span></a> <a name="tips_etc">いろいろ</a></h3>
+
+<ul>
+<li><a href="http://www.microsoft.com/japan/technet/scriptcenter/scripts/default.mspx">Microsoft TechNet: スクリプト センター</a>
+	<ul>
+	<li><a href="http://www.microsoft.com/japan/technet/scriptcenter/scripts/storage/files/default.mspx">ファイル</a></li>
+	<li><a href="http://www.microsoft.com/japan/technet/scriptcenter/scripts/storage/folders/default.mspx">フォルダ</a></li>
+	<li><a href="http://www.microsoft.com/japan/technet/scriptcenter/scripts/os/process/procthd/default.mspx">プロセスとスレッド</a></li>
+	<li><a href="http://www.microsoft.com/japan/technet/scriptcenter/scripts/os/services/default.mspx">サービス</a></li>
+	<li><a href="http://www.microsoft.com/japan/technet/scriptcenter/scripts/hardware/default.mspx">スクリプト一覧 : ハードウェア</a></li>
+	<li><a href="http://www.microsoft.com/japan/technet/scriptcenter/scripts/srvpacks/default.mspx">スクリプト一覧 : サービスパックとセキュリティ更新プログラム</a></li>
+</ul>
+</li>
+</ul>
+
+
+<ul>
+<li><a href="http://www.site-cooler.com/kwl/asp/4.htm">ASP講座　4章 VBScriptの制御構文</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.jfast.net/~saikawa/wsh/">[WSH入門] バッチファイルからWSHへ インデックス</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www1.u-netsurf.ne.jp/~tomo_c/tips/Scr002.html">Tips - （小技にも満たない）微ワザ集</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www2f.biglobe.ne.jp/~takan/javac/js/wsh/index.htm">Windows Script World</a>
+	<ul>
+	<li><a href="http://www2f.biglobe.ne.jp/~takan/javac/js/wsh/tips_wsh_reg.htm">tips: レジストリ操作</a>(JScript)</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/312charcode/charcode.html">＠IT：Windows TIPS -- Tips：ファイルの文字コードを変換する</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/308strrpl/strrpl.html">＠IT：Windows TIPS -- Tips：複数ファイルの文字列置換をワンクリックで行なう</a></li>
+</ul>
+
+
+
+<h3><a href="#opentextfile"><span class="ms">■</span></a> <a name="opentextfile">テキストへ書き込み</a></h3>
+
+<ul>
+<li><a href="http://www.microsoft.com/japan/technet/scriptcenter/scripts/misc/text/default.mspx">テキスト ファイル</a></li>
+</ul>
+
+
+<ul class="small">
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364434.aspx">WriteLine メソッド (Windows Script Host)</a>
+	<ul>
+	<li>StdOut または StdErr テキスト ストリーム オブジェクト（改行あり）</li>
+	</ul>
+</li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364432.aspx">Write メソッド (Windows Script Host)</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364433.aspx">WriteBlankLines メソッド (Windows Script Host)</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364412.aspx">Read メソッド (Windows Script Host)</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364429.aspx">ReadAll メソッド (Windows Script Host)</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364430.aspx">ReadLine メソッド (Windows Script Host)</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc410321.aspx">StrReverse 関数</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/tutor/cformwsh11/cformwsh11_01.html">標準入出力と標準エラー出力 - WScriptオブジェクトを利用する（2）</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/wsh03/wsh03_03.html">＠IT：運用　Windows管理者のためのWindows Script Host入門　第3回　WScriptオブジェクトの詳細（1） 3．データ入出力と電卓サンプル</a></li>
+</ul>
+
+<div class="small">
+<ul>
+<li>※標準出力（<strong class="ms">cscript.exe</strong> で実行）</li>
+</ul>
+<pre>
+Dim StdOut,StdIn
+Set StdOut = WScript.StdOut
+Set StdIn = WScript.StdIn
+Dim strX
+strX = StdIn.ReadLine()
+StdOut.WriteBlankLines 1
+strX = StrReverse(strX)
+StdOut.WriteLine strX
+</pre>
+<pre>
+cscript //NoLogo StdInStdOut.vbs &#062;std.txt
+</pre>
+</div>
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/wsh10/wsh10_01.html">FileSystemObjectによるテキスト・ファイルの読み書き</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc428063.aspx">WriteLine メソッド (FileSystemObject)</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc428044.aspx">OpenTextFile メソッド (FileSystemObject)</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc364421.aspx">Run メソッド (WScript.Shell)</a></li>
+</ul>
+<div class="small">
+<pre>
+Option Explicit
+Dim objFSO
+Set objFSO = WScript.CreateObject(&#034;Scripting.FileSystemObject&#034;)
+Dim objTxt
+Set objTxt = objFSO.OpenTextFile(&#034;test1.txt&#034;, 8, true, -2)
+Dim objWS
+Set objWS = WScript.CreateObject(&#034;WScript.Shell&#034;)
+' Image File Execution Options の不正キー
+Dim strEXEname,I
+strEXEname = Array(&#034;regedit.exe&#034;, &#034;regedit.com&#034;, &#034;taskmgr.exe&#034;, &#034;notepad.exe&#034;)
+Const strKey = &#034;HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\&#034;
+For Each I In (strEXEname)
+     On Error Resume Next
+          objWS.RegRead strKey &#038; I &#038; &#034;\&#034;
+          If Err.Number = -2147024894 Then
+               WScript.Echo I, &#034;キーはありません&#034;
+               objTxt.WriteLine I &#038; &#034;キーはありません&#034;
+          ElseIf Err.Number = 0 Then
+               WScript.Echo I, &#034;キーは存在します&#034;
+               objTxt.WriteLine I &#038; &#034;キーは存在します&#034;
+          End If
+          Err.Clear
+     On Error Goto 0
+Next
+objTxt.Close
+objWS.Run &#034;test1.txt&#034;
+Set objFSO = Nothing
+Set objTxt = Nothing
+</pre>
+</div>
+
+
+
+<h3><a href="#regaccess"><span class="ms">■</span></a> <a name="regaccess">レジストリ</a></h3>
+
+<ul>
+<li><a href="http://www.microsoft.com/japan/technet/scriptcenter/scripts/os/registry/default.mspx">レジストリ</a></li>
+</ul>
+
+
+<dl>
+<dt>指定パスでRegeditを起動</dt>
+<dd>
+<p><code>LastKey</code> にパスを書き込んで <strong class="ms">regedit.exe</strong> を（再）起動</p>
+<ul>
+<li><a href="../archives/wsh/Regedit_To_Path.vbs.txt">Regedit_To_Path.vbs</a>(.txt)</li>
+<li><a href="../archives/wsh/Regedit_To_Path-vista.vbs.txt">Regedit_To_Path-vista.vbs</a>(.txt)</li>
+</ul>
+</dd>
+
+<dt>指定キーの既定エントリ・指定エントリの読み取り</dt>
+<dd>
+<p><strong class="ms">WshShell</strong> オブジェクトの <code>RegRead</code> メソッドを利用する</p>
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/tutor/cformwsh13/cformwsh13_01.html">RegReadメソッド - WshShellオブジェクトを利用する</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/tutor/cformwsh13/cformwsh13_02.html">RegWriteとRegDeleteメソッド - WshShellオブジェクトを利用する</a></li>
+<li><a href="http://support.microsoft.com/kb/279847/ja">Windows Script Host の RegDelete メソッドは、サブキーを含むキーは削除できません。</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/wsh07/wsh07_02.html">2．WSHスクリプトからのレジストリ操作 ― RegRead、RegWrite、RegDeleteメソッド</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/453regaccess/regaccess.html">＠IT：Windows TIPS -- Tips：WSHでレジストリの読み書きを行う</a></li>
+</ul>
+
+<ul>
+<li>指定エントリのデータを読み取り<span class="small">（REG_BINARY,REG_MULTI_SZ はだめ）</span>
+	<ul class="small">
+	<li><a href="../archives/wsh/RegRead_RegEntry.vbs.txt">RegRead_RegEntry.vbs</a>(.txt)</li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+
+<dt>指定キーのサブキー・値エントリの列挙</dt>
+<dd>
+<p><strong class="ms">WMI</strong>（Windows Management Instrumentation）サービスの <code>StdRegProv Class</code> を利用する</p>
+
+<ul class="small">
+<li><a href="http://msdn.microsoft.com/en-us/library/aa394572.aspx">WMI Reference (Windows)</a>
+	<ul>
+	<li><a href="http://msdn.microsoft.com/en-us/library/aa394554.aspx">WMI Classes (Windows)</a>
+		<ul>
+		<li><a href="http://msdn.microsoft.com/en-us/library/aa394573.aspx">WMI Registry Classes (Windows)</a>
+			<ul>
+			<li><a href="http://msdn.microsoft.com/en-us/library/aa393664.aspx">StdRegProv Class (Windows)</a>
+				<ul>
+				<li><a href="http://msdn.microsoft.com/en-us/library/aa390387.aspx">EnumKey Method of the StdRegProv Class (Windows)</a></li>
+				<li><a href="http://msdn.microsoft.com/en-us/library/aa390388.aspx">EnumValues Method of the StdRegProv Class (Windows)</a></li>
+				</ul>
+			</li>
+			</ul>
+		</li>
+		</ul>
+	</li>
+	</ul>
+</li>
+</ul>
+
+
+<ul class="small">
+<li><a href="http://www.microsoft.com/japan/technet/scriptcenter/scripts/os/registry/osrgvb11.mspx">レジストリの値およびタイプの列挙</a></li>
+<li><a href="http://www.microsoft.com/japan/technet/scriptcenter/scripts/os/registry/osrgvb10.mspx">サブキーの列挙</a></li>
+<li><a href="http://www.microsoft.com/japan/technet/scriptcenter/resources/qanda/apr08/hey0408.mspx">Hey, Scripting Guy! レジストリ キーのすべての値を取得する方法はありますか</a></li>
+<li><a href="http://www.microsoft.com/japan/technet/scriptcenter/resources/qanda/feb05/hey0224.mspx">バイナリ データをレジストリに書き込む方法はありますか - Hey, Scripting Guy!</a></li>
+</ul>
+
+<ul>
+<li>特定キーのサブキー名をテキストへ列挙
+	<ul class="small">
+	<li><a href="../archives/wsh/Reg_Show_SubKey.vbs.txt">Reg_Show_SubKey.vbs</a>(.txt)</li>
+	</ul>
+</li>
+<li>特定キーのサブキーの <code>Displayname</code> をテキストへ列挙
+	<ul class="small">
+	<li><a href="../archives/wsh/Reg_Show_SubKey_Displayname.vbs.txt">Reg_Show_SubKey_Displayname.vbs</a>(.txt)</li>
+	</ul>
+</li>
+<li>特定キーの値エントリをテキストへ列挙
+	<ul class="small">
+	<li><a href="../archives/wsh/Reg_Show_Values.vbs.txt">Reg_Show_Values.vbs</a>(.txt)</li>
+	</ul>
+</li>
+<li>入力キーの値エントリをテキストへ列挙（サブキー除く）
+	<ul class="small">
+	<li><a href="../archives/wsh/Reg_Show_Values_Input.vbs.txt">Reg_Show_Values_Input.vbs</a>(.txt)</li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+
+
+
+
+<h3><a href="#koneta"><span class="ms">■</span></a> <a name="koneta">小ネタ</a></h3>
+
+<dl>
+<dt>文字列を文字コード（符号）へ</dt>
+<dd>
+<ul class="small">
+<li><a href="../archives/wsh/Henkan_Char_to_Unicode_SJis.vbs.txt">Henkan_Char_to_Unicode_SJis.vbs</a>(.txt)</li>
+</ul>
+</dd>
+
+<dt>カンマ(,)区切りの文字コード（符号）を文字列へ</dt>
+<dd>
+<ul class="small">
+<li><a href="../archives/wsh/Henkan_Code_to_Char.vbs.txt">Henkan_Code_to_Char.vbs</a>(.txt)</li>
+</ul>
+</dd>
+
+<dt>レジストリ【REG_EXPAND_SZ】値を文字列に変換</dt>
+<dd>
+<ul class="small">
+<li><a href="../archives/wsh/Henkan_REG_EXPAND_SZ.vbs.txt">Henkan_REG_EXPAND_SZ.vbs</a>(.txt)</li>
+</ul>
+</dd>
+
+<dt>HTMLの文字参照</dt>
+<dd>
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/%E6%96%87%E5%AD%97%E5%8F%82%E7%85%A7">文字参照 - Wikipedia</a></li>
+</ul>
+
+<p>【&#038;】【&#034;】【&#060;】【&#062;】を変換。</p>
+<p class="small">最初の実行で空ファイル(Entity_Test1.txt)が開くので、そこにソース（複数行可）を貼付・保存後に再度スクリプトを実行。</p>
+
+<p class="small">数値文字参照（10進数）へ</p>
+<ul class="small">
+<li><a href="../archives/wsh/Henkan_Numeric_character_reference.vbs.txt">Henkan_Numeric_character_reference.vbs</a>(.txt)</li>
+</ul>
+
+<p class="small">文字実体参照へ</p>
+<ul class="small">
+<li><a href="../archives/wsh/Henkan_Character_entity_reference.vbs.txt">Henkan_Character_entity_reference.vbs</a>(.txt)</li>
+</ul>
+</dd>
+
+<dt>OSバージョンなど</dt>
+<dd>
+<p>OSバージョン、Service Pack、物理メモリ量など</p>
+<ul class="small">
+<li><a href="../archives/wsh/OperatingSystem.vbs.txt">OperatingSystem.vbs</a>(.txt)</li>
+</ul>
+<p>Office のバージョン（2000/2002/2003のみ...不完全かも？）</p>
+<ul class="small">
+<li><a href="../archives/wsh/MSOffice.vbs.txt">MSOffice.vbs</a>(.txt)</li>
+</ul>
+</dd>
+
+<dt>ファイルのバージョンチェック</dt>
+<dd>
+<p class="pink">※ あまり確認してないのでいまいちかも。</p>
+<p>バッチファイル(bat)用。コマンドラインで実行。標準出力</p>
+<ul class="small">
+<li><a href="../archives/wsh/FileVersion_for_Batch.vbs.txt">FileVersion_for_Batch.vbs</a>(.txt)</li>
+</ul>
+<pre>
+cscript //nologo FileVersion_for_Batch.vbs "パス\ファイル名"
+</pre>
+<p>テキストへ書き出し</p>
+<ul class="small">
+<li><a href="../archives/wsh/FileVersion.vbs.txt">FileVersion.vbs</a>(.txt)</li>
+</ul>
+<pre>
+FileVersion.vbs "パス\ファイル名"
+</pre>
+<p>右クリック「送る」メニューやD＆Dでもおｋ。</p>
+</dd>
+
+<dt>プラグインなどのバージョンチェック</dt>
+<dd>
+<p>旧バージョンのチェックはいまいち。仕様が変わる度にスクリプトの修正が必要かも。</p>
+<ul class="small">
+<li><a href="../archives/wsh/Check_Plugins.vbs.txt">Check_Plugins.vbs</a>(.txt)</li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h2><a href="#link" name="link" accesskey="7"><span class="tokai1">参考リンク</span></a> <kbd class="ak">7</kbd></h2>
+
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/Windows_Script_Host">Windows Script Host - Wikipedia</a></li>
+</ul>
+
+<ul>
+<li><a href="http://winscript.s41.xrea.com/wiki/index.php?%5B%5BFAQ%5D%5D">Windows Script Wiki - FAQ</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.roy.hi-ho.ne.jp/mutaguchi/wsh/">Windows Script Host Laboratory</a>
+	<ul>
+	<li><a href="http://www.roy.hi-ho.ne.jp/mutaguchi/wsh/vbsrefer1.htm">VBSReference1</a></li>
+	<li><a href="http://www.roy.hi-ho.ne.jp/mutaguchi/wsh/technic.htm">Technic</a></li>
+	</ul>
+</li>
+</ul>
+
+
+<ul>
+<li><a href="http://www.kanaya440.com/contents/script/">VBScript関数リファレンス</a></li>
+</ul>
+
+<ul>
+<li><a href="http://vbscript.infopos.net/">VBScript お役たち リファレンス：TIPSやサンプルコードなど</a></li>
+</ul>
+
+
+<h2><a href="#memo" name="memo" accesskey="8"><span class="tokai1">めも</span></a> <kbd class="ak">8</kbd></h2>
+
+<dl>
+<dt>関連付け実行</dt>
+<dd>
+<p>エディタで編集中ファイルのスクリプト実行。ツールバーのボタンなどに登録しておくと便利。</p>
+
+<dl>
+<dt>秀丸エディタ</dt>
+<dd class="small">
+<ul>
+<li>コマンド一覧<span class="ms">→</span>ファイル系<span class="ms">→</span>関連付けで開く</li>
+<li>プログラム実行 - <code>wscript &#034;%f&#034;</code></li>
+<li>プログラム実行 - <code>cmd /k cscript &#034;%f&#034;</code></li>
+</ul>
+</dd>
+
+<dt>EdTex(EdLeaf)</dt>
+<dd class="small">
+<p>【外部ツール】の実行、または【ユーザーツール】に登録</p>
+
+<ul>
+<li>wscript
+	<ul>
+	<li>パス - <code>C:\WINDOWS\system32\wscript.exe</code></li>
+	<li>パラメータ - <code>&#034;$f&#034;</code></li>
+	</ul>
+</li>
+<li>cscript
+	<ul>
+	<li>パス - <code>C:\WINDOWS\system32\cscript.exe</code></li>
+	<li>パラメータ - <code>&#034;$f&#034;</code></li>
+	<li>出力結果をリダイレクト</li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</dd>
+
+<dt>Microsoft Script Editor</dt>
+<dd class="small">
+<p>MIcrosoft Office に付属。</p>
+<ul>
+<li>CDからインストール
+	<ul>
+	<li>Office ツール→HTMLソース編集（→Web スクリプト編集→Web デバッグ ツール）とか</li>
+	</ul>
+</li>
+<li>Excelメニューのツール<span class="ms">→</span>マクロ<span class="ms">→</span>Microsoft Script Editor
+	<ul>
+	<li>CDを要求されたらCDを挿入してインストール</li>
+	</ul>
+</li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc344727.aspx">Microsoft Script Editor を使用する</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/cc377132.aspx">Microsoft Script Editor について</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/wsh07/wsh07_01.html">＠IT：運用　Windows管理者のためのWindows Script Host入門　第7回　WshShellオブジェクトの詳細（3）　1．アプリケーション・イベント・ログの作成 ― LogEventメソッド ―</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/pshvswsh/pshvswsh_01.html">Windowsスクリプティング環境比較：PowerShell vs WSH － ＠IT</a></li>
+</ul>
+
+
+
+
+
+
+
+</div>
+</div>
+
+
+<div class="navi">
+<a href="./index.html">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+
+<address>Written by yassy</address>
+
+</body>
+
+</html>

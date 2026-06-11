@@ -1,0 +1,2686 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="GENERATOR" content="EdTex Version 3.11">
+<link rel="index" href="./index.html">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>【私的】SYSLINUXでマルチブート（USBメモリ＆ネットワーク）</title>
+<style type="text/css">
+<!--
+/*
+h4 {
+	font-size: 1em;
+	font-weight: bold;
+	margin:0.5em 0.5em 0.5em 1em;
+	padding-left: 0.5em;
+	border-left: 1em solid #ccc;
+	border-right: 1em solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+}
+*/
+
+pre.scl10 {
+	overflow: scroll;
+	white-space: pre;
+	width:89%;
+	height: 10em;
+}
+
+/*
+dl.small ul,dl.small ul {
+	font-size: 1.1em;
+}
+*/
+
+/*===== columns =====*/
+
+.main {
+	border-color: #ccc;
+}
+
+.sidebar {
+	border-color: #ffd;
+}
+
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+</head>
+
+
+<body>
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+<h1><a href="./syslinux.html"><span class="tokai1">【私的】SYSLINUXでマルチブート（USBメモリ＆ネットワーク）</span></a></h1>
+
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+<ul>
+<li><a href="#about">これって何</a> <kbd class="ak">3</kbd></li>
+<li><a href="#bootloader">ブートローダなど</a> <kbd class="ak">4</kbd></li>
+<li><a href="#nagare">起動方法</a> <kbd class="ak">5</kbd></li>
+<li><a href="#oomaka">おおまか手順</a> <kbd class="ak">6</kbd></li>
+<li><a href="#syslinux_directory">syslinuxディレクトリ</a> <kbd class="ak">7</kbd></li>
+<li><a href="#item_copy">アイテム投入</a> <kbd class="ak">8</kbd></li>
+<li><a href="#screen_shot">スクリーン・ショット</a> <kbd class="ak">9</kbd></li>
+<li><a href="#bikou">備考</a>
+	<ul class="small">
+	<li><a href="#multidvd">マルチブートDVD(CD)</a></li>
+	</ul>
+</li>
+</ul>
+
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<p><a href="http://getfirefox.jp/" title="Get Firefox - Web を取り戻せ">
+<img class="normal" src="./images/takebacktheweb_small.png" width="125" height="50" alt="Get Firefox"></a></p>
+
+<div class="ct">
+
+
+<p class="small">リンクはご自由に。</p>
+
+
+</div>
+</div>
+
+
+<div class="main">
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/syslinux.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p><a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/syslinux.html"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/syslinux.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<p class="small">2008.8.12 作成中...
+<br>2008.11.9 jp106.kbdをちょっと修正
+<br>2009.7.15 FreeDOS と Windows PE の起動方法を追記
+<br>最終更新日 2010.7.25</p>
+
+<p class="pink">【2011.5.8 追記】すみませぬ。更新停止しております。内容古くなってるのでご注意。下記ページもよろしければご笑覧くだされ。</p>
+
+<ul>
+<li><a href="./syslinux_basic.html">SYSLINUXでマルチブート【基本編】</a></li>
+</ul>
+
+<ul>
+<li><a href="./multiiso.html">isoイメージをマルチブートするの巻【その1】準備編</a>
+	<ul>
+	<li><a href="./multiiso_3_usb.html">【その3】マルチブートUSBメモリ作成編</a></li>
+	</ul>
+</li>
+</ul>
+
+<dl class="palmst pink small">
+<dt>2009.07 だいぶと変更しました...</dt>
+<dd>
+<p>古い版は下記に置いてます。</p>
+<ul>
+<li><a href="./syslinux_old_20090131.html">（古い版）SYSLINUXでマルチブート（USBメモリ＆ネットワーク）</a></li>
+</ul>
+</dd>
+</dl>
+
+<p>めちゃややこしいです・・・</p>
+<h2><a href="#about" name="about" accesskey="3"><span class="tokai1">これって何</span></a> <kbd class="ak">3</kbd></h2>
+
+<p>個人的よんどころない事情にて（何）、マルチブートなCDとUSBメモリ、及びネットワークブート（用サーバ）を作っております。</p>
+
+<p>それぞれ全く別々に作るのは面倒なので、設定ファイルなどをなるだけ共通で使えるように、また入替が簡単な様に設定。</p>
+
+<p>Linux LiveCDではディストリごとに微妙に起動オプションが違ったりするので、注意点などをめもしておく。バージョンアップの際は、最小限のファイルの入替のみでできるようにする、ってなかんじ。</p>
+
+<dl class="palmst">
+<dt>設定ファイル詰め合わせ</dt>
+<dd>
+<p>かなり個人的風味に編集してます。※<strong>内容は保証できませんので</strong>。あしからずご容赦をば...</p>
+<p>私の必要なものばかりなのでかなり偏っております。</p>
+<ul>
+<li><a href="../archives/syslinux_multi.zip">syslinux_multi.zip</a></li>
+</ul>
+<p>まだまだ、修正が必要かも。</p>
+<p class="small">※GRUB for DOSのキーマップ - アンダースコア は <kbd>Shift</kbd>-<kbd>0</kbd></p>
+
+<dl class="small">
+<dt>【追記】jp106.kbdをちょっと修正</dt>
+<dd>
+<p>SYSLINUX(ISOLINUX,PXELINUX)上で、<kbd>Shift</kbd>-<kbd>0</kbd>でアンダースコアの入力ができます。</p>
+</dd>
+</dl>
+</dd>
+
+<dt>テスト版（※確認があんまりできてないかも）</dt>
+<dd>
+<ul>
+<li><a href="../archives/syslinux_multi_20100718.zip">syslinux_multi_20100718.zip</a></li>
+<li><a href="../archives/syslinux_multi_20100718/">Index of /syslinux_multi_20100718</a></li>
+<li><a href="../archives/syslinux_multi.txt">更新履歴？</a></li>
+</ul>
+
+<ul class="small">
+<li>設定ファイルをかなり変更してるのでややこしいかも</li>
+<li>Kaspersky Rescue Disk 10</li>
+<li>Parted Magic 4.5, 5.1</li>
+<li>Hardware Detection Tool (HDT)</li>
+<li>Clonezilla Live 1.2.3-27</li>
+<li>SystemRescueCd 1.0.4, 1.5.8</li>
+<li>CDlinux Standard 0.9.3, Community 0.9.5</li>
+<li>回復コンソール</li>
+</ul>
+</dd>
+
+
+<dt>とりあえずな作り方</dt>
+<dd>
+<ol class="small">
+<li>上記の <code>syslinux.zip</code> を展開</li>
+<li>【<a href="#syslinux_directory">syslinuxディレクトリ</a>】関連ファイルをコピー</li>
+<li>【<a href="#item_copy">アイテム投入</a>】のうち、必要アイテムのファイルをダウンロードして【作業ディレクトリ】(syslinux_multi)の指定場所にコピー</li>
+</ol>
+
+<ul class="small">
+<li><strong>ネットワークブート</strong>（用）
+	<ul>
+	<li>【作業ディレクトリ】にTFTPD32とPXELINUXのファイルをコピー</li>
+	<li>TFTPD32でDHCP/TFTPサーバを設定</li>
+	</ul>
+</li>
+<li><strong>USBメモリ</strong>
+	<ul>
+	<li>【作業ディレクトリ】の内容をUSBメモリへコピー</li>
+	<li>USBメモリへSYSLINUXのインストール</li>
+	</ul>
+</li>
+</ul>
+<p>※isoイメージの展開は、<strong>ファイル名の大文字小文字問題防止のため</strong>、<a href="http://sevenzip.sourceforge.jp/">7-Zip</a> や <del>WinRAR</del>、<a href="http://legroom.net/software/uniextract">Universal Extractor</a> などでの抽出（展開）をおすすめいたしまする。</p>
+</dd>
+</dl>
+
+
+<h2><a href="#bootloader" name="bootloader" accesskey="4"><span class="tokai1">ブートローダなど</span></a> <kbd class="ak">4</kbd></h2>
+
+<h3><a href="#syslinux"><span class="ms">■</span></a> <a name="syslinux"><span class="tokai1">SYSLINUX</span></a></h3>
+
+<ul>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/The_SYSLINUX_Project">The SYSLINUX Project - Syslinux Wiki</a></li>
+</ul>
+
+<p>USBメモリブート（FAT）に使えるブートローダ。Windows上でインストール可能。</p>
+
+<dl class="small">
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/Changelog">Changelog - Syslinux Wiki</a></li>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/Menu">Menu - Syslinux Wiki</a></li>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/Comboot/menu.c32">Comboot/menu.c32 - Syslinux Wiki</a></li>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/MEMDISK">MEMDISK - Syslinux Wiki</a></li>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/Comboot/chain.c32">Comboot/chain.c32 - Syslinux Wiki</a></li>
+</ul>
+
+<ul>
+<li><a href="./livecd_usb.html">Linux LiveCDをUSBメモリでブートするめも</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20080106/1198703706#item">私的マルチブートUSBメモリを作るの巻</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20071129/1196347399">SYSLINUXにグラフィカル・メニューを入れるの巻</a></li>
+</ul>
+</dd>
+</dl>
+<h3><a href="#pxelinux"><span class="ms">■</span></a> <a name="pxelinux"><span class="tokai1">PXELINUX</span></a></h3>
+
+<ul>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/PXELINUX">PXELINUX - Syslinux Wiki</a></li>
+</ul>
+
+<p>ネットワークブート用のブートローダ。Windowsでもサーバの構築は可能。</p>
+
+<dl class="small">
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://etherboot.org/wiki/index.php">start - Etherboot/gPXE Wiki</a></li>
+</ul>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20070422/1177208004">PXEネットワークブートについてのめも</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20070403/1175609650">WindowsでPXEネットワークブート用サーバの設定 - TFTPD32</a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#grub"><span class="ms">■</span></a> <a name="grub"><span class="tokai1">GRUB for DOS</span></a></h3>
+
+<ul>
+<li><a href="http://sourceforge.net/projects/grub4dos/">GRUB4DOS and WINGRUB | Get GRUB4DOS and WINGRUB at SourceForge.net</a></li>
+</ul>
+
+<p>起動方法は2通り</p>
+<ul>
+<li>SYSLINUXから <strong class="ms">grub.exe</strong> をロード</li>
+<li>SYSLINUX + <strong class="ms">memdisk</strong> でFDイメージをロード</li>
+</ul>
+
+<dl class="small">
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://grub4dos.sourceforge.net/wiki/index.php/Grub4dos_tutorial">Grub4dos tutorial - Grub4Dos Wiki</a></li>
+<li><a href="http://diddy.boot-land.net/grub4dos/Grub4dos.htm">Grub4dos Guide - Contents</a>
+	<ul>
+	<li><a href="http://diddy.boot-land.net/grub4dos/files/boot.htm">Grub4dos Guide - Boot Options</a></li>
+	<li><a href="http://diddy.boot-land.net/grub4dos/files/map.htm">Grub4dos Guide - Map Command</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="./grub4dos.html">GRUB for DOS めも</a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+
+<h3><a href="#pxebootdisk"><span class="ms">■</span></a> <a name="pxebootdisk"><span class="tokai1">ネットワークブート用起動ディスク</span></a></h3>
+
+<p>ネットワークブート非対応マシン用。NICが内蔵か内蔵カードの場合。</p>
+
+<dl class="small">
+<dt>関連リンク</dt>
+<dd>
+<ul>
+<li><a href="http://rom-o-matic.net/">ROM-o-matic.net</a></li>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/UseCases">UseCases - Syslinux Wiki</a></li>
+</ul>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20071206/1196954397">ネットワークブート用起動ディスク</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20080802/1217671197">PXE-On-A-Disk（ネットワークブート用起動ディスク）</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h2><a href="#nagare" name="nagare" accesskey="5"><span class="tokai1">起動方法</span></a> <kbd class="ak">5</kbd></h2>
+
+
+
+<ul class="small">
+<li><a href="#boot_livecd">Linux LiveCD</a></li>
+<li><a href="#boot_fdimage">フロッピーイメージ</a></li>
+<li><a href="#boot_linux_installer">Linuxインストーラ</a></li>
+<li><a href="#boot_winpe">Windows PE 2.0</a></li>
+<li><a href="#boot_freedos">FreeDOS</a></li>
+</ul>
+
+<h3><a href="#boot_livecd"><span class="ms">■</span></a> <a name="boot_livecd">Linux LiveCD</a></h3>
+
+<p>基本的にはこんなかんじで起動する。</p>
+
+<ol>
+<li>SYSLINUX(PXELINUX)でブート</li>
+<li>カーネルと initrd（ミニルートイメージ = 初期RAMディスクイメージ）をメモリ(RAM)へロードして小さなLinux起動</li>
+<li><strong>ルートファイルシステム</strong>（イメージ）を検索してマウント、本体Linuxが起動する</li>
+</ol>
+
+<p>※【2】と【3】は別の場所でもイイってとこがミソです。</p>
+
+<dl class="palmst">
+<dt>オンメモリ起動</dt>
+<dd>
+<p>メモリ内にすべてコピーして起動（※toramオプション等）すれば、起動後はUSBデバイス・ネットワークとも切り離すことが可能です。但し、それだけのメモリ(RAM)容量が必要。</p>
+<p>カーネルと initrd のみで起動するものはオプションなしでもオンメモリで起動します。</p>
+</dd>
+</dl>
+
+
+<ul>
+<li><strong>カーネルと initrd のみで起動可能な</strong> PING(Partimage Is Not Ghost) や PXE版 Parted Magic などはルートファイルシステム（イメージ）のマウントは不要。</li>
+<li>SystemRescueCd 1.0 以降では<strong>ルートイメージをメモリ(RAM)へダウンロードしての起動も</strong>可能（※要RAM 256MB以上）</li>
+</ul>
+
+
+<h4>USB（デバイス）ブート</h4>
+
+<dl>
+<dt>USBデバイスでブート、USBデバイス内のルートイメージをマウントしてLinux起動</dt>
+<dd>
+<p>普通のUSBブート</p>
+</dd>
+
+<dt>USBデバイスでブート、<strong>ネットワークサーバ上のルートファイルシステム（イメージ）をマウントしてLinux起動</strong></dt>
+<dd>
+<p>対応ディストリのみ。</p>
+<p>カーネルとinitrd（ミニルートイメージ = 初期RAMディスクイメージ）をUSBデバイスからロード、その後は<strong>ネットワーク上のルートファイルシステム（イメージ）をマウントしてLinux起動</strong>。</p>
+<p>小容量のUSBメモリでブートする場合とか。Linux起動後にUSBデバイスの挿し換えが可能。</p>
+</dd>
+</dl>
+
+
+<h4>ネットワークブート</h4>
+
+<dl>
+<dt>いわゆる“<strong>ディスクレス・ブート</strong>”</dt>
+<dd>
+<p>対応ディストリのみ。</p>
+<p>完全（？）ネットワークブート。</p>
+<p>TFTPサーバからカーネルと initrd をロード、<strong>NFS,HTTPサーバなどのルートイメージをマウント</strong></p>
+<ul>
+<li>Knoppix CD（※要RAM 256 MB？）</li>
+<li>INSERT</li>
+<li>InetBoot - Knoppix,Fedora,Ubuntu などのLiveCDが起動可能（※要RAM 256 MB以上）</li>
+</ul>
+
+<p>※下記はDHCP/TFTPサーバのみで起動可能。オンメモリ起動。</p>
+<ul>
+<li>PING(Partimage Is Not Ghost)</li>
+<li>SystemRescueCd 1.0以降（※要RAM 256 MB）</li>
+<li>Parted Magic PXE版（※要RAM 256 MB）</li>
+</ul>
+</dd>
+
+
+<dt>ネットワークブートでカーネルと initrd をロード、ローカルのデバイス上のルートイメージをマウント</dt>
+<dd>
+<ul>
+<li>ネットワークブート + USBメモリをマウント</li>
+<li>ネットワークブート + HDをマウント</li>
+<li>ネットワークブート + USB CDをマウント</li>
+</ul>
+
+<p>メモリ(RAM)が少ない場合や、USBブート非対応な場合とか。</p>
+</dd>
+</dl>
+
+
+
+<h3><a href="#boot_fdimage"><span class="ms">■</span></a> <a name="boot_fdimage">フロッピーイメージ</a></h3>
+
+<ul>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/MEMDISK">MEMDISK - Syslinux Wiki</a></li>
+</ul>
+
+<p>仮想FDドライブとして起動。<strong>オンメモリ起動</strong>。</p>
+
+<ol>
+<li>カーネル(KERNEL)に <strong class="ms">SYSLINUX</strong> の <strong class="ms">memdisk</strong> を使用</li>
+<li><strong class="ms">initrd</strong> にFDイメージを指定</li>
+</ol>
+
+
+
+<h3><a href="#boot_linux_installer"><span class="ms">■</span></a> <a name="boot_linux_installer">Linuxインストーラ</a></h3>
+
+<p>ネットワークインストール用イメージが用意されているディストリ。<strong>オンメモリ起動</strong>。</p>
+
+<p>カーネルとinitrdをロードしてLinuxインストーラを起動。</p>
+
+<p>インストール用ファイルはネットワーク（インターネット上のHTTP/FTPサーバ）などを選択可能。</p>
+
+
+
+<h3><a href="#boot_winpe"><span class="ms">■</span></a> <a name="boot_winpe">Windows PE 2.0</a></h3>
+
+
+<ul>
+<li>USBメモリでは、SYSLINUX<span class="ms">→</span><strong class="ms">GRUB for DOS</strong> から <code>/bootmgr</code> をチェーンロード。オンメモリ起動。</li>
+<li>ネットワークブートは、PXELINUX<span class="ms">→</span> <code>pxeboot.0</code> をロードして<span class="ms">→</span> <code>/bootmgr.exe</code> をチェインロード</li>
+</ul>
+
+<p class="pink">※ 尚、PE 2.1 (Vista SP1), PE 3.0 (7) のネットワークブートでは、TFTPD32の設定で <code>Option Negotiation</code> をオン（<code>PXE Compatibility</code> はオフ）にしないと起動できないようなので注意。</p>
+
+
+
+<h3><a href="#boot_freedos"><span class="ms">■</span></a> <a name="boot_freedos">FreeDOS</a></h3>
+
+<p>起動方法は2通り</p>
+<ul>
+<li>SYSLINUX<span class="ms">→</span><strong class="ms">GRUB for DOS</strong> から <strong class="ms">kernel.sys</strong> をチェインロード
+	<ul>
+	<li>ネットワークブートはだめ</li>
+	<li>USBメモリをHD（またはFD）として認識</li>
+	</ul>
+</li>
+<li>SYSLINUX + <strong class="ms">memdisk</strong> でFDイメージをロード
+	<ul>
+	<li>ネットワークブートもOK</li>
+	<li>FDイメージを仮想FDドライブとして認識</li>
+	</ul>
+</li>
+</ul>
+
+
+<h2><a href="#oomaka" name="oomaka" accesskey="6"><span class="tokai1">おおまか手順</span></a> <kbd class="ak">6</kbd></h2>
+
+
+<ol>
+<li><code>syslinux</code> ディレクトリに必要ファイルをコピー</li>
+<li><code>syslinux</code> ディレクトリに<strong>ブートメニュー設定ファイル</strong>作成</li>
+<li>アイテムのファイルをそれぞれディレクトリ作成してコピー</li>
+<li>アイテムごとのブートメニュー設定ファイルを作成（元の <code>isolinux.cfg</code> を編集）</li>
+</ol>
+
+<p>PXELINUXの設定ファイルは <strong class="ms">INCLUDE</strong> を記述して、 <code>syslinux.cfg</code> へ切替</p>
+
+
+<dl>
+<dt>ネットワークブート</dt>
+<dd>
+<ul>
+<li>まず、HD上で必要ファイルをコピー・作成</li>
+<li>（Windows版）TFTPD32を設定</li>
+</ul>
+</dd>
+
+<dt>USBデバイスブート</dt>
+<dd>
+<p>上記で作成したディレクトリ内容をそのままUSBデバイスへコピー。ブートローダとしてSYSLINUXをインストール。</p>
+
+</dd>
+
+<dt>ブートメニュー設定ファイル</dt>
+<dd>
+<ul>
+<li><code>/syslinux/syslinux.cfg</code> - 最初にロードされる設定ファイル
+	<ul>
+	<li><code>/syslinux/vesamenu.cfg</code> - ローカルマウント・グラフィカルメニュー用設定ファイル</li>
+	<li><code>/syslinux/textmenu.cfg</code> - ローカルマウント・テキストメニュー用設定ファイル</li>
+	<li><code>/syslinux/netw.cfg</code> - ネットワークマウント・グラフィカルメニュー用設定ファイル</li>
+	<li><code>/syslinux/netw_txt.cfg</code> - ネットワークマウント・テキストメニュー用設定ファイル</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li> <code>/pxelinux.cfg/default</code> </li>
+</ul>
+<pre>
+INCLUDE /syslinux/syslinux.cfg
+</pre>
+</dd>
+</dl>
+
+
+<h2><a href="#syslinux_directory" name="syslinux_directory" accesskey="7"><span class="tokai1">syslinuxディレクトリ</span></a> <kbd class="ak">7</kbd></h2>
+
+
+
+<p>ブートローダや設定ファイルなど、この <code>syslinux</code> ディレクトリに保存する。</p>
+
+<p>作業用ディレクトリのルート及び <code>syslinux</code> ディレクトリに必要ファイルをコピー。ブートメニュー用設定ファイル作成</p>
+
+<pre>
+作業用ディレクトリ
+│  pxelinux.0
+│  tftpd32.chm
+│  tftpd32.exe
+│  tftpd32.ini
+│  
+├─grub (※ディレクトリ<span class="red">作成</span>)
+│  
+├─pxelinux.cfg (※ディレクトリ<span class="red">作成</span>)
+│      default       -- <span class="red">作成</span>
+│      pxechain.com
+│  
+├─syslinux (※ディレクトリ<span class="red">作成</span>)
+│      chain.c32
+│      jp106.kbd  -- <span class="red">※あれば</span>
+│      memdisk
+│      menu.c32
+│      netw.cfg      -- <span class="red">作成</span>
+│      netw_txt.cfg  -- <span class="red">作成</span>
+│      poweroff.com
+│      reboot.c32
+│      syslinux.cfg  -- <span class="red">作成</span>
+│      textmenu.cfg  -- <span class="red">作成</span>
+│      vesamenu.c32
+│      vesamenu.cfg  -- <span class="red">作成</span>
+│      
+</pre>
+
+
+
+
+
+<h3><a href="#syslinux_files"><span class="ms">■</span></a> <a name="syslinux_files">SYSLINUXのファイルをコピー</a></h3>
+
+<div class="palmst">
+<ol>
+<li><a href="http://www.kernel.org/pub/linux/utils/boot/syslinux/">kernel.org</a>（<a href="http://www.ring.gr.jp/pub/linux/kernel.org/utils/boot/syslinux/">Ring ミラー</a>）から、<strong class="ms">syslinux-x.xx.zip</strong> をダウンロードして展開</li>
+<li>下記を <code>syslinux</code> ディレクトリへコピー
+	<ul>
+	<li><code>\com32\menu\<strong class="ms">menu.c32</strong></code> </li>
+	<li><code>\com32\menu\<strong class="ms">vesamenu.c32</strong></code> </li>
+	<li><code>\memdisk\<strong class="ms">memdisk</strong></code> </li>
+
+	<li><code>\com32\modules\<strong class="ms">chain.c32</strong></code> </li>
+	<li><code>\com32\modules\<strong class="ms">reboot.c32</strong></code> </li>
+	<li><code>\modules\<strong class="ms">poweroff.com</strong></code> </li>
+	</ul>
+</li>
+<li>下記を <code>pxelinux.cfg</code> ディレクトリへコピー
+	<ul>
+	<li><code>\modules\<strong class="ms">pxechain.com</strong></code> </li>
+	</ul>
+</li>
+</ol>
+</div>
+
+
+<dl>
+<dt>USBメモリへSYSLINUXのインストール</dt>
+<dd>
+<ul>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/SYSLINUX#NT.2F2K.2FXP">SYSLINUX - Syslinux Wiki</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<dl class="small">
+<dt>めも</dt>
+<dd>
+<ul>
+<li><a href="./livecd_usb.html#syslinux">SYSLINUXのインストール - Linux LiveCDをUSBメモリでブートするめも</a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#cfg"><span class="ms">■</span></a> <a name="cfg">ブートメニュー設定ファイル</a></h3>
+
+<ul>
+<li><a href="../archives/syslinux_multi/syslinux/syslinux.cfg"><code>/syslinux/syslinux.cfg</code></a> で下記を選択切替
+	<ul>
+	<li>ローカルマウント・グラフィカルメニュー -  <code>vesamenu.cfg</code></li>
+	<li>ローカルマウント・テキストメニュー - <code>textmenu.cfg</code></li>
+	<li>ネットワークマウント・グラフィカルメニュー - <code>netw.cfg</code></li>
+	<li>ネットワークマウント・テキストメニュー - <code>netw_txt.cfg</code></li>
+	<li>GRUB for DOS (0.4.4 grub.exe) - <code>grub044.exe</code></li>
+	<li>GRUB for DOS (0.4.4 grub.exe) - <code>grub044.exe</code>（PXEサーバから）</li>
+	<li>GRUB for DOS (0.4.4 FDimage) - <code>grub044.img</code></li>
+	<li>ネットブート用起動FDイメージ - <code>pxeon.img</code></li>
+	<li>ネットブート用起動ROMイメージ - <code>gpxe-git-gpxe.lkrn</code></li>
+	<li>PLoP Boot Manager -  <code>plpbt</code>（PXEブート時）</li>
+	<li>FreeDOS -  <code>kernel.sys</code>（USBメモリブート時）</li>
+	<li>Memtest86+ - <code>memtest</code></li>
+	</ul>
+</li>
+</ul>
+
+
+<ul>
+<li><a href="../archives/syslinux_multi/syslinux/vesamenu.cfg"><code>/syslinux/vesamenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/syslinux/textmenu.cfg"><code>/syslinux/textmenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/syslinux/netw.cfg"><code>/syslinux/netw.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/syslinux/netw_txt.cfg"><code>/syslinux/netw_txt.cfg</code></a></li>
+</ul>
+
+<dl class="small">
+<dt>めも</dt>
+<dd>
+<ul>
+<li><a href="./livecd_usb.html#config">syslinux.cfgの設定 - Linux LiveCDをUSBメモリでブートするめも</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20071129/1196347399">SYSLINUXにグラフィカル・メニューを入れるの巻</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h3><a href="#pxe"><span class="ms">■</span></a> <a name="pxe">PXELINUXの設定</a></h3>
+
+<div class="palmst">
+<ol>
+<li>SYSLINUXの <code>\core\<strong class="ms">pxelinux.0</strong></code> を <del><code>syslinux</code> ディレクトリ</del> <ins><code>作業用ディレクトリ・ルート</code></ins>へコピー</li>
+<li><code>pxelinux.cfg</code> ディレクトリに <code>default</code> ファイル作成</li>
+</ol>
+</div>
+
+<ul>
+<li><a href="../archives/syslinux_multi/pxelinux.cfg/default"><code>/pxelinux.cfg/default</code> </a></li>
+</ul>
+<pre>
+INCLUDE /syslinux/syslinux.cfg
+</pre>
+<p><code>syslinux.cfg</code> へ切替するので編集不要</p>
+
+
+<h4>DHCP/TFTPサーバ</h4>
+
+<ul>
+<li><a href="http://tftpd32.jounin.net/">TFTPD32 : a opensource TFTP server/service for windows : TFTP server</a>
+	<ul>
+	<li><a href="http://tftpd32.jounin.net/tftpd32.html">TFTPD32 : Description</a></li>
+	<li><a href="http://tftpd32.jounin.net/tftpd32_faq.html">TFTPD32 : Tftpd32 FAQ</a></li>
+	</ul>
+</li>
+</ul>
+
+<div class="palmst">
+<ol>
+<li><a href="http://tftpd32.jounin.net/tftpd32_download.html">tftpd32.xxx.zip</a>をダウンロードして展開</li>
+<li>3つのファイルを作業用ディレクトリ・ルートへコピー</li>
+</ol>
+</div>
+
+<dl class="small">
+<dt>めも</dt>
+<dd>
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20070403/1175609650">WindowsでPXEネットワークブート用サーバの設定 - TFTPD32</a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+
+
+<h2><a href="#item_copy" name="item_copy" accesskey="8"><span class="tokai1">アイテム投入</span></a> <kbd class="ak">8</kbd></h2>
+
+
+<div class="palmst small">
+<p>Windows上で直接isoイメージを展開（抽出）するには <a href="http://sevenzip.sourceforge.jp/">7-Zip</a> や <a href="http://legroom.net/software/uniextract">Universal Extractor</a> などが便利です（※7-Zipで展開時の[BOOT]ディレクトリはブートセクタなので基本的に不要です）。</p>
+<p>仮想CDソフトやWinRARなどでは、ファイル名がすべて<strong>大文字の8.3形式</strong>となってしまうことがあるため上記をおすすめします。</p>
+</div>
+
+<p>必要なものを設定。USBメモリへのコピーは容量に合わせて。（※全部入れると 3 GB オーバーします。）</p>
+
+<ul>
+<li><a href="#grub4dos">GRUB for DOS</a></li>
+<li><a href="#pxeboot_disk">ネットワークブート用起動ディスク</a></li>
+<li><a href="#plpbt">PLoP Boot Manager</a></li>
+<li><a href="#memtest">Memtest86+</a></li>
+</ul>
+
+
+<ul>
+<li><a href="#knoppix3">Knoppix 5.3.1CD</a> -- 約 704 MB（USB＆PXE版）</li>
+<li><a href="#inetboot0731">InetBoot(netfsboot)</a> -- 約 6 MB</li>
+<li><a href="#systemrescuecd104">SystemRescueCd 1.0.4</a> -- 約 194 MB</li>
+<li><a href="#systemrescuecd121">SystemRescueCd 1.2.1</a> -- 約 227 MB</li>
+<li><a href="#ping">PING(Partimage Is Not Ghost)</a> -- 約 22 MB</li>
+<li><a href="#clonezilla">Clonezilla Live 1.2.2-14</a> -- 約 100 MB</li>
+</ul>
+
+<ul>
+<li><a href="#winpe">Windows PE 2.0</a> -- 約 125 MB</li>
+<li><a href="#freedos">FreeDOS</a> -- 約 1.4 MB - 3 MB</li>
+</ul>
+
+<ul>
+<li><a href="#installer">Linux インストーラ</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="#puppy412">puppy-4.1.2.1-JP</a> -- 約 109 MB</li>
+<li><a href="#slax51813">SLAX Live CD 5.1.8.1-3</a> -- 約 250 MB</li>
+<li><a href="#slax6091">SLAX Live CD 6.0.9-1 ja</a> -- 約 250 MB</li>
+<li><a href="#berry090">Berry Linux 0.90</a> -- 約 494 MB</li>
+<li><a href="#ecolinux804">Ecolinux 8.0.4</a> -- 約 358 MB</li>
+<li><a href="#pmagic22">Parted Magic 2.2</a> -- 約 85 MB（USB＆PXE版）</li>
+<li><a href="#insert1218">INSERT+ 1.2.18</a> -- 約 81 MB</li>
+<li><a href="#ploplinux">PLoP Linux-v3.8.1</a> -- 約 54 MB</li>
+<li><a href="#paragon">Paragon Drive Backup 9.0 Express</a> -- 約 46 MB</li>
+</ul>
+
+<!--
+#kaspersky
+Kaspersky Linux Rescue disk 約 110 MB
+-->
+
+
+
+<h3><a href="#grub4dos"><span class="ms">■</span></a> <a name="grub4dos">GRUB for DOS</a></h3>
+
+<ul>
+<li>ダウンロード
+	<ul>
+	<li><a href="http://sourceforge.net/projects/grub4dos/files/">SourceForge.net: Files</a>
+		<ul>
+		<li><code>grub4dos-0.4.4.zip</code> をダウンロード</li>
+		<li><code>grub_for_dos-0.4.2.zip</code> をダウンロード</li>
+		<li class="small"><a href="http://download.gna.org/grub4dos/">Index of /grub4dos</a></li>
+		</ul>
+</li>
+	</ul>
+</li>
+</ul>
+
+<h4>grub.exeをチェインロード</h4>
+
+<div class="palmst">
+<ol>
+<li><strong class="ms">syslinux</strong>ディレクトリへ下記ファイルをコピー
+	<ul>
+	<li>0.4.4 の <strong class="ms">grub.exe</strong> を <strong class="ms">grub044.exe</strong> へリネーム</li>
+	</ul>
+</li>
+<li><strong class="ms">menu.lst</strong>を作業ディレクトリルートへ作成
+	<ul>
+	<li><a href="../archives/syslinux_multi/menu.lst"><code>/menu.lst</code></a></li>
+	</ul>
+</li>
+</ol>
+</div>
+
+<ul>
+<li><a href="../archives/syslinux_multi/syslinux/syslinux.cfg">syslinux.cfg</a></li>
+</ul>
+<pre>
+KERNEL /syslinux/grub044.exe
+</pre>
+
+
+<h4>FDイメージをロード</h4>
+
+<div class="palmst">
+<ol>
+<li><strong class="ms">syslinux</strong>ディレクトリへ作成したイメージファイルをコピー
+	<ul>
+	<li>0.4.2の <strong class="ms">fat12grldr.img</strong> を「イメージとして」 <a href="http://www.chrysocome.net/rawwrite">RawWrite for Windows</a> などでFDに書き込むかマウントする</li>
+	<li>0.4.4 の <strong class="ms">grldr</strong> をFDへ上書きコピー</li>
+	<li><a href="http://www.chrysocome.net/rawwrite">RawWrite for Windows</a> などでFDイメージを作成</li>
+	<li>FDイメージを <strong class="ms">grub044.img</strong> にリネーム</li>
+	</ul>
+</li>
+</ol>
+</div>
+
+<ul>
+<li><a href="../archives/syslinux_multi/syslinux/syslinux.cfg">syslinux.cfg</a></li>
+</ul>
+<pre>
+KERNEL /syslinux/memdisk raw
+APPEND initrd=/syslinux/grub044.img
+</pre>
+
+<dl class="small">
+<dt>めも</dt>
+<dd>
+<ul>
+<li>grub.exe - ネットワークブートではローカルマシン上の <code>menu.lst</code> が検索される。ない場合はコマンドモード。</li>
+<li><strong>grub.exe - 0.4.2,0.4.3でWindows XPを起動させると非常に重くなるバグがあるので注意</strong>（※0.4.1,0.4.4では多分問題なし）。</li>
+<li>環境によっては、grub.exeまたはFDイメージのどちらかしか使えないこともありました。使い分けが必要かも。</li>
+<li>ネットワークブートから「<code>keeppxe</code>」オプションでロードした場合はサーバ上の <code>menu.lst</code> が先に検索される</li>
+<li>pxelinux.0の代わりにgrldrを指定してネットワークからGRUB for DOSのブートも“一応”可能。</li>
+</ul>
+
+<p>menu.lstがデフォルトのものになるので作成し直した方がいいかも。</p>
+<ul>
+<li><a href="./grub4dos_bootdisk.html">GRUB起動ディスクを作っておくの巻</a></li>
+</ul>
+
+</dd>
+</dl>
+
+
+<h3><a href="#pxeboot_disk"><span class="ms">■</span></a> <a name="pxeboot_disk">ネットワークブート用起動ディスク</a></h3>
+
+<ul>
+<li><a href="ftp://ftp.scyld.com/private/jlehan/pxe-on-a-disk.html">PXE-On-A-Disk</a>
+	<ul>
+	<li>ダウンロードして展開、<code>pxe-on-a-disk.floppy</code> を取り出す</li>
+	</ul>
+</li>
+<li><a href="http://rom-o-matic.net/gpxe/gpxe-git/gpxe.git/contrib/rom-o-matic/">ROM-o-matic.net: for gPXE version git</a>
+	<ul>
+	<li>Choose NIC/ROM type
+		<ul>
+		<li><code>gpxe:all-drivers</code> を選択（※「disk」じゃないけど）</li>
+		</ul>
+	</li>
+	<li>Choose ROM output format
+		<ul>
+		<li><code>LILO/GRUB/SYSLINUX loadable Linux kernel format (.lkrn)</code> を選択</li>
+		<li>[Get ROM] をポチっと</li>
+		</ul>
+	</li>
+	</ul>
+</li>
+</ul>
+
+
+<div class="palmst">
+<ol>
+<li><strong class="ms">syslinux</strong>ディレクトリへ下記ファイルをコピー
+	<ul>
+	<li><strong class="ms">pxe-on-a-disk.floppy</strong> を <strong class="ms">pxeon.img</strong> にリネーム</li>
+	<li><strong class="ms">gpxe-git-gpxe.lkrn</strong> は <strong class="ms">gpxe_all.krn</strong> にリネーム</li>
+	</ul>
+</li>
+</ol>
+</div>
+
+<ul>
+<li><a href="../archives/syslinux_multi/syslinux/syslinux.cfg">syslinux.cfg</a></li>
+</ul>
+<pre>
+LABEL gpxe
+KERNEL /syslinux/gpxe_all.krn
+
+LABEL pxeon
+KERNEL /syslinux/memdisk
+APPEND initrd=/syslinux/pxeon.img
+</pre>
+
+<dl class="small">
+<dt>めも</dt>
+<dd>
+<ul>
+<li>使えない場合もあるので2つ入れとく</li>
+</ul>
+</dd>
+</dl>
+
+
+
+
+<h3><a href="#plpbt"><span class="ms">■</span></a> <a name="plpbt">PLoP Boot Manager</a></h3>
+
+<p>※<strong>ネットワークブート（またはCDブート）用ですが</strong>、USB（メモリ）ブート非対応PC向けのUSB（メモリ）ブート用ブートローダー。</p>
+
+<ul>
+<li><a href="http://www.plop.at/en/bootmanager.html">PLoP - Bootmanager</a></li>
+<li><a href="http://www.plop.at/en/bootmanagerdl.html">PLoP Boot Manager Downloads</a>
+	<ul>
+	<li> <code>plpbt-5.x.x.zip</code> をダウンロード</li>
+	</ul>
+</li>
+</ul>
+
+<div class="palmst">
+<ol>
+<li><strong class="ms">syslinux</strong>ディレクトリへ下記ファイルをコピー
+	<ul>
+	<li><strong class="ms">plpbt.bin</strong> を <strong class="ms">plpbt</strong> にリネームしてコピー</li>
+	</ul>
+</li>
+</ol>
+</div>
+
+<ul>
+<li><a href="../archives/syslinux_multi/syslinux/syslinux.cfg">syslinux.cfg</a></li>
+</ul>
+<pre>
+KERNEL /syslinux/plpbt
+</pre>
+
+
+<dl class="small">
+<dt>めも</dt>
+<dd>
+<ul>
+<li>USB CD は今んとこ非対応</li>
+<li><a href="http://d.hatena.ne.jp/palm84/20080816/1218896213">PLoP Boot Manager（USBブート非対応PC用起動ディスク）</a></li>
+</ul>
+
+</dd>
+</dl>
+
+
+
+
+<h3><a href="#memtest"><span class="ms">■</span></a> <a name="memtest">Memtest86+</a></h3>
+
+<ul>
+<li><a href="http://www.memtest.org/#downiso">Memtest86+ - Advanced Memory Diagnostic Tool</a>
+	<ul>
+	<li>Download - <strong class="ms">Pre-Compiled Bootable Binary</strong> (.zip)をダウンロード</li>
+	</ul>
+</li>
+</ul>
+
+<div class="palmst">
+<ol>
+<li><strong class="ms">syslinux</strong>ディレクトリへ下記ファイルをコピー
+	<ul>
+	<li><strong class="ms">memtest86+-x.xx.bin</strong> を <strong class="ms">memtest</strong> にリネームしてコピー</li>
+	</ul>
+</li>
+</ol>
+</div>
+
+<ul>
+<li><a href="../archives/syslinux_multi/syslinux/syslinux.cfg">syslinux.cfg</a></li>
+</ul>
+<pre>
+KERNEL /syslinux/memtest
+</pre>
+
+
+
+<h3><a href="#knoppix3"><span class="ms">■</span></a> <a name="knoppix3">Knoppix 5.3.1CD</a></h3>
+
+<ul>
+<li><a href="http://www.rcis.aist.go.jp/project/knoppix/">KNOPPIX Japanese edition</a></li>
+<li><a href="http://www.ring.gr.jp/pub/linux/knoppix/iso/">Index of /pub/linux/knoppix/iso</a>
+	<ul>
+	<li><code>knoppix_v5.3.1CD_20080326-20080520-AC.iso</code> をダウンロード</li>
+	<li>または <code>knoppix_v5.3.1CD_20080326-20080520.iso</code></li>
+</ul>
+</li>
+</ul>
+
+<div class="palmst">
+<ol>
+<li><strong class="ms">KNOPPIX</strong>ディレクトリへCD内の下記ファイルをコピー
+	<ul>
+	<li><strong class="ms">/boot/isolinux</strong> ディレクトリの内容</li>
+	<li> <strong class="ms">/KNOPPIX</strong> ディレクトリ内の内容</li>
+	</ul>
+</li>
+</ol>
+</div>
+
+
+<dl class="palmst">
+<dt>ネットワーク(NFSサーバ)マウント用カーネルの取り出し</dt>
+<dd>
+<ol>
+<li>通常CDでKnoppixを起動</li>
+<li><strong class="ms">knoppix-terminalserver</strong>実行</li>
+<li><strong class="ms">/tmp/tftpboot</strong> ディレクトリ内の <strong class="ms">vmlinuz</strong> と <strong class="ms">miniroot.gz</strong> を <strong class="ms">KNOPPIX</strong> ディレクトリへコピー</li>
+</ol>
+
+<ul>
+<li>NFSサーバの設定
+	<ul>
+	<li><strong class="ms">/cdrom</strong> ディレクトリを作成し <strong class="ms">KNOPPIX</strong> ディレクトリを保存</li>
+	<li><strong class="ms">/etc/exports</strong> に <strong class="ms">/cdrom</strong> ディレクトリを記述</li>
+	</ul>
+</li>
+</ul>
+<pre class="scl">
+<var>/mnt/hda3</var>/cdrom <var>192.168.0.0</var>/255.255.255.0(ro,no_root_squash,async)
+</pre>
+</dd>
+</dl>
+
+<dl>
+<dt>ブートメニュー設定ファイル</dt>
+<dd>
+<ul>
+<li><a href="../archives/syslinux_multi/KNOPPIX/vesamenu.cfg"><code>/KNOPPIX/vesamenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/KNOPPIX/textmenu.cfg"><code>/KNOPPIX/textmenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/KNOPPIX/nfs.cfg"><code>/KNOPPIX/nfs.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/KNOPPIX/nfs_txt.cfg"><code>/KNOPPIX/nfs_txt.cfg</code></a></li>
+</ul>
+</dd>
+</dl>
+
+<dl class="small">
+<dt>めも</dt>
+<dd>
+<ul>
+<li>サブディレクトリを指定する場合はパラメータ追加 -  <code>knoppix_dir=knoppix3 knoppix_name=KNOPPIX</code></li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#systemrescuecd104"><span class="ms">■</span></a> <a name="systemrescuecd104">SystemRescueCd 1.0.4</a></h3>
+
+<p class="small">※ちょっと旧版ですが、RAM 256 MBでネットワークブート・オンメモリ起動が可能なので。</p>
+
+<ul>
+<li><a href="http://www.sysresccd.org/Main_Page">Main Page - SystemRescueCd</a></li>
+<li><a href="http://sourceforge.net/projects/systemrescuecd/files/">SourceForge.net: Files</a>
+	<ul>
+	<li><code> 	systemrescuecd-x86-1.0.4.iso</code> をダウンロード</li>
+	</ul>
+</li>
+</ul>
+
+
+<div class="palmst">
+<ol>
+<li><strong class="ms">sysres10</strong> ディレクトリへCD内の下記ファイルをコピー
+	<ul>
+	<li><strong class="ms">isolinux</strong> ディレクトリの内容</li>
+	<li><strong class="ms">sysrcd.dat</strong> と <strong class="ms">sysrcd.md5</strong></li>
+	<li><strong class="ms">bootdisk</strong> ディレクトリをディレクトリごと</li>
+	</ul>
+</li>
+</ol>
+</div>
+
+
+<dl>
+<dt>ブートメニュー設定ファイル</dt>
+<dd>
+<ul>
+<li><a href="../archives/syslinux_multi/sysres10/vesamenu.cfg"><code>/sysres10/vesamenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/sysres10/textmenu.cfg"><code>/sysres10/textmenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/sysres10/tftp.cfg"><code>/sysres10/tftp.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/sysres10/tftp_txt.cfg"><code>/sysres10/tftp_txt.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/sysres10/http.cfg"><code>/sysres10/http.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/sysres10/http_txt.cfg"><code>/sysres10/http_txt.cfg</code></a></li>
+</ul>
+</dd>
+</dl>
+
+<dl class="small">
+<dt>めも</dt>
+<dd>
+<ul>
+<li>サブディレクトリの指定 - <code>subdir=sysres10</code></li>
+<li>TFTPサーバの指定
+	<ul>
+	<li><code>netboot=tftp://<var>IPアドレス</var>/sysres10/sysrcd.dat</code></li>
+	</ul>
+</li>
+<li>HTTPサーバの指定
+	<ul>
+	<li><code>netboot=http://<var>IPアドレス</var>/sysrcd.dat</code></li>
+	<li>サーバに <code>sysrcd.dat</code> と <code>sysrcd.md5</code> をコピーしておく</li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#systemrescuecd121"><span class="ms">■</span></a> <a name="systemrescuecd121">SystemRescueCd 1.2.1</a></h3>
+
+<ul>
+<li><a href="http://www.sysresccd.org/Main_Page">Main Page - SystemRescueCd</a></li>
+<li><a href="http://sourceforge.net/projects/systemrescuecd/files/">SourceForge.net: Files</a>
+	<ul>
+	<li><code>systemrescuecd-x86-1.2.1.iso</code> をダウンロード</li>
+	</ul>
+</li>
+</ul>
+
+
+<div class="palmst">
+<ol>
+<li><strong class="ms">sysres12</strong> ディレクトリへCD内の下記ファイルをコピー
+	<ul>
+	<li><strong class="ms">isolinux</strong> ディレクトリの内容</li>
+	<li><strong class="ms">sysrcd.dat</strong> と <strong class="ms">sysrcd.md5</strong></li>
+	<li><strong class="ms">bootdisk</strong> ディレクトリをディレクトリごと</li>
+	<li><strong class="ms">ntpasswd</strong> ディレクトリをディレクトリごと</li>
+	</ul>
+</li>
+</ol>
+</div>
+
+
+<dl>
+<dt>ブートメニュー設定ファイル</dt>
+<dd>
+<ul>
+<li><a href="../archives/syslinux_multi/sysres12/vesamenu.cfg"><code>/sysres12/vesamenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/sysres12/textmenu.cfg"><code>/sysres12/textmenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/sysres12/tftp.cfg"><code>/sysres12/tftp.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/sysres12/tftp_txt.cfg"><code>/sysres12/tftp_txt.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/sysres12/http.cfg"><code>/sysres12/http.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/sysres12/http_txt.cfg"><code>/sysres12/http_txt.cfg</code></a></li>
+</ul>
+</dd>
+</dl>
+
+<dl class="small">
+<dt>めも</dt>
+<dd>
+<ul>
+<li>サブディレクトリの指定 - <code>subdir=sysres12</code></li>
+<li>TFTPサーバの指定
+	<ul>
+	<li><code>netboot=tftp://<var>IPアドレス</var>/sysres12/sysrcd.dat</code></li>
+	</ul>
+</li>
+<li>HTTPサーバの指定sysrcd.dat
+	<ul>
+	<li><code>netboot=http://<var>IPアドレス</var>/sysrcd.dat</code></li>
+	<li>サーバに <code>sysrcd.dat</code> と <code>sysrcd.md5</code> をコピーしておく</li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#inetboot0731"><span class="ms">■</span></a> <a name="inetboot0731">InetBoot(netfsboot)</a></h3>
+
+<ul>
+<li><a href="http://openlab.ring.gr.jp/oscircular/">OS Circular</a></li>
+<li><a href="http://www.ring.gr.jp/pub/linux/oscircular/iso/inetboot-20080731/">Index of /pub/linux/oscircular/iso/inetboot-20080731</a>
+	<ul>
+	<li><code>linux</code> と <code>minirt.gz</code> をダウンロード</li>
+	</ul>
+</li>
+</ul>
+
+<div class="palmst">
+<ol>
+<li><strong class="ms">inet0731</strong> ディレクトリへファイルをコピー
+	<ul>
+	<li><strong class="ms">linux</strong> と <strong class="ms">minirt.gz</strong></li>
+	</ul>
+</li>
+</ol>
+</div>
+
+<dl>
+<dt>HTTPサーバにisoイメージを保存</dt>
+<dd>
+<ol>
+<li>LAN内のHTTPサーバのディレクトリにisoイメージを保存</li>
+</ol>
+<dl class="small">
+<dt>起動確認できたもの</dt>
+<dd>
+<ul>
+<li>KNOPPIX 5.3.1CD - （※ACなし） <a href="http://www.ring.gr.jp/pub/linux/knoppix/iso/">/knoppix/iso</a></li>
+<pre>
+knoppix_v5.3.1CD_20080326-20080520.iso
+</pre>
+
+<ul>
+<li>KNOPPIX 5.1.1CD - （※ACなし）<a href="http://www.ring.gr.jp/pub/linux/oscircular/iso/">/oscircular/iso</a></li>
+</ul>
+<pre>
+knoppix_v5.1.1CD_20070104-20070122+IPAFont.iso
+</pre>
+
+<ul>
+<li>Fedora-9-i686-Live - <a href="http://www.ring.gr.jp/pub/linux/fedora/linux/releases/9/Live/i686/">/releases/9/Live/i686</a></li>
+</ul>
+<pre>
+Fedora-9-i686-Live.iso
+</pre>
+
+<ul>
+<li>ubuntu-ja-8.04-desktop-i386 - <a href="http://www.ubuntulinux.jp/products/JA-Localized/download">日本語ローカライズドDesktop CDのダウンロード | Ubuntu Japanese Team</a></li>
+</ul>
+<pre>
+ubuntu-ja-8.04-desktop-i386.iso
+</pre>
+
+<ul>
+<li>Ecolinux 8.04 - <a href="http://sourceforge.jp/projects/ecolinux/files/">SourceForge.JP: Project File List</a></li>
+</ul>
+<pre>
+ecolinux-8.04.iso
+</pre>
+</dd>
+</dl>
+</dd>
+</dl>
+
+<dl>
+<dt>ブートメニュー設定ファイル</dt>
+<dd>
+<ul>
+<li><a href="../archives/syslinux_multi/inet0731/http.cfg"><code>/inet0731/http.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/inet0731/http_txt.cfg"><code>/inet0731/http_txt.cfg</code></a></li>
+</ul>
+</dd>
+</dl>
+
+
+<dl class="small">
+<dt>めも</dt>
+<dd>
+<ul>
+<li>HTTPサーバの指定
+	<ul>
+	<li><code>netdir=http://<var>IPアドレス</var>/xxx.iso</code></li>
+	</ul>
+</li>
+<li><a href="http://d.hatena.ne.jp/palm84/20080626/1214415227">InetBoot (GRUB+BuildRoot)【その2】</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20080818/1218988041">InetBoot (GRUB+BuildRoot) 【0731版】</a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#ping"><span class="ms">■</span></a> <a name="ping">PING(Partimage Is Not Ghost)</a></h3>
+
+<ul>
+<li><a href="http://ping.windowsdream.com/ping.html">PING (Partimage Is Not Ghost)</a></li>
+<li><a href="http://ping.windowsdream.com/ping/download.html">Download PING</a>
+	<ul>
+	<li><del><code>PING-3.00.iso</code></del> をダウンロード</li>
+	<li><code>kernel
+</code> と <code>initrd.gz</code> をダウンロード</li>
+	<li><a href="http://ping.windowsdream.com/ping/Releases/">Index of /ping/Releases</a></li>
+	</ul>
+</li>
+</ul>
+
+<div class="palmst">
+<ol>
+<li><strong class="ms">ping300</strong> ディレクトリへCD内の下記ファイルをコピー
+	<ul>
+	<li><strong class="ms">kernel</strong> と <strong class="ms">initrd.gz</strong></li>
+	</ul>
+</li>
+</ol>
+</div>
+
+<dl>
+<dt>ブートメニュー設定ファイル</dt>
+<dd>
+<ul>
+<li><a href="../archives/syslinux_multi/ping300/vesamenu.cfg"><code>/ping300/vesamenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/ping300/textmenu.cfg"><code>/ping300/textmenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/ping300/tftp.cfg"><code>/ping300/tftp.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/ping300/tftp_txt.cfg"><code>/ping300/tftp_txt.cfg</code></a></li>
+</ul>
+</dd>
+</dl>
+
+
+<dl class="small">
+<dt>めも</dt>
+<dd>
+<ul>
+<li>オプション <code>pxe</code> でオンメモリ起動（デフォルト）</li>
+<li>オンメモリ起動。メモリ(RAM)は 128 MBで起動可能</li>
+<li><a href="http://d.hatena.ne.jp/palm84/20071123/1195826295#ping">PING (Partimage Is Not Ghost) - 【取り扱い注意】ツールのめも</a>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#clonezilla"><span class="ms">■</span></a> <a name="clonezilla">Clonezilla Live 1.2.2-14</a></h3>
+
+<ul>
+<li><a href="http://clonezilla.org/introduction.php">Clonezilla (OpenSource clone system)</a></li>
+<li><a href="http://sourceforge.net/projects/clonezilla/files/">Browse Clonezilla Files on SourceForge.net</a>
+	<ul>
+	<li><code>clonezilla-live-1.2.2-14.zip</code> をダウンロード</li>
+	</ul>
+</li>
+</ul>
+
+<div class="palmst">
+<ol>
+<li><strong class="ms">live</strong> ディレクトリへコピー
+	<ul>
+	<li><strong class="ms">live</strong> ディレクトリの内容</li>
+	<li><strong class="ms">syslinux</strong> ディレクトリの内容</li>
+	</ul>
+</li>
+</ol>
+
+<ul>
+<li>【注意】ネットワークブートでは、<strong class="ms">filesystem.squashfs</strong> をTFTPルート（作業ディレクトリルート）に移動する</li>
+</ul>
+</div>
+
+<dl>
+<dt>ブートメニュー設定ファイル</dt>
+<dd>
+<ul>
+<li><a href="../archives/syslinux_multi/live/vesamenu.cfg"><code>/live/vesamenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/live/textmenu.cfg"><code>/live/textmenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/live/tftp.cfg"><code>/live/tftp.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/live/tftp_txt.cfg"><code>/live/tftp_txt.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/live/http.cfg"><code>/live/http.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/live/http_txt.cfg"><code>/live/http_txt.cfg</code></a></li>
+</ul>
+</dd>
+</dl>
+
+<dl class="small">
+<dt>めも</dt>
+<dd>
+<ul>
+<li>オプション <code>toram</code> でオンメモリ起動</li>
+</ul>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20090118/1232208347">【取り扱い注意】Clonezilla Live を試してみるの巻</a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+
+
+<h3><a href="#winpe"><span class="ms">■</span></a> <a name="winpe">Windows PE 2.0</a></h3>
+
+<p>ファイル作成</p>
+<ul>
+<li><a href="http://technet.microsoft.com/ja-jp/windows/aa905120.aspx">Windows PE 2.0 for Windows Vista の概要</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/1175wpe2usb/wpe2usb.html">Windows PE 2.0のブータブルUSBメモリを作成する － ＠IT</a></li>
+<li>拙作：<a href="./winpe.html">Windows PE 2.0 めも</a>
+	<ul>
+	<li><a href="./winpe.html#hdd">HDD / USBメモリでブート</a></li>
+	</ul>
+</li>
+</ul>
+
+<div class="palmst">
+<ol>
+<li><strong class="ms">ISOフォルダの内容</strong>をそのまま作業ディレクトリのルートへコピー</li>
+</ol>
+
+<p>または、</p>
+
+<ol>
+<li>isoイメージのファイル名を <code>recovery.iso</code> としてルートへコピーにする（※少し不安定かも）</li>
+</ol>
+</div>
+
+<dl>
+<dt>GRUB for DOS 経由でチェインロード（USBメモリ）</dt>
+<dd>
+
+<ul>
+<li><a href="../archives/syslinux_multi/syslinux/vesamenu.cfg"><code>/syslinux/vesamenu.cfg</code></a></li>
+</ul>
+<pre>
+LABEL winpe
+KERNEL /syslinux/grub044.exe
+APPEND --config-file=&#034;chainloader /bootmgr&#034;
+</pre>
+
+
+<dl>
+<dt>GRUBのメニューからだと</dt>
+<dd>
+<ul>
+<li><a href="../archives/syslinux_multi/menu.lst"><code>/menu.lst</code></a></li>
+</ul>
+<pre>
+title Windows PE 2.0
+      chainloader /bootmgr
+</pre>
+</dd>
+
+<dt>または、isoイメージから（※少し不安定かも）</dt>
+<dd>
+<p>GRUB for DOSから</p>
+<ul>
+<li><a href="../archives/syslinux_multi/menu.lst"><code>/menu.lst</code></a></li>
+</ul>
+<pre>
+title Windows PE 2.0 (from /recovery.iso)
+map /recovery.iso (0xff) || map --mem /recovery.iso (0xff)
+map --hook
+chainloader (0xff)
+</pre>
+</dd>
+</dl>
+</dd>
+
+<dt>PXELINUXからチェインロード（ネットワークブート）</dt>
+<dd>
+<div class="palmst">
+<ol>
+<li>作成時にマウントした  <code>mount\Windows\Boot\PXE\</code> にある <strong class="ms">bootmgr.exe</strong> をTFTPルートににコピー</li>
+<li>作成時にマウントした  <code>mount\Windows\Boot\PXE\</code> にある <strong class="ms">pxeboot.n12</strong> を <strong class="ms">boot</strong> ディレクトリにコピー</li>
+<li><strong class="ms">pxeboot.n12</strong> を <strong class="ms">pxeboot.0</strong> にリネーム</li>
+</ol>
+</div>
+
+<ul>
+<li>PXELINUXの設定 (<a href="../archives/syslinux_multi/syslinux/netw.cfg">netw.cfg</a> / <a href="../archives/syslinux_multi/syslinux/netw_txt.cfg">netw_txt.cfg</a>)</li>
+</ul>
+<pre>
+LABEL winpe
+MENU LABEL ^2. Windows PE 2.0
+KERNEL /boot/pxeboot.0
+</pre>
+
+<dl>
+<dt>または、isoイメージから（※少し不安定かも）</dt>
+<dd>
+<p>（keeppxeで起動した）GRUB for DOSから。但し、汎用起動ディスクなどでのブートで失敗が多いかも？</p>
+<ul>
+<li><a href="../archives/syslinux_multi/menu.lst"><code>/menu.lst</code></a></li>
+</ul>
+<pre>
+title Windows PE 2.0 (from /recovery.iso)
+map /recovery.iso (0xff) || map --mem /recovery.iso (0xff)
+map --hook
+chainloader (0xff)
+</pre>
+<p>※ネットワークブートでは、<code>--mem</code> オプションは必須</p>
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+<dl class="small">
+<dt>めも</dt>
+<dd>
+<ul>
+<li>オンメモリ起動。RAM 256 MB以上ないと厳しいかも</li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#freedos"><span class="ms">■</span></a> <a name="freedos">FreeDOS</a></h3>
+
+<ul>
+<li><a href="http://www.finnix.org/Balder">Balder - Finnix</a>
+	<ul>
+	<li><code>balder10.img</code> をダウンロードしてFDに書き込むか展開</li>
+	</ul>
+</li>
+</ul>
+
+<dl class="small palmst">
+<dt>FDイメージからファイルを取り出すには（イメージをファイルに展開）</dt>
+<dd>
+<p><a href="http://www.intercom.co.jp/iso/index.html">Super ウルトラISO</a> でできますが、下記の <strong class="ms">Universal Extractor</strong> が便利かも。 <strong class="ms">UniExtract Binary Archive</strong> はインストール不要で使えます（日本語表示も可）。</p>
+<ul>
+<li><a href="http://www.legroom.net/software/uniextract">Universal Extractor | LegRoom.net</a></li>
+</ul>
+<p>※注意：対象ファイルのパスに‘デスクトップ’など日本語が含まれるとエラーになるみたいです。</p>
+</dd>
+</dl>
+
+<dl>
+<dt>ブートメニュー設定ファイル</dt>
+<dd>
+<ul>
+<li><a href="../archives/syslinux_multi/bootdisk/vesamenu.cfg"><code>/bootdisk/vesamenu.cfg</code></a>（FDイメージ用）</li>
+<li><a href="../archives/syslinux_multi/bootdisk/textmenu.cfg"><code>/bootdisk/textmenu.cfg</code></a>（FDイメージ用）</li>
+</ul>
+<ul>
+<li><a href="../archives/syslinux_multi/config.sys"><code>/config.sys</code></a>（チェインロード用）</li>
+<li><a href="../archives/syslinux_multi/autoexec.bat"><code>/autoexec.bat</code></a>（チェインロード用）</li>
+</ul>
+
+<p>※chain.c32 の設定は <a href="../archives/syslinux_multi/syslinux/syslinux.cfg"><code>syslinux.cfg</code></a>、grub.exeの設定は <a href="../archives/syslinux_multi/menu.lst"><code>/menu.lst</code></a> に記述</p>
+</dd>
+</dl>
+
+
+<h4>FDイメージをロード</h4>
+
+<div class="palmst">
+<ol>
+<li><strong class="ms">bootdisk</strong> ディレクトリへ <strong class="ms">balder10.img</strong> をコピー</li>
+</ol>
+</div>
+
+<ul>
+<li><a href="../archives/syslinux_multi/bootdisk/vesamenu.cfg"><code>/bootdisk/vesamenu.cfg</code></a></li>
+</ul>
+<pre>
+KERNEL /syslinux/memdisk
+APPEND initrd=/bootdisk/balder10.img
+</pre>
+
+
+<h4>kernel.sys をチェインロード（USBメモリから直接ブート）</h4>
+<div class="palmst">
+<ol>
+<li>作業ディレクトリのルートへコピー
+	<ul>
+	<li><strong class="ms">command.com</strong></li>
+	<li><strong class="ms">kernel.sys</strong></li>
+	<li><strong class="ms">autoexec.bat</strong> と <strong class="ms">config.sys</strong> 作成</li>
+	</ul>
+</li>
+<li><strong class="ms">freedos</strong> ディレクトリへ下記ファイルをコピー
+	<ul>
+	<li><strong class="ms">himem.exe</strong></li>
+	<li><strong class="ms">keyb.exe</strong></li>
+	<li><strong class="ms">keyboard.sys</strong></li>
+	<li><strong class="ms">keybrd2.sys</strong></li>
+	<li>他、<strong class="ms">edit.exe</strong>,<strong class="ms">fdisk.exe</strong>,<strong class="ms">xcopy.exe</strong> など</li>
+	</ul>
+</li>
+</ol>
+</div>
+
+<ul>
+<li><a href="../archives/syslinux_multi/syslinux/syslinux.cfg"><code>/syslinux/syslinux.cfg</code></a></li>
+</ul>
+<pre>
+LABEL freedos
+KERNEL /syslinux/chain.c32
+APPEND freedos=/kernel.sys
+</pre>
+<p>または、GRUBのメニューから</p>
+<ul>
+<li><a href="../archives/syslinux_multi/menu.lst"><code>/menu.lst</code></a></li>
+</ul>
+<pre>
+title FreeDOS from USB-Flash
+chainloader /kernel.sys
+</pre>
+
+<dl class="small">
+<dt>めも</dt>
+<dd>
+<ul>
+<li><a href="./dosdisk.html#freedos">FreeDOS 1.0 - 私的「DOS起動ディスク」めも（未整理）</a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+
+
+<h3><a href="#installer"><span class="ms">■</span></a> <a name="installer">Linux インストーラ</a></h3>
+
+<ul>
+<li>インストール用カーネル（linux,vmlinuzなど）と ミニルート（initrd.img,initrd.gzなど）をダウンロード
+	<ul>
+	<li><a href="http://www.ring.gr.jp/pub/linux/debian/debian/dists/stable/main/installer-i386/current/images/netboot/debian-installer/i386/">Debian stable</a>（現在の安定版）
+	<ul>
+	<li><a href="http://www.ring.gr.jp/pub/linux/debian/debian/dists/stable/main/installer-i386/current/images/netboot/gtk/debian-installer/i386/">Debian stable</a>（※グラフィカル版）</li>
+	</ul>
+</li>
+	<li><a href="http://www.ring.gr.jp/pub/linux/fedora/linux/releases/11/Fedora/i386/os/images/pxeboot/">Fedora 11</a></li>
+	<li><a href="http://www.ring.gr.jp/pub/linux/Vine/Vine-4.2/i386/images/pxeboot/">Vine Linux 4.2</a></li>
+	<li><a href="http://ftp.riken.go.jp/Linux/ubuntu/dists/hardy/main/installer-i386/current/images/netboot/ubuntu-installer/i386/">Ubuntu 8.0.4 (Hardy Heron)</a></li>
+	</ul>
+</li>
+</ul>
+
+
+<div class="palmst">
+<ol>
+<li>下記ディレクトリへそれぞれのブート用ファイルをコピー
+	<ul>
+	<li><strong class="ms">/install/debian</strong></li>
+	<li><strong class="ms">/install/fedora</strong></li>
+	<li><strong class="ms">/install/ubuntu</strong></li>
+	<li><strong class="ms">/install/vine</strong></li>
+	</ul>
+</li>
+</ol>
+</div>
+
+<dl>
+<dt>ブートメニュー設定ファイル</dt>
+<dd>
+<ul>
+<li><a href="../archives/syslinux_multi/install/vesamenu.cfg"><code>/install/vesamenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/install/textmenu.cfg"><code>/install/textmenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/install/tftp.cfg"><code>/install/tftp.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/install/tftp_txt.cfg"><code>/install/tftp_txt.cfg</code></a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#puppy412"><span class="ms">■</span></a> <a name="puppy412">Puppy Linux 4.1.2.1-JP</a></h3>
+
+<p>※【注意】<strong>USBメモリ(CD)ブートのみ</strong></p>
+
+<ul>
+<li><a href="http://openlab.jp/puppylinux/">Puppy Linux 日本語版</a></li>
+<li><a href="http://openlab.jp/puppylinux/#dl">ダウンロード</a>
+	<ul>
+	<li><code>puppy-4.1.2.1-JP.iso</code> をダウンロード</li>
+	</ul>
+</li>
+</ul>
+
+<div class="palmst">
+<ol>
+<li><strong class="ms">puppy412</strong> ディレクトリへCD内の下記ファイルをコピー
+	<ul>
+	<li><strong class="ms">vmlinuz</strong></li>
+	<li><strong class="ms">initrd.gz</strong></li>
+	<li><strong class="ms">pup_4121JP.sfs</strong></li>
+	</ul>
+</li>
+</ol>
+</div>
+
+<dl>
+<dt>ブートメニュー設定ファイル</dt>
+<dd>
+<ul>
+<li><a href="../archives/syslinux_multi/puppy412/vesamenu.cfg"><code>/puppy412/vesamenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/puppy412/textmenu.cfg"><code>/puppy412/textmenu.cfg</code></a></li>
+</ul>
+</dd>
+</dl>
+
+
+<dl class="small">
+<dt>めも</dt>
+<dd>
+<ul>
+<li>サブディレクトリやデバイスを指定しなくても起動できたけど、少しでも早くしたい場合は指定した方がいいかも</li>
+<li><code>psubdir=puppy412</code> - サブディレクトリを指定</li>
+<li><code>pmedia=usbflash</code> - デバイスの指定
+	<ul>
+	<li><code>cd|usbflash|usbhd|usbcd|<br>
+ideflash|idehd|idecd</code></li>
+	</ul>
+</li>
+<li>バージョン違いでもでも設定ファイルの内容は同じなので使えるかな？（起動確認してません）</li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#slax51813"><span class="ms">■</span></a> <a name="slax51813">SLAX Live CD 5.1.8.1-3</a></h3>
+
+<p>※【注意】<strong>USBメモリ(CD)ブートのみ</strong></p>
+
+<ul>
+<li><a href="http://hatochan.dyndns.org/slax-ja/index.php">slax-ja - PukiWiki</a></li>
+<li><a href="http://hatochan.dyndns.org/slax-ja/index.php?slax-ja%2Fdownload">slax-ja/download - PukiWiki</a>
+	<ul>
+	<li><code>slax-ja-5.1.8.1-3.iso</code> をダウンロード</li>
+	</ul>
+</li>
+</ul>
+
+
+<div class="palmst">
+<ol>
+<li><strong class="ms">slax5</strong> ディレクトリへCD内のファイルをすべてコピー</li>
+</ol>
+</div>
+
+<dl>
+<dt>ブートメニュー設定ファイル</dt>
+<dd>
+<ul>
+<li><a href="../archives/syslinux_multi/slax5/vesamenu.cfg"><code>/slax5/vesamenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/slax5/textmenu.cfg"><code>/slax5/textmenu.cfg</code></a></li>
+</ul>
+</dd>
+</dl>
+
+
+<dl class="small">
+<dt>めも</dt>
+<dd>
+<ul>
+<li><del>サブディレクトリの指定 - <code>from=/dev/sda1/slax5</code>（デバイス（ファイル）名は適宜変更）</del></li>
+<li><ins>サブディレクトリの指定 - <code>from=slax5/</code></ins></li>
+<li>オンメモリ起動（要 RAM 512MB以上） -  <code>copy2ram</code> </li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#slax6091"><span class="ms">■</span></a> <a name="slax6091">SLAX Live CD 6.0.9-1 ja</a></h3>
+
+<p>※【注意】<strong>USBメモリ(CD)ブートのみ</strong></p>
+
+<ul>
+<li><a href="http://hatochan.dyndns.org/slax-ja/index.php">slax-ja - PukiWiki</a></li>
+<li><a href="http://hatochan.dyndns.org/slax-ja/index.php?slax-ja%2Fdownload">slax-ja/download - PukiWiki</a>
+	<ul>
+	<li><code>slax-ja-6.0.9-1.iso</code> をダウンロード</li>
+	</ul>
+</li>
+</ul>
+
+
+<div class="palmst">
+<ol>
+<li><strong class="ms">slax6</strong> ディレクトリへCD内のファイルをすべてコピー</li>
+</ol>
+</div>
+
+<dl>
+<dt>ブートメニュー設定ファイル</dt>
+<dd>
+<ul>
+<li><a href="../archives/syslinux_multi/slax6/vesamenu.cfg"><code>/slax6/vesamenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/slax6/textmenu.cfg"><code>/slax6/textmenu.cfg</code></a></li>
+</ul>
+</dd>
+</dl>
+
+
+<dl class="small">
+<dt>めも</dt>
+<dd>
+<ul>
+<li><del>サブディレクトリの指定 - <code>from=/dev/sda1/slax5</code>（デバイス（ファイル）名は適宜変更）</del></li>
+<li><ins>サブディレクトリの指定 - <code>from=slax6/</code></ins></li>
+<li>オンメモリ起動（要 RAM 512MB以上） -  <code>copy2ram</code> </li>
+<li>slax-ja-6.1.1-2.iso でも設定ファイルの内容は同じなので使えるかな？（起動確認してません）</li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#berry090"><span class="ms">■</span></a> <a name="berry090">Berry Linux 0.90</a></h3>
+
+<p>※【注意】<strong>USBメモリ(CD)ブートのみ</strong></p>
+
+<ul>
+<li><a href="http://yui.mine.nu/berry/berry.php">Berry Linux - Bootable CD Linux &#060;Yui's Laboratory&#062;</a></li>
+<li><a href="http://yui.mine.nu/berry/download.php">Get Berry Linux</a>
+	<ul>
+	<li><code>Berry Linux 0.90</code> をダウンロード</li>
+	</ul>
+</li>
+</ul>
+
+
+
+
+
+<div class="palmst">
+<ol>
+<li><strong class="ms">berry90</strong> ディレクトリへCD内の下記ファイルをコピー
+	<ul>
+	<li><strong class="ms">BERRY</strong>ディレクトリ内の<strong class="ms">BERRY</strong>ファイル</li>
+	<li><strong class="ms">Setup</strong>ディレクトリ内の <strong class="ms">vmlinuz</strong> と <strong class="ms">initrd.gz</strong></li>
+	</ul>
+</li>
+</ol>
+</div>
+
+<dl>
+<dt>ブートメニュー設定ファイル</dt>
+<dd>
+<ul>
+<li><a href="../archives/syslinux_multi/berry90/vesamenu.cfg"><code>/berry90/vesamenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/berry90/textmenu.cfg"><code>/berry90/textmenu.cfg</code></a></li>
+</ul>
+</dd>
+</dl>
+
+<dl class="small">
+<dt>めも</dt>
+<dd>
+<p>パラメータの調整が必要かも</p>
+<ul>
+<li>USBメモリでは、<code>berry_dir=/berry90/berry</code>, <code>overlay=/berry90/berry.img</code></li>
+<li>CDブートでは、<code>berry_dir=/berry90/BERRY</code>, <code>overlay=ram</code></li>
+</ul>
+<p>※CDブート時は、大文字小文字が区別されるので注意</p>
+</dd>
+</dl>
+
+
+
+<h3><a href="#ecolinux804"><span class="ms">■</span></a> <a name="ecolinux804">Ecolinux 8.0.4</a></h3>
+
+<p>※【注意】<strong>USBメモリ(CD)ブートのみ</strong></p>
+
+<p>LiveCDとしてのブートのみ確認。シャットダウンがうまくいかなかったりするのでいまいちかも。（インストールは未確認。）</p>
+
+<ul>
+<li><a href="http://ja.ecolinuxos.com/">The Ecolinux Project</a></li>
+<li><a href="http://ja.ecolinuxos.com/Entry/30">The Ecolinux Project ダウンロード</a>
+	<ul>
+	<li><code>ecolinux-8.04.iso</code> をダウンロード</li>
+	</ul>
+</li>
+</ul>
+
+
+<div class="palmst">
+<ol>
+<li><strong class="ms">casper</strong>ディレクトリへCD内の下記ファイルをコピー
+	<ul>
+	<li>CDルートのファイル</li>
+	<li><strong class="ms">casper</strong>ディレクトリの内容</li>
+	<li><strong class="ms">isolinux</strong>ディレクトリの内容</li>
+	<li>その他のディレクトリをディレクトリごと</li>
+	</ul>
+</li>
+<li><strong class="ms">.disk</strong>ディレクトリを作業ディレクトリルートへ</li>
+</ol>
+</div>
+
+<dl>
+<dt>ブートメニュー設定ファイル</dt>
+<dd>
+<ul>
+<li><a href="../archives/syslinux_multi/casper/vesamenu.cfg"><code>/casper/vesamenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/casper/textmenu.cfg"><code>/casper/textmenu.cfg</code></a></li>
+</ul>
+</dd>
+</dl>
+
+
+<dl class="small">
+<dt>めも</dt>
+<dd>
+<ul>
+<li>ファイルの置き方が正確でないのかも。いまいち...</li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#pmagic22"><span class="ms">■</span></a> <a name="pmagic22">Parted Magic 2.2</a></h3>
+
+<ul>
+<li><a href="http://partedmagic.com/">Welcome to the Frontpage</a></li>
+<li><a href="http://www.digitalincursion.net/partedmagic/old/2.2/">Index of /partedmagic/old/2.2</a>	<ul>
+	<li>pmagic-usb-2.2.zip（USB版）</li>
+	<li>pmagic-pxe-2.2.zip（PXE版）</li>
+	</ul>
+</li>
+</ul>
+
+
+<dl>
+<dt>ブートメニュー設定ファイル</dt>
+<dd>
+<ul>
+<li><a href="../archives/syslinux_multi/pmagic22/vesamenu.cfg"><code>/pmagic22/vesamenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/pmagic22/textmenu.cfg"><code>/pmagic22/textmenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/pmagic22/tftp.cfg"><code>/pmagic22/tftp.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/pmagic22/tftp_txt.cfg"><code>/pmagic22/tftp_txt.cfg</code></a></li>
+</ul>
+</dd>
+</dl>
+
+<h4>USB版</h4>
+
+<div class="palmst">
+<ol>
+<li><strong class="ms">pmagic22</strong> ディレクトリへ下記ファイルをコピー
+	<ul>
+	<li>展開した <strong class="ms">pmagic-usb-2.2\pmagic</strong> ディレクトリの内容</li>
+	</ul>
+</li>
+</ol>
+</div>
+
+<h4>PXE版</h4>
+
+<div class="palmst">
+<ol>
+<li>（上記に追加して）<strong class="ms">pmagic22</strong> ディレクトリへコピー
+	<ul>
+	<li>展開した <strong class="ms">pmagic-pxe-2.2\pmagic\initrd</strong> を <strong class="ms">initrd.ts</strong> に<strong>リネームしてコピー</strong></li>
+	</ul>
+</li>
+</ol>
+</div>
+
+
+<dl class="small">
+<dt>めも</dt>
+<dd>
+<ul>
+<li>PXE版でUSBブートも可能（オンメモリ起動）</li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#insert1218"><span class="ms">■</span></a> <a name="insert1218">INSERT+ 1.2.18</a></h3>
+
+<ul>
+<li><a href="http://simosnet.com/livecdroom/index.html#insert">INSERT+ 1.2.18 - ライブＣＤの部屋</a>
+	<ul>
+	<li><code>INSERT-1.2.18-plus_jp.iso</code> をダウンロード
+		<ul class="small">
+		<li><a href="http://ftp.riken.go.jp/Linux/simosnet-livecd/insert/">Index of /Linux/simosnet-livecd/insert</a></li>
+		</ul>
+	</li>
+	</ul>
+</li>
+</ul>
+
+
+<div class="palmst">
+<ol>
+<li><strong class="ms">insert</strong> ディレクトリへCD内の下記ファイルをコピー
+	<ul>
+	<li><strong class="ms">isolinux</strong>ディレクトリの内容</li>
+	<li><strong class="ms">INSERT</strong>ディレクトリの内容</li>
+	</ul>
+</li>
+<li>作業ディレクトリルートへ下記ファイルをコピー
+	<ul>
+	<li>captive.html, index.html, list.html, start.html, usb.html<br>
+（※これらはなしでも起動しますが起動時にエラーが出ます）</li>
+	</ul>
+</li>
+</ol>
+</div>
+
+<dl class="palmst">
+<dt>ネットワーク(NFSサーバ)マウント用カーネルの取り出し</dt>
+<dd>
+<ol>
+<li>通常CDでINSERTを起動</li>
+<li><strong class="ms">insert-remote</strong>実行</li>
+<li><strong class="ms">/tmp/tftpboot</strong> ディレクトリ内の <strong class="ms">vmlinuz</strong> と <strong class="ms">miniroot.gz</strong> を 取り出しておく</li>
+<li><strong class="ms">vmlinuz</strong> を <strong class="ms">vmlinuz2</strong> に、<strong class="ms">miniroot.gz</strong> を <strong class="ms">miniroo2.gz</strong> にリネームしてから<strong class="ms">INSERT</strong>ディレクトリへコピー</li>
+</ol>
+
+<ul>
+<li>NFSサーバの設定
+	<ul>
+	<li><strong class="ms">/cdrom</strong> ディレクトリを作成し <strong class="ms">INSERT</strong> ディレクトリを保存</li>
+	<li><strong class="ms">/etc/exports</strong> に <strong class="ms">/cdrom</strong> ディレクトリを記述</li>
+	</ul>
+</li>
+</ul>
+<pre class="scl">
+/cdrom <var>192.168.0.0</var>/255.255.255.0(ro,no_root_squash,async)
+</pre>
+</dd>
+</dl>
+
+<dl>
+<dt>ブートメニュー設定ファイル</dt>
+<dd>
+<ul>
+<li><a href="../archives/syslinux_multi/INSERT/vesamenu.cfg"><code>/INSERT/vesamenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/INSERT/textmenu.cfg"><code>/INSERT/textmenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/INSERT/nfs.cfg"><code>/INSERT/nfs.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/INSERT/nfs_txt.cfg"><code>/INSERT/nfs_txt.cfg</code></a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+<h3><a href="#ploplinux"><span class="ms">■</span></a> <a name="ploplinux">PLoP Linux-v3.8.1</a></h3>
+
+<p class="small">※CUIのみですが、サイズが 54M Bと小さく <strong class="ms">Samba</strong> が使えます。</p>
+
+<ul>
+<li><a href="http://www.plop.at/en/ploplinux.html">PLoP Linux - LiveCD, USB boot, PXE network boot, antivirus, rescue, partimage, NTFS, tftp, avast, f-prot</a></li>
+<li><a href="http://www.plop.at/en/ploplinuxdl.html">PLoP - PLoP Linux</a>
+	<ul>
+	<li><code>ploplinux-v3.8.1.zip</code><span class="small">（※20090710時点）</span>をダウンロード</li>
+	</ul>
+</li>
+</ul>
+
+<div class="palmst">
+<ol>
+<li><strong class="ms">ploplinux</strong> ディレクトリへ下記をコピー
+	<ul>
+	<li><strong class="ms">isolinux</strong> ディレクトリの内容</li>
+	<li><strong class="ms">ploplinux</strong> ディレクトリの内容</li>
+	</ul>
+</li>
+</ol>
+</div>
+
+<dl>
+<dt>ブートメニュー設定ファイル</dt>
+<dd>
+<ul>
+<li><a href="../archives/syslinux_multi/ploplinux/vesamenu.cfg"><code>/ploplinux/vesamenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/ploplinux/textmenu.cfg"><code>/ploplinux/textmenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/ploplinux/smb.cfg"><code>/ploplinux/smb.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/ploplinux/smb_txt.cfg"><code>/ploplinux/smb_txt.cfg</code></a></li>
+</ul>
+</dd>
+</dl>
+
+
+<dl class="palmst">
+<dt>ネットワークブート用ファイルサーバの設定</dt>
+<dd>
+<p>Sambaサーバ、または、Windowsファイル共有でもいいのです。</p>
+<ul>
+<li>作業ディレクトリルート(syslinux_multi)を共有設定する</li>
+</ul>
+<p>つまり、共有ディレクトリ内に、<code>ploplinux</code> ディレクトリがあればいいと。</p>
+</dd>
+</dl>
+
+
+<dl class="small">
+<dt>めも</dt>
+<dd>
+<ul>
+<li><code>copy2ram</code> - オンメモリ起動</li>
+<li>ディレクトリ名 <code>ploplinux</code> が9文字なので、<strong class="ms">SYSLINUX</strong> は <em>VFAT long filename support</em> なバージョン 3.70 以降を使うこと</li>
+<li>Samba の user/pass - root/rescue</li>
+</ul>
+
+</dd>
+</dl>
+
+
+
+
+
+
+<h3><a href="#paragon"><span class="ms">■</span></a> <a name="paragon">Paragon Drive Backup 9.0 Express</a></h3>
+
+<p>インストール済みの方向けですが。</p>
+<ul>
+<li><a href="http://www.paragon-software.com/home/db-express/index.html">Drive Backup Free Edition - disk backup software</a></li>
+</ul>
+
+<div class="palmst">
+<ol>
+<li>作成したRecovery Media（または <code>C:\Program Files\Paragon Software\Drive Backup 9.0 Express\iso\bootcd.iso</code>）内のファイルをすべて <strong class="ms">paragon</strong> ディレクトリへコピー</li>
+</ol>
+</div>
+
+<p>※但し、<strong class="ms">Normal Mode</strong> のみの起動</p>
+
+<dl>
+<dt>ブートメニュー設定ファイル</dt>
+<dd>
+<ul>
+<li><a href="../archives/syslinux_multi/paragon/vesamenu.cfg"><code>/paragon/vesamenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/paragon/textmenu.cfg"><code>/paragon/textmenu.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/paragon/tftp.cfg"><code>/paragon/tftp.cfg</code></a></li>
+<li><a href="../archives/syslinux_multi/paragon/tftp_txt.cfg"><code>/paragon/tftp_txt.cfg</code></a></li>
+</ul>
+<p class="small">※ネットワークブートも同じ設定</p>
+</dd>
+</dl>
+
+<dl class="small">
+<dt>めも</dt>
+<dd>
+<ul>
+<li><a href="./recovery_software.html#paragon_drive_backup">Paragon Drive Backup Express - バックアップ・リカバリーソフトについてのめも</a></li>
+</ul>
+
+</dd>
+</dl>
+
+
+
+<!--
+Kaspesky Linux Rescue Disk
+-->
+<h2><a href="#screen_shot" name="screen_shot" accesskey="9"><span class="tokai1">スクリーン・ショット</span></a> <kbd class="ak">9</kbd></h2>
+
+
+<ul>
+<li><code>/syslinux/syslinux.cfg</code></li>
+</ul>
+<p class="overflow2"><img src="./images/syslinux_multi/syslinux_cfg.png" alt="syslinux.cfg - テキストメニュー" width="512" height="320"></p>
+
+
+
+
+
+<ul>
+<li><code>/syslinux/vesamenu.cfg</code></li>
+</ul>
+<p class="overflow2"><img src="./images/syslinux_multi/vesamenu_cfg.png" alt="vesamenu.cfg - グラフィカルメニュー" width="512" height="384"></p>
+
+
+<ul>
+<li><code>/syslinux/textmenu.cfg</code></li>
+</ul>
+<p class="overflow2"><img src="./images/syslinux_multi/textmenu_cfg.png" alt="textmenu.cfg - テキストメニュー" width="512" height="320"></p>
+
+
+<ul>
+<li><code>/syslinux/netw.cfg</code></li>
+</ul>
+<p class="overflow2"><img src="./images/syslinux_multi/netw_cfg.png" alt="netw.cfg - グラフィカルメニュー" width="512" height="384"></p>
+
+
+
+
+<ul>
+<li><code>/syslinux/netw_txt.cfg</code></li>
+</ul>
+<p class="overflow2"><img src="./images/syslinux_multi/netw_txt_cfg.png" alt="netw_txt.cfg - テキストメニュー" width="512" height="320"></p>
+
+
+
+
+<ul>
+<li><code>/KNOPPIX/vesamenu.cfg</code></li>
+</ul>
+<p class="overflow2"><img src="./images/syslinux_multi/knoppix.png" alt="/KNOPPIX/vesamenu.cfg - グラフィカルメニュー" width="512" height="384"></p>
+
+
+<ul>
+<li><strong class="ms">GRUB for DOS</strong></li>
+</ul>
+<p class="overflow2"><img src="./images/syslinux_multi/grub4dos.png" alt="GRUB for DOS - menu.lst" width="576" height="320"></p>
+
+
+
+<ul>
+<li><strong class="ms">PLoP Boot Manager</strong></li>
+</ul>
+<p class="overflow2"><img src="./images/syslinux_multi/plopbm.png" alt="PLoP Boot Manager" width="512" height="384"></p>
+
+
+
+<ul>
+<li><strong class="ms">gpxe-git-gpxe.lkrn でのネットワークブート</strong></li>
+</ul>
+<p class="overflow2"><img src="./images/syslinux_multi/gpxe-git-gpxe.lkrn.png" alt="gpxe-git-gpxe.lkrn でのネットワークブート" width="512" height="320"></p>
+
+
+
+
+
+
+<h2><a href="#bikou" name="bikou" accesskey="9"><span class="tokai1">備考</span></a> <kbd class="ak">9</kbd></h2>
+
+
+<dl>
+<dt>ディレクトリ一覧</dt>
+<dd>
+<pre class="scl3">
+作業ディレクトリ (<strong class="ms">syslinux_multi</strong>)
++---.disk
++---BCDW
++---berry90
++---bgrescue
++---boot
+|   \---fonts
++---bootdisk
++---casper
++---EFI
+|   \---microsoft
+|       \---boot
+|           \---fonts
++---freedos
++---grub
++---httpfuse
++---i386
++---i387
++---inet0731
++---INSERT
++---install
+|   +---debian
+|   +---fedora
+|   +---ubuntu
+|   \---vine
++---isolinux
++---kasper
+|   +---bases
+|   |   \---Stat
+|   \---help
+|       +---English
+|       +---French
+|       +---German
+|       +---Italian
+|       +---Polish
+|       +---Russian
+|       +---Spanish
+|       \---TradChinese
++---KNOPPIX
+|   +---images
+|   \---modules
++---live
++---mylinux
++---paragon
+|   +---dos
+|   |   \---safe
+|   \---PSR
++---ping300
++---ploplinux
+|   \---myscripts
++---pmagic22
+|   \---pmodules
+|       \---scripts
++---puppy412
++---pxelinux.cfg
++---slax5
+|   +---base
+|   +---boot
+|   |   \---DOS
+|   +---devel
+|   +---modules
+|   +---rootcopy
+|   |   \---usr
+|   |       +---local
+|   |       |   \---share
+|   |       |       \---fonts
+|   |       \---share
+|   |           \---opera
+|   |               \---locale
+|   \---tools
+|       \---WIN
++---slax6
+|   +---boot
+|   |   +---dos
+|   |   +---isolinux
+|   |   +---pxelinux.cfg
+|   |   |   \---web
+|   |   |       \---conf
+|   |   \---syslinux
+|   \---slax
+|       +---base
+|       +---modules
+|       +---optional
+|       +---rootcopy
+|       \---tools
+|           \---WIN
++---sources
++---syslinux
++---sysres10
+|   +---bootdisk
+|   \---maps
++---sysres12
+|   +---bootdisk
+|   +---maps
+|   \---ntpasswd
++---ti
+\---tools
+</pre>
+</dd>
+</dl>
+
+
+
+
+<h3><a href="#multidvd"><span class="ms">■</span></a> <a name="multidvd">マルチブートDVD/CD【BCDW】</a></h3>
+
+<p>上記で作成した作業用ディレクトリにファイルを追加して作成...</p>
+
+<ol class="small">
+<li><a href="#multidvd_filecopy">ファイル追加</a></li>
+<li><a href="#multidvd_rcons">「Windows XP 回復コンソール」を追加</a></li>
+<li><a href="#multidvd_makeiso">イメージ作成</a></li>
+<li><a href="#multidvd_boot">マルチブートDVD起動確認</a></li>
+</ol>
+
+<p>実験中です...。CDならあまり問題ないと思いますが、ブータブルDVDはメディアの種類やドライブの対応によって変わってくるので、かなりしっかり確認しとかないといざって時に使えないかもしれませぬ。</p>
+
+<p>※とりあえずの起動確認は、VMware Player + isoイメージで。</p>
+
+<p class="overflow2"><img src="./images/syslinux_multi/bcdw.png" alt="bcdw起動メニュー" width="512" height="296"></p>
+
+
+
+<h4><a href="#multidvd_filecopy"><span class="ms">■</span></a> <a name="multidvd_filecopy">ファイル追加</a></h4>
+
+<p class="small">【追記】<ins>ルートにある FreeDOS の <strong class="ms">kernel.sys</strong> と <strong class="ms">command.com</strong> は削除しておいた方がいいかも</ins>。選択しちゃうとややこしいことになりそうなので。</p>
+
+<pre>
+作業ディレクトリ (syslinux_multi)
+│  <strong class="ms red">grldr</strong>
+│  
+├─BCDW（ディレクトリ）
+│      <strong class="ms red">bcdw.bin</strong>
+│      BCDW.INI
+│      <strong class="ms red">loader.bin</strong>
+│          
+├─isolinux（ディレクトリ）
+│      <strong class="ms red">isolinux.bin</strong>
+│      isolinux.cfg
+│          
+├─syslinux（ディレクトリ）
+│      <strong class="ms red">plpbt.img</strong>
+│          
+├─tools（ディレクトリ）
+│      <strong class="ms red">cygwin1.dll</strong>
+│      makeiso_bcdw.bat
+│      <strong class="ms red">mkisofs.exe</strong>
+</pre>
+
+
+<ul>
+<li><a href="../archives/syslinux_multi/tools/makeiso_bcdw.bat"><code>/tools/makeiso_bcdw.bat</code></a>（isoイメージ作成バッチ、<strong>toolsディレクトリから実行</strong>）</li>
+<li><a href="../archives/syslinux_multi/BCDW/BCDW.INI"> <code>/BCDW/BCDW.INI</code> </a></li>
+<li><a href="../archives/syslinux_multi/isolinux/isolinux.cfg"> <code>/isolinux/isolinux.cfg</code> </a></li>
+</ul>
+
+<ul>
+<li><strong class="ms">cygwin1.dll</strong> と <strong class="ms">mkisofs.exe</strong>
+	<ul>
+	<li><a href="http://mouneru.web.fc2.com/cdrecord_fe/cdr_fe.htm">CDRtoolsの フロントエンド</a> の <strong>CDRtoolsバイナリ</strong> より</li>
+	</ul>
+</li>
+<li><strong class="ms">bcdw.bin</strong> と <strong class="ms">loader.bin</strong>
+	<ul>
+	<li><a href="http://www.cdshell.org/files/contributions/reanimatolog/bcdw.html">CD Shell User Contribution</a></li>
+	</ul>
+</li>
+<li><strong class="ms">grldr</strong> は <a href="#grub4dos">GRUB for DOS</a> 0.4.4 から</li>
+<li><strong class="ms">isolinux.bin</strong> は <a href="#syslinux_files">SYSLINUX</a>のファイル群から</li>
+<li><strong class="ms">plpbt.img</strong> は <a href="#plpbt">PLoP Boot Manager</a> から</li>
+</ul>
+
+
+
+
+<h4><a href="#multidvd_rcons"><span class="ms">■</span></a> <a name="multidvd_rcons">「Windows XP 回復コンソール」を追加</a></h4>
+
+<p>CD(DVD)でしか起動できません（多分？）</p>
+<ul class="small">
+<li><a href="http://support.microsoft.com/kb/880422/JA/">Windows XP のインストール用起動ディスクを入手する方法</a>
+	<ul>
+	<li> Home SP2用とPro SP2用をダウンロード</li>
+	</ul>
+</li>
+<li><a href="http://uiuicy.cs.land.to/kaihuku.html">1CDブート回復コンソール作製法</a></li>
+<li><a href="http://uiuicy.cs.land.to/bootcd/bootcd12.html">第12章　Windows XP/2000 のインストールCDを組み込む</a></li>
+</ul>
+
+<div class="palmst">
+<p>上記ページの解説を参考にしてFDイメージ内のファイルをすべて展開（重複ファイルは上書きでおｋ）</p>
+<ul>
+<li>Home SP2用を <strong class="ms">i386</strong> ディレクトリへコピー</li>
+<li>Pro SP2用を <strong class="ms">i387</strong> ディレクトリへコピー</li>
+<li>空ファイルをルートへ作成
+	<ul class="small">
+	<li>WIN51</li>
+	<li>WIN51IC</li>
+	<li>WIN51IC.SP2</li>
+	<li>WIN51IP</li>
+	<li>WIN51IP.SP2</li>
+	</ul>
+</li>
+</ul>
+
+<dl class="small">
+<dt>FDイメージの取り出し</dt>
+<dd>
+<p>下記コマンド実行でFDイメージ取り出し可能（※赤字部分が間違ってました。すみません。）</p>
+<pre>
+WindowsXP-KB310994-SP2-Home-BootDisk-JPN.exe /q /c /t:"%cd%\xphomesp2"
+WindowsXP-KB310994-SP2-Pro-BootDisk-JPN.exe /q /c /t:"%cd%\<span class="red">xpprosp2</span>"
+</pre>
+<ul>
+<li>FDイメージ取り出し.bat</li>
+</ul>
+<pre>
+@echo off
+echo.
+set home_sp2=WindowsXP-KB310994-SP2-Home-BootDisk-JPN.exe
+set pro_sp2=WindowsXP-KB310994-SP2-Pro-BootDisk-JPN.exe
+if exist &#034;%home_sp2%&#034; (
+&#034;%home_sp2%&#034; /q /c /t:&#034;%cd%\xphomesp2&#034;
+) else (
+GOTO PROSP2
+)
+if &#034;%errorlevel%&#034;==&#034;0&#034; echo &#034;%home_sp2%&#034; おｋです！
+echo.
+
+:PROSP2
+if exist &#034;%pro_sp2%&#034; (
+&#034;%pro_sp2%&#034;  /q /c /t:&#034;%cd%\xpprosp2&#034;
+) else (
+GOTO END
+)
+if &#034;%errorlevel%&#034;==&#034;0&#034; echo &#034;%pro_sp2%&#034; おｋです！
+echo.
+
+:END
+echo なんかキー押すと閉じます
+pause &#062;nul
+</pre>
+</dd>
+
+<dt>FDイメージからファイルを取り出すには（イメージをファイルに展開）</dt>
+<dd>
+<p><a href="http://www.intercom.co.jp/iso/index.html">Super ウルトラISO</a> でできますが、下記の <strong class="ms">Universal Extractor</strong> が便利かも。 <strong class="ms">UniExtract Binary Archive</strong> はインストール不要で使えます（日本語表示も可）。</p>
+<ul>
+<li><a href="http://www.legroom.net/software/uniextract">Universal Extractor | LegRoom.net</a></li>
+</ul>
+<p>※注意：対象ファイルのパスに‘デスクトップ’など日本語が含まれるとエラーになるみたいです。</p>
+</dd>
+</dl>
+</div>
+
+
+
+<h4><a href="#multidvd_makeiso"><span class="ms">■</span></a> <a name="multidvd_makeiso">イメージ作成</a></h4>
+
+<p>※CD-R/-RWメディアでは、あまり問題ないかと。</p>
+
+<dl>
+<dt><a href="../archives/syslinux_multi/tools/makeiso_bcdw.bat"><code>/tools/makeiso_bcdw.bat</code></a>（isoイメージ作成バッチ、<strong>toolsディレクトリから実行</strong>）</dt>
+<dd>
+<ol class="small">
+<li>toolsディレクトリから一つ上の syslinux_multi ルートに移動</li>
+<li><code>%boot%</code> - ブートイメージ
+	<ul>
+	<li><code>BCDW/loader.bin</code></li>
+	<li>※大文字小文字を区別するので注意</li>
+	</ul>
+</li>
+<li><code>%iso%</code> - 作成するISOイメージのパスとファイル名
+	<ul>
+	<li>syslinux_multi の一つ上のディレクトリの</li>
+	<li><code>BCDW.iso</code></li>
+	</ul>
+</li>
+<li><code>%source%</code> - 構築元ディレクトリのパス
+	<ul>
+	<li><code>syslinux_multi</code> ディレクトリのパス</li>
+	</ul>
+</li>
+</ol>
+
+<pre class="scl">
+mkisofs -iso-level 4 -r -hide TRANS.TBL -T -b &#034;%boot%&#034; -c boot.cat -no-emul-boot -boot-load-size 4 -V &#034;BCDW&#034; -o &#034;%iso%&#034; &#034;%source%&#034;
+</pre>
+
+<p class="small">※<code>-udf</code> を指定すると回復コンソールが起動しなくなった。</p>
+<p class="small">※【追記】ディレクトリ毎に <code>TRANS.TBL</code> が作成される</p>
+</dd>
+</dl>
+
+<ul class="small">
+<li>CD-R, CD-RW, DVD-Rメディア
+	<ul>
+	<li>マルチドライブ - 読み取り・ブート可能</li>
+	<li>DVD-ROM/CD-RWコンボドライブ - 読み取り・ブート可能</li>
+	<li>※Windows上ではファイル名は全て大文字</li>
+	</ul>
+</li>
+<li>DVD-RWメディア
+	<ul>
+	<li>マルチドライブ - 読み取り・ブート可能
+		<ul>
+		<li>※Windows上ではファイル名は全て大文字</li>
+		</ul>
+	</li>
+	<li>DVD-ROM/CD-RWコンボドライブ - <strong>読み取り不可</strong></li>
+	</ul>
+</li>
+</ul>
+
+<dl class="palmst small">
+<dt>【追記】</dt>
+<dd>
+<p>BCDWのサイトでおすすめ？だとこんなかんじでいいらしい？</p>
+<pre class="scl">
+mkisofs.exe -iso-level 4 -joliet -joliet-long -r -hide-rr-moved -force-uppercase -volid &#034;BCDW&#034; -A MKISOFS -sysid &#034;Win32&#034; -b &#034;%boot%&#034; -no-emul-boot -boot-load-size 4 -hide boot.catalog -o &#034;%iso%&#034; &#034;%source%&#034;
+</pre>
+<p>上記同様、CDに焼くとWindows上ではすべて大文字になりますが、TRANS.TBLはなし。（※ <code>-volid</code> 、または <code>-V</code> はボリュームIDの指定）</p>
+</dd>
+
+</dl>
+
+
+
+<h4><a href="#multidvd_boot"><span class="ms">■</span></a> <a name="multidvd_boot">マルチブートDVD起動確認</a></h4>
+
+<dl>
+<dt>VMware Player・isoイメージ</dt>
+<dd>
+<ul class="small">
+<li>Windows PE 2.0 -- おｋ（※NICを変更すると起動後にフリーズする？）</li>
+<li>回復コンソール -- おｋ</li>
+<li>ISOLINUX ブートローダ -- 起動おｋ
+	<ul>
+	<li>KNOPPIX 5.3.1 -- おｋ</li>
+	<li>SystemRescueCd 1.0.4  -- おｋ</li>
+	<li>SystemRescueCd 1.2.1  -- おｋ</li>
+	<li>PING 3.00.02  -- おｋ</li>
+	<li>Clonezilla Live 1.2.2-14 -- おｋ</li>
+	<li>Parted Magic 2.2 -- おｋ（liveusb を livecd に変更すべき？）</li>
+	<li>Puppy Linux 4.1.2.1 -- おｋ</li>
+	<li>slax-ja-5.1.8.1-3 -- おｋ</li>
+	<li>slax-ja-6.0.9-1 -- おｋ</li>
+ 	<li>Ecolinux 8.0.4 -- おｋ</li>
+	<li>INSERT+ 1.2.18 -- おｋ（※INSERTディレクトリは大文字で）</li>
+	<li>FDイメージ  -- 一応おｋ</li>
+	<li>Berry Linux 0.90 -- おｋ
+		<ul>
+		<li><code>berry_dir=/berry90/BERRY overlay=ram</code> 指定</li>
+		<li><code>splash=silent</code>を消す</li>
+		</ul>
+	</li>
+ 	<li>PLoP Linux-v3.8.1 -- おｋ</li>
+ 	<li>Paragon Drive Backup 9.0 Express -- おｋ</li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+
+
+<dt>DVD-RWメディア・マルチドライブ</dt>
+<dd>
+<p>※DVD-ROMドライブではメディア認識せず。</p>
+<ul class="small">
+<li>Windows PE 2.0 -- おｋ</li>
+<li>回復コンソール -- おｋ</li>
+<li>ISOLINUX ブートローダ -- 起動 おｋ
+	<ul>
+	<li>KNOPPIX 5.3.1 -- おｋ（少し不安定？）</li>
+	<li>SystemRescueCd 1.0.4  -- おｋ</li>
+	<li>SystemRescueCd 1.2.1  -- おｋ</li>
+	<li>PING 3.00.02  -- だめ（相性かな？）</li>
+	<li>Clonezilla Live 1.2.2-14 -- おｋ</li>
+	<li>Parted Magic 2.2 -- おｋ（liveusb を livecd に変更すべき？） -- </li>
+	<li>Puppy Linux 4.1.2.1 -- おｋ</li>
+	<li>slax-ja-5.1.8.1-3 -- おｋ</li>
+	<li>slax-ja-6.0.9-1 -- おｋ</li>
+	<li>Ecolinux 8.0.4 -- おｋ</li>
+	<li>INSERT+ 1.2.18 -- おｋ（※INSERTディレクトリは大文字で）</li>
+	<li>FDイメージ  -- おｋ</li>
+	<li>Berry Linux 0.90 -- おｋ
+		<ul>
+		<li><code>berry_dir=/berry90/BERRY overlay=ram</code> 指定</li>
+		</ul>
+	</li>
+ 	<li>PLoP Linux-v3.8.1 --おｋ </li>
+ 	<li>Paragon Drive Backup 9.0 Express -- おｋ</li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<dl class="small">
+<dt>めも</dt>
+<dd>
+<ul>
+<li><strong>CDブートでのGRUBは、ファイル名の大文字小文字を区別する</strong>ので注意！</li>
+</ul>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20070401/1175363610">マルチブートCDの作成 - 【Bootable CD Wizard】</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20080301/1198703706">私的マルチブート“フル”CDを作るの巻【デジャブ】</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<p>う～ん、オプション（パラメータ）やファイルの配置の調整が必要かな...</p>
+
+<p>mkisofsをよくわかっていないのでオプションの指定がまずいのかもしれません。</p>
+
+<ul>
+<li><a href="http://www.linux.or.jp/JM/html/cdrecord/man8/mkisofs.8.html">Manpage of MKISOFS</a></li>
+</ul>
+
+
+
+
+</div>
+</div>
+
+
+<div class="navi">
+<a href="./index.html">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+<hr>
+
+<address>Written by yassy</address>
+
+<ul class="toTop-nav">
+<li><a href="javascript:void(0);" onclick="history.back();return false;">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+</body>
+
+</html>

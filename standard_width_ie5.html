@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="X-UA-Compatible" content="IE=5">
+<meta name="GENERATOR" content="EdLeaf Version 1.02">
+<link rel="stylesheet" type="text/css" href="cssmemo_standard_quirks.css">
+<link rel="start" href="./index.html">
+<title>標準モード (IE5)【width 指定】</title>
+</head>
+
+
+<body>
+
+<div style="text-align:center" id="top">
+<a href="./css_memo.html">index</a> | 
+<a href="./css_memo_mame.html">豆</a>
+</div>
+
+<h1>標準モード (IE5)【width 指定】</h1>
+
+<div class="header">
+<ul class="small">
+<li><acronym title="Internet Explorer">IE</acronym> の標準モード = HTML 4.01 Transitional,URLあり</li>
+<li><acronym title="Internet Explorer">IE</acronym> の後方互換モード = HTML 4.01 Transitional,URLなし</li>
+</ul>
+
+<ul class="small">
+<li>【width 指定なし】
+	<ul>
+	<li><a href="./standard_ie5.html">標準モード</a> 【pre要素に margin:0 5% 指定】</li>
+	<li><a href="./quirks_ie5.html">互換モード</a> 【pre要素に margin:0 5% 指定】</li>
+	</ul>
+</li>
+<li>【width 指定あり】
+	<ul>
+	<li>標準モード - width 指定 【pre要素に margin:0 5%;width:90% 指定】</li>
+	<li><a href="./quirks_width_ie5.html">互換モード - width 指定</a> 【pre要素に margin:0 5%;width:90% 指定】</li>
+	</ul>
+</li>
+</ul>
+
+<ul class="small">
+<li><a href="./standard_test_ie5.html">標準モード【修正版】</a></li>
+<li><a href="./quirks_width_test_ie5.html">互換モード【修正版】[_width] 指定</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="conditional_comment_standard_ie5.html">標準モード</a> - 【コンディショナルコメント】（※書きかけ中）</li>
+<li><a href="./conditional_comment_quirks_ie5.html">互換モード</a> - 【コンディショナルコメント】</li>
+</ul>
+</div>
+
+
+<div class="mainbox">
+<div class="sidemenu">
+
+
+<p>コンニチハコンニチハ</p>
+
+<ul>
+<li><strong><acronym title="Internet Explorer">IE</acronym>6</strong> - 背景色が文字のある部分のみ、背景色はみだし？</li>
+<li><strong><acronym title="Internet Explorer">IE</acronym>7</strong> - </li>
+<li><strong>Firefox2</strong> - </li>
+<li><strong>Opera9</strong> - </li>
+</ul>
+
+<dl>
+<dt>標準モードIE6対策</dt>
+<dd>
+<ul>
+<li>親要素に <strong>background-color: #f1f1f1;</strong></li>
+</ul>
+</dd>
+</dl>
+</div>
+
+
+<div class="contents">
+<h2>てすと</h2>
+
+
+<ul>
+<li><code>width:90%</code> (<code>padding:1em 0;</code>)</li>
+</ul>
+<div class="box">
+<pre class="w90">
+1あいうえおかきくけこさしすせそあいうえ
+2あいうえおかきくけこさしすせそあいうえ
+3あいうえおかきくけこさしすせそあいうえ
+4あいうえおかきくけこさしすせそあいうえ
+5あいうえおかきくけこさしすせそあいうえ
+</pre>
+<pre class="w90">
+1あいうえおかきくけこさしすせそあいうえ
+2あいうえおかきくけこさしすせそあいうえ
+3あいうえおかきくけこさしすせそあいうえ
+4あいうえおかきくけこさしすせそあいうえ
+5あいうえおかきくけこさしすせそあいうえ
+</pre>
+</div>
+
+<h3>問題点</h3>
+
+<ul>
+<li><strong><acronym title="Internet Explorer">IE</acronym>6</strong> - 
+	<ol>
+	<li>サイドバーの背景色が文字のある部分のみ</li>
+	</ol>
+</li>
+<li><strong><acronym title="Internet Explorer">IE</acronym>7</strong> - </li>
+<li><strong>Firefox2</strong> - </li>
+<li><strong>Opera9</strong> - </li>
+</ul>
+
+<h2>overflow 確認</h2>
+
+<dl>
+<dt>width:90%;overflow:auto;(padding:1em 0;)</dt>
+<dd>
+<div class="box">
+<pre class="w90">
+1あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+</pre>
+</div>
+</dd>
+
+<dt>width:90%;overflow:auto;(padding:1em 0;)</dt>
+<dd>
+<div class="box">
+<pre class="w90">
+1あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+2あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+3あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+4あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+5あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+</pre>
+</div>
+</dd>
+
+<dt>width:90%;overflow:scroll;(padding:1em 0;)</dt>
+<dd>
+<div class="box">
+<pre class="w90 scroll">
+1あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+2あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+3あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+4あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+5あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+</pre>
+</div>
+</dd>
+</dl>
+
+<p>Firefox + VL ゴシック（VL Pゴシック）では、不要な縦スクロールバーが出ることがある（上下 <dfn>padding</dfn> か <dfn>line-height</dfn> 調整で回避）。</p>
+
+<dl>
+<dt>width:90%;overflow:hidden;(padding:1em 0;)</dt>
+<dd>
+<div class="box">
+<pre class="w90 hidden">
+1あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+2あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+3あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+4あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+5あいうえおかきくけこさしすせそあいうえおかきくけこさしすせそあいうえおかきくけこ
+</pre>
+</div>
+</dd>
+</dl>
+
+
+</div>
+</div>
+
+
+<div class="footer">
+
+<p>最終更新日：2008.6.</p>
+<div style="text-align:center">
+<a href="#top">TOP</a> | 
+<a href="./css_memo.html">index</a> | 
+<a href="./css_memo_mame.html">豆</a>
+</div>
+
+</div>
+
+<hr>
+
+<address>Written by yassy</address>
+
+</body>
+</html>

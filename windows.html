@@ -1,0 +1,1833 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="description" content="旧URL http://www10.plala.or.jp/palm84/ からGoogle ドライブ+DriveToWebに移転しました">
+<meta name="GENERATOR" content="EdLeaf Version 1.02">
+<link rel="index" href=./index.html">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>私的 Windows (XP) めも（未整理）＠Palm84</title>
+<style type="text/css">
+<!--
+td { 
+	border-right:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+}
+
+table.book2 {
+	border-top:1px solid #ccc;
+	border-left:1px solid #ccc;
+	margin:0 2em;
+	font-size:90%;
+}
+
+ul ul {
+	font-size:100%;
+}
+
+h4 {
+	font-size: 1em;
+	margin-left:1.5em;
+	border-left: 0.8em double #ccc;
+	padding-left:0.5em;
+}
+
+
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+</head>
+
+<body>
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+
+<h1><span class="tokai1"><a href="./windows.html">私的 Windows (XP) めも</a></span>（未整理）</h1>
+
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+
+<ul>
+<li><a href="#site">サイト</a></li>
+<li><a href="#vista">Windows Vista</a></li>
+<li><a href="#live">Windows Live</a></li>
+<li><a href="#install">インストール</a>
+	<ul class="nest">
+	<li><a href="#integrate">Service Pack 適用</a></li>
+	<li><a href="#in_place_upgrade">in-place upgrade</a></li>
+	<li><a href="#bootini">boot.ini</a></li>
+	</ul>
+</li>
+<li><a href="#bootdisk">緊急起動ディスク作成</a></li>
+<li><a href="#update">Windows Update</a></li>
+<li><a href="#ie">Internet Explorer</a></li>
+<li><a href="#application">アプリケーション</a></li>
+<li><a href="#network">ネットワーク</a></li>
+<li><a href="#trouble">トラブル</a></li>
+<li><a href="#tips">Tips</a>
+	<ul class="nest">
+	<li><a href="#cmd">コマンド プロンプト</a></li>
+	<li><a href="#restore">システムの復元</a></li>
+	<li><a href="#cmdcons">回復コンソール</a></li>
+	<li><a href="#dos">MS-DOS起動ディスク</a></li>
+	</ul>
+</li>
+<li><a href="#custom">カスタマイズ</a></li>
+<li><a href="#registry">レジストリ</a></li>
+<li><a href="#etc">その他文書</a></li>
+<li><a href="#link">参考サイト</a></li>
+</ul>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+
+
+
+</div>
+</div>
+
+
+<div class="main">
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.11 更新</ins></dt>
+<dd>
+<p>Microsoft のドキュメントなどリンク切れ分の Web archive を追記。それでもサポート切れのXPについての情報はなくなってるものが多いです。ごようしゃをば...</p>
+</dd>
+
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/windows.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt><ins>情報古いです...</ins></dt>
+<dd>
+<p>最終更新日は 2007.1.7</p>
+</dd>
+</dl>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/windows.html"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/windows.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<p class="small">2006.9.1 作成。まだまだ整理中...（汗。
+<br>2007.1.7 ちょこまか追記（ワンパターン）</p>
+
+<p>私のブックマークを書き出してみただけなので、<strong class="red">未確認のものもあり、情報が古い可能性も大です。特にレジストリ関係などは、致命的なダメージが発生する事もあるかもしれません</strong>。なので、参考情報としてのみの価値すらないものもあるかもしれません。ご了承をば。</p>
+<h2 id="site">サイト</h2>
+
+<div class="small">
+<ul>
+<li><a href="http://www.microsoft.com/japan/">マイクロソフト - ホーム</a></li>
+</ul>
+
+
+<ul>
+<li><a href="http://www.microsoft.com/library/toolbar/3.0/sitemap/ja-jp.mspx">サイトマップ</a></li>
+<li><a href="http://support.microsoft.com/search/"><del>サポート技術情報検索</del></a></li>
+<li><a href="http://www.microsoft.com/japan/technet/security/current.aspx">セキュリティ情報検索</a></li>
+<li><a href="http://www.microsoft.com/japan/windowsxp/expertzone/newsgroups/reader.mspx">Windows XP ニュースグループ</a></li>
+<li><a href="https://www.microsoft.com/ja-jp/download">Microsoft ダウンロード センター: Windows、Office、Xbox、その他</a></li>
+</ul>
+
+<ul>
+<li><a href="http://homepage2.nifty.com/winfaq/"><del>Windows.FAQ</del></a></li>
+</ul>
+
+<ul>
+<li><a href="./security_info.html#microsoft">セキュリティ情報のしおり@Palm84</a></li>
+</ul>
+
+<dl>
+<dt class="small"><a href="http://www.microsoft.com/japan/rss/"><del>マイクロソフト： Web フィード ホーム</del></a></dt>
+<dd>
+<ul>
+<li><a href="http://www.microsoft.com/japan/mscorp/news/rss.aspx"><del>マイクロソフト サイト新着情報</del></a></li>
+<li><a href="http://www.microsoft.com/japan/technet/rss/rssfeed.aspx?security">Microsoft セキュリティ情報</a>（※重いです）</li>
+<li><a href="http://support.microsoft.com/selectindex/?target=rss"><del>RSS フィード - 製品一覧</del></a></li>
+</ul>
+</dd>
+</dl>
+</div>
+
+
+<h2 id="vista">Windows Vista</h2>
+
+<div class="small">
+<ul>
+<li><a href="http://www.microsoft.com/japan/windowsvista/default.aspx"><del>Microsoft Windows Vista ホーム</del></a>
+	<ul class="nest">
+	<li><a href="http://www.microsoft.com/japan/technet/windowsvista/default.mspx"><del>Windows Vista: IT プロフェッショナルの為のリソース</del></a></li>
+	<li><a href="http://www.microsoft.com/japan/windowsvista/getready/default.mspx"><del>Microsoft Windows Vista: Get Ready</del></a></li>
+	<li><a href="http://www.microsoft.com/japan/athome/wup/default.mspx"><del>Microsoft At Home : 今ならどちらも安心　アップグレード</del></a></li>
+	</ul>
+</li>
+<li><a href="http://www.microsoft.com/japan/users/vista/lineup.mspx"><del>Microsoft Windows Vista | あなたに最適なエディションをチェックしよう!</del></a></li>
+</ul>
+
+<ul>
+<li><a href="http://windowsvista.ms/index.php">Windows Vista Wiki</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/vista_feature/index/index.html">Vistaの地平 INDEX － ＠IT</a>
+	<ul class="nest">
+	<li><a href="http://www.atmarkit.co.jp/fwin2k/vista_feature/01overview/01overview_02.html">Windows Vistaとは何か？ － ＠IT</a></li>
+	</ul>
+</li>
+<li><a href="http://arena.nikkeibp.co.jp/coltop/20060802/117959/"><del>デジタルARENA / 最新情報がザックザック　週刊Vistaです！</del></a>
+	<ul class="nest">
+	<li><a href="http://arena.nikkeibp.co.jp/news/20061026/119439/"><del>マイクロソフト、Windows Vistaの価格を発表！ Ultimateは4万8800円 / デジタルARENA</del></a>
+	<li><a href="http://arena.nikkeibp.co.jp/col/20061023/119376/?from=klink"><del>Windows VistaはCapable PC、Premium Ready PCでホントに使えるのか？～その２～ / デジタルARENA</del></a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://b.hatena.ne.jp/palm84/Vista/?mode=detail">Palm84のブックマーク / Vista</a></li>
+</ul>
+</div>
+
+
+<h2 id="live"><del>Windows Live</del></h2>
+<p><ins>※ サービス終了</ins></p>
+
+<div class="small">
+<ul>
+<li><a href="http://www.microsoft.com/japan/presspass/detail.aspx?newsid=2843">Windows Live(TM) OneCare ベータ版サービス提供の開始</a></li>
+</ul>
+
+<ul>
+<li><a href="http://onecare.live.com/standard/ja-jp/default.htm">Windows Live OneCare - ホーム</a>
+	<ul class="nest">
+	<li>Forum - <a href="http://forums.microsoft.com/WindowsOneCare/default.aspx?SiteID=2">Windows Live OneCare</a></li>
+	<li><a href="http://forums.microsoft.com/WindowsOneCare/ShowPost.aspx?PostID=662566&#038;SiteID=2">Submitting Virus samples to Microsoft - Windows Live OneCare</a></li>
+	<li class="small">アンインストール後にWindows ファイアウォールの有効/無効のラジオボタンがグレーアウト - <a href="http://forums.microsoft.com/WindowsOneCare/ShowPost.aspx?PostID=820224&#038;SiteID=2">A couple of problems after uninstalling - Windows Live OneCare</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="https://fss.live.com/">Windows Live OneCare ファミリー セーフティ</a>
+	<ul class="nest">
+	<li><a href="http://www.microsoft.com/japan/presspass/detail.aspx?newsid=2882">コンテンツフィルタリングサービス　Windows Live(TM) OneCare Family Safety</a></li>
+	<li><a href="http://itpro.nikkeibp.co.jp/article/NEWS/20061117/254171/">マイクロソフト、家庭向けWebフィルタリングソフトを公開：ITpro</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.live.com/">Windows Live</a>
+	<ul class="nest">
+	<li><a href="http://safety.live.com/site/ja-jp/default.htm">Windows Live OneCare PC セーフティ: PC の健康状態や安全性を保つための無料オンライン ツール</a></li>
+	<li><a href="http://gallery.live.com/">Windows Live Gallery</a></li>
+	<li><a href="http://ideas.live.com/">Windows Live Ideas - ホーム ページ</a></li>
+	</ul>
+</li>
+</ul>
+</div>
+
+
+<h2 id="install">インストール</h2>
+
+<dl class="palmst">
+<dt>メーカー製パソコンでは注意</dt>
+<dd>
+<p>Windows（<strong>のみ</strong>）のセットアップを開始するとMBR（マスターブートレコード）が書き換えられます（正確にはMBR内の「ブートストラップローダ」かな）。<span class="red"><strong>ハードディスクから直接起動するタイプのリカバリープログラムが実行できなくなる場合があります</strong></span>。MBRはバックアップがない場合は復元が非常に困難なので注意しましょう。取扱説明書などに記述のない操作はしない方が安全かと思います。</p>
+</dd>
+</dl>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20080507/1210125317">Windows XP Service Pack 3 めも</a></li>
+</ul>
+
+<ul>
+<li><a href="http://tomcat.nyanta.jp/t_html/contents/wininstall-nonside.shtml"><del>ワームに感染しない Windows 2000/XP のインストール手順 - tomcatの落書き帳</del></a></li>
+</ul>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/316941/JA/">Windows XP のインストール方法、または Windows XP へのアップグレード方法</a> | <a href="https://web.archive.org/web/20070315133418if_/http://support.microsoft.com/kb/316941/JA/#?FR=1">web.archive</a></li>
+</ul>
+
+<ul>
+<li>Windows Service Pack ダウンロード</a>
+	<ul>
+	<li>Service Pack 3 (KB936929) (325MiB) - <a href="https://www.catalog.update.microsoft.com/Search.aspx?q=KB936929">Microsoft Update カタログ</a></li>
+	<li>[Windows XP Service Pack 2] で検索 (273MiB) - <a href="https://www.catalog.update.microsoft.com/Search.aspx?q=Windows%20XP%20Service%20Pack%202">Microsoft Update カタログ</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/313348/">[HOW TO] Windows XP でのハード ディスクのパーティションとフォーマット</a> | <a href="https://web.archive.org/web/20070216083420/http://support.microsoft.com/kb/313348/JA/">web.archive</a></li>
+</ul>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/880422/JA/">Windows XP のインストール用起動ディスクを入手する方法</a> | <a href="https://web.archive.org/web/20100316104336/http://support.microsoft.com/kb/880422/JA/">web.archive</a>
+	<ul class="small">
+	<li>web.archive よりダウンロード : <a href="https://web.archive.org/http://download.microsoft.com/download/7/6/c/76c79de1-8e81-43c1-a906-37e181c03f9c/WindowsXP-KB310994-SP2-Home-BootDisk-JPN.exe">WindowsXP-KB310994-SP2-Home-BootDisk-JPN.exe</a></li>
+	<li>web.archive よりダウンロード : <a href="https://web.archive.org/http://download.microsoft.com/download/b/b/9/bb957b91-a43b-4dae-8793-bc0b48c5f602/WindowsXP-KB310994-SP2-Pro-BootDisk-JPN.exe">WindowsXP-KB310994-SP2-Pro-BootDisk-JPN.exe</a></li>
+	</ul>
+</li>
+<li><a href="http://support.microsoft.com/kb/310994/JA/">Windows XP セットアップ ブート ディスクの入手方法</a> | <a href="http://web.archive.org/web/20070221121304/http://support.microsoft.com/kb/310994/JA/">web.archive</a></li>
+</ul>
+<pre>
+WindowsXP-KB310994-SP2-Home-BootDisk-JPN.exe
+MD5   : 3d8f07b6fbd884ad848b54c0ae219cb3
+WindowsXP-KB310994-SP2-Pro-BootDisk-JPN.exe
+MD5   : 50f074a5dc7225397e0ffa960eb3eff1
+</pre>
+
+<ul>
+<li><a href="http://ariel.s8.xrea.com/news/2005_12.htm#11">Windowsインストールに関するえとせとら - 駄文にゅうす</a></li>
+</ul>
+
+
+<ul>
+<li><a href="http://www.microsoft.com/japan/technet/prodtechnol/winxppro/deploy/oempreac.mspx">Windows XP を再インストールするときの、OEM の事前ライセンス認証の保持</a> | <a href="https://web.archive.org/web/20070208204426/http://www.microsoft.com/japan/technet/prodtechnol/winxppro/deploy/oempreac.mspx">web.archive</a></li>
+</ul>
+
+<dl>
+<dt>Windows XP Service Pack 2</dt>
+<dd>
+<ul>
+<li><a href="http://support.microsoft.com/kb/884757/ja">Windows XP SP2 FAQ 集</a> | <a href="https://web.archive.org/web/20070204052107/http://support.microsoft.com/kb/884757/ja">web.archive</a>
+	<ul class="nest">
+	<li><a href="http://www.microsoft.com/japan/windowsxp/compatible/sp2/">各メーカー別 Windows XP Service Pack 2 関連情報</a> | <a href="https://web.archive.org/web/20070222162046/http://www.microsoft.com/japan/windowsxp/compatible/sp2/">web.archive</a></li>
+	<li><a href="http://support.microsoft.com/kb/884090/ja">Windows XP SP2 を回復コンソールからアンインストールする方法</a> | <a href="https://web.archive.org/web/20070317232943/http://support.microsoft.com/kb/884090/JA/">web.archive</a></li>
+	</ul>
+</li>
+<li><a href="http://support.microsoft.com/kb/835935/JA/">Windows XP Service Pack 2 リリース ノート</a> | <a href="https://web.archive.org/web/20070601203813/http://support.microsoft.com/kb/835935/JA/">web.archive</a>
+	<ul class="nest">
+	<li><a href="http://www.microsoft.com/japan/windowsxp/sp2/default.mspx">Windows XP Service Pack 2 セキュリティ強化機能搭載</a> | <a href="https://web.archive.org/web/20070202093655/http://www.microsoft.com/japan/windowsxp/sp2/default.mspx">web.archive</a></li>
+	<li><a href="http://www.microsoft.com/japan/technet/prodtechnol/winxppro/maintain/winxpsp2.mspx">&#034;Windows XP Service Pack 2 セキュリティ強化機能搭載&#034; IT プロフェッショナルのためのリソース</a> | <a href="https://web.archive.org/web/20070308004957/http://www.microsoft.com/japan/technet/prodtechnol/winxppro/maintain/winxpsp2.mspx">web.archive</a></li>
+	<li><a href="http://www.microsoft.com/japan/technet/prodtechnol/winxppro/maintain/sp2chngs.mspx">&#034;Windows XP Service Pack 2 セキュリティ強化機能搭載&#034; での機能の変更点</a> | <a href="https://web.archive.org/web/20070305115344/http://www.microsoft.com/japan/technet/prodtechnol/winxppro/maintain/sp2chngs.mspx">web.archive</a>
+</li>
+	<li><a href="http://www.microsoft.com/japan/windowsxp/sp2/preinstall.mspx">Microsoft Windows XP : Service Pack 2 の利点をご紹介します</a> | <a href="https://web.archive.org/web/20070206121506/http://www.microsoft.com/japan/windowsxp/sp2/preinstall.mspx">web.archive</a>
+</li>
+	</ul>
+</li>
+</ul>
+<p>Service Pack ファイルの展開のみ行うには <code>/x</code> オプション</p>
+<pre>
+WindowsXP-KB835935-SP2-JPN.exe /x:D:\tmp
+</pre>
+</dd>
+</dl>
+
+<dl>
+<dt>CDドライブなしで Windows XP をクリーン【再】インストールする</dt>
+<dd>
+<p>あくまで一例ですが、既に Windows XP がインストールされている環境でクリーン【再】インストールする方法です。<ins>できれば</ins>ブート可能なフロッピーディスクドライブが<del>必要</del><ins>あったほうがいいです</ins>。</p>
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20070426/1177618073">CDドライブなしで Windows XP をクリーン【再】インストールしてみた version.2</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20061216/1166271368">CDドライブなしでWindows XPをクリーン【再】インストールしてみた</a></li>
+</ul>
+
+<ul>
+<li><a href="https://diary.palm84.com/entry/20090929/1254155909">【取り扱い注意】USBメモリブートで Windows XP をインストール する方法あれこれ</a> <a href="https://b.hatena.ne.jp/entry/https://diary.palm84.com/entry/20090929/1254155909" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://diary.palm84.com/entry/20090929/1254155909" alt="" class="http-bookmark" /></a></li>
+<li><a href="https://diary.palm84.com/entry/20100911/1284215276">Windows XP のインストールに「ネットワークブート」を使うYO！の巻</a> <a href="https://b.hatena.ne.jp/entry/https://diary.palm84.com/entry/20100911/1284215276" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://diary.palm84.com/entry/20100911/1284215276" alt="" class="http-bookmark" /></a></li>
+</ul>
+</dd>
+</dl>
+
+<dl class="palmst">
+<dt>セットアップCDがブートできない</dt>
+<dd>
+<p>Linuxパーティションがある場合など、一旦CDブートするが、一瞬文字が流れた後黒い画面で止まってしまい、セットアッププログラムがブートできないことがあります。下記の操作でブートできるかもしれません。</p>
+<ul>
+<li>FDISK や、GRUB起動ディスクの <strong class="ms">unhide</strong> コマンドなどでLinuxパーティションを隠す</li>
+<li>FDISK などでLinuxパーティションを削除する</li>
+</ul>
+</dd>
+</dl>
+
+
+<h3 id="integrate"> Service Pack 適用済みイメージ（CD）作成</h3>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/900871/">Windows XP Service Pack 2 のファイルを Windows XP のインストール フォルダに統合する方法</a> | <a href="https://web.archive.org/web/20080218165734/http://support.microsoft.com/kb/900871/ja#">web.archive</a></li>
+</ul>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/884746/ja">Windows XP SP2 適用済みインストールイメージの作成方法</a>
+	<ul class="nest">
+	<li>ブータブルCD作成 - <a href="http://www.ak-office.jp/original/soft/winsppm.html">ソフトウェア - SP+メーカーの説明</a> - <a href="http://www.ak-office.jp/">A.K Office</a>さん</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://blog.so-net.ne.jp/taddy/2006-03-27-1">So-net blog:taddyのブログ:windows2000Pr o SP4+Hotfix..</a></li>
+<li><a href="http://www5b.biglobe.ne.jp/~oh_lavie/etc/spboot.htm">WindowsXP/2000 ServicePack適用済みインストールCDを作る</a> - <a href="http://www5b.biglobe.ne.jp/~oh_lavie/index.htm">Oh!LaVie NX</a>さん | <a href="https://web.archive.org/web/20110728170928/http://www5b.biglobe.ne.jp/~oh_lavie/etc/spboot.htm">web.archive</a>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.wikihouse.com/integ/?HotfixIntegrationInst">HotfixIntegrationInst - PukiWiki</a></li>
+<li><a href="http://pc8.2ch.net/test/read.cgi/win/1151350553/">Win2000/XP/Server2003 SP+Hotfix統合InstCD Part6</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/122spappliedcd/122spappliedcd_02.html">Windows TIPS -- Tips：Windows 2000のインストールとService Packの適用を一度に行う方法（2）</a></li>
+</ul>
+
+
+<h4>Service Pack 統合セットアップファイルの作成</h4>
+
+<div class="palmst">
+<p class="small">※＜適用フォルダ＞を作成し、CD-ROM の内容をコピーしておく</p>
+<ul>
+<li>※XP SP2 の場合
+	<ul class="nest">
+	<li>（SP2 CD-ROM内のファイル）<code>SP2.exe /integrate:＜適用フォルダ＞</code></li>
+	<li>（ダウンロードしたファイル）<code>WindowsXP-KB835935-SP2-JPN.exe /integrate:＜適用フォルダ＞</code></li>
+	</ul>
+</li>
+<li>※2000 SP4の場合
+	<ul class="nest">
+	<li><code>W2KSP4_ja.EXE -s:＜適用フォルダ＞</code></li>
+	</ul>
+</li>
+</ul>
+<p>※ i386 フォルダにある <strong>usbehci.sy_</strong> ファイルの名前を <strong>USBEHCI.SY_</strong> へ変更しておく</p>
+</div>
+<p>※Windows CD-ROMが付属していないメーカー製パソコンなどの場合は、適用フォルダに <strong>i386</strong> フォルダをコピーして実行すればいいようです。</p>
+<ul>
+<li>参考：※1. 2. の部分です
+	<ul class="nest">
+	<li><a href="http://faq.askpc.panasonic.co.jp/faq/1038/app/servlet/qadoc?000404">よくある質問（FAQ） | パナソニック パソコンサポート</a></li>
+	</ul>
+</li>
+</ul>
+
+<h4>Service Pack 適用済みブート可能 CD-ROM を作成</h4>
+<ul>
+<li><del><a href="http://homepage2.nifty.com/winfaq/wxp/setup.html#1421">Service Pack 適用済みブート可能 CD-ROM を作成するには</a> - <a href="http://homepage2.nifty.com/winfaq/">Windows.FAQ</a></del></li>
+</ul>
+
+<div class="palmst">
+<ol>
+<li>統合ファイル用フォルダ作成 - <code>D:\XPSP2</code> とか</li>
+<li>CD-ROM を統合ファイル用フォルダにコピーする</li>
+<li>サービスパックを適用する</li>
+<li><a href="http://www.nu2.nu/bbie/">BBIE</a> (<a href="https://web.archive.org/web/20070205181915/http://www.nu2.nu/bbie/">web.archiver</a>) と <a href="ftp://ftp.berlios.de/pub/cdrecord/alpha/win32/">cdrtools</a> パッケージ (cdrtools-1.11a12-win32-bin.zip) (<a href="https://web.archive.org/web/20040825155246/ftp://ftp.berlios.de/pub/cdrecord/alpha/win32/">web.archive</a>) をダウンロード</li>
+<li>作業フォルダを作成 - <code>D:\TMP</code>とか</li>
+<li><code>D:\TMP</code> に <strong>bbie.exe</strong>、<strong>mkisofs.exe</strong>、<strong>cygwin1.dll</strong> をコピー</li>
+<li>コマンドプロンプトで以下を実行</li>
+</ol>
+<pre class="scl">
+cd /d D:\TMP
+BBIE E:
+copy image1.bin D:\XPSP2
+mkisofs -b image1.bin -no-emul-boot -J -N -o sp.iso D:\XPSP2
+</pre>
+<ol>
+<li><code>D:\TMP</code> に移動</li>
+<li>（CDドライブを指定） CDからブートファイルを抜き出す</li>
+<li>（作成された）<code>image1.bin</code> を <code>D:\XPSP2</code> にコピー</li>
+<li>iso ファイル作成 - <code>D:\TMP</code> に <strong>sp.iso</strong>（CDイメージ） が作成される</li>
+</ol>
+</div>
+
+<dl>
+<dt>Serial ATA 関連</dt>
+<dd>
+<ul>
+<li><a href="http://www.wikihouse.com/integ/?HotfixIntegrationInst">HotfixIntegrationInst - PukiWiki</a></li>
+<li><a href="https://geolog.mydns.jp/www.geocities.co.jp/SiliconValley-Cupertino/3686/install_sata_driver.html">Windowsインストール時の「F6」を回避する方法</a></li>
+<li><a href="http://hardware.mine.nu/~sata/">Serial ATA総合テンプレート置き場</a> | <a href="https://web.archive.org/web/20070312182439/http://hardware.mine.nu/~sata/">web.archive</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h3 id="in_place_upgrade">in-place upgrade（修復インストール）</h3>
+
+<ul>
+<li>注意：<a href="http://support.microsoft.com/kb/312368/JA/">Windows XP の再インストール、修復、またはアップグレードを行うとデータが失われることがある</a> | <a href="https://web.archive.org/web/20070326031433/http://support.microsoft.com/kb/312368/JA/">web.archive</a></li>
+<li><a href="http://homepage2.nifty.com/winfaq/w2k/setup.html#1240">in-place upgrade すると、パスワードは再設定されますか？</a> - <a href="http://homepage2.nifty.com/winfaq/">Windows.FAQ</a> = No です</li>
+</ul>
+
+
+<div class="palmst">
+<dl class="small">
+<dt>メーカー製パソコンでは注意</dt>
+<dd>
+<p>Windows（<strong>のみ</strong>）のセットアップを開始するとMBR（マスターブートレコード）が書き換えられます（正確にはMBR内の「ブートストラップローダ」かな）。<span class="red"><strong>ハードディスクから直接起動するタイプのリカバリープログラムが実行できなくなる場合があります</strong></span>。MBRはバックアップがない場合は復元が非常に困難なので注意しましょう。取扱説明書などに記述のない操作はしない方が安全かと思います。</p>
+</dd>
+</dl>
+</div>
+
+<p><del>レジストリや</del>プログラムの設定、データなどもそのままで Windows のシステムファイルのみ初期化されます。完全クリーンな状態とはなりませんが、致命的なエラー発生時など一時的な避難手段として有効です。（※<strong>Windows Update はやり直し</strong>する必要があります。）</p>
+
+<p class="small">※CDドライブがなくてもネットワークドライブから、またはCDの内容をコピーすれば実行可能です（<strong>setup.exe</strong> または i386 フォルダ内の <strong>winnt32.exe</strong>）。</p>
+
+<ul>
+<li><a href="http://support.microsoft.com/default.aspx?scid=kb;ja;884642">Windows XP SP2 をインストールしたコンピュータで修復インストールを行うとエラーが発生する</a> | <a href="https://web.archive.org/web/20070205070123/http://support.microsoft.com/kb/884642/JA/">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/917964/ja">Internet Explorer 7 がインストールされています場合、 Windows XP の修復インストールの実行方法</a></li>
+</ul>
+
+<p>※<strong>Service Pack のバージョンを現在インストールされているものと合わせる必要があります</strong>。また、<strong>Internet Explorer 7</strong> も事前にアンインストールしなければいけません。（※Media Player 10 や 11 もアンインストールしといた方がいいかも？）</p>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/315341/ja">Windows XP のインプレース アップグレード (再インストール) を実行する方法</a> | <a href="https://web.archive.org/web/20070228101013/http://support.microsoft.com/kb/315341/JA/#">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/881207/ja">Windows XP を修復インストール (再インストール) するには</a></li>
+<li><a href="http://support.microsoft.com/kb/312369/">[WinXP] 再インストール/修復作業/アップグレードを行う際の重要な注意点</a> | <a href="https://web.archive.org/web/20070223090221/http://support.microsoft.com/kb/312369/JA/">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/943144/ja">Windows XP インストールを修復した後、Windows Update、Microsoft Update、または自動更新で更新プログラムが正常にインストールされない</a> | <a href="https://web.archive.org/web/20081102172050/http://support.microsoft.com/kb/943144/ja">web.archive</a></li>
+</ul>
+
+<dl>
+<dt>システム修復処理</dt>
+<dd>
+<p>※Windows 2000 のみ</p>
+<ul>
+<li><a href="http://support.microsoft.com/kb/238359/ja">Windows の手動修復と高速修復の違い</a> | <a href="https://web.archive.org/web/20070314190625/http://support.microsoft.com/kb/238359/JA/">web.archive</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/115repairboot/115repairboot.html">Windows 2000 TIPS -- TIPS：修復セットアップでブート・メニューを復旧する</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/em_repair/em_repair01.html">運用：修復セットアップ完全マスター</a></li>
+</ul>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/293089/ja">Windows 98 または Windows 98 Second Edition をインストールすると、Windows 2000 または Windows XP が起動できない</a> | <a href="https://web.archive.org/web/20100119000230/http://support.microsoft.com/kb/293089/JA/">web.archive</a>
+</li>
+<li><del><a href="http://homepage2.nifty.com/winfaq/w2k/setup.html#909">後から Windows9x/Me を導入したらブートメニューが出なくなりました</a> - <a href="http://homepage2.nifty.com/winfaq/">Windows.FAQ</a></del></li>
+<li><a href="https://www.itmedia.co.jp/help/tips/windows/w0305.html">あとからWindows9x/Meを導入したら，Windows2000が起動できなくなってしまった - ITmedia エンタープライズ</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h3 id="bootini">boot.ini</h3>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/879969/ja">起動時に使用される設定ファイル (Boot.ini) について</a> | <a href="https://web.archive.org/web/20070601183455/http://support.microsoft.com/kb/879969/ja">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/289022/ja">Windows XP で Boot.ini ファイルを編集する方法</a> | <a href="https://web.archive.org/web/20070808014703/http://support.microsoft.com/kb/289022/JA/">web.archive</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/502bootini/bootini.html">＠IT：Windows TIPS -- Tips：システムのブート情報ファイルBOOT.INIを編集する</a></li>
+</ul>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/291980/ja">Bootcfg コマンドとその使用法について</a> | <a href="https://web.archive.org/web/20070304084704/http://support.microsoft.com/kb/291980/ja">web.archive</a>
+	<ul class="nest">
+	<li><code>bootcfg /rebuild</code></li>
+	<li><a href="http://support.microsoft.com/kb/882178/ja">回復コンソールを使用して、Boot.ini ファイルを再構築するには - Windows XP にアップグレード後 Hal.dll が存在しないか壊れていると表示されて起動できない場合の対処方法</a> | <a href="https://web.archive.org/web/20070219025803/http://support.microsoft.com/kb/882178/JA/">web.archive</a></li>
+	</ul>
+</li>
+<li><a href="http://gigazine.net/index.php?/news/comments/20060419_xprebuild/">起動しなくなったXPを救う「Rebuild」コマンド - GIGAZINE</a></li>
+<li><a href="http://support.microsoft.com/kb/305595/">[HOW TO] Windows XP を使用して、NTFS パーティションまたは FAT パーティションにブート ディスクを作成する方法</a> | <a href="https://web.archive.org/web/20100820162901/http://support.microsoft.com/kb/305595/JA/">web.archive</a></li>
+</ul>
+
+<ul>
+<li>デフォルト - <code>C:\</code>
+	<ul class="nest">
+	<li><code>C:\ - Windows 98</code></li>
+	<li><code>D:\ - Windows 2000 Pro</code></li>
+	</ul>
+</li>
+</ul>
+<pre class="scl">
+[boot loader]
+timeout=10
+default=C:\
+[operating systems]
+C:\=&#034;Microsoft Windows&#034;
+multi(0)disk(0)rdisk(0)partition(2)\WINNT=&#034;Microsoft Windows 2000 Professional&#034; /fastdetect
+</pre>
+
+<ul>
+<li>デフォルト - <code>D:\</code>
+	<ul class="nest">
+	<li><code>C:\ - Windows 98</code></li>
+	<li><code>D:\ - Windows 2000 Pro</code></li>
+	</ul>
+</li>
+</ul>
+<pre class="scl">
+[Boot Loader]
+Timeout=10
+Default=multi(0)disk(0)rdisk(0)partition(2)\WINNT
+[Operating Systems]
+multi(0)disk(0)rdisk(0)partition(2)\WINNT=&#034;Microsoft Windows 2000 Professional&#034; /fastdetect
+C:\=&#034;Microsoft Windows&#034;
+</pre>
+
+<ul>
+<li>デフォルト - <code>C:\</code>
+	<ul class="nest">
+	<li><code>C:\ - Windows XP Home SP2</code></li>
+	<li><code>D:\ - Windows XP Pro SP2</code></li>
+	</ul>
+</li>
+</ul>
+<pre class="scl">
+[boot loader]
+timeout=10
+default=multi(0)disk(0)rdisk(0)partition(1)\WINDOWS
+[operating systems]
+multi(0)disk(0)rdisk(0)partition(1)\WINDOWS=&#034;Microsoft Windows XP Home Edition&#034; /noexecute=optin /fastdetect
+multi(0)disk(0)rdisk(0)partition(2)\WINDOWS=&#034;Microsoft Windows XP Professional&#034; /fastdetect /NoExecute=OptIn
+</pre>
+
+<ul>
+<li>デフォルト - <code>D:\</code>
+	<ul class="nest">
+	<li><code>C:\ - Windows XP Home SP2</code></li>
+	<li><code>D:\ - Windows XP Pro SP2</code></li>
+	</ul>
+</li>
+</ul>
+<pre class="scl">
+[boot loader]
+timeout=10
+default=multi(0)disk(0)rdisk(0)partition(2)\WINDOWS
+[operating systems]
+multi(0)disk(0)rdisk(0)partition(2)\WINDOWS=&#034;Microsoft Windows XP Professional&#034; /fastdetect /NoExecute=OptIn
+multi(0)disk(0)rdisk(0)partition(1)\WINDOWS=&#034;Microsoft Windows XP Home Edition&#034; /noexecute=optin /fastdetect
+</pre>
+
+<ul>
+<li>デフォルト - <code>C:\</code>
+	<ul>
+	<li><code>C:\ - Windows XP Home</code>（SPなし）</li>
+	<li><code>D:\ - Windows XP Pro</code>（SPなし）</li>
+	</ul>
+</li>
+</ul>
+<pre class="scl">
+[boot loader]
+timeout=5
+default=multi(0)disk(0)rdisk(0)partition(1)\WINDOWS
+[operating systems]
+multi(0)disk(0)rdisk(0)partition(1)\WINDOWS=&#034;Microsoft Windows XP Home Editionl&#034; /fastdetect
+multi(0)disk(0)rdisk(0)partition(2)\WINDOWS=&#034;Microsoft Windows XP Professional&#034; /fastdetect
+</pre>
+
+<dl>
+<dt>boot.ini 編集</dt>
+<dd>
+<p>※見ての通りで...</p>
+<pre class="scl">
+@echo off
+attrib -h -r -s C:\boot.ini
+copy C:\boot.ini C:\boot.bak.txt
+notepad C:\boot.ini
+echo 編集が終わったら何かキーをを押すべし
+pause
+attrib +h +r +s C:\boot.ini
+</pre>
+</dd>
+</dl>
+
+
+<h2 id="bootdisk">Windows XP 緊急起動ディスクの作成</h2>
+
+<p>マスターブートレコードやパーティションのブートセクタの異常時、<strong><span class="ms">ntldr</span></strong> などを間違って削除した場合などフロッピーディスクから起動できるかもしれません。</p>
+<p>正常時の以下4つのファイルを<strong>XPでフォーマット</strong>（<code>format a:</code>）したフロッピーに保存しておきましょう。</p>
+<ul>
+<li><code>boot.ini</code></li>
+<li><code>ntldr</code></li>
+<li><code>NTDETECT.COM</code></li>
+<li><code>bootfont.bin</code>（※日本語フォント。これはなしでも）</li>
+</ul>
+
+<p>作成後はフロッピーから正常に起動するか確認。以下のページも参考に。セットアップCDから作成も可能です（設定はデフォルト）。</p>
+<ul>
+<li><a href="http://support.microsoft.com/default.aspx?scid=kb;jp;311073">NTFS または FAT パーティションに対するブート ディスクを作成する</a> | <a href="https://web.archive.org/web/20120129182838/http://support.microsoft.com/kb/311073/ja">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/314079/ja">システム ファイルを使用して起動ディスクを作成し、Windows XP が起動できない状況に備える方法</a> | <a href="https://web.archive.org/web/20070601203919/http://support.microsoft.com/kb/314079/ja">web.archive</a>
+	<ul class="nest">
+	<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/708bootfdd/bootfdd.html">フロッピー・ディスクからWindows OSを起動する － ＠IT</a></li>
+	</ul>
+</li>
+</ul>
+
+<div class="palmst">
+<p>Windows XPからコピーできず、Windowsインストール用CDも無い場合はサービスパック・アップデート用ファイルから <strong class="ms">ntldr</strong> と <strong class="ms">NTDETECT.COM</strong> を取り出す。</p>
+<pre>
+WindowsXP-KB835935-SP2-JPN.exe /x:C:\展開するディレクトリ名
+</pre>
+
+<p><strong class="ms">bootfont.bin</strong>も必要ならセットアップ用起動ディスク1枚目から取り出す。</p>
+<p><a href="https://eu7w9wsmf6a74xyjdfzl3q-on.drv.tw/cgi-archives/grub4dos/boot.ini">boot.iniはこんなかんじで</a></p>
+<p>【追記】あっと、XPでFDをフォーマットできない場合は、GRUB起動ディスクからチェインロードできます。</p>
+<ul>
+<li>拙作：<a href="http://d.hatena.ne.jp/palm84/20071211/1197386517">GRUB起動ディスクを作っておくの巻</a></li>
+</ul>
+</div>
+
+<dl>
+<dt>boot.ini の見本</dt>
+<dd>
+<div class="palmst">
+<p>Windows 2000 の場合はパス <code>\WINDOWS</code> を <code>\WINNT</code>に。XPの<strong class="ms">ntldr</strong>で2000の起動も可能。</p>
+</div>
+<p>普通にCドライブ（※IDE接続プライマリ マスター の第1パーティション）にWindows XP <strong>Service Pack 2</strong>がインストールされている場合。</p>
+<pre class="scl">
+[boot loader]
+timeout=10
+default=multi(0)disk(0)rdisk(0)partition(1)\WINDOWS
+[operating systems]
+multi(0)disk(0)rdisk(0)partition(1)\WINDOWS=&#034;Microsoft Windows XP&#034; /fastdetect /NoExecute=OptIn
+</pre>
+<ul>
+<li>セーフモードを選択起動
+	<ul class="nest">
+	<li><a href="http://support.microsoft.com/kb/833721/ja">Windows XP および Windows Server 2003 の Boot.ini ファイルで使用可能なスイッチ オプション</a> | <a href="https://web.archive.org/web/20070711060204if_/http://support.microsoft.com/kb/833721/ja#?FR=1">web.archive</a></li>
+	<li><a href="http://support.microsoft.com/default.aspx?scid=kb;%5Bln%5D;239780">Windows Boot.ini ファイルで使用するセーフモード ブート スイッチについて</a>(Windows 2000 pro) | <a href="https://web.archive.org/web/20070626175407if_/http://support.microsoft.com/kb/239780/ja#?FR=1">web.archive</a></li>
+	</ul>
+</li>
+</ul>
+<pre class="scl">
+[boot loader]
+timeout=10
+default=multi(0)disk(0)rdisk(0)partition(1)\WINDOWS
+[operating systems]
+multi(0)disk(0)rdisk(0)partition(1)\WINDOWS=&#034;Microsoft Windows XP&#034; /fastdetect /NoExecute=OptIn
+multi(0)disk(0)rdisk(0)partition(1)\WINDOWS=&#034;SafeMode&#034; /fastdetect /NoExecute=OptIn /safeboot:minimal
+multi(0)disk(0)rdisk(0)partition(1)\WINDOWS=&#034;SafeMode Network&#034; /fastdetect /NoExecute=OptIn /safeboot:network
+multi(0)disk(0)rdisk(0)partition(1)\WINDOWS=&#034;SafeMode minimal&#034; /fastdetect /NoExecute=OptIn /safeboot:minimal(alternateshell)
+</pre>
+<ul>
+<li>回復コンソールをインストールしている場合
+	<ul class="nest">
+	<li>※この緊急起動ディスクから回復コンソールの起動は駄目みたいですが..</li>
+	</ul>
+</li>
+</ul>
+<pre class="scl">
+[boot loader]
+timeout=10
+default=multi(0)disk(0)rdisk(0)partition(1)\WINDOWS
+[operating systems]
+multi(0)disk(0)rdisk(0)partition(1)\WINDOWS=&#034;Microsoft Windows XP&#034; /fastdetect /NoExecute=OptIn
+C:\CMDCONS\BOOTSECT.DAT=&#034;Microsoft Windows XP Recovery Console&#034;
+</pre>
+<ul>
+<li>注意：<a href="http://homepage2.nifty.com/winfaq/wxp/boot.html#1465">boot.ini が短くなります/回復コンソールが起動しなくなりました</a> - msconfig.exeを使う場合は注意</li>
+</ul>
+</dd>
+
+<dt>ブータブルCD化してみた</dt>
+<dd>
+<p><a href="http://www.chrysocome.net/rawwrite">RawWrite for Windows</a>で作成したフロッピーディスクイメージを、CD/DVDライティングソフトの起動可能ディスク/ブータブルCD作成機能（フロッピーディスクエミュレーションなど）で普通にJolietで焼いたらできました。（※Easy Media Creator 7 で確認）。CD-RWに焼く場合は、フル消去/フルフォーマットしてから焼くこと。</p>
+<p>起動可能ディスク作成機能がない場合は下記ツールが確実かも。</p>
+<ul>
+<li><a href="http://www.geocities.co.jp/SiliconValley-Cupertino/3686/fdtoiso.html">起動FDイメージをISOイメージに変換するプログラム</a> (<a href="http://kaeru.tuzikaze.com/fdtoiso.html">fdtoiso</a>)</li>
+</ul>
+</dd>
+
+<dt>USBフラッシュメモリでブート</dt>
+<dd>
+<p>USBブート対応なら<strong>USBメモリ</strong>でも可能かも。</p>
+<ul>
+<li><a href="http://orz.kakiko.com/kaeru/usbboot/">USBブート推進協議会</a></li>
+</ul>
+<blockquote cite="http://kaeru.tuzikaze.com/usbboot_old.html#makebootable" title="USBブート推進協議会">
+<ol>
+<li>USBメモリを2000/XP上でクイックフォーマット</li>
+<li>システムドライブにあるファイル NTLDR, NTDETECT.COM, BOOT.INI, BOOTFONT.BIN をUSBメモリにコピー。</li>
+</ol>
+</blockquote>
+<p>または、<a href="http://www.chrysocome.net/rawwrite">RawWrite for Windows</a>で作成したフロッピーディスクイメージを<a href="https://www.si-linux.co.jp/techinfo/index.php?DD%20for%20Windows">DDforWindows</a>で書込み。</p>
+</dd>
+
+<dt><a href="http://uiuicy.cs.land.to/index.html">すっきり!! デフラグ非公式ヘルプのページ</a></dt>
+<dd>
+<p>完璧と言っていい解説ページがありました。非常に役に立つと思います。</p>
+<ul>
+<li><a href="http://uiuicy.cs.land.to/bootdisk1.html">XP緊急起動ディスクの作成方法</a> - <a href="http://www.vector.co.jp/soft/winnt/util/se328382.html">緊急起動ディスク</a>ツールはむちゃ便利ですね</li>
+<li><a href="http://uiuicy.cs.land.to/bootdisk2.html">緊急起動ディスクの作成方法（つづき）</a> - CD-R版の作成、FDドライブがない環境での <a href="http://sourceforge.jp/projects/sfnet_vfd/">Virtual Floppy Drive</a> と <a href="http://www.geocities.co.jp/SiliconValley-Cupertino/3686/fdtoiso.html">fdtoiso</a> の使用方法</li>
+<li><a href="http://uiuicy.cs.land.to/bootdisk4.html">別パソコンでの緊急起動ディスク作製方法</a> - <span class="ms">ntldr/ntdetect.com/bootfont.bin</span> をサービスパックから入手</li>
+</ul>
+</dd>
+</dl>
+
+
+<h2 id="update">Windows Update</h2>
+
+<ul>
+<li><a href="http://www.microsoft.com/japan/windowsxp/security/default.mspx">Microsoft Windows XP : Windows XP のセキュリティを強固にしよう</a> | <a href="https://web.archive.org/web/20051204223009/http://www.microsoft.com/japan/windowsxp/security/default.mspx">web.archive</a></li>
+<li><a href="http://www.microsoft.com/japan/whdc/hcl/default.mspx">"Designed for Microsoft Windows" 製品 - Windows カタログおよび HCL</a> | <a href="https://web.archive.org/web/20050824004948/http://www.microsoft.com/japan/whdc/hcl/default.mspx">web.archive</a></li>
+</ul>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/884101/ja/">Windows Update に関する技術情報</a> | <a href="https://web.archive.org/web/20070222225855/http://support.microsoft.com/kb/884101/ja/">web.archive</a></li>
+<li><a href="http://support.microsoft.com/?scid=ph;ja;6527">Windows Update 総合情報</a> | <a href="https://web.archive.org/web/20060212064433/http://support.microsoft.com/?scid=ph;ja;6527">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/899788/ja">Microsoft Update/Windows Update v6 の概要</a> | <a href="https://web.archive.org/web/20070601183505/http://support.microsoft.com/kb/899788/JA/">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/899792/ja/">Windows Update トラブルシューティングの使い方</a> | <a href="https://web.archive.org/web/20070503092810/http://support.microsoft.com/kb/899792/ja/">web.archive</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.microsoft.com/japan/windows2000/downloads/servicepacks/sp4/spdeploy.htm">Microsoft Windows 2000 Service Pack 4 インストールと導入ガイド (SPDeploy.htm)</a> | <a href="https://web.archive.org/web/20050408013844/http://www.microsoft.com/japan/windows2000/downloads/servicepacks/sp4/spdeploy.htm">web.archive</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/804muerrlog/muerrlog.html">Microsoft Update／自動更新のエラー・ログを調査する － ＠IT</a></li>
+</ul>
+
+
+
+<h2 id="ie">Internet Explorer</h2>
+
+<p>※ <ins>殆どリンク切れ、チェックしてません</ins>。</p>
+
+<div class="small">
+<dl>
+<dt>Internet Explorer 7</dt>
+<dd>
+<ul>
+<li><a href="http://www.microsoft.com/japan/windows/ie/default.mspx">Microsoft Internet Explorer 7 : ホーム</a>
+	<ul class="nest">
+	<li><a href="http://www.microsoft.com/japan/windows/ie/ie7/about/quickreference.mspx">Microsoft Internet Explorer 7: クイック リファレンス シート</a></li>
+	<li><a href="http://www.microsoft.com/japan/msdn/ie/">Internet Explorer デベロッパー センター</a></li>
+	<li><a href="http://www.microsoft.com/japan/users/winxp/0608/default.mspx">Microsoft Users | トクする Windows XP | 5年ぶりに新しくなった Internet Explorer7 を徹底紹介!</a></li>
+</ul>
+</li>
+<li><a href="http://www.microsoft.com/downloads/details.aspx?familyid=9AE91EBE-3385-447C-8A30-081805B2F90B&#038;displaylang=ja">ダウンロードの詳細 : Windows XP SP2 向け Windows Internet Explorer 7</a></li>
+<li><a href="http://b.hatena.ne.jp/palm84/IE7/?mode=detail">Palm84のブックマーク / IE7</a></li>
+</ul>
+</dd>
+</dl>
+
+<ul>
+<li><a href="http://support.microsoft.com/ph/2073">Microsoft Internet Explorer 6.0 サポート ページ</a>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://www.microsoft.com/japan/security/incident/settings.mspx">ブラウジングと電子メールの安全性を強化する</a></li>
+<li><a href="http://www.microsoft.com/japan/windows/ie/using/howto/security/setup.mspx">Microsoft Internet Explorer : セキュリティ ゾーンの設定</a></li>
+<li><a href="http://support.microsoft.com/kb/833786">成りすました Web サイトおよび悪質なハイパーリンクを見分けるための手順</a></li>
+<li><a href="http://support.microsoft.com/kb/309816/ja">Windows 2000 で Internet Explorer の FTP を PORT モードと PASV モードの両方を使用するように構成する方法</a></li>
+</ul>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/318378/ja">Windows XP で Internet Explorer および Outlook Express を再インストールまたは修復する方法</a></li>
+<li><a href="http://support.microsoft.com/kb/182569/ja">Internet Explorer のセキュリティ ゾーン関連のレジストリ エントリについて</a></li>
+<li><a href="http://www.microsoft.com/technet/prodtechnol/ie/ieak/ja/default.mspx">Microsoft Internet Explorer 管理者キット</a></li>
+<li><a href="http://support.microsoft.com/kb/183771/ja">[VB] ActiveX コンポーネントで作成されるレジストリ エントリ</a></li>
+<li><a href="http://support.microsoft.com/kb/JP240797">Internet Explorer で ActiveX コントロールの動作を停止する方法</a></li>
+<li><a href="http://support.microsoft.com/kb/882577/ja">インターネット一時ファイルが削除できない場合の対処方法</a></li>
+</ul>
+
+<ul>
+<li><a href="http://java-house.jp/~takagi/security/misc/jscript-clipboard/test.html">Internet Explorerの「スクリプトによる貼り付け処理」機能の能力を検証する</a></li>
+</ul>
+</div>
+
+
+<h2 id="application">アプリケーション</h2>
+
+<ul>
+<li><a href="http://www.microsoft.com/japan/users/tips/windows/107.mspx">Microsoft Users | 今週の快適 Windows Tips | 圧縮 (Zip) ファイルにパスワードを設定してデータを保護する</a> | <a href="https://web.archive.org/web/20070617182453/http://www.microsoft.com/japan/users/tips/windows/107.mspx">web.archive</a></li>
+<li><a href="http://allabout.co.jp/computer/windows/closeup/CU20050511B/">正規 Windows 推奨プログラムの特典　新形式の圧縮フォルダが登場！ - ［Windowsの使い方］All About</a></li>
+</ul>
+
+
+<h3 id="oe">Outlook Express</h3>
+
+<p>※ <ins>殆どリンク切れ、チェックしてません</ins>。</p>
+<div class="small">
+<ul>
+<li><a href="http://www.microsoft.com/japan/windows/ie/experiences/videos/email.mspx">Microsoft Internet Explorer : 電子メールとニュースは Outlook Express で</a></li>
+<li><a href="http://support.microsoft.com/ph/2578">Microsoft Outlook Express 6.0 サポート ページ</a></li>
+<li><a href="http://support.microsoft.com/kb/880553/JA/">メールが消えてしまった場合に備えて、別の場所に保存するには</a></li>
+<li><a href="http://support.microsoft.com/kb/880643/JA/">別の場所に保存した Outlook Express のメール データを復元するには</a></li>
+</ul>
+</div>
+
+
+<h3 id="messenger">Messenger</h3>
+
+<p>※ <ins>殆どリンク切れ、チェックしてません</ins>。</p>
+<div class="small">
+<ul>
+<li><a href="http://www.microsoft.com/japan/windowsxp/using/windowsmessenger/getstarted/default.mspx">Windows Messenger の使い方 - 入門編</a></li>
+<li><a href="http://support.microsoft.com/kb/418562/ja/">Windows Messenger の使い方</a></li>
+<li><a href="http://www.microsoft.com/japan/technet/prodtechnol/winxppro/deploy/worki01.mspx">Windows XP の Windows Messenger: ファイアウォールおよびネットワーク アドレス変換での動作</a></li>
+<li><a href="http://www.microsoft.com/japan/athome/security/online/imsafety.mspx">インスタント メッセージを安全に使用するための 10 のヒント</a></li>
+<li><a href="http://www.microsoft.com/japan/windowsxp/home/using/howto/communicate/version45/v45default.mspx">Windows XP Home Edition : Windows Messenger の使用 - はじめに</a></li>
+<li><a href="http://get.live.com/messenger/overview">Windows Live Messenger</a></li>
+</ul>
+</div>
+
+
+<h2 id="network">ネットワーク</h2>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20051122/1132589181">某所の日記 - Windows XP の「ファイルとプリンタの共有」設定</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.microsoft.com/japan/technet/community/columns/cableguy/cg0204.mspx">The Cable Guy ‐ 2004 年 2 月 : Windows XP Service Pack 2 の Windows ファイアウォールを手動で構成する</a> | <a href="https://web.archive.org/web/20060708112118/http://www.microsoft.com/japan/technet/community/columns/cableguy/cg0204.mspx">web.archive</a></li>
+<li><a href="http://www.microsoft.com/japan/technet/security/prodtech/windowsxp.mspx">Windows XP</a> | <a href="https://web.archive.org/web/20070516211236/http://www.microsoft.com/japan/technet/security/prodtech/windowsxp.mspx">web.archive</a></li>
+<li><a href="http://www.microsoft.com/japan/windowsserver2003/technologies/ipv6/default.mspx">Microsoft Windows - IPv6</a> | <a href="https://web.archive.org/web/20070217000619/http://www.microsoft.com/japan/windowsserver2003/technologies/ipv6/default.mspx">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/832017/ja">Microsoft Windows サーバー システムのポート要件</a></li>
+<li><a href="http://support.microsoft.com/kb/838207/ja">Windows XP Service Pack 2 でのネットワーク関連の修正一覧</a> | <a href="https://web.archive.org/web/20080226122803/http://support.microsoft.com/kb/838207/ja">web.archive</a></li>
+<li><a href="http://www.microsoft.com/japan/technet/security/topics/networksecurity.mspx">ネットワークのセキュリティ</a> | <a href="https://web.archive.org/web/20060326192040/http://www.microsoft.com/japan/technet/security/topics/networksecurity.mspx">web.archive</a></li>
+<li><a href="http://www.microsoft.com/japan/technet/security/advisory/906574.mspx">簡易ファイルの共有および ForceGuest についての説明 - マイクロソフト セキュリティ アドバイザリ (906574)</a> | <a href="https://web.archive.org/web/20060118052505/http://www.microsoft.com/japan/technet/security/advisory/906574.mspx">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/313190/ja">Windows 2000 で IPSec の IP フィルタ一覧を使用する方法</a> | <a href="https://web.archive.org/web/20060118052505/http://www.microsoft.com/japan/technet/security/advisory/906574.mspx">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/837243/ja">Port Reporter ツールの概要と入手方法</a> | <a href="https://web.archive.org/web/20070211131154/http://support.microsoft.com/kb/837243/ja">web.archive</a>
+	<ul>
+	<li><a href="https://www.microsoft.com/en-us/download/details.aspx?id=9964">Download Port Reporter (PortRptr.exe) from Official Microsoft Download Center</a> <a href="https://b.hatena.ne.jp/entry/https://www.microsoft.com/en-us/download/details.aspx?id=9964" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://www.microsoft.com/en-us/download/details.aspx?id=9964" alt="" class="http-bookmark" /></a></li>
+	</ul>
+</li>
+<li><a href="http://support.microsoft.com/kb/310875/ja">Network Monitor Capture Utility について</a> | <a href="https://web.archive.org/web/20090401171050/http://support.microsoft.com/kb/310875/ja">web.archive</a>
+	<ul class="nest small">
+	<li><a href="http://support.microsoft.com/kb/924037/ja">ネットワーク監視 キャプチャ ユーティリティ(Netcap.exe)を使用するネットワーク トラフィック情報のキャプチャを使用する方法</a> | <a href="https://web.archive.org/web/20081104090023/http://support.microsoft.com/kb/924037/ja">web.archive</a></li>
+	</ul>
+</li>
+<li><a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=dd6bed8f-a706-48ee-95b7-bdc21455815a&#038;DisplayLang=ja">ダウンロードの詳細 : ポート番号一覧</a> | <a href="https://web.archive.org/web/20060207015538/http://www.microsoft.com/downloads/details.aspx?FamilyID=dd6bed8f-a706-48ee-95b7-bdc21455815a&DisplayLang=ja">web.archive</a> | <a href="https://web.archive.org/http://download.microsoft.com/download/a/a/7/aa72d73c-beff-495d-a389-295da4a1802c/Port_Requirements_for_Microsoft_Windows_Server_System_J.xls">web.archive からダウンロード</a></li>
+</ul>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/301041/">Windows XP に NetBEUI をインストールする方法</a> | <a href="https://web.archive.org/web/20070225062710/http://support.microsoft.com/kb/301041/ja">web.archive</a>
+	<ul class="nest">
+	<li><a href="http://d.hatena.ne.jp/palm84/20061213/1165941416">某所の日記 - メーカー製パソコンに“VALUEADD”フォルダはある？（バックアップユーティリティ / NetBEUIのインストール）</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/299357/">Windows XP で TCP/IP をリセットする方法</a> | <a href="https://web.archive.org/web/20070208005224if_/http://support.microsoft.com/kb/299357/ja#?FR=1">web.archive</a>
+	<ul>
+	<li><a href="http://www.microsoft.com/japan/technet/prodtechnol/winxppro/maintain/sp2netwk.mspx#ETKAC">&#034;Windows XP Service Pack 2 セキュリティ強化機能搭載&#034; での機能の変更点 ‐ 第 2 部 : ネットワーク保護技術</a> | <a href="https://web.archive.org/web/20060706051312/http://www.microsoft.com/japan/technet/prodtechnol/winxppro/maintain/sp2netwk.mspx">"web.archive</a></li>
+	<li><code>netsh winsock reset catalog</code></li>
+	</ul>
+</li>
+<li><a href="http://support.microsoft.com/kb/314067">Windows XP における TCP/IP 接続のトラブルシューティング</a> | <a href="https://web.archive.org/web/20071101184336if_/http://support.microsoft.com/kb/314067/ja#?FR=1">web.archive</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20050905/1125903605">某所の日記 - Windows XP で TCP/IP を再インストールする</a></li>
+<li><a href="http://support.microsoft.com/kb/811259/ja">Winsock2 の破損を確認して回復する方法</a> | <a href="https://web.archive.org/web/20070112232339/http://support.microsoft.com/kb/811259/ja#">web.archive</a>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/Internet_Control_Message_Protocol">Internet Control Message Protocol - Wikipedia</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/personalsecurity2/personalsecurity1.html">運用：常時接続時代のパーソナル・セキュリティ対策（第2回）</a></li>
+</ul>
+
+
+<dl>
+<dt><a href="http://www.atmarkit.co.jp/icd/index.html">＠IT：Insider's Computer Dictionary</a></dt>
+<dd>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/icd/root/11/5784411.html">[hostsファイル]</a></li>
+<li><a href="http://www.atmarkit.co.jp/icd/root/74/6425474.html">[LMHOSTSファイル]</a></li>
+</ul>
+</dd>
+
+<dt><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/index/index.html">Windows TIPS INDEX － ＠IT</a></dt>
+<dd>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/258netcommand/netcommand.html">netコマンドの使い方</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/236portcheck/portcheck.html">netstatでリッスンしているプロセスを特定する</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/409portreport/portreport.html">Port ReporterツールでTCP/IPの通信状態を調査する</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/209xpnetbeui/xpnetbeui.html">Windows XPでNetBEUIプロトコルを利用する方法</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/803localhost/localhost.html">ローカル・ループバック・アドレス（127.0.0.1）とは？</a></li>
+</ul>
+</dd>
+
+<dt><a href="http://www.atmarkit.co.jp/fwin2k/serial/index/index.html">＠IT：Windows Server Insider 連載インデックス</a></dt>
+<dd>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/network/tcpip001/tcpip01.html">詳説 TCP/IPプロトコル -- 第1回 ネットワーク プロトコルとインターネット</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/network/tcpip003/tcpip01.html">詳説 TCP/IPプロトコル -- 第3回 OSI参照モデル</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/network/baswinlan001/baswinlan001_01.html">基礎から学ぶWindowsネットワーク 第1回　ユーザーから見たWindowsネットワークとその舞台裏</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/network/baswinlan015/baswinlan015_02.html"> 基礎から学ぶWindowsネットワーク 第15回　信頼性のある通信を実現するTCPプロトコル（2）　1．TCPパケットの構造</a></li>
+</ul>
+</dd>
+
+<dt><a href="#dos_lan"><span class="ms">■</span></a> <a name="dos_lan">MS-DOS(FD起動) で NetBIOS(NetBEUI) を使う</a></dt>
+<dd>
+<p>必要なのは、ブート可能なフロッピーディスクドライブとNICの<strong>DOS用ドライバ</strong>。及び、Windows をインストールする場合は FAT32 パーティション。</p>
+<ul>
+<li><a href="http://nobusan.jp/computer/hardware/network/dos_network.html">起動ディスク(DOS)でネットワークアクセス</a></li>
+<li><a href="http://inadainadainada.com/Network_install/index_network_install.html">ノートPCにOSを
+ネットワークインストール！</a></li>
+<li><a href="http://www.geocities.jp/mswfw311/home.htm">HOME PAGE of Wireless LAN on DOS</a></li>
+<li><a href="http://hp.vector.co.jp/authors/VA007890/dos/sd/winnet.html">DOSで利用するネットワーク</a></li>
+<li><a href="http://www.nobukuni.com/jp/mobile/mswc.html">LAN 接続のできる起動フロッピーの作り方</a></li>
+<li><a href="http://homepage3.nifty.com/kimuras/DOS_LAN.htm">MS-DOSネットワーク接続でOSインストール</a> | <a href="https://web.archive.org/web/20060304132719/http://homepage3.nifty.com/kimuras/DOS_LAN.htm">web.archive</a></li>
+<li><a href="http://www.novels.jp/~yaji/dosnet/">DOSでネットワークを！</a> | <a href="https://web.archive.org/web/20050825134035/http://www.novels.jp/~yaji/dosnet/">web.archive</a></li>
+</ul>
+
+<div class="palmst">
+<pre>
+mswgcn.exe
+MD5   : 9cf23f4f9fc2675393329c5f8cf45f45
+</pre>
+<ol>
+<li>NIC の DOS 用ドライバを準備</li>
+<li><strong>Workgroup Connection</strong> をダウンロード
+	<ul class="nest">
+	<li><a href="ftp://ftp.microsoft.com/softlib/mslfiles/mswgcn.exe">mswgcn.exe</a> (ftp)</li>
+	</ul>
+</li>
+<li><strong>MS-DOS 起動ディスク</strong>を作成</li>
+<li><strong>Workgroup Connectionセットアップディスク</strong>の作成</li>
+<li><strong>Workgroup Connectionセットアップディスク</strong>に DOS 用ドライバをディレクトリごとコピーしておく</li>
+<li><strong>MS-DOS 起動ディスク</strong>で起動</li>
+<li><strong>Workgroup Connection</strong>のインストール（<code>C:\DOS</code> にインストール）</li>
+<li><code>C:\DOS</code> から必要なファイルを <strong>MS-DOS 起動ディスク</strong>の <code>A:\DOS</code> にコピー</li>
+<li>xcopy.exe など必要ならDOSコマンドをコピー（※Win98で起動ディスクを作成した場合）</li>
+</ol>
+
+<dl>
+<dt>注意</dt>
+<dd>
+<ul>
+<li>XPで作成した起動ディスクでは <strong>xcopy</strong> などのコマンドは使えない。ネットワークドライブからインストールコマンド(<strong>winnt.exe</strong>)の直接実行は可能</li>
+<li>（Win98に含まれる）<strong>smartdrv.exe</strong> がないとファイルのコピーなど非常に遅い。</li>
+<li><strong>xcopy</strong> を使うには Win98で作成したディスクに、<strong>xcopy.exe, xcopy32.exe, xcopy32.mod</strong> の3つのファイルのコピーが必要（※XPで作成したディスクでは動作しない）</li>
+</ul>
+</dd>
+</dl>
+</div>
+
+<p>私のは以下のドライバでOKでした。NICのデバイス名の確認はデバイスマネージャで（ファイル名を指定して実行【devmgmt.msc】）。</p>
+<ul>
+<li>Realtek RTL8139 Family PCI Fast Ethernet NIC（M/B内蔵）
+	<ul class="nest">
+	<li><a href="http://www.realtek.com.tw/downloads/downloadsView.aspx?Langid=1&#038;PNid=6&#038;PFid=6&#038;Level=5&#038;Conn=4&#038;DownTypeID=3&#038;GetDown=false#RTL8100B(L)/RTL8100C(L)/RTL8101L/RTL8139C(L)/RTL8139C(L)+/RTL8139D(L)/RTL8100(L)/RTL8130/RTL8139B(L)">汎用ドライバ</a>の <strong>NDIS2 driver for DOS</strong></li>
+	</ul>
+</li>
+<li>Planex FNW-9803-T 10M/100M PCI LAN Adapter（PCIボード - ADMtek AN983B）
+	<ul class="nest">
+	<li>メーカー配布ドライバの <code><strong>\NDIS\DOS</strong></code> ディレクトリ</li>
+	</ul>
+</li>
+<li>VIA Compatable Fast Ethernet Adapter（M/B内蔵 - VIA Rhine Family）
+	<ul class="nest">
+	<li>メーカー配布ドライバの <code><strong>lansvr40.dos</strong></code> ディレクトリ</li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+
+<h2 id="trouble">トラブル</h2>
+
+<ul>
+<li><a href="./harddisk.html#suntomo">Windowsが起動しない時 - 私的ハードディスク関連めも</a></li>
+</ul>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/315222/">Windows XP のセーフ モード ブート オプションについて</a> | <a href="https://web.archive.org/web/20070216230025/http://support.microsoft.com/kb/315222/JA/">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/310353/ja">Windows XP でクリーン ブートを実行する方法</a> | <a href="https://web.archive.org/web/20070119073329/http://support.microsoft.com/kb/310353/JA/">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/320159/ja">ホーム ページの設定が突然変更される、またはホーム ページの設定を変更できない</a> | <a href="https://web.archive.org/web/20070306193952/http://support.microsoft.com/kb/320159/ja">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/837115/ja">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/293174/ja">エラー メッセージ : Explorer のページ違反です。モジュール : Browseui.dll</a> | <a href="https://web.archive.org/web/20070602120524/http://support.microsoft.com/kb/293174/ja">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/266416/ja">WinMgmt ベースのパフォーマンス カウンタのエラーをトラブルシュートする方法</a> | <a href="https://web.archive.org/web/20070920143704/http://support.microsoft.com/kb/266416/ja">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/813444/ja">Windows XP で Internet Explorer を使用して SSL (128 ビット) で保護された Web サイトに接続できない場合のトラブルシューティング方法</a> | <a href="https://web.archive.org/web/20070326234017/http://support.microsoft.com/kb/813444/JA/">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/818018/ja">Windows Update または Microsoft Update への接続に関する問題のトラブルシューティング</a> | <a href="https://web.archive.org/web/20070318051215/http://support.microsoft.com/kb/818018/ja">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/436381/ja">「プログラムの追加と削除」に表示される HotFix のアイコンが変更される場合がある</a></li>
+<li><a href="http://support.microsoft.com/kb/310585/ja">ファイル拡張子 .exe のプログラムを起動できない</a> | <a href="https://web.archive.org/web/20080104215914/http://support.microsoft.com/kb/310585/ja">web.archive</a></li>
+</ul>
+
+<ul>
+<li><a href="http://windowsxp.mvps.org/repairwmi.htm">Repairing and re-registering the WMI</a></li>
+<li><a href="http://support.microsoft.com/kb/823775/ja">エラー メッセージ : Windows Management Instrumentation (WMI) 情報が壊れている可能性があります</a> | <a href="https://web.archive.org/web/20070219211301/http://support.microsoft.com/kb/823775/ja">web.archive</a></li>
+<li><a href="http://shunichi.hosono.com/2004/10/windows_management_instrumenta.html">Shunichi.Hosono.com: Windows Management Instrumentation (WMI) 情報の修復</a></li>
+</ul>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/314503/ja">Windows XP の起動時にコンピュータが応答を停止し、黒い画面が表示される</a> | <a href="https://web.archive.org/web/20070221044049/http://support.microsoft.com/kb/314503/ja">web.archive</a></li>
+</ul>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/812105/ja">Windows XP Home Edition に Service Pack 1 を適用すると SFC /scannow が実行できない</a> | <a href="https://web.archive.org/web/20070304221222/http://support.microsoft.com/kb/812105/ja">web.archive</a>
+	<ul class="nest">
+	<li><a href="http://support.microsoft.com/kb/885522/ja">システム ファイル チェッカーは、 Windows XP SP2 または Windows Server 2003 に scannow スイッチを使用すると、インストーラ CD を含むネットワークの場所を受け付けません。</a> | <a href="https://web.archive.org/web/20121113110150/http://support.microsoft.com/kb/885522/ja">web.archive</a></li>
+	<li><a href="http://homepage2.nifty.com/winfaq/wxp/setup.html#148">構成変更するたびに Windows CD-ROM を要求されないようにしたい</a> - <a href="http://homepage2.nifty.com/winfaq/">Windows.FAQ</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/320081/ja">NTFS ファイル システム上のファイルまたはフォルダを削除できない</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/526badfile/badfile.html">＠IT：Windows TIPS -- Tips：不正な名前のファイルを削除する</a></li>
+</ul>
+
+
+<h2 id="tips">Tips</h2>
+
+
+<ul>
+<li><a href="http://www.microsoft.com/japan/windowsxp/expertzone/tips/default.mspx">Microsoft Windows XP : ヒント集</a> | <a href="https://web.archive.org/web/20070310233019/http://www.microsoft.com/japan/windowsxp/expertzone/tips/default.mspx">web.archive</a></li>
+<li><a href="http://www.microsoft.com/japan/windowsxp/using/default.mspx">Microsoft Windows XP : 活用ガイド</a> | <a href="https://web.archive.org/web/20050406065209/http://www.microsoft.com/japan/windowsxp/using/default.mspx">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/129605/ja">[HOWTO] 圧縮されたファイルから元の Windows ファイルを抽出する方法</a> | <a href="https://web.archive.org/web/20070808044743/http://support.microsoft.com/kb/129605/JA/">web.archive</a>
+	<ul class="nest">
+	<li><a href="http://service1.symantec.com/SUPPORT/tsgeninfo.nsf/docid/2001123112044539">How to restore Windows XP system files</a> | <a href="https://web.archive.org/web/20040603015523/http://service1.symantec.com/SUPPORT/tsgeninfo.nsf/docid/2001123112044539">web.archive</a></li>
+	</ul>
+</li>
+<li><a href="http://www.microsoft.com/japan/athome/security/sechome/tool/mbsa1.mspx">Microsoft Baseline Security Analyzer の使い方</a> | <a href="https://web.archive.org/web/20050226043308/http://www.microsoft.com/japan/athome/security/sechome/tool/mbsa1.mspx">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/311578/ja">Windows 2000 の Boot.ini ファイルを編集する方法</a></li>
+<li><a href="http://support.microsoft.com/kb/308418/ja">Windows XP でファイルやフォルダのアクセス許可を設定、表示、変更、または削除する方法</a> | <a href="https://web.archive.org/web/20070213043202/http://support.microsoft.com/kb/308418/JA/">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/436993/ja">フォルダオプション「ダウンロード後に常に開くように設定する」について</a> | <a href="https://web.archive.org/web/20071223171632/http://support.microsoft.com/kb/436993/ja">web.archive</a></li>
+<li><a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=1B286E6D-8912-4E18-B570-42470E2F3582&#038;displaylang=ja">ダウンロードの詳細 : User Profile Hive Cleanup Service</a> | <a href="https://web.archive.org/web/20070224215656/http://www.microsoft.com/downloads/details.aspx?FamilyID=1B286E6D-8912-4E18-B570-42470E2F3582&displaylang=ja">web.archive</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/718edtcacls/edtcacls.html">caclsコマンドでACLを編集する － ＠IT</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.itmedia.co.jp/help/tips/windows/">ITmedia エンタープライズ：Windows Tips 一覧</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.muffy.jp/tips/tips021128.htm">muffy.jp | bits and pieces | ファイル名を指定して実行</a> | <a href="https://web.archive.org/web/20080325114829/http://www.muffy.jp/tips/tips021128.htm">web.archive</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20051009/1128821475">某所の日記 - 【ファイル名を指定して実行】を活用する</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.microsoft.com/technet/sysinternals/default.mspx">Microsoft TechNet: Windows Sysinternals</a> - システム関連のツール
+	<ul>
+	<li><a href="https://docs.microsoft.com/en-us/sysinternals/">Windows Sysinternals - Windows Sysinternals | Microsoft Docs</a> <a href="https://b.hatena.ne.jp/entry/https://docs.microsoft.com/en-us/sysinternals/" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://docs.microsoft.com/en-us/sysinternals/" alt="" class="http-bookmark" /></a></li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt><a href="http://www.atmarkit.co.jp/fsecurity/rensai/securitytips/tipsindex.html">＠IT：Security Tips Index</a></dt>
+<dd>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fsecurity/rensai/securitytips/032event.html">プロセスの実行を監査する（Windows編）</a></li>
+</ul>
+</dd>
+
+
+<dt><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/index/index.html">Windows TIPS INDEX － ＠IT</a></dt>
+<dd>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/585cplcmd/cplcmd.html">コントロール・パネル・アイテムをコマンドラインから呼び出す</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/094filelimitation/094filelimitation.html">ファイル・システムの制限――2G／4GBytes超のファイルに注意――</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/323iecookie/iecookie.html">IE6.0のCookie受け入れ許可リストを移行させる</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/278iezonebu/iezonebu.html">IEのゾーン設定情報を移行・バックアップする</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/787msinfo32/msinfo32.html">トラブル対策のためのコンピュータ情報を効率よく収集する － ＠IT</a></li>
+</ul>
+</dd>
+
+<dt><a href="http://homepage2.nifty.com/winfaq/">Windows.FAQ - ウィンドウズ処方箋</a></dt>
+<dd>
+<ul>
+<li><a href="http://homepage2.nifty.com/winfaq/wxp/hints.html#1402">Windows 2000/XP を標準のセキュリティ設定に戻すには？ - wxp:使用法ヒント</a></li>
+<li><a href="http://homepage2.nifty.com/winfaq/c/ietips.html#676">IE のアドレスバーに残った URL の履歴を削除するには？ - win:Internet Explorer 使用法ヒント</a>
+</li>
+</ul>
+</dd>
+
+
+<dt><a href="http://arena.nikkeibp.co.jp/tec/winxp/?from=tecleaf">デジタルARENA / 実戦テクニック Windows XP</a></dt>
+<dd>
+<ul>
+<li><a href="http://arena.nikkeibp.co.jp/tec/winxp/20050125/110647/">「ファイル名を指定して実行」の履歴を削除する</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h3 id="cmd">コマンド プロンプト</h3>
+<ul>
+<li><a href="https://docs.microsoft.com/ja-jp/windows-server/administration/windows-commands/windows-commands">Windows のコマンド | Microsoft Docs</a>
+	<ul class="nest">
+	<li><a href="https://docs.microsoft.com/ja-jp/windows-server/administration/windows-commands/regsvr32">regsvr32 | Microsoft Docs</a></li>
+	</ul>
+</li>
+<li><a href="http://support.microsoft.com/kb/282301/ja">WinXP ではコマンド プロンプトの簡易編集モードが既定で無効</a> | <a href="https://web.archive.org/web/20091026094022/http://support.microsoft.com/kb/282301/ja">web.archive</a></li>
+<li><a href="http://journal.mycom.co.jp/special/msdos/">MYCOMジャーナル - パソコン - MS-DOS辞書</a> | <a href="https://web.archive.org/web/20061205015317/http://journal.mycom.co.jp/special/msdos/">web.archive</a></li>
+<li><a href="http://itpro.nikkeibp.co.jp/free/NT/WinKeyWord/20040805/1/">Windowsコマンド集：ITpro</a></li>
+<li><a href="http://www5f.biglobe.ne.jp/~ayum/command/command.html">初めてのコマンドプロンプト/Command Prompt</a></li>
+<li><a href="http://ykr414.com/dos/">コマンドプロンプトを使ってみよう！</a></li>
+</ul>
+
+
+<dl>
+<dt><a href="http://www.atmarkit.co.jp/fwin2k/serial/index/index.html">＠IT：Windows Server Insider 連載インデックス</a></dt>
+<dd>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/command001/command1.html">連載：Windows 2000コマンドライン徹底活用　第1回コマンド プロンプト入門 -- イントロダクション</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/command002/command1.html">連載：Windows 2000コマンドライン徹底活用　第2回コマンド プロンプト入門（その2） -- 1．ネットワークパスとUNC</a></li>
+</ul>
+</dd>
+
+<dt><a href="http://www.atmarkit.co.jp/fwin2k/xp_feature/index/index.html">＠IT：Windows 2000 Insider／PC Insider合同特別企画：WindowsXPの正体</a></dt>
+<dd>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/xp_feature/013commandtool/commandtool.html">強化されたコマンドライン・ツール（前編）</a></li>
+</ul>
+</dd>
+
+<dt><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/index/index.html">Windows TIPS INDEX － ＠IT</a></dt>
+<dd>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/230cmdprompt/cmdprompt.html">これだけは覚えておきたい、コマンド・プロンプトの使い方</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/072cmdcompletion/cmdprompt.html">コマンド・プロンプトで入力補完機能を使う方法</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/606dirx/dirx.html">8.3形式の短いファイル名を表示させる</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/446xcopy/xcopy.html">xcopyでファイルをバックアップする</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/423tail/tail.html">tailコマンドでログ・ファイルをリアルタイムに監視する</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/391cmdreg/cmdreg.html">コマンド・プロンプトでレジストリを操作する</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/505flists/flists.html">dirコマンドでファイル名の一覧を取得する</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/306openfiles/openfiles.html">オープンしているファイルを調査する</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/267swchos/table.html">OSの種類によってバッチ・ファイルの処理を切り替える方法</a></li>
+</ul>
+</dd>
+
+<dt>任意のフォルダからコマンド プロンプトを開く</dt>
+<dd>
+<ul>
+<li><a href="http://homepage2.nifty.com/winfaq/w2k/hints.html#901">エクスプローラで任意のフォルダをカレントにしてコマンドプロンプトで開くには？</a> - <a href="http://homepage2.nifty.com/winfaq/">Windows.FAQ</a></li>
+</ul>
+<p>「窓の手」などでも設定可能。</p>
+<ul>
+<li>※Windows XP 用regファイル</li>
+</ul>
+<pre class="scl">
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\shell\コマンドプロンプト(&#038;P)]
+[HKEY_CLASSES_ROOT\Directory\shell\コマンドプロンプト(&#038;P)\command]
+@=&#034;cmd.exe \\\&#034;%1\\\&#034;&#034;
+</pre>
+<ul>
+<li>※元に戻すregファイル</li>
+</ul>
+<pre class="scl">
+Windows Registry Editor Version 5.00
+
+[-HKEY_CLASSES_ROOT\Directory\shell\コマンドプロンプト(&#038;P)]
+</pre>
+</dd>
+</dl>
+
+
+<h3 id="restore">システムの復元</h3>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/882796/ja">システムの復元を利用してみよう</a> | <a href="https://web.archive.org/web/20070312170148/http://support.microsoft.com/kb/882796/JA/">web.archive</a></li>
+<li><a href="http://www.microsoft.com/japan/technet/prodtechnol/winxppro/maintain/xpsysrst.mspx">Windows XP のシステムの復元ユーティリティ</a> | <a href="https://web.archive.org/web/20050208171134/http://www.microsoft.com/japan/technet/prodtechnol/winxppro/maintain/xpsysrst.mspx">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/302796/">Windows XP でシステムの復元ツールの問題をトラブルシューティングする方法</a> | <a href="https://web.archive.org/web/20070318195130/http://support.microsoft.com/kb/302796/JA/">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/281616/ja">システムの復元が .bkf ファイルを復元しない</a> | <a href="https://web.archive.org/web/20070312221300/http://support.microsoft.com/kb/281616/JA/">web.archive</a></li>
+<li><a href="http://www.microsoft.com/japan/msdn/windows/windowsxp/windowsxpsystemrestore.asp#windowsxpsystemrestore_system">Microsoft Windows XP System Restore</a> | <a href="https://web.archive.org/web/20050207141835/http://www.microsoft.com/japan/msdn/windows/windowsxp/windowsxpsystemrestore.asp">web.archive</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/srestore/srestore_01.html">運用：システム・クラッシュからの復活［システムの復元］</a></li>
+<li>システムの復元について - System Restore | <a href="https://web.archive.org/web/20060206062324/http://www.tef-room.net/tips/restore.html">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/263455/ja">_RESTORE フォルダにウイルスが発見された場合の対応方法について</a> | <a href="https://web.archive.org/web/20071112202319if_/http://support.microsoft.com/kb/263455/ja#?FR=1">web.archive</a></li>
+</ul>
+
+<ul>
+<li>「システムの復元」で変更の監視対象となるディレクトリやファイルの拡張子
+</ul>
+<pre>
+%SystemRoot%\system32\Restore\Filelist.xml
+</pre>
+
+<ul>
+<li>最新以外を削除する
+	<ul class="nest">
+	<li><a href="http://trendy.nikkeibp.co.jp/article/tec/winxp/20070514/121935/">復元ポイントの情報を削除する - 日経トレンディネット</a> | <a href="https://web.archive.org/web/20071130013712/http://trendy.nikkeibp.co.jp/article/tec/winxp/20070514/121935/">web.archive</a></li>
+
+	</ul>
+</li>
+</ul>
+
+
+
+<h3 id="cmdcons">回復コンソール</h3>
+
+<div class="palmst">
+<dt>メーカー製パソコンでは注意</dt>
+<dd>
+<p><code><strong>fixmbr</strong></code>コマンドはMBR（マスターブートレコード）を修復します（正確にはMBR内の「ブートストラップローダ」かな）。<span class="red"><strong>ハードディスクから直接起動するタイプのリカバリープログラムが実行できなくなる場合があります</strong></span>。MBRはバックアップがない場合は復元が非常に困難なので注意しましょう。取扱説明書などに記述のない操作はしない方が安全かと思います。</p>
+</dd>
+</dl>
+
+<dl>
+<dt>回復コンソールの起動方法</dt>
+<dd>
+<ol>
+<li><strong>セットアップCD</strong>からブート</li>
+<li><strong>インストール用起動ディスク</strong>（フロッピー）からブート
+	<ul>
+	<li>※注意：<strong>インストール時のService Pack のバージョンのもの</strong>を使う</li>
+	<li><a href="http://support.microsoft.com/kb/880422/JA/">Windows XP のインストール用起動ディスクを入手する方法</a> | <a href="https://web.archive.org/web/20100316104336/http://support.microsoft.com/kb/880422/JA/">web.archive</a></li>
+</ul>
+</li>
+<li><strong>ハードディスクにインストール</strong> - ブート時に選択して起動
+	<ul class="nest">
+	<li>※注意：<strong>現在の Service Pack のバージョンに合わせる</strong>こと</li>
+	<li><code>i386\winnt32.exe /cmdcons</code></li>
+	<li><a href="http://support.microsoft.com/kb/307654/ja">Windows XP での回復コンソールのインストールおよび使用方法</a> | <a href="https://web.archive.org/web/20070304121232if_/http://support.microsoft.com/kb/307654/JA/#?FR=1">web.archive</a></li>
+	<li><a href="http://support.microsoft.com/kb/898594/">Microsoft Windows XP Service Pack 2 ベースのコンピュータに回復コンソールをインストールしようとするとエラー メッセージが表示される</a> | <a href="https://web.archive.org/web/20070710144433/http://support.microsoft.com/kb/898594/ja">web.archive</a></li>
+	<li><a href="http://homepage2.nifty.com/winfaq/wxp/boot.html#1465">boot.ini が短くなります/回復コンソールが起動しなくなりました</a> - <code>msconfig.exe</code> を使う場合は注意</li>
+</ul>
+</li>
+</ol>
+
+<p>※Service Pack 2(3) にアップグレード後にハードディスクにインストールする場合は統合セットアップファイルの作成が必要。</p>
+<ul>
+<li><a href="http://support.microsoft.com/kb/883760/JA/">SP2 にアップグレード後、Windows XP CD から回復コンソールをインストールできない</a> | <a href="https://web.archive.org/web/20070416163724/http://support.microsoft.com/kb/883760/JA/">web.archive</a></li>
+</ul>
+<p>※起動ディスク（フロッピー）を使用する場合は、<strong>インストール時のバージョンのもの</strong>を選択する必要が<del>あります</del><ins>あるかも</ins>（※両方試した方がいいみたいです...すみません）。</p>
+</dd>
+
+
+<dt>使用方法</dt>
+<dd>
+<p><code>help</code> で使用可能コマンド確認。<code><var>コマンド</var> /?</code> でオプション確認</p>
+<ul>
+<li><a href="http://support.microsoft.com/kb/307654/ja">Windows XP での回復コンソールのインストールおよび使用方法</a> | <a href="https://web.archive.org/web/20070304121232if_/http://support.microsoft.com/kb/307654/JA/#?FR=1">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/882361/ja">回復コンソールを実行するには</a> | <a href="https://web.archive.org/web/20070216230206/http://support.microsoft.com/kb/882361/JA/">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/314058/ja">Windows XP 回復コンソールについて</a> | <a href="https://web.archive.org/web/20070222225307if_/http://support.microsoft.com/kb/314058/JA/#?FR=1">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/229716/JA/">Windows 2000 回復コンソールについて</a> | <a href="https://web.archive.org/web/20070320020425if_/http://support.microsoft.com/kb/229716/JA/#?FR=1">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/882178/">Windows XP にアップグレード後 Hal.dll が存在しないか壊れていると表示されて起動できない場合の対処方法</a> | <a href="https://web.archive.org/web/20070219025803/http://support.microsoft.com/kb/882178/JA/">web.archive</a>
+	<ul class="nest">
+	<li>XP SP 2 の「読み込みオプション」のデフォルトは、
+		<br><code><strong>/fastdetect /NoExecute=OptIn</strong></code>
+	</li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><code><strong>fixmbr</strong></code> - マスターブートレコードの修復（※<strong><span class="red">メーカー製PCではやっちゃだめ！</span></strong>かも？）</li>
+<li><code><strong>fixboot</strong></code> - パーティションのブートセクタの修復（※ <strong>ntldr</strong> などは復元されない）</li>
+<li><code><strong>bootcfg</strong></code> - <strong>boot.ini</strong> の再構成</li>
+<li><code>More/Type</code> - テキストファイルの表示</li>
+</ul>
+
+<dl>
+<dt>Chkdsk</dt>
+<dd>
+<p><strong class="ms">Autochk.exe</strong> の場所は通常下記です。</p>
+<pre>
+C:\windows\system32\autochk.exe
+</pre>
+<div class="quote">
+<blockquote cite="http://support.microsoft.com/kb/307654/ja" title="Windows XP での回復コンソールのインストールおよび使用方法">
+<p>Chkdsk : /p スイッチを使用すると、ドライブにダーティ フラグが付いていなくても Chkdsk を実行します。/r スイッチを使用すると、不良セクタを探し、読み取り可能な情報を回復します。/r スイッチを指定すると、暗黙のうちに /p スイッチも指定されます。Chkdsk を実行するには、Autochk が必要であるため、スタートアップ フォルダ (またはブート フォルダ) 内で Autochk.exe が自動的に検索されます。スタートアップ フォルダにこのファイルが見つからない場合は、Windows XP セットアップ CD-ROM を探します。インストール CD-ROM が見つからない場合は、<strong>Autochk.exe の場所を指定するようにユーザーに指示します</strong>。</p>
+</blockquote>
+<cite><a href="http://support.microsoft.com/kb/307654/ja">Windows XP での回復コンソールのインストールおよび使用方法</a> | <a href="https://web.archive.org/web/20070304121232if_/http://support.microsoft.com/kb/307654/JA/#?FR=1">web.archive</a></cite>
+</div>
+</dd>
+</dl>
+</dd>
+
+<dt>制限事項</dt>
+<dd>
+<ul>
+<li>フロッピーディスクなどリムーバブルメディアへのファイルのコピーはできない
+	<ul class="nest">
+	<li>※<strong>事前に</strong>Windows上でポリシーを設定していれば、<strong>set</strong>コマンドで環境変数の変更が可能</li>
+	</ul>
+</li>
+<li>システム以外のドライブのサブフォルダは<code>dir</code>コマンドでの表示は可能だがアクセスはできない</li>
+<li>プログラムなどの実行はできない</li>
+</ul>
+
+<ul>
+<li>フロッピーディスクからのコピーは可能</li>
+<li>システム以外のドライブのルートへのコピーは可能</li>
+</ul>
+<p>※尚、Windows上でUSBメモリなどのリムーバブルメディアにドライブレターを設定している場合はそのドライブレターを指定しなければなりません。</p>
+</dd>
+
+<dt><code>set</code>コマンドによる設定変更を可能にする</dt>
+<dd>
+<ul>
+<li><a href="http://technet2.microsoft.com/WindowsServer/ja/Library/6af86872-8ce3-4665-90b7-f9a07e9c00cf1041.mspx">回復コンソール : すべてのドライブとフォルダに、フロッピーのコピーとアクセスを許可する</a></li>
+<li><a href="http://support.microsoft.com/kb/240831/ja">回復コンソールからリムーバブル メディアへのコピー方法</a> | <a href="https://web.archive.org/web/20101114173649/http://support.microsoft.com/kb/240831/ja">web.archive</a></li>
+</ul>
+
+<ul>
+<li><code><strong>set allowallpaths = true</strong></code> - すべてのフォルダへアクセス可能に</li>
+<li><code><strong>set allowremovablemedia = true</strong></code> - リムーバブルメディアへコピー可能に</li>
+<li><code><strong>set allowwildcards = true</strong></code> - ワイルドカードを有効に</li>
+</ul>
+
+<p><strong>事前にWindows上でポリシーを設定</strong>する必要があります。</p>
+<p>※ XP Pro なら「ローカル セキュリティ ポリシー」（または グループ ポリシー）で設定。</p>
+
+<ul>
+<li><a href="http://technet2.microsoft.com/WindowsServer/ja/Library/6af86872-8ce3-4665-90b7-f9a07e9c00cf1041.mspx">回復コンソール : すべてのドライブとフォルダに、フロッピーのコピーとアクセスを許可する</a>
+	<ol class="nest">
+	<li>ファイル名を指定して実行 - <code><strong>secpol.msc</strong></code></li>
+	<li>「回復コンソール:すべてのドライブとフォルダに、フロッピーのコピーとアクセスを許可する」の設定を有効にする</li>
+	</ol>
+</li>
+</ul>
+
+<p>※ XP Home ではレジストリの設定変更が必要</p>
+<ol>
+<li>「SetCommand」の値のデータを <var><strong>1</strong></var> にする</li>
+</ol>
+<pre>
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Setup\RecoveryConsole
+</pre>
+
+<pre class="scl">
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Setup\RecoveryConsole]
+&#034;SetCommand&#034;=dword:00000001
+</pre>
+
+<ul>
+<li>※デフォルトに戻す - 値のデータを <var><strong>0</strong></var> にする</li>
+</ul>
+<pre class="scl">
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Setup\RecoveryConsole]
+&#034;SetCommand&#034;=dword:00000000
+</pre>
+</dd>
+</dl>
+
+<ul>
+<li><a href="http://homepage2.nifty.com/winfaq/w2k/boot.html#1296">回復コンソールに自動ログオンするには？</a> - <a href="http://homepage2.nifty.com/winfaq/">Windows.FAQ</a>
+	<ul class="nest">
+	<li><a href="http://support.microsoft.com/kb/312149/ja">回復コンソールで管理者として自動的にログオンできるようにする方法</a> | <a href="https://web.archive.org/web/20080225201038/http://support.microsoft.com/kb/312149/ja">web.archive</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>Windows XP 用 regファイル</li>
+</ul>
+<pre class="scl">
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Setup\RecoveryConsole]
+"SecurityLevel"=dword:00000001
+</pre>
+
+<ul>
+<li>Windows XP 用 元に戻すregファイル</li>
+</ul>
+<pre class="scl">
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Setup\RecoveryConsole]
+"SecurityLevel"=dword:00000000
+</pre>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/313670/ja">[HOWTO] Windows 2000 で回復コンソールを使用してドライバを置き換える方法</a> | <a href="https://web.archive.org/web/20080229123637/http://support.microsoft.com/kb/313670/ja">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/216417/ja">Windows 回復コンソールのインストール方法</a> | <a href="https://web.archive.org/web/20070306040614/http://support.microsoft.com/kb/216417/JA/">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/313672/ja">[HOW TO] Windows 2000 で回復コンソールを使用してハード ディスクをフォーマットする方法</a> | <a href="https://web.archive.org/web/20080408172928/http://support.microsoft.com/kb/313672/ja">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/884090/ja">Windows XP SP2 を回復コンソールからアンインストールする方法</a> | <a href="https://web.archive.org/web/20070317232943/http://support.microsoft.com/kb/884090/JA/">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/418305/ja">[WinXP]回復コンソールからパーティションの変更を行う方法</a> | <a href="https://web.archive.org/web/20070320045518/http://support.microsoft.com/kb/418305/ja">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/436927/ja">ファイルが失われているか壊れていて Windows XP を起動できない場合に回復コンソールで修復する方法</a> | <a href="https://web.archive.org/web/20071112010922/http://support.microsoft.com/kb/436927/ja">web.archive</a></li>
+<li><a href="http://support.microsoft.com/default.aspx?kbid=308402">Windows XP 回復コンソールへのログオン時、エラー メッセージ &#034;パスワードは、有効ではありません&#034; が表示される</a> | <a href="https://web.archive.org/web/20080323132049/http://support.microsoft.com/kb/308402/ja">web.archive</a></li>
+</ul>
+
+<ul>
+<li>Vaio サポート<a href="http://search.vaio.sony.co.jp/google/solution/S0111050008314/index.html#1">[Windows XP] 回復コンソールの使用方法</a> | <a href="https://web.archive.org/web/20110101113545/http://search.vaio.sony.co.jp/google/solution/S0111050008314/index.html">web.archive</a>
+	<ul class="nest">
+	<li><a href="http://search.vaio.sony.co.jp/google/solution/S0111130008400/index.html">Windows XP 回復コンソールでサポートされているコマンド一覧</a></li>
+	<li><a href="http://search.vaio.sony.co.jp/google/solution/S0110260008182/index.html">[Windows XP] パスワードを要求され回復コンソールが起動できない</a> | <a href="https://web.archive.org/web/20100731165344/http://search.vaio.sony.co.jp/google/solution/S0110260008182/index.html">web.archive</a></li>
+	<li><a href="http://search.vaio.sony.co.jp/qa/S0107060006820/index.html">[Windows XP] 起動時の OS 選択画面を表示しないようにしたい</a> | <a href="https://web.archive.org/web/20100418201653/http://search.vaio.sony.co.jp/qa/S0107060006820/index.html">web.archive</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://uiuicy.cs.land.to/kaihuku.html">1CDブート回復コンソール作製法</a></li>
+</ul>
+
+
+
+<h3 id="dos">MS-DOS起動ディスク</h3>
+
+<p class="small">何か役に立つ時があるかもしれないので（ないかもしれない）作っておいた方がいいかもと。Windows 98 の起動ディスクが使えるならいいんですが、そうできない場合に...また<a href="#bootdisk">緊急起動ディスク</a>と同様に（BIOSが対応次第では）ブータブルCD化やUSBメモリでの代用も可能です。※<strong><span class="red">NTFSパーティションは読み書きできませんけど</span></strong>！</p>
+<p class="small">※日本語ファイル名を扱うのは難しいというか、無理かも。（CDブート可能なら、Knoppix CDで、またはバックアップソフトで丸ごとイメージ取っちゃうとかかなぁ）</p>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/188mkdosflpy/mkdosflpy.html">Windows TIPS -- TIPS：Windows XPでMS-DOSの起動フロッピーを作成する</a></li>
+<li><a href="http://ja.wikibooks.org/wiki/MS-DOS/PC_DOS%E5%85%A5%E9%96%80">MS-DOS/PC DOS入門 - Wikibooks</a></li>
+<li><a href="http://ja.wikipedia.org/wiki/MS-DOS">MS-DOS - Wikipedia</a></li>
+</ul>
+
+<p class="small">キーボードの配列がデフォルトでは英語仕様。チルダ[<strong><span class="ms">~</span></strong>]は Shift+半角。</p>
+<ul>
+<li><a href="https://www.palm84.com/entry/20150612/1434105913">キーボードUS配列の違いとか</a> <a href="https://b.hatena.ne.jp/entry/https://www.palm84.com/entry/20150612/1434105913" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://www.palm84.com/entry/20150612/1434105913" alt="" class="http-bookmark" /></a></li>
+</ul>
+<p><span class="ms"><strong>AUTOEXEC.BAT</strong></span> に以下を記述したら日本語106キーボード配列となりました。（※日本語ファイル名は文字化けします。）</p>
+<ul>
+<li>参考：
+	<ul class="nest">
+	<li><a href="http://euc.jp/periphs/doscdrom.ja.html">DOSでCD-ROMを使う方法</a> - <a href="http://euc.jp/">euc.JP: tech docs, BeOS tools</a></li>
+	<li><a href="http://ja.wikipedia.org/wiki/JIS%E9%85%8D%E5%88%97">JISキーボード - Wikipedia</a></li>
+	</ul>
+</li>
+</ul>
+<pre>
+LH KEYB.COM JP,932,KEYBOARD.SYS
+</pre>
+
+<dl>
+
+<dt>CD-ROMドライバの組み込み</dt>
+<dd>
+<p class="small">DOS用ドライバと <span class="ms"><strong>MSCDEX.EXE</strong></span>（Win98に含まれる）が必要。以下のページが参考になりました。</p>
+<ul>
+<li><a href="http://euc.jp/periphs/doscdrom.ja.html">DOSでCD-ROMを使う方法</a> - <a href="http://euc.jp/">euc.JP: tech docs, BeOS tools</a>さん</li>
+<li><a href="http://support.microsoft.com/kb/q123408/">Microsoft MS-DOS CD-ROM 拡張(MSCDEX)の履歴</a>（ダウンロード）| <a href="https://web.archive.org/web/20120216203047/http://support.microsoft.com/kb/123408/ja">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/405942/ja">MSCDEXに関するQ&#038;A</a> | <a href="https://web.archive.org/web/20110928075046/http://support.microsoft.com/kb/405942/ja">web.archive</a></li>
+<li><a href="http://j7p.net/backup/howto_doscdrom.html">DOS用のCDROMドライバ</a> - <a href="http://j7p.net/">杉田正幸ホームページ</a>さん</li>
+</ul>
+
+<dl>
+<dt class="small">CONFIG.SYS</dt>
+<dd>
+<p class="small"><code>/D:CD001</code> については下記の <span class="ms"><strong>AUTOEXEC.BAT</strong></span> と同じに。</p>
+<pre>
+DEVICEHIGH=<var>CDROM.SYS</var> /D:CD001
+</pre>
+</dd>
+
+<dt class="small">AUTOEXEC.BAT</dt>
+<dd>
+<pre>
+MSCDEX.EXE /D:CD001
+</pre>
+</dd>
+
+</dl>
+</dd>
+</dl>
+
+<p class="small">海外のサイトに汎用ドライバがあったりする様ですが、よく知らないので紹介はパス。（宣伝ポップアップが出たりするし...）。見つけたものだけ。</p>
+<ul>
+<li><a href="http://www.dospara.co.jp/link/share.php">ドスパラ - 便利リンク</a></li>
+<li>Panasonic - <a href="http://panasonic.co.jp/pcc/products/drive/other/license1.html">ポータブルドライブ 起動ディスク作成ツール(USB用) エンドユーザーライセンス契約書</a> | <a href="http://web.archive.org/web/20070709052214/http://panasonic.co.jp/pcc/products/drive/other/license1.html">web.archive</a></li>
+<li>東芝 - <a href="http://sdd.toshiba.com/main.aspx?Path=8182000000220000000100006598000015a5/818200000c58000000010000659c00002c36">Device Drivers</a></li>
+<li>TEAC - <a href="http://www.teac.co.jp/dspd/download/downloadj.html">ソフトウェアダウンロード</a></li>
+<li>Quanta（QSIシリーズ） - <a href="http://wlsap.qsitw.com/QSIWeb/english/e020300.jsp?dist_no=2">Quanta Storage Inc.</a></li>
+<li>パイオニア - <a href="http://wwwbsc.pioneer.co.jp/device/rom.html">パソコン用ドライブソフトウエア/ファームウェアダウンロード</a></li>
+<li>Plextor - <a href="http://www.plextor.com/english/support/drivers/drivers.html#DW">MS DOS and MS Windows 3.1X DOS Driver for Plextor drives</a></li>
+<li>Samson<a href="http://www.samsungodd.com/eng/Information/Application/Application.asp">ODD-Related softwares</a></li>
+</ul>
+
+<dl>
+
+<dt>NTFSパーティションの読み出し</dt>
+<dd>
+<p class="small">フリー版では読み取りしかできませんが、FAT32パーティションや、（BIOSが対応していれば）USBメモリなどへのコピーが可能。（※日本語名ファイル/フォルダはだめだと思います。）</p>
+<ul>
+<li><a href="http://www.sysinternals.com/utilities/ntfsdosprofessional.html">Sysinternals Freeware - NTFSDOS Professional Edition</a> | <a href="http://web.archive.org/web/20070101011312/http://www.sysinternals.com/Utilities/NtfsDos.html">web.archive</a>
+</li>
+</ul>
+<p class="small">フロッピーディスクが2枚必要。1枚目はMS-DOS起動ディスクと兼用でもOK。作成はWindows 2000/XP 上で。</p>
+</dd>
+
+</dl>
+
+<ul>
+<li><a href="https://www.palm84.com/entry/dosdisk#winxp">Windows XP - 私的「DOS起動ディスク」めも</a></li>
+</ul>
+
+
+<h2 id="custom">カスタマイズ</h2>
+
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/882563/ja">ユーザー プロファイル名を変更するには</a> | <a href="https://web.archive.org/web/20070222103345/http://support.microsoft.com/kb/882563/ja">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/297878/">インターネットブラウザや電子メールクライアントを Windows XP の [スタート] メニューに登録する方法</a> | <a href="https://web.archive.org/web/20070621152820/http://support.microsoft.com/kb/297878/ja">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/299853/ja">Windows XP でプログラムでデフォルトのブラウザと電子メール Web クライアントを変更する方法</a> | <a href="https://web.archive.org/web/20110914233256/http://support.microsoft.com/kb/299853/ja">web.archive</a></li>
+</ul>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/879751/ja">[ファイルを開く] ダイアログボックスの [プレースバー] の使用方法</a>
+	<ul class="nest">
+	<li><a href="http://homepage2.nifty.com/winfaq/wme/custom.html#524">Windows Me/2000 の新しい「ファイルを開く」ダイアログのカスタマイズは？</a> - <a href="http://homepage2.nifty.com/winfaq/">Windows FAQ</a></li>
+	<li><a href="http://support.microsoft.com/kb/282087/ja">Office XP プログラムで [開く] および [名前を付けて保存] ダイアログ ボックスのマイ プレース バーをカスタマイズする方法</a> | <a href="https://web.archive.org/web/20070509051636if_/http://support.microsoft.com/kb/282087/ja#?FR=1">web.archive</a></li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt>Windows Server World Online</dt>
+<dd>
+<ul>
+<li>言語バーをタスクバーに格納する | <a href="https://web.archive.org/web/20081010215220/http://www.windows-world.jp/tips/-/11020.html">web.archive</a></li>
+<li>WindowsXPの緊急起動ディスクを作成する | <a href="https://web.archive.org/web/20081024123549/http://www.windows-world.jp/tips/-/10869.html">web.archive</a></li>
+</ul>
+</dd>
+
+<dt>MYCOMジャーナル - パソコン - コラム/連載</dt>
+<dd>
+<ul>
+<li>第181回 [無変換]キーに[Windows]キーを割り当てる (MYCOMジャーナル) | <a href="https://web.archive.org/web/20070213004428/http://journal.mycom.co.jp/column/winxp/181/">web.archive</a></li>
+</ul>
+</dd>
+
+<dt><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/index/index.html">Windows TIPS INDEX － ＠IT</a></dt>
+<dd>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/510ibmkey/ibmkey.html">IBM ThinkpadでWindowsキー／アプリケーション・キーを割り当てる</a></li>
+</ul>
+</dd>
+</dl>
+
+<dl>
+<dt>CD-ROM の自動実行機能を有効または無効にする</dt>
+<dd>
+<ul>
+<li><a href="http://support.microsoft.com/kb/882187/ja">CD-ROM を挿入した際の動作を選択するには</a></li>
+<li><a href="http://support.microsoft.com/kb/155217/ja">CD-ROM の自動実行機能を有効または無効にする方法</a> | <a href="https://web.archive.org/web/20071213082001if_/http://support.microsoft.com/kb/155217/ja#?FR=1">web.archive</a></li>
+</ul>
+
+<ul>
+<li>※Windows XP 用 無効にするregファイル その1</li>
+</ul>
+<pre class="scl">
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Cdrom]
+&#034;AutoRun&#034;=dword:00000000
+</pre>
+
+<ul>
+<li>※Windows XP 用 無効にするregファイル その2</li>
+</ul>
+<pre class="scl">
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+&#034;NoDriveTypeAutoRun&#034;=dword:000000b5
+</pre>
+
+<ul>
+<li>※Windows XP 用 元に戻すregファイル（初期値） その1</li>
+</ul>
+<pre class="scl">
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Cdrom]
+&#034;AutoRun&#034;=dword:00000001
+</pre>
+
+<ul>
+<li>※Windows XP 用 元に戻すregファイル（初期値） その2</li>
+</ul>
+<pre class="scl">
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+&#034;NoDriveTypeAutoRun&#034;=dword:00000091
+</pre>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/330135/ja">ドライブに CD-ROM を挿入しても自動実行または自動再生機能が動作しない</a> | <a href="https://web.archive.org/web/20080307061505/http://support.microsoft.com/kb/330135/ja">web.archive</a></li>
+<li><a href="http://support.microsoft.com/default.aspx?scid=kb%3Bja%3B312475">CD-ROM または DVD-ROM ドライブに CD-ROM を挿入しても、自動的に実行しない</a>(Win9x) | <a href="https://web.archive.org/web/20080111012715/http://support.microsoft.com/kb/312475/ja">web.archive</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h2 id="registry">レジストリ</h2>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/256986/ja">Microsoft Windows レジストリの説明</a></li>
+<li><a href="http://support.microsoft.com/kb/322756/ja">Windows XP および Windows Server 2003 でレジストリをバックアップ、編集および復元する方法 - マイクロソフト ヘルプとサポート</a></li>
+<li><a href="http://www.microsoft.com/japan/technet/scriptcenter/scripts/os/registry/default.mspx">レジストリ</a> | <a href="https://web.archive.org/web/20060912053521/http://www.microsoft.com/japan/technet/scriptcenter/scripts/os/registry/default.mspx">レジストリ</a></li>
+<li><a href="http://support.microsoft.com/kb/243330/ja">Windows サーバー オペレーティング システムの既知のセキュリティ識別子</a></li>
+<li><a href="http://support.microsoft.com/kb/JP240797">Internet Explorer で ActiveX コントロールの動作を停止する方法</a> | <a href="https://web.archive.org/web/20060630181325/http://support.microsoft.com/kb/240797/ja">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/295659/ja">システムの復元ユーティリティに関連するレジストリ</a> | <a href="https://web.archive.org/web/20080320231028/http://support.microsoft.com/kb/295659/ja">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/833633/ja">Internet Explorer のマイ コンピュータ ゾーンのセキュリティ設定を強化する方法</a> | <a href="https://web.archive.org/web/20070810234301/http://support.microsoft.com/kb/833633/JA/">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/307545/ja">レジストリの破損により Windows XP を起動できなくなった場合の回復方法</a> | <a href="https://web.archive.org/web/20070223031649if_/http://support.microsoft.com/kb/307545/JA/#?FR=1">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/179365/ja">[INFO] Run、RunOnce、RunServices、RunServicesOnce レジストリ キーと [スタートアップ] フォルダの関係</a> | <a href="https://web.archive.org/web/20070218132053/http://support.microsoft.com/kb/179365/ja">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/141377">Regedit.exe と Regedt32.exe の相違点</a> | <a href="https://web.archive.org/web/20070217071143if_/http://support.microsoft.com/kb/141377/JA/#?FR=1">web.archive</a></li>
+</ul>
+
+<ul>
+<li><a href="http://nanahane.ifdef.jp/reg/reg.htm">七羽のレジストリ講座</a> | <a href="https://web.archive.org/web/20070517223321/http://nanahane.ifdef.jp/reg/reg.htm">web.archive</a></li>
+<li><a href="http://journal.mycom.co.jp/column/winxp/014/">【コラム】Windows XPスマートチューニング 第14回 「reg.exe」の使い方を覚える その1 (MYCOMジャーナル)</a> | <a href="https://web.archive.org/web/20070317234123/http://journal.mycom.co.jp/column/winxp/014/">web.archive</a></li>
+
+<li><a href="http://www.forest.impress.co.jp/article/ijikururegistry.html">窓の杜 - 矢吹拓也のいじくるレジストリ　INDEX</a></li>
+</ul>
+
+<dl>
+<dt>レジストリの書き出し/適用</dt>
+<dd>
+<ul>
+<li><a href="http://support.microsoft.com/kb/310516/ja">登録エントリ (.reg) ファイルを使用してレジストリ サブキーおよび値を追加、変更、または削除する方法</a></li>
+<li><a href="http://homepage2.nifty.com/winfaq/c/hints.html#308">レジストリエディタを開かずにレジストリの特定のキーや値を削除できますか？</a> - <a href="http://homepage2.nifty.com/winfaq/">Windows.FAQ</a></li>
+</ul>
+
+<ul>
+<li>ファイル名を指定して実行</li>
+</ul>
+<pre class="scl">
+regedit /e &#034;%userprofile%\デスクトップ\Backup.reg.txt&#034; &#034;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion&#034;
+</pre>
+
+<ul>
+<li>ファイル名を指定して実行</li>
+</ul>
+<pre class="scl">
+reg export &#034;HKCU\SOFTWARE&#034; &#034;%userprofile%\デスクトップ\Backup.reg.txt&#034;
+</pre>
+
+<dt>inf ファイル</dt>
+<dd>
+<ul>
+<li><a href="http://www.monyo.com/technical/windows/09.html">REGEDIT.EXEとREGEDT32.EXEの使い分け</a></li>
+</ul>
+
+<pre class="scl">
+[Version]
+Signature=&#034;$Chicago$&#034;
+
+[DefaultInstall]
+AddReg = MyAddReg
+
+[UnhookRegKey]
+[MyAddReg]
+HKLM,SOFTWARE\Microsoft\Windows NT\CurrentVersion\Setup\RecoveryConsole, SetCommand, 0x10001, 0x00000001
+</pre>
+
+<p>※この例は「回復コンソールで SET コマンドを有効にする」です。</p>
+</dd>
+
+<dt><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/index/index.html">Windows TIPS INDEX － ＠IT</a></dt>
+<dd>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/593regsave/regsave.html">＠IT：Windows TIPS -- Tips：特定のレジストリ・キー以下を素早くバックアップする</a></li>
+<li><a href="http://www.atmarkit.co.jp/icd/root/82/63063482.html">＠IT：Insider's Computer Dictionary [ハイブ]</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/111regmon/111regmon.html">＠IT：Windows TIPS -- Tips：レジストリへのアクセスをモニタする方法</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/081regref/081regref.html">＠IT：Windows TIPS -- Tips：リソース・キット付属のレジストリ・リファレンスを活用する</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h2 id="etc">その他文書</h2>
+
+
+<ul>
+<li><a href="http://support.microsoft.com/gp/lifeselect">プロダクト サポート ライフサイクル - 製品一覧</a>
+	<ul class="nest">
+	<li><a href="http://www.microsoft.com/japan//windows/lifecycle/homeeol/default.mspx">Microsoft Windows XP Home Edition のサポート ライフサイクル</a> | <a href="https://web.archive.org/web/20070206073838/http://www.microsoft.com/japan//windows/lifecycle/homeeol/default.mspx">Microsoft Windows XP Home Edition のサポート ライフサイクル</a></li>
+	</ul>
+</li>
+<li><a href="http://support.microsoft.com/kb/JP250320">Svchost.exe の説明</a> | <a href="https://web.archive.org/web/20070512234327/http://support.microsoft.com/kb/250320/ja">Svchost.exe の説明</a></li>
+<li><a href="http://support.microsoft.com/kb/JP314056">Windows XP の Svchost.exe の詳細</a> | <a href="https://web.archive.org/web/20070601183502/http://support.microsoft.com/kb/314056/ja">Windows XP の Svchost.exe の詳細</a></li>
+<li><a href="http://www.microsoft.com/japan/developer/windows2000/technologies/ac-win2kcompat/ac-supperhidden.asp">Windows 2000 互換性ガイド - スーパー隠しファイル</a> | <a href="https://web.archive.org/web/20030204222915/http://www.microsoft.com/japan/developer/windows2000/technologies/ac-win2kcompat/ac-supperhidden.asp">Windows 2000 互換性ガイド - スーパー隠しファイル</a></li>
+<li><a href="http://www.microsoft.com/japan/technet/security/alerts/info/malware.mspx">マルウェアの定義 : FAQ</a> | <a href="https://web.archive.org/web/20060621072734/http://www.microsoft.com/japan/technet/security/alerts/info/malware.mspx">マルウェアの定義 : FAQ</a></li>
+<li><a href="http://www.microsoft.com/japan/technet/prodtechnol/winxppro/support/HSC.mspx">Windows XP でヘルプとサポート センターを利用</a> | <a href="https://web.archive.org/web/20050327015537/http://www.microsoft.com/japan/technet/prodtechnol/winxppro/support/HSC.mspx">Windows XP でヘルプとサポート センターを利用</a></li>
+<li><a href="http://support.microsoft.com/kb/222193/ja">Windows ファイル保護機能について</a></li>
+<li><a href="http://support.microsoft.com/kb/310747/ja">Windows XP および Windows Server 2003 のシステム ファイル チェッカー (Sfc.exe) について</a></li>
+<li><a href="http://www.microsoft.com/japan/technet/security/topics/serversecurity/avdind_0.mspx">対ウイルス多層防御ガイドの概要</a> | <a href="https://web.archive.org/web/20060216040101/http://www.microsoft.com/japan/technet/security/topics/serversecurity/avdind_0.mspx">web.archive</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.microsoft.com/japan/technet/prodtechnol/winxppro/default.mspx">Microsoft TechNet: Windows XP Professional</a> | <a href="https://web.archive.org/web/20050205004150/http://www.microsoft.com/japan/technet/prodtechnol/winxppro/default.mspx">web.archive</a></li>
+<li><a href="http://www.microsoft.com/japan/enable/products/docs/windowsxp.mspx">Windows XP ドキュメントのダウンロード</a> | <a href="https://web.archive.org/web/20070601235407/http://www.microsoft.com/japan/enable/products/docs/windowsxp.mspx">web.archive</a></li>
+<li><a href="http://www.microsoft.com/japan/enable/training/windowsxp/default.mspx">Windows XP ステップ バイ ステップ ガイド</a> | <a href="https://web.archive.org/web/20070811200443/http://www.microsoft.com/japan/enable/training/windowsxp/default.mspx">web.archive</a></li>
+<li><a href="https://www.microsoft.com/windows2000/ja/professional/help/default.asp">Windows 2000 Professional ドキュメント</a> | <a href="https://web.archive.org/web/20050119034811/https://www.microsoft.com/windows2000/ja/professional/help/default.asp">web.archive</a></li>
+</ul>
+
+<ul>
+<li><a href="http://oca.microsoft.com/ja/windiag.asp">Microsoft オンライン クラッシュ ダンプ解析サービス - windiag</a> | <a href="https://web.archive.org/web/20050930203935/http://oca.microsoft.com/ja/windiag.asp">web.archive</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/400svchost/svchost.html">＠IT：Windows TIPS -- Knowledge：svchost.exeプロセスとは？</a></li>
+</ul>
+
+
+<ul>
+<li><a href="http://www.ipa.go.jp/security/fy10/contents/crack/research/windows2k/default.htm">Windows 2000を用いた高度セキュリティシステム構築技術調査</a> | <a href="https://web.archive.org/web/20071007162709/http://www.ipa.go.jp/security/fy10/contents/crack/research/windows2k/default.htm">Windows 2000を用いた高度セキュリティシステム構築技術調査</a></li>
+</ul>
+
+<ul>
+<li><a href="https://port139.hatenablog.com/entry/20050908/1126135559">NTFS 代替データストリームとは？ - @port139 Blog</a> <a href="https://b.hatena.ne.jp/entry/https://port139.hatenablog.com/entry/20050908/1126135559" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://port139.hatenablog.com/entry/20050908/1126135559" alt="" class="http-bookmark" /></a></li>
+<li><a href="http://www.geocities.jp/bruce_teller/adsmngr/index.htm">ADS Manager ver1.0 Help</a> | <a href="https://web.archive.org/web/20070923075255/http://www.geocities.jp/bruce_teller/adsmngr/index.htm">web.archive</a></li>
+</ul>
+
+<dl>
+<dt>プロダクト アクティベーション</dt>
+<dd>
+<ul>
+<li><a href="http://www.microsoft.com/japan/technet/prodtechnol/winxppro/evaluate/xpactiv.mspx">Windows XP プロダクト アクティベーション</a> | <a href="https://web.archive.org/web/20070106050314/http://www.microsoft.com/japan/technet/prodtechnol/winxppro/evaluate/xpactiv.mspx">web.archive</a></li>
+<li><a href="http://support.microsoft.com/kb/302878/ja">マイクロソフト プロダクト アクティベーションに関してよく寄せられる質問</a> | <a href="https://web.archive.org/web/20070106175344/http://support.microsoft.com/kb/302878/ja">web.archive</a></li>
+<li><a href="http://www.microsoft.com/japan/technet/prodtechnol/winxppro/deploy/oempreac.mspx">Windows XP を再インストールするときの、OEM の事前ライセンス認証の保持</a> | <a href="https://web.archive.org/web/20070208204426/http://www.microsoft.com/japan/technet/prodtechnol/winxppro/deploy/oempreac.mspx">web.archive</a>
+</li>
+<li><a href="http://www.microsoft.com/japan/office/editions/prodinfo/activation.mspx">マイクロソフト ライセンス認証 (プロダクト アクティベーション) の概要</a> | <a href="https://web.archive.org/web/20070202124810/http://www.microsoft.com/japan/office/previous/2003/editions/prodinfo/activation.mspx">web.archive</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h2 id="link">参考サイト</h2>
+
+<ul>
+<li><a href="http://www.mct.ne.jp/users/fjv/win2ktips/index.htm">Windows Tips　-Windowsのちょっと便利な小技集-</a> | <a href="https://web.archive.org/web/20070415080928/http://www.mct.ne.jp/users/fjv/win2ktips/index.htm">web.archive</a></li>
+<li><a href="https://www.micnet.ne.jp/k-sawada/contents/win/winxp.html">Windowsのセッティング(XP編)</a></li>
+<li><a href="http://hp.vector.co.jp/authors/VA002739/index.htm">ようすけのホームページ</a></li>
+<li><a href="http://premium.nikkeibp.co.jp/win2000/tips/index.shtml">ヒント集</a> | <a href="https://web.archive.org/web/20070501232700/http://premium.nikkeibp.co.jp/win2000/tips/index.shtml">web.archive</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/serial/index/index.html">＠IT：Windows Server Insider 連載インデックス</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/index/index.html">Windows TIPS INDEX － ＠IT</a></li>
+</ul>
+
+</div>
+</div>
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+</body>
+
+</html>

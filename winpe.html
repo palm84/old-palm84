@@ -1,0 +1,2148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="GENERATOR" content="EdTex Version 3.11">
+<link rel="start" href="./index.html">
+<title>Windows PE 2.0 めも＠Palm84</title>
+<link rel="stylesheet" type="text/css" href="basic.css">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<style type="text/css">
+<!--
+
+td {
+	border-right:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+}
+
+table.book2 {
+	border-top:1px solid #ccc;
+	border-left:1px solid #ccc;
+	margin:0 2em;
+	font-size:90%;
+}
+
+
+.small pre {
+font-size: 1em;
+}
+
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+</head>
+
+<body>
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+<h1><span class="tokai1"><a href="winpe.html">Windows PE 2.0 めも</a></span></h1>
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+<ul>
+<li><a href="#version">バージョン紹介</a> <kbd class="ak">3</kbd></li>
+<li><a href="#document">ドキュメント等</a> <kbd class="ak">4</kbd></li>
+<li><a href="#deketa">できること</a> <kbd class="ak">5</kbd>
+	<ul>
+	<li><a href="#bootsect">BootSect.exe</a></li>
+	</ul>
+</li>
+<li><a href="#report">レポート</a> <kbd class="ak">6</kbd></li>
+<li><a href="#build">作ってみた</a> <kbd class="ak">7</kbd></li>
+<li><a href="#hdd">HDブート</a></li>
+<li><a href="#usbkey">USBメモリブート</a></li>
+<li><a href="#pxe">ネットワークブート</a></li>
+<li><a href="#winre">Windows 回復環境</a> <kbd class="ak">8</kbd></li>
+</ul>
+
+<ul>
+<li><a href="#ss">スクリーン・ショット</a> <kbd class="ak">9</kbd></li>
+<li><a href="#install_xp">Windows XP SP3 インストール</a></li>
+<li><a href="#siteki">超私的めも</a></li>
+</ul>
+
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+
+
+
+
+<p class="small">リンクはご自由に。</p>
+
+
+</div>
+</div>
+
+
+<div class="main">
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.11 </ins></dt>
+<dd>
+<p>Microsoft のドキュメントなどリンク切れ分の Web archive などを少しだけ追記。</p>
+</dd>
+
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/winpe.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+ <a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/winpe.html"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/winpe.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a></p>
+
+<p class="small">2008.02.23 作成
+<br>2008.03.03 <strong class="ms">KB926044</strong>申し込みについて訂正しました。
+<br>2010.07.27 <a href="#ss">スクリーン・ショット</a>を追加しました。
+<br>2010.08.03 <a href="#version">バージョン紹介</a>を追記、<a href="#install_xp">Windows XP SP3 インストール</a>を改訂
+<br>2010.08.05 <a href="#bootsect">BootSect.exe</a>, <a href="#winre">Windows 回復環境</a> を追記, 全体的に改訂
+<br>最終更新日 2012.5.5</p>
+
+<p>私は管理者じゃないので<em>管理者的使い方はぜんぜんわかっていません</em>が（汗）、メンテナンス用に作ってみた私的メモです。内容が偏っている悪寒（何）があります。あしからず。</p>
+
+<p>Windows 7/Vista/7XP 向けメンテナンス用のブータブルCDが作成できるのであった。</p>
+<p class="pink">※ Windows 7 ではコントロール パネルから「システム修復ディスク」（Windows RE）が作成可能なので、カスタマイズが不要ならこれ (<strong class="ms">Windows AIK</strong>) のインストールは必要ないかもしれませんが...</p>
+<ul>
+<li>参考：<a href="./windows_7.html#windows_re">システム回復オプション（Windows 回復環境） - 私的 Windows 7 めも</a></li>
+</ul>
+
+<div class="palmst pink">
+<p>DVDイメージが約 1.2 - 1.6 GB、7-Zipなどで展開するとその x2、インストールして 1 GB超、作業時にに展開するファイルが 1 GB 程。ということでかなり容量喰いますので <strong>HDドライブの空き領域に注意しときませう</strong>。</p>
+</div>
+
+<ul>
+<li><a href="http://www.microsoft.com/technet/technetmag/issues/2007/01/DesktopFiles/Default.aspx?topics=/technet/technetmag/issues/2007/01/DesktopFiles&#038;loc=jp">Windows 自動インストール キット -- TechNet Magazine, January 2007</a></li>
+</ul>
+
+
+<h2><a href="#version" accesskey="3" name="version">バージョン紹介</a> <kbd class="ak">3</kbd></h2>
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/%E3%82%A6%E3%82%A3%E3%83%B3%E3%83%89%E3%82%A6%E3%82%BA%E3%83%97%E3%83%AC%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E7%92%B0%E5%A2%83">Windows プレインストール環境 - Wikipedia</a></li>
+</ul>
+
+<dl>
+<dt>Windows PE 2.0</dt>
+<dd>
+<p>オンメモリ起動なので色々なブート方法が可能になりました。</p>
+<ul>
+<li>2006/11 公開</li>
+</ul>
+
+<ul>
+<li>サポート - Windows XP SP2 / Vista / 2003 SP1</li>
+<li>Windows Vista (Gold) ベース</li>
+</ul>
+<p>2.1 も同じく XP, Vista にインストール可能なので 2.1 の方がオススメです。</p>
+<ul>
+<li>バージョン: 1</li>
+<li>ファイル名: <code>vista_6000.16386.061101-2205-LRMAIK_JA.img</code></li>
+<li>ファイル サイズ: 699.5 MB</li>
+</ul>
+
+<ul>
+<li><a href="https://www.microsoft.com/ja-jp/download/details.aspx?id=10333">Download Windows 自動インストール キット (AIK) from Official Microsoft Download Center</a>
+	<ul class="nest small">
+	<li><del>Windows XP SP2用修正プログラム<strong class="ms">KB926044</strong>申し込みの「修正プログラムのダウンロード」から</del>（※ <span class="pink">XP SP3 では修正済</span>...）</li>
+	</ul>
+</li>
+</ul>
+<pre>
+http://support.microsoft.com/kb/926044/
+</pre>
+</dd>
+
+<dt>Windows PE 2.1</dt>
+<dd>
+<ul>
+<li>2008/02 公開</li>
+</ul>
+
+<ul>
+<li>サポート - Windows XP SP2 / Vista / 2003 SP1 / 2008</li>
+<li>Windows Server 2008 (Windows Vista SP1) ベース</li>
+</ul>
+
+<ul>
+<li>バージョン: 936330AIK</li>
+<li>ファイル名: <code>6001.18000.080118-1840-kb3aik_ja.iso</code></li>
+<li>ファイル サイズ: 1.2 GB</li>
+</ul>
+
+<p>XP にインストールする場合、SP2だとパッチが必要だったりするので、それらが修正済のSP3上にインストールしませう。</p>
+
+<ul>
+<li><a href="https://www.microsoft.com/ja-jp/download/details.aspx?id=9085">Download Windows Vista SP1 および Windows Server 2008 用の自動インストール キット (AIK) from Official Microsoft Download Center</a></li>
+</ul>
+<p>※ <strong class="ms">bootsect.exe</strong> に <code>/mbr</code> オプションとかありますね。</p>
+</dd>
+
+<dt>Windows PE 3.0</dt>
+<dd>
+<ul>
+<li>2009/08 公開</li>
+</ul>
+
+<ul>
+<li>サポート - Vista SP1 / Windows 7 / 2003 SP2 / 2008 / 2008 R2</li>
+<li>Windows Server 2008 R2 (Windows 7) ベース</li>
+</ul>
+<p><strong class="ms">peimg.exe</strong> がなくなっていたり（<strong class="ms">dism.exe</strong>  に変更？）、2.xから若干変更あり。XPは非サポート。</p>
+<ul>
+<li>バージョン: 3.0</li>
+<li>ファイル名: <code>KB3AIK_JA.iso</code></li>
+<li>ファイル サイズ: 1.6 GB</li>
+</ul>
+
+<ul>
+<li><a href="https://www.microsoft.com/ja-jp/download/details.aspx?id=5753">Download WindowsR 7 用の WindowsR 自動インストール キット (AIK) from Official Microsoft Download Center</a></li>
+</ul>
+
+<p>【2011.3.2 追記】7 SP1 用が出てます。バージョンは 3.1 なのかな。何が違うか確認してませんが...ファイル名に「サプリメント」とあるので差分ファイルの様です。</p>
+<ul>
+<li>バージョン: 3.0</li>
+<li>ファイル名: <code>waik_supplement_ja-jp.iso</code></li>
+<li>ファイル サイズ: 1.3 GB</li>
+</ul>
+
+<ul>
+<li><a href="https://www.microsoft.com/ja-jp/download/details.aspx?id=5188#038;displaylang=ja">Download WindowsR 7 SP1 用の WindowsR 自動インストール キット (AIK) 補足プログラム from Official Microsoft Download Center</a>
+	<ul>
+	<li><a href="http://blogs.technet.com/b/askcorejp/archive/2011/04/01/windows-7-sp1-windows-aik.aspx">Windows 7 SP1 用の Windows AIK について - Ask CORE - Site Home - TechNet Blogs</a></li>
+	</ul>
+</li>
+</ul>
+
+<dl class="palmst pink">
+<dt>Windows 7 の「システム修復ディスク」</dt>
+<dd>
+<p>Windows 7 ではこれをインストールしなくても「<strong>システム修復ディスク</strong>」（Windows PE 3.0 + システム回復オプション）がコントロール パネルから作成できます。</p>
+<ul class="small">
+<li><a href="http://blogs.yahoo.co.jp/akio_myau/41943448.html">Windows 7システム修復ディスクを作成する - みゃうのリカバリーをする前に - Yahoo!ブログ</a></li>
+<li><a href="./windows_7.html#windows_re">システム回復オプション（Windows 回復環境） - 私的 Windows 7 めも</a></li>
+</ul>
+<p>また、HD内の <strong class="ms">Winre.wim</strong> + Windows AIK でカスタマイズ版 <strong class="ms">Windows RE</strong> の作成も可能です。</p>
+</dd>
+</dl>
+</dd>
+</dl>
+
+<h2><a href="#document" accesskey="4" name="document">ドキュメント</a> <kbd class="ak">4</kbd></h2>
+
+<p>まずは付属のヘルプを読むべしですが。</p>
+
+<dl class="palmst pink">
+<dt>めちゃわかりやすい解説ページ</dt>
+<dd>
+<p>これは必読かな。</p>
+<ul>
+<li><a href="http://uiuicy.cs.land.to/winpe_index.html">WinPE (Windows Preinstallation Environment) について</a>
+	<ul class="small">
+	<li><a href="http://uiuicy.cs.land.to/index.html">すっきり!! デフラグ非公式ヘルプのページ</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<ol>
+<li><a href="#document20">2.0 / 2.1</a></li>
+<li><a href="#document30">3.0 用</a></li>
+</ol>
+
+
+<h3><a name="document20" href="#document20">2.0 / 2.1 </a></h3>
+
+<p>※ Windows XP SP3 / Vista 向け。</p>
+
+<ul>
+<li><a href="http://www.microsoft.com/japan/technet/windowsvista/deploy/winpe.mspx">Windows PE 2.0 for Windows Vista の概要</a></li>
+<li><a href="https://www.microsoft.com/japan/technet/security/guidance/disasterrecovery/malware/f1dc9e9f-d718-47ae-8937-00ce15826531.mspx">マルウェアの削除スタート キット : 対応計画</a>
+	<ul class="small">
+	<li><a href="http://www.safer-networking.org/jp/faq/43.html">The home of Spybot-S&#038;D!</a></li>
+	</ul>
+</li>
+<li class="small"><a href="http://www.microsoft.com/technet/technetmag/issues/2007/09/DesktopFiles/default.aspx?loc=jp/">Windows PE を使用した PC の復旧 -- TechNet Magazine, September 2007</a></li>
+<li class="small"><a href="http://support.microsoft.com/kb/926181/ja">Windows PE 2.0 に Input Method Editor (IME) サポートを追加する方法</a></li>
+<li class="small"><a href="http://www.microsoft.com/japan/technet/windowsvista/library/85cd5efe-c349-427c-b035-c2719d4af778.mspx">ブート構成データ エディタについてよく寄せられる質問</a></li>
+</ul>
+
+<ul>
+<li><a href="http://technet2.microsoft.com/windowsvista/ja/library/129a1712-e3d8-46c1-bc09-a14349dc67db1041.mspx">Windows Automated Installation Kit (Windows AIK)</a> | <a href="https://web.archive.org/web/20081204095105/http://technet2.microsoft.com/windowsvista/ja/library/129a1712-e3d8-46c1-bc09-a14349dc67db1041.mspx">web.archive</a>
+	<ul class="small">
+	<li><a href="http://technet.microsoft.com/ja-jp/library/cc749528%28WS.10%29.aspx">Windows 自動インストール キット (Windows AIK) ユーザーズ ガイド</a></li>
+	<li><a href="http://technet.microsoft.com/ja-jp/library/cc749538(WS.10).aspx">Windows PE テクニカル リファレンス</a></li>
+	</ul>
+</li>
+<li><a href="http://technet.microsoft.com/ja-jp/library/cc722159(WS.10).aspx">コマンド ライン ツール テクニカル リファレンス</a>
+	<ul class="small">
+	<li><a href="http://technet.microsoft.com/ja-jp/library/cc709667(WS.10).aspx">BCDEdit のコマンド ライン オプション</a></li>
+	<li><a href="http://technet.microsoft.com/ja-jp/library/cc749177(WS.10).aspx">Bootsect コマンド ライン オプション</a></li>
+	<li><a href="http://technet.microsoft.com/ja-jp/library/cc766465(WS.10).aspx">DiskPart のコマンド ライン オプション</a></li>
+	<li><a href="http://technet.microsoft.com/ja-jp/library/cc749161(WS.10).aspx">PEImg コマンド ライン オプション</a></li>
+	<li><a href="http://technet.microsoft.com/ja-jp/library/cc749036(WS.10).aspx">Oscdimg のコマンド ライン オプション</a></li>
+	<li><a href="http://technet.microsoft.com/ja-jp/library/cc748941(WS.10).aspx">Wpeinit のコマンド ライン オプション</a></li>
+	</ul>
+</li>
+<li><a href="http://technet.microsoft.com/ja-jp/library/cc766376%28WS.10%29.aspx">展開ツールのテクニカル リファレンス</a>
+	<ul>
+	<li><a href="http://technet.microsoft.com/ja-jp/library/cc748966(WS.10).aspx">ImageX テクニカル リファレンス</a></li>
+	<li><a href="http://technet.microsoft.com/ja-jp/library/cc766048(WS.10).aspx">Windows 回復テクニカル リファレンス</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/957988/ja">Windows PE 2.0 から Windows XP または Windows Server 2003 をインストールすると、システム ドライブのアクセス許可の設定が標準の設定と異なる</a> | <a href="https://web.archive.org/web/20091125104400/http://support.microsoft.com/kb/957988/ja">web.archive</a></li>
+</ul>
+
+
+
+<dl class="palmst small">
+<dt>【注意！】XP SP2向け</dt>
+<dd>
+<p class="pink">※ XP SP3 では修正済なので不要</p>
+<ul>
+<li><a href="http://support.microsoft.com/kb/946480/ja">Windows XP Service Pack 3 に含まれる修正の一覧</a></li>
+</ul>
+
+<dl>
+<dt>【追記】XP SP2用修正プログラム</dt>
+<dd>
+<p>KB926044申し込みは</p>
+<ul class="nest">
+<li>Windows XP SP2用修正プログラム<strong class="ms">KB926044</strong>申し込み<a href="http://support.microsoft.com/kb/926044/">926044/</a>の「修正プログラムのダウンロード」から</li>
+</ul>
+<p><strong class="ms">ntoskrnl.exe</strong>が更新されるみたい。</p>
+</dd>
+</dl>
+
+<p><em>XP <ins>SP2</ins>上で作成したPEをVistaマシンで使うとトラブルが起こることがある</em>らしいですね。</p>
+<ul>
+<li><strong class="ms">KB926044</strong> <a href="http://support.microsoft.com/kb/926044/">Windows Vista レジストリ ハイブを変更するために、 Windows Server 2003 または Windows XP を使用すると、 Windows Vista レジストリ キー フラグが削除されます。</a>（機械翻訳）| <a href="https://web.archive.org/web/20150129065125/http://support.microsoft.com/kb/926044/ja">web.archive</a></li>
+<li><a href="http://technet2.microsoft.com/WindowsServer/ja/Library/967e371b-40f8-4562-ac7c-91e8f251d65b1041.mspx">レジストリにハイブを読み込む</a></li>
+</ul>
+<p>これは注意しておくべきかと。Vistaのレジストリを他のWindowsで読み込む、また<em>XP <ins>SP2</ins>上で作成したPEイメージをVista用に使うとかすると、致命的なトラブルが起こるらしい</em>ってことかな？修正パッチは申し込みが必要<del>？</del></p>
+
+<ul>
+<li><strong class="ms">KB931760</strong> <a href="http://support.microsoft.com/kb/931760/ja">ハード・ディスクにパーティションを作成するために、 Windows Vista または Windows PE 2.0 を使用した後に、 Windows XP は正常にインストールできません。</a>（機械翻訳）| <a href="https://web.archive.org/web/20080118233200/http://support.microsoft.com/kb/931760/ja">web.archive</a></li>
+</ul>
+<p><em>PEでXP用のパーティション操作するとだめ</em>みたい？（【追記】これのパッチはXP SP2の<ins>インストールソース（インストール用CD）に統合する</ins>必要があるようです。）</p>
+
+<ul>
+<li><strong class="ms">KB914882</strong> <a href="http://support.microsoft.com/kb/914882/ja">Windows XP SP2 のフィルタ マネージャ ロールアップ パッケージ</a></li>
+</ul>
+<p>これがないとwimイメージのマウントができないようです。</p>
+</dd>
+</dl>
+
+
+<h3><a name="document30" href="#document30">3.0 用</a></h3>
+
+<p>※ Windows 7 向け</p>
+<ul>
+<li><a href="http://technet.microsoft.com/ja-jp/library/dd349350(WS.10).aspx">Windows 7 用 Windows 自動インストール キットの Readme</a></li>
+<li><a href="http://technet.microsoft.com/ja-jp/library/dd349343%28WS.10%29.aspx">ベータ版 Windows 7 の Windows 自動インストール キット</a>
+	<ul class="small">
+	<li><a href="http://technet.microsoft.com/ja-jp/library/dd744373(WS.10).aspx">Windows AIK の新機能</a></li>
+	<li><a href="http://technet.microsoft.com/ja-jp/library/dd349350(WS.10).aspx">Windows 7 用 Windows 自動インストール キットの Readme</a></li>
+	<li><a href="http://technet.microsoft.com/ja-jp/library/dd744356(WS.10).aspx">Windows 自動インストール キット (Windows AIK) ユーザーズ ガイド</a></li>
+	<li><a href="http://technet.microsoft.com/ja-jp/library/dd744322(WS.10).aspx">Windows PE テクニカル リファレンス</a></li>
+	<li><a href="http://technet.microsoft.com/ja-jp/windows/ee183884.aspx">新しい DISM ツールを使用して Windows イメージを準備およびサービスする | TechNet</a></li>
+	</ul>
+</li>
+<li><a href="http://www.microsoft.com/downloads/details.aspx?familyid=F1BAE135-4190-4D7C-B193-19123141EDAA&#038;displaylang=ja">Windows 7 用の Windows AIK ドキュメント (2010 年 5 月更新)</a></li>
+<li><a href="http://technet.microsoft.com/ja-jp/library/dd799280(WS.10).aspx">コマンド ライン ツール テクニカル リファレンス</a>
+	<ul class="small">
+	<li><a href="http://technet.microsoft.com/ja-jp/library/dd744347(WS.10).aspx">BCDboot のコマンドライン オプション</a></li>
+	<li><a href="http://technet.microsoft.com/ja-jp/library/dd744577(WS.10).aspx">Bootsect コマンド ライン オプション</a></li>
+	<li><a href="http://technet.microsoft.com/ja-jp/library/cc770877(WS.10).aspx">DiskPart</a> (Windows Server 2008)</li>
+	<li><a href="http://technet.microsoft.com/ja-jp/library/dd799243(WS.10).aspx">Oscdimg のコマンド ライン オプション</a></li>
+	<li><a href="http://technet.microsoft.com/ja-jp/library/dd744592(WS.10).aspx">Wpeutil コマンド ライン オプション</a></li>
+	<li><a href="http://technet.microsoft.com/ja-jp/library/dd744511(WS.10).aspx">Drvload コマンドライン オプション</a></li>
+	</ul>
+</li>
+<li><a href="http://technet.microsoft.com/ja-jp/library/dd744270(WS.10).aspx">展開ツールのテクニカル リファレンス</a>
+	<ul>
+	<li><a href="http://technet.microsoft.com/ja-jp/library/dd744377(WS.10).aspx">ImageX テクニカル リファレンス</a></li>
+	<li><a href="http://technet.microsoft.com/ja-jp/library/dd744255(WS.10).aspx">Windows 回復テクニカル リファレンス</a></li>
+	</ul>
+</li>
+<li><a href="http://technet.microsoft.com/ja-jp/library/dd744560(WS.10).aspx">Winpeshl.ini ファイル</a></li>
+</ul>
+
+
+<p>PE 3.0 では <strong class="ms">peimg.exe</strong> がないので <strong class="ms">dism.exe</strong> を使いませう。</p>
+
+
+
+<h2><a href="#deketa" accesskey="5" name="deketa">できること</a> <kbd class="ak">5</kbd></h2>
+
+<p>というよりは、私ができたこと</p>
+<p>使い方は下記ページがわかりやすい。</p>
+
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/winpe2/winpe2_01.html">管理者必携！ 最強のデータ・サルベージ・ツールを自作する － ＠IT</a> (2.0)</li>
+<li><a href="http://www.windows-world.jp/special/-/104869.html">Windows Server World Online - WindowsPE 2.0“裏”活用Tips</a> | <a href="https://web.archive.org/web/20090428065220/http://www.windows-world.jp/special/-/104869.html">web.archive</a></li>
+<li><a href="http://www.computerworld.jp/topics/mws/164289.html">【解説】Windows PE 完全活用ガイド―［1］PEを使いこなすための基礎知識 : Windows Server - Computerworld.jp</a> | <a href="https://web.archive.org/web/20100330005916/http://www.computerworld.jp/topics/mws/164289.html">web.archive</a></li>
+<li><a href="http://www.computerworld.jp/topics/mws/165609.html">【解説】Windows PE 完全活用ガイド―［3］PE 実践活用テクニック 6選 : Windows Server - Computerworld.jp</a> | <a href="https://web.archive.org/web/20091230082806/http://www.computerworld.jp/topics/mws/165609.html">web.archive</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/winpe301/winpe301_01.html">改訂 管理者必携！ 最強のデータ・サルベージ・ツールWindows PE 3.0（前編） － ＠IT</a></li>
+<li><a href="http://www.computerworld.jp/topics/560/Windows%20Server/191121/%EF%BC%BB%E6%96%B0%EF%BC%BDWindows%20PE%20%E5%BE%B9%E5%BA%95%E6%B4%BB%E7%94%A8%E3%83%90%E3%82%A4%E3%83%96%E3%83%AB%E3%80%9C%E5%9F%BA%E7%A4%8E%E7%B7%A8%E3%80%9C">［新］Windows PE 徹底活用バイブル～基礎編～|Windows Server|トピックス|Computerworld</a> | <a href="https://web.archive.org/web/20120120193632/http://www.computerworld.jp/topics/560/Windows%20Server/191121/%EF%BC%BB%E6%96%B0%EF%BC%BDWindows%20PE%20%E5%BE%B9%E5%BA%95%E6%B4%BB%E7%94%A8%E3%83%90%E3%82%A4%E3%83%96%E3%83%AB%E3%80%9C%E5%9F%BA%E7%A4%8E%E7%B7%A8%E3%80%9C">web.archive</a></li>
+</ul>
+
+
+<ul>
+<li>Windowsプレインストール環境とは - <a href="https://news.mynavi.jp/article/20100825-w7/">レッツ! Windows 7 - Windows PE編 (1) | マイナビニュース</a> <a href="https://b.hatena.ne.jp/entry/https://news.mynavi.jp/article/20100825-w7/" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://news.mynavi.jp/article/20100825-w7/" alt="" class="http-bookmark" /></a>
+	<ul>
+	<li>Windows PE環境を構築する - <a href="https://news.mynavi.jp/article/20100825-w7/2">レッツ! Windows 7 - Windows PE編 (2) | マイナビニュース</a> <a href="https://b.hatena.ne.jp/entry/https://news.mynavi.jp/article/20100825-w7/2" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://news.mynavi.jp/article/20100825-w7/2" alt="" class="http-bookmark" /></a></li>
+	<li>Windows PE 3.0のRAMディスクサイズを増やす - <a href="https://news.mynavi.jp/article/20100924-w7/">レッツ! Windows 7 - Windows PE編(2) (1) | マイナビニュース</a> <a href="https://b.hatena.ne.jp/entry/https://news.mynavi.jp/article/20100924-w7/" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://news.mynavi.jp/article/20100924-w7/" alt="" class="http-bookmark" /></a></li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt>ネットワーク</dt>
+<dd>
+<ul>
+<li><code>net use</code> コマンドでWindowsネットワークドライブの利用</li>
+<li><code>ftp</code>コマンドでファイルのダウンロード（但し、<strong>アクティブモード</strong>専用かな？）</li>
+</ul>
+
+<ul>
+<li>状態確認 （※ 詳細は <code>ipconfig /all</code>）</li>
+</ul>
+<pre class="scl">
+X:\windows\system32&#062;ipconfig
+
+Windows IP 構成
+
+イーサネット アダプター ローカル エリア接続:
+
+   接続固有の DNS サフィックス . . . : HOGE-NETWORK
+   リンクローカル IPv6 アドレス. . . . : xxxx::xxxx:xxxx:xxxx:xxx%2
+   IPv4 アドレス . . . . . . . . . . : 192.168.1.200
+   サブネット マスク . . . . . . . . : 255.255.255.0
+   デフォルト ゲートウェイ . . . . . : 192.168.1.10
+</pre>
+
+<p>ルーターのDHCPサーバ機能で workgroup 名も配信しておけば楽かも。</p>
+
+<ul>
+<li>認証不要ならホスト名指定で共有一覧表示</li>
+</ul>
+<pre class="scl">
+X:\windows\system32&#062;net view \\landisk
+\\landisk の共有リソース
+
+HDL series
+
+共有名  タイプ  使用  コメント
+
+-------------------------------------------------------------------------------
+disk    Disk          LAN disk
+ftp     Disk          LAN disk FTP
+lp      Print
+コマンドは正常に終了しました。
+</pre>
+
+<ul>
+<li>ネットワークドライブ割当</li>
+</ul>
+<pre>
+net use X: \\hostname\sharename /user:palm84 password
+</pre>
+
+<p>ホスト名がだめならIPアドレスで</p>
+<pre>
+net use X: \\192.168.1.2\sharename /user:palm84 password
+</pre>
+
+<div class="palmst">
+<p class="small">DHCPサーバがない場合は手動設定</p>
+<p class="small">ipconfig /all で「インターフェイス名」を確認。ドラッグ+右クリックでコピー。右クリックで貼付可能。</p>
+
+<pre class="scl">
+netsh interface ip set address &#034;<var>ローカル エリア接続</var>&#034; static <var>192.168.0.2</var> <var>255.255.255.0</var> <var>192.168.0.1</var> 1
+netsh interface ip set dns &#034;<var>ローカル エリア接続</var>&#034; static <var>192.168.0.1</var>
+</pre>
+
+<pre class="scl">
+netsh interface ip set address &#034;<var>インターフェイス名</var>&#034; static <var>IPアドレス</var> <var>ネットマスク</var> <var>ゲートウェイアドレス</var> 1
+netsh interface ip set dns &#034;<var>インターフェイス名</var>&#034; static <var>DNSサーバアドレス</var>
+</pre>
+</div>
+</dd>
+
+<dt>ファイルのコピー</dt>
+<dd>
+<ul>
+<li>メモ帳 (<strong class="ms">notepad.exe
+</strong>) を起動して、ファイルメニューの「開く」ダイアログ画面でマウス操作でのコピーが可能</li>
+</ul>
+<p>GUI画面でマウス操作でのコピーが可能です。但し、隠しファイル、拡張子など表示されません。PE上でレジストリを修正すればすべて表示できます。（※ 後述）</p>
+<p>コマンド <code>dir /a</code> とかではすべてのファイルを表示可能。</p>
+</dd>
+
+<dt>イメージファイル作成 (<strong class="ms">imagex.exe</strong>)</dt>
+<dd>
+<ul>
+<li><a href="http://technet.microsoft.com/ja-jp/library/cc748966%28WS.10%29.aspx">ImageX テクニカル リファレンス</a></li>
+<li><a href="http://technet.microsoft.com/ja-jp/windows/aa905070.aspx">ImageX と Windows イメージング形式 (WIM) を使用した Windows Vista ディスク イメージング</a></li>
+</ul>
+
+<p>あっと、これは確認してないけど</p>
+<ul>
+<li>リカバリー用イメージ作ったり</li>
+<li>丸ごとイメージにしておいて、後でマウントできるのかも</li>
+</ul>
+
+<ul class="small">
+<li><a href="http://www.computerworld.jp/topics/mws/165609-5.html">【解説】Windows PE 完全活用ガイド―［3］PE 実践活用テクニック 6選 : Windows Server - Computerworld.jp</a> | <a href="https://web.archive.org/web/20091029150331/http://www.computerworld.jp/topics/mws/165609-5.html">web.archive</a></li>
+</ul>
+<div class="quote small">
+<blockquote cite="http://www.computerworld.jp/topics/mws/165609-5.html" title="【解説】Windows PE 完全活用ガイド―［3］PE 実践活用テクニック 6選 : Windows Server - Computerworld.jp">
+<p>　注意してほしいのは、ImageXツールを日常のバックアップツールとして使用することは、ライセンス上、認められていないことだ。ImageXツールのライセンスは、Windowsのインストールおよびコンピュータを復旧する目的でのみ許諾されているからだ。</p>
+</blockquote>
+<cite><a href="http://www.computerworld.jp/topics/mws/165609-5.html">【解説】Windows PE 完全活用ガイド―［3］PE 実践活用テクニック 6選 : Windows Server - Computerworld.jp</a></cite>
+</div>
+<p class="small pink">※ リカバリー用に使いませう。</p>
+<p>キャプチャしたイメージをWindows上でマウントして中身のファイルを取り出せるのはかなり便利ですね。</p>
+</dd>
+
+<dt>他のアプリケーション</dt>
+<dd>
+<p>もちろん保証外。</p>
+<p>制限がかなりあるようですが、USBメモリやHD上に保存した <strong class="ms">Firefox Portable</strong> や <strong class="ms">UnxUtils</strong> の <code>wget</code> コマンド、などが使えました。</p>
+<p>ファイラーに関しては、MDIEが一応使えました。ただ、タブは1枚のみ、ツリー表示はエラー。</p>
+</dd>
+</dl>
+
+<dl class="palmst pink">
+<dt>wpeutil.exe</dt>
+<dd>
+<ul>
+<li><a href="http://technet.microsoft.com/ja-jp/library/dd744592(WS.10).aspx">Wpeutil コマンド ライン オプション</a></li>
+</ul>
+
+<ul>
+<li><code>DisableFirewall</code> - ファイアウォール無効</li>
+<li><code>EnableFirewall</code> - ファイアウォール有効</li>
+<li><code>Reboot</code> - 再起動</li>
+<li><code>Shutdown</code> - シャットダウン</li>
+</ul>
+</dd>
+
+<dt>drvload.exe</dt>
+<dd>
+<p>ドライバのインストール</p>
+<ul>
+<li><a href="http://technet.microsoft.com/ja-jp/library/cc766390(WS.10).aspx">Drvload コマンド ライン オプション</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h3><a href="#bootsect" name="bootsect">BootSect.exe</a></h3>
+
+<p>XP用 (NTLDR)、Vista/7用 (BOOTMGR) 仕様のブートセクタ書き込み、及びMBRブートストラップの書き込みが可能です。（※ PE2.0には <code>/mbr</code> オプションなし、2.1と3.0にあり）</p>
+<p class="small">※ PE以外でも Vista/7 のインストールDVDの <code>boot</code> フォルダや 7 の <code>C:\Recovery\xxx\Winre.wim</code>（システム回復オプション）などにも入ってます。</p>
+
+<p>【注意】 PE 2.1 基本イメージには入ってないので作成時に追加すること。（※ 3.0基本イメージや 7 の「システム修復ディスク」には含まれているので追加は不要。）</p>
+<p>上記2.0向けページには書かれてませんが、<strong>2.1 以降では</strong> <code>/mbr</code> オプションがありました。</p>
+
+<dl>
+<dt>7 / Vista の修復なら...</dt>
+<dd>
+<p><del>システム回復オプション（Windows 回復環境）が起動できるなら「スタートアップ修復」の方が確実だと思われます</del>。</p>
+<p>まずは、<ins>システム回復オプション（Windows 回復環境）が起動できるなら「スタートアップ修復」を試すべきかも？</ins>（但し、MBRブートストラップの書き込みも必要になるかも。）</p>
+</dd>
+</dl>
+
+<ul>
+<li><a href="http://technet.microsoft.com/ja-jp/library/cc749177(WS.10).aspx">Bootsect コマンド ライン オプション (PE 2.0)</a></li>
+<li><a href="http://technet.microsoft.com/ja-jp/library/dd744577(WS.10).aspx">Bootsect コマンド ライン オプション (PE 3.0)</a></li>
+</ul>
+
+<div class="quote">
+<blockquote class="small pink" cite="http://technet.microsoft.com/ja-jp/library/dd744577(WS.10).aspx" title="Bootsect コマンド ライン オプション">
+<p class="small">Bootsect.exe は、ハード ディスクのパーティション用マスター ブート コードを更新して Bootmgr と NT Loader (NTLDR) を切り替えます。このツールを使用すると、コンピューター上のブート セクターの設定を元に戻すことができます。FixFAT と FixNTFS は、このツールに置き換えられました。</p>
+<p><strong>Bootsect コマンド</strong></p>
+<p>Bootsect では、次のコマンド ライン オプションが使用されます。</p>
+<p><strong>bootsect.exe</strong> {<strong>/help</strong> | <strong>/nt52</strong> | <strong>/nt60</strong>} {<strong>SYS</strong> | <strong>ALL</strong> | &lt;DriveLetter:&gt;}[<strong>/force</strong>] <strong>/mbr</strong></p>
+<p>たとえば、NTLDR と互換性があるマスター ブート コードをボリューム ラベル E に追加するには、次のコマンドを使用します。</p>
+<p><strong>bootsect.exe /nt52 E:</strong></p>
+</blockquote>
+<cite><a href="http://technet.microsoft.com/ja-jp/library/dd744577(WS.10).aspx">Bootsect コマンド ライン オプション</a></cite>
+</div>
+
+<p class="pink">※ Vista/7 のWindows 回復環境ではこれとよく似た <strong class="ms">BootRec.exe</strong> がありますが、XP用ブートセクタ/ブートストラップの書き込みはできません。</p>
+
+<dl>
+<dt>オプション</dt>
+<dd>
+<ul>
+<li><code>/nt60</code>
+	<ul>
+	<li>PE 2.1 では Vista 仕様（※ 下記 <code>/mbr</code> オプションも同様）</li>
+	<li>PE 3.0 では 7 仕様（※ 下記 <code>/mbr</code> オプションも同様）</li>
+	</ul>
+</li>
+<li><code>/nt52</code>
+	<ul>
+	<li>XP仕様のブートセクタ書き込み</li>
+	</ul>
+</li>
+<li><code>/mbr</code>
+	<ul>
+	<li>上記指定に合わせMBRブートストラップ書き込み</li>
+	</ul>
+</li>
+</ul>
+<p>※ Vista と 7 はどちらもブートローダーは <strong class="ms">BOOTMGR</strong> ですが、（ブートストラップも）若干違いがありました。</p>
+
+<ul>
+<li>ブートセクタ書き込み</li>
+</ul>
+<pre>
+bootsect /nt60 c:
+</pre>
+<ul>
+<li>XPのMBRブートストラップ、<code>C:</code> ドライブへブートセクタ書き込み</li>
+</ul>
+<pre>
+bootsect /nt52 c: /mbr
+</pre>
+<p class="small pink">XP Home/Pro のオリジナルと全く同じブートストラップが書き込みされました。</p>
+</dd>
+
+<dt>こんな場合に使いませう</dt>
+<dd>
+<p>XPで回復コンソールが使えない、7/Vistaでシステム回復オプション使えない時とかで。</p>
+<ul>
+<li>Linuxを削除したらWindowsが起動しなくなってもうた...</li>
+<li>間違ってMBRにGRUBを入れちゃった。戻したい...</li>
+<li>PEでフォーマットしたらXPのセットアップが起動しない...</li>
+</ul>
+</dd>
+</dl>
+
+<dl class="palmst pink">
+<dt>【注意】あくまで「ブートの修復」用です！</dt>
+<dd>
+<p><strong>ファイルシステムの修復用ではござらぬ</strong>！</p>
+<p>ブートセクタ/ブートストラップの書き換えなどにより、<strong>ブートできなくなった場合の修復（書き戻し）用として使いませう</strong>。</p>
+
+<p>ドライブを認識できない、ファイルシステムの異常時などに使用するとデータが消えてしまったり、HD自体が壊れかけの場合はさらに悪化してしまう可能性がありまする。</p>
+</dd>
+</dl>
+
+<h2><a href="#report" accesskey="6" name="report">レポート</a> <kbd class="ak">6</kbd></h2>
+
+
+<ul class="small">
+<li><a href="http://d.hatena.ne.jp/hanazukin/20080212/1202778949">Windows Vista SP1 および Windows Server 2008 用の自動インストール キット (AIK)：Microsoft ダウンロードセンター - インフラ管理者の独り言（はなずきん＠酒好テム管理者）</a></li>
+<li><a href="http://blogs.technet.com/osamut/archive/2006/11/20/windows-aik.aspx">高添はここにいます : Windows 自動インストール キット (AIK) がダウンロード可能に</a> | <a href="https://web.archive.org/web/20090716221817/http://blogs.technet.com/osamut/archive/2006/11/20/windows-aik.aspx">web.archive</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://yuichi.tea-nifty.com/blog/2006/12/winpe20_windows.html">な○の 屋: WinPE2.0 (Windows AIK)</a></li>
+<li><a href="http://yuichi.tea-nifty.com/blog/2006/11/imagex_ee8c.html">な○の 屋: imagexで引越し</a></li>
+<li><a href="http://yuichi.tea-nifty.com/blog/2007/11/winpe20_windows_5486.html">な○の 屋: WinPE2.0 (WindowsAIK で マルチwimイメージ &#038; DOSブート なUSBメモリ作成)</a></li>
+</ul>
+
+<ul class="small">
+<li><a href="http://nekomata-nyaosuke.moe-nifty.com/detekoi/2007/10/windows_pe_20_75c9.html">猫又にゃぉ助の「責任者出てこい！」: Windows PE 2.0 は誰でも使える</a></li>
+<li><a href="http://nekomata-nyaosuke.moe-nifty.com/detekoi/2007/10/windows_pe_20gh_3bb6.html">猫又にゃぉ助の「責任者出てこい！」: Windows PE 2.0で、Ghost Cast成功！</a></li>
+</ul>
+
+
+<ul class="small">
+<li><a href="http://pnpk.net/cms/archives/294">Windows PEについてhttp://pnpk.net</a></li>
+<li><a href="http://pnpk.net/cms/archives/293">WindowsPEイメージを作成してみる@WAIKhttp://pnpk.net</a></li>
+</ul>
+
+
+<h2><a href="#build" accesskey="7" name="build">作ってみた</a> <kbd class="ak">7</kbd></h2>
+
+<dl class="palmst pink">
+<dt>ドキュメント</dt>
+<dd>
+<ul>
+<li><a href="http://technet.microsoft.com/ja-jp/library/cc766385(WS.10).aspx">チュートリアル : CD-ROM から Windows PE をブートする</a></li>
+<li><a href="http://technet.microsoft.com/ja-jp/library/cc749311(WS.10).aspx">チュートリアル : 起動可能な Windows PE RAM ディスクを CD-ROM に作成する</a></li>
+<li><a href="http://technet.microsoft.com/ja-jp/library/cc709665(WS.10).aspx">チュートリアル : カスタム Windows PE イメージを作成する</a></li>
+</ul>
+
+<ul>
+<li><a href="http://technet.microsoft.com/ja-jp/library/cc766376(WS.10).aspx">展開ツールのテクニカル リファレンス</a>
+	<ul>
+	<li><a href="http://technet.microsoft.com/ja-jp/library/cc722159%28WS.10%29.aspx">コマンド ライン ツール テクニカル リファレンス</a>
+		<ul class="small">
+		<li><a href="http://technet.microsoft.com/ja-jp/library/cc709667(WS.10).aspx">BCDEdit のコマンド ライン オプション</a></li>
+		<li><a href="http://technet.microsoft.com/ja-jp/library/cc749161(WS.10).aspx">PEImg コマンド ライン オプション</a></li>
+		<li><a href="http://technet.microsoft.com/ja-jp/library/cc749036(WS.10).aspx">Oscdimg のコマンド ライン オプション</a></li>
+		</ul>
+	</li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<ul>
+<li>拙作：<a href="http://d.hatena.ne.jp/palm84/20091024/1256479144">「Windows 回復環境」のisoイメージを作るの巻</a></li>
+</ul>
+
+<p><strong>Windows PE Tools コマンド プロンプト</strong>（Deployment ツールのコマンド プロンプト）からコマンドを実行します。</p>
+
+<dl>
+<dt>PE基本イメージ作成</dt>
+<dd>
+<p>まず作成フォルダを設定（※ 存在するフォルダはだめ）</p>
+<pre>
+set Target=C:\WinPE
+</pre>
+
+<ul>
+<li><code>x86</code> (32bit)の場合（※ x64なら <code>amd64</code> ）</li>
+</ul>
+<pre class="scl">
+copype <strong class="ms red">x86</strong> %Target%
+pushd %Target%
+if not exist ISO\sources\boot.wim copy winpe.wim ISO\sources\boot.wim
+oscdimg -n -b%Target%\etfsboot.com %Target%\ISO %Target%\WinPE.iso
+</pre>
+<p>設定フォルダに <strong class="ms">WinPE.iso</strong> が作成されます。2.1では 約202MB、3.0 では 約154MB。2.1では後述の最適化を実行すると130MB程になります。</p>
+</dd>
+
+<dt>2.1では最適化でサイズ縮小</dt>
+<dd>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/winpe2/winpe2_01.html">管理者必携！ 最強のデータ・サルベージ・ツールを自作する － ＠IT</a> (2.0)</li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/winpe301/winpe301_03.html">改訂 管理者必携！ 最強のデータ・サルベージ・ツールWindows PE 3.0（前編） － ＠IT</a></li>
+<li><a href="http://www.computerworld.jp/topics/mws/164970.html">【解説】Windows PE 完全活用ガイド―［2］PEブータブルメディア作成にチャレンジ！ : Windows Server - Computerworld.jp</a> | <a href="https://web.archive.org/web/20100102012315/http://www.computerworld.jp/topics/mws/164970.html">web.archive</a></li>
+</ul>
+<p>上記ページそのまんまですが。</p>
+<p>まず作成フォルダを設定（※ 存在するフォルダはだめ）</p>
+<pre>
+set Target=C:\WinPE
+</pre>
+
+<ul>
+<li>作業フォルダを作成</li>
+</ul>
+<pre>
+copype <strong class="ms red">x86</strong> %Target%
+</pre>
+<p>CDの内容がISOフォルダ以下に、<code>mount</code> フォルダは空</p>
+
+<ul>
+<li>wimイメージを <code>mount</code> フォルダに展開</li>
+</ul>
+<pre>
+imagex /apply %Target%\winpe.wim 1 %Target%\mount
+</pre>
+
+<dl class="palmst small pink">
+<dt>ファイルを追加する場合はここで</dt>
+<dd>
+<p><code>%Target%\mount\Windows\System32</code> などへファイルをコピーしておきませう。</p>
+</dd>
+</dl>
+
+<ul>
+<li>最適化（※ 3.0では不要。 <strong class="ms">peimg</strong> はありません）</li>
+</ul>
+<pre>
+peimg /prep %Target%\mount\Windows
+</pre>
+
+<ul>
+<li>WIMイメージ（仮想ドライブ）再作成</li>
+</ul>
+<pre class="scl">
+imagex /capture %Target%\mount %Target%\ISO\SOURCES\BOOT.WIM &#034;WinPE for recovery&#034; /boot /compress maximum
+</pre>
+<p>圧縮すると2.1では104MB程になる。デフォルトでは175MB程。</p>
+
+<ul>
+<li>isoイメージ作成</li>
+</ul>
+<pre class="scl">
+oscdimg -n -b%Target%\etfsboot.com %Target%\ISO %Target%\WinPE.iso
+</pre>
+</dd>
+</dl>
+
+<div class="palmst pink">
+<p class="small">※ PE上で<strong class="ms">ImageX</strong> などを使う場合は最適化前にコピーしておくこと！</p>
+
+<dl>
+<dt>ImageX.exe と BootSect.exe</dt>
+<dd>
+<p class="small"><ins>【訂正】間違ってましたすみません。<strong class="ms">imagex.exe</strong> と <strong class="ms">Wimscript.ini</strong> は同じディレクトリに置く必要があります。</ins></p>
+<pre class="scl">
+copy &#034;C:\Program Files\Windows AIK\Tools\<strong class="ms red">x86</strong>\imagex.exe&#034; %Target%\mount\Windows
+</pre>
+<p class="small">除外ファイル<strong class="ms">Wimscript.ini</strong>を <code>%Target%\mount\Windows\</code> に作成</p>
+<pre>
+[ExclusionList]
+ntfs.log
+hiberfil.sys
+pagefile.sys
+&#034;System Volume Information&#034;
+RECYCLER
+Windows\CSC
+
+[CompressionExclusionList] 
+*.mp3 
+*.zip 
+*.cab 
+\WINDOWS\inf\*.pnf
+</pre>
+<p class="small">ブートセクタ修復用の <strong class="ms">BootSect.exe</strong> も入れた方がいいかも（※ 3.0では基本イメージに入ってるので追加不要）</p>
+<pre class="scl">
+copy &#034;C:\Program Files\Windows AIK\Tools\PETools\<strong class="ms red">x86</strong>\BootSect.exe&#034; %Target%\mount\Windows\System32
+</pre>
+</dd>
+
+<dt>メモ帳の「開く」画面ですべてのファイルを表示</dt>
+<dd>
+<p class="small">起動時にPEのレジストリを修正させます。</p>
+<pre>
+\mount\Windows\system32\startnet.cmd</code>
+</pre>
+<ul class="small">
+<li>下記を追記</li>
+</ul>
+
+<pre class="scl">
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Hidden /t REG_DWORD /d 0x00000001
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v HideFileExt /t REG_DWORD /d 0x00000000
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v SuperHidden /t REG_DWORD /d 0x00000001
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowSuperHidden /t REG_DWORD /d 0x00000001
+</pre>
+<p class="small">※「開く」画面で【ファイルの種類】で「すべてのファイル」を指定すること。</p>
+</dd>
+</dl>
+</div>
+
+<dl>
+<dt><code>%Target%</code> (<code>C:\WINPE</code>)</dt>
+<dd>
+<ul class="small">
+<li><code>ISO</code>フォルダ
+	<ul class="nest">
+	<li><code>boot\</code></li>
+	<li><code>EFI\</code></li>
+	<li><code>sources\</code> (<strong class="ms">boot.wim</strong>)</li>
+	<li><strong class="ms">bootmgr</strong></li>
+	</ul>
+</li>
+<li><code>mount</code>フォルダ
+	<ul class="nest">
+	<li><code>Program Files\</code></li>
+	<li><code>Tools\</code></li>
+	<li><code>Users\</code></li>
+	<li><code>Windows\</code></li>
+	</ul>
+</li>
+<li><strong class="ms">etfsboot.com</strong> （CDブートセクタ）</li>
+<li><strong class="ms">WinPE.iso</strong></li>
+<li><strong class="ms">winpe.wim</strong></li>
+</ul>
+
+<ul>
+<li><strong class="ms">boot.wim</strong>がWinPE上の仮想ドライブ(X:)</li>
+<li><code>mount</code>フォルダの内容が<strong class="ms">boot.wim</strong>になる</li>
+<li><code>ISO</code>フォルダの内容がisoイメージに</li>
+<li>ブートローダ（カーネルローダかな） - <strong class="ms">bootmgr</strong></li>
+</ul>
+</dd>
+</dl>
+
+<ul>
+<li>WinPE.iso（※ 最適化済）
+	<ul>
+	<li>2.0 - 124MB</li>
+	<li>2.1 - 131MB</li>
+	<li>3.0 - 154MB</li>
+	</ul>
+</li>
+<li>boot.wim
+	<ul>
+	<li>2.0 - 98MB</li>
+	<li>2.1 - 104MB</li>
+	<li>3.0 - 127MB</li>
+	</ul>
+</li>
+</ul>
+
+<p>このCDでブートした際、CDの内容ももちろん参照できるけど、PE自体はオンメモリで動いているので、CDの入替も可能でした。</p>
+
+<dl class="small palmst">
+<dt>bcdファイルの設定内容</dt>
+<dd>
+<pre class="scl">
+&#062;bcdedit.exe /store %bcdfile% /enum
+
+Windows Boot Manager
+--------------------
+identifier              {bootmgr}
+description             Windows Boot Manager
+locale                  en-US
+inherit                 {globalsettings}
+default                 {default}
+displayorder            {default}
+                        {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+                        {ntldr}
+toolsdisplayorder       {memdiag}
+timeout                 30
+
+Windows Boot Loader
+-------------------
+identifier              {default}
+device                  ramdisk=[boot]\sources\boot.wim,{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+path                    \windows\system32\boot\winload.exe
+description             Windows Setup
+locale                  en-US
+inherit                 {bootloadersettings}
+osdevice                ramdisk=[boot]\sources\boot.wim,{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+systemroot              \windows
+detecthal               Yes
+winpe                   Yes
+ems                     Yes
+</pre>
+</dd>
+</dl>
+
+<dl>
+<dt>マルチブートCD</dt>
+<dd>
+<ul>
+<li><strong class="ms">BCDW</strong>なら <code>\boot\etfsboot.com</code> 指定</li>
+<li><strong class="ms">grldr</strong> (<strong class="ms">GRUB for DOS</strong>) は <code>/bootmgr</code></li>
+<li><strong class="ms">grldr</strong> (<strong class="ms">GRUB for DOS</strong>) から isoイメージ指定</li>
+</ul>
+<p>複数バージョン使うなら、isoイメージ指定が楽ですねぇ。但し起動はチト重いですけんど。</p>
+</dd>
+</dl>
+
+<h2><a href="#hdd" name="hdd">HDブート（マルチブート）</a></h2>
+
+<p class="pink">※ 7 及び Vista で既に「Windows 回復環境」がインストールされてる場合はあんまり意味ないかも。</p>
+
+<p><em>正式な作成方法（※ Vista以降向け）はヘルプや下記ページを参照で</em>。</p>
+
+<p>下記は新規HDに設定する方法かな？</p>
+<ul>
+<li><a href="http://technet.microsoft.com/ja-jp/library/cc722114(WS.10).aspx">チュートリアル : Windows PE をハード ディスクからブートする</a></li>
+</ul>
+
+<p>正式な方法は <strong class="ms">bcdedit.exe</strong> で WIM イメージを登録するだけ（？）かなと思いますけど（やったことない！）、色々チェインロードできる <strong class="ms">GRUB for DOS</strong> を Windows ブートマネージャーに設定してみました。
+もちろん<em>安全は保証されてない</em>（？）のでご注意。</p>
+
+<ul>
+<li><a href="http://grub4dos.sourceforge.net/wiki/index.php/Grub4dos_tutorial">Grub4dos tutorial - Grub4Dos Wiki</a> | <a href="https://web.archive.org/web/20100112132438/http://grub4dos.sourceforge.net/wiki/index.php/Grub4dos_tutorial">web.archive</a>
+	<ul>
+	<li><a href="http://diddy.boot-land.net/grub4dos/files/boot.htm">Grub4dos Guide - Boot Options</a> | <a href="https://web.archive.org/web/20120615050310/http://diddy.boot-land.net/grub4dos/files/boot.htm">web.archive</a></li>
+	</ul>
+</li>
+<li>ダウンロード：<a href="http://sourceforge.net/projects/grub4dos/files/">Browse GRUB4DOS and WINGRUB Files on SourceForge.net</a></li>
+</ul>
+
+<p>Windows XP/Vista/7 マシン向け。（※ 7/Vista がインストールされている環境ではファイルを上書きしないように注意）</p>
+<dl>
+<dt>PEの <strong class="ms">bootmgr</strong> をチェインロード</dt>
+<dd>
+<ol>
+<li>“<strong>隠しファイルなどすべて表示</strong>”させた状態で、<code>D:</code> など <strong class="ms">なるべく C: 以外</strong> のドライブで <strong class="ms">bootmgr</strong> や <code>boot</code> フォルダが存在しないか確認（※ マルチブートだと <code>D:</code> にあることも）</li>
+<li>isoフォルダの内容を“確認できた” <code>D:</code> などのドライブのルートにコピー</li>
+<li>Windowsのブートローダに <strong class="ms">GRUB for DOS</strong> を登録</li>
+<li>Windowsのブートローダ <span class="ms">→</span> <strong class="ms">grldr</strong> <span class="ms">→</span> PE の <strong class="ms">bootmgr</strong> でチェインロード</li>
+</ol>
+
+<ul>
+<li>拙作めも：<a href="https://www.palm84.com/entry/grub4dos#ntldr">Windows ブートメニューに追加 - GRUB for DOS めも</a></li>
+</ul>
+<p>XPでCドライブに ntldr がない場合や、boot.ini/bcd を弄りたくない場合はFDやUSBメモリなどから起動ディスクとして <strong class="ms">GRUB for DOS</strong> を使いませう。</p>
+
+<ul>
+<li>GRUBの <code>C:\menu.lst</code></li>
+</ul>
+<pre>
+title Windows PE
+find --set-root /sources/boot.wim
+chainloader /bootmgr
+</pre>
+<p>起動がめちゃ早いです。10秒程で起動。</p>
+</dd>
+</dl>
+
+<p>または、ISOイメージからのブートの方が設定は簡単です。</p>
+
+<dl>
+<dt>PEのISOイメージをチェインロード</dt>
+<dd>
+<ol>
+<li>任意のドライブのルートに PEのISOイメージをコピー</li>
+<li>Windowsのブートローダに <strong class="ms">GRUB for DOS</strong> を登録</li>
+<li>Windowsのブートローダ <span class="ms">→</span> <strong class="ms">grldr</strong> <span class="ms">→</span> PE のISOイメージでチェインロード</li>
+</ol>
+
+<ul>
+<li>GRUB の <code>C:\menu.lst</code> - ISOイメージから）</li>
+</ul>
+<pre>
+title Windows PE (CDROM-Emulation)
+find --set-root /<var class="red">WinPE.iso</var>
+map /<var class="red">WinPE.iso</var> (0xff) || map --mem /<var class="red">WinPE.iso</var> (0xff)
+map --hook
+chainloader (0xff)
+</pre>
+</dd>
+</dl>
+
+
+<h2><a href="#usbkey" name="usbkey">USBメモリでブート</a></h2>
+
+
+<ol>
+<li><a href="#usbkey_windows_bootmanager">Windows 標準方式</a></li>
+<li><a href="#usbkey_syslinux">SYSLINUXでチェインロード</a></li>
+</ol>
+
+
+<h3><a href="#usbkey_windows_bootmanager" name="usbkey_windows_bootmanager">Windows 標準方式</a></h3>
+
+<p>ヘルプや下記ページを参照にて。</p>
+
+<ul>
+<li><a href="http://technet.microsoft.com/ja-jp/library/cc722114(WS.10).aspx">チュートリアル : Windows PE をハード ディスクからブートする</a></li>
+<li><a href="http://technet.microsoft.com/ja-jp/library/cc766092(WS.10).aspx">チュートリアル : 起動可能な Windows PE RAM ディスクを UFD に作成する</a></li>
+</ul>
+
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/1175wpe2usb/wpe2usb.html">Windows PE 2.0のブータブルUSBメモリを作成する － ＠IT</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/operation/winpe302/winpe302_02.html">USBメモリからWindows PE 3.0を起動する - 改訂 管理者必携！ 最強のデータ・サルベージ・ツールWindows PE 3.0（後編） － ＠IT</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/1415repdiskusb/repdiskusb.html">USBフラッシュメモリで起動するWindows 7のシステム修復ディスクを作る － ＠IT</a></li>
+</ul>
+
+<dl>
+<dt>diskpart.exe 実行</dt>
+<dd>
+<p>【注意】USBメモリ内のデータはすべて消えます！</p>
+<ol>
+<li>PE/Vista/7 上で <strong class="ms">diskpart.exe</strong> 実行（※ XP上ではだめ）
+	<ul>
+	<li><code>clean</code> - パーティション・テーブル含めMBRを0クリア</li>
+	<li>基本（プライマリ）パーティション作成</li>
+	<li>アクティブ化（bootフラグ）</li>
+	<li>FAT32でフォーマット</li>
+	<li><code>assign</code> - ドライブ文字割当（※ Vista/7上の場合）</li>
+	</ul>
+</li>
+<li>ISOの内容をコピー</li>
+</ol>
+<p>ブートに必要なMBRブートストラップは、パーティション・テーブルを含めた“MBRの初期化＆パーティション切り直し”することで、ブートセクタのIPLはフォーマット時に、それぞれ書き込まれるようですね。</p>
+<p>※ USB HDでも可能だと思われます。</p>
+</dd>
+</dl>
+
+
+
+<h3><a href="#usbkey_syslinux" name="usbkey_syslinux">SYSLINUXでチェインロード</a></h3>
+
+<p>ちょっと邪道かもですが、私は、<strong class="ms">SYSLINUX</strong> / <strong class="ms">GRUB for DOS</strong> からチェインロードさせてます。但し、<em>安全は保証されてない</em>（？）のでご注意。</p>
+
+<dl class="palmst small pink">
+<dt>USB HDでは</dt>
+<dd>
+<p>正攻法は、上記の <strong class="ms">diskpart.exe</strong> 実行だと思いますけど...</p>
+<ul>
+<li>FATパーティションならSYSLINUXはインストール可（※ <code>-f</code> オプション）</li>
+<li>NTFSでは GRUB for DOS がインストールできるはず？（試したことない！）</li>
+<li>Linux なら GRUB/GRUB2 から GRUB for DOS のチェインロードが可能</li>
+</ul>
+</dd>
+</dl>
+
+<p>こちらの利点は</p>
+<ul>
+<li>XP上でも作成可能</li>
+<li>他の Linux LiveCD や ツール類のマルチブートも慣れると簡単</li>
+<li>GRUB for DOS を入れれば汎用ブートローダー（起動ディスク）としても使用可能</li>
+</ul>
+
+<ul>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/The_Syslinux_Project">The Syslinux Project - Syslinux Wiki</a>
+	<ul>
+	<li><a href="http://syslinux.zytor.com/wiki/index.php/Comboot/chain.c32">Comboot/chain.c32 - Syslinux Wiki</a></li>
+	</ul>
+</li>
+<li>ダウンロード：<a href="http://www.ring.gr.jp/pub/linux/kernel.org/utils/boot/syslinux/">Index of /pub/linux/kernel.org/utils/boot/syslinux</a></li>
+</ul>
+
+<ul>
+<li><a href="http://grub4dos.sourceforge.net/wiki/index.php/Grub4dos_tutorial">Grub4dos tutorial - Grub4Dos Wiki</a> | <a href="https://web.archive.org/web/20100112132438/http://grub4dos.sourceforge.net/wiki/index.php/Grub4dos_tutorial">web.archive</a>
+	<ul>
+	<li><a href="http://diddy.boot-land.net/grub4dos/files/boot.htm">Grub4dos Guide - Boot Options</a> | <a href="https://web.archive.org/web/20120615050310/http://diddy.boot-land.net/grub4dos/files/boot.htm">web.archive</a></li>
+	</ul>
+</li>
+<li>ダウンロード：<a href="http://sourceforge.net/projects/grub4dos/files/">Browse GRUB4DOS and WINGRUB Files on SourceForge.net</a></li>
+</ul>
+<p>※ <strong class="ms">grub.exe</strong> は <strong class="ms">バージョン 0.4.4 </strong>を使用。</p>
+
+<ul>
+<li>参考（拙作）：
+	<ul>
+	<li><a href="./syslinux_basic.html">SYSLINUXでマルチブート【基本編】</a></li>
+	<li><a href="./livecd_usb.html#syslinux">SYSLINUXのインストール - Linux LiveCDをUSBメモリでブートするめも</a></li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt>SYSLINUXをインストール</dt>
+<dd>
+<ol>
+<li>USBメモリのフォーマットは FAT32 or FAT16</li>
+<li>isoフォルダの内容、またはISOイメージをドライブのルートにコピー</li>
+<li>USBメモリへ <strong class="ms">SYSLINUX</strong> をインストール</li>
+<li>USBメモリへ SYSLINUXの <code>menu.c32</code> をコピー</li>
+<li>USBメモリへ SYSLINUXの <code>chain.c32</code> or GRUB for DOS の <code>grub.exe</code> をコピー</li>
+<li><code>syslinux.cfg</code> (<code>menu.lst</code>) 作成</li>
+</ol>
+
+<ul>
+<li><strong class="ms">SYSLINUX</strong> の <strong class="ms">chain.c32</strong> <span class="ms">→</span> <strong class="ms">bootmgr</strong> でチェインロード</li>
+<li>または、<strong class="ms">SYSLINUX</strong> <span class="ms">→</span> <strong class="ms">grub.exe</strong> <span class="ms">→</span> <strong class="ms">bootmgr</strong>（またはISOイメージ）でチェインロード</li>
+</ul>
+
+<ul>
+<li>USBメモリのファイル一覧（※ x86の例）</li>
+</ul>
+<pre class="scl2">
+USBメモリ
+|   bootmgr
+|   <strong class="ms">chain.c32</strong>        --- <strong class="red">追加コピー</strong>
+|   <strong class="ms">grub.exe</strong>         --- <strong class="red">※ 必要なら追加コピー</strong>
+|   <strong class="ms">ldlinux.sys</strong>      --- <strong class="red">SYSLINUX インストール時に作成される</strong>
+|   <strong class="ms">menu.lst</strong>         --- <strong class="red">※ 必要なら追加作成</strong>
+|   <strong class="ms">syslinux.cfg</strong>     --- <strong class="red">追加作成</strong>
+|
++---boot
+|   |   bcd
+|   |   boot.sdi
+|   |
+|   <span class="backslash">\</span>---fonts
+|           chs_boot.ttf
+|           cht_boot.ttf
+|           jpn_boot.ttf
+|           kor_boot.ttf
+|           wgl4_boot.ttf
+|
++---EFI
+|   <span class="backslash">\</span>---microsoft
+|       <span class="backslash">\</span>---boot
+|           |   bcd
+|           |
+|           <span class="backslash">\</span>---fonts
+|                   chs_boot.ttf
+|                   cht_boot.ttf
+|                   jpn_boot.ttf
+|                   kor_boot.ttf
+|                   wgl4_boot.ttf
+|
+<span class="backslash">\</span>---sources
+        boot.wim
+</pre>
+</dd>
+
+<dt><code>syslinux.cfg</code></dt>
+<dd>
+<ul>
+<li><code>syslinux.cfg</code> の先頭部分</li>
+</ul>
+<pre>
+DEFAULT /menu.c32
+PROMPT 0
+MENU TITLE SYSLINUX Boot Options Menu
+</pre>
+
+<p>この下にエントリを追記して行きます。必要なものだけでいいです。</p>
+
+<ul>
+<li><strong class="ms">chain.c32</strong> 使用</li>
+</ul>
+<pre>
+LABEL chain
+MENU LABEL Windows PE === chain.c32
+KERNEL /chain.c32
+APPEND ntldr=/bootmgr
+</pre>
+
+<ul>
+<li><strong class="ms">grub.exe</strong> 使用</li>
+</ul>
+<pre>
+LABEL grub4dos
+MENU LABEL Windows PE === grub4dos
+KERNEL /grub.exe
+APPEND --config-file=&#034;chainloader /bootmgr&#034;
+</pre>
+
+<ul>
+<li>ISOイメージ（<strong class="ms">grub.exe</strong> 使用）</li>
+</ul>
+<pre class="scl">
+LABEL iso
+MENU LABEL Windows PE === from ISO
+KERNEL /grub.exe
+APPEND --config-file=&#034;find --set-root /<var class="red">WinPE.iso</var>;map /<var class="red">WinPE.iso</var> (0xff) || map --mem /<var class="red">WinPE.iso</var> (0xff);map --hook;chainloader (0xff);rootnoverify (0xff)&#034;
+</pre>
+
+<p>起動はHDに比べるとかなり遅いです。10分ぐらいかかることもありました。<ins>0.4.4 ではかなり速くなりました</ins>。</p>
+<p>USBメモリでのISOブートは環境によっては読み込みが遅すぎ！かもしれません！</p>
+</dd>
+</dl>
+
+
+<dl class="small">
+<dt>GRUBのメニューから選択</dt>
+<dd>
+<p>GRUBをチェインロードしてからメニューで選択する場合は <code>menu.lst</code> 作成</p>
+<ul>
+<li><code>syslinux.cfg</code> - GRUB をチェインロード</li>
+</ul>
+<pre>
+LABEL grub4dos
+MENU LABEL GRUB for DOS
+KERNEL /grub.exe
+APPEND --config-file=&#034;configfile /menu.lst&#034;
+</pre>
+
+<ul>
+<li><code>menu.lst</code> の先頭部分</li>
+</ul>
+<pre>
+color white/blue yellow/cyan
+# timeout 30
+# default 0
+</pre>
+
+<p>この下にエントリを追記。必要なものだけ。</p>
+<ul>
+<li>GRUB の <code>menu.lst</code> - bootmgr をチェインロード</li>
+</ul>
+<pre>
+title Windows PE
+find --set-root /sources/boot.wim
+chainloader /bootmgr
+</pre>
+
+<ul>
+<li>GRUB の <code>menu.lst</code> - ISOイメージから）</li>
+</ul>
+<pre>
+title Windows PE (CDROM-Emulation)
+find --set-root /<var class="red">WinPE.iso</var>
+map /<var class="red">WinPE.iso</var> (0xff) || map --mem /<var class="red">WinPE.iso</var> (0xff)
+map --hook
+chainloader (0xff)
+rootnoverify (0xff)
+</pre>
+</dd>
+</dl>
+
+<div class="palmst">
+<p>【追記】FD扱いでのブートでは、かなり遅くなる模様です。下記にて一旦メモリにロードすると若干速かったです。</p>
+<ul>
+<li>syslinux.cfg - <code>memdisk</code> を追加コピー</li>
+</ul>
+<pre>
+LABEL memdisk
+MENU LABEL Windows PE === MEMDISK
+LINUX /memdisk
+INITRD /<var class="red">WinPE.iso</var>
+APPEND raw iso
+</pre>
+
+<ul>
+<li>GRUB - <code>menu.lst</code> </li>
+</ul>
+<pre>
+title Windows PE (CDROM-Emulation)
+find --set-root /<var class="red">WinPE.iso</var>
+map --mem /<var class="red">WinPE.iso</var> (0xff)
+map --hook
+chainloader (0xff)
+</pre>
+
+<p class="small">内蔵FDドライブあり、且つ、USBメモリが <code>fd1</code>（2台目のFDドライブ）として認識される環境では起動できなかった。mapコマンドで入れ替えたらおｋ。</p>
+<pre>
+title change fd1 chainload bootmgr
+map (fd0) (fd1)
+map (fd1) (fd0)
+map --hook
+chainloader (fd0)/bootmgr
+</pre>
+</div>
+
+
+<h2><a href="#pxe" name="pxe">PXEネットワークブート</a></h2>
+
+<dl class="palmst pink">
+<dt>【追記】いろいろと</dt>
+<dd>
+<p>ごちゃごちゃになってしもた、ですので、まとめ（？）てみました。</p>
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20100727/1280180893">Windows PE/RE のネットワークブート</a></li>
+</ul>
+</dd>
+</dl>
+
+<ul>
+<li><a href="http://etherboot.org/wiki/winpe">winpe - Etherboot/gPXE Wiki</a></li>
+<li><a href="http://tonchitei.web.fc2.com/computer/WinPE20.html">Win PE 2.0をネットワークブートする</a></li>
+<li><a href="http://www.deployvista.com/Blog/tabid/70/EntryID/27/Default.aspx">Blog - Booting WinPE 2.0 from a third party PXE Server</a> | <a href="https://web.archive.org/web/20120706235225/https://deployvista.com/Blog/tabid/70/EntryID/27/Default.aspx">web.archive</a></li>
+</ul>
+
+<dl>
+<dt>おおまか手順</dt>
+<dd>
+<p>ほとんど上記ページの解説をそのまま実行しただけですが（汗）</p>
+<ol>
+<li>PEファイルを作成</li>
+<li>tftpディレクトリに必要ファイルをコピー</li>
+<li>ブートローダの設定の為に、<strong class="ms">bcdedit.exe</strong> を使うバッチファイルを実行</li>
+<li>（Windows用）<a href="https://tftpd32.jounin.net/">TFTPD32</a> で <strong class="ms">tftp/dhcp</strong> サーバを設定</li>
+</ol>
+<p>尚、【3】について、<strong class="ms">bcdedit.exe</strong> はXPにはなし、PEに入ってるけどXP上で実行していいものなのかよくわからなかったのでPEを起動してから実行しました。（※<ins> XP SP3 上でも問題ないことを確認しました</ins>。）</p>
+</dd>
+</dl>
+
+<p><code>CreateBCD.cmd</code>の内容を引用コピペ。</p>
+<div class="quote">
+<blockquote cite="http://www.deployvista.com/Blog/tabid/70/EntryID/27/Default.aspx" title="Blog - Booting WinPE 2.0 from a third party PXE Server">
+<pre class="scl">
+Rem Creates BCD (boot configuration data) for Windows PE 2.0
+set BCD-File=c:\PXEServer\Tftproot\Boot\BCD
+del %BCD-File%
+Bcdedit /createstore %BCD-File%
+Bcdedit /store %BCD-File% /create {ramdiskoptions} /d &#034;Ramdisk options&#034;
+Bcdedit /store %BCD-File% /set {ramdiskoptions} ramdisksdidevice  boot
+Bcdedit /store %BCD-File% /set {ramdiskoptions} ramdisksdipath  \boot\boot.sdi
+for /f &#034;tokens=1-3&#034; %%a in ('Bcdedit /store %BCD-File% /create /d &#034;WinPE x86&#034; /application osloader') do set guid1=%%c
+Bcdedit /store %BCD-File% /set %guid1% systemroot \Windows
+Bcdedit /store %BCD-File% /set %guid1% detecthal Yes
+Bcdedit /store %BCD-File% /set %guid1% winpe Yes
+Bcdedit /store %BCD-File% /set %guid1% osdevice ramdisk=[boot]\Boot\winpe_x86.wim,{ramdiskoptions}
+Bcdedit /store %BCD-File% /set %guid1% device ramdisk=[boot]\Boot\winpe_x86.wim,{ramdiskoptions}
+Bcdedit /store %BCD-File% /create {bootmgr} /d &#034;Windows Vista BootManager&#034; 
+Bcdedit /store %BCD-File% /set {bootmgr} timeout 30
+Bcdedit /store %BCD-File% /set {bootmgr} displayorder %guid1%
+Bcdedit /store %BCD-File% /enum all
+</pre>
+</blockquote>
+<cite class="small"><a href="http://www.deployvista.com/Blog/tabid/70/EntryID/27/Default.aspx">Blog - Booting WinPE 2.0 from a third party PXE Server</a></cite>
+</div>
+
+<ul>
+<li>8行目修正（※ {GUID}がトークン3番目とならない場合）</li>
+</ul>
+<pre class="scl">
+<del>for /f &#034;tokens=1-3&#034; %%a in ('Bcdedit /store %BCD-File% /create /d &#034;WinPE x86&#034; /application osloader') do set guid1=<em class="red">%%b</em></del>
+for /f &#034;tokens=2 delims={}&#034; %%x in ('Bcdedit /store %BCD-File% /create /d &#034;WinPE x86&#034; /application osloader') do set &#034;guid1={%%x}&#034;
+</pre>
+
+<ul>
+<li>参考
+	<ul class="nest">
+	<li><a href="http://www.microsoft.com/japan/technet/windowsvista/library/85cd5efe-c349-427c-b035-c2719d4af778.mspx">ブート構成データ エディタについてよく寄せられる質問</a> | <a href="https://web.archive.org/web/20070304054756/http://www.microsoft.com/japan/technet/windowsvista/library/85cd5efe-c349-427c-b035-c2719d4af778.mspx">web.archive</a></li>
+	</ul>
+</li>
+</ul>
+
+<dl class="small palmst">
+<dt>bcdファイルの設定内容</dt>
+<dd>
+<pre class="scl">
+&#062;bcdedit.exe /store %bcdfile% /enum
+
+Windows Boot Manager
+--------------------
+identifier              {bootmgr}
+description             Windows Vista BootManager
+displayorder            {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+timeout                 30
+
+Windows Boot Loader
+-------------------
+identifier              {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+device                  ramdisk=[boot]\Boot\winpe_x86.wim,{ramdiskoptions}
+description             WinPE x86
+osdevice                ramdisk=[boot]\Boot\winpe_x86.wim,{ramdiskoptions}
+systemroot              \Windows
+detecthal               Yes
+winpe                   Yes
+</pre>
+</dd>
+</dl>
+
+<div class="palmst pink small">
+<h3>【私的】作成方法</h3>
+<ul>
+<li>作業フォルダ作成</li>
+</ul>
+<pre>
+copype <strong class="ms red">x86</strong> c:\winpe_<strong class="ms red">x86</strong>
+</pre>
+
+<ul>
+<li>winpe.wim をリネーム</li>
+</ul>
+<pre>
+ren winpe.wim winpe_<strong class="ms red">x86</strong>.wim
+</pre>
+
+<ul>
+<li>イメージを mount フォルダに展開</li>
+</ul>
+<pre>
+imagex /apply c:\winpe_<strong class="ms red">x86</strong>\winpe_<strong class="ms red">x86</strong>.wim 1 c:\winpe_<strong class="ms red">x86</strong>\mount
+</pre>
+
+<ul>
+<li>imagex.exe をコピー</li>
+</ul>
+<pre class="scl">
+copy &#034;C:\Program Files\Windows AIK\Tools\<strong class="ms red">x86</strong>\imagex.exe&#034; C:\winpe_<strong class="ms red">x86</strong>\mount\Windows
+</pre>
+
+<ul>
+<li>除外ファイル Wimscript.ini を C:\winpe_<strong class="ms red">x86</strong>\mount\Windows\ に作成</li>
+</ul>
+<pre>
+[ExclusionList]
+ntfs.log
+hiberfil.sys
+pagefile.sys
+"System Volume Information"
+RECYCLER
+Windows\CSC
+
+[CompressionExclusionList] 
+*.mp3 
+*.zip 
+*.cab 
+\WINDOWS\inf\*.pnf
+</pre>
+
+<ul>
+<li>BootSect.exe をコピー</li>
+</ul>
+<pre class="scl">
+copy &#034;C:\Program Files\Windows AIK\Tools\PETools\<strong class="ms red">x86</strong>\BootSect.exe&#034; C:\winpe_x86\mount\Windows\System32
+</pre>
+
+<ul>
+<li>最適化</li>
+</ul>
+<pre>
+peimg /prep C:\winpe_<strong class="ms red">x86</strong>\mount\Windows
+</pre>
+
+<ul>
+<li>winpe_<strong class="ms red">x86</strong>.wim を圧縮して再作成</li>
+</ul>
+<pre class="scl">
+imagex /capture C:\winpe_<strong class="ms red">x86</strong>\mount C:\winpe_<strong class="ms red">x86</strong>\winpe_<strong class="ms red">x86</strong>.wim &#034;WinPE for recovery&#034; /boot /compress maximum
+</pre>
+
+<ul>
+<li>tftpサーバで使用するフォルダを作成</li>
+</ul>
+<pre>
+mkdir C:\PXEServer\TFTPRoot\Boot\Fonts
+</pre>
+
+<ul>
+<li>必要ファイルをtftpディレクトリにコピー</li>
+</ul>
+<pre class="scl">
+copy c:\winpe_<strong class="ms red">x86</strong>\mount\Windows\Boot\PXE\pxeboot.n12 C:\PXEServer\TFTPRoot\boot
+copy c:\winpe_<strong class="ms red">x86</strong>\ISO\boot\fonts\*.* c:\PXEServer\TFTPRoot\Boot\Fonts
+copy c:\winpe_<strong class="ms red">x86</strong>\mount\Windows\Boot\PXE\bootmgr.exe C:\PXEServer\TFTPRoot
+</pre>
+
+<ul>
+<li>boot.sdi をtftpディレクトリにコピーする。</li>
+</ul>
+<pre>
+copy C:\winpe_<strong class="ms red">x86</strong>\ISO\boot\boot.sdi C:\PXEServer\TFTPRoot\boot
+</pre>
+
+<ul>
+<li>winpe_<strong class="ms red">x86</strong>.wim をtftpディレクトリにコピーする。</li>
+</ul>
+<pre class="scl">
+copy c:\winpe_<strong class="ms red">x86</strong>\winpe_<strong class="ms red">x86</strong>.wim C:\PXEServer\TFTPRoot\boot
+</pre>
+
+<ul>
+<li><strong>VistaまたはPE上で</strong> C:\PXEServer から <strong class="ms">CreateBCD.cmd</strong> を実行
+</li>
+</ul>
+
+<dl>
+<dt>TFTPD32の設定</dt>
+<dd>
+<p><a href="https://tftpd32.jounin.net/tftpd32_download.html">Tftpd32</a> から <strong class="ms">tftpd32.<var>xxx</var>.zip</strong> をダウンロード</p>
+
+<ol>
+<li><strong class="ms">tftpd32.exe</strong> と <strong class="ms">tftpd.hlp</strong> と <strong class="ms">tftpd32.ini</strong> を C:\PXEServer にコピー</li>
+<li>[DHCP Server] Base Directory - <code>C:\PXEServer\TFTPRoot</code></li>
+<li>[DHCP Server] Boot File - <code>/boot/pxeboot.n12</code> を指定</li>
+<li>[Settings]【<code>TFTP Server</code>】と【<code>DHCP Server</code>】にチェック</li>
+<li>[Settings] TFTP Security - 【<code>Read Only</code>】にチェック</li>
+<li>[Settings] Advanced TFTP Options - 【<code>Option Negotiation</code>】にチェック</li>
+<li>[Settings] Advanced TFTP Options - 【<code>Allow &#034;<span class="backslash">\</span> &#034; As virtual root</code>】にチェック</li>
+</ol>
+<p>パーソナルファイアウォールの設定は tftpd32.exe の inbound を許可するか、一時的に無効にする。</p>
+</dd>
+</dl>
+</div>
+
+
+<dl>
+<dt>【追記】PXELINUX(SYSLINUX)でのブート</dt>
+<dd>
+<p class="small">※【ご注意】これも正式な方法じゃないみたいですが...</p>
+
+<p>Windows で <a href="https://tftpd32.jounin.net/">TFTPD32</a> を使う場合です。</p>
+<ol class="small">
+<li>TFTPルートに「CD」（isoイメージ）内のファイルをすべてコピー（※ bootmgr, bootfix.bin, etfsboot.com は不要）</li>
+<li>作成時にマウントした  <code>mount\Windows\Boot\PXE\</code> にある <code>bootmgr.exe</code> をTFTPルートににコピー</li>
+<li>作成時にマウントした  <code>mount\Windows\Boot\PXE\</code> にある <code>pxeboot.n12</code> を <strong class="ms">boot</strong> ディレクトリにコピー</li>
+<li><del><code>pxeboot.n12</code> を <code>pxeboot.0</code> にリネーム</del></li>
+<li><a href="http://syslinux.zytor.com/wiki/index.php/The_Syslinux_Project">SYSLINUX</a>の <code>pxelinux.0</code>, <code>menu.c32</code> をTFTPルートににコピー</li>
+<li>[DHCP Server] Boot File - <code>pxelinux.0</code> を指定</li>
+</ol>
+
+<ul>
+<li><code>pxelinux.cfg/default</code>（など）の先頭部分</li>
+</ul>
+<pre>
+DEFAULT /menu.c32
+PROMPT 0
+
+LABEL winpe
+MENU LABEL Windows PE === chain pxeboot.n12
+PXE /boot/pxeboot.n12
+</pre>
+
+<p class="small">あるいは、isoイメージを直接指定する手も。</p>
+
+<ol class="small">
+<li><strong class="ms">grub.exe 0.4.4</strong> (<strong class="ms">GRUB for DOS</strong>) をTFTPルートへコピー</li>
+<li><var class="red">WinPE.iso</var> TFTPルートへ</li>
+</ol>
+
+<ul>
+<li><code>pxelinux.cfg/default</code>（など）に追記</li>
+</ul>
+<pre class="scl">
+LABEL winpe2
+MENU LABEL Windows PE === from ISO
+KERNEL /grub.exe
+APPEND keeppxe --config-file=&#034;pxe basedir /;map --mem (pd)/<var class="red">WinPE.iso</var> (0xff);map --hook;chainloader (0xff)&#034;
+</pre>
+<p>下記でも意味は同じ。</p>
+<pre class="scl">
+LABEL winpe3
+MENU LABEL Windows PE === from ISO
+LINUX /grub.exe
+INITRD /WinPE.iso
+APPEND --config-file="map (rd) (0xff);map --hook;root (0xff);chainloader (0xff)"
+</pre>
+
+<p class="pink">※ 尚、PE 2.1 (Vista SP1), PE 3.0 (7) では、TFTPD32の設定で <code>Option Negotiation</code> をオン（<code>PXE Compatibility</code> はオフ）にしないと起動できないようなので注意。</p>
+
+<p class="small">※ 【注意】汎用起動ROMなどでのブートではisoイメージ指定は失敗することが多いようです。</p>
+
+</dd>
+</dl>
+
+<h2><a href="#winre" accesskey="8" name="winre">Windows 回復環境（Windows RE）</a> <kbd class="ak">8</kbd></h2>
+
+<p class="pink">※ Windows AIK には含まれてません。</p>
+<p>「またの名」と言いますか、起動方法によって呼び名が違ったり。</p>
+
+<ul>
+<li>Windows Recovery Environment（Windows 回復環境）</li>
+<li>システム回復オプション</li>
+<li>コンピューターの修復</li>
+</ul>
+
+<p>メチャ簡単に言いますと、Windows PE に下の画像の「システム回復オプション」を足したものです。</p>
+
+<ul>
+<li>Windows 7
+	<ul>
+	<li><a href="http://windows.microsoft.com/ja-JP/windows7/What-are-the-system-recovery-options-in-Windows-7">Windows 7 のシステム回復オプションとは</a> | <a href="https://web.archive.org/web/20091213071222/http://windows.microsoft.com/ja-JP/windows7/What-are-the-system-recovery-options-in-Windows-7">web.archive</a></li>
+	<li class="small"><a href="./windows_7.html#windows_re">システム回復オプション（Windows 回復環境） - 私的 Windows 7 めも</a></li>
+	</ul>
+</li>
+</ul>
+<p class="overflow2"><img src="./images/windows_pe_20/system_recovery_option_menu_7.png" width="504" height="302" alt="Windows 7「システム回復オプション」のスクリーンショット"></p>
+<ul>
+<li>Windows Vista
+	<ul>
+	<li><a href="http://windows.microsoft.com/ja-JP/windows-vista/What-are-the-system-recovery-options-in-Windows-Vista">Windows Vista のシステム回復オプションとは</a> | <a href="https://web.archive.org/web/20100211070243/http://windows.microsoft.com/ja-JP/windows-vista/What-are-the-system-recovery-options-in-Windows-Vista">web.archive</a></li>
+	<li class="small"><a href="./windows_vista.html#trouble">トラブル / 修復 - 私的 Windows Vista めも</a></li>
+	</ul>
+</li>
+</ul>
+<p class="overflow2"><img src="./images/windows_pe_20/system_recovery_option_menu_vista.png" width="504" height="302" alt="Windows Vista「システム回復オプション」のスクリーンショット"></p>
+
+
+<dl>
+<dt>起動方法は</dt>
+<dd>
+<ul>
+<li>HDから - 起動時に <kbd>F8</kbd> (or <kbd>F5</kbd>) キー押し「詳細ブート オプション」メニューから</li>
+</ul>
+<p>7 では標準インストール、Vista では標準ではインストールされないけどメーカー製PCの多くはインストールされてます。</p>
+<p class="small pink">※ つまりAIKをインストールしなくても PE/RE は使えるのであった...</p>
+<p>HDから起動できない場合を考えて、DVD/CDブートなど別の手段も確保しておいた方がえーですよ。</p>
+
+<ul>
+<li>インストールDVDから - 「コンピューターを修復する」</li>
+<li>メーカー製PCではリカバリDVDなど
+	<ul class="small">
+	<li>【注意】<a href="http://support.microsoft.com/kb/951495/ja">コンピュータの製造元から提供されるインストール DVD を使用して Windows Vista または Windows Server 2008 の Windows 回復環境を起動できない</a> | <a href="https://web.archive.org/web/20100826042147/http://support.microsoft.com/kb/951495/ja">web.archive</a></li>
+	</ul>
+</li>
+<li>7では「システム修復ディスク」を作成</li>
+</ul>
+
+<ul>
+<li>DVDまたはHD内のREイメージを取り出して、Windows AIK でシコシコ（笑）作る
+	<ul class="small">
+	<li>拙作めも：<a href="http://d.hatena.ne.jp/palm84/20091024/1256479144">「Windows 回復環境」のisoイメージを作るの巻</a></li>
+	</ul>
+</li>
+</ul>
+</dd>
+
+<dt>拙作めも</dt>
+<dd>
+<ul>
+<li><a href="./windows_vista.html#trouble">トラブル / 修復 - 私的 Windows Vista めも</a></li>
+<li><a href="./windows_7.html#windows_re">システム回復オプション（Windows 回復環境） - 私的 Windows 7 めも</a></li>
+<li><a href="http://d.hatena.ne.jp/palm84/20091024/1256479144">「Windows 回復環境」のisoイメージを作るの巻</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h2><a href="#ss" accesskey="9" name="ss">スクリーン・ショット</a> <kbd class="ak">9</kbd></h2>
+
+<ul>
+<li>Windows PE 2.0（Vistaベース）</li>
+</ul>
+<p class="overflow2"><img src="./images/windows_pe_20/winpe_20.png" width="480" height="360" alt="Windows PE 2.0 のスクリーンショット"></p>
+
+<p class="small">※ メモ帳のメニュー「開く」画面でファイル操作が可能。タイトルバーをWクリックすると最大化。</p>
+
+<p class="overflow2"><img src="./images/windows_pe_20/winpe_notepad_openfile.png" width="480" height="360" alt="メモ帳のスクリーンショット"></p>
+
+<p class="small">レジストリエディタ</p>
+
+<p class="overflow2"><img src="./images/windows_pe_20/regedit.png" width="480" height="344" alt="「レジストリエディタ」のスクリーンショット"></p>
+
+<ul>
+<li>Windows PE 2.1（Vista SP1ベース）</li>
+</ul>
+<p class="overflow2"><img src="./images/windows_pe_20/winpe_21.png" width="480" height="360" alt="Windows PE 2.1 のスクリーン・ショット"></p>
+
+<ul>
+<li>Windows PE 3.0（7ベース）</li>
+</ul>
+<p class="overflow2"><img src="./images/windows_pe_20/winpe_30.png" width="480" height="360" alt="Windows PE 3.0 のスクリーン・ショット"></p>
+
+
+<ul>
+<li>Windows Vista SP1 の「Windows 回復環境」（<strong class="ms">Windows PE 2.1</strong> +「システム回復オプション」）</li>
+</ul>
+<p class="overflow2"><img src="./images/windows_pe_20/windows_re_vista.png" width="480" height="360" alt="Windows Vista の「Windows 回復環境」のスクリーンショット"></p>
+
+
+
+<ul>
+<li>Windows 7 の「システム修復ディスク」（<strong class="ms">Windows PE 3.0</strong> +「システム回復オプション」）</li>
+</ul>
+<p class="overflow2"><img src="./images/windows_pe_20/windows_re_7.png" width="480" height="360" alt="Windows 7 の「システム修復ディスク」のスクリーンショット"></p>
+
+<ul>
+<li>DELL社PCの Windows 7「システム修復ディスク」</li>
+</ul>
+<p class="overflow2"><img src="./images/windows_pe_20/dell_system_recovery_disk_7.png" width="480" height="360" alt="DELL社PCの Windows 7 の「システム修復ディスク」のスクリーン・ショット"></p>
+
+
+<h2><a href="#install_xp" name="install_xp">Windows XP <del>SP2</del> <ins>SP3</ins> のインストール</a></h2>
+
+<p>んっと、これは<strong>非サポートで保証もされていない方法です</strong>。たまたまできただけなのかもしれません（汗）。</p>
+
+<p>CDブートが可能ならわざわざこんなことする必要もないわけですから、あくまでCDドライブがない場合、或いはCDブートできない（USB CDとか）時にトライする手段の一つとしてはいいかもしれない。</p>
+
+<dl class="palmst small pink">
+<dt>SP3統合</dt>
+<dd>
+<p>XPセットアップファイルがSP1,SP2の場合は不具合の出る可能性が高いので、SP3ファイルを統合しておきませう。（※ SPなしの場合はSP2→SP3の段階的統合が必要かもしれません？）</p>
+<ul>
+<li><a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=5b33b5a8-5e76-401f-be08-1e1555d4f3d4&#038;displaylang=ja">IT プロフェッショナルおよび開発者用 Windows XP Service Pack 3 ネットワーク インストール パッケージ</a>
+	<ul>
+	<li><a href="https://www.catalog.update.microsoft.com/Search.aspx?q=KB936929">Microsoft Update カタログ</a></li>
+	</ul>
+</li>
+</ul>
+
+<ol>
+<li>フォルダ作成 <code><del>C:\Test</del></code> <code>D:\Test</code> とか</li>
+<li>XPセットアップCDの内容（または <code>i386</code> フォルダごと）を <code>D:\Test</code> にコピー</li>
+<li>SP3ファイルを保存したディレクトリに移動し下記コマンド実行</li>
+</ol>
+<pre>
+WindowsXP-KB936929-SP3-x86-JPN.exe /integrate:D:\test
+</pre>
+<p>※ 下記はSP2の例ですが参考に</p>
+<ul>
+<li><a href="http://support.microsoft.com/kb/884746/ja">Windows XP SP2 適用済みインストールイメージの作成方法</a></li>
+<li><a href="http://support.microsoft.com/kb/900871/">Windows XP Service Pack 2 のファイルを Windows XP のインストール フォルダに統合する方法</a> | <a href="https://web.archive.org/web/20080218165734/http://support.microsoft.com/kb/900871/ja#">web.archive</a></li>
+</ul>
+</dd>
+</dl>
+
+<dl>
+<dt>基本手順</dt>
+<dd>
+<ol>
+<li>PE起動</li>
+<li><code>format c: /fs:ntfs</code> - C:ドライブをフォーマット</li>
+<li><code>bootsect /nt52 c:</code> - <strong class="ms">BootSect.exe</strong> でブートセクタをNTLDR仕様に書換</li>
+<li>I386フォルダに移動して <strong class="ms">winnt32.exe</strong> 実行</li>
+<li>再起動、HDからブートすると「Windows セットアップ」開始</li>
+</ol>
+<p class="pink">※ 再インストール時は不要な筈ですが、パーティションのアクティブ設定（※ boot フラグを付ける）の確認も忘れずに。</p>
+
+<p class="small">※ <strong class="ms">bootsect.exe</strong> がない場合は【2】【3】をファイル全削除で代替</p>
+<p>基本的にはこれだけなのですが、PE 2.0（以降）はXPより新しいOSなのでいくつか注意点がございますです。実行前に確認しておかれた方がよろしいかと存じます。</p>
+</dd>
+</dl>
+
+
+<dl class="palmst pink">
+<dt><strong class="ms">BootSect.exe</strong> を準備しておきませう</dt>
+<dd>
+<p><strong class="ms">NTLDR</strong> / <strong class="ms">BOOTMGR</strong> 仕様それぞれの<strong>ブートセクタ</strong>書き込み（書き換え）、2.1以降では<strong>MBRブートストラップ</strong>の書き込みもできます。2.1 の基本セットには入ってないので作成時に追加しときませう。</p>
+</dd>
+</dl>
+
+<dl>
+<dt>インストール先パーティションの選択</dt>
+<dd>
+<p>慣れてる人には基本ですが、これにチェックしとかないと確認画面が出ず、勝手に予期しない場所にインストールされたりするので。</p>
+<ul>
+<li>「<code>セットアップ中にインストール ドライブ文字とパーティションを選択する</code>」</li>
+</ul>
+
+<p class="overflow2"><img src="./images/windows_pe_20/winnt32_option.png" width="588" height="440" alt="セットアップ・オプション画面のスクリーンショット"></p>
+</dd>
+
+<dt>新規インストールの場合は？</dt>
+<dd>
+<p>※ まっさらなHD（※ <strong>MBR に Windows のブートストラップがない状態</strong>）にパーティションを作成してからインストールする場合です。</p>
+<p>※ <em>ブートストラップがないと <strong class="ms">winnt32.exe</strong> を多分実行できません</em></p>
+<p>PE上の <strong class="ms">diskpart</strong> コマンドでパーティション作成は（ブートストラップ書き込みも）可能ですが、Vista以降の形式である、所謂 1MiBアラインメント（※ 第1パーティションのオフセットが1024KB = 開始位置が2049番目セクタ）となります。</p>
+
+<p class="small pink">古い規格のHDなら従来の63セクタ形式の方が安全の様な気がしますが、SSDなど新しい規格ではVista形式の方がいいのかもしれません。</p>
+<p>Linux LiveCD に含まれる GParted（の最新版）などでは、形式を選択可能でした。但し、ブートセクタは <strong class="ms">BOOTMGR</strong> 仕様となってました。</p>
+</dd>
+
+<dt>PE でパーティションを切るとXPの直接インストールはできない？</dt>
+<dd>
+<ul class="small">
+<li><a href="http://support.microsoft.com/kb/931760/ja">Windows Vista または Windows PE 2. 0 を使用して、ハード_ディスク上のパーティションの作成をした後正常に Windows XP をインストールすることはできません。</a>（※ 機械翻訳）| <a href="https://web.archive.org/web/20080118233200/http://support.microsoft.com/kb/931760/ja">web.archive</a></li>
+</ul>
+<p>SP2以前だと、テキストモードのセットアップは完了してもGUIモードでエラーとなるようです。</p>
+<p>SP3ではGUIモードも完了できたので修正済みのようです。</p>
+</dd>
+
+<dt>PE上で <code>C:</code> ドライブをフォーマットすると</dt>
+<dd>
+<p>ブートセクタは <strong class="ms">BOOTMGR</strong> 仕様となります。</p>
+<p>直後に <strong class="ms">winnt32</strong> を実行すると、セットアッププログラムをロードするためのファイル <code>BOOTSECT.DAT</code> 内に書かれるファイル名が <code>$LDR$</code> や <code>NTLDR</code> ではなく、<code>BOOTMGR</code> となる為、セットアップが起動できなくなります。</p>
+<pre>
+A disk read error occurred
+Press Ctrl+Alt+Del to restart
+</pre>
+
+<ul class="small">
+<li><a href="http://support.microsoft.com/kb/911080/">Windows XP と Windows Vista がインストールされているコンピューターを Windows XP をインストールし、Winnt32.exe プログラムを使用すると、「ディスク エラーが発生しました読み取り」のエラー メッセージが表示されます。</a>（※ 機械翻訳）| <a href="https://web.archive.org/web/20101231192501/http://support.microsoft.com/kb/911080/ja">web.archive</a></li>
+</ul>
+<p class="small pink">※ BOOTMGR 仕様のブートセクタでは、<strong class="ms">BOOTMGR</strong> がなければ <strong class="ms">NTLDR</strong> をロードするので <strong class="ms">NTLDR</strong> でのブートも可能な筈ですが、<code>boot.ini</code> には「<code>BOOTSECT.DAT</code> をロードせよ！」<code>BOOTSECT.DAT</code> には「<strong class="ms">BOOTMGR</strong> をロードせよ」と書かれてるわけで永遠に <strong class="ms">$LDR$</strong> (<strong class="ms">setupldr.bin</strong>) がロードされないという罠。</p>
+<p class="small pink">※ 尚、この状態でも GRUB for DOS などで $LDR$ をチェインロードすれば続行可能でした。</p>
+
+<p>なので、C:ドライブをフォーマットした直後に <strong class="ms">BootSect.exe</strong> を実行しブートセクタを <strong class="ms">NTLDR</strong> 仕様に書き換えませう。（※ MBRブートストラップは念の為）</p>
+<pre>
+X:\windows\system32&#062;<strong class="ms red">bootsect /nt52 all /mbr</strong>
+Target volumes will be updated with NTLDR compatible bootcode.
+
+C: (\\?\Volume{4df84647-9e90-11df-a6c7-806e6f6e6963})
+
+    Successfully updated NTFS filesystem bootcode.
+
+D: (\\?\Volume{4df84648-9e90-11df-a6c7-806e6f6e6963})
+
+    Successfully updated NTFS filesystem bootcode.
+
+\??\PhysicalDrive0
+
+    Successfully updated disk bootcode.
+
+Bootcode was successfully updated on all targeted volumes.
+</pre>
+<p>※ <code>all</code> ではなく、<code>c:</code> だけでもいいかも。</p>
+
+<p><strong class="ms">ntldr</strong> <span class="ms">→</span> <strong class="ms">BOOTSECT.DAT</strong> <span class="ms">→</span> <strong class="ms">$LDR$</strong> (<strong class="ms">setupldr.bin</strong>) の順序でブートする様です。</p>
+</dd>
+
+<dt>アクティブ設定の確認</dt>
+<dd>
+<p>【再】インストールの場合は再設定不要なはずなのですが、なぜかこの設定が外れることがあるので念の為に確認しておくべきかも？</p>
+<div class="small">
+<pre class="scl">
+X:\windows\system32&#062;diskpart
+
+Microsoft DiskPart バージョン 6.0.6001
+Copyright (C) 1999-2007 Microsoft Corporation.
+コンピュータ: MININT-R75CTVC
+
+DISKPART&#062; <strong class="ms red">list disk</strong>
+
+  Disk ###  Status           Size     Free     Dyn  Gpt
+  --------  ---------------  -------  -------  ---  ---
+  Disk 0    オンライン        120 GB      0 B
+
+DISKPART&#062; <strong class="ms red">select disk</strong> 0
+
+ディスク 0 が選択されました。
+
+DISKPART&#062; <strong class="ms red">list partition</strong>
+
+  Partition ###  Type                Size     Offset
+  -------------  ------------------  -------  -------
+  Partition 1    プライマリ              100 GB    32 KB
+  Partition 2    プライマリ               20 GB   100 GB
+
+DISKPART&#062; <strong class="ms red">select partition</strong> 1
+
+パーティション 1 が選択されました。
+
+DISKPART&#062; <strong class="ms red">detail partition</strong>
+
+パーティション 1
+種類         : 07
+隠し属性     : いいえ
+<strong class="ms">アクティブ</strong>  : <strong class="ms red">はい</strong>
+
+  Volume ###  Ltr Label        Fs    Type        Size     Status     Info
+  ----------  --- -----------  ----  ----------  -------  ---------  --------
+* Volume 2    C                NTFS  Partition    100 GB  正常
+
+DISKPART&#062; <strong class="ms red">exit</strong>
+</pre>
+</div>
+
+<p>アクティブが「いいえ」となっている場合は</p>
+
+<div class="small">
+<pre class="scl">
+DISKPART&#062; <strong class="ms red">detail partition</strong>
+
+パーティション 1
+種類         : 07
+隠し属性     : いいえ
+<strong class="ms">アクティブ</strong>  : <strong class="ms red">いいえ</strong>
+
+  Volume ###  Ltr Label        Fs    Type        Size     Status     Info
+  ----------  --- -----------  ----  ----------  -------  ---------  --------
+* Volume 2    C                NTFS  Partition    100 GB  正常
+
+DISKPART&#062; <strong class="ms red">active</strong>
+
+DiskPart は現在のパーティションをアクティブとしてマークしました。
+
+DISKPART&#062; <strong class="ms red">detail partition</strong>
+
+パーティション 1
+種類         : 07
+隠し属性     : いいえ
+<strong class="ms">アクティブ</strong>  : <strong class="ms red">はい</strong>
+
+  Volume ###  Ltr Label        Fs    Type        Size     Status     Info
+  ----------  --- -----------  ----  ----------  -------  ---------  --------
+* Volume 2    C                NTFS  Partition    100 GB  正常
+
+DISKPART&#062; <strong class="ms red">exit</strong>
+</pre>
+</div>
+</dd>
+
+<dt>インストール後の注意点</dt>
+<dd>
+<ul class="small">
+<li><a href="http://support.microsoft.com/kb/957988/ja">Windows PE 2.0 から Windows XP または Windows Server 2003 をインストールすると、システム ドライブのアクセス許可の設定が標準の設定と異なる</a> | <a href="https://web.archive.org/web/20091125104400/http://support.microsoft.com/kb/957988/ja">web.archive</a></li>
+</ul>
+<p>ウチでは別に不具合なく使えておりますが、Users（制限付きアカウント）では影響あるかもなのでご注意。</p>
+
+<ul class="small">
+<li><a href="http://support.microsoft.com/kb/940830/ja">上、Windows XP ベースまたは Windows Server 2003 ベースのコンピューターに Chkdsk.exe を実行するとエラー メッセージ:「大文字ファイル内のエラーを修正」</a>（※ 機械翻訳）| <a href="https://web.archive.org/web/20100911140707/http://support.microsoft.com/kb/940830/ja">web.archive</a></li>
+</ul>
+<p>PE上でフォーマットしている場合、<code>chkdsk</code> をかけると「<strong>アッパーケース ファイル エラー</strong>」なんてのが出たりします。<code>chkdsk /f c:</code> で起動時予約しましょう（※ <code>C:</code> 以外はそのまま実行で）。</p>
+</dd>
+</dl>
+
+<dl>
+<dt>CD以外のブート手段</dt>
+<dd>
+<dl>
+<dt>ネットワークブート</dt>
+<dd>
+<p>BIOSの設定を確認しましょう。最近の国内メーカー製PCならほぼ対応してると思います。</p>
+<p>※ <strong>サーバとして利用する別マシンも必要です</strong>。</p>
+<dl>
+<dt>起動用イメージ</dt>
+<dd>
+<p>BIOS非対応でも<strong>LANアダプタが内蔵かPCIボード</strong>なら、FDまたはUSBブートからネットワークブートがほぼ可能。下記サイトで起動用イメージ（FD/CD/GRUB,SYSLINUX用カーネル）がダウンロードできます。（※ USBやPCMCIAはだめ）</p>
+<ul>
+<li><a href="https://rom-o-matic.dev/">ROM-o-matic | Generate iPXE images | open source network boot firmware</a> <a href="https://b.hatena.ne.jp/entry/https://rom-o-matic.dev/" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://rom-o-matic.dev/" alt="" class="http-bookmark" /></a></li>
+</ul>
+</dd>
+</dl>
+</dd>
+
+<dt>USBメモリブートが可能</dt>
+<dd>
+<p>Windows PE をUSBメモリでブート</p>
+</dd>
+
+<dt>FDブート</dt>
+<dd>
+<p>※Windows PE のファイルをコピーするにはUSBデバイスやネットワーク上の別マシンが必要</p>
+<p>（※FDブートのみでNTFSへの書き込みはほぼ無理なので）FD + USBデバイスで Linux LiveCD  を起動して Windows PE のファイルをコピー。GRUB for DOS の起動FDでブート。</p>
+</dd>
+
+<dt>HD以外のブート手段がない</dt>
+<dd>
+<p>Windows が生きてるなら Windows PE とのマルチブート設定にする。</p>
+<p>何も起動できない状態では、HDを取り外して別マシンに接続して Windows PE を設定するしかないかな？</p>
+<p>Windows PE を使わず、winnt32.exe を（オプション付けて）直接実行するという手もあるのだけれど、ややこしい...</p>
+</dd>
+</dl>
+</dd>
+
+<dt>i386フォルダの保存先</dt>
+<dd>
+<p>※CDの内容そのままでもいいです。</p>
+<p>Windows PE がブートできたなら、USBデバイスやネットワークの利用が可能。（※ Windows PE はオンメモリで動く）</p>
+</dd>
+</dl>
+
+
+
+<h3><a href="#pxe_install" name="pxe_install">ネットワークブートで Windows XP <del>SP2</del> <ins>SP3</ins> のインストール</a></h3>
+
+<ol>
+<li>前述の方法でPXEネットワークブート用サーバを設定しておく</li>
+<li>XPインストールCDをセットしたCDドライブ、またはCDの内容をコピーしたフォルダを共有設定する</li>
+<li>インストール対象マシンをネットワーク・ブートさせる</li>
+</ol>
+
+
+<dl>
+<dt>Cドライブのファイルを削除</dt>
+<dd>
+<p>【追記】<ins>上記の通り「フォーマット後に <strong class="ms">BootSect.exe</strong> 実行」の方がいいかも。</ins>。</p>
+
+<pre class="scl">
+C:
+dir /a   <span class="red">--- 内容確認</span>
+attrib -s -h -r *.*   <span class="red">--- システムファイル削除するため属性をクリア</span>
+del *.*   <span class="red">--- ファイル削除</span>
+dir /a   <span class="red">--- 内容確認</span>
+rmdir /s "Documents and Settings"   <span class="red">--- ディレクトリごと削除を繰り返し</span>
+rmdir /s "Program Files"
+rmdir /s WINDOWS
+dir /a   <span class="red">--- 内容確認</span>
+</pre>
+</dd>
+
+<dt>winnt32.exe実行</dt>
+<dd>
+<ul>
+<li>共有をマウント</li>
+</ul>
+<pre>
+net use L: \\<var>hage</var>\<var>dura</var>
+</pre>
+<div class="palmst">
+<p>※【追記】サーバ側が Home Edition の場合下記の方が確実かもしれない</p>
+<pre>
+net use L: \\<var>hage</var>\<var>dura</var> /u:<strong class="ms">guest</strong> *
+</pre>
+</div>
+<ul>
+<li>※認証が必要な場合</li>
+</ul>
+<pre>
+net use L: \\<var>hage</var>\<var>dura</var> /u:<var>username</var> *
+</pre>
+
+<ul>
+<li>winnt32.exe実行</li>
+</ul>
+<pre>
+L:
+cd i386
+winnt32
+</pre>
+<p>「NTFSへのアップグレード」は一応チェックしておく。</p>
+<p>このあと再起動すればWindows XPのセットアップが始まりました。もし、エラーで起動できない場合はGRUBなどを使えば起動できるかも。</p>
+</dd>
+</dl>
+
+
+<h2><a href="#siteki" name="siteki">超私的めも</a></h2>
+
+<p>かな～り危険あるかも？とことわっておきますけど（何）</p>
+
+<ul>
+<li><strong class="ms">Mozilla Firefox, Portable Edition</strong> - USBメモリから直接起動しても問題なし？</li>
+<li><strong class="ms">MDIE</strong> - タブは1枚のみ。ツリー表示できない。隠しファイルなど表示できず</li>
+<li><strong class="ms">FFFTP</strong>,<strong>秀丸メール</strong> - 設定すれば使えそう</li>
+<li><strong class="ms">Edleaf</strong> - 起動すらしない</li>
+</ul>
+
+<p>HDD上のXPにインストールされているソフトも起動できたりした。但し、元のレジストリやユーザープロファイルは読み込まれないので初期設定状態で起動する</p>
+
+<dl>
+
+<dt>MWAV(eScan)</dt>
+<dd>
+<ul>
+<li><a href="http://www.mwti.net/products/mwav/mwavdownload.asp">MicroWorld - Antivirus and Content Security Products Download Center</a></li>
+</ul>
+
+<p>PE上でそのまま実行したら、仮想ドライブ上の TEMP がいっぱいになっちゃってエラーで落ちた。なもんでXP上で作成してからちゅうことで。</p>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/palm84/20081216/1229446904#pe_escan">Windows PE 2.0 + MWAVSCAN(eScan) - 【取り扱い注意】ウイルススキャンLiveCDを試すの巻</a></li>
+</ul>
+
+<dt>regedit (regedt32)</dt>
+<dd>
+<ul>
+<li><a href="http://www.computerworld.jp/topics/mws/165609-3.html">【解説】Windows PE 完全活用ガイド―［3］PE 実践活用テクニック 6選 : Windows Server - Computerworld.jp</a> | <a href="https://web.archive.org/web/20091029211031/http://www.computerworld.jp/topics/mws/165609-3.html">web.archive</a></li>
+</ul>
+
+<p>PEに元々入ってま。</p>
+<p>XPで作成したPE上でハイブの読み込みからXPの、system, software, ntuser.dat などの編集（削除）ができた。（※前述の通り、XPで作成したPEはVistaに使うと危険みたいなので注意）</p>
+<ul>
+<li><a href="http://support.microsoft.com/kb/926044/">Windows Vista レジストリ ハイブを変更するために、 Windows Server 2003 または Windows XP を使用すると、 Windows Vista レジストリ キー フラグが削除されます。</a>（※ <ins>XP SP3で修正済</ins>）| <a href="https://web.archive.org/web/20150129065125/http://support.microsoft.com/kb/926044/ja">web.archive</a></li>
+<li><a href="http://technet2.microsoft.com/WindowsServer/ja/Library/967e371b-40f8-4562-ac7c-91e8f251d65b1041.mspx">レジストリにハイブを読み込む</a></li>
+<li><a href="https://www.atmarkit.co.jp/ait/articles/0901/09/news145.html">Windowsでレジストリハイブをロードしてオフラインでレジストリを閲覧・編集する：Tech TIPS - ＠IT</a></li>
+<li><a href="http://support.microsoft.com/kb/256986/ja">Microsoft Windows レジストリの説明</a> | <a href="https://web.archive.org/web/20070226222508if_/http://support.microsoft.com/kb/256986/JA/#?FR=1">web.archive</a></li>
+</ul>
+</dd>
+</dl>
+
+</div>
+</div>
+
+
+<div class="navi">
+<a href="./index.html">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+</div>
+
+
+<address>Written by yassy</address>
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+</body>
+
+</html>

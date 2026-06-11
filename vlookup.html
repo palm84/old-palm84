@@ -1,0 +1,710 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="INDEX" href="http://www10.plala.or.jp/palm84/index.html">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" type="text/css" href="basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="sub.css" media="all">
+<link rel="stylesheet" type="text/css" href="print.css" media="print">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>Excelなんでやねん! VLOOKUP関数の巻でござるよ！</title>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+</head>
+
+<body>
+
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+<script type="text/javascript">
+<!--
+setTimeout("link()", 0);
+function link(){
+location.href='https://www.palm84.com/entry/excel_vlookup';
+}
+-->
+</script>
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>移行作業中です...</ins></dt>
+<dd>
+<p>はてなブログの該当ページへ<strong>リダイレクトします</strong>。お手数をおかけします。ご容赦ください。</p>
+<ul>
+<li><a href="https://www.palm84.com/entry/excel_vlookup">Excel なんでやねん !　VLOOKUP関数の巻【Excel 2000 - 2003】 - palm84.com</a> <a href="https://b.hatena.ne.jp/entry/https://www.palm84.com/entry/excel_vlookup" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/https://www.palm84.com/entry/excel_vlookup" alt="" class="http-bookmark" /></a></li>
+<li>このページの旧URLは
+	<ul>
+	<li> <code><strong>http://www10.plala.or.jp/palm84/vlookup.html</strong></code> </li>
+	</ul>
+</li>
+</ul>
+
+</dd>
+</dl>
+
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" accesskey="z" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd> [<a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,h1,h2,h3,h4,h5,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span,#blog-title,.index,.white,.palmst,pre{color:white!important;background-color:#333!important;text-shadow:none!important;}code{color:#333!important;text-shadow:none!important;}a:link{color:orange!important;text-shadow:none!important;text-decoration:underline!important;}a:visited{color:sienna!important;text-shadow:none!important;text-decoration:underline!important;}a:hover{color:brown!important;background-color:white!important;text-decoration:none!important;}';head[0].appendChild(style);})();">反転</a> <a href="javascript:(function(){var head=document.getElementsByTagName('head');var style=head[0].lastChild;if (style.nodeName.toLowerCase() == 'style'){head[0].removeChild(style);}else{alert('追加したstyle要素はないですYO');}})();">戻す</a>] <span class="font_change">* font-change * <a href="javascript:void(document.body.style.fontFamily='inherit')" title="inherit">inherit</a> <a href="javascript:void(document.body.style.fontFamily='sans-serif')" title="Sans-serif">Ss</a> <a href="javascript:void(document.body.style.fontFamily='serif')" title="Serif">Sf</a> <a href="javascript:void(document.body.style.fontFamily='\'メイリオ\'')" title="メイリオ">メ</a> <a href="javascript:void(document.body.style.fontFamily='\'游ゴシック\',\'Yu Gothic\',YuGothic')" title="游ゴシック">游</a> <a href="javascript:void(document.body.style.fontFamily='\'ＭＳ Ｐゴシック\'')" title="ＭＳ Ｐゴシック">MS</a> <a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Regular\',\'源ノ角ゴシック JP Regular\',\'Noto Sans Japanese Regular\',\'Noto Sans CJK JP Regular\',\'源ノ角ゴシック\',\'源ノ角ゴシック JP\',\'Noto Sans Japanese\',\'Noto Sans CJK JP\'')" title="源ノ角ゴシック / Sonrce Han Sans">源</a> <a href="javascript:void(document.body.style.fontSize='12px')" title="12px">12</a>
+ <a href="javascript:void(document.body.style.fontSize='14px')" title="14px">14</a>
+ <a href="javascript:void(document.body.style.fontSize='16px')" title="16px">16</a> <a href="javascript:void(document.body.removeAttribute('style'));" title="body style 削除">戻す</a> *</span>
+</div>
+
+<h1><a href="./vlookup.html"><span class="tokai1">Excel なんでやねん !　VLOOKUP関数の巻</span></a></h1>
+
+<div class="palm-body">
+
+<div class="sidebar">
+
+<h2><a href="#index" accesskey="2" name="index"><span class="tokai3">index</span></a> <kbd class="ak">2</kbd></h2>
+
+
+<ol>
+<li><a href="#vlookup">これって何？</a> <kbd class="ak">3</kbd></li>
+<li><a href="#make_table">テーブルの作成</a> <kbd class="ak">4</kbd></li>
+<li><a href="#name_table">テーブルに名前を付ける</a> <kbd class="ak">5</kbd></li>
+<li><a href="#make_sheet">入力用シートの作成</a> <kbd class="ak">6</kbd></li>
+<li><a href="#function">関数入力</a> <kbd class="ak">7</kbd></li>
+<li><a href="#copy">全体にコピー＆貼り付け</a> <kbd class="ak">8</kbd></li>
+<li><a href="#faq">よくある質問</a> <kbd class="ak">9</kbd></li>
+</ol>
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+
+
+
+<p class="small">リンク is フリーダム<span class="ms">♪</span></p>
+
+
+<div class="hateb">
+<script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://www10.plala.or.jp/palm84/";
+Hatena.BookmarkWidget.title = "はてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+
+<script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://d.hatena.ne.jp/palm84/";
+Hatena.BookmarkWidget.title = "某所のはてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+</div>
+
+</div>
+</div>
+
+
+<div class="main">
+
+<p><script src="http://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+<a href="http://twitter.com/share?url=https://eu7w9wsmf6a74xyjdfzl3q-on.drv.tw/old-palm84/vlookup.html&amp;via=palm84" class="twitter-share-button">Tweet</a>
+<a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/vlookup.html"><img src="http://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/vlookup.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a>
+　<span class="small"><a href="http://topsy.com/trackback?url=http%3A//www10.plala.or.jp/palm84/vlookup.html">Topsy.com</a></span>
+</p>
+
+<div class="palmst small sp_non">
+<p>右側のサイドバーが邪魔な場合は...</p>
+<ul>
+<li><a href="./vlookup2.html">サイドバーなしページ</a></li>
+</ul>
+</div>
+
+
+
+<p><del>私は現在、「Excel2000」しか持っていませんので</del>バージョン「97」「XP」「2003」などで若干の違いがあるかもしれません。ご了承ください。（堪忍でござるよ。）</p>
+
+
+<h2><a href="#vlookup" accesskey="3" name="vlookup"><span class="tokai1">Excelの【VLOOKUP関数】ってなに？</span></a> <kbd class="ak">3</kbd></H2>
+
+<p>一般的には<strong>垂直参照関数</strong>と呼ばれます。
+<br><strong>VLOOKUP</strong>の「V」はバーチカル（vertical=垂直）、「LOOKUP」はlook upで調べるという意味です。
+<br>行の上下の値を検索し同じ行の右側のセルの値を返し（表示し）ます。</p>
+<p>ここでは「JANコード」を入力すると「商品名」「売価」などのデータが自動で表示されるシートを作成します。
+</p>
+
+<p class="small">Excelでは<strong>水平参照関数</strong>だと「<strong>HLOOKUP</strong>」になります。（「H」＝ホリゾンタル＝horizontal：水平）
+</p>
+
+<p class="small">検索表示だけでなく、応用した使い方として例えば、Accessに入力したデータ（テーブル）との照らし合わせ、入力漏れ・入力ミスなどのチェックも簡単に実行できますんで拙者の仕事もグ～ンと能率UPなのでござる。（by Hattori)
+</p>
+
+
+<p>うまくいかない時は下記を参考に。</p>
+
+<dl class="palmst">
+<dt><a href="#faq">FAQ よくある質問</a></dt>
+<dd>
+<ul class="small">
+<li><a href="#7"><strong>「テーブル」にデータはあるはずなのにエラーが出ます。</strong></a></li>
+<li><a href="#8"><strong>なぜ【文字列】に設定するのか？</strong></a></li>
+<li><a href="#10"><strong>未入力セルのエラー表示をなくしたい。</strong></a></li>
+<li><a href="#11"><strong>ファイルを開くのに時間がかかる。</strong></a></li>
+<li><a href="#12"><strong>「テーブル」シートを削除したい・・・「数式」を消したい・・・ </strong></a></li>
+<li><a href="#sisu"><strong>指数表示の戻し方</strong></a></li>
+</ul>
+</dd>
+</dl>
+
+
+
+
+
+<h2><a href="#make_table" accesskey="4" name="make_table"><span class="tokai1">テーブル（参照用データ）の作成</span></a> <kbd class="ak">4</kbd></h2>
+
+<p>この table とはつまり、データベースのことですね。</p>
+
+<p>同じシート上でもいいのですが、できれば別シートで作成して下さい。</p>
+
+<p>Accessのテーブルデータをシート全体にコピー＆貼付が簡単かもしれません。また、別ファイルからの参照もできます。</p>
+
+<div class="palmst pink">
+<ol>
+<li>「JANコード」のセルを範囲選択</li>
+<li>【セルの書式設定】<span class="ms">→</span>【<strong>表示形式</strong>】を【<strong>文字列</strong>】に設定</li>
+</ol>
+</div>
+
+<p class="small">範囲選択は列全体でもいいのですがファイル容量が大きくなります。</p>
+
+<p>注意点：<strong>JANコードから左列にあるデータは参照できません</strong>ので必要な場合は列を【切り取り】<span class="ms">→</span>右クリック【切り取ったセルの挿入】で調整して下さい。</p>
+
+
+
+
+<h2><a href="#name_table" accesskey="5" name="name_table"><span class="tokai1">テーブルに名前を付ける</span></a> <kbd class="ak">5</kbd></H2>
+
+<p class="small">関数入力の際、テーブルの指定は<strong>セル番号での指定</strong>でもいいのですが、<strong>テーブルの名前で指定</strong>する方が便利です。後から修正も簡単ですし。</p>
+
+<ul>
+<li><a href="http://www.relief.jp/itnote/archives/000208.php">セルに名前をつける：Excel エクセルの使い方</a> <span class="small">- <a href="http://www.relief.jp/itnote/">インストラクターのネタ帳</a>さん</span></li>
+</ul>
+
+<div class="palmst pink">
+<ol>
+<li>JANコード列を左にして範囲選択</li>
+<li>メニューの【<strong>挿入</strong>】<span class="ms">→</span>【<strong>名前</strong>】<span class="ms">→</span>【<strong>定義</strong>】をクリック</li>
+<li>任意の名前を入力<span class="ms">→</span>【追加】<span class="ms">→</span>【OK】をクリック</li>
+</ol>
+</div>
+
+<p class="overflow2"><img width="498" height="398" class="normal" src="./images/vlookup/name1.png" alt="テーブルの範囲選択"></p>
+
+<p>※選択範囲を列全体、またJANコードがA列でしたらシート全体を選択でもいいのですが、若干ファイル容量が大きくなります。かなり重くなってしまうことがあります。</p>
+
+<p class="overflow2"><img width="410" height="235" class="normal" src="./images/vlookup/name2.png" alt="【名前の定義】ダイアログ"></p>
+
+
+
+
+<h2><a href="#make_sheet" accesskey="6" name="make_sheet"><span class="tokai1">入力用シートの項目作成</span></a> <kbd class="ak">6</kbd></H2>
+
+<div class="ylt">
+<table summary="完成後EXCELシートの例" class="ms">
+<caption>完成後EXCELシートの例</caption>
+<tr style="background-color:white;">
+<td></td>
+<td>A列</td>
+<td>B列</td>
+<td>C列</td>
+<td>D列</td>
+<td>E列</td>
+</tr>
+
+<tr>
+<td style="background-color:white;">1</td>
+<th abbr="JANコード">JANコード</th>
+<th abbr="商品名">商品名</th>
+<th abbr="サイズ">サイズ</th>
+<th abbr="納価">納価</th>
+<th abbr="売価">売価</th>
+</tr>
+
+<tr>
+<td style="background-color:white;">2</td>
+<td class="reg">0000049401301</td>
+<td class="reg">CABIN SUPER MILD</td>
+<td class="reg">ボックス 20本入り</td>
+<td class="rt"></td>
+<td class="rt">300</td>
+</tr>
+
+<tr>
+<td style="background-color:white;">3</td>
+<td class="reg">490xxxxxxxxxx</td>
+<td class="reg">hogehoge</td>
+<td class="reg">ロシアサイズ(S)</td>
+<td class="rt">12,345</td>
+<td class="rt">19,800</td>
+</tr>
+
+<tr>
+<td style="background-color:white;">4</td>
+<td class="reg">490xxxxxxxxxx</td>
+<td class="reg">hogehoge</td>
+<td class="reg">アメリカサイズ(XS)</td>
+<td class="rt">12,345</td>
+<td class="rt">19,800</td>
+</tr>
+</table>
+</div>
+
+<div class="ylt">
+<table summary="EXCELシートの作成例" class="ms">
+<caption>EXCELシートの作成例</caption>
+<tr style="background-color:white;">
+<td></td>
+<td>A列</td>
+<td>B列</td>
+<td>C列</td>
+<td>D列</td>
+<td>E列</td>
+</tr>
+
+<tr>
+<td style="background-color:white;">1</td>
+<th abbr="JANコード">JANコード</th>
+<th abbr="商品名">商品名</th>
+<th abbr="サイズ">サイズ</th>
+<th abbr="納価">納価</th>
+<th abbr="売価">売価</th>
+</tr>
+
+<tr class="red">
+<td style="background-color:white;">2</td>
+<td><strong>書式を【文字列】に！</strong></td>
+<td>（※後で）</td>
+<td>（※後で）</td>
+<td>（※後で）</td>
+<td>（※後で）</td>
+</tr>
+</table>
+</div>
+
+
+<div class="palmst pink">
+<ol>
+<li>1行目の項目名を入力</li>
+<li>2行目
+	<ul>
+	<li>【A2】の書式を【<strong>文字列</strong>】に設定</li>
+	<li>【B2】-【E2】に数式入力（※後述）</li>
+	</ul>
+</li>
+</ol>
+</div>
+
+<p>3行目以降は、2行目をコピー＆貼り付け（※オートフィルでも）するので、書式など2行目だけキッチリ設定しませう。</p>
+
+<p>ここでの注意点が1つだけ<span class="ms">→</span>「<strong>JANコード」セルのみ表示形式を【文字列】に設定</strong>して下さい。
+</p>
+
+<p>その他のセルは【標準】のまま、または【文字列】以外でで【数値】【ユーザー定義】でもいいです。</p>
+
+<p>その他のセルを【文字列】に設定すると数式がそのまま表示されちゃいます。</p>
+
+
+
+
+<h2><a href="#function" accesskey="7" name="function"><span class="tokai1">関数入力</span></a> <kbd class="ak">7</kbd></H2>
+
+<div class="ylt">
+<table summary="EXCELシートの例" class="ms">
+<caption>EXCELシートの例</caption>
+<tr style="background-color:white;">
+<td></td>
+<td>A列</td>
+<td>B列</td>
+<td>C列</td>
+<td>D列</td>
+<td>E列</td>
+</tr>
+
+<tr>
+<td style="background-color:white;">1</td>
+<th abbr="JANコード">JANコード</th>
+<th abbr="商品名">商品名</th>
+<th abbr="サイズ">サイズ</th>
+<th abbr="納価">納価</th>
+<th abbr="売価">売価</th>
+</tr>
+
+<tr class="red">
+<td style="background-color:white;">2</td>
+<td>（※書式は【文字列】）</td>
+<td>※<strong>数式入力</strong></td>
+<td>（※後で）</td>
+<td>（※後で）</td>
+<td>（※後で）</td>
+</tr>
+</table>
+</div>
+
+
+<div class="palmst pink">
+<ol>
+<li>2行目
+	<ul>
+	<li>【B2】に数式入力</li>
+	</ul>
+</li>
+</ol>
+<ul>
+<li>一例
+	<ul>
+	<li>B2 - <code>=VLOOKUP($A2,data,<strong class="ms red">3</strong>,FALSE)</code></li>
+	</ul>
+</li>
+</ul>
+</div>
+
+<pre>
+=VLOOKUP(検索値,テーブル名,テーブルの列番号,型)
+</pre>
+
+<p>準備ができましたので、入力用（検索表示用）シートにやっとこさ「数式」の入力です。</p>
+
+<div class="palmst pink">
+<ol>
+<li>数式を入力するセルをクリック</li>
+<li>メニューの【<strong>挿入</strong>】<span class="ms">→</span>【<strong>関数</strong>】をクリック（または関数貼り付け【<strong>fx</strong>】ボタン）</li>
+<li>左側の【<strong>検索/行列</strong>】右側の【<strong>VLOOKUP</strong>】をクリック<span class="ms">→</span>OK</li>
+<li>【数式パレット】に必要な項目を入力。</li>
+</ol>
+</div>
+
+<p class="small"><a href="./images/vlookup/kansu.png">（【関数の貼り付け】ダイアログ画像）</a></p>
+
+<p>【<strong>数式パレット</strong>】が出ますので必要な項目を入力します。</p>
+<p class="small">赤丸部分をクリックするとパレットが折畳まれます。</p>
+<p class="overflow2"><img width="465" height="226" class="normal" src="./images/vlookup/palette.png" alt="数式パレットでの入力"></p>
+
+<div class="ylt">
+<table cellpadding="5" cellspacing="0" summary="数式パレットの入力">
+<colgroup>
+<col span="2">
+</colgroup>
+    <tr>
+      <th abbr="項目名を表します"><span class="gian">項目名</span></th>
+      <th abbr="入力する引数・値を表します"><span class="gian">入力する引数・値</span></th>
+    </tr>
+    <tr>
+      <th abbr="項目名"><span class="gian">検索値</span></th>          
+      <td class="lef">同じ行の「<strong class="red">JANコード</strong>」セルを指定<br>（先頭に【<strong class="gian">$</strong>】をつけて下さい。）</td>
+    </tr>
+    <tr>
+      <th abbr="項目名"><strong class="gian">範囲</strong></th>          
+      <td class="lef">先ほど付けた「<strong class="red">テーブル」の名前「data」</strong>を指定</td>
+    </tr>
+    <tr>
+      <th abbr="項目名"><span class="gian">列番号</span></th>          
+      <td class="lef">「テーブル」の「<strong class="red">JANコード」列を１として何列目か</strong>を指定</td>
+    </tr>
+    <tr>
+      <th abbr="項目名"><span class="gian">検索の型</span></th>          
+      <td class="lef">「<strong class="red">false</strong>」を指定（完全一致）</td>
+    </tr>
+
+</table>
+</div>
+
+<ul>
+<li>次の条件の場合の数式は下記の様になります
+	<ul>
+	<li>数式を入れるセル - B2</li>
+	<li>検索値を入れるセル - A2</li>
+	<li>テーブルの名前 - data</li>
+	<li>表示するテーブルの列番号 - 3</li>
+	<li>完全一致 - FALSE</li>
+	</ul>
+</li>
+</ul>
+
+<pre>
+=VLOOKUP($A2,data,3,FALSE)
+</pre>
+
+<p>つまり...</p>
+<pre>
+=VLOOKUP(検索値,テーブル名,テーブルの列番号,型)
+</pre>
+
+
+<div class="palmst">
+<p class="small">検索値に【$】（絶対参照）を付けるのは、他のセルにコピーする場合に楽だからです。行番号は相対参照で変わりますが、（検索値の）列(A)はかわりません。“$A2”指定をB3にコピーすると、“$A3”となります。C4にコピーすると“$A4”となります。</p>
+</div>
+
+<p>※【数式バー】（メニューの【表示】<span class="ms">→</span>【数式バー】をチェック）を表示してる場合は下記の画像のやり方でもいいです。</p>
+
+<p class="overflow2"><img class="normal" width="518" height="410" src="./images/vlookup/vlook1.png" alt="数式の入力"></p>
+
+
+
+
+<h2><a href="#copy" accesskey="8" name="copy"><span class="tokai1">全体にコピー＆貼り付け</span></a> <kbd class="ak">8</kbd></H2>
+
+<div class="ylt">
+<table summary="EXCELシートの例" class="ms">
+<caption>EXCELシートの例</caption>
+<tr style="background-color:white;">
+<td></td>
+<td>A列</td>
+<td>B列</td>
+<td>C列</td>
+<td>D列</td>
+<td>E列</td>
+</tr>
+
+<tr>
+<td style="background-color:white;">1</td>
+<th abbr="JANコード">JANコード</th>
+<th abbr="商品名">商品名</th>
+<th abbr="サイズ">サイズ</th>
+<th abbr="納価">納価</th>
+<th abbr="売価">売価</th>
+</tr>
+
+<tr class="red">
+<td style="background-color:white;">2</td>
+<td>（※書式は【文字列】）</td>
+<td>※数式入力済</td>
+<td>※</td>
+<td>※</td>
+<td>※</td>
+</tr>
+</table>
+</div>
+
+<p class="small">１個１個入力するのは面倒なので<strong>コピー＆貼付で「列番号」</strong>のみ修正します。</p>
+
+<div class="palmst pink">
+<ol>
+<li>2行目
+	<ul>
+	<li>【B2】を【C2】から【E2】に数式コピーして、列番号のみ修正</li>
+	</ul>
+</li>
+<li>行全体（2行目）を下の行へコピー</li>
+</ol>
+</div>
+
+<p>一旦同じ行のセルにコピーして数式の列番号を修正します。その後、行を全体にコピーします。</p>
+
+
+<div class="palmst pink">
+<ol>
+<li>先ほど数式入力したセル（【B2】）をクリック</li>
+<li>「<strong>フィルハンドル</strong>」（セルの右下の「<strong>＋」マーク</strong>）を横方向にドラッグ</li>
+<li>横のセルをクリック<span class="ms">→</span>関数貼り付け【<strong>fx</strong>】ボタン（または「<strong>＝」ボタン</strong>）<span class="ms">→</span>【<strong>数式パレット</strong>】<span class="ms">→</span>「<strong>列番号</strong>」を項目に合わせて修正</li>
+<li>数式の入った<strong>（行の）セル全体を選択</strong><span class="ms">→</span>「フィルハンドル」を下方向にドラッグ</li>
+</ol>
+</div>
+
+<p class="small">３のやり方で行全体のセルの数式を修正します。
+<br>３の「＝」ボタンが表示されていない場合はメニューの【挿入】<span class="ms">→</span>【関数】で。
+<br>フィルドラッグを使わずに普通にコピー＆貼り付けでも同じです。</p>
+
+<p>・・・・・・・・・・・・・・・・・・・</p>
+<p><strong class="red">以上で完成です。</strong>お疲れ様でござる。</p>
+
+<p class="small">エラーが出る場合とか、途中の設定がうまくいかないとかよくありますんで下の「<strong class="red">FAQ</strong>」を参照して下さい。</p>
+
+
+
+<h2><a href="#faq" accesskey="9" name="faq"><span class="tokai1">FAQ よくある質問</span></a> <kbd class="ak">9</kbd></H2>
+
+<dl>
+<dt><a href="#7"><span class="ms">▼</span></a> <a name="7">「テーブル」にデータはあるはずなのにエラーが！</a></dt>
+<dd>
+<p class="small">下記を確認して下さい。</p>
+<ul>
+<li>作成シートとテーブル双方の「JANコード」セルの書式設定は【<strong>文字列</strong>】になっているか？</li>
+<li>「4.90123E+12」のように「<strong>指数表示</strong>」になっていないか？</li>
+<li>元データの「JANコード」セルに「数値表示」などの書式設定がされていた場合再設定がうまくできていない場合があります。</li>
+</ul>
+<p><strong>データが少ないなら双方の「JANコード」セルを1個ずつWクリック</strong>してみてください。</p>
+<p class="small">これで解決できないなら「書式の再設定」が必要と思われます。下記の<strong>指数表示の戻し方</strong>も参考にしてみて下さい。</p>
+</dd>
+</dl>
+
+
+
+<dl class="palmst pink">
+<dt><a href="#8"><span class="ms">▼</span></a> <a name="8">なぜ【文字列】に設定するのか？</a></dt>
+<dd>
+<p class="small">これは個人的主観というか環境によって違うのかもしれません。</p>
+<ul>
+<li>短縮JANコードの場合先頭に「00000」をつけますが「数値表示」では表示されません。</li>
+<li>関数から取り出したデータは【文字列】データになっている場合が多いので。（「VALUE」関数などで数値に変換することは可能ですけど。）</li>
+<li>色々試したんですけど「JANコード」のように12桁以上の数字の場合、【文字列】にした時が最もエラーが少なかったようです。（注意点はありますが。）</li>
+<li>「LEFT」関数などを使い「メーカー名」などの自動表示も簡単なので。</li>
+<li><strong>[01-09]</strong>のような表示形式のコードを検索値にしますと、標準では日付表示に変わってしまったりします。（この例ですと[1月9日]になります。）</li>
+</ul>
+</dd>
+</dl>
+
+
+
+
+<dl class="palmst pink">
+<dt><a href="#10"><span class="ms">▼</span></a> <a name="10">未入力セルのエラー表示をなくしたい。</a></dt>
+<dd>
+<p class="small">色々方法はありますが私はとりあえず<strong>「IF」関数</strong>を使ってます。</p>
+<p><strong>最初に入力したセルの数式↓を修正します。</strong></p>
+<pre>
+=VLOOKUP($A2,data,3,FALSE))
+</pre>
+<p class="small">↓↓↓↓↓↓</p>
+<pre>
+=IF($A2=&#034;&#034;,&#034;&#034;,VLOOKUP($A2,data,3,FALSE))
+</pre>
+<p class="small">最後の括弧を忘れないように。</p>
+<p class="small">後は同様の手順でフィルドラッグ（コピー＆貼り付け）して下さい。</p>
+</dd>
+</dl>
+
+
+
+<dl>
+<dt><a href="#11"><span class="ms">▼</span></a> <a name="11">ファイルを開くのに時間がかかる。</a></dt>
+<dd>
+<p class="small">数多くのセルに（標準以外の）「書式設定」がされているとファイルを開くのに20～30秒ほどかかる場合があります。（これはスペックの高いPC上でも同じです。）</p>
+<p class="small">テーブルのデータ件数が多い場合は要注意です。</p>
+
+<p><strong>一度シート全体の</strong>【<strong>書式のクリア</strong>】<strong>を実行し必要なセルのみ書式を再設定してみて下さい。</strong></p>
+<p class="small">【<strong>書式のクリア】→メニューの【編集】<span class="ms">→</span>【クリア】<span class="ms">→</span>【書式</strong>】</p>
+</dd>
+</dl>
+
+
+
+<dl>
+<dt><a href="#12"><span class="ms">▼</span></a> <a name="12">「テーブル」シートを削除したい・・・「数式」を消したい・・・</a></dt>
+
+<dd>
+<p>入力（表示）用シートには検索結果が表示されていますがこれは<strong>あくまで計算結果</strong>なので「<strong>テーブル」を削除するとすべてエラー</strong>になります。またそのままコピー貼り付けしても数式がコピーされるだけです。</p>
+
+<p>つまりは「値」として確定していません。印刷するだけならいいのですが表示シートのみ切り離すとすべてエラーになってしまいます。そこで【<strong>値の貼り付け</strong>】を実行します。</p>
+
+<div class=" class="palmst pink"">
+<ol>
+<li><kbd>Ctrl</kbd>-<kbd>A</kbd>キーで全て選択（または左上の[A]と[1]の間をクリック）</li>
+<li>右クリック【コピー】そのままもう一度右クリック【<strong>形式を選択して貼り付け</strong>】<span class="ms">→</span>【<strong>値</strong>】にチェック<span class="ms">→</span>OK</li>
+</ol>
+</div>
+
+<p>これで数式がなくなり値が確定されます。</p>
+</dd>
+<dd>
+<p class="small">この【<strong>値の貼り付け</strong>】はとってもよく使いますんで「ツールバー」の【<strong>ユーザー設定</strong>】で常にボタンを表示しておくと便利かもしれません。（他にも【数式】のみ【書式】のみの貼り付けもできますし。）</p>
+</dl>
+
+
+
+
+<h3><a href="#sisu" name="sisu"><span class="tokai1">指数表示の戻し方</span></a></h3>
+
+<p>Excelの仕様ですが<strong>12桁以上の数値は標準で指数表示</strong>となります。
+<br>→こんなかんじで→「<strong>4.90123E+12</strong>」
+<br>書式の再設定などでこの表示が出現！したりします。</p>
+
+<div class="palmst">
+<p>もっと簡単な方法発見しますた！</p>
+<ul>
+<li>【区切り位置指定ウィザード】を使う - Excel生産性向上委員会 トラブル回避テクニック１５</li>
+<li><a href="http://blogs.yahoo.co.jp/bardiel_of_may/26310406.html">Excel：指数表示にされてしまった数値を一気に直す ( ソフトウェア ) - 513号室（保管庫） - Yahoo!ブログ</a> <a href="http://b.hatena.ne.jp/entry/http://blogs.yahoo.co.jp/bardiel_of_may/26310406.html" class="http-bookmark"><img src="//b.hatena.ne.jp/entry/image/http://blogs.yahoo.co.jp/bardiel_of_may/26310406.html" alt="" class="http-bookmark" /></a></li>
+</ul>
+</div>
+
+<dl>
+<dt>「JANコード」セルを【文字列】に設定したら指数表示になってしまいますた～</dt>
+<dd>
+<ul>
+<li><strong>データ件数が少ない場合は</strong></li>
+</ul>
+
+<div class="palmst pink">
+<p><strong>セルをWクリック</strong>、または「F2」キー→「ENTER」キー</p>
+</div>
+
+<dd>
+<ul>
+<li><strong>元データの件数が多く、【数値】などで書式設定されている場合。</strong></li>
+</ul>
+<p class="small">この場合、上記の方法では面倒なので。</p>
+<div class="palmst pink">
+<ol class="small">
+<li>元データを一旦<strong>テキスト（.txt）ファイル</strong>で保存します。</li>
+<li>Excelのメニュー【ファイル】<span class="ms">→</span>【開く】でファイルの種類を【<strong>テキストファイル</strong>】に指定して該当ファイルを選択します。</li>
+<li><strong>ウィザード画面</strong>で該当列（「JANコード列」）を【<strong>文字列</strong>】に設定します。</li>
+</ol>
+</div>
+
+<ul>
+<li><strong>Accessから貼り付けたデータなら</strong></li>
+</ul>
+<div class="palmst pink"">
+<p><kbd>Ctrl</kbd>＋<kbd>Z</kbd>キー、または【編集】<span class="ms">→</span>【元に戻す】を繰り返して貼付直後に戻した後、書式設定（【文字列】）します。</p>
+</div>
+</dd>
+</dl>
+
+
+
+</div>
+</div>
+
+
+
+<div class="navi">
+<a href="./index.html">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd>
+</div>
+
+<address>Written by yassy</address>
+
+<ul class="toTop-nav">
+<li><a href="javascript:void(0);" onclick="smoothScroll(0);return false;">↑</a></li>
+</ul>
+<script type="text/javascript">
+function smoothScroll(o){var e=window.pageYOffset,l=o>e;setTimeout(function(){l&&o>=e?(e=e+(o-e)/20+1,window.scrollTo(0,e),setTimeout(arguments.callee,10)):!l&&e>=o?(e=e-(e-o)/20-1,window.scrollTo(0,e),setTimeout(arguments.callee,10)):window.scrollTo(0,o)},10)}
+</script>
+
+</body>
+
+</html>

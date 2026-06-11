@@ -1,0 +1,63 @@
+@charset "Shift_JIS";
+
+
+
+
+/*===== table =====*/
+
+table.book
+     { font-size: 90%; line-height: 120%;  letter-spacing: 1pt; 
+       margin-left: 10%; border-style: none; }
+
+td.lef { text-align: left; }
+
+td.rit { text-align: right; }
+
+td.clear  { border-style:none; }
+
+td.eicar  { font-size: 85%;  border-style:none; padding: 1px 5px;}
+          
+th.eicar  { font-size: 80%; padding: 3px }
+
+caption { margin: 0px;  padding: 1px }
+
+
+
+/*===== division table yellow =====*/
+
+div.ylt table
+ { color: #000; background-color: #ffc; font-size: 80%; text-align: center; 
+   line-height: 120%; border: 2px solid #ccc; border-collapse:collapse; 
+   margin: 10px 4%; letter-spacing: 1pt; }
+
+div.ylt td
+ { border:2px solid #ccc; }
+div.ylt th
+ { border:2px solid #ccc; }
+
+.reg {
+	 text-align: left;
+}
+
+/*===== division table link =====*/
+
+div.link table
+  { font-size: 90%; line-height: 120%; margin: 5%;
+   border-style: none; letter-spacing: 1pt; text-align: center; 
+   padding: 5px; }
+div.link td
+ { border-style: none; padding: 5px; }
+div.link th
+ { border-style: none; padding: 5px; }
+
+/*===== division table pc =====*/
+
+div.pc table  
+ { font-size: 90%; border-collapse: collapse; letter-spacing: 1pt; 
+  font-weight: normal; line-height: 120%;  border: 2px solid #ccc;
+  margin: 1% 4%; }
+
+div.pc td
+ {  border: 2px solid #ccc; }
+div.pc th
+ {  border: 2px solid #ccc; }

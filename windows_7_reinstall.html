@@ -1,0 +1,685 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="START" href="./">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" type="text/css" href="./basic.css" media="all">
+<link rel="stylesheet" type="text/css" href="./print.css" media="print">
+<link rel="stylesheet" type="text/css" href="./sp.css" media="only screen and (max-device-width:480px)">
+<link rel="shortcut icon" href="./favicon.ico">
+<title>Windows 7【再】インストールめも＠Palm84</title>
+<style type="text/css">
+<!--
+
+a:link,a:visited,
+a:hover,a:active {
+ font-weight: normal;
+}
+
+h2 a:link,h2 a:visited,
+h2 a:hover,h2 a:active {
+ font-weight: bold;
+}
+
+dl.small dd pre {
+font-size: 100%;
+}
+
+div.ylt table {
+text-align: left;
+margin: 3% 5% 3% 9%;
+width: 81%;
+}
+
+div.ylt td {
+padding: 0.5em;
+}
+
+-->
+</style>
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./basic_ie8.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="./basic_ie7.css">
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" href="basic_ie5.css">
+<![endif]-->
+</head>
+
+
+<body>
+<script src="//accaii.com/palm84p/script.js" async></script>
+<noscript><img src="//accaii.com/palm84p/script?guid=on"></noscript>
+
+<div class="navi">
+<a href="./index.html" name="top" accesskey="0">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" accesskey="1" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" accesskey="z" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd> [<a href="javascript:(function(){var style=document.createElement('style');var head=document.getElementsByTagName('head');style.setAttribute('type','text\/css');style.innerHTML='body,div,h1,h2,h3,h4,h5,dl,dt,dd,p,li,caption,th,td,blockquote,q,cite,address,del,ins,span,#blog-title,.index,.white,.palmst,pre{color:white!important;background-color:#333!important;text-shadow:none!important;}code{color:#333!important;text-shadow:none!important;}a:link{color:orange!important;text-shadow:none!important;text-decoration:underline!important;}a:visited{color:sienna!important;text-shadow:none!important;text-decoration:underline!important;}a:hover{color:brown!important;background-color:white!important;text-decoration:none!important;}';head[0].appendChild(style);})();">反転</a> <a href="javascript:(function(){var head=document.getElementsByTagName('head');var style=head[0].lastChild;if (style.nodeName.toLowerCase() == 'style'){head[0].removeChild(style);}else{alert('追加したstyle要素はないですYO');}})();">戻す</a>] <span class="font_change">* font-change * <a href="javascript:void(document.body.style.fontFamily='inherit')" title="inherit">inherit</a> <a href="javascript:void(document.body.style.fontFamily='sans-serif')" title="Sans-serif">Ss</a> <a href="javascript:void(document.body.style.fontFamily='serif')" title="Serif">Sf</a> <a href="javascript:void(document.body.style.fontFamily='\'メイリオ\'')" title="メイリオ">メ</a> <a href="javascript:void(document.body.style.fontFamily='\'游ゴシック\',\'Yu Gothic\',YuGothic')" title="游ゴシック">游</a> <a href="javascript:void(document.body.style.fontFamily='\'ＭＳ Ｐゴシック\'')" title="ＭＳ Ｐゴシック">MS</a> <a href="javascript:void(document.body.style.fontFamily='\'源ノ角ゴシック Regular\',\'源ノ角ゴシック JP Regular\',\'Noto Sans Japanese Regular\',\'Noto Sans CJK JP Regular\',\'源ノ角ゴシック\',\'源ノ角ゴシック JP\',\'Noto Sans Japanese\',\'Noto Sans CJK JP\'')" title="源ノ角ゴシック / Sonrce Han Sans">源</a> <a href="javascript:void(document.body.style.fontSize='12px')" title="12px">12</a>
+ <a href="javascript:void(document.body.style.fontSize='14px')" title="14px">14</a>
+ <a href="javascript:void(document.body.style.fontSize='16px')" title="16px">16</a> <a href="javascript:void(document.body.removeAttribute('style'));" title="body style 削除">戻す</a> *</span>
+</div>
+
+<h1><span class="tokai1"><a href="./windows_7_reinstall.html">Windows 7【再】インストールめも</a></span></h1>
+
+<div class="palm-body">
+
+<div class="sidebar">
+<h2><a name="index" href="#index" accesskey="2"><span class="tokai1">INDEX</span></a> <kbd class="ak">2</kbd></h2>
+
+<ul>
+<li><a href="#about" accesskey="3">これってなに？</a> <kbd class="ak small">3</kbd></li>
+<li><a href="#run_setup" accesskey="4">【Windows セットアップ】の起動方法</a> <kbd class="ak small">4</kbd></li>
+<li><a href="#install" accesskey="5">インストールの種類</a> <kbd class="ak small">5</kbd></li>
+<li><a href="#device" accesskey="6">DVDファイルの場所による制限</a> <kbd class="ak small">6</kbd></li>
+<li><a href="#ss" accesskey="7">スクリーン・ショット</a> <kbd class="ak small">7</kbd></li>
+<li><a href="#matome" accesskey="8">まとめ</a> <kbd class="ak small">8</kbd></li>
+<li><a href="#document" accesskey="9">参考文書等</a> <kbd class="ak small">9</kbd></li>
+</ul>
+
+<div class="navi">
+<a href="./index.html">HOME</a> <kbd class="ak">0</kbd>| 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd>
+</div>
+
+<div class="ct">
+
+
+
+<p class="small">リンク is フリーダム<span class="ms">♪</span></p>
+
+
+<div class="hateb">
+<script language="javascript" type="text/javascript" src="https://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://www10.plala.or.jp/palm84/";
+Hatena.BookmarkWidget.title = "はてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+
+<script language="javascript" type="text/javascript" src="https://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+<!--
+Hatena.BookmarkWidget.url   = "http://d.hatena.ne.jp/palm84/";
+Hatena.BookmarkWidget.title = "某所のはてぶ";
+Hatena.BookmarkWidget.sort  = "";
+Hatena.BookmarkWidget.width = 220;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+// -->
+</script>
+</div>
+
+
+</div>
+</div>
+
+
+
+<div class="main">
+
+<dl class="pink" style="border: 1px sienna solid;border-radius:1em;">
+<dt><ins>2021.4.1 移転しました...</ins></dt>
+<dd>
+<ul>
+<li>このページの旧URLは
+	<ul>
+	<li><code><strong>http://www10.plala.or.jp/palm84/windows_7_reinstall.html</strong></code></li>
+	</ul>
+</li>
+</ul>
+</dd>
+</dl>
+
+<p class="small">2010.08.10 作成
+<br>最終更新日 2012.4.12</p>
+
+<p><script src="https://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+
+<a href="http://b.hatena.ne.jp/entry/http://www10.plala.or.jp/palm84/windows_7_reinstall.html"><img src="https://b.hatena.ne.jp/bc/http://www10.plala.or.jp/palm84/windows_7_reinstall.html" alt="はてなブックマーク" title="はてなブックマーク" width="75" height="14"></a>
+
+</p>
+<h2><a href="#about" name="about">これってなに？</a> <kbd class="ak">3</kbd></h2>
+
+<p>Windows も Vista 以降はインストールがかなり楽になりました。DVDブートできなくでも色々な手段が使えます。</p>
+<p>ま、普通にDVDブートするなら覚える必要ないんですけども、DVDブートできぬ環境のため、その手段による違いを書いて行くめもなのでござるよ。</p>
+
+<dl>
+<dt>【お約束】<em>at your own risk !</em></dt>
+<dd>
+<p class="pink">※ メーカー製PCでは付属のリカバリー・プログラムのものでない、Windows（のみ）のセットアップ実行はかなり危険なかほりが致します。なんとなれば、<strong>メーカー製PCでは特別なカスタマイズがされている場合があり、セットアップ実行によりリカバリー・プログラムが起動できなくなったりすることもございました</strong>。マニュアルを確認して記載のない操作はしない方が無難であると愚考致す次第。</p>
+
+<p>私なりに確認はいっぱいしたつもりですが、多分勘違いとか間違いがあると思います。ご容赦をば。</p>
+</dd>
+
+<dt>インストール方法のリンク</dt>
+<dd>
+<ul>
+<li><a href="http://windows.microsoft.com/ja-JP/windows7/Installing-Windows-recommended-links">Windows のインストール: 推奨リンク</a></li>
+<li><a href="http://www.iodata.jp/pio/os/win7/use/install.htm?gclid=CIXT0LTn0KACFQLeegod0mftzQ">Windows 7 インストール手順 ｜IODATA アイ・オー・データ機器</a></li>
+<li><a href="http://ascii.jp/elem/000/000/415/415121/">ASCII.jp：これで安心！ Windows 7 インストール完全ガイド｜XPと本気でさよならするための Windows 7特集</a></li>
+</ul>
+
+<ul>
+<li>拙作メモ：<a href="./windows_7.html">私的 Windows 7 めも</a></li>
+</ul>
+</dd>
+
+<dt>ドライバの準備は大丈夫？</dt>
+<dd>
+<p>クリーン・インストールに慣れてる人には言わずもがなですが、新しいPCでは Windows 自身にドライバが含まれていないことも多いです。Windows インストール直後は「画面の解像度が低いZE！」「ネットワークが使えないYO！」なんてのはメチャよくある話。</p>
+<p>LANが有効になっていないとファイルの移動が結構大変だったりするので、必要な場合はLANドライバだけでもHD上にコピーしておきませう。（※ グラフィック関連含め全部HD上に置いとくのが楽ですYO！）</p>
+</dd>
+
+<dt>バックアップのすすめ！</dt>
+<dd>
+<p class="pink">※ 「<strong>システムイメージ</strong>」は必ず取っておくべし。ってか、システムイメージから復元すればしんどい再インストール作業は不要となります。但し、HD上にバックアップしている場合は上書き（※ 古いものは設定容量を超えると削除）されてしまうのでクリーンな状態のものを別の場所に移動させといた方がいいかな。</p>
+<p>バックアップを忘れた時のためのバックアップ（ウロボロス？）、丸ごとイメージ・バックアップがチョーおすすめ。</p>
+<p>Windows 7 では標準で「システム イメージ」が作成できます。勿論丸ごと復元可能、「VHDの接続」機能でイメージからエクスプローラーで個別ファイルのコピーもできます。</p>
+<ul>
+<li><a href="http://windows.microsoft.com/ja-JP/windows7/What-is-a-system-image">システム イメージとは</a></li>
+<li><a href="http://windows.microsoft.com/ja-JP/windows7/Back-up-your-programs-system-settings-and-files">プログラム、システム設定、およびファイルをバックアップする</a></li>
+<li>拙作めも：<a href="./recovery_software.html#system_image">システム イメージ (Windows 7) - バックアップ・リカバリーソフトについてのめも</a></li>
+</ul>
+
+<p>さらに <strong class="ms">Paragon Backup &#038; Recovery</strong>（フリー）などの併用もマジおすすめ。</p>
+</dd>
+</dl>
+
+
+<h2><a href="#run_setup" name="run_setup">【Windows セットアップ】の起動方法</a> <kbd class="ak">4</kbd></h2>
+
+<ol>
+<li><a href="#setup_boot">直接ブート（通常セットアップ）</a></li>
+<li><a href="#setup_on_windows7">Windows 7 上で実行</a></li>
+<li><a href="#setup_on_winre">「Windows 回復環境」で実行</a></li>
+</ol>
+<h3><a href="#setup_boot" name="setup_boot">直接ブート（通常セットアップ）</a></h3>
+
+<p class="overflow2"><img src="./images/windows_7_reinstall/setup_2nd.png" width="496" height="368" alt="「セットアップ」2枚目のスクリーンショット"></p>
+
+<p>通常のセットアップ方法ですね。Vista 以降はDVDブートだけでなく、他のブート方法もわりかし簡単に設定できますよね。</p>
+<ul>
+<li>セットアップDVDブート</li>
+<li>USBメモリブート</li>
+<li>HDブート</li>
+</ul>
+
+<dl>
+<dt>USBメモリ・ブート</dt>
+<dd>
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/1248win7usb/win7usb.html">Windows 7のインストールUSBメモリを作る（Windows 7 USB/DVD Download Tool編） － ＠IT</a></li>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/1155diskpart/diskpart.html">diskpartを使ってWindows Vista／7のインストールUSBメモリを作る － ＠IT</a></li>
+</ul>
+
+<dl class="small palmst pink">
+<dt>SYSLINUXでUSBメモリを作成</dt>
+<dd>
+<ol>
+<li>USBメモリをFAT32でフォーマット</li>
+<li>DVD内のファイルをすべてコピー</li>
+<li>USBメモリへ <strong class="ms">SYSLINUX</strong> をインストール</li>
+<li>USBメモリへ <strong class="ms">SYSLINUX</strong> の <code>chain.c32</code> をコピー</li>
+<li>USBメモリでブート</li>
+<li><code>chain ntldr=bootmgr</code> を入力</li>
+</ol>
+</dd>
+</dl>
+</dd>
+
+
+<dt>HDブート</dt>
+<dd>
+<p>セットアップDVDファイルを含むパーティションはセットアップ時にフォーマットできなくなりますから「通常セットアップ」とは言えない気もチトしますけど...（<code>C:</code> ドライブのフォーマットは可能）。</p>
+<p>まっさらHDなら上記の <strong class="ms">diskpart</strong> を使う方法でいいはず。または下記の方法でも。</p>
+
+<div class="small">
+<ol>
+<li><code>D:</code> ドライブなどWindows 7 上の <code>C:</code> 以外にDVDファイルをそのままコピー</li>
+<li>GRUB for DOS 起動ディスクなどでブート</li>
+<li>HD上DVDファイルの <strong class="ms">bootmgr</strong> をチェインロード</li>
+</ol>
+
+<ul>
+<li>GRUB for DOS 起動FDイメージ（<code>grub_for_dos-0.4.2.zip</code> 内の <strong class="ms">fat12grldr.img</strong>）
+	<ul>
+	<li><a href="http://sourceforge.net/projects/grub4dos/files/">Browse GRUB4DOS and WINGRUB Files on SourceForge.net</a></li>
+	</ul>
+</li>
+</ul>
+
+<ul>
+<li>GRUB コマンド</li>
+</ul>
+<pre>
+find --set-root /sources/boot.wim
+chainloader /bootmgr
+</pre>
+</div>
+
+<p class="pink">※ あっと、Windows 7 がインストール済ならHDから起動時 <kbd>F8</kbd> キー押しで「Windows 回復環境」が起動できますし、そこから <strong class="ms">setup.exe</strong> を実行できるので起動ディスクは不要ですね。</p>
+</dd>
+</dl>
+
+
+<p>「パーティションの選択画面」でパーティションのドライブ文字が表示されないので選択を間違えない様に注意。</p>
+<p class="overflow2"><img src="./images/windows_7_reinstall/run_winre_select_partition.png" width="512" height="384" alt="直接ブート及び RE上からセットアップ起動時の「インストールの場所選択」画面スクリーンショット"></p>
+
+
+
+<h3><a href="#setup_on_windows7" name="setup_on_windows7">Windows 7 上で実行</a></h3>
+
+<p class="overflow2"><img src="./images/windows_7_reinstall/on_windows7_setup_1st.png" width="496" height="368" alt="Windows上で実行した「セットアップ」1枚目のスクリーンショットのスクリーンショット"></p>
+
+<p>Windows 7 上でセットアップDVD内のファイル <strong class="ms">setup.exe</strong> を実行。</p>
+
+<p>C:ドライブのフォーマットはできないので、完全クリーンなインストールではないけど後述の「“ほぼ”クリーン・インストール」または「修復インストール」が可能です。</p>
+<p>C:ドライブに置いたDVDファイルから実行してもおｋ！なのです。</p>
+
+<p class="overflow2"><img src="./images/windows_7_reinstall/run_windows7_select_partition.png" width="512" height="384" alt="Windows 7 上からセットアップ起動時の「インストールの場所選択」画面スクリーンショット"></p>
+<p>「インストールの場所選択」画面でドライブ文字は表示されてますが、「ドライブ オプション」のリンクは表示されません（フォーマットなどは不可ってことで）。</p>
+
+
+<h3><a href="#setup_on_winre" name="setup_on_winre">「Windows 回復環境」（システム回復オプション）で実行</a></h3>
+
+<p>PC起動時に <kbd>F8</kbd> (or <kbd>F5</kbd>) キー押し、または「システム修復ディスク」でブート</p>
+<p><img src="./images/windows_re/7_f8_re.png" alt="詳細ブート オプション" width="297" height="162"></p>
+
+<p class="overflow2"><img src="./images/windows_pe_20/system_recovery_option_menu_7.png" width="504" height="302" alt="「システム回復オプション」のスクリーンショット"></p>
+
+<p>「コマンド プロンプト」から <strong class="ms">setup.exe</strong> を実行</p>
+
+<p class="overflow2"><img src="./images/windows_7_reinstall/on_winre_setup_1st.png" width="560" height="420" alt="「Windows 回復環境」でセットアップ実行時のスクリーンショット"></p>
+
+<p>Windows PE（2.0以上）でもいいのですが、Windows 7 では標準でHDにインストール済なのでこれを使うのがお手軽かと。また、「システム修復ディスク」(CD) の作成もコントロール パネルから可能です。</p>
+<p class="pink">※ 以下 <strong class="ms">RE</strong> と表記します。</p>
+
+<p>RE上から <strong class="ms">setup.exe</strong> を実行できます。DVDファイルの置き場所はネットワーク・ドライブを含めどこでもおｋ。</p>
+<p>但し、注意点として</p>
+<ul>
+<li>（※ Windows 7 上）の <code>C:</code> ドライブをフォーマットするなら、DVDファイルは <code>C:</code> 以外に置く</li>
+<li>内蔵HDのパーティションを編集するなら、DVDファイルは内蔵HD以外に置く</li>
+<li>RE上では「システム予約済み」領域も認識されるため、コマンド プロンプトではドライブ文字がズレてます（ <code>C:</code> が <code>D:</code> に）</li>
+</ul>
+
+<p>「パーティションの選択画面」でパーティションのドライブ文字が表示されないので選択を間違えない様に注意。</p>
+<p class="overflow2"><img src="./images/windows_7_reinstall/run_winre_select_partition.png" width="512" height="384" alt="直接ブート及び RE上からセットアップ起動時の「インストールの場所選択」画面スクリーンショット"></p>
+
+<dl>
+<dt>RE の起動方法</dt>
+<dd>
+<ul>
+<li>HDブート
+	<ul>
+	<li>起動時に <kbd>F8</kbd> (or <kbd>F5</kbd>) キー押し「コンピューターの修復」<span class="ms">→</span>「<strong>システム回復オプション</strong>」</li>
+	</ul>
+</li>
+<li>「システム修復ディスク」 (CD) でブート</li>
+<li>「システム修復ディスク」をUSBメモリ or ネットワークから</li>
+</ul>
+</dd>
+
+<dt>setup.exe の実行</dt>
+<dd>
+<p>どれも一例ですが...</p>
+<ul>
+<li>Windows 7 上の <code>D:\WinCD</code> に保存したファイルから実行（※ 「システム予約領域」がある場合、ドライブ文字が Windows 7 上とはズレる）</li>
+</ul>
+<pre>
+X:\Windows\System32&#062;pushd <strong class="ms red">e</strong>:\wincd
+
+<strong class="ms red">E</strong>:\WinCD&#062;setup
+</pre>
+
+<ul>
+<li>ネットワーク・ドライブから実行（ホスト名 = hoge, 共有名 = share, ディレクトリ = WinCD）</li>
+</ul>
+<pre>
+X:\windows\system32&#062;startnet    -----  <strong class="red">ネットワークを有効に</strong> 
+
+X:\windows\system32&#062;wpeinit
+
+X:\windows\system32&#062;net use z: \\hoge\share /user:palm84 *
+\\hoge\share のパスワードを入力してください:
+コマンドは正常に終了しました。
+
+X:\windows\system32&#062;pushd z:\wincd
+
+Z:\WinCD&#062;setup
+</pre>
+</dd>
+</dl>
+
+<ul>
+<li><a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/1180netinst/netinst.html">ネットワーク共有からWindows Vista／7をインストールする － ＠IT</a></li>
+<li><a href="http://support.microsoft.com/kb/951495/ja">コンピュータの製造元から提供されるインストール DVD を使用して Windows Vista または Windows Server 2008 の Windows 回復環境を起動できない</a></li>
+<li>拙作メモ
+	<ul>
+	<li><a href="./windows_7.html#windows_re">システム回復オプション（Windows 回復環境） - 私的 Windows 7 めも</a></li>
+	<li><a href="./winpe.html#usbkey">USBメモリでブート - Windows PE 2.0 めも</a></li>
+	<li><a href="http://d.hatena.ne.jp/palm84/20100727/1280180893">Windows PE/RE のネットワークブート</a></li>
+	</ul>
+</li>
+</ul>
+
+<h2><a href="#install" name="install">インストールの種類</a> <kbd class="ak">5</kbd></h2>
+
+<p class="overflow2"><img src="./images/windows_7_reinstall/select_install.png" width="512" height="384" alt="「インストールの種類」選択画面のスクリーンショット"></p>
+
+<p>選択は2つですが、「新規インストール（カスタム）」ではフォーマットするかしないかでさらに2択となります。</p>
+
+<ul>
+<li>参考 :
+	<ul>
+	<li><a href="http://www.dosv.jp/feature/0912/41.htm">Windows 7のインストール方法 1/4 | Windows 7自作超大全｜第2部：Windows 7注目機能完全解説 | DOS/V POWER REPORT</a></li>
+	</ul>
+</li>
+</ul>
+
+<ol>
+<li><a href="#upgrade">アップグレード</a></li>
+<li><a href="#backup_windows_old">バックアップ + インストール</a></li>
+<li><a href="#format_install">フォーマット + インストール（クリーン・インストール）</a></li>
+</ol>
+<h3><a href="#upgrade" name="upgrade">アップグレード</a></h3>
+<div class="palmst pink small">
+<p>時間ねぇ！な時のとりあえずな手段ですYO!</p>
+</div>
+<p>いわゆる「<strong>修復インストール</strong>」となります。</p>
+
+<dl class="palmst small pink">
+<dt>Service Pack のバージョンが違うと</dt>
+<dd>
+<p>現状の Windows 7 が Service Pack 1 などの場合、無印（Service Pack なし）セットアップファイルの実行はできないようです。実行するにはセットアップファイルへ Service Pack の統合が必要になるかと。</p>
+<p class="overflow2"><img src="./images/windows_7_reinstall/upgrade_error.png" width="510" height="210" alt="アップグレード インストール時のエラースクリーンショット"></p>
+</dd>
+</dl>
+
+<ol>
+<li>上記画面にて「アップグレードを選択」</li>
+</ol>
+
+<ul>
+<li>参考：（※ 「修復インストール」と書かれてますな）
+	<ul class="small">
+	<li><a href="http://support.microsoft.com/kb/958044/ja">Windows Update Web サイトまたは Microsoft Update Web サイトを使用して更新プログラムをインストールするときにエラー コード "0x80070490" が表示される</a></li>
+	</ul>
+</li>
+</ul>
+
+
+<ul>
+<li>Windows 7 上から実行可能（※ <code>C:</code> ドライブのファイルからでもおｋ）</li>
+<li>基本バックアップ不要（※ <strong>念のためにしといた方がえーですけど</strong>）</li>
+<li>パーティションの選択画面はなし</li>
+<li>Windows のシステムファイルのみ初期化</li>
+<li>プログラム設定やユーザーファイルはすべてそのまま</li>
+</ul>
+
+<dl>
+<dt>セットアップ完了後にするべきこと</dt>
+<dd>
+<ol>
+<li>Windows Update - 一からやり直しです</li>
+<li>インストール済ソフトに不具合がないか確認（※ ウイルス対策ソフトなどは再インストールした方がいいかもしれない）</li>
+</ol>
+</dd>
+
+<dt>バックアップファイルかな？</dt>
+<dd>
+<p>完了後に下記フォルダができてました。「<q><em>新しいバージョンの Windows に移動されなかったすべてのファイルと、Windows システム ファイルとして認識されなかったすべてのファイルのコピーが保持されます</em></q>」とのこと。</p>
+<ul>
+<li><code>C:\$INPLACE.~TR</code> - 約 577MB</li>
+<li><code>C:\$WINDOWS.~Q</code> - 約 145MB</li>
+</ul>
+<p>「ディスク クリーンアップ」<span class="ms">→</span>「システム ファイルのクリーンアップ」にて「Windows のアップグレードにより破棄されたファイル」を選択して実行したら
+ <code>C:\$INPLACE.~TR</code> が削除、 <code>C:\$WINDOWS.~Q</code> が空になりました。</p>
+<p class="overflow2"><img src="./images/windows_7_reinstall/upgrade_disk_cleanup.png" width="450" height="440" alt="「ディスク クリーンアップ」のスクリーンショット"></p>
+<p>「Windows アップグレード ログ ファイル」も不要かな。</p>
+</dd>
+</dl>
+
+
+<h3><a href="#backup_windows_old" name="backup_windows_old">バックアップ + インストール</a></h3>
+
+<div class="palmst pink small">
+<p>バックアップも取ってくれるし、お手軽だNE！</p>
+</div>
+
+<p>フォーマットしないので手法的には「上書インストール」ってかんじですが「<strong>“ほぼ”クリーン</strong>・インストール」と言っていいかと。</p>
+
+<p class="pink">※ 7 SP1 上から 7 SPなしDVDの実行も可能でした。</p>
+
+<ol>
+<li>パーティションの選択画面でフォーマットせず続行</li>
+</ol>
+
+<p class="overflow2"><img src="./images/windows_7_reinstall/select_partitionnon_non-fomat.png" width="512" height="384" alt="「Windows.old についての注意画面」のスクリーンショット"></p>
+
+<ul>
+<li>Windows 7 上から実行可能（※ <code>C:</code> ドライブのファイルからでもおｋ）</li>
+<li>基本バックアップ不要（※ <strong>念のためにしといた方がえーですけど</strong>）</li>
+<li>パーティションの選択後、すぐにコピーが始まるので注意</li>
+<li>Windows 全体を初期化</li>
+<li>復元も可能</li>
+<li><strong>既存ファイルほぼすべて残るので空き領域には注意</strong>（既存 + 新規の使用領域が必要）</li>
+</ul>
+
+<ul>
+<li>「フラット インストール」とゆーみたい？（ちょっと違う様な気がする...）
+	<ul>
+	<li><a href="http://support.microsoft.com/kb/928902/ja">Windows Vista のフラット インストールを実行する方法</a>（※ 機械翻訳）</li>
+	</ul>
+</li>
+</ul>
+
+<dl>
+<dt>Windows.old ディレクトリ</dt>
+<dd>
+<ul>
+<li>ライブラリなどユーザー・ファイルは <code>Users</code> 以下に</li>
+<li>ほぼすべて（なのかな？）のファイルがバックアップ済</li>
+</ul>
+<pre>
+ c:\Windows.old のディレクトリ
+
+2010/08/09  23:25    &#060;DIR&#062;          .
+2010/08/09  23:25    &#060;DIR&#062;          ..
+2010/08/06  21:35    &#060;DIR&#062;          $Recycle.Bin
+2009/06/11  06:42                24 autoexec.bat
+2009/06/11  06:42                10 config.sys
+2009/07/14  13:53    &#060;JUNCTION&#062;     Documents and Settings [C:\Windows.old\Users
+]
+2009/07/14  11:37    &#060;DIR&#062;          PerfLogs
+2009/07/15  00:31    &#060;DIR&#062;          Program Files
+2010/08/06  21:35    &#060;DIR&#062;          ProgramData
+2010/08/06  21:35    &#060;DIR&#062;          Users
+2010/08/09  23:06    &#060;DIR&#062;          Windows
+               2 個のファイル                  34 バイト
+               9 個のディレクトリ  50,686,263,296 バイトの空き領域
+</pre>
+<p>※ C:直下に自分で作ったフォルダはそのままC:直下に残ってしました。</p>
+<p>既に存在する場合は <code>Windows.old.000</code>（以下 .001, .002 ...）が作成される。</p>
+
+<ul>
+<li>参考：
+	<ul class="small">
+	<li><a href="http://support.microsoft.com/kb/932912/ja">Windows Vista または Windows 7 のカスタム インストールを実行した後に個人用ファイルを復元する方法</a></li>
+	<li><a href="http://windows.microsoft.com/ja-JP/windows7/How-do-I-remove-the-Windows-old-folder">Windows.old フォルダーを削除するにはどうすればよいですか。</a></li>
+	<li><a href="http://support.microsoft.com/kb/971760/ja">Windows.old フォルダーを使用して Windows 7 ベースのコンピューターを以前の Windows インストールに復元する方法</a></li>
+	<li><a href="http://snow-white.cocolog-nifty.com/first/2009/09/windows-windows.html">旧 Windows への Windows 7 のクリーンインストールについて: 世の中は不思議なことだらけ</a></li>
+	</ul>
+</li>
+</ul>
+<p>削除は「ディスク クリーンアップ」から</p>
+<p><img src="./images/windows_7_reinstall/on_win7_disk_cleanup.png" width="450" height="440" alt="「ディスク クリーンアップ」のスクリーンショット"></p>
+</dd>
+
+<dt>セットアップ完了後にするべきこと</dt>
+<dd>
+<ol>
+<li>クリーン・インストール同様、追加ドライバ・追加ソフトのインストール、Windows Update に設定カスタマイズとか</li>
+<li>ユーザーファイルや設定ファイルなど Windows.old から復元</li>
+</ol>
+</dd>
+</dl>
+
+
+
+
+<h3><a href="#format_install" name="format_install">フォーマット + インストール（クリーン・インストール）</a></h3>
+
+<div class="palmst pink small">
+<p>漢は黙ってクリーン・インストール！（笑）</p>
+</div>
+
+<ol>
+<li>【セットアップ】を直接ブート、または REから実行</li>
+<li>パーティションの選択画面で【ドライブ オプション】<span class="ms">→</span> フォーマット</li>
+</ol>
+
+<p class="overflow2"><img src="./images/windows_7_reinstall/select_partition_drive_option_format.png" width="512" height="384" alt="「ドライブ オプション」のスクリーンショット"></p>
+<p class="overflow2"><img src="./images/windows_7_reinstall/select_partition_drive_option_format_warning.png" width="512" height="384" alt="「フォーマット時の警告画面」のスクリーンショット"></p>
+
+
+<ul>
+<li><strong>Windows 7 上から実行不可</strong></li>
+<li>（※ Windows 7 上の）C: に置いたファイルから実行してはだめ</li>
+<li>パーティションの選択後、すぐにコピーが始まるので注意</li>
+</ul>
+
+<dl>
+<dt>セットアップ完了後にするべきこと</dt>
+<dd>
+<ol>
+<li>全部一から再構築！</li>
+</ol>
+</dd>
+</dl>
+
+
+<h2><a href="#device" name="device">セットアップファイルの場所による制限</a> <kbd class="ak">6</kbd></h2>
+
+<p>考えたら当たり前の話の様な気もしますけど...（汗）</p>
+<p>DVD/USBメモリでの「直接ブート」ではなんの制限もあらしまへんで。</p>
+
+<ul>
+<li>Windows 7 上の <code>C:</code> に置いた場合、「アップグレード」「バックアップ」インストールのみ</li>
+<li>Windows 7 上の <code>C:</code> 以外に置いた場合、クリーン・インストールも可能
+	<ul>
+	<li>Windows 7 上での実行は不可</li>
+	</ul>
+</li>
+<li><code>C:</code> のあるHD以外に置いた場合、パーティション編集も可能
+	<ul>
+	<li>Windows 7 上での実行は不可</li>
+	</ul>
+</li>
+</ul>
+
+
+<h2><a href="#ss" name="ss">スクリーン・ショット</a> <kbd class="ak">7</kbd></h2>
+
+<p>「直接ブート」「REから実行」の場合...</p>
+<p class="overflow2"><img src="./images/windows_7_reinstall/setup_1st.png" width="496" height="368" alt="「セットアップ」1枚目のスクリーンショット"></p>
+<p class="overflow2"><img src="./images/windows_7_reinstall/setup_2nd.png" width="496" height="368" alt="「セットアップ」2枚目のスクリーンショット"></p>
+
+<p>Windows 上でsetup.exeを実行した場合は若干違いがありますね。</p>
+
+<p class="overflow2"><img src="./images/windows_7_reinstall/on_windows7_setup_1st.png" width="496" height="368" alt="Windows上で実行した「セットアップ」1枚目のスクリーンショットのスクリーンショット"></p>
+
+<p>「直接ブート」「REから実行」時の「インストールの場所選択」</p>
+<p class="overflow2"><img src="./images/windows_7_reinstall/run_winre_select_partition.png" width="512" height="384" alt="直接ブート及び RE上からセットアップ起動時の「インストールの場所選択」画面スクリーンショット"></p>
+<p>「ドライブ オプション」をクリックするとフォーマットなどの選択が表示されます。ドライブ文字の表示はありません。</p>
+<p class="overflow2"><img src="./images/windows_7_reinstall/run_windows7_select_partition_driveoption.png" width="512" height="384" alt="直接ブート及び RE上からセットアップ起動時の「ドライブ オプション」画面のスクリーンショット"></p>
+
+<p>Windows 7 上から実行した場合「ドライブ オプション」がありません。Windows 7 上のドライブ文字が表示。</p>
+<p class="overflow2"><img src="./images/windows_7_reinstall/run_windows7_select_partition.png" width="512" height="384" alt="Windows 7 上からセットアップ起動時の「インストールの場所選択」画面スクリーンショット"></p>
+
+<p>まっさらなHD、またはアクティブ・パーティションの無い状態のHDにパーティションを作成すると 100MBの「システム予約済み」領域が作成される。</p>
+<p class="overflow2"><img src="./images/windows_7_reinstall/make_partition.png" width="512" height="384" alt="「システム予約済み」領域作成の注意画面スクリーンショット"></p>
+
+
+
+<h3><a href="#ss_error" name="ss_error">エラー画面</a></h3>
+
+<p>RE上でC:ドライブのDVDファイルから実行した際、C:をフォーマットしてしまうとパーティションの選択でこんなエラー・メッセージが出ます。セットアップに必要なファイルが消えてるから当然ですが...</p>
+<p class="overflow2"><img src="./images/windows_7_reinstall/winre_after_format_c_select_partition_error.png" width="512" height="384" alt="Cドライブフォーマット後の「パーティション選択画面」のスクリーンショット"></p>
+
+
+<p>USB HDにはインストールできしまへんねん。</p>
+<p class="overflow2"><img src="./images/windows_7_reinstall/select_partition_error_usb.png" width="512" height="384" alt="hogehogeのスクリーンショット"></p>
+
+<h2><a href="#matome" name="matome">まとめ（になってないかもｗ）</a> <kbd class="ak">8</kbd></h2>
+
+<p>DVD/USBメモリでの「直接ブート」では勿論制限なしの実行が可能。</p>
+
+<p>とりあえず、フォーマットなしの「バックアップ + インストール」がお手軽で便利だと思います。</p>
+
+<p>「直接ブート」できない、或いはメンドクサ（笑）で、且つフォーマット・パーティション編集などする場合は...</p>
+
+<ul>
+<li>C:をフォーマットするには、C:以外のDVDファイル（コピーでも）から <strong class="ms">setup.exe</strong> 実行</li>
+<li>パーティション編集するには、対象HD以外のDVDファイル（コピーでも）から <strong class="ms">setup.exe</strong> 実行</li>
+</ul>
+
+
+<h2><a href="#document" name="document">参考文書等</a> <kbd class="ak">9</kbd></h2>
+
+<p>今後書き足していくつもり...</p>
+
+<ul>
+<li><a href="http://technet.microsoft.com/ja-jp/library/dd799264(WS.10).aspx">Windows セットアップ コマンド ライン オプション</a></li>
+</ul>
+
+
+
+
+</div>
+</div>
+
+
+<div class="navi">
+<a href="./index.html">Back to HOME</a> <kbd class="ak">0</kbd> | 
+<a href="http://d.hatena.ne.jp/palm84/" title="はてなダイアリー">Diary</a> <kbd class="ak">1</kbd> | 
+<a href="http://palm84.hatenablog.com/" title="はてなブログ">kusoBlog</a> <kbd class="ak">Z</kbd>
+</div>
+
+<address>Written by yassy</address>
+
+<ul class="toTop-nav">
+<li><a href="javascript:history.back()">←</a></li>
+<li><a href="./index.html">H</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToTop(0);return false;">↑</a></li>
+<li><a href="javascript:void(0);" onclick="scrollToBottom(0);return false;">↓</a></li>
+</ul>
+<script>
+function scrollToTop() {
+  scrollTo(0, 0);
+}
+function scrollToBottom() {
+var element = document.documentElement;
+var bottom = element.scrollHeight - element.clientHeight;
+//scrollTo(0, bottom);
+window.scroll(0, bottom);
+}
+</script>
+
+</body>
+
+</html>
